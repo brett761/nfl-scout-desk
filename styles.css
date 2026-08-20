@@ -2148,7 +2148,7 @@ input[readonly] { color: var(--muted); }
 /* ---------- slate card tooltips (hover + tap/focus) ---------- */
 .sked-tip {
   position: relative;
-  cursor: help;
+  cursor: default;
 }
 span.sked-tip { display: inline-block; }
 .sked-tip::after {
