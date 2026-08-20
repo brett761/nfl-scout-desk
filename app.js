@@ -962,6 +962,8 @@ let teamDiv = null;  // null | East | North | South | West
 let teamSort = "rating-desc";
 let profileAbbr = null;
 let pendingTeam = null;
+let gameSheetId = null;
+let pendingGame = null;
 
 function load() {
   try {
@@ -2165,6 +2167,7 @@ function openTeamProfile(abbr) {
   lastFocus = document.activeElement;
   profileAbbr = team.abbr;
   pendingTeam = null;
+  if (gameSheetId) closeGameSheet({ silent: true });
   const ticketSheet = document.getElementById("sheet");
   if (ticketSheet && !ticketSheet.hidden) {
     ticketSheet.hidden = true;
@@ -2181,8 +2184,7 @@ function closeTeamSheet(opts = {}) {
   const sheet = document.getElementById("team-sheet");
   if (sheet) sheet.hidden = true;
   profileAbbr = null;
-  const ticketHidden = document.getElementById("sheet").hidden;
-  if (ticketHidden) document.getElementById("overlay").hidden = true;
+  hideOverlayIfIdle();
   if (!opts.silent) {
     const raw = (location.hash || "").replace("#", "");
     if (raw.startsWith("team-") || raw.startsWith("team?") || raw.startsWith("teams?")) {
@@ -2197,6 +2199,284 @@ function closeTeamSheet(opts = {}) {
     try { lastFocus.focus(); } catch { /* ignore */ }
   }
 }
+
+function hideOverlayIfIdle() {
+  const ticket = document.getElementById("sheet");
+  const team = document.getElementById("team-sheet");
+  const game = document.getElementById("game-sheet");
+  if ((!ticket || ticket.hidden) && (!team || team.hidden) && (!game || game.hidden)) {
+    const overlay = document.getElementById("overlay");
+    if (overlay) overlay.hidden = true;
+  }
+}
+
+function gameById(id) {
+  if (!nflData || !Array.isArray(nflData.games)) return null;
+  return nflData.games.find((g) => String(g.id) === String(id)) || null;
+}
+
+function fmtLayer(n) {
+  const x = Number(n);
+  const v = Number.isFinite(x) ? x : 0;
+  if (v === 0) return "0.00";
+  return (v > 0 ? "+" : "−") + Math.abs(v).toFixed(2);
+}
+
+function fmtEdgeNum(n) {
+  if (n == null || !Number.isFinite(n)) return "—";
+  if (n === 0) return "0.0";
+  return (n > 0 ? "+" : "−") + Math.abs(n).toFixed(1);
+}
+
+function marketFavLabel(parsed) {
+  if (!parsed || parsed.fav == null || parsed.pts == null) return null;
+  if (parsed.pts === 0) return parsed.fav + " PK";
+  return parsed.fav + " −" + Number(parsed.pts).toFixed(1);
+}
+
+function gameLeadCopy(game) {
+  if (!hasOurNumber(game)) {
+    return "The library is even and we have no number.";
+  }
+  const mkt = marketFor(game);
+  const parsed = mkt.parsed || {};
+  const ourH = ourHomeSpread(game, hfa);
+  const ourLabel = formatOurLine(ourH, game.home, game.away);
+  const mktLabel = marketFavLabel(parsed);
+  const marketHome = parsed.homeLine;
+  const parts = [];
+  if (mktLabel && marketHome != null && Number.isFinite(marketHome)) {
+    parts.push("Market has " + mktLabel + " (home " + fmtSpreadNum(marketHome) + ").");
+  } else if (mkt.odds) {
+    parts.push("Market is " + String(mkt.odds) + ".");
+  } else {
+    parts.push("No market number yet.");
+  }
+  if (ourH != null && Number.isFinite(ourH)) {
+    parts.push("We have " + ourLabel + " (that is home " + game.home + " " + fmtSpreadNum(ourH) + ").");
+  } else {
+    parts.push("We have no number.");
+  }
+  const edge = edgePts(ourH, marketHome);
+  if (edge != null) {
+    const side = edge < 0 ? "the away" : edge > 0 ? "the home" : "neither side";
+    parts.push("Edge = marketHome − ourHome = " + fmtEdgeNum(edge) + (edge === 0 ? "." : " on " + side + "."));
+    const mktFav = parsed.fav;
+    const ourFav = ourH < 0 ? game.home : ourH > 0 ? game.away : null;
+    if (mktFav && ourFav && normAbbr(mktFav) !== normAbbr(ourFav)) {
+      parts.push("We flipped the favorite.");
+    }
+  }
+  return parts.join(" ");
+}
+
+function coachSheetNote(game) {
+  const homeC = coachName(game.home);
+  const awayC = coachName(game.away);
+  const names = [homeC, awayC].filter(Boolean).join(" vs ");
+  const pair = coachPair(game.home, game.away);
+  const bits = [];
+  if (names) bits.push(names);
+  if (pair) {
+    const n = num(pair.n) ?? ((num(pair.a_wins) || 0) + (num(pair.b_wins) || 0));
+    const { min_n } = coachScoring();
+    if (n < min_n) bits.push("n=" + n);
+    else if (coachTerm(game) === 0) bits.push("dead");
+  } else if (names) {
+    bits.push("no pair");
+  }
+  return bits.join(" · ");
+}
+
+function prepSheetNote(game) {
+  const w = Number(game.week);
+  const bits = [];
+  if (w === 1) bits.push("Week 1");
+  if (clubOffBye(game.home, w) || clubOffBye(game.away, w)) bits.push("bye");
+  if (!bits.length) bits.push("no prep this week");
+  if (prepNet(game) === 0 && bits[0] !== "no prep this week") bits.push("dead");
+  return bits.join(" / ");
+}
+
+function renderGameSheet() {
+  const ident = document.getElementById("game-sheet-ident");
+  const body = document.getElementById("game-sheet-body");
+  const game = gameById(gameSheetId);
+  if (!ident || !body) return;
+  if (!game) {
+    ident.innerHTML = `<div><h2 id="game-sheet-title">Game</h2></div>`;
+    body.innerHTML = `<p class="game-sheet-lead">That game is not on the loaded slate.</p>`;
+    return;
+  }
+  const et = toET(game.date);
+  const kick = et ? (et.label + " · " + et.clock + " ET") : "";
+  const venue = [game.venue, game.city].filter(Boolean).join(" · ");
+  ident.innerHTML = `
+    <div>
+      <h2 id="game-sheet-title">${esc(game.away)} @ ${esc(game.home)}</h2>
+      <p>${esc(kick || "Kick TBA")}</p>
+      ${venue || game.neutral ? `<p class="game-sheet-venue">${esc(venue || "Neutral site")}</p>` : ""}
+    </div>`;
+
+  const away = game.away;
+  const home = game.home;
+  const pA = getProfile(away);
+  const pH = getProfile(home);
+  const clubRows = [
+    ["Algorithm", algorithmBase(away), algorithmBase(home)],
+    ["FA", faTerm(away), faTerm(home)],
+    ["Injury", injuryTerm(away), injuryTerm(home)],
+    ["Adjust", num(pA.user_adjust) || 0, num(pH.user_adjust) || 0],
+    ["Context", contextSum(pA), contextSum(pH)],
+    ["Effective", eff(away), eff(home)],
+  ];
+  const table = clubRows.map((r, i) => {
+    const cls = i === clubRows.length - 1 ? " is-eff" : "";
+    return `<tr class="${cls}">
+      <th scope="row">${esc(r[0])}</th>
+      <td class="num ${rtgClass(r[1])}">${esc(fmtRtg(r[1]))}</td>
+      <td class="num ${rtgClass(r[2])}">${esc(fmtRtg(r[2]))}</td>
+    </tr>`;
+  }).join("");
+
+  const homeE = eff(home);
+  const awayE = eff(away);
+  const diff = homeE - awayE;
+  const hfaUsed = game.neutral ? 0 : hfa;
+  const coach = coachTerm(game);
+  const prep = prepNet(game);
+  const gap = diff + hfaUsed + coach + prep;
+  const ourLine = ourHomeSpread(game, hfa);
+  const mkt = marketFor(game);
+  const marketHome = mkt.parsed && mkt.parsed.homeLine;
+  const edge = hasOurNumber(game) ? edgePts(ourLine, marketHome) : null;
+  const keys = (hasOurNumber(game) && ourLine != null && marketHome != null)
+    ? crossesKeys(ourLine, marketHome) : [];
+  const fire = edge != null && (Math.abs(edge) >= 1.5 || keys.length > 0);
+  const hfaNote = game.neutral ? "neutral / Melbourne · 0" : "";
+
+  const stack = [
+    { label: "homeEff − awayEff", val: diff, note: "" },
+    { label: "+ HFA", val: hfaUsed, note: hfaNote },
+    { label: "+ coach_term", val: coach, note: coachSheetNote(game) },
+    { label: "+ prep_net", val: prep, note: prepSheetNote(game) },
+    { label: "gap", val: gap, note: "that sum", sum: true },
+    { label: "ourHomeLine = −(gap)", val: hasOurNumber(game) ? ourLine : 0, note: hasOurNumber(game) ? "" : "library even · no number", hideVal: !hasOurNumber(game) },
+  ];
+  const stackHtml = stack.map((s) => `
+    <div class="game-stack-row${s.sum ? " is-sum" : ""}">
+      <span class="game-stack-label">${esc(s.label)}${s.note ? `<small>${esc(s.note)}</small>` : ""}</span>
+      <span class="game-stack-val mono ${s.hideVal ? "zero" : rtgClass(s.val)}">${esc(s.hideVal ? "—" : fmtLayer(s.val))}</span>
+    </div>`).join("");
+
+  let compare = "";
+  if (hasOurNumber(game)) {
+    const side = edge != null && edge < 0 ? " · away" : edge != null && edge > 0 ? " · home" : "";
+    compare = `<div class="game-compare">
+      <div class="game-stack-row">
+        <span class="game-stack-label">Market home line</span>
+        <span class="game-stack-val mono">${esc(marketHome == null ? "—" : fmtSpreadNum(marketHome))}</span>
+      </div>
+      <div class="game-stack-row">
+        <span class="game-stack-label">Our home line</span>
+        <span class="game-stack-val mono">${esc(fmtSpreadNum(ourLine))}</span>
+      </div>
+      <div class="game-stack-row">
+        <span class="game-stack-label">Our line (favorite)</span>
+        <span class="game-stack-val mono">${esc(formatOurLine(ourLine, home, away))}</span>
+      </div>
+      <div class="game-stack-row${fire ? " is-copper" : ""}">
+        <span class="game-stack-label">Edge${side}</span>
+        <span class="game-stack-val mono">${esc(fmtEdgeNum(edge))}</span>
+      </div>
+      <p class="game-sheet-keys">${keys.length ? "Crosses " + keys.join(" / ") + "." : "Does not cross 3 or 7."} Copper highlight is not a ticket.</p>
+    </div>`;
+  } else {
+    compare = `<p class="game-sheet-none">The library is even. We do not post a number.</p>`;
+  }
+
+  const tot = ourTotal(game);
+  const totE = totalEdge(game, mkt);
+  const mktOu = num(mkt.ou);
+  let totHtml = "";
+  if (tot != null || mktOu != null) {
+    totHtml = `<p class="game-sheet-total">`;
+    if (tot != null && mktOu != null) {
+      totHtml += `OUR O/U ${tot.toFixed(1)} vs market ${mktOu.toFixed(1)}`;
+      if (totE != null) totHtml += ` · edge ${fmtEdgeNum(totE)}`;
+      totHtml += ".";
+    } else if (tot != null) {
+      totHtml += `OUR O/U ${tot.toFixed(1)}. No market total.`;
+    } else {
+      totHtml += `Market total ${mktOu.toFixed(1)}. No OUR O/U.`;
+    }
+    totHtml += `</p>`;
+  }
+
+  body.innerHTML = `
+    <p class="game-sheet-lead">${esc(gameLeadCopy(game))}</p>
+    <p class="section-label">Home perspective</p>
+    <div class="table-wrap">
+      <table class="game-club-table">
+        <thead><tr><th></th><th>Away · ${esc(away)}</th><th>Home · ${esc(home)}</th></tr></thead>
+        <tbody>${table}</tbody>
+      </table>
+    </div>
+    <div class="game-stack">${stackHtml}</div>
+    ${compare}
+    ${totHtml}`;
+}
+
+function openGameSheet(id, opts = {}) {
+  const game = gameById(id);
+  if (!game && nflData && nflData.games && nflData.games.length) {
+    toast("No game " + id + " on the 2026 slate.");
+    return;
+  }
+  if (!game) {
+    pendingGame = id;
+    return;
+  }
+  lastFocus = document.activeElement;
+  gameSheetId = String(game.id);
+  pendingGame = null;
+  const ticketSheet = document.getElementById("sheet");
+  if (ticketSheet && !ticketSheet.hidden) ticketSheet.hidden = true;
+  if (profileAbbr) closeTeamSheet({ silent: true });
+  if (Number(game.week) !== Number(currentWeek)) {
+    currentWeek = Number(game.week);
+    const weekEl = document.getElementById("week-select");
+    if (weekEl) weekEl.value = currentWeek;
+    renderSchedule();
+  }
+  renderGameSheet();
+  const sheet = document.getElementById("game-sheet");
+  const overlay = document.getElementById("overlay");
+  if (sheet) sheet.hidden = false;
+  if (overlay) overlay.hidden = false;
+  const closer = document.getElementById("game-sheet-close");
+  if (closer) closer.focus();
+  if (!opts.silent && location.hash !== "#game-" + gameSheetId) {
+    history.replaceState(null, "", "#game-" + gameSheetId);
+  }
+}
+
+function closeGameSheet(opts = {}) {
+  const sheet = document.getElementById("game-sheet");
+  if (sheet) sheet.hidden = true;
+  gameSheetId = null;
+  hideOverlayIfIdle();
+  if (!opts.silent) {
+    const raw = (location.hash || "").replace("#", "");
+    if (raw.toLowerCase().startsWith("game-")) {
+      if (location.hash !== "#schedule") history.replaceState(null, "", "#schedule");
+    }
+  }
+  if (lastFocus && lastFocus.focus) {
+    try { lastFocus.focus(); } catch { /* ignore */ }
+  }
+}
+
 
 /* ---------- weather (totals only) ----------
    Dome / closed roof = 0. Spread weather stays 0. Do not seed forecasts.
@@ -2935,12 +3215,13 @@ function renderSchedule() {
       }
       const ouVal = mkt.ou == null ? "" : mkt.ou;
       return `<article class="sked-row${fire ? " is-fire sked-tip" : ""}"${fire ? ` data-tip="${esc(SKED_TIPS.fire)}" title="${esc(SKED_TIPS.fire)}"` : ""} data-game="${esc(g.id)}">
-        <div class="sked-kick">${et ? esc(et.clock) + " ET" : "—"}</div>
-        <div class="sked-match">
+        <button type="button" class="sked-kick sked-open-game" data-open-game="${esc(g.id)}" aria-haspopup="dialog" aria-controls="game-sheet">${et ? esc(et.clock) + " ET" : "—"}</button>
+        <div class="sked-match sked-open-game" data-open-game="${esc(g.id)}" tabindex="0" aria-haspopup="dialog" aria-controls="game-sheet">
           <p class="teams-line">${match}</p>
+          <button type="button" class="sked-how" data-open-game="${esc(g.id)}" aria-haspopup="dialog" aria-controls="game-sheet">How we got here</button>
         </div>
         <div>
-          <p class="sked-venue">${esc(g.venue || "")}${g.city ? " · " + esc(g.city) : ""}</p>
+          <button type="button" class="sked-venue sked-open-game" data-open-game="${esc(g.id)}" aria-haspopup="dialog" aria-controls="game-sheet">${esc(g.venue || "")}${g.city ? " · " + esc(g.city) : ""}</button>
           ${g.broadcast ? `<span class="sked-bc">${esc(g.broadcast)}</span>` : ""}
         </div>
         <div class="sked-mkt sked-tip" data-tip="${esc(SKED_TIPS.mkt)}" title="${esc(SKED_TIPS.mkt)}" tabindex="0">
@@ -2958,6 +3239,7 @@ function renderSchedule() {
       ${rows}
     </section>`;
   }).join("") || `<p class="table-empty">No games in the JSON for week ${esc(currentWeek)}.</p>`;
+  if (gameSheetId) renderGameSheet();
 }
 
 function exportProfiles() {
@@ -3320,6 +3602,7 @@ function render() {
   renderKeys();
   renderVibe();
   syncSharpBookInputs();
+  if (gameSheetId) renderGameSheet();
 }
 
 /* ---------- sheet ---------- */
@@ -3342,6 +3625,7 @@ function syncStakePurpose() {
 
 function openSheet(opts = {}) {
   closeTeamSheet({ silent: true });
+  closeGameSheet({ silent: true });
   lastFocus = document.activeElement;
   const sheet = document.getElementById("sheet");
   const overlay = document.getElementById("overlay");
@@ -3374,7 +3658,7 @@ function openSheet(opts = {}) {
 
 function closeSheet() {
   document.getElementById("sheet").hidden = true;
-  document.getElementById("overlay").hidden = true;
+  hideOverlayIfIdle();
   if (lastFocus && lastFocus.focus) lastFocus.focus();
 }
 
@@ -3426,32 +3710,45 @@ function showView(name) {
 function parseHash() {
   const raw = (location.hash || "#desk").replace("#", "") || "desk";
   const qIdx = raw.indexOf("?");
-  const path = (qIdx >= 0 ? raw.slice(0, qIdx) : raw).toLowerCase();
+  const pathRaw = qIdx >= 0 ? raw.slice(0, qIdx) : raw;
+  const path = pathRaw.toLowerCase();
   const qs = qIdx >= 0 ? raw.slice(qIdx + 1) : "";
   const params = new URLSearchParams(qs);
   let team = (params.get("team") || params.get("abbr") || "").toUpperCase();
+  if (path.startsWith("game-")) {
+    return { view: "schedule", team: null, game: pathRaw.slice(5) };
+  }
   if (path.startsWith("team-")) {
     team = path.slice(5).toUpperCase();
-    return { view: "teams", team: normAbbr(team) };
+    return { view: "teams", team: normAbbr(team), game: null };
   }
   if (path === "team") {
-    return { view: "teams", team: team ? normAbbr(team) : null };
+    return { view: "teams", team: team ? normAbbr(team) : null, game: null };
   }
   if (path === "teams") {
-    return { view: "teams", team: team ? normAbbr(team) : null };
+    return { view: "teams", team: team ? normAbbr(team) : null, game: null };
   }
-  return { view: path, team: team ? normAbbr(team) : null };
+  return { view: path, team: team ? normAbbr(team) : null, game: null };
 }
 
 function fromHash() {
-  const { view, team } = parseHash();
+  const { view, team, game } = parseHash();
   const known = ["desk", "card", "teams", "schedule", "residuals", "keys", "vibe", "clock", "playbook", "tickets"];
   showView(known.includes(view) ? view : "desk");
-  if (team) {
+  if (game) {
+    if (nflData && nflData.games && nflData.games.length) openGameSheet(game, { silent: true });
+    else pendingGame = game;
+  } else if (team) {
+    if (gameSheetId) closeGameSheet({ silent: true });
     if (nflData && nflData.teams && nflData.teams.length) openTeamProfile(team);
     else pendingTeam = team;
-  } else if (profileAbbr && view !== "teams" && view !== "schedule") {
-    closeTeamSheet({ silent: true });
+  } else {
+    if (profileAbbr && view !== "teams" && view !== "schedule") {
+      closeTeamSheet({ silent: true });
+    }
+    if (gameSheetId && view !== "schedule") {
+      closeGameSheet({ silent: true });
+    }
   }
 }
 
@@ -3619,13 +3916,17 @@ function bind() {
   document.getElementById("f-cancel").addEventListener("click", closeSheet);
   document.getElementById("sheet-close").addEventListener("click", closeSheet);
   document.getElementById("overlay").addEventListener("click", () => {
-    if (!document.getElementById("team-sheet").hidden) closeTeamSheet();
+    if (document.getElementById("game-sheet") && !document.getElementById("game-sheet").hidden) closeGameSheet();
+    else if (!document.getElementById("team-sheet").hidden) closeTeamSheet();
     else closeSheet();
   });
 
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Escape") return;
-    if (!document.getElementById("team-sheet").hidden) {
+    if (document.getElementById("game-sheet") && !document.getElementById("game-sheet").hidden) {
+      e.preventDefault();
+      closeGameSheet();
+    } else if (!document.getElementById("team-sheet").hidden) {
       e.preventDefault();
       closeTeamSheet();
     } else if (!document.getElementById("sheet").hidden) {
@@ -3676,11 +3977,26 @@ function bind() {
   document.getElementById("hfa-plus").addEventListener("click", () => setHfa(hfa + 0.5));
 
   document.getElementById("sked-board").addEventListener("click", (e) => {
-    const team = e.target.closest("[data-team]");
-    if (!team) return;
-    const abbr = team.dataset.team;
-    if (location.hash !== "#team-" + abbr) history.replaceState(null, "", "#team-" + abbr);
-    openTeamProfile(abbr);
+    if (e.target.closest("input, select, textarea, .sked-mkt, .wx-strip, .hc-chip, .wx-chip, .sked-cover, .sked-our, .sked-edge")) {
+      return;
+    }
+    const team = e.target.closest(".abbr-link[data-team]");
+    if (team) {
+      const abbr = team.dataset.team;
+      if (location.hash !== "#team-" + abbr) history.replaceState(null, "", "#team-" + abbr);
+      openTeamProfile(abbr);
+      return;
+    }
+    const opener = e.target.closest("[data-open-game]");
+    if (opener) openGameSheet(opener.dataset.openGame);
+  });
+  document.getElementById("sked-board").addEventListener("keydown", (e) => {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    if (e.target.closest(".abbr-link, input, select, textarea")) return;
+    const opener = e.target.closest("[data-open-game]");
+    if (!opener || opener.tagName === "BUTTON") return;
+    e.preventDefault();
+    openGameSheet(opener.dataset.openGame);
   });
   document.getElementById("sked-board").addEventListener("change", (e) => {
     const odds = e.target.closest("[data-odds]");
@@ -3713,6 +4029,8 @@ function bind() {
     renderResiduals();
   });
 
+  const gameClose = document.getElementById("game-sheet-close");
+  if (gameClose) gameClose.addEventListener("click", () => closeGameSheet());
   document.getElementById("team-sheet-close").addEventListener("click", () => closeTeamSheet());
   document.getElementById("team-sheet").addEventListener("click", (e) => {
     if (e.target.id === "tp-adjust-minus") {
@@ -3932,6 +4250,7 @@ function bind() {
 async function bootNfl() {
   await loadNfl();
   if (pendingTeam) openTeamProfile(pendingTeam);
+  if (pendingGame) openGameSheet(pendingGame, { silent: true });
   fromHash();
   render();
 }

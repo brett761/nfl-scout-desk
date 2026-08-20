@@ -2233,3 +2233,176 @@ span.sked-tip { display: inline-block; }
     max-width: min(260px, 86vw);
   }
 }
+
+
+/* ---------- game sheet / how we got here ---------- */
+.sheet-game { width: min(640px, 100%); }
+.game-sheet-ident { min-width: 0; padding-right: 12px; }
+.game-sheet-ident h2 {
+  font-family: var(--display);
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1.05;
+  color: var(--white);
+}
+.game-sheet-ident p {
+  margin: 6px 0 0;
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--slate);
+}
+.game-sheet-ident .game-sheet-venue {
+  color: var(--copper);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.game-sheet-lead {
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--cloud);
+  margin: 0 0 22px;
+  max-width: 46ch;
+}
+.game-club-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 22px;
+}
+.game-club-table th,
+.game-club-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--slate-line);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.game-club-table th {
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--copper);
+}
+.game-club-table th:first-child,
+.game-club-table td:first-child {
+  text-align: left;
+  color: var(--slate);
+}
+.game-club-table td:first-child,
+.game-club-table th[scope="row"] {
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--cloud);
+  font-weight: 500;
+}
+.game-club-table tbody th[scope="row"] { color: var(--slate); font-weight: 500; }
+.game-club-table tr.is-eff th,
+.game-club-table tr.is-eff td {
+  color: var(--white);
+  border-bottom-color: var(--copper);
+  font-weight: 600;
+}
+.game-club-table .plus { color: var(--process); }
+.game-club-table .minus { color: var(--lose); }
+.game-club-table .zero { color: var(--slate); }
+.game-stack { display: flex; flex-direction: column; gap: 0; margin: 0 0 18px; }
+.game-stack-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: baseline;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(149, 150, 150, 0.16);
+}
+.game-stack-row.is-sum {
+  border-top: 1px solid var(--copper);
+  border-bottom: 1px solid var(--copper);
+  margin-top: 4px;
+}
+.game-stack-row.is-copper .game-stack-val { color: var(--copper); font-weight: 600; }
+.game-stack-label {
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--cloud);
+}
+.game-stack-label small {
+  display: block;
+  margin-top: 2px;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--slate);
+}
+.game-stack-val {
+  font-family: var(--sans);
+  font-variant-numeric: tabular-nums;
+  font-size: 15px;
+  color: var(--white);
+}
+.game-stack-val.plus { color: var(--process); }
+.game-stack-val.minus { color: var(--lose); }
+.game-stack-val.zero { color: var(--slate); }
+.game-compare { margin: 8px 0 16px; }
+.game-sheet-keys,
+.game-sheet-total,
+.game-sheet-none {
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--slate);
+  margin: 10px 0 0;
+}
+.game-sheet-keys { color: var(--cloud); }
+.sked-open-game { cursor: pointer; }
+button.sked-kick,
+button.sked-venue {
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  text-align: left;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  cursor: pointer;
+}
+.sked-match.sked-open-game,
+.sked-kick.sked-open-game,
+.sked-venue.sked-open-game {
+  border-radius: 0;
+  transition: color 0.12s ease, background 0.12s ease;
+}
+.sked-match.sked-open-game:hover,
+.sked-kick.sked-open-game:hover,
+.sked-venue.sked-open-game:hover,
+.sked-match.sked-open-game:focus-visible,
+.sked-kick.sked-open-game:focus-visible,
+.sked-venue.sked-open-game:focus-visible {
+  color: var(--copper);
+}
+.sked-match.sked-open-game:hover .teams-line,
+.sked-match.sked-open-game:focus-visible .teams-line { color: var(--copper); }
+.sked-how {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--copper);
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.sked-how:hover,
+.sked-how:focus-visible { color: var(--copper-hot); text-decoration: underline; }
