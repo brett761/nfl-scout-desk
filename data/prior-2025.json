@@ -1,0 +1,668 @@
+{
+  "season_prior": 2025,
+  "games_in_prior": 17,
+  "pulled": "2026-08-19",
+  "sources": {
+    "offense_ppg": "FOX Sports 2025 regular-season scoring offense",
+    "defense_ppg": "FOX Sports 2025 regular-season scoring defense",
+    "turnovers": "Football Database 2025 turnover differential (17 games)",
+    "special_teams": "NFL.com 2025 special-teams scoring (return TDs + FG%)"
+  },
+  "ranges": {
+    "off": {
+      "lo": -10,
+      "hi": 8,
+      "stat": "points scored per game",
+      "better": "higher"
+    },
+    "def": {
+      "lo": -12,
+      "hi": 12,
+      "stat": "points allowed per game",
+      "better": "lower"
+    },
+    "st": {
+      "lo": -4,
+      "hi": 4,
+      "stat": "return TDs + FG% vs league",
+      "better": "higher"
+    },
+    "take": {
+      "lo": -5,
+      "hi": 5,
+      "stat": "takeaways",
+      "better": "higher"
+    },
+    "give": {
+      "lo": -5,
+      "hi": 5,
+      "stat": "giveaways",
+      "better": "lower"
+    }
+  },
+  "weights": {
+    "off": 0.3,
+    "def": 0.35,
+    "st": 0.1,
+    "take": 0.125,
+    "give": 0.125
+  },
+  "taper": {
+    "N": 17,
+    "formula": "w_prior = (17 - n) / 17; w_curr = n / 17; blended = w_prior * prior + w_curr * current",
+    "week1": "n = 0 \u2192 100% 2025 prior",
+    "after_17": "n = 17 \u2192 0% prior, 100% 2026",
+    "current_update": "90/10: current := 0.9 * current + 0.1 * game_observation (Walters W20)",
+    "note": "Pillars are on Brett's scales so a +12 defense stays visible. Combined prior is a weighted sum so it can sit on a spread. Context stack still adds on top."
+  },
+  "teams": {
+    "ARI": {
+      "raw": {
+        "off_ppg": 20.9,
+        "def_ppg": 28.7,
+        "takeaways": 19,
+        "giveaways": 21,
+        "st_ret_td": 0,
+        "st_fg_pct": 75.8,
+        "st_fgm": 25
+      },
+      "pillars": {
+        "off": -2.6,
+        "def": -9.4,
+        "st": -3.52,
+        "take": 0.17,
+        "give": -0.26
+      },
+      "prior": -4.43
+    },
+    "ATL": {
+      "raw": {
+        "off_ppg": 20.8,
+        "def_ppg": 23.6,
+        "takeaways": 23,
+        "giveaways": 18,
+        "st_ret_td": 0,
+        "st_fg_pct": 82.0,
+        "st_fgm": 32
+      },
+      "pillars": {
+        "off": -2.71,
+        "def": 0.09,
+        "st": -2.84,
+        "take": 1.55,
+        "give": 1.32
+      },
+      "prior": -0.71
+    },
+    "BAL": {
+      "raw": {
+        "off_ppg": 24.9,
+        "def_ppg": 23.4,
+        "takeaways": 20,
+        "giveaways": 23,
+        "st_ret_td": 0,
+        "st_fg_pct": 88.2,
+        "st_fgm": 30
+      },
+      "pillars": {
+        "off": 1.82,
+        "def": 0.47,
+        "st": -2.16,
+        "take": 0.52,
+        "give": -1.32
+      },
+      "prior": 0.39
+    },
+    "BUF": {
+      "raw": {
+        "off_ppg": 28.3,
+        "def_ppg": 21.5,
+        "takeaways": 20,
+        "giveaways": 19,
+        "st_ret_td": 1,
+        "st_fg_pct": 90.5,
+        "st_fgm": 19
+      },
+      "pillars": {
+        "off": 5.57,
+        "def": 4.0,
+        "st": -0.16,
+        "take": 0.52,
+        "give": 0.79
+      },
+      "prior": 3.22
+    },
+    "CAR": {
+      "raw": {
+        "off_ppg": 18.3,
+        "def_ppg": 22.4,
+        "takeaways": 21,
+        "giveaways": 23,
+        "st_ret_td": 0,
+        "st_fg_pct": 82.8,
+        "st_fgm": 24
+      },
+      "pillars": {
+        "off": -5.47,
+        "def": 2.33,
+        "st": -2.75,
+        "take": 0.86,
+        "give": -1.32
+      },
+      "prior": -1.16
+    },
+    "CHI": {
+      "raw": {
+        "off_ppg": 25.9,
+        "def_ppg": 24.4,
+        "takeaways": 33,
+        "giveaways": 11,
+        "st_ret_td": 0,
+        "st_fg_pct": 84.6,
+        "st_fgm": 33
+      },
+      "pillars": {
+        "off": 2.92,
+        "def": -1.4,
+        "st": -2.56,
+        "take": 5.0,
+        "give": 5.0
+      },
+      "prior": 1.38
+    },
+    "CIN": {
+      "raw": {
+        "off_ppg": 24.4,
+        "def_ppg": 28.9,
+        "takeaways": 21,
+        "giveaways": 24,
+        "st_ret_td": 1,
+        "st_fg_pct": 89.3,
+        "st_fgm": 25
+      },
+      "pillars": {
+        "off": 1.26,
+        "def": -9.77,
+        "st": -0.3,
+        "take": 0.86,
+        "give": -1.84
+      },
+      "prior": -3.19
+    },
+    "CLE": {
+      "raw": {
+        "off_ppg": 16.4,
+        "def_ppg": 22.3,
+        "takeaways": 18,
+        "giveaways": 25,
+        "st_ret_td": 0,
+        "st_fg_pct": 88.9,
+        "st_fgm": 24
+      },
+      "pillars": {
+        "off": -7.57,
+        "def": 2.51,
+        "st": -2.09,
+        "take": -0.17,
+        "give": -2.37
+      },
+      "prior": -1.92
+    },
+    "DAL": {
+      "raw": {
+        "off_ppg": 27.7,
+        "def_ppg": 30.1,
+        "takeaways": 12,
+        "giveaways": 21,
+        "st_ret_td": 0,
+        "st_fg_pct": 85.7,
+        "st_fgm": 36
+      },
+      "pillars": {
+        "off": 4.91,
+        "def": -12.0,
+        "st": -2.44,
+        "take": -2.24,
+        "give": -0.26
+      },
+      "prior": -3.28
+    },
+    "DEN": {
+      "raw": {
+        "off_ppg": 23.6,
+        "def_ppg": 18.3,
+        "takeaways": 14,
+        "giveaways": 17,
+        "st_ret_td": 1,
+        "st_fg_pct": 87.5,
+        "st_fgm": 28
+      },
+      "pillars": {
+        "off": 0.38,
+        "def": 9.95,
+        "st": -0.49,
+        "take": -1.55,
+        "give": 1.84
+      },
+      "prior": 3.58
+    },
+    "DET": {
+      "raw": {
+        "off_ppg": 28.3,
+        "def_ppg": 24.3,
+        "takeaways": 19,
+        "giveaways": 15,
+        "st_ret_td": 1,
+        "st_fg_pct": 79.4,
+        "st_fgm": 27
+      },
+      "pillars": {
+        "off": 5.57,
+        "def": -1.21,
+        "st": -1.38,
+        "take": 0.17,
+        "give": 2.89
+      },
+      "prior": 1.49
+    },
+    "GB": {
+      "raw": {
+        "off_ppg": 23.0,
+        "def_ppg": 21.2,
+        "takeaways": 14,
+        "giveaways": 13,
+        "st_ret_td": 0,
+        "st_fg_pct": 82.4,
+        "st_fgm": 28
+      },
+      "pillars": {
+        "off": -0.28,
+        "def": 4.56,
+        "st": -2.8,
+        "take": -1.55,
+        "give": 3.95
+      },
+      "prior": 1.53
+    },
+    "HOU": {
+      "raw": {
+        "off_ppg": 23.8,
+        "def_ppg": 17.4,
+        "takeaways": 29,
+        "giveaways": 12,
+        "st_ret_td": 0,
+        "st_fg_pct": 92.3,
+        "st_fgm": 48
+      },
+      "pillars": {
+        "off": 0.6,
+        "def": 11.63,
+        "st": -1.72,
+        "take": 3.62,
+        "give": 4.47
+      },
+      "prior": 5.09
+    },
+    "IND": {
+      "raw": {
+        "off_ppg": 27.4,
+        "def_ppg": 24.2,
+        "takeaways": 21,
+        "giveaways": 23,
+        "st_ret_td": 0,
+        "st_fg_pct": 94.4,
+        "st_fgm": 34
+      },
+      "pillars": {
+        "off": 4.58,
+        "def": -1.02,
+        "st": -1.49,
+        "take": 0.86,
+        "give": -1.32
+      },
+      "prior": 0.81
+    },
+    "JAX": {
+      "raw": {
+        "off_ppg": 27.9,
+        "def_ppg": 19.8,
+        "takeaways": 31,
+        "giveaways": 18,
+        "st_ret_td": 2,
+        "st_fg_pct": 88.2,
+        "st_fgm": 30
+      },
+      "pillars": {
+        "off": 5.13,
+        "def": 7.16,
+        "st": 1.33,
+        "take": 4.31,
+        "give": 1.32
+      },
+      "prior": 4.88
+    },
+    "KC": {
+      "raw": {
+        "off_ppg": 21.3,
+        "def_ppg": 19.3,
+        "takeaways": 14,
+        "giveaways": 15,
+        "st_ret_td": 0,
+        "st_fg_pct": 86.8,
+        "st_fgm": 33
+      },
+      "pillars": {
+        "off": -2.16,
+        "def": 8.09,
+        "st": -2.32,
+        "take": -1.55,
+        "give": 2.89
+      },
+      "prior": 2.12
+    },
+    "LAC": {
+      "raw": {
+        "off_ppg": 21.6,
+        "def_ppg": 20.0,
+        "takeaways": 23,
+        "giveaways": 21,
+        "st_ret_td": 0,
+        "st_fg_pct": 92.7,
+        "st_fgm": 38
+      },
+      "pillars": {
+        "off": -1.83,
+        "def": 6.79,
+        "st": -1.67,
+        "take": 1.55,
+        "give": -0.26
+      },
+      "prior": 1.82
+    },
+    "LAR": {
+      "raw": {
+        "off_ppg": 30.5,
+        "def_ppg": 20.4,
+        "takeaways": 26,
+        "giveaways": 15,
+        "st_ret_td": 0,
+        "st_fg_pct": 78.6,
+        "st_fgm": 22
+      },
+      "pillars": {
+        "off": 8.0,
+        "def": 6.05,
+        "st": -3.21,
+        "take": 2.59,
+        "give": 2.89
+      },
+      "prior": 4.88
+    },
+    "LV": {
+      "raw": {
+        "off_ppg": 14.2,
+        "def_ppg": 25.4,
+        "takeaways": 16,
+        "giveaways": 23,
+        "st_ret_td": 0,
+        "st_fg_pct": 81.5,
+        "st_fgm": 22
+      },
+      "pillars": {
+        "off": -10.0,
+        "def": -3.26,
+        "st": -2.9,
+        "take": -0.86,
+        "give": -1.32
+      },
+      "prior": -4.7
+    },
+    "MIA": {
+      "raw": {
+        "off_ppg": 20.4,
+        "def_ppg": 24.9,
+        "takeaways": 20,
+        "giveaways": 24,
+        "st_ret_td": 1,
+        "st_fg_pct": 93.1,
+        "st_fgm": 27
+      },
+      "pillars": {
+        "off": -3.15,
+        "def": -2.33,
+        "st": 0.12,
+        "take": 0.52,
+        "give": -1.84
+      },
+      "prior": -1.91
+    },
+    "MIN": {
+      "raw": {
+        "off_ppg": 20.2,
+        "def_ppg": 19.6,
+        "takeaways": 21,
+        "giveaways": 30,
+        "st_ret_td": 0,
+        "st_fg_pct": 94.3,
+        "st_fgm": 33
+      },
+      "pillars": {
+        "off": -3.37,
+        "def": 7.53,
+        "st": -1.5,
+        "take": 0.86,
+        "give": -5.0
+      },
+      "prior": 0.96
+    },
+    "NE": {
+      "raw": {
+        "off_ppg": 28.8,
+        "def_ppg": 18.8,
+        "takeaways": 19,
+        "giveaways": 16,
+        "st_ret_td": 3,
+        "st_fg_pct": 84.4,
+        "st_fgm": 27
+      },
+      "pillars": {
+        "off": 6.12,
+        "def": 9.02,
+        "st": 2.67,
+        "take": 0.17,
+        "give": 2.37
+      },
+      "prior": 5.58
+    },
+    "NO": {
+      "raw": {
+        "off_ppg": 18.0,
+        "def_ppg": 22.5,
+        "takeaways": 20,
+        "giveaways": 24,
+        "st_ret_td": 0,
+        "st_fg_pct": 71.4,
+        "st_fgm": 30
+      },
+      "pillars": {
+        "off": -5.8,
+        "def": 2.14,
+        "st": -4.0,
+        "take": 0.52,
+        "give": -1.84
+      },
+      "prior": -1.56
+    },
+    "NYG": {
+      "raw": {
+        "off_ppg": 22.4,
+        "def_ppg": 25.8,
+        "takeaways": 15,
+        "giveaways": 17,
+        "st_ret_td": 1,
+        "st_fg_pct": 88.5,
+        "st_fgm": 23
+      },
+      "pillars": {
+        "off": -0.94,
+        "def": -4.0,
+        "st": -0.38,
+        "take": -1.21,
+        "give": 1.84
+      },
+      "prior": -1.64
+    },
+    "NYJ": {
+      "raw": {
+        "off_ppg": 17.6,
+        "def_ppg": 29.6,
+        "takeaways": 4,
+        "giveaways": 23,
+        "st_ret_td": 3,
+        "st_fg_pct": 96.6,
+        "st_fgm": 28
+      },
+      "pillars": {
+        "off": -6.25,
+        "def": -11.07,
+        "st": 4.0,
+        "take": -5.0,
+        "give": -1.32
+      },
+      "prior": -6.14
+    },
+    "PHI": {
+      "raw": {
+        "off_ppg": 22.3,
+        "def_ppg": 19.1,
+        "takeaways": 21,
+        "giveaways": 15,
+        "st_ret_td": 0,
+        "st_fg_pct": 74.1,
+        "st_fgm": 20
+      },
+      "pillars": {
+        "off": -1.06,
+        "def": 8.47,
+        "st": -3.7,
+        "take": 0.86,
+        "give": 2.89
+      },
+      "prior": 2.75
+    },
+    "PIT": {
+      "raw": {
+        "off_ppg": 23.4,
+        "def_ppg": 22.8,
+        "takeaways": 27,
+        "giveaways": 15,
+        "st_ret_td": 0,
+        "st_fg_pct": 84.4,
+        "st_fgm": 27
+      },
+      "pillars": {
+        "off": 0.16,
+        "def": 1.58,
+        "st": -2.58,
+        "take": 2.93,
+        "give": 2.89
+      },
+      "prior": 1.07
+    },
+    "SEA": {
+      "raw": {
+        "off_ppg": 28.4,
+        "def_ppg": 17.2,
+        "takeaways": 25,
+        "giveaways": 28,
+        "st_ret_td": 3,
+        "st_fg_pct": 85.4,
+        "st_fgm": 41
+      },
+      "pillars": {
+        "off": 5.68,
+        "def": 12.0,
+        "st": 2.78,
+        "take": 2.24,
+        "give": -3.95
+      },
+      "prior": 5.97
+    },
+    "SF": {
+      "raw": {
+        "off_ppg": 25.7,
+        "def_ppg": 21.8,
+        "takeaways": 16,
+        "giveaways": 22,
+        "st_ret_td": 0,
+        "st_fg_pct": 91.7,
+        "st_fgm": 33
+      },
+      "pillars": {
+        "off": 2.7,
+        "def": 3.44,
+        "st": -1.78,
+        "take": -0.86,
+        "give": -0.79
+      },
+      "prior": 1.63
+    },
+    "TB": {
+      "raw": {
+        "off_ppg": 22.4,
+        "def_ppg": 24.2,
+        "takeaways": 23,
+        "giveaways": 16,
+        "st_ret_td": 0,
+        "st_fg_pct": 84.2,
+        "st_fgm": 32
+      },
+      "pillars": {
+        "off": -0.94,
+        "def": -1.02,
+        "st": -2.6,
+        "take": 1.55,
+        "give": 2.37
+      },
+      "prior": -0.41
+    },
+    "TEN": {
+      "raw": {
+        "off_ppg": 16.7,
+        "def_ppg": 28.1,
+        "takeaways": 14,
+        "giveaways": 19,
+        "st_ret_td": 2,
+        "st_fg_pct": 80.6,
+        "st_fgm": 29
+      },
+      "pillars": {
+        "off": -7.24,
+        "def": -8.28,
+        "st": 0.5,
+        "take": -1.55,
+        "give": 0.79
+      },
+      "prior": -5.12
+    },
+    "WSH": {
+      "raw": {
+        "off_ppg": 20.9,
+        "def_ppg": 26.5,
+        "takeaways": 10,
+        "giveaways": 23,
+        "st_ret_td": 2,
+        "st_fg_pct": 76.7,
+        "st_fgm": 23
+      },
+      "pillars": {
+        "off": -2.6,
+        "def": -5.3,
+        "st": 0.08,
+        "take": -2.93,
+        "give": -1.32
+      },
+      "prior": -3.16
+    }
+  }
+}

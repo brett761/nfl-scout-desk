@@ -1,0 +1,44 @@
+{
+  "pulled": "2026-08-19",
+  "market": "total",
+  "spread": 0,
+  "clamp": { "lo": -7, "hi": 0 },
+  "roof_zero": ["DOME", "CLOSED"],
+  "wind": [
+    { "lt": 12, "pts": 0 },
+    { "lo": 12, "hi": 15, "pts": -1.0 },
+    { "lo": 16, "hi": 19, "pts": -2.5 },
+    { "lo": 20, "hi": 24, "pts": -4.0 },
+    { "gte": 25, "pts": -5.5 }
+  ],
+  "precip": {
+    "": 0,
+    "none": 0,
+    "light": -0.5,
+    "rain": -1.0,
+    "snow": -1.5
+  },
+  "cold": { "temp_f_lt": 15, "pts": -1.0 },
+  "venues": {
+    "dome": [
+      "Ford Field",
+      "Caesars Superdome",
+      "Allegiant Stadium",
+      "U.S. Bank Stadium"
+    ],
+    "retract": [
+      "AT&T Stadium",
+      "Mercedes-Benz Stadium",
+      "NRG Stadium",
+      "Lucas Oil Stadium",
+      "State Farm Stadium"
+    ],
+    "open": [
+      "SoFi Stadium",
+      "Tottenham Hotspur Stadium",
+      "Wembley Stadium",
+      "Melbourne Cricket Ground"
+    ]
+  },
+  "note": "TOTAL adjustment only. Spread weather is 0. Dome or closed roof = 0 no matter the outdoor forecast. our_total = market_ou + wx_total. Do not seed forecasts — Week 1 is 10 Sep 2026; a September print on 19 Aug is junk. User types wind / temp / precip / roof."
+}

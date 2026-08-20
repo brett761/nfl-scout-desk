@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>NFL Scout · The Desk · 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="frame" aria-hidden="true"></div>
+
+  <header class="mast">
+    <a class="wordmark" href="#desk">
+      <span class="wm-mark" aria-hidden="true">◆</span>
+      <span class="wm-stack">
+        <span class="wm-kicker">NFL SCOUT · THE DESK · 2026</span>
+        <span class="wm-tag">Bet a number, not a team.</span>
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="Desk sections">
+      <a href="#desk" data-nav="desk">Desk</a>
+      <a href="#card" data-nav="card">Card</a>
+      <a href="#teams" data-nav="teams">Teams</a>
+      <a href="#schedule" data-nav="schedule">Schedule</a>
+      <a href="#residuals" data-nav="residuals">Residuals</a>
+      <a href="#keys" data-nav="keys">Keys</a>
+      <a href="#vibe" data-nav="vibe">Vibe</a>
+      <a href="#clock" data-nav="clock">Clock</a>
+      <a href="#playbook" data-nav="playbook">Playbook</a>
+      <a href="#tickets" data-nav="tickets">Tickets</a>
+    </nav>
+
+    <div class="mast-week">
+      <label for="week-select">Week</label>
+      <button type="button" class="week-btn" id="week-prev" aria-label="Previous week">‹</button>
+      <input id="week-select" type="number" min="1" max="18" value="1" inputmode="numeric">
+      <button type="button" class="week-btn" id="week-next" aria-label="Next week">›</button>
+    </div>
+  </header>
+
+  <main id="app">
+
+    <!-- ========== DESK ========== -->
+    <section id="desk" class="view is-active" data-view="desk" aria-labelledby="desk-title">
+      <div class="hero">
+        <p class="eyebrow">Brett Cunningham · America/New_York · Season 2026</p>
+        <h1 id="desk-title">Bet a number, <em>not a team.</em></h1>
+        <p class="lede">A Billy Walters process desk. Fire <span class="mono">$150</span> only with ~1.5 points of edge or a key-number reason. Five windows are not five must-bets. Pass is a result. Profit is variance. The league is even.</p>
+        <ul class="hero-meta" id="hero-meta">
+          <li>Wednesday 19 Aug 2026</li>
+          <li>Preseason</li>
+          <li>Week 1 not open</li>
+          <li>TNF decision window</li>
+        </ul>
+        <div class="key-chips" aria-hidden="true">
+          <span class="key-chip"><em>3</em><small>first key</small></span>
+          <span class="key-chip"><em>7</em><small>then 6 / 14</small></span>
+        </div>
+      </div>
+
+      <div class="kpi-grid" id="kpi-grid" aria-live="polite"></div>
+
+      <div class="desk-settings">
+        <label>Sharp book
+          <input id="sharp-book-desk" type="text" class="mono" spellcheck="false" autocomplete="off">
+        </label>
+      </div>
+
+      <div class="split-wrap">
+        <div class="split-head">
+          <h2>This week’s <span class="mono">$1,000</span></h2>
+          <p>Process $150 · Entertainment $50 · leftover stays on the felt.</p>
+        </div>
+        <div class="split-bar" id="split-bar" role="img" aria-label="Budget split"></div>
+        <ul class="split-legend" id="split-legend"></ul>
+      </div>
+
+      <div class="empty-desk" id="empty-desk">
+        <p class="empty-kicker">Preseason · the card is honest</p>
+        <h2>Week 1 isn’t open. The card is blank on purpose.</h2>
+        <p>Do not invent 2026 matchups, lines, or scores. Shop Monday. Decide TNF Wednesday after 4pm ET status. Load SAMPLE tickets only to see the ledger move — they are not season process.</p>
+      </div>
+
+      <div class="week-run">
+        <h2 class="section-label">How the week runs</h2>
+        <ol class="run-strip">
+          <li>
+            <span class="run-day">Mon</span>
+            <strong>Shop openers</strong>
+            <p>3+ books. Log the number. Do not fire yet unless it’s fat.</p>
+          </li>
+          <li class="is-now">
+            <span class="run-day">Wed</span>
+            <strong>TNF after 4pm ET</strong>
+            <p>Official game status. ~1.5 or a key — or PASS.</p>
+          </li>
+          <li>
+            <span class="run-day">Fri</span>
+            <strong>Sunday status</strong>
+            <p>4pm ET print. Lock fav/over or pass. Dogs wait.</p>
+          </li>
+          <li>
+            <span class="run-day">Sun</span>
+            <strong>Public / dogs</strong>
+            <p>Dogs &amp; unders only if the public actually pushed.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ========== CARD ========== -->
+    <section id="card" class="view" data-view="card" hidden aria-labelledby="card-title">
+      <div class="view-head felt-head">
+        <p class="eyebrow">The weekly card · five windows · pass is legal</p>
+        <h1 id="card-title">The card</h1>
+        <p class="lede">Each window holds one process straight and one entertainment parlay. A blank window is unfinished. A PASS is finished. Do not chase SNF/MNF after a losing Sunday.</p>
+      </div>
+      <div class="window-grid" id="window-grid"></div>
+      <aside class="holiday-note">
+        <span class="mono">THU_HOL · FRI · SAT</span>
+        <p>Holiday extras: one straight per game, still inside the $1,000 week. Log them from Tickets with the holiday window. They do not replace TNF / Sunday / primetime slots.</p>
+      </aside>
+    </section>
+
+    <!-- ========== TEAMS ========== -->
+    <section id="teams" class="view" data-view="teams" hidden aria-labelledby="teams-title">
+      <div class="view-head">
+        <p class="eyebrow">Walters library · 0.0 is league average · plus is better</p>
+        <h1 id="teams-title">The library</h1>
+        <p class="lede">2025 prior is the Week 1 baseline. It tapers to 0 after 17 games; in-season current updates 90/10 (Walters W20). 2026 FA net sits on top of last year and tapers off over the same 17 games. Injuries are weekly points on official status — they do not taper. Effective = algorithm + FA + injury + adjust + context. Do not seed a pet team — the league is even.</p>
+      </div>
+      <div class="teams-tools">
+        <div class="filters" id="team-filters" role="tablist" aria-label="Filter clubs"></div>
+        <div class="teams-tools-row">
+          <label class="sort-field">
+            <span>Sort</span>
+            <select id="team-sort">
+              <option value="rating-desc" selected>Rating high → low</option>
+              <option value="rating-asc">Rating low → high</option>
+              <option value="az">A–Z</option>
+              <option value="conf">Conference</option>
+            </select>
+          </label>
+          <button type="button" class="btn" id="btn-export-profiles">Export profiles</button>
+          <label class="btn file-btn">
+            Import profiles
+            <input type="file" id="btn-import-profiles" accept="application/json,.json" hidden>
+          </label>
+        </div>
+      </div>
+      <div class="team-grid" id="team-grid"></div>
+      <p class="table-empty" id="team-grid-empty" hidden>Serve the desk over http so the 2026 library can load (python3 -m http.server from this folder).</p>
+    </section>
+
+    <!-- ========== SCHEDULE ========== -->
+    <section id="schedule" class="view" data-view="schedule" hidden aria-labelledby="schedule-title">
+      <div class="sked-head-wrap">
+        <div class="view-head">
+          <p class="eyebrow">Our number vs the street · fire is a highlight, not a ticket</p>
+          <h1 id="schedule-title">The slate</h1>
+          <p class="lede" id="sked-sub">Week 1 · market as of 19 Aug 2026 · our number from the library · weather shades the total, not the spread · coach H2H follows the person, 4-game minimum, cap 1 point, SU not ATS · Week 1 and bye are extra prep, coach career ATS, 4-game min, cap 1</p>
+        </div>
+        <div class="hfa-ctrl">
+          <label for="hfa-input">League HFA</label>
+          <button type="button" class="week-btn" id="hfa-minus" aria-label="Decrease HFA">−</button>
+          <input id="hfa-input" type="number" step="0.5" value="2" inputmode="decimal">
+          <button type="button" class="week-btn" id="hfa-plus" aria-label="Increase HFA">+</button>
+        </div>
+      </div>
+      <div class="empty-desk" id="sked-empty-ratings" hidden>
+        <p class="empty-kicker">Library is even</p>
+        <h2>Every club is 0. Set a number on Teams and the schedule grows a line.</h2>
+        <p>0.0 is league average. Plus is better. Our home spread is −(home − away + HFA). Neutral sites (Melbourne) get HFA 0. We do not auto-bet — we show the number.</p>
+      </div>
+      <div id="sked-board"></div>
+    </section>
+
+    <!-- ========== RESIDUALS ========== -->
+    <section id="residuals" class="view" data-view="residuals" hidden aria-labelledby="residuals-title">
+      <div class="view-head">
+        <p class="eyebrow">Close ledger · we type the number · no scraped 2026 results</p>
+        <h1 id="residuals-title">Residuals</h1>
+        <p class="lede">Grade the model against the close. Profit is variance. Do not seed 2026 results.</p>
+      </div>
+      <div class="table-wrap">
+        <table class="ledger" id="residuals-table">
+          <thead>
+            <tr>
+              <th>week</th>
+              <th>game</th>
+              <th>our spread</th>
+              <th>mkt spread</th>
+              <th>spread edge</th>
+              <th>our total</th>
+              <th>mkt total</th>
+              <th>total edge</th>
+              <th>close spread</th>
+              <th>close total</th>
+              <th>result</th>
+              <th>res vs close</th>
+              <th>res vs result</th>
+            </tr>
+          </thead>
+          <tbody id="residuals-body"></tbody>
+        </table>
+      </div>
+      <p class="table-empty" id="residuals-empty" hidden>No 2026 regular-season games loaded.</p>
+      <div class="resid-rollup">
+        <h2 class="section-label">Club rollup · we vs the street</h2>
+        <p class="lede" id="resid-rollup-copy">Mean of (edge / 2) credited to home and the opposite to away. Close replaces market when you type it.</p>
+        <div class="table-wrap">
+          <table class="ledger" id="resid-clubs">
+            <thead>
+              <tr>
+                <th>club</th>
+                <th>n</th>
+                <th>mean credit</th>
+              </tr>
+            </thead>
+            <tbody id="resid-clubs-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== KEYS ========== -->
+    <section id="keys" class="view" data-view="keys" hidden aria-labelledby="keys-title">
+      <div class="view-head">
+        <p class="eyebrow">Land rates · point value · cover at the number</p>
+        <h1 id="keys-title">Keys</h1>
+        <p class="lede">NFL scoring clusters. Crossing 3 or 7 is why a half-point is the bet. Loaded from keys-nfl.json — empty if the file is not here.</p>
+      </div>
+      <div id="keys-board"></div>
+    </section>
+
+    <!-- ========== VIBE ========== -->
+    <section id="vibe" class="view" data-view="vibe" hidden aria-labelledby="vibe-title">
+      <div class="view-head">
+        <p class="eyebrow">Nightly rooms · Saturday rollup · league even</p>
+        <h1 id="vibe-title">Vibe check</h1>
+        <p class="lede">What the rooms are saying this vibe week. Volume and topic titles only — no invented chatter. Quiet clubs stay quiet. The league is even.</p>
+      </div>
+      <div class="vibe-tools">
+        <label class="sort-field">
+          <span>Week</span>
+          <select id="vibe-week-select" aria-label="Vibe week"></select>
+        </label>
+      </div>
+      <div id="vibe-board"></div>
+    </section>
+
+    <!-- ========== CLOCK ========== -->
+    <section id="clock" class="view" data-view="clock" hidden aria-labelledby="clock-title">
+      <div class="view-head">
+        <p class="eyebrow">Line calendar · folklore is labeled · not a system</p>
+        <h1 id="clock-title">The week clock</h1>
+        <p class="lede">Action in plain English. TNF always-under, fade-the-public, and RLM-as-a-trigger are folklore. We do not run them. Today is Wednesday — TNF decision after 4pm ET status.</p>
+      </div>
+      <ul class="clock-legend">
+        <li><span class="chip chip-verified">VERIFIED</span> NFL clock or a desk rule we can audit</li>
+        <li><span class="chip chip-mixed">MIXED</span> industry timing + our filter</li>
+        <li><span class="chip chip-folklore">FOLKLORE</span> story, not a trigger</li>
+        <li><span class="chip chip-desk">DESK RULE</span> how this book is run</li>
+      </ul>
+      <ol class="timeline" id="timeline"></ol>
+    </section>
+
+    <!-- ========== PLAYBOOK ========== -->
+    <section id="playbook" class="view" data-view="playbook" hidden aria-labelledby="playbook-title">
+      <div class="view-head">
+        <p class="eyebrow">Walters-derived · copy, keep, adapt, or ignore</p>
+        <h1 id="playbook-title">Playbook</h1>
+        <p class="lede">COPY = we run it. ENTERTAINMENT = the $50 parlay stays on the card, not in the score. ADAPT = keep the idea, change the mechanic. IGNORE = folklore / not our book.</p>
+      </div>
+      <div class="filters" id="playbook-filters" role="tablist" aria-label="Filter playbook"></div>
+      <div class="playbook-grid" id="playbook-grid"></div>
+    </section>
+
+    <!-- ========== TICKETS ========== -->
+    <section id="tickets" class="view" data-view="tickets" hidden aria-labelledby="tickets-title">
+      <div class="view-head">
+        <p class="eyebrow">Ledger · localStorage · CLV of straights is the score</p>
+        <h1 id="tickets-title">Tickets</h1>
+        <p class="lede">Process lives on straights. Parlays stay visible and tagged entertainment. SAMPLE rows are season EXAMPLE — they never count toward 2026 KPIs. Close is the sharp book, juice taken out of the probability, not a second -110 from a square.</p>
+      </div>
+      <div class="ticket-toolbar">
+        <button type="button" class="btn btn-fill" id="btn-add">Log ticket</button>
+        <button type="button" class="btn" id="btn-pass">Record pass</button>
+        <button type="button" class="btn" id="btn-sample">Load SAMPLE</button>
+        <button type="button" class="btn" id="btn-export">Export JSON</button>
+        <label class="btn file-btn">
+          Import JSON
+          <input type="file" id="btn-import" accept="application/json,.json" hidden>
+        </label>
+        <button type="button" class="btn btn-danger" id="btn-clear">Clear all</button>
+        <label class="sort-field sharp-field">Sharp book
+          <input id="sharp-book" type="text" class="mono" spellcheck="false" autocomplete="off">
+        </label>
+      </div>
+      <div class="table-wrap">
+        <table class="ledger" id="ledger">
+          <thead>
+            <tr>
+              <th>week</th>
+              <th>window</th>
+              <th>type</th>
+              <th>purpose</th>
+              <th>game</th>
+              <th>market</th>
+              <th>pick</th>
+              <th>line</th>
+              <th>juice</th>
+              <th>stake</th>
+              <th>book</th>
+              <th>close</th>
+              <th>CLV</th>
+              <th>result</th>
+              <th>profit</th>
+              <th>notes</th>
+              <th>grade</th>
+            </tr>
+          </thead>
+          <tbody id="ledger-body"></tbody>
+        </table>
+      </div>
+      <p class="table-empty" id="table-empty" hidden>No tickets in the book. Log a ticket, record a pass, or load SAMPLE data to see the ledger.</p>
+    </section>
+  </main>
+
+  <footer class="colophon">
+    <p>NFL Scout · Brett’s desk · Process scored on CLV · Entertainment stays on the card.</p>
+    <p class="colophon-keys" aria-hidden="true"><span>3</span><span>7</span></p>
+  </footer>
+
+  <!-- SLIDE-OVER -->
+  <div class="overlay" id="overlay" hidden></div>
+  <aside class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title" hidden>
+    <header class="sheet-head">
+      <h2 id="sheet-title">Log ticket</h2>
+      <button type="button" class="icon-btn" id="sheet-close" aria-label="Close">×</button>
+    </header>
+    <form id="ticket-form" novalidate>
+      <input type="hidden" name="id" id="f-id">
+
+      <div class="field-row">
+        <label class="field">
+          <span>Week</span>
+          <input name="week" id="f-week" type="number" min="1" max="18" required>
+        </label>
+        <label class="field">
+          <span>Window</span>
+          <select name="window" id="f-window" required></select>
+        </label>
+        <label class="field">
+          <span>Type</span>
+          <select name="ticket_type" id="f-type" required>
+            <option>Straight</option>
+            <option>Parlay</option>
+            <option>PASS</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="field-row">
+        <label class="field">
+          <span>Market</span>
+          <select name="market" id="f-market">
+            <option value="Spread">Spread</option>
+            <option value="ML">ML</option>
+            <option value="Total">Total</option>
+            <option value="SGP">SGP</option>
+            <option value="Multi">Multi</option>
+          </select>
+        </label>
+        <label class="field grow">
+          <span>Game</span>
+          <input name="game" id="f-game" type="text" placeholder="Away @ Home — do not invent 2026 matchups" autocomplete="off">
+        </label>
+      </div>
+
+      <label class="field">
+        <span>Pick</span>
+        <input name="pick" id="f-pick" type="text" placeholder="Team +3.5 · Over 44.5 · PASS" autocomplete="off">
+      </label>
+
+      <div class="field-row">
+        <label class="field">
+          <span>Line</span>
+          <input name="bet_line" id="f-line" type="number" step="0.5" class="mono">
+        </label>
+        <label class="field">
+          <span>Juice</span>
+          <input name="juice" id="f-juice" type="number" step="1" value="-110" class="mono">
+        </label>
+        <label class="field">
+          <span>Stake</span>
+          <input name="stake" id="f-stake" type="number" step="1" class="mono" readonly>
+        </label>
+        <label class="field">
+          <span>Purpose</span>
+          <input name="purpose" id="f-purpose" type="text" readonly>
+        </label>
+      </div>
+
+      <div class="field-row">
+        <label class="field grow">
+          <span>Book</span>
+          <input name="book" id="f-book" type="text" placeholder="Shop 3+ · name the one you fired" autocomplete="off">
+        </label>
+        <label class="field">
+          <span>Timing thesis</span>
+          <select name="timing_thesis" id="f-timing">
+            <option value="PRICE_CLV">PRICE_CLV</option>
+            <option value="INFO">INFO</option>
+          </select>
+        </label>
+      </div>
+
+      <label class="field">
+        <span>Notes</span>
+        <textarea name="notes" id="f-notes" rows="3" placeholder="The number, the key, the reason. Not the jersey."></textarea>
+      </label>
+
+      <fieldset class="grade-box">
+        <legend>Grade (optional)</legend>
+        <div class="field-row">
+          <label class="field">
+            <span>Result</span>
+            <select name="result" id="f-result">
+              <option value="PENDING">PENDING</option>
+              <option value="W">W</option>
+              <option value="L">L</option>
+              <option value="P">P</option>
+              <option value="VOID">VOID</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Close line</span>
+            <input name="close_line" id="f-close" type="number" step="0.5" class="mono">
+          </label>
+          <label class="field">
+            <span>Close book</span>
+            <input name="close_book" id="f-close-book" type="text" placeholder="Pinnacle" autocomplete="off">
+          </label>
+          <label class="field">
+            <span>Close juice</span>
+            <input name="close_juice" id="f-close-juice" type="number" step="1" value="-110" class="mono">
+          </label>
+        </div>
+      </fieldset>
+
+      <div class="sheet-actions">
+        <button type="submit" class="btn btn-fill" id="f-submit">Save to the book</button>
+        <button type="button" class="btn" id="f-cancel">Cancel</button>
+      </div>
+    </form>
+  </aside>
+
+  <aside class="sheet sheet-team" id="team-sheet" role="dialog" aria-modal="true" aria-labelledby="team-sheet-title" hidden>
+    <header class="sheet-head">
+      <div class="team-sheet-ident" id="team-sheet-ident">
+        <h2 id="team-sheet-title">Team</h2>
+      </div>
+      <button type="button" class="icon-btn" id="team-sheet-close" aria-label="Close">×</button>
+    </header>
+    <div id="team-sheet-body"></div>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

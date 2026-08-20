@@ -1,0 +1,198 @@
+{
+  "name": "NFL Scout vibe check",
+  "method": "X search_news (24h) for top stories; get_posts_counts_recent for volume. search_posts_all is 403 on user OAuth \u2014 do not use it.",
+  "teams": [
+    {
+      "abbr": "ARI",
+      "nick": "Cardinals",
+      "news_query": "Arizona Cardinals OR #AZCardinals",
+      "count_query": "Arizona Cardinals OR #AZCardinals"
+    },
+    {
+      "abbr": "ATL",
+      "nick": "Falcons",
+      "news_query": "Atlanta Falcons OR #ATLFalcons",
+      "count_query": "Atlanta Falcons OR #ATLFalcons"
+    },
+    {
+      "abbr": "BAL",
+      "nick": "Ravens",
+      "news_query": "Baltimore Ravens OR #RavensFlock",
+      "count_query": "Baltimore Ravens OR #RavensFlock"
+    },
+    {
+      "abbr": "BUF",
+      "nick": "Bills",
+      "news_query": "Buffalo Bills OR #BillsMafia",
+      "count_query": "Buffalo Bills OR #BillsMafia"
+    },
+    {
+      "abbr": "CAR",
+      "nick": "Panthers",
+      "news_query": "Carolina Panthers OR #KeepPounding",
+      "count_query": "Carolina Panthers OR #KeepPounding"
+    },
+    {
+      "abbr": "CHI",
+      "nick": "Bears",
+      "news_query": "Chicago Bears OR #DaBears",
+      "count_query": "Chicago Bears OR #DaBears"
+    },
+    {
+      "abbr": "CIN",
+      "nick": "Bengals",
+      "news_query": "Cincinnati Bengals OR #RuleTheJungle",
+      "count_query": "Cincinnati Bengals OR #RuleTheJungle"
+    },
+    {
+      "abbr": "CLE",
+      "nick": "Browns",
+      "news_query": "Cleveland Browns OR #Browns",
+      "count_query": "Cleveland Browns OR #Browns"
+    },
+    {
+      "abbr": "DAL",
+      "nick": "Cowboys",
+      "news_query": "Dallas Cowboys OR #DallasCowboys",
+      "count_query": "Dallas Cowboys OR #DallasCowboys"
+    },
+    {
+      "abbr": "DEN",
+      "nick": "Broncos",
+      "news_query": "Denver Broncos OR #BroncosCountry",
+      "count_query": "Denver Broncos OR #BroncosCountry"
+    },
+    {
+      "abbr": "DET",
+      "nick": "Lions",
+      "news_query": "Detroit Lions OR #OnePride",
+      "count_query": "Detroit Lions OR #OnePride"
+    },
+    {
+      "abbr": "GB",
+      "nick": "Packers",
+      "news_query": "Green Bay Packers OR #GoPackGo",
+      "count_query": "Green Bay Packers OR #GoPackGo"
+    },
+    {
+      "abbr": "HOU",
+      "nick": "Texans",
+      "news_query": "Houston Texans OR #WeAreTexans",
+      "count_query": "Houston Texans OR #WeAreTexans"
+    },
+    {
+      "abbr": "IND",
+      "nick": "Colts",
+      "news_query": "Indianapolis Colts OR #ForTheShoe",
+      "count_query": "Indianapolis Colts OR #ForTheShoe"
+    },
+    {
+      "abbr": "JAX",
+      "nick": "Jaguars",
+      "news_query": "Jacksonville Jaguars OR #DUUUVAL",
+      "count_query": "Jacksonville Jaguars OR #DUUUVAL"
+    },
+    {
+      "abbr": "KC",
+      "nick": "Chiefs",
+      "news_query": "Kansas City Chiefs OR #ChiefsKingdom",
+      "count_query": "Kansas City Chiefs OR #ChiefsKingdom"
+    },
+    {
+      "abbr": "LV",
+      "nick": "Raiders",
+      "news_query": "Las Vegas Raiders OR #RaiderNation",
+      "count_query": "Las Vegas Raiders OR #RaiderNation"
+    },
+    {
+      "abbr": "LAC",
+      "nick": "Chargers",
+      "news_query": "Los Angeles Chargers OR #BoltUp",
+      "count_query": "Los Angeles Chargers OR #BoltUp"
+    },
+    {
+      "abbr": "LAR",
+      "nick": "Rams",
+      "news_query": "Los Angeles Rams OR #RamsHouse",
+      "count_query": "Los Angeles Rams OR #RamsHouse"
+    },
+    {
+      "abbr": "MIA",
+      "nick": "Dolphins",
+      "news_query": "Miami Dolphins OR #FinsUp",
+      "count_query": "Miami Dolphins OR #FinsUp"
+    },
+    {
+      "abbr": "MIN",
+      "nick": "Vikings",
+      "news_query": "Minnesota Vikings OR #SKOL",
+      "count_query": "Minnesota Vikings OR #SKOL"
+    },
+    {
+      "abbr": "NE",
+      "nick": "Patriots",
+      "news_query": "New England Patriots OR #Patriots",
+      "count_query": "New England Patriots OR #Patriots"
+    },
+    {
+      "abbr": "NO",
+      "nick": "Saints",
+      "news_query": "New Orleans Saints OR #Saints",
+      "count_query": "New Orleans Saints OR #Saints"
+    },
+    {
+      "abbr": "NYG",
+      "nick": "Giants",
+      "news_query": "New York Giants OR #NYGiants",
+      "count_query": "New York Giants OR #NYGiants"
+    },
+    {
+      "abbr": "NYJ",
+      "nick": "Jets",
+      "news_query": "New York Jets OR #Jets",
+      "count_query": "New York Jets OR #Jets"
+    },
+    {
+      "abbr": "PHI",
+      "nick": "Eagles",
+      "news_query": "Philadelphia Eagles OR #FlyEaglesFly",
+      "count_query": "Philadelphia Eagles OR #FlyEaglesFly"
+    },
+    {
+      "abbr": "PIT",
+      "nick": "Steelers",
+      "news_query": "Pittsburgh Steelers OR #HereWeGo",
+      "count_query": "Pittsburgh Steelers OR #HereWeGo"
+    },
+    {
+      "abbr": "SEA",
+      "nick": "Seahawks",
+      "news_query": "Seattle Seahawks OR #Seahawks",
+      "count_query": "Seattle Seahawks OR #Seahawks"
+    },
+    {
+      "abbr": "SF",
+      "nick": "49ers",
+      "news_query": "San Francisco 49ers OR #FTTB",
+      "count_query": "San Francisco 49ers OR #FTTB"
+    },
+    {
+      "abbr": "TB",
+      "nick": "Buccaneers",
+      "news_query": "Tampa Bay Buccaneers OR #GoBucs",
+      "count_query": "Tampa Bay Buccaneers OR #GoBucs"
+    },
+    {
+      "abbr": "TEN",
+      "nick": "Titans",
+      "news_query": "Tennessee Titans OR #Titans",
+      "count_query": "Tennessee Titans OR #Titans"
+    },
+    {
+      "abbr": "WSH",
+      "nick": "Commanders",
+      "news_query": "Washington Commanders OR #HTTC",
+      "count_query": "Washington Commanders OR #HTTC"
+    }
+  ]
+}

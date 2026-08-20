@@ -1,0 +1,275 @@
+{
+  "season": 2026,
+  "tz": "America/New_York",
+  "rule": "A vibe week is Sunday 00:00 through Saturday 21:31 ET. Saturday 9:31pm rolls the week after the 9:01pm nightly. Labels follow the NFL week, not archive-count. Preseason Week 1 already closed; first live rollup is Preseason Week 2 on 2026-08-22.",
+  "sentiment": "Reserved. pos/neg scores later. Do not invent scores. No scoring UI yet.",
+  "source": [
+    "https://media.nfl.com/football-information/2026/news/2026-preseason-schedule-announced",
+    "desk/data/nfl-2026.json Week 1 TNF 2026-09-10"
+  ],
+  "weeks": [
+    {
+      "id": "pre-1",
+      "kind": "preseason",
+      "n": 1,
+      "label": "Preseason Week 1",
+      "start": "2026-08-09",
+      "end": "2026-08-15",
+      "rollup": "2026-08-15",
+      "games": "2026-08-13 to 2026-08-15",
+      "note": "Games already played. No nightly archive unless we backfill."
+    },
+    {
+      "id": "pre-2",
+      "kind": "preseason",
+      "n": 2,
+      "label": "Preseason Week 2",
+      "start": "2026-08-16",
+      "end": "2026-08-22",
+      "rollup": "2026-08-22",
+      "games": "2026-08-20 to 2026-08-23",
+      "note": "First live Saturday rollup."
+    },
+    {
+      "id": "pre-3",
+      "kind": "preseason",
+      "n": 3,
+      "label": "Preseason Week 3",
+      "start": "2026-08-23",
+      "end": "2026-08-29",
+      "rollup": "2026-08-29",
+      "games": "2026-08-27 to 2026-08-29"
+    },
+    {
+      "id": "cut",
+      "kind": "cut",
+      "n": 0,
+      "label": "Cut week",
+      "start": "2026-08-30",
+      "end": "2026-09-05",
+      "rollup": "2026-09-05",
+      "games": null,
+      "note": "Roster cuts. Still scan. Not a betting week."
+    },
+    {
+      "id": "reg-1",
+      "kind": "regular",
+      "n": 1,
+      "label": "Week 1",
+      "start": "2026-09-06",
+      "end": "2026-09-12",
+      "rollup": "2026-09-12",
+      "games": null
+    },
+    {
+      "id": "reg-2",
+      "kind": "regular",
+      "n": 2,
+      "label": "Week 2",
+      "start": "2026-09-13",
+      "end": "2026-09-19",
+      "rollup": "2026-09-19",
+      "games": null
+    },
+    {
+      "id": "reg-3",
+      "kind": "regular",
+      "n": 3,
+      "label": "Week 3",
+      "start": "2026-09-20",
+      "end": "2026-09-26",
+      "rollup": "2026-09-26",
+      "games": null
+    },
+    {
+      "id": "reg-4",
+      "kind": "regular",
+      "n": 4,
+      "label": "Week 4",
+      "start": "2026-09-27",
+      "end": "2026-10-03",
+      "rollup": "2026-10-03",
+      "games": null
+    },
+    {
+      "id": "reg-5",
+      "kind": "regular",
+      "n": 5,
+      "label": "Week 5",
+      "start": "2026-10-04",
+      "end": "2026-10-10",
+      "rollup": "2026-10-10",
+      "games": null
+    },
+    {
+      "id": "reg-6",
+      "kind": "regular",
+      "n": 6,
+      "label": "Week 6",
+      "start": "2026-10-11",
+      "end": "2026-10-17",
+      "rollup": "2026-10-17",
+      "games": null
+    },
+    {
+      "id": "reg-7",
+      "kind": "regular",
+      "n": 7,
+      "label": "Week 7",
+      "start": "2026-10-18",
+      "end": "2026-10-24",
+      "rollup": "2026-10-24",
+      "games": null
+    },
+    {
+      "id": "reg-8",
+      "kind": "regular",
+      "n": 8,
+      "label": "Week 8",
+      "start": "2026-10-25",
+      "end": "2026-10-31",
+      "rollup": "2026-10-31",
+      "games": null
+    },
+    {
+      "id": "reg-9",
+      "kind": "regular",
+      "n": 9,
+      "label": "Week 9",
+      "start": "2026-11-01",
+      "end": "2026-11-07",
+      "rollup": "2026-11-07",
+      "games": null
+    },
+    {
+      "id": "reg-10",
+      "kind": "regular",
+      "n": 10,
+      "label": "Week 10",
+      "start": "2026-11-08",
+      "end": "2026-11-14",
+      "rollup": "2026-11-14",
+      "games": null
+    },
+    {
+      "id": "reg-11",
+      "kind": "regular",
+      "n": 11,
+      "label": "Week 11",
+      "start": "2026-11-15",
+      "end": "2026-11-21",
+      "rollup": "2026-11-21",
+      "games": null
+    },
+    {
+      "id": "reg-12",
+      "kind": "regular",
+      "n": 12,
+      "label": "Week 12",
+      "start": "2026-11-22",
+      "end": "2026-11-28",
+      "rollup": "2026-11-28",
+      "games": null
+    },
+    {
+      "id": "reg-13",
+      "kind": "regular",
+      "n": 13,
+      "label": "Week 13",
+      "start": "2026-11-29",
+      "end": "2026-12-05",
+      "rollup": "2026-12-05",
+      "games": null
+    },
+    {
+      "id": "reg-14",
+      "kind": "regular",
+      "n": 14,
+      "label": "Week 14",
+      "start": "2026-12-06",
+      "end": "2026-12-12",
+      "rollup": "2026-12-12",
+      "games": null
+    },
+    {
+      "id": "reg-15",
+      "kind": "regular",
+      "n": 15,
+      "label": "Week 15",
+      "start": "2026-12-13",
+      "end": "2026-12-19",
+      "rollup": "2026-12-19",
+      "games": null
+    },
+    {
+      "id": "reg-16",
+      "kind": "regular",
+      "n": 16,
+      "label": "Week 16",
+      "start": "2026-12-20",
+      "end": "2026-12-26",
+      "rollup": "2026-12-26",
+      "games": null
+    },
+    {
+      "id": "reg-17",
+      "kind": "regular",
+      "n": 17,
+      "label": "Week 17",
+      "start": "2026-12-27",
+      "end": "2027-01-02",
+      "rollup": "2027-01-02",
+      "games": null
+    },
+    {
+      "id": "reg-18",
+      "kind": "regular",
+      "n": 18,
+      "label": "Week 18",
+      "start": "2027-01-03",
+      "end": "2027-01-09",
+      "rollup": "2027-01-09",
+      "games": null
+    },
+    {
+      "id": "wc",
+      "kind": "playoff",
+      "n": 0,
+      "label": "Wild Card",
+      "start": "2027-01-10",
+      "end": "2027-01-16",
+      "rollup": "2027-01-16",
+      "games": null
+    },
+    {
+      "id": "div",
+      "kind": "playoff",
+      "n": 0,
+      "label": "Divisional",
+      "start": "2027-01-17",
+      "end": "2027-01-23",
+      "rollup": "2027-01-23",
+      "games": null
+    },
+    {
+      "id": "conf",
+      "kind": "playoff",
+      "n": 0,
+      "label": "Conference",
+      "start": "2027-01-24",
+      "end": "2027-01-30",
+      "rollup": "2027-01-30",
+      "games": null
+    },
+    {
+      "id": "sb",
+      "kind": "playoff",
+      "n": 0,
+      "label": "Super Bowl",
+      "start": "2027-01-31",
+      "end": "2027-02-14",
+      "rollup": "2027-02-14",
+      "games": null
+    }
+  ]
+}

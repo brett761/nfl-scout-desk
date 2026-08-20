@@ -1,0 +1,2629 @@
+{
+  "season": 2026,
+  "offseason": "2026",
+  "pulled": "2026-08-19",
+  "sources": [
+    "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+    "https://www.cbssports.com/nfl/news/nfl-free-agency-tracker-2026-full-list-signings-trades-moves/",
+    "https://www.sharpfootballanalysis.com/analysis/nfl-free-agency-signings-2026/",
+    "https://www.spotrac.com/nfl/free-agents/signed/_/year/2026",
+    "https://www.foxsports.com/stories/nfl/2026-nfl-free-agency-trades-tracker-signings-updates-best-players-available"
+  ],
+  "scoring": {
+    "star": [
+      1.5,
+      2.0
+    ],
+    "starter": [
+      0.5,
+      1.0
+    ],
+    "rotational": 0.3,
+    "depth": 0.2,
+    "cap_per_player": 2.0,
+    "cap_team_net": 4.0
+  },
+  "notes": "League-even true FA plus a short list of well-sourced veteran trades (Garrett/Verse, A.J. Brown, Lawrence, McDuffie, Waddle, Moore, Geno, Minkah, Gary, Pittman, Montgomery, Greenard, Howard, Sweat/Johnson, Taron Johnson, Osa, Bradbury). Re-signings omitted (Daniel Jones, Alec Pierce, Rashid Shaheed, Travis Kelce, Aaron Rodgers, Kyle Pitts tag then extension, George Pickens tag, Breece Hall tag). Draft picks omitted. Thin clubs: JAX (Etienne/Lloyd out, little IN), DEN (Waddle trade plus JFM out; almost no new FA), SEA (re-signed own, lost Walker/Woolen/Bryant/Mafe), IND (Pierce/Jones re-signs only; Pittman/Paye/Smith/Cross out). Unsigned 2025 starters still on the street as of Aug 19 per Spotrac: Tyreek Hill, Taylor Decker, Joey Bosa, Harrison Smith, Lavonte David, Haason Reddick, Marshon Lattimore, Bobby Wagner. Later August camp bodies omitted.",
+  "teams": {
+    "ARI": {
+      "in": [
+        {
+          "name": "Isaac Seumalo",
+          "pos": "OG",
+          "tier": "starter",
+          "pts": 0.6,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Week-1 guard upgrade from Steelers",
+          "source": "https://www.azcardinals.com/news/isaac-seumalo-feeling-at-home-now-that-he-s-signed-with-cardinals",
+          "from": "PIT"
+        },
+        {
+          "name": "Tyler Allgeier",
+          "pos": "RB",
+          "tier": "starter",
+          "pts": 0.5,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Lead-back snaps after Murray-era reset",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "ATL"
+        },
+        {
+          "name": "Roy Lopez",
+          "pos": "IDL",
+          "tier": "rotational",
+          "pts": 0.3,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Rotational interior, Arizona return",
+          "source": "https://www.azcardinals.com/news/isaac-seumalo-feeling-at-home-now-that-he-s-signed-with-cardinals",
+          "from": "DET"
+        }
+      ],
+      "out": [
+        {
+          "name": "Kyler Murray",
+          "pos": "QB",
+          "tier": "starter",
+          "pts": -1.0,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 starter released, signed Vikings",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "MIN"
+        },
+        {
+          "name": "Jalen Thompson",
+          "pos": "S",
+          "tier": "starter",
+          "pts": -0.7,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 starting safety walked to Dallas",
+          "source": "https://www.cbssports.com/nfl/news/nfl-free-agency-tracker-2026-full-list-signings-trades-moves/",
+          "to": "DAL"
+        }
+      ],
+      "off": 0.1,
+      "def": -0.4,
+      "st": 0.0,
+      "raw_net": -0.3,
+      "net": -0.3
+    },
+    "ATL": {
+      "in": [
+        {
+          "name": "Tua Tagovailoa",
+          "pos": "QB",
+          "tier": "starter",
+          "pts": 0.8,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Veteran-min starter competition with injured Penix",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "MIA"
+        },
+        {
+          "name": "Jahan Dotson",
+          "pos": "WR",
+          "tier": "starter",
+          "pts": 0.5,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Outside WR snaps opposite London",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "PHI"
+        },
+        {
+          "name": "Brian Robinson Jr.",
+          "pos": "RB",
+          "tier": "rotational",
+          "pts": 0.3,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Early-down back after Allgeier left",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "WSH"
+        }
+      ],
+      "out": [
+        {
+          "name": "Tyler Allgeier",
+          "pos": "RB",
+          "tier": "starter",
+          "pts": -0.5,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 back signed with Cardinals",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "ARI"
+        },
+        {
+          "name": "Kaden Elliss",
+          "pos": "LB",
+          "tier": "starter",
+          "pts": -0.6,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 tackle leader returned to Saints",
+          "source": "https://www.neworleanssaints.com/news/kaden-elliss-linebacker-nfl-free-agency-2026-saints-roster-moves",
+          "to": "NO"
+        },
+        {
+          "name": "Kirk Cousins",
+          "pos": "QB",
+          "tier": "rotational",
+          "pts": -0.3,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 veteran QB signed with Raiders",
+          "source": "https://www.raiders.com/news/raiders-sign-kirk-cousins-quarterback-nfl-2026-free-agency-transactions",
+          "to": "LV"
+        },
+        {
+          "name": "David Onyemata",
+          "pos": "IDL",
+          "tier": "starter",
+          "pts": -0.6,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 starting DT signed with Jets",
+          "source": "https://www.newyorkjets.com/news/jets-sign-david-onyemata-free-agency-03-12-2026",
+          "to": "NYJ"
+        },
+        {
+          "name": "Darnell Mooney",
+          "pos": "WR",
+          "tier": "starter",
+          "pts": -0.5,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 WR signed with Giants",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "NYG"
+        }
+      ],
+      "off": 0.3,
+      "def": -1.2,
+      "st": 0.0,
+      "raw_net": -0.9,
+      "net": -0.9
+    },
+    "BAL": {
+      "in": [
+        {
+          "name": "Trey Hendrickson",
+          "pos": "EDGE",
+          "tier": "star",
+          "pts": 1.7,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "After Crosby medical collapse, signed aged star rusher",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "CIN"
+        },
+        {
+          "name": "John Simpson",
+          "pos": "OG",
+          "tier": "starter",
+          "pts": 0.5,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Jets starting LG returns to Baltimore",
+          "source": "https://www.espn.com/nfl/story/_/id/48154231/sources-ravens-reach-3-year-deal-guard-john-simpson",
+          "from": "NYJ"
+        }
+      ],
+      "out": [
+        {
+          "name": "Tyler Linderbaum",
+          "pos": "C",
+          "tier": "star",
+          "pts": -1.8,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 starting center, record deal to Raiders",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "LV"
+        },
+        {
+          "name": "Isaiah Likely",
+          "pos": "TE",
+          "tier": "starter",
+          "pts": -0.8,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 TE1 signed with Giants",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "NYG"
+        },
+        {
+          "name": "Dre'Mont Jones",
+          "pos": "EDGE",
+          "tier": "starter",
+          "pts": -0.7,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 edge signed with Patriots",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "NE"
+        },
+        {
+          "name": "Alohi Gilman",
+          "pos": "S",
+          "to": "KC",
+          "tier": "starter",
+          "pts": -0.6,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 starting safety signed with Chiefs",
+          "source": "https://www.chiefs.com/news/five-things-to-know-about-new-chiefs-safety-alohi-gilman-"
+        }
+      ],
+      "off": -2.1,
+      "def": 0.4,
+      "st": 0.0,
+      "raw_net": -1.7,
+      "net": -1.7
+    },
+    "BUF": {
+      "in": [
+        {
+          "name": "Bradley Chubb",
+          "pos": "EDGE",
+          "tier": "starter",
+          "pts": 0.8,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Street FA after Dolphins release, Bosa replacement",
+          "source": "https://www.nfl.com/news/bills-signing-ex-dolphins-pass-rusher-bradley-chubb",
+          "from": "MIA"
+        },
+        {
+          "name": "D.J. Moore",
+          "pos": "WR",
+          "tier": "starter",
+          "pts": 0.9,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Outside WR1 for Allen",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "CHI",
+          "via": "trade"
+        },
+        {
+          "name": "Dee Alford",
+          "pos": "CB",
+          "tier": "starter",
+          "pts": 0.5,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Nickel/outside CB, multi-year deal",
+          "source": "https://www.cbssports.com/nfl/news/nfl-free-agency-tracker-2026-full-list-signings-trades-moves/",
+          "from": "ATL"
+        }
+      ],
+      "out": [
+        {
+          "name": "David Edwards",
+          "pos": "OG",
+          "tier": "starter",
+          "pts": -0.6,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 starting guard to Saints",
+          "source": "https://www.neworleanssaints.com/news/david-edwards-guard-nfl-free-agency-2026-saints-roster-moves",
+          "to": "NO"
+        },
+        {
+          "name": "Taron Johnson",
+          "pos": "CB",
+          "tier": "starter",
+          "pts": -0.7,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 starting slot CB traded to Raiders",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "LV",
+          "via": "trade"
+        },
+        {
+          "name": "Joey Bosa",
+          "pos": "EDGE",
+          "tier": "starter",
+          "pts": -0.8,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 edge still unsigned as of Aug 19",
+          "source": "https://www.spotrac.com/nfl/free-agents/signed/_/year/2026",
+          "to": "UFA"
+        }
+      ],
+      "off": 0.3,
+      "def": -0.2,
+      "st": 0.0,
+      "raw_net": 0.1,
+      "net": 0.1
+    },
+    "CAR": {
+      "in": [
+        {
+          "name": "Jaelan Phillips",
+          "pos": "EDGE",
+          "tier": "star",
+          "pts": 1.7,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "18.8% pressure EDGE1, four-year $120M",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "PHI"
+        },
+        {
+          "name": "Devin Lloyd",
+          "pos": "LB",
+          "tier": "starter",
+          "pts": 0.7,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Three-year ILB, Week-1 starter",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "JAX"
+        },
+        {
+          "name": "Rasheed Walker",
+          "pos": "LT",
+          "tier": "starter",
+          "pts": 0.7,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "One-year tackle, left-side snaps",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "GB"
+        }
+      ],
+      "out": [
+        {
+          "name": "Cade Mays",
+          "pos": "C",
+          "tier": "starter",
+          "pts": -0.6,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 interior starter signed with Lions",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "DET"
+        },
+        {
+          "name": "Rico Dowdle",
+          "pos": "RB",
+          "to": "PIT",
+          "tier": "starter",
+          "pts": -0.4,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 1,000-yard back signed with Steelers",
+          "source": "https://www.steelers.com/news/steelers-sign-dowdle"
+        }
+      ],
+      "off": -0.3,
+      "def": 2.4,
+      "st": 0.0,
+      "raw_net": 2.1,
+      "net": 2.1
+    },
+    "CHI": {
+      "in": [
+        {
+          "name": "Coby Bryant",
+          "pos": "S",
+          "tier": "starter",
+          "pts": 0.7,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Byard/Brisker hole, three-year $40M",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "SEA"
+        },
+        {
+          "name": "Devin Bush",
+          "pos": "LB",
+          "tier": "starter",
+          "pts": 0.6,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Edmunds replacement, 2025 Browns starter",
+          "source": "https://www.chicagobears.com/news/chicago-bears-announce-four-signings",
+          "from": "CLE"
+        },
+        {
+          "name": "Kalif Raymond",
+          "pos": "WR",
+          "tier": "rotational",
+          "pts": 0.3,
+          "unit": "ST",
+          "in_prior": false,
+          "note": "Returner and slot depth",
+          "source": "https://www.chicagobears.com/news/chicago-bears-announce-four-signings",
+          "from": "DET"
+        },
+        {
+          "name": "Garrett Bradbury",
+          "pos": "C",
+          "tier": "starter",
+          "pts": 0.5,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Interior line, traded from Patriots",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "NE",
+          "via": "trade"
+        }
+      ],
+      "out": [
+        {
+          "name": "D.J. Moore",
+          "pos": "WR",
+          "tier": "starter",
+          "pts": -0.9,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 WR1 traded to Bills",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "BUF",
+          "via": "trade"
+        },
+        {
+          "name": "Tremaine Edmunds",
+          "pos": "LB",
+          "tier": "starter",
+          "pts": -0.6,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "Released, signed with Giants",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "NYG"
+        },
+        {
+          "name": "Kevin Byard",
+          "pos": "S",
+          "tier": "starter",
+          "pts": -0.5,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 safety signed with Patriots",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "NE"
+        },
+        {
+          "name": "Jaquan Brisker",
+          "pos": "S",
+          "tier": "starter",
+          "pts": -0.5,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 safety signed with Steelers",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "PIT"
+        }
+      ],
+      "off": -0.4,
+      "def": -0.3,
+      "st": 0.3,
+      "raw_net": -0.4,
+      "net": -0.4
+    },
+    "CIN": {
+      "in": [
+        {
+          "name": "Boye Mafe",
+          "pos": "EDGE",
+          "tier": "starter",
+          "pts": 0.9,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Hendrickson replacement, three-year $60M",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "SEA"
+        },
+        {
+          "name": "Dexter Lawrence",
+          "pos": "IDL",
+          "tier": "star",
+          "pts": 1.8,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "No. 10 pick for All-Pro DT, extended through 2028",
+          "source": "https://www.bengals.com/news/dexter-lawrence-trade-giants-bengals-roster-update-2026",
+          "from": "NYG",
+          "via": "trade"
+        },
+        {
+          "name": "Jonathan Allen",
+          "pos": "IDL",
+          "tier": "starter",
+          "pts": 0.7,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Street FA after Vikings release",
+          "source": "https://www.bengals.com/news/jonathan-allen-signed-2026-free-agency",
+          "from": "MIN"
+        },
+        {
+          "name": "Bryan Cook",
+          "pos": "S",
+          "tier": "starter",
+          "pts": 0.7,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Three-year starting safety",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "KC"
+        }
+      ],
+      "out": [
+        {
+          "name": "Trey Hendrickson",
+          "pos": "EDGE",
+          "tier": "star",
+          "pts": -1.7,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 EDGE1 signed with Ravens",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "BAL"
+        },
+        {
+          "name": "Joseph Ossai",
+          "pos": "EDGE",
+          "tier": "starter",
+          "pts": -0.7,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 edge signed with Jets",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "NYJ"
+        }
+      ],
+      "off": 0.0,
+      "def": 1.7,
+      "st": 0.0,
+      "raw_net": 1.7,
+      "net": 1.7
+    },
+    "CLE": {
+      "in": [
+        {
+          "name": "Zion Johnson",
+          "pos": "OG",
+          "tier": "starter",
+          "pts": 0.7,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Three-year $49.5M starting guard",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "LAC"
+        },
+        {
+          "name": "Elgton Jenkins",
+          "pos": "C",
+          "tier": "starter",
+          "pts": 0.8,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Versatile C/G, $20M guaranteed",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "GB"
+        },
+        {
+          "name": "Tytus Howard",
+          "pos": "OT",
+          "tier": "starter",
+          "pts": 0.8,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Traded then extended, tackle starter",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "HOU",
+          "via": "trade"
+        },
+        {
+          "name": "Jared Verse",
+          "pos": "EDGE",
+          "tier": "star",
+          "pts": 1.6,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Young Pro Bowl EDGE in Garrett swap",
+          "source": "https://www.clevelandbrowns.com/news/browns-trade-de-myles-garrett-to-the-rams-for-de-jared-verse-3-draft-picks",
+          "from": "LAR",
+          "via": "trade"
+        },
+        {
+          "name": "Quincy Williams",
+          "pos": "LB",
+          "tier": "starter",
+          "pts": 0.5,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Jets starter, All-Pro pedigree",
+          "source": "https://www.clevelandbrowns.com/news/browns-agree-to-terms-with-lb-quincy-williams",
+          "from": "NYJ"
+        }
+      ],
+      "out": [
+        {
+          "name": "Myles Garrett",
+          "pos": "EDGE",
+          "tier": "star",
+          "pts": -2.0,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 DPOY traded to Rams",
+          "source": "https://www.clevelandbrowns.com/news/browns-trade-de-myles-garrett-to-the-rams-for-de-jared-verse-3-draft-picks",
+          "to": "LAR",
+          "via": "trade"
+        },
+        {
+          "name": "Wyatt Teller",
+          "pos": "OG",
+          "tier": "starter",
+          "pts": -0.6,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 starting guard signed with Texans",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "HOU"
+        },
+        {
+          "name": "Devin Bush",
+          "pos": "LB",
+          "tier": "starter",
+          "pts": -0.6,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 starting LB signed with Bears",
+          "source": "https://www.chicagobears.com/news/chicago-bears-announce-four-signings",
+          "to": "CHI"
+        }
+      ],
+      "off": 1.7,
+      "def": -0.5,
+      "st": 0.0,
+      "raw_net": 1.2,
+      "net": 1.2
+    },
+    "DAL": {
+      "in": [
+        {
+          "name": "Jalen Thompson",
+          "pos": "S",
+          "tier": "starter",
+          "pts": 0.7,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Three-year starting safety",
+          "source": "https://www.cbssports.com/nfl/news/nfl-free-agency-tracker-2026-full-list-signings-trades-moves/",
+          "from": "ARI"
+        },
+        {
+          "name": "Rashan Gary",
+          "pos": "EDGE",
+          "tier": "starter",
+          "pts": 1.0,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Pass-rush starter via Packers trade",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "GB",
+          "via": "trade"
+        },
+        {
+          "name": "Cobie Durant",
+          "pos": "CB",
+          "tier": "rotational",
+          "pts": 0.3,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "One-year CB, nickel/outside snaps",
+          "source": "https://www.cbssports.com/nfl/news/nfl-free-agency-tracker-2026-full-list-signings-trades-moves/",
+          "from": "LAR"
+        }
+      ],
+      "out": [
+        {
+          "name": "Osa Odighizuwa",
+          "pos": "IDL",
+          "tier": "starter",
+          "pts": -0.8,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 starting DT traded to 49ers",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "SF",
+          "via": "trade"
+        }
+      ],
+      "off": 0.0,
+      "def": 1.2,
+      "st": 0.0,
+      "raw_net": 1.2,
+      "net": 1.2
+    },
+    "DEN": {
+      "in": [
+        {
+          "name": "Jaylen Waddle",
+          "pos": "WR",
+          "tier": "star",
+          "pts": 1.5,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "WR1 next to Sutton, cost No. 30 overall",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "MIA",
+          "via": "trade"
+        }
+      ],
+      "out": [
+        {
+          "name": "John Franklin-Myers",
+          "pos": "IDL",
+          "tier": "starter",
+          "pts": -1.0,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 interior rusher signed with Titans",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "TEN"
+        }
+      ],
+      "off": 1.5,
+      "def": -1.0,
+      "st": 0.0,
+      "raw_net": 0.5,
+      "net": 0.5
+    },
+    "DET": {
+      "in": [
+        {
+          "name": "Cade Mays",
+          "pos": "C",
+          "tier": "starter",
+          "pts": 0.6,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Three-year $25M center",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "CAR"
+        },
+        {
+          "name": "Isiah Pacheco",
+          "pos": "RB",
+          "tier": "rotational",
+          "pts": 0.3,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Change-of-pace after Montgomery trade",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "KC"
+        }
+      ],
+      "out": [
+        {
+          "name": "David Montgomery",
+          "pos": "RB",
+          "tier": "starter",
+          "pts": -0.5,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 committee back traded to Texans",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "HOU",
+          "via": "trade"
+        },
+        {
+          "name": "Taylor Decker",
+          "pos": "LT",
+          "tier": "star",
+          "pts": -1.5,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 LT released, still unsigned Aug 19",
+          "source": "https://www.spotrac.com/nfl/free-agents/signed/_/year/2026",
+          "to": "UFA"
+        },
+        {
+          "name": "Alex Anzalone",
+          "pos": "LB",
+          "tier": "starter",
+          "pts": -0.4,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 LB signed with Bucs",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "TB"
+        },
+        {
+          "name": "Kalif Raymond",
+          "pos": "WR",
+          "tier": "rotational",
+          "pts": -0.3,
+          "unit": "ST",
+          "in_prior": true,
+          "note": "Returner signed with Bears",
+          "source": "https://www.chicagobears.com/news/chicago-bears-announce-four-signings",
+          "to": "CHI"
+        }
+      ],
+      "off": -1.1,
+      "def": -0.4,
+      "st": -0.3,
+      "raw_net": -1.8,
+      "net": -1.8
+    },
+    "GB": {
+      "in": [
+        {
+          "name": "Javon Hargrave",
+          "pos": "IDL",
+          "tier": "starter",
+          "pts": 0.6,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Street FA after Vikings cut",
+          "source": "https://www.packers.com/news/5-things-to-know-about-new-packers-dl-javon-hargrave-march-13-2026",
+          "from": "MIN"
+        }
+      ],
+      "out": [
+        {
+          "name": "Romeo Doubs",
+          "pos": "WR",
+          "tier": "starter",
+          "pts": -0.8,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 WR signed with Patriots",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "NE"
+        },
+        {
+          "name": "Elgton Jenkins",
+          "pos": "C",
+          "tier": "starter",
+          "pts": -0.8,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 interior starter to Browns",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "CLE"
+        },
+        {
+          "name": "Quay Walker",
+          "pos": "LB",
+          "tier": "starter",
+          "pts": -0.6,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 starting LB to Raiders",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "LV"
+        },
+        {
+          "name": "Rashan Gary",
+          "pos": "EDGE",
+          "tier": "starter",
+          "pts": -1.0,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 EDGE1 traded to Cowboys",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "DAL",
+          "via": "trade"
+        },
+        {
+          "name": "Rasheed Walker",
+          "pos": "LT",
+          "tier": "starter",
+          "pts": -0.7,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 tackle signed with Panthers",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "CAR"
+        },
+        {
+          "name": "Malik Willis",
+          "pos": "QB",
+          "tier": "rotational",
+          "pts": -0.4,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 backup/spot starter signed as Dolphins QB1",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "MIA"
+        }
+      ],
+      "off": -2.7,
+      "def": -1.0,
+      "st": 0.0,
+      "raw_net": -3.7,
+      "net": -3.7
+    },
+    "HOU": {
+      "in": [
+        {
+          "name": "David Montgomery",
+          "pos": "RB",
+          "tier": "starter",
+          "pts": 0.5,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Early-down back via Lions trade",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "DET",
+          "via": "trade"
+        },
+        {
+          "name": "Reed Blankenship",
+          "pos": "S",
+          "tier": "starter",
+          "pts": 0.6,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Three-year starting safety",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "PHI"
+        },
+        {
+          "name": "Braden Smith",
+          "pos": "OT",
+          "tier": "starter",
+          "pts": 0.7,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Right tackle, two-year up to $25M",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "IND"
+        },
+        {
+          "name": "Wyatt Teller",
+          "pos": "OG",
+          "tier": "starter",
+          "pts": 0.6,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Two-year starting guard",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "CLE"
+        }
+      ],
+      "out": [
+        {
+          "name": "Tytus Howard",
+          "pos": "OT",
+          "tier": "starter",
+          "pts": -0.8,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 tackle traded to Browns",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "CLE",
+          "via": "trade"
+        },
+        {
+          "name": "Christian Kirk",
+          "pos": "WR",
+          "to": "SF",
+          "tier": "rotational",
+          "pts": -0.4,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 WR signed with 49ers",
+          "source": "https://global.espn.com/nfl/story/_/id/48225762/source-49ers-reach-one-year-deal-wr-christian-kirk"
+        }
+      ],
+      "off": 0.6,
+      "def": 0.6,
+      "st": 0.0,
+      "raw_net": 1.2,
+      "net": 1.2
+    },
+    "IND": {
+      "in": [],
+      "out": [
+        {
+          "name": "Michael Pittman Jr.",
+          "pos": "WR",
+          "tier": "starter",
+          "pts": -0.8,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 WR traded to Steelers",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "PIT",
+          "via": "trade"
+        },
+        {
+          "name": "Braden Smith",
+          "pos": "OT",
+          "tier": "starter",
+          "pts": -0.7,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 RT signed with Texans",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "HOU"
+        },
+        {
+          "name": "Kwity Paye",
+          "pos": "EDGE",
+          "tier": "starter",
+          "pts": -0.8,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 edge signed with Raiders",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "LV"
+        },
+        {
+          "name": "Nick Cross",
+          "pos": "S",
+          "tier": "starter",
+          "pts": -0.5,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 safety signed with Commanders",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "WSH"
+        }
+      ],
+      "off": -1.5,
+      "def": -1.3,
+      "st": 0.0,
+      "raw_net": -2.8,
+      "net": -2.8
+    },
+    "JAX": {
+      "in": [
+        {
+          "name": "Chris Rodriguez Jr.",
+          "pos": "RB",
+          "tier": "rotational",
+          "pts": 0.3,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Etienne replacement committee",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "WSH"
+        }
+      ],
+      "out": [
+        {
+          "name": "Travis Etienne",
+          "pos": "RB",
+          "tier": "starter",
+          "pts": -0.6,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 lead back signed with Saints",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "NO"
+        },
+        {
+          "name": "Devin Lloyd",
+          "pos": "LB",
+          "tier": "starter",
+          "pts": -0.7,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 starting LB signed with Panthers",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "CAR"
+        }
+      ],
+      "off": -0.3,
+      "def": -0.7,
+      "st": 0.0,
+      "raw_net": -1.0,
+      "net": -1.0
+    },
+    "KC": {
+      "in": [
+        {
+          "name": "Kenneth Walker III",
+          "pos": "RB",
+          "tier": "starter",
+          "pts": 0.7,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Super Bowl MVP, three-year back",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "SEA"
+        },
+        {
+          "name": "Alohi Gilman",
+          "pos": "S",
+          "tier": "starter",
+          "pts": 0.6,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Ravens 2025 starter after midseason trade, three-year $24.75M",
+          "source": "https://www.chiefs.com/news/five-things-to-know-about-new-chiefs-safety-alohi-gilman-",
+          "from": "BAL"
+        }
+      ],
+      "out": [
+        {
+          "name": "Trent McDuffie",
+          "pos": "CB",
+          "tier": "star",
+          "pts": -1.8,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 CB1 traded to Rams",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "LAR",
+          "via": "trade"
+        },
+        {
+          "name": "Jaylen Watson",
+          "pos": "CB",
+          "tier": "starter",
+          "pts": -1.0,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 starting CB signed with Rams",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "LAR"
+        },
+        {
+          "name": "Isiah Pacheco",
+          "pos": "RB",
+          "tier": "rotational",
+          "pts": -0.3,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 committee back to Lions",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "DET"
+        },
+        {
+          "name": "Leo Chenal",
+          "pos": "LB",
+          "tier": "starter",
+          "pts": -0.5,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 LB signed with Commanders",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "WSH"
+        },
+        {
+          "name": "Bryan Cook",
+          "pos": "S",
+          "tier": "starter",
+          "pts": -0.7,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 safety signed with Bengals",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "CIN"
+        }
+      ],
+      "off": 0.4,
+      "def": -3.4,
+      "st": 0.0,
+      "raw_net": -3.0,
+      "net": -3.0
+    },
+    "LAC": {
+      "in": [
+        {
+          "name": "Tyler Biadasz",
+          "pos": "C",
+          "tier": "starter",
+          "pts": 0.8,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Bozeman replacement, three-year $30M",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "WSH"
+        },
+        {
+          "name": "Cole Strange",
+          "pos": "OG",
+          "tier": "starter",
+          "pts": 0.5,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Two-year starting guard",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "NE"
+        },
+        {
+          "name": "Charlie Kolar",
+          "pos": "TE",
+          "tier": "starter",
+          "pts": 0.5,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Three-year TE, $17M guaranteed",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "BAL"
+        },
+        {
+          "name": "Keaton Mitchell",
+          "pos": "RB",
+          "tier": "rotational",
+          "pts": 0.3,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Explosive change-of-pace back",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "BAL"
+        }
+      ],
+      "out": [
+        {
+          "name": "Odafe Oweh",
+          "pos": "EDGE",
+          "tier": "star",
+          "pts": -1.5,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 Chargers-version rusher to Commanders",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "WSH"
+        },
+        {
+          "name": "Zion Johnson",
+          "pos": "OG",
+          "tier": "starter",
+          "pts": -0.7,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 starting guard to Browns",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "CLE"
+        }
+      ],
+      "off": 1.4,
+      "def": -1.5,
+      "st": 0.0,
+      "raw_net": -0.1,
+      "net": -0.1
+    },
+    "LAR": {
+      "in": [
+        {
+          "name": "Myles Garrett",
+          "pos": "EDGE",
+          "tier": "star",
+          "pts": 2.0,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "DPOY edge for one more Stafford run",
+          "source": "https://www.therams.com/news/rams-agree-to-terms-on-trade-myles-garrett-browns",
+          "from": "CLE",
+          "via": "trade"
+        },
+        {
+          "name": "Trent McDuffie",
+          "pos": "CB",
+          "tier": "star",
+          "pts": 1.8,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "CB1 plus four-year $124M extension",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "KC",
+          "via": "trade"
+        },
+        {
+          "name": "Jaylen Watson",
+          "pos": "CB",
+          "tier": "starter",
+          "pts": 1.1,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Second ex-Chiefs corner, three-year $51M",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "KC"
+        }
+      ],
+      "out": [
+        {
+          "name": "Jared Verse",
+          "pos": "EDGE",
+          "tier": "star",
+          "pts": -1.6,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 EDGE1 sent in Garrett deal",
+          "source": "https://www.therams.com/news/rams-agree-to-terms-on-trade-myles-garrett-browns",
+          "to": "CLE",
+          "via": "trade"
+        },
+        {
+          "name": "Cobie Durant",
+          "pos": "CB",
+          "tier": "rotational",
+          "pts": -0.3,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 CB signed with Cowboys",
+          "source": "https://www.cbssports.com/nfl/news/nfl-free-agency-tracker-2026-full-list-signings-trades-moves/",
+          "to": "DAL"
+        }
+      ],
+      "off": 0.0,
+      "def": 3.0,
+      "st": 0.0,
+      "raw_net": 3.0,
+      "net": 3.0
+    },
+    "LV": {
+      "in": [
+        {
+          "name": "Tyler Linderbaum",
+          "pos": "C",
+          "tier": "star",
+          "pts": 1.8,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Highest-paid center, run-game reset",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "BAL"
+        },
+        {
+          "name": "Kwity Paye",
+          "pos": "EDGE",
+          "tier": "starter",
+          "pts": 0.8,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Crosby-gap edge, three-year $48M",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "IND"
+        },
+        {
+          "name": "Quay Walker",
+          "pos": "LB",
+          "tier": "starter",
+          "pts": 0.6,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Three-year ILB",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "GB"
+        },
+        {
+          "name": "Nakobe Dean",
+          "pos": "LB",
+          "tier": "starter",
+          "pts": 0.6,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Three-year ILB, further from patellar",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "PHI"
+        },
+        {
+          "name": "Jalen Nailor",
+          "pos": "WR",
+          "tier": "starter",
+          "pts": 0.6,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Three-year WR2, $35M",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "MIN"
+        },
+        {
+          "name": "Kirk Cousins",
+          "pos": "QB",
+          "tier": "rotational",
+          "pts": 0.3,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Veteran bridge/mentor, $20M",
+          "source": "https://www.raiders.com/news/raiders-sign-kirk-cousins-quarterback-nfl-2026-free-agency-transactions",
+          "from": "ATL"
+        },
+        {
+          "name": "Taron Johnson",
+          "pos": "CB",
+          "tier": "starter",
+          "pts": 0.7,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Slot CB via Bills trade",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "BUF",
+          "via": "trade"
+        }
+      ],
+      "out": [
+        {
+          "name": "Geno Smith",
+          "pos": "QB",
+          "tier": "starter",
+          "pts": -1.0,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 starter traded back to Jets",
+          "source": "https://www.nfl.com/news/raiders-trading-qb-geno-smith-to-jets-in-late-round-pick-swap",
+          "to": "NYJ",
+          "via": "trade"
+        }
+      ],
+      "off": 1.7,
+      "def": 2.7,
+      "st": 0.0,
+      "raw_net": 4.4,
+      "net": 4.0
+    },
+    "MIA": {
+      "in": [
+        {
+          "name": "Malik Willis",
+          "pos": "QB",
+          "tier": "star",
+          "pts": 1.4,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Tua replacement, three-year $67.5M",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "GB"
+        }
+      ],
+      "out": [
+        {
+          "name": "Tua Tagovailoa",
+          "pos": "QB",
+          "tier": "starter",
+          "pts": -1.0,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 starter released, signed Falcons",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "ATL"
+        },
+        {
+          "name": "Jaylen Waddle",
+          "pos": "WR",
+          "tier": "star",
+          "pts": -1.5,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 WR1 traded to Broncos",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "DEN",
+          "via": "trade"
+        },
+        {
+          "name": "Minkah Fitzpatrick",
+          "pos": "S",
+          "tier": "starter",
+          "pts": -0.8,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 safety traded to Jets",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "NYJ",
+          "via": "trade"
+        },
+        {
+          "name": "Bradley Chubb",
+          "pos": "EDGE",
+          "tier": "starter",
+          "pts": -0.8,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "Released, signed with Bills",
+          "source": "https://www.nfl.com/news/bills-signing-ex-dolphins-pass-rusher-bradley-chubb",
+          "to": "BUF"
+        },
+        {
+          "name": "Tyreek Hill",
+          "pos": "WR",
+          "tier": "star",
+          "pts": -1.2,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 WR still unsigned as of Aug 19",
+          "source": "https://www.spotrac.com/nfl/free-agents/signed/_/year/2026",
+          "to": "UFA"
+        }
+      ],
+      "off": -2.3,
+      "def": -1.6,
+      "st": 0.0,
+      "raw_net": -3.9,
+      "net": -3.9
+    },
+    "MIN": {
+      "in": [
+        {
+          "name": "Kyler Murray",
+          "pos": "QB",
+          "tier": "starter",
+          "pts": 0.8,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "One-year McCarthy competition",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "ARI"
+        },
+        {
+          "name": "Jauan Jennings",
+          "pos": "WR",
+          "tier": "starter",
+          "pts": 0.6,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Nailor hole, one-year up to $13M",
+          "source": "https://www.nfl.com/news/vikings-signing-ex-49ers-wr-jauan-jennings-to-one-year-8-million-deal",
+          "from": "SF"
+        }
+      ],
+      "out": [
+        {
+          "name": "Jonathan Allen",
+          "pos": "IDL",
+          "tier": "starter",
+          "pts": -0.7,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 starting DT released, signed Bengals",
+          "source": "https://www.vikings.com/news/jonathan-allen-javon-hargrave-defensive-linemen-released-contract-2026",
+          "to": "CIN"
+        },
+        {
+          "name": "Javon Hargrave",
+          "pos": "IDL",
+          "tier": "starter",
+          "pts": -0.6,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 starting DT released, signed Packers",
+          "source": "https://www.vikings.com/news/jonathan-allen-javon-hargrave-defensive-linemen-released-contract-2026",
+          "to": "GB"
+        },
+        {
+          "name": "Jalen Nailor",
+          "pos": "WR",
+          "tier": "starter",
+          "pts": -0.6,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 WR signed with Raiders",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "LV"
+        },
+        {
+          "name": "Jonathan Greenard",
+          "pos": "EDGE",
+          "tier": "starter",
+          "pts": -1.0,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 EDGE traded to Eagles",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "PHI",
+          "via": "trade"
+        },
+        {
+          "name": "Harrison Smith",
+          "pos": "S",
+          "tier": "starter",
+          "pts": -0.5,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "Released, still unsigned Aug 19",
+          "source": "https://www.spotrac.com/nfl/free-agents/signed/_/year/2026",
+          "to": "UFA"
+        }
+      ],
+      "off": 0.8,
+      "def": -2.8,
+      "st": 0.0,
+      "raw_net": -2.0,
+      "net": -2.0
+    },
+    "NE": {
+      "in": [
+        {
+          "name": "A.J. Brown",
+          "pos": "WR",
+          "tier": "star",
+          "pts": 1.8,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "WR1 for Maye, 2028 first sent",
+          "source": "https://www.nfl.com/news/aj-brown-patriots-eagles-trade",
+          "from": "PHI",
+          "via": "trade"
+        },
+        {
+          "name": "Romeo Doubs",
+          "pos": "WR",
+          "tier": "starter",
+          "pts": 0.8,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Four-year outside WR after Diggs cut",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "GB"
+        },
+        {
+          "name": "Alijah Vera-Tucker",
+          "pos": "OG",
+          "tier": "starter",
+          "pts": 0.8,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Three-year $42M interior, health risk",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "NYJ"
+        },
+        {
+          "name": "Dre'Mont Jones",
+          "pos": "EDGE",
+          "tier": "starter",
+          "pts": 0.7,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Three-year edge, $14.5M Year 1",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "BAL"
+        },
+        {
+          "name": "Kevin Byard",
+          "pos": "S",
+          "tier": "starter",
+          "pts": 0.5,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "One-year veteran safety",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "CHI"
+        }
+      ],
+      "out": [
+        {
+          "name": "Stefon Diggs",
+          "pos": "WR",
+          "tier": "starter",
+          "pts": -1.0,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "Released March, signed Commanders in August",
+          "source": "https://www.espn.com/nfl/story/_/id/49538915/sources-wr-stefon-diggs-set-sign-commanders",
+          "to": "WSH"
+        },
+        {
+          "name": "Cole Strange",
+          "pos": "OG",
+          "tier": "starter",
+          "pts": -0.5,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 guard signed with Chargers",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "LAC"
+        },
+        {
+          "name": "Garrett Bradbury",
+          "pos": "C",
+          "tier": "starter",
+          "pts": -0.5,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 center traded to Bears",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "CHI",
+          "via": "trade"
+        }
+      ],
+      "off": 1.4,
+      "def": 1.2,
+      "st": 0.0,
+      "raw_net": 2.6,
+      "net": 2.6
+    },
+    "NO": {
+      "in": [
+        {
+          "name": "David Edwards",
+          "pos": "OG",
+          "tier": "starter",
+          "pts": 0.7,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Four-year $61M starting guard",
+          "source": "https://www.neworleanssaints.com/news/david-edwards-guard-nfl-free-agency-2026-saints-roster-moves",
+          "from": "BUF"
+        },
+        {
+          "name": "Travis Etienne",
+          "pos": "RB",
+          "tier": "starter",
+          "pts": 0.6,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Four-year lead back",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "JAX"
+        },
+        {
+          "name": "Kaden Elliss",
+          "pos": "LB",
+          "tier": "starter",
+          "pts": 0.6,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Reunion, three-year $33M",
+          "source": "https://www.neworleanssaints.com/news/kaden-elliss-linebacker-nfl-free-agency-2026-saints-roster-moves",
+          "from": "ATL"
+        }
+      ],
+      "out": [
+        {
+          "name": "Demario Davis",
+          "pos": "LB",
+          "tier": "starter",
+          "pts": -0.5,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 ILB signed with Jets",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "NYJ"
+        },
+        {
+          "name": "Alontae Taylor",
+          "pos": "CB",
+          "tier": "starter",
+          "pts": -1.0,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 CB1 signed with Titans",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "TEN"
+        }
+      ],
+      "off": 1.3,
+      "def": -0.9,
+      "st": 0.0,
+      "raw_net": 0.4,
+      "net": 0.4
+    },
+    "NYG": {
+      "in": [
+        {
+          "name": "Isaiah Likely",
+          "pos": "TE",
+          "tier": "starter",
+          "pts": 0.8,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Three-year $40M TE1",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "BAL"
+        },
+        {
+          "name": "Tremaine Edmunds",
+          "pos": "LB",
+          "tier": "starter",
+          "pts": 0.6,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Three-year $36M ILB",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "CHI"
+        },
+        {
+          "name": "Greg Newsome II",
+          "pos": "CB",
+          "tier": "starter",
+          "pts": 0.6,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "One-year $8M outside CB",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "CLE"
+        },
+        {
+          "name": "Darnell Mooney",
+          "pos": "WR",
+          "tier": "starter",
+          "pts": 0.5,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "One-year up to $10M WR2",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "ATL"
+        }
+      ],
+      "out": [
+        {
+          "name": "Dexter Lawrence",
+          "pos": "IDL",
+          "tier": "star",
+          "pts": -1.8,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 DT1 traded for No. 10",
+          "source": "https://www.bengals.com/news/dexter-lawrence-trade-giants-bengals-roster-update-2026",
+          "to": "CIN",
+          "via": "trade"
+        },
+        {
+          "name": "Wan'Dale Robinson",
+          "pos": "WR",
+          "tier": "starter",
+          "pts": -0.8,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 WR1 signed with Titans",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "TEN"
+        },
+        {
+          "name": "Cor'Dale Flott",
+          "pos": "CB",
+          "tier": "starter",
+          "pts": -0.8,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 CB signed with Titans",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "TEN"
+        },
+        {
+          "name": "Daniel Bellinger",
+          "pos": "TE",
+          "tier": "starter",
+          "pts": -0.5,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 TE signed with Titans",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "TEN"
+        }
+      ],
+      "off": 0.0,
+      "def": -1.4,
+      "st": 0.0,
+      "raw_net": -1.4,
+      "net": -1.4
+    },
+    "NYJ": {
+      "in": [
+        {
+          "name": "Geno Smith",
+          "pos": "QB",
+          "tier": "starter",
+          "pts": 1.0,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Starting QB via late-round pick swap",
+          "source": "https://www.newyorkjets.com/news/jets-acquire-quarterback-geno-smith-trade-raiders-03-11-2026",
+          "from": "LV",
+          "via": "trade"
+        },
+        {
+          "name": "Minkah Fitzpatrick",
+          "pos": "S",
+          "tier": "starter",
+          "pts": 0.8,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Pro Bowl safety plus three-year $40M",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "MIA",
+          "via": "trade"
+        },
+        {
+          "name": "Joseph Ossai",
+          "pos": "EDGE",
+          "tier": "starter",
+          "pts": 0.7,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Three-year $36M edge",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "CIN"
+        },
+        {
+          "name": "Demario Davis",
+          "pos": "LB",
+          "tier": "starter",
+          "pts": 0.5,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Two-year veteran ILB",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "NO"
+        },
+        {
+          "name": "Dylan Parham",
+          "pos": "OG",
+          "tier": "starter",
+          "pts": 0.5,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Two-year interior starter",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "LV"
+        },
+        {
+          "name": "David Onyemata",
+          "pos": "IDL",
+          "tier": "starter",
+          "pts": 0.5,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "One-year $10.5M DT",
+          "source": "https://www.newyorkjets.com/news/jets-sign-david-onyemata-free-agency-03-12-2026",
+          "from": "ATL"
+        },
+        {
+          "name": "T'Vondre Sweat",
+          "pos": "IDL",
+          "tier": "starter",
+          "pts": 0.7,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Starting NT via Johnson swap",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "TEN",
+          "via": "trade"
+        }
+      ],
+      "out": [
+        {
+          "name": "Alijah Vera-Tucker",
+          "pos": "OG",
+          "tier": "starter",
+          "pts": -0.8,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 interior signed with Patriots",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "NE"
+        },
+        {
+          "name": "Quincy Williams",
+          "pos": "LB",
+          "tier": "starter",
+          "pts": -0.5,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 LB signed with Browns",
+          "source": "https://www.clevelandbrowns.com/news/browns-agree-to-terms-with-lb-quincy-williams",
+          "to": "CLE"
+        },
+        {
+          "name": "Jermaine Johnson II",
+          "pos": "EDGE",
+          "tier": "starter",
+          "pts": -0.7,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 edge swapped for Sweat",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "TEN",
+          "via": "trade"
+        },
+        {
+          "name": "John Simpson",
+          "pos": "OG",
+          "to": "BAL",
+          "tier": "starter",
+          "pts": -0.5,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 starting guard signed with Ravens",
+          "source": "https://www.espn.com/nfl/story/_/id/48154231/sources-ravens-reach-3-year-deal-guard-john-simpson"
+        }
+      ],
+      "off": 0.2,
+      "def": 2.0,
+      "st": 0.0,
+      "raw_net": 2.2,
+      "net": 2.2
+    },
+    "PHI": {
+      "in": [
+        {
+          "name": "Riq Woolen",
+          "pos": "CB",
+          "tier": "starter",
+          "pts": 1.0,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "One-year up to $15M CB2",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "SEA"
+        },
+        {
+          "name": "Jonathan Greenard",
+          "pos": "EDGE",
+          "tier": "starter",
+          "pts": 1.0,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Traded then four-year $100M extension",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "MIN",
+          "via": "trade"
+        }
+      ],
+      "out": [
+        {
+          "name": "A.J. Brown",
+          "pos": "WR",
+          "tier": "star",
+          "pts": -1.8,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 WR1 traded after June 1",
+          "source": "https://www.philadelphiaeagles.com/news/eagles-trade-aj-brown-to-the-patriots",
+          "to": "NE",
+          "via": "trade"
+        },
+        {
+          "name": "Jaelan Phillips",
+          "pos": "EDGE",
+          "tier": "star",
+          "pts": -1.7,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 EDGE1 signed with Panthers",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "CAR"
+        },
+        {
+          "name": "Nakobe Dean",
+          "pos": "LB",
+          "tier": "starter",
+          "pts": -0.6,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 ILB signed with Raiders",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "LV"
+        },
+        {
+          "name": "Reed Blankenship",
+          "pos": "S",
+          "tier": "starter",
+          "pts": -0.6,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 safety signed with Texans",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "HOU"
+        },
+        {
+          "name": "Jahan Dotson",
+          "pos": "WR",
+          "tier": "rotational",
+          "pts": -0.4,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 WR signed with Falcons",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "ATL"
+        }
+      ],
+      "off": -2.2,
+      "def": -0.9,
+      "st": 0.0,
+      "raw_net": -3.1,
+      "net": -3.1
+    },
+    "PIT": {
+      "in": [
+        {
+          "name": "Michael Pittman Jr.",
+          "pos": "WR",
+          "tier": "starter",
+          "pts": 0.8,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Traded then three-year $59M",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "IND",
+          "via": "trade"
+        },
+        {
+          "name": "Jamel Dean",
+          "pos": "CB",
+          "tier": "starter",
+          "pts": 0.9,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Three-year $36.75M outside CB",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "TB"
+        },
+        {
+          "name": "Rico Dowdle",
+          "pos": "RB",
+          "tier": "rotational",
+          "pts": 0.4,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Gainwell replacement, McCarthy tie",
+          "source": "https://www.steelers.com/news/steelers-sign-dowdle",
+          "from": "CAR"
+        },
+        {
+          "name": "Jaquan Brisker",
+          "pos": "S",
+          "tier": "starter",
+          "pts": 0.5,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "One-year $5.5M safety",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "CHI"
+        }
+      ],
+      "out": [
+        {
+          "name": "Isaac Seumalo",
+          "pos": "OG",
+          "tier": "starter",
+          "pts": -0.6,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 starting guard to Cardinals",
+          "source": "https://www.azcardinals.com/news/isaac-seumalo-feeling-at-home-now-that-he-s-signed-with-cardinals",
+          "to": "ARI"
+        },
+        {
+          "name": "Kenny Gainwell",
+          "pos": "RB",
+          "tier": "rotational",
+          "pts": -0.4,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 passing-down back to Bucs",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "TB"
+        },
+        {
+          "name": "James Pierre",
+          "pos": "CB",
+          "tier": "rotational",
+          "pts": -0.3,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 CB signed with Vikings",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "MIN"
+        }
+      ],
+      "off": 0.2,
+      "def": 1.1,
+      "st": 0.0,
+      "raw_net": 1.3,
+      "net": 1.3
+    },
+    "SEA": {
+      "in": [
+        {
+          "name": "Dante Fowler Jr.",
+          "pos": "EDGE",
+          "tier": "depth",
+          "pts": 0.2,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "One-year edge depth after Mafe left",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "UFA"
+        }
+      ],
+      "out": [
+        {
+          "name": "Kenneth Walker III",
+          "pos": "RB",
+          "tier": "starter",
+          "pts": -0.7,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 lead back, Super Bowl MVP to Chiefs",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "KC"
+        },
+        {
+          "name": "Riq Woolen",
+          "pos": "CB",
+          "tier": "starter",
+          "pts": -1.0,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 CB signed with Eagles",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "PHI"
+        },
+        {
+          "name": "Coby Bryant",
+          "pos": "S",
+          "tier": "starter",
+          "pts": -0.7,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 safety signed with Bears",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "CHI"
+        },
+        {
+          "name": "Boye Mafe",
+          "pos": "EDGE",
+          "tier": "starter",
+          "pts": -0.9,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 edge signed with Bengals",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "CIN"
+        }
+      ],
+      "off": -0.7,
+      "def": -2.4,
+      "st": 0.0,
+      "raw_net": -3.1,
+      "net": -3.1
+    },
+    "SF": {
+      "in": [
+        {
+          "name": "Mike Evans",
+          "pos": "WR",
+          "tier": "starter",
+          "pts": 1.0,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Aging WR1, three-year after Aiyuk/Jennings holes",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "TB"
+        },
+        {
+          "name": "Osa Odighizuwa",
+          "pos": "IDL",
+          "tier": "starter",
+          "pts": 0.8,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Starting DT for 2026 third",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "DAL",
+          "via": "trade"
+        },
+        {
+          "name": "Christian Kirk",
+          "pos": "WR",
+          "tier": "rotational",
+          "pts": 0.4,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "One-year slot/outside depth after 2025 in Houston",
+          "source": "https://www.49ers.com/news/49ers-sign-wr-christian-kirk-p-corliss-waitman-to-one-year-deals-re-sign-dl-sam-okuayinonu",
+          "from": "HOU"
+        }
+      ],
+      "out": [
+        {
+          "name": "Jauan Jennings",
+          "pos": "WR",
+          "tier": "starter",
+          "pts": -0.6,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 WR signed with Vikings",
+          "source": "https://www.nfl.com/news/vikings-signing-ex-49ers-wr-jauan-jennings-to-one-year-8-million-deal",
+          "to": "MIN"
+        }
+      ],
+      "off": 0.8,
+      "def": 0.8,
+      "st": 0.0,
+      "raw_net": 1.6,
+      "net": 1.6
+    },
+    "TB": {
+      "in": [
+        {
+          "name": "Kenny Gainwell",
+          "pos": "RB",
+          "tier": "rotational",
+          "pts": 0.4,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Two-year $14M passing-down back",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "PIT"
+        },
+        {
+          "name": "Alex Anzalone",
+          "pos": "LB",
+          "tier": "starter",
+          "pts": 0.4,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Two-year $17M ILB",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "DET"
+        }
+      ],
+      "out": [
+        {
+          "name": "Mike Evans",
+          "pos": "WR",
+          "tier": "starter",
+          "pts": -1.0,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "Franchise WR walked after 11 seasons",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "SF"
+        },
+        {
+          "name": "Jamel Dean",
+          "pos": "CB",
+          "tier": "starter",
+          "pts": -0.9,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 CB1 signed with Steelers",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "PIT"
+        },
+        {
+          "name": "Lavonte David",
+          "pos": "LB",
+          "tier": "starter",
+          "pts": -0.5,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 ILB still unsigned Aug 19",
+          "source": "https://www.spotrac.com/nfl/free-agents/signed/_/year/2026",
+          "to": "UFA"
+        },
+        {
+          "name": "Haason Reddick",
+          "pos": "EDGE",
+          "tier": "starter",
+          "pts": -0.5,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 edge still unsigned Aug 19",
+          "source": "https://www.spotrac.com/nfl/free-agents/signed/_/year/2026",
+          "to": "UFA"
+        }
+      ],
+      "off": -0.6,
+      "def": -1.5,
+      "st": 0.0,
+      "raw_net": -2.1,
+      "net": -2.1
+    },
+    "TEN": {
+      "in": [
+        {
+          "name": "Wan'Dale Robinson",
+          "pos": "WR",
+          "tier": "starter",
+          "pts": 0.8,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Daboll reunion, four-year $70M",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "NYG"
+        },
+        {
+          "name": "John Franklin-Myers",
+          "pos": "IDL",
+          "tier": "starter",
+          "pts": 1.0,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Three-year $63M interior rusher",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "DEN"
+        },
+        {
+          "name": "Alontae Taylor",
+          "pos": "CB",
+          "tier": "starter",
+          "pts": 1.0,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Three-year $60M CB1",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "NO"
+        },
+        {
+          "name": "Cor'Dale Flott",
+          "pos": "CB",
+          "tier": "starter",
+          "pts": 0.8,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Three-year $45M CB2",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "NYG"
+        },
+        {
+          "name": "Daniel Bellinger",
+          "pos": "TE",
+          "tier": "starter",
+          "pts": 0.5,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Three-year $24M TE",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "NYG"
+        },
+        {
+          "name": "Jermaine Johnson II",
+          "pos": "EDGE",
+          "tier": "starter",
+          "pts": 0.7,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Starting edge via Sweat swap",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "NYJ",
+          "via": "trade"
+        }
+      ],
+      "out": [
+        {
+          "name": "Chigoziem Okonkwo",
+          "pos": "TE",
+          "tier": "starter",
+          "pts": -0.6,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 TE signed with Commanders",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "WSH"
+        },
+        {
+          "name": "T'Vondre Sweat",
+          "pos": "IDL",
+          "tier": "starter",
+          "pts": -0.7,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 NT swapped to Jets",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "NYJ",
+          "via": "trade"
+        }
+      ],
+      "off": 0.7,
+      "def": 2.8,
+      "st": 0.0,
+      "raw_net": 3.5,
+      "net": 3.5
+    },
+    "WSH": {
+      "in": [
+        {
+          "name": "Odafe Oweh",
+          "pos": "EDGE",
+          "tier": "star",
+          "pts": 1.5,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Four-year $100M, Chargers-version rusher",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "LAC"
+        },
+        {
+          "name": "Stefon Diggs",
+          "pos": "WR",
+          "tier": "starter",
+          "pts": 1.0,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "August WR2 behind McLaurin, one-year",
+          "source": "https://www.espn.com/nfl/story/_/id/49538915/sources-wr-stefon-diggs-set-sign-commanders",
+          "from": "NE"
+        },
+        {
+          "name": "Leo Chenal",
+          "pos": "LB",
+          "tier": "starter",
+          "pts": 0.5,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Three-year $24.75M ILB",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "KC"
+        },
+        {
+          "name": "Chigoziem Okonkwo",
+          "pos": "TE",
+          "tier": "starter",
+          "pts": 0.6,
+          "unit": "OFF",
+          "in_prior": false,
+          "note": "Three-year up to $30M TE",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "TEN"
+        },
+        {
+          "name": "Nick Cross",
+          "pos": "S",
+          "tier": "starter",
+          "pts": 0.5,
+          "unit": "DEF",
+          "in_prior": false,
+          "note": "Two-year safety",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "from": "IND"
+        }
+      ],
+      "out": [
+        {
+          "name": "Tyler Biadasz",
+          "pos": "C",
+          "tier": "starter",
+          "pts": -0.8,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 center signed with Chargers",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "LAC"
+        },
+        {
+          "name": "Chris Rodriguez Jr.",
+          "pos": "RB",
+          "tier": "rotational",
+          "pts": -0.3,
+          "unit": "OFF",
+          "in_prior": true,
+          "note": "2025 back signed with Jaguars",
+          "source": "https://www.nfl.com/news/2026-nfl-free-agency-tracker-latest-signings-trades-contract-info-for-all-32-teams",
+          "to": "JAX"
+        },
+        {
+          "name": "Marshon Lattimore",
+          "pos": "CB",
+          "tier": "starter",
+          "pts": -0.6,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 CB still unsigned Aug 19",
+          "source": "https://www.spotrac.com/nfl/free-agents/signed/_/year/2026",
+          "to": "UFA"
+        },
+        {
+          "name": "Bobby Wagner",
+          "pos": "LB",
+          "tier": "starter",
+          "pts": -0.4,
+          "unit": "DEF",
+          "in_prior": true,
+          "note": "2025 ILB still unsigned Aug 19",
+          "source": "https://www.spotrac.com/nfl/free-agents/signed/_/year/2026",
+          "to": "UFA"
+        }
+      ],
+      "off": 0.5,
+      "def": 1.5,
+      "st": 0.0,
+      "raw_net": 2.0,
+      "net": 2.0
+    }
+  }
+}

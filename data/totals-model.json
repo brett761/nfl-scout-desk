@@ -1,0 +1,21 @@
+{
+  "pulled": "2026-08-19",
+  "season_stats": 2025,
+  "source": "prior-2025.json raw off_ppg / def_ppg (FOX Sports 2025 REG scoring). No 2026 forecasts.",
+  "formula": "our_total = 0.5 * (home_off_ppg + away_def_ppg) + 0.5 * (away_off_ppg + home_def_ppg) + wx_total",
+  "formula_note": "First term is the home offense vs away defense scoring environment; second is away offense vs home defense. Average of the two sides, then weather. ppg are 2025 regular-season raw stats already on disk in prior-2025.json (teams.*.raw). Do not seed Week 1 2026 totals from a market number in August.",
+  "hfa": {
+    "points": 0.0,
+    "note": "HFA is already in the spread. It is not added again to the total."
+  },
+  "wx_total": {
+    "source": "weather-scale.json (user-entered wind / temp / precip / roof)",
+    "note": "0 or negative. Dome or closed roof = 0. See weather-scale.json."
+  },
+  "league_mean_2025_total": 46.0281,
+  "league_mean_2025_off_ppg": 23.0125,
+  "league_mean_2025_def_ppg": 23.0156,
+  "n_teams": 32,
+  "n_games_per_team": 17,
+  "worked_example": "our_total = 0.5*(home.off_ppg + away.def_ppg) + 0.5*(away.off_ppg + home.def_ppg) + 0.0 + wx_total. League mean of that expression with wx=0 is 46.0281 (mean 2025 off_ppg + mean 2025 def_ppg across 32 clubs)."
+}

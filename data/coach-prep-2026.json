@@ -1,0 +1,750 @@
+{
+  "pulled": "2026-08-19",
+  "sources": [
+    "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv"
+  ],
+  "scoring": {
+    "min_n": 4,
+    "dead_zone": 0.15,
+    "max_pts": 1.0,
+    "note": "pts = clamp((win_rate-0.5)*2*min(1,n/8), \u00b11) if n>=4 and |rate-0.5|>=0.15 else 0. ATS preferred."
+  },
+  "coaches": {
+    "ARI": {
+      "name": "Mike LaFleur",
+      "week1": {
+        "wins": 0,
+        "losses": 0,
+        "pushes": 0,
+        "n": 0,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 0,
+        "su_losses": 0
+      },
+      "bye": {
+        "wins": 0,
+        "losses": 0,
+        "pushes": 0,
+        "n": 0,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 0,
+        "su_losses": 0
+      }
+    },
+    "ATL": {
+      "name": "Kevin Stefanski",
+      "week1": {
+        "wins": 4,
+        "losses": 2,
+        "pushes": 0,
+        "n": 6,
+        "book": "ATS",
+        "pts": 0.25,
+        "su_wins": 2,
+        "su_losses": 4
+      },
+      "bye": {
+        "wins": 1,
+        "losses": 5,
+        "pushes": 0,
+        "n": 6,
+        "book": "ATS",
+        "pts": -0.5,
+        "su_wins": 3,
+        "su_losses": 3
+      }
+    },
+    "BAL": {
+      "name": "Jesse Minter",
+      "week1": {
+        "wins": 0,
+        "losses": 0,
+        "pushes": 0,
+        "n": 0,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 0,
+        "su_losses": 0
+      },
+      "bye": {
+        "wins": 0,
+        "losses": 0,
+        "pushes": 0,
+        "n": 0,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 0,
+        "su_losses": 0
+      }
+    },
+    "BUF": {
+      "name": "Joe Brady",
+      "week1": {
+        "wins": 0,
+        "losses": 0,
+        "pushes": 0,
+        "n": 0,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 0,
+        "su_losses": 0
+      },
+      "bye": {
+        "wins": 0,
+        "losses": 0,
+        "pushes": 0,
+        "n": 0,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 0,
+        "su_losses": 0
+      }
+    },
+    "CAR": {
+      "name": "Dave Canales",
+      "week1": {
+        "wins": 0,
+        "losses": 2,
+        "pushes": 0,
+        "n": 2,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 0,
+        "su_losses": 2
+      },
+      "bye": {
+        "wins": 1,
+        "losses": 1,
+        "pushes": 0,
+        "n": 2,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 0,
+        "su_losses": 2
+      }
+    },
+    "CHI": {
+      "name": "Ben Johnson",
+      "week1": {
+        "wins": 0,
+        "losses": 1,
+        "pushes": 0,
+        "n": 1,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 0,
+        "su_losses": 1
+      },
+      "bye": {
+        "wins": 1,
+        "losses": 0,
+        "pushes": 0,
+        "n": 1,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 1,
+        "su_losses": 0
+      }
+    },
+    "CIN": {
+      "name": "Zac Taylor",
+      "week1": {
+        "wins": 2,
+        "losses": 5,
+        "pushes": 0,
+        "n": 7,
+        "book": "ATS",
+        "pts": -0.38,
+        "su_wins": 2,
+        "su_losses": 5
+      },
+      "bye": {
+        "wins": 3,
+        "losses": 4,
+        "pushes": 0,
+        "n": 7,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 3,
+        "su_losses": 4
+      }
+    },
+    "CLE": {
+      "name": "Todd Monken",
+      "week1": {
+        "wins": 0,
+        "losses": 0,
+        "pushes": 0,
+        "n": 0,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 0,
+        "su_losses": 0
+      },
+      "bye": {
+        "wins": 0,
+        "losses": 0,
+        "pushes": 0,
+        "n": 0,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 0,
+        "su_losses": 0
+      }
+    },
+    "DAL": {
+      "name": "Brian Schottenheimer",
+      "week1": {
+        "wins": 1,
+        "losses": 0,
+        "pushes": 0,
+        "n": 1,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 0,
+        "su_losses": 1
+      },
+      "bye": {
+        "wins": 1,
+        "losses": 0,
+        "pushes": 0,
+        "n": 1,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 1,
+        "su_losses": 0
+      }
+    },
+    "DEN": {
+      "name": "Sean Payton",
+      "week1": {
+        "wins": 8,
+        "losses": 10,
+        "pushes": 0,
+        "n": 18,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 9,
+        "su_losses": 9
+      },
+      "bye": {
+        "wins": 12,
+        "losses": 10,
+        "pushes": 0,
+        "n": 22,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 16,
+        "su_losses": 6
+      }
+    },
+    "DET": {
+      "name": "Dan Campbell",
+      "week1": {
+        "wins": 4,
+        "losses": 1,
+        "pushes": 0,
+        "n": 5,
+        "book": "ATS",
+        "pts": 0.38,
+        "su_wins": 2,
+        "su_losses": 3
+      },
+      "bye": {
+        "wins": 4,
+        "losses": 3,
+        "pushes": 0,
+        "n": 7,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 3,
+        "su_losses": 3
+      }
+    },
+    "GB": {
+      "name": "Matt LaFleur",
+      "week1": {
+        "wins": 4,
+        "losses": 3,
+        "pushes": 0,
+        "n": 7,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 4,
+        "su_losses": 3
+      },
+      "bye": {
+        "wins": 4,
+        "losses": 6,
+        "pushes": 0,
+        "n": 10,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 6,
+        "su_losses": 4
+      }
+    },
+    "HOU": {
+      "name": "DeMeco Ryans",
+      "week1": {
+        "wins": 0,
+        "losses": 3,
+        "pushes": 0,
+        "n": 3,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 1,
+        "su_losses": 2
+      },
+      "bye": {
+        "wins": 1,
+        "losses": 2,
+        "pushes": 0,
+        "n": 3,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 1,
+        "su_losses": 2
+      }
+    },
+    "IND": {
+      "name": "Shane Steichen",
+      "week1": {
+        "wins": 2,
+        "losses": 1,
+        "pushes": 0,
+        "n": 3,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 1,
+        "su_losses": 2
+      },
+      "bye": {
+        "wins": 2,
+        "losses": 1,
+        "pushes": 0,
+        "n": 3,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 1,
+        "su_losses": 2
+      }
+    },
+    "JAX": {
+      "name": "Liam Coen",
+      "week1": {
+        "wins": 1,
+        "losses": 0,
+        "pushes": 0,
+        "n": 1,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 1,
+        "su_losses": 0
+      },
+      "bye": {
+        "wins": 0,
+        "losses": 1,
+        "pushes": 0,
+        "n": 1,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 1,
+        "su_losses": 0
+      }
+    },
+    "KC": {
+      "name": "Andy Reid",
+      "week1": {
+        "wins": 15,
+        "losses": 11,
+        "pushes": 1,
+        "n": 26,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 17,
+        "su_losses": 10
+      },
+      "bye": {
+        "wins": 21,
+        "losses": 16,
+        "pushes": 0,
+        "n": 37,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 31,
+        "su_losses": 6
+      }
+    },
+    "LV": {
+      "name": "Klint Kubiak",
+      "week1": {
+        "wins": 0,
+        "losses": 0,
+        "pushes": 0,
+        "n": 0,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 0,
+        "su_losses": 0
+      },
+      "bye": {
+        "wins": 0,
+        "losses": 0,
+        "pushes": 0,
+        "n": 0,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 0,
+        "su_losses": 0
+      }
+    },
+    "LAC": {
+      "name": "Jim Harbaugh",
+      "week1": {
+        "wins": 6,
+        "losses": 0,
+        "pushes": 0,
+        "n": 6,
+        "book": "ATS",
+        "pts": 0.75,
+        "su_wins": 6,
+        "su_losses": 0
+      },
+      "bye": {
+        "wins": 5,
+        "losses": 3,
+        "pushes": 0,
+        "n": 8,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 5,
+        "su_losses": 2
+      }
+    },
+    "LAR": {
+      "name": "Sean McVay",
+      "week1": {
+        "wins": 7,
+        "losses": 2,
+        "pushes": 0,
+        "n": 9,
+        "book": "ATS",
+        "pts": 0.56,
+        "su_wins": 7,
+        "su_losses": 2
+      },
+      "bye": {
+        "wins": 5,
+        "losses": 5,
+        "pushes": 0,
+        "n": 10,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 7,
+        "su_losses": 3
+      }
+    },
+    "MIA": {
+      "name": "Jeff Hafley",
+      "week1": {
+        "wins": 0,
+        "losses": 0,
+        "pushes": 0,
+        "n": 0,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 0,
+        "su_losses": 0
+      },
+      "bye": {
+        "wins": 0,
+        "losses": 0,
+        "pushes": 0,
+        "n": 0,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 0,
+        "su_losses": 0
+      }
+    },
+    "MIN": {
+      "name": "Kevin O'Connell",
+      "week1": {
+        "wins": 3,
+        "losses": 1,
+        "pushes": 0,
+        "n": 4,
+        "book": "ATS",
+        "pts": 0.25,
+        "su_wins": 3,
+        "su_losses": 1
+      },
+      "bye": {
+        "wins": 1,
+        "losses": 2,
+        "pushes": 1,
+        "n": 3,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 2,
+        "su_losses": 2
+      }
+    },
+    "NE": {
+      "name": "Mike Vrabel",
+      "week1": {
+        "wins": 2,
+        "losses": 5,
+        "pushes": 0,
+        "n": 7,
+        "book": "ATS",
+        "pts": -0.38,
+        "su_wins": 2,
+        "su_losses": 5
+      },
+      "bye": {
+        "wins": 6,
+        "losses": 2,
+        "pushes": 0,
+        "n": 8,
+        "book": "ATS",
+        "pts": 0.5,
+        "su_wins": 6,
+        "su_losses": 2
+      }
+    },
+    "NO": {
+      "name": "Kellen Moore",
+      "week1": {
+        "wins": 0,
+        "losses": 1,
+        "pushes": 0,
+        "n": 1,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 0,
+        "su_losses": 1
+      },
+      "bye": {
+        "wins": 0,
+        "losses": 1,
+        "pushes": 0,
+        "n": 1,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 0,
+        "su_losses": 1
+      }
+    },
+    "NYG": {
+      "name": "John Harbaugh",
+      "week1": {
+        "wins": 12,
+        "losses": 6,
+        "pushes": 0,
+        "n": 18,
+        "book": "ATS",
+        "pts": 0.33,
+        "su_wins": 12,
+        "su_losses": 6
+      },
+      "bye": {
+        "wins": 12,
+        "losses": 9,
+        "pushes": 0,
+        "n": 21,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 17,
+        "su_losses": 4
+      }
+    },
+    "NYJ": {
+      "name": "Aaron Glenn",
+      "week1": {
+        "wins": 1,
+        "losses": 0,
+        "pushes": 0,
+        "n": 1,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 0,
+        "su_losses": 1
+      },
+      "bye": {
+        "wins": 1,
+        "losses": 0,
+        "pushes": 0,
+        "n": 1,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 1,
+        "su_losses": 0
+      }
+    },
+    "PHI": {
+      "name": "Nick Sirianni",
+      "week1": {
+        "wins": 3,
+        "losses": 2,
+        "pushes": 0,
+        "n": 5,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 5,
+        "su_losses": 0
+      },
+      "bye": {
+        "wins": 4,
+        "losses": 1,
+        "pushes": 1,
+        "n": 5,
+        "book": "ATS",
+        "pts": 0.38,
+        "su_wins": 6,
+        "su_losses": 0
+      }
+    },
+    "PIT": {
+      "name": "Mike McCarthy",
+      "week1": {
+        "wins": 11,
+        "losses": 7,
+        "pushes": 0,
+        "n": 18,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 11,
+        "su_losses": 7
+      },
+      "bye": {
+        "wins": 14,
+        "losses": 6,
+        "pushes": 1,
+        "n": 20,
+        "book": "ATS",
+        "pts": 0.4,
+        "su_wins": 14,
+        "su_losses": 7
+      }
+    },
+    "SF": {
+      "name": "Kyle Shanahan",
+      "week1": {
+        "wins": 4,
+        "losses": 5,
+        "pushes": 0,
+        "n": 9,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 5,
+        "su_losses": 4
+      },
+      "bye": {
+        "wins": 5,
+        "losses": 6,
+        "pushes": 0,
+        "n": 11,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 8,
+        "su_losses": 3
+      }
+    },
+    "SEA": {
+      "name": "Mike Macdonald",
+      "week1": {
+        "wins": 0,
+        "losses": 2,
+        "pushes": 0,
+        "n": 2,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 1,
+        "su_losses": 1
+      },
+      "bye": {
+        "wins": 3,
+        "losses": 0,
+        "pushes": 0,
+        "n": 3,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 3,
+        "su_losses": 0
+      }
+    },
+    "TB": {
+      "name": "Todd Bowles",
+      "week1": {
+        "wins": 6,
+        "losses": 2,
+        "pushes": 0,
+        "n": 8,
+        "book": "ATS",
+        "pts": 0.5,
+        "su_wins": 6,
+        "su_losses": 2
+      },
+      "bye": {
+        "wins": 3,
+        "losses": 5,
+        "pushes": 0,
+        "n": 8,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 2,
+        "su_losses": 6
+      }
+    },
+    "TEN": {
+      "name": "Robert Saleh",
+      "week1": {
+        "wins": 1,
+        "losses": 3,
+        "pushes": 0,
+        "n": 4,
+        "book": "ATS",
+        "pts": -0.25,
+        "su_wins": 1,
+        "su_losses": 3
+      },
+      "bye": {
+        "wins": 0,
+        "losses": 2,
+        "pushes": 1,
+        "n": 2,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 1,
+        "su_losses": 2
+      }
+    },
+    "WSH": {
+      "name": "Dan Quinn",
+      "week1": {
+        "wins": 2,
+        "losses": 6,
+        "pushes": 0,
+        "n": 8,
+        "book": "ATS",
+        "pts": -0.5,
+        "su_wins": 3,
+        "su_losses": 5
+      },
+      "bye": {
+        "wins": 5,
+        "losses": 3,
+        "pushes": 0,
+        "n": 8,
+        "book": "ATS",
+        "pts": 0,
+        "su_wins": 5,
+        "su_losses": 3
+      }
+    }
+  }
+}

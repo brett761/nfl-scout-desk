@@ -1,0 +1,591 @@
+{
+  "pulled": "2026-08-19",
+  "source": "nflverse games.csv REG 1999-2025",
+  "source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
+  "n_games": 6967,
+  "seasons": "1999-2025",
+  "game_type": "REG",
+  "spread_line_meaning": "nflverse spread_line is home-relative and the OPPOSITE of a typical betting home line: a positive number means the home team was favored, a negative number means the away team was favored. It lines up with result = home_score - away_score. Typical posted home line L = -spread_line. Verified on header + rows (e.g. 2024_01_BAL_KC: KC home, spread_line=3, KC won 27-20; 2025_01_KC_LAC: LAC home, spread_line=-3, KC road favorite). Dictionary: nflverse/nfldata DATASETS.md.",
+  "by_line_note": "FREQUENCY table ignores the posted market line. For each candidate home line L in [-14, +14] step 0.5 (PK=0), P(home covers L) = share of games with home_margin + L > 0, P(push) = home_margin + L == 0 (integers only), P(away covers) = home_margin + L < 0. n is all 6967 completed REG games, not the count actually posted at L. posted_n uses typical home line = -spread_line.",
+  "margin_counts": {
+    "-49": 1,
+    "-46": 1,
+    "-45": 2,
+    "-43": 2,
+    "-42": 1,
+    "-41": 2,
+    "-40": 2,
+    "-39": 1,
+    "-38": 9,
+    "-37": 5,
+    "-36": 2,
+    "-35": 14,
+    "-34": 16,
+    "-33": 6,
+    "-32": 10,
+    "-31": 25,
+    "-30": 14,
+    "-29": 16,
+    "-28": 48,
+    "-27": 29,
+    "-26": 15,
+    "-25": 28,
+    "-24": 64,
+    "-23": 32,
+    "-22": 26,
+    "-21": 80,
+    "-20": 58,
+    "-19": 34,
+    "-18": 63,
+    "-17": 102,
+    "-16": 68,
+    "-15": 50,
+    "-14": 151,
+    "-13": 83,
+    "-12": 42,
+    "-11": 73,
+    "-10": 154,
+    "-9": 47,
+    "-8": 113,
+    "-7": 295,
+    "-6": 200,
+    "-5": 123,
+    "-4": 178,
+    "-3": 478,
+    "-2": 143,
+    "-1": 141,
+    "0": 15,
+    "1": 152,
+    "2": 144,
+    "3": 568,
+    "4": 163,
+    "5": 125,
+    "6": 215,
+    "7": 339,
+    "8": 151,
+    "9": 66,
+    "10": 236,
+    "11": 87,
+    "12": 71,
+    "13": 108,
+    "14": 183,
+    "15": 56,
+    "16": 80,
+    "17": 141,
+    "18": 96,
+    "19": 47,
+    "20": 90,
+    "21": 107,
+    "22": 45,
+    "23": 46,
+    "24": 88,
+    "25": 50,
+    "26": 42,
+    "27": 61,
+    "28": 71,
+    "29": 23,
+    "30": 18,
+    "31": 55,
+    "32": 25,
+    "33": 13,
+    "34": 24,
+    "35": 26,
+    "36": 3,
+    "37": 18,
+    "38": 24,
+    "39": 3,
+    "40": 8,
+    "41": 9,
+    "42": 6,
+    "43": 3,
+    "44": 2,
+    "45": 6,
+    "46": 2,
+    "48": 2,
+    "49": 2,
+    "50": 1,
+    "52": 1,
+    "55": 1,
+    "58": 1,
+    "59": 1
+  },
+  "land": {
+    "3": 0.1501,
+    "6": 0.0596,
+    "7": 0.091,
+    "10": 0.056,
+    "14": 0.0479
+  },
+  "land_n": {
+    "3": 1046,
+    "6": 415,
+    "7": 634,
+    "10": 390,
+    "14": 334
+  },
+  "by_line": {
+    "-14": {
+      "n": 6967,
+      "home_cover": 0.1862,
+      "push": 0.0263,
+      "away_cover": 0.7875
+    },
+    "-13.5": {
+      "n": 6967,
+      "home_cover": 0.2124,
+      "push": 0.0,
+      "away_cover": 0.7876
+    },
+    "-13": {
+      "n": 6967,
+      "home_cover": 0.2124,
+      "push": 0.0155,
+      "away_cover": 0.7721
+    },
+    "-12.5": {
+      "n": 6967,
+      "home_cover": 0.2279,
+      "push": 0.0,
+      "away_cover": 0.7721
+    },
+    "-12": {
+      "n": 6967,
+      "home_cover": 0.2279,
+      "push": 0.0102,
+      "away_cover": 0.7619
+    },
+    "-11.5": {
+      "n": 6967,
+      "home_cover": 0.2381,
+      "push": 0.0,
+      "away_cover": 0.7619
+    },
+    "-11": {
+      "n": 6967,
+      "home_cover": 0.2381,
+      "push": 0.0125,
+      "away_cover": 0.7494
+    },
+    "-10.5": {
+      "n": 6967,
+      "home_cover": 0.2506,
+      "push": 0.0,
+      "away_cover": 0.7494
+    },
+    "-10": {
+      "n": 6967,
+      "home_cover": 0.2506,
+      "push": 0.0339,
+      "away_cover": 0.7155
+    },
+    "-9.5": {
+      "n": 6967,
+      "home_cover": 0.2845,
+      "push": 0.0,
+      "away_cover": 0.7155
+    },
+    "-9": {
+      "n": 6967,
+      "home_cover": 0.2845,
+      "push": 0.0095,
+      "away_cover": 0.706
+    },
+    "-8.5": {
+      "n": 6967,
+      "home_cover": 0.294,
+      "push": 0.0,
+      "away_cover": 0.706
+    },
+    "-8": {
+      "n": 6967,
+      "home_cover": 0.294,
+      "push": 0.0217,
+      "away_cover": 0.6843
+    },
+    "-7.5": {
+      "n": 6967,
+      "home_cover": 0.3156,
+      "push": 0.0,
+      "away_cover": 0.6844
+    },
+    "-7": {
+      "n": 6967,
+      "home_cover": 0.3156,
+      "push": 0.0487,
+      "away_cover": 0.6357
+    },
+    "-6.5": {
+      "n": 6967,
+      "home_cover": 0.3643,
+      "push": 0.0,
+      "away_cover": 0.6357
+    },
+    "-6": {
+      "n": 6967,
+      "home_cover": 0.3643,
+      "push": 0.0309,
+      "away_cover": 0.6048
+    },
+    "-5.5": {
+      "n": 6967,
+      "home_cover": 0.3951,
+      "push": 0.0,
+      "away_cover": 0.6049
+    },
+    "-5": {
+      "n": 6967,
+      "home_cover": 0.3951,
+      "push": 0.0179,
+      "away_cover": 0.587
+    },
+    "-4.5": {
+      "n": 6967,
+      "home_cover": 0.4131,
+      "push": 0.0,
+      "away_cover": 0.5869
+    },
+    "-4": {
+      "n": 6967,
+      "home_cover": 0.4131,
+      "push": 0.0234,
+      "away_cover": 0.5635
+    },
+    "-3.5": {
+      "n": 6967,
+      "home_cover": 0.4365,
+      "push": 0.0,
+      "away_cover": 0.5635
+    },
+    "-3": {
+      "n": 6967,
+      "home_cover": 0.4365,
+      "push": 0.0815,
+      "away_cover": 0.482
+    },
+    "-2.5": {
+      "n": 6967,
+      "home_cover": 0.518,
+      "push": 0.0,
+      "away_cover": 0.482
+    },
+    "-2": {
+      "n": 6967,
+      "home_cover": 0.518,
+      "push": 0.0207,
+      "away_cover": 0.4613
+    },
+    "-1.5": {
+      "n": 6967,
+      "home_cover": 0.5387,
+      "push": 0.0,
+      "away_cover": 0.4613
+    },
+    "-1": {
+      "n": 6967,
+      "home_cover": 0.5387,
+      "push": 0.0218,
+      "away_cover": 0.4395
+    },
+    "-0.5": {
+      "n": 6967,
+      "home_cover": 0.5605,
+      "push": 0.0,
+      "away_cover": 0.4395
+    },
+    "0": {
+      "n": 6967,
+      "home_cover": 0.5605,
+      "push": 0.0022,
+      "away_cover": 0.4373
+    },
+    "0.5": {
+      "n": 6967,
+      "home_cover": 0.5627,
+      "push": 0.0,
+      "away_cover": 0.4373
+    },
+    "1": {
+      "n": 6967,
+      "home_cover": 0.5627,
+      "push": 0.0202,
+      "away_cover": 0.4171
+    },
+    "1.5": {
+      "n": 6967,
+      "home_cover": 0.5829,
+      "push": 0.0,
+      "away_cover": 0.4171
+    },
+    "2": {
+      "n": 6967,
+      "home_cover": 0.5829,
+      "push": 0.0205,
+      "away_cover": 0.3966
+    },
+    "2.5": {
+      "n": 6967,
+      "home_cover": 0.6034,
+      "push": 0.0,
+      "away_cover": 0.3966
+    },
+    "3": {
+      "n": 6967,
+      "home_cover": 0.6034,
+      "push": 0.0686,
+      "away_cover": 0.328
+    },
+    "3.5": {
+      "n": 6967,
+      "home_cover": 0.672,
+      "push": 0.0,
+      "away_cover": 0.328
+    },
+    "4": {
+      "n": 6967,
+      "home_cover": 0.672,
+      "push": 0.0255,
+      "away_cover": 0.3025
+    },
+    "4.5": {
+      "n": 6967,
+      "home_cover": 0.6976,
+      "push": 0.0,
+      "away_cover": 0.3024
+    },
+    "5": {
+      "n": 6967,
+      "home_cover": 0.6976,
+      "push": 0.0177,
+      "away_cover": 0.2847
+    },
+    "5.5": {
+      "n": 6967,
+      "home_cover": 0.7152,
+      "push": 0.0,
+      "away_cover": 0.2848
+    },
+    "6": {
+      "n": 6967,
+      "home_cover": 0.7152,
+      "push": 0.0287,
+      "away_cover": 0.2561
+    },
+    "6.5": {
+      "n": 6967,
+      "home_cover": 0.7439,
+      "push": 0.0,
+      "away_cover": 0.2561
+    },
+    "7": {
+      "n": 6967,
+      "home_cover": 0.7439,
+      "push": 0.0423,
+      "away_cover": 0.2138
+    },
+    "7.5": {
+      "n": 6967,
+      "home_cover": 0.7863,
+      "push": 0.0,
+      "away_cover": 0.2137
+    },
+    "8": {
+      "n": 6967,
+      "home_cover": 0.7863,
+      "push": 0.0162,
+      "away_cover": 0.1975
+    },
+    "8.5": {
+      "n": 6967,
+      "home_cover": 0.8025,
+      "push": 0.0,
+      "away_cover": 0.1975
+    },
+    "9": {
+      "n": 6967,
+      "home_cover": 0.8025,
+      "push": 0.0067,
+      "away_cover": 0.1908
+    },
+    "9.5": {
+      "n": 6967,
+      "home_cover": 0.8092,
+      "push": 0.0,
+      "away_cover": 0.1908
+    },
+    "10": {
+      "n": 6967,
+      "home_cover": 0.8092,
+      "push": 0.0221,
+      "away_cover": 0.1687
+    },
+    "10.5": {
+      "n": 6967,
+      "home_cover": 0.8313,
+      "push": 0.0,
+      "away_cover": 0.1687
+    },
+    "11": {
+      "n": 6967,
+      "home_cover": 0.8313,
+      "push": 0.0105,
+      "away_cover": 0.1582
+    },
+    "11.5": {
+      "n": 6967,
+      "home_cover": 0.8418,
+      "push": 0.0,
+      "away_cover": 0.1582
+    },
+    "12": {
+      "n": 6967,
+      "home_cover": 0.8418,
+      "push": 0.006,
+      "away_cover": 0.1522
+    },
+    "12.5": {
+      "n": 6967,
+      "home_cover": 0.8479,
+      "push": 0.0,
+      "away_cover": 0.1521
+    },
+    "13": {
+      "n": 6967,
+      "home_cover": 0.8479,
+      "push": 0.0119,
+      "away_cover": 0.1402
+    },
+    "13.5": {
+      "n": 6967,
+      "home_cover": 0.8598,
+      "push": 0.0,
+      "away_cover": 0.1402
+    },
+    "14": {
+      "n": 6967,
+      "home_cover": 0.8598,
+      "push": 0.0217,
+      "away_cover": 0.1185
+    }
+  },
+  "point_value": {
+    "3": 0.0815,
+    "7": 0.0487,
+    "9": 0.0095
+  },
+  "point_value_detail": {
+    "3": {
+      "from_home_line": -2.5,
+      "to_home_line": -3.5,
+      "home_cover_from": 0.518,
+      "home_cover_to": 0.4365,
+      "delta": 0.0815,
+      "equals_P_home_margin": 0.08152719965551887,
+      "two_sided_land": 0.1501
+    },
+    "7": {
+      "from_home_line": -6.5,
+      "to_home_line": -7.5,
+      "home_cover_from": 0.3643,
+      "home_cover_to": 0.3156,
+      "delta": 0.0487,
+      "equals_P_home_margin": 0.048657958949332565,
+      "two_sided_land": 0.091
+    },
+    "9": {
+      "from_home_line": -8.5,
+      "to_home_line": -9.5,
+      "home_cover_from": 0.294,
+      "home_cover_to": 0.2845,
+      "delta": 0.0095,
+      "equals_P_home_margin": 0.009473230945887756,
+      "two_sided_land": 0.0162
+    }
+  },
+  "edge_value": {
+    "through_3": "1 pt from home -2.5 to -3.5 cuts home_cover by 0.0815 (P(home_margin==3)=0.0815). 1 pt from -6.5 to -7.5 cuts home_cover by 0.0487. 1 pt from -8.5 to -9.5 cuts home_cover by 0.0095. Buying 1.5 through 3 is not 1.5 at 9 \u2014 3 (and 7) are key landing numbers; 9 is not.",
+    "two_sided_land": "|margin|==3 lands 0.1501; |margin|==7 lands 0.0910; |margin|==9 lands 0.0162."
+  },
+  "posted_n": {
+    "-3": 628,
+    "3": 484,
+    "-3.5": 393,
+    "-7": 313,
+    "-1": 278,
+    "-2.5": 275,
+    "3.5": 263,
+    "1": 258,
+    "2.5": 229,
+    "-6.5": 227,
+    "-6": 221,
+    "-4": 210,
+    "-7.5": 195,
+    "-5.5": 179,
+    "-4.5": 171,
+    "7": 156,
+    "-10": 155,
+    "-9.5": 120,
+    "6": 117,
+    "-9": 115,
+    "4": 114,
+    "-5": 111,
+    "-1.5": 108,
+    "-10.5": 102,
+    "6.5": 98,
+    "5.5": 96,
+    "-2": 95,
+    "1.5": 86,
+    "4.5": 83,
+    "7.5": 80,
+    "-8.5": 72,
+    "-14": 71,
+    "2": 65,
+    "-8": 64,
+    "-11": 64,
+    "-13": 60,
+    "-13.5": 51,
+    "5": 49,
+    "10": 45,
+    "-12.5": 39,
+    "9.5": 34,
+    "9": 33,
+    "-11.5": 32,
+    "0": 30,
+    "10.5": 29,
+    "-12": 29,
+    "8": 25,
+    "8.5": 22,
+    "-14.5": 19,
+    "14": 14,
+    "-15.5": 14,
+    "-17": 14,
+    "-16.5": 13,
+    "13": 12,
+    "11": 12,
+    "-16": 11,
+    "13.5": 10,
+    "11.5": 10,
+    "-15": 10,
+    "14.5": 8,
+    "12.5": 7,
+    "-17.5": 5,
+    "15.5": 4,
+    "12": 4,
+    "-20.5": 4,
+    "-18": 3,
+    "17": 2,
+    "16": 2,
+    "15": 2,
+    "-19": 2,
+    "-19.5": 2,
+    "-22": 2,
+    "19": 1,
+    "18": 1,
+    "16.5": 1,
+    "-18.5": 1,
+    "-20": 1,
+    "-24": 1,
+    "-27": 1
+  },
+  "posted_spread_missing": 0,
+  "mean_home_margin": 2.2397
+}

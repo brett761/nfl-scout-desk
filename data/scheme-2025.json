@@ -1,0 +1,992 @@
+{
+  "pulled": "2026-08-19",
+  "season": 2025,
+  "pbp_used": 2025,
+  "source": "nflverse play_by_play_2025.parquet REG + roster_2025.csv for receiver position",
+  "source_url": "https://github.com/nflverse/nflverse-data/releases/download/pbp/play_by_play_2025.parquet",
+  "roster_url": "https://github.com/nflverse/nflverse-data/releases/download/rosters/roster_2025.csv",
+  "n_clubs": 32,
+  "definitions": {
+    "plays": "offensive snaps: season_type==REG and play_type in {pass, run} (kneels/spikes/special excluded)",
+    "shotgun_pct": "mean of nflverse shotgun flag (0/1) on those snaps",
+    "under_center_pct": "1 - shotgun_pct. No pistol column in this PBP file; pistol (if any) is inside the not-shotgun bucket and is therefore counted as under center here \u2014 we cannot split it.",
+    "dropbacks": "pass_attempt==1. nflverse pass_attempt already includes sacks (REG 2025: pa|sack == pa). Not qb_dropback (that also counts scrambles).",
+    "checkdown_pct": "among dropbacks with a target (receiver_player_id present), share where roster position is RB/HB/FB AND air_yards is not null and air_yards <= 1. Receiver position joined from roster_2025.csv on gsis_id; 2025 REG targeted throws all matched.",
+    "rb_target_pct": "targets to RB/HB/FB regardless of air yards, divided by dropbacks",
+    "avg_air_yards": "mean air_yards on targeted throws with non-null air_yards",
+    "starter_qb": "passer_player_name with the most dropbacks for that club",
+    "backup_dropbacks": "dropbacks not by the starter",
+    "starter_epa": "mean epa on starter dropbacks",
+    "backup_epa": "mean epa on backup dropbacks",
+    "backup_gap_epa": "backup_epa - starter_epa (usually negative)",
+    "backup_gap_pts": "only if backup_dropbacks >= 40: clamp(backup_gap_epa * 8, -4.5, 0). The 8 is a crude translation of EPA/dropback into spread points (0.125 EPA/play \u2248 1 point of spread). Clamped to [-4.5, 0] so a backup who outplayed the starter is not priced as a plus. Sample < 40 \u2192 null; do not invent 3.5.",
+    "team_codes": "WSH not WAS; LAR not LA; JAX not JAC. Mapped from nflverse abbreviations."
+  },
+  "league": {
+    "plays": 32941,
+    "shotgun_pct": 0.659,
+    "dropbacks": 18822,
+    "checkdown_pct": 0.1149,
+    "rb_target_pct": 0.1588,
+    "avg_air_yards": 7.855,
+    "targeted": 16699
+  },
+  "teams": {
+    "ARI": {
+      "plays": 1074,
+      "shotgun_pct": 0.7142,
+      "under_center_pct": 0.2858,
+      "dropbacks": 711,
+      "checkdown_pct": 0.129,
+      "rb_target_pct": 0.1744,
+      "avg_air_yards": 7.2123,
+      "starter_qb": "J.Brissett",
+      "starter_dropbacks": 531,
+      "backup_dropbacks": 180,
+      "starter_epa": -0.0113,
+      "backup_epa": 0.0443,
+      "backup_gap_epa": 0.0556,
+      "backup_gap_pts": 0.0,
+      "targeted": 620,
+      "checkdowns": 80,
+      "rb_targets": 124,
+      "backups": [
+        {
+          "name": "K.Murray",
+          "dropbacks": 177
+        },
+        {
+          "name": "K.Slovis",
+          "dropbacks": 2
+        },
+        {
+          "name": "M.Haack",
+          "dropbacks": 1
+        }
+      ]
+    },
+    "ATL": {
+      "plays": 1036,
+      "shotgun_pct": 0.805,
+      "under_center_pct": 0.195,
+      "dropbacks": 574,
+      "checkdown_pct": 0.1284,
+      "rb_target_pct": 0.2073,
+      "avg_air_yards": 8.0617,
+      "starter_qb": "M.Penix",
+      "starter_dropbacks": 290,
+      "backup_dropbacks": 284,
+      "starter_epa": -0.0038,
+      "backup_epa": -0.0193,
+      "backup_gap_epa": -0.0155,
+      "backup_gap_pts": -0.124,
+      "targeted": 522,
+      "checkdowns": 67,
+      "rb_targets": 119,
+      "backups": [
+        {
+          "name": "K.Cousins",
+          "dropbacks": 284
+        }
+      ]
+    },
+    "BAL": {
+      "plays": 956,
+      "shotgun_pct": 0.6485,
+      "under_center_pct": 0.3515,
+      "dropbacks": 469,
+      "checkdown_pct": 0.1198,
+      "rb_target_pct": 0.1557,
+      "avg_air_yards": 8.2948,
+      "starter_qb": "L.Jackson",
+      "starter_dropbacks": 340,
+      "backup_dropbacks": 129,
+      "starter_epa": 0.0192,
+      "backup_epa": -0.1805,
+      "backup_gap_epa": -0.1997,
+      "backup_gap_pts": -1.5975,
+      "targeted": 409,
+      "checkdowns": 49,
+      "rb_targets": 73,
+      "backups": [
+        {
+          "name": "T.Huntley",
+          "dropbacks": 75
+        },
+        {
+          "name": "C.Rush",
+          "dropbacks": 53
+        },
+        {
+          "name": "D.Henry",
+          "dropbacks": 1
+        }
+      ]
+    },
+    "BUF": {
+      "plays": 1065,
+      "shotgun_pct": 0.4977,
+      "under_center_pct": 0.5023,
+      "dropbacks": 544,
+      "checkdown_pct": 0.1148,
+      "rb_target_pct": 0.1654,
+      "avg_air_yards": 7.2902,
+      "starter_qb": "J.Allen",
+      "starter_dropbacks": 507,
+      "backup_dropbacks": 37,
+      "starter_epa": 0.1204,
+      "backup_epa": 0.6955,
+      "backup_gap_epa": 0.5751,
+      "backup_gap_pts": null,
+      "targeted": 488,
+      "checkdowns": 56,
+      "rb_targets": 90,
+      "backups": [
+        {
+          "name": "M.Trubisky",
+          "dropbacks": 37
+        }
+      ]
+    },
+    "CAR": {
+      "plays": 996,
+      "shotgun_pct": 0.6687,
+      "under_center_pct": 0.3313,
+      "dropbacks": 553,
+      "checkdown_pct": 0.1411,
+      "rb_target_pct": 0.1664,
+      "avg_air_yards": 6.7896,
+      "starter_qb": "B.Young",
+      "starter_dropbacks": 508,
+      "backup_dropbacks": 45,
+      "starter_epa": -0.0434,
+      "backup_epa": -0.1258,
+      "backup_gap_epa": -0.0824,
+      "backup_gap_pts": -0.6596,
+      "targeted": 482,
+      "checkdowns": 68,
+      "rb_targets": 92,
+      "backups": [
+        {
+          "name": "A.Dalton",
+          "dropbacks": 45
+        }
+      ]
+    },
+    "CHI": {
+      "plays": 1096,
+      "shotgun_pct": 0.5182,
+      "under_center_pct": 0.4818,
+      "dropbacks": 602,
+      "checkdown_pct": 0.0914,
+      "rb_target_pct": 0.1312,
+      "avg_air_yards": 8.5263,
+      "starter_qb": "C.Williams",
+      "starter_dropbacks": 596,
+      "backup_dropbacks": 6,
+      "starter_epa": 0.0708,
+      "backup_epa": 0.9468,
+      "backup_gap_epa": 0.876,
+      "backup_gap_pts": null,
+      "targeted": 536,
+      "checkdowns": 49,
+      "rb_targets": 79,
+      "backups": [
+        {
+          "name": "T.Bagent",
+          "dropbacks": 4
+        },
+        {
+          "name": "C.Kmet",
+          "dropbacks": 1
+        },
+        {
+          "name": "D.Moore",
+          "dropbacks": 1
+        }
+      ]
+    },
+    "CIN": {
+      "plays": 1049,
+      "shotgun_pct": 0.8198,
+      "under_center_pct": 0.1802,
+      "dropbacks": 680,
+      "checkdown_pct": 0.1129,
+      "rb_target_pct": 0.1647,
+      "avg_air_yards": 7.5082,
+      "starter_qb": "J.Burrow",
+      "starter_dropbacks": 278,
+      "backup_dropbacks": 402,
+      "starter_epa": 0.0991,
+      "backup_epa": -0.1138,
+      "backup_gap_epa": -0.213,
+      "backup_gap_pts": -1.704,
+      "targeted": 611,
+      "checkdowns": 69,
+      "rb_targets": 112,
+      "backups": [
+        {
+          "name": "J.Flacco",
+          "dropbacks": 267
+        },
+        {
+          "name": "J.Browning",
+          "dropbacks": 134
+        },
+        {
+          "name": "B.Rypien",
+          "dropbacks": 1
+        }
+      ]
+    },
+    "CLE": {
+      "plays": 1028,
+      "shotgun_pct": 0.6732,
+      "under_center_pct": 0.3268,
+      "dropbacks": 611,
+      "checkdown_pct": 0.1584,
+      "rb_target_pct": 0.1964,
+      "avg_air_yards": 6.8793,
+      "starter_qb": "S.Sanders",
+      "starter_dropbacks": 235,
+      "backup_dropbacks": 376,
+      "starter_epa": -0.2989,
+      "backup_epa": -0.279,
+      "backup_gap_epa": 0.0199,
+      "backup_gap_pts": 0.0,
+      "targeted": 524,
+      "checkdowns": 83,
+      "rb_targets": 120,
+      "backups": [
+        {
+          "name": "D.Gabriel",
+          "dropbacks": 205
+        },
+        {
+          "name": "J.Flacco",
+          "dropbacks": 169
+        },
+        {
+          "name": "Q.Judkins",
+          "dropbacks": 1
+        },
+        {
+          "name": "C.Bojorquez",
+          "dropbacks": 1
+        }
+      ]
+    },
+    "DAL": {
+      "plays": 1104,
+      "shotgun_pct": 0.625,
+      "under_center_pct": 0.375,
+      "dropbacks": 658,
+      "checkdown_pct": 0.0836,
+      "rb_target_pct": 0.1246,
+      "avg_air_yards": 8.1137,
+      "starter_qb": "D.Prescott",
+      "starter_dropbacks": 634,
+      "backup_dropbacks": 24,
+      "starter_epa": 0.1683,
+      "backup_epa": 0.0265,
+      "backup_gap_epa": -0.1417,
+      "backup_gap_pts": null,
+      "targeted": 610,
+      "checkdowns": 51,
+      "rb_targets": 82,
+      "backups": [
+        {
+          "name": "J.Milton",
+          "dropbacks": 24
+        }
+      ]
+    },
+    "DEN": {
+      "plays": 1079,
+      "shotgun_pct": 0.6515,
+      "under_center_pct": 0.3485,
+      "dropbacks": 641,
+      "checkdown_pct": 0.1375,
+      "rb_target_pct": 0.1825,
+      "avg_air_yards": 7.5017,
+      "starter_qb": "B.Nix",
+      "starter_dropbacks": 639,
+      "backup_dropbacks": 2,
+      "starter_epa": 0.0915,
+      "backup_epa": -2.2452,
+      "backup_gap_epa": -2.3367,
+      "backup_gap_pts": null,
+      "targeted": 589,
+      "checkdowns": 81,
+      "rb_targets": 117,
+      "backups": [
+        {
+          "name": "C.Sutton",
+          "dropbacks": 1
+        },
+        {
+          "name": "R.Harvey",
+          "dropbacks": 1
+        }
+      ]
+    },
+    "DET": {
+      "plays": 1051,
+      "shotgun_pct": 0.5147,
+      "under_center_pct": 0.4853,
+      "dropbacks": 621,
+      "checkdown_pct": 0.1182,
+      "rb_target_pct": 0.1981,
+      "avg_air_yards": 6.6782,
+      "starter_qb": "J.Goff",
+      "starter_dropbacks": 616,
+      "backup_dropbacks": 5,
+      "starter_epa": 0.1728,
+      "backup_epa": -0.62,
+      "backup_gap_epa": -0.7929,
+      "backup_gap_pts": null,
+      "targeted": 550,
+      "checkdowns": 65,
+      "rb_targets": 123,
+      "backups": [
+        {
+          "name": "D.Montgomery",
+          "dropbacks": 3
+        },
+        {
+          "name": "K.Allen",
+          "dropbacks": 2
+        }
+      ]
+    },
+    "GB": {
+      "plays": 993,
+      "shotgun_pct": 0.6294,
+      "under_center_pct": 0.3706,
+      "dropbacks": 520,
+      "checkdown_pct": 0.1212,
+      "rb_target_pct": 0.1519,
+      "avg_air_yards": 8.887,
+      "starter_qb": "J.Love",
+      "starter_dropbacks": 462,
+      "backup_dropbacks": 58,
+      "starter_epa": 0.2394,
+      "backup_epa": 0.1411,
+      "backup_gap_epa": -0.0983,
+      "backup_gap_pts": -0.7864,
+      "targeted": 462,
+      "checkdowns": 56,
+      "rb_targets": 79,
+      "backups": [
+        {
+          "name": "M.Willis",
+          "dropbacks": 38
+        },
+        {
+          "name": "C.Tune",
+          "dropbacks": 20
+        }
+      ]
+    },
+    "HOU": {
+      "plays": 1078,
+      "shotgun_pct": 0.6178,
+      "under_center_pct": 0.3822,
+      "dropbacks": 618,
+      "checkdown_pct": 0.0754,
+      "rb_target_pct": 0.1246,
+      "avg_air_yards": 8.3092,
+      "starter_qb": "C.Stroud",
+      "starter_dropbacks": 449,
+      "backup_dropbacks": 169,
+      "starter_epa": 0.0861,
+      "backup_epa": -0.0991,
+      "backup_gap_epa": -0.1852,
+      "backup_gap_pts": -1.4816,
+      "targeted": 557,
+      "checkdowns": 42,
+      "rb_targets": 77,
+      "backups": [
+        {
+          "name": "D.Mills",
+          "dropbacks": 169
+        }
+      ]
+    },
+    "IND": {
+      "plays": 1011,
+      "shotgun_pct": 0.7171,
+      "under_center_pct": 0.2829,
+      "dropbacks": 582,
+      "checkdown_pct": 0.1119,
+      "rb_target_pct": 0.134,
+      "avg_air_yards": 8.066,
+      "starter_qb": "D.Jones",
+      "starter_dropbacks": 411,
+      "backup_dropbacks": 171,
+      "starter_epa": 0.1399,
+      "backup_epa": -0.1437,
+      "backup_gap_epa": -0.2835,
+      "backup_gap_pts": -2.2684,
+      "targeted": 536,
+      "checkdowns": 60,
+      "rb_targets": 78,
+      "backups": [
+        {
+          "name": "P.Rivers",
+          "dropbacks": 97
+        },
+        {
+          "name": "R.Leonard",
+          "dropbacks": 70
+        },
+        {
+          "name": "A.Richardson",
+          "dropbacks": 2
+        },
+        {
+          "name": "T.Warren",
+          "dropbacks": 1
+        },
+        {
+          "name": "R.Sanchez",
+          "dropbacks": 1
+        }
+      ]
+    },
+    "JAX": {
+      "plays": 1074,
+      "shotgun_pct": 0.6071,
+      "under_center_pct": 0.3929,
+      "dropbacks": 606,
+      "checkdown_pct": 0.1129,
+      "rb_target_pct": 0.1287,
+      "avg_air_yards": 8.9196,
+      "starter_qb": "T.Lawrence",
+      "starter_dropbacks": 603,
+      "backup_dropbacks": 3,
+      "starter_epa": 0.0547,
+      "backup_epa": 0.9666,
+      "backup_gap_epa": 0.9119,
+      "backup_gap_pts": null,
+      "targeted": 549,
+      "checkdowns": 62,
+      "rb_targets": 78,
+      "backups": [
+        {
+          "name": "N.Mullens",
+          "dropbacks": 3
+        }
+      ]
+    },
+    "KC": {
+      "plays": 1048,
+      "shotgun_pct": 0.8073,
+      "under_center_pct": 0.1927,
+      "dropbacks": 634,
+      "checkdown_pct": 0.1322,
+      "rb_target_pct": 0.1404,
+      "avg_air_yards": 7.8288,
+      "starter_qb": "P.Mahomes",
+      "starter_dropbacks": 539,
+      "backup_dropbacks": 95,
+      "starter_epa": 0.1266,
+      "backup_epa": -0.4565,
+      "backup_gap_epa": -0.5831,
+      "backup_gap_pts": -4.5,
+      "targeted": 552,
+      "checkdowns": 73,
+      "rb_targets": 89,
+      "backups": [
+        {
+          "name": "C.Oladokun",
+          "dropbacks": 63
+        },
+        {
+          "name": "S.Buechele",
+          "dropbacks": 19
+        },
+        {
+          "name": "G.Minshew",
+          "dropbacks": 13
+        }
+      ]
+    },
+    "LAC": {
+      "plays": 1080,
+      "shotgun_pct": 0.7139,
+      "under_center_pct": 0.2861,
+      "dropbacks": 629,
+      "checkdown_pct": 0.1048,
+      "rb_target_pct": 0.1176,
+      "avg_air_yards": 8.1011,
+      "starter_qb": "J.Herbert",
+      "starter_dropbacks": 566,
+      "backup_dropbacks": 63,
+      "starter_epa": 0.008,
+      "backup_epa": -0.6265,
+      "backup_gap_epa": -0.6344,
+      "backup_gap_pts": -4.5,
+      "targeted": 544,
+      "checkdowns": 57,
+      "rb_targets": 74,
+      "backups": [
+        {
+          "name": "T.Lance",
+          "dropbacks": 63
+        }
+      ]
+    },
+    "LAR": {
+      "plays": 1056,
+      "shotgun_pct": 0.41,
+      "under_center_pct": 0.59,
+      "dropbacks": 621,
+      "checkdown_pct": 0.031,
+      "rb_target_pct": 0.1031,
+      "avg_air_yards": 9.2874,
+      "starter_qb": "M.Stafford",
+      "starter_dropbacks": 620,
+      "backup_dropbacks": 1,
+      "starter_epa": 0.2273,
+      "backup_epa": -2.9846,
+      "backup_gap_epa": -3.2119,
+      "backup_gap_pts": null,
+      "targeted": 581,
+      "checkdowns": 18,
+      "rb_targets": 64,
+      "backups": [
+        {
+          "name": "J.Karty",
+          "dropbacks": 1
+        }
+      ]
+    },
+    "LV": {
+      "plays": 942,
+      "shotgun_pct": 0.6614,
+      "under_center_pct": 0.3386,
+      "dropbacks": 581,
+      "checkdown_pct": 0.1411,
+      "rb_target_pct": 0.1635,
+      "avg_air_yards": 6.4757,
+      "starter_qb": "G.Smith",
+      "starter_dropbacks": 505,
+      "backup_dropbacks": 76,
+      "starter_epa": -0.1444,
+      "backup_epa": -0.4559,
+      "backup_gap_epa": -0.3115,
+      "backup_gap_pts": -2.4923,
+      "targeted": 496,
+      "checkdowns": 70,
+      "rb_targets": 95,
+      "backups": [
+        {
+          "name": "K.Pickett",
+          "dropbacks": 53
+        },
+        {
+          "name": "A.O'Connell",
+          "dropbacks": 23
+        }
+      ]
+    },
+    "MIA": {
+      "plays": 942,
+      "shotgun_pct": 0.7144,
+      "under_center_pct": 0.2856,
+      "dropbacks": 520,
+      "checkdown_pct": 0.1634,
+      "rb_target_pct": 0.2192,
+      "avg_air_yards": 7.1429,
+      "starter_qb": "T.Tagovailoa",
+      "starter_dropbacks": 417,
+      "backup_dropbacks": 103,
+      "starter_epa": 0.0198,
+      "backup_epa": -0.1239,
+      "backup_gap_epa": -0.1438,
+      "backup_gap_pts": -1.1501,
+      "targeted": 465,
+      "checkdowns": 76,
+      "rb_targets": 114,
+      "backups": [
+        {
+          "name": "Q.Ewers",
+          "dropbacks": 91
+        },
+        {
+          "name": "Z.Wilson",
+          "dropbacks": 11
+        },
+        {
+          "name": "J.Waddle",
+          "dropbacks": 1
+        }
+      ]
+    },
+    "MIN": {
+      "plays": 943,
+      "shotgun_pct": 0.5567,
+      "under_center_pct": 0.4433,
+      "dropbacks": 548,
+      "checkdown_pct": 0.1292,
+      "rb_target_pct": 0.146,
+      "avg_air_yards": 7.9615,
+      "starter_qb": "J.McCarthy",
+      "starter_dropbacks": 273,
+      "backup_dropbacks": 275,
+      "starter_epa": -0.1982,
+      "backup_epa": -0.1781,
+      "backup_gap_epa": 0.0201,
+      "backup_gap_pts": 0.0,
+      "targeted": 472,
+      "checkdowns": 61,
+      "rb_targets": 80,
+      "backups": [
+        {
+          "name": "C.Wentz",
+          "dropbacks": 189
+        },
+        {
+          "name": "M.Brosmer",
+          "dropbacks": 85
+        },
+        {
+          "name": "C.Akers",
+          "dropbacks": 1
+        }
+      ]
+    },
+    "NE": {
+      "plays": 1017,
+      "shotgun_pct": 0.5497,
+      "under_center_pct": 0.4503,
+      "dropbacks": 551,
+      "checkdown_pct": 0.0952,
+      "rb_target_pct": 0.1561,
+      "avg_air_yards": 9.2842,
+      "starter_qb": "D.Maye",
+      "starter_dropbacks": 540,
+      "backup_dropbacks": 11,
+      "starter_epa": 0.2979,
+      "backup_epa": -0.2322,
+      "backup_gap_epa": -0.5301,
+      "backup_gap_pts": null,
+      "targeted": 483,
+      "checkdowns": 46,
+      "rb_targets": 86,
+      "backups": [
+        {
+          "name": "J.Dobbs",
+          "dropbacks": 10
+        },
+        {
+          "name": "M.Mapu",
+          "dropbacks": 1
+        }
+      ]
+    },
+    "NO": {
+      "plays": 1064,
+      "shotgun_pct": 0.7876,
+      "under_center_pct": 0.2124,
+      "dropbacks": 641,
+      "checkdown_pct": 0.0866,
+      "rb_target_pct": 0.1201,
+      "avg_air_yards": 8.2796,
+      "starter_qb": "T.Shough",
+      "starter_dropbacks": 359,
+      "backup_dropbacks": 282,
+      "starter_epa": -0.0288,
+      "backup_epa": -0.1448,
+      "backup_gap_epa": -0.116,
+      "backup_gap_pts": -0.9281,
+      "targeted": 566,
+      "checkdowns": 49,
+      "rb_targets": 77,
+      "backups": [
+        {
+          "name": "S.Rattler",
+          "dropbacks": 275
+        },
+        {
+          "name": "T.Hill",
+          "dropbacks": 6
+        },
+        {
+          "name": "C.Olave",
+          "dropbacks": 1
+        }
+      ]
+    },
+    "NYG": {
+      "plays": 1079,
+      "shotgun_pct": 0.7674,
+      "under_center_pct": 0.2326,
+      "dropbacks": 577,
+      "checkdown_pct": 0.1403,
+      "rb_target_pct": 0.1716,
+      "avg_air_yards": 8.5726,
+      "starter_qb": "J.Dart",
+      "starter_dropbacks": 376,
+      "backup_dropbacks": 201,
+      "starter_epa": -0.0218,
+      "backup_epa": 0.016,
+      "backup_gap_epa": 0.0377,
+      "backup_gap_pts": 0.0,
+      "targeted": 506,
+      "checkdowns": 71,
+      "rb_targets": 99,
+      "backups": [
+        {
+          "name": "R.Wilson",
+          "dropbacks": 129
+        },
+        {
+          "name": "J.Winston",
+          "dropbacks": 69
+        },
+        {
+          "name": "G.Olszewski",
+          "dropbacks": 2
+        },
+        {
+          "name": "D.Singletary",
+          "dropbacks": 1
+        }
+      ]
+    },
+    "NYJ": {
+      "plays": 1009,
+      "shotgun_pct": 0.7314,
+      "under_center_pct": 0.2686,
+      "dropbacks": 559,
+      "checkdown_pct": 0.1006,
+      "rb_target_pct": 0.1682,
+      "avg_air_yards": 6.8178,
+      "starter_qb": "J.Fields",
+      "starter_dropbacks": 235,
+      "backup_dropbacks": 324,
+      "starter_epa": -0.0955,
+      "backup_epa": -0.2421,
+      "backup_gap_epa": -0.1465,
+      "backup_gap_pts": -1.1721,
+      "targeted": 477,
+      "checkdowns": 48,
+      "rb_targets": 94,
+      "backups": [
+        {
+          "name": "B.Cook",
+          "dropbacks": 173
+        },
+        {
+          "name": "T.Taylor",
+          "dropbacks": 148
+        },
+        {
+          "name": "B.Hall",
+          "dropbacks": 1
+        },
+        {
+          "name": "I.Williams",
+          "dropbacks": 1
+        },
+        {
+          "name": "A.McNamara",
+          "dropbacks": 1
+        }
+      ]
+    },
+    "PHI": {
+      "plays": 995,
+      "shotgun_pct": 0.7749,
+      "under_center_pct": 0.2251,
+      "dropbacks": 534,
+      "checkdown_pct": 0.0987,
+      "rb_target_pct": 0.1311,
+      "avg_air_yards": 9.0776,
+      "starter_qb": "J.Hurts",
+      "starter_dropbacks": 488,
+      "backup_dropbacks": 46,
+      "starter_epa": 0.052,
+      "backup_epa": -0.0535,
+      "backup_gap_epa": -0.1055,
+      "backup_gap_pts": -0.844,
+      "targeted": 466,
+      "checkdowns": 46,
+      "rb_targets": 70,
+      "backups": [
+        {
+          "name": "T.McKee",
+          "dropbacks": 46
+        }
+      ]
+    },
+    "PIT": {
+      "plays": 975,
+      "shotgun_pct": 0.6667,
+      "under_center_pct": 0.3333,
+      "dropbacks": 583,
+      "checkdown_pct": 0.1832,
+      "rb_target_pct": 0.2264,
+      "avg_air_yards": 6.0651,
+      "starter_qb": "A.Rodgers",
+      "starter_dropbacks": 529,
+      "backup_dropbacks": 54,
+      "starter_epa": 0.0269,
+      "backup_epa": 0.0464,
+      "backup_gap_epa": 0.0195,
+      "backup_gap_pts": 0.0,
+      "targeted": 524,
+      "checkdowns": 96,
+      "rb_targets": 132,
+      "backups": [
+        {
+          "name": "M.Rudolph",
+          "dropbacks": 54
+        }
+      ]
+    },
+    "SEA": {
+      "plays": 997,
+      "shotgun_pct": 0.4624,
+      "under_center_pct": 0.5376,
+      "dropbacks": 510,
+      "checkdown_pct": 0.0832,
+      "rb_target_pct": 0.1235,
+      "avg_air_yards": 8.0615,
+      "starter_qb": "S.Darnold",
+      "starter_dropbacks": 506,
+      "backup_dropbacks": 4,
+      "starter_epa": 0.1242,
+      "backup_epa": -1.5657,
+      "backup_gap_epa": -1.6899,
+      "backup_gap_pts": null,
+      "targeted": 457,
+      "checkdowns": 38,
+      "rb_targets": 63,
+      "backups": [
+        {
+          "name": "D.Lock",
+          "dropbacks": 3
+        },
+        {
+          "name": "C.Kupp",
+          "dropbacks": 1
+        }
+      ]
+    },
+    "SF": {
+      "plays": 1065,
+      "shotgun_pct": 0.539,
+      "under_center_pct": 0.461,
+      "dropbacks": 606,
+      "checkdown_pct": 0.1029,
+      "rb_target_pct": 0.2789,
+      "avg_air_yards": 7.5091,
+      "starter_qb": "M.Jones",
+      "starter_dropbacks": 307,
+      "backup_dropbacks": 299,
+      "starter_epa": 0.1246,
+      "backup_epa": 0.1912,
+      "backup_gap_epa": 0.0667,
+      "backup_gap_pts": 0.0,
+      "targeted": 554,
+      "checkdowns": 57,
+      "rb_targets": 169,
+      "backups": [
+        {
+          "name": "B.Purdy",
+          "dropbacks": 298
+        },
+        {
+          "name": "C.McCaffrey",
+          "dropbacks": 1
+        }
+      ]
+    },
+    "TB": {
+      "plays": 1065,
+      "shotgun_pct": 0.6507,
+      "under_center_pct": 0.3493,
+      "dropbacks": 602,
+      "checkdown_pct": 0.1394,
+      "rb_target_pct": 0.1512,
+      "avg_air_yards": 8.0166,
+      "starter_qb": "B.Mayfield",
+      "starter_dropbacks": 585,
+      "backup_dropbacks": 17,
+      "starter_epa": -0.006,
+      "backup_epa": -0.7352,
+      "backup_gap_epa": -0.7292,
+      "backup_gap_pts": null,
+      "targeted": 545,
+      "checkdowns": 76,
+      "rb_targets": 91,
+      "backups": [
+        {
+          "name": "T.Bridgewater",
+          "dropbacks": 17
+        }
+      ]
+    },
+    "TEN": {
+      "plays": 995,
+      "shotgun_pct": 0.7286,
+      "under_center_pct": 0.2714,
+      "dropbacks": 626,
+      "checkdown_pct": 0.1189,
+      "rb_target_pct": 0.1486,
+      "avg_air_yards": 7.4019,
+      "starter_qb": "C.Ward",
+      "starter_dropbacks": 595,
+      "backup_dropbacks": 31,
+      "starter_epa": -0.1903,
+      "backup_epa": -0.7751,
+      "backup_gap_epa": -0.5848,
+      "backup_gap_pts": null,
+      "targeted": 530,
+      "checkdowns": 63,
+      "rb_targets": 93,
+      "backups": [
+        {
+          "name": "B.Allen",
+          "dropbacks": 31
+        }
+      ]
+    },
+    "WSH": {
+      "plays": 979,
+      "shotgun_pct": 0.8784,
+      "under_center_pct": 0.1216,
+      "dropbacks": 510,
+      "checkdown_pct": 0.0803,
+      "rb_target_pct": 0.1098,
+      "avg_air_yards": 8.6806,
+      "starter_qb": "M.Mariota",
+      "starter_dropbacks": 246,
+      "backup_dropbacks": 264,
+      "starter_epa": -0.0158,
+      "backup_epa": -0.0055,
+      "backup_gap_epa": 0.0103,
+      "backup_gap_pts": 0.0,
+      "targeted": 436,
+      "checkdowns": 35,
+      "rb_targets": 56,
+      "backups": [
+        {
+          "name": "J.Daniels",
+          "dropbacks": 207
+        },
+        {
+          "name": "J.Johnson",
+          "dropbacks": 56
+        },
+        {
+          "name": "T.Burks",
+          "dropbacks": 1
+        }
+      ]
+    }
+  }
+}
