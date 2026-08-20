@@ -2143,3 +2143,93 @@ input[readonly] { color: var(--muted); }
 @media (max-width: 900px) {
   .vibe-grid { grid-template-columns: 1fr; }
 }
+
+
+/* ---------- slate card tooltips (hover + tap/focus) ---------- */
+.sked-tip {
+  position: relative;
+  cursor: help;
+}
+span.sked-tip { display: inline-block; }
+.sked-tip::after {
+  content: attr(data-tip);
+  position: absolute;
+  z-index: 45;
+  left: 0;
+  top: calc(100% + 7px);
+  width: max-content;
+  max-width: min(272px, 78vw);
+  padding: 9px 11px;
+  background: #121214;
+  color: var(--cloud);
+  border: 1px solid var(--copper);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.45;
+  text-transform: none;
+  white-space: normal;
+  text-align: left;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(3px);
+  transition: opacity 0.12s ease, transform 0.12s ease, visibility 0.12s;
+}
+.sked-tip:hover,
+.sked-tip:focus,
+.sked-tip:focus-within { z-index: 46; }
+.sked-tip:hover::after,
+.sked-tip:focus::after,
+.sked-tip:focus-within::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.sked-tip:has(.sked-tip:hover)::after,
+.sked-tip:has(.sked-tip:focus)::after,
+.sked-tip:has(.sked-tip:focus-within)::after {
+  opacity: 0;
+  visibility: hidden;
+}
+.sked-tip:focus,
+.sked-tip:focus-visible {
+  outline: 1px solid var(--copper);
+  outline-offset: 2px;
+}
+.sked-mkt.sked-tip::after,
+.sked-our.sked-tip::after,
+.hfa-ctrl.sked-tip::after {
+  top: auto;
+  bottom: calc(100% + 7px);
+}
+.sked-edge.sked-tip::after,
+.sked-our.sked-tip::after,
+.sked-edge .sked-tip::after,
+.hfa-ctrl.sked-tip::after {
+  left: auto;
+  right: 0;
+}
+.sked-row {
+  position: relative;
+}
+.sked-row.is-fire.sked-tip::after {
+  left: 10px;
+  right: auto;
+  top: auto;
+  bottom: calc(100% + 6px);
+  max-width: min(320px, 86vw);
+}
+.sked-cover.sked-tip::after {
+  left: 0;
+  right: auto;
+}
+@media (max-width: 700px) {
+  .sked-tip::after {
+    left: 0;
+    right: auto;
+    max-width: min(260px, 86vw);
+  }
+}

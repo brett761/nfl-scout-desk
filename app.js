@@ -758,12 +758,12 @@ function coachChipHtml(game) {
   const pts = ptsForA(pair);
   if (n >= 4 && pts !== 0) {
     const owner = pts > 0 ? pair.a : pair.b;
-    return `<span class="hc-chip gold">HC ${esc(fmtCoachPts(Math.abs(pts)))} ${esc(lastName(owner))}</span>`;
+    return tip(`<span class="hc-chip gold">HC ${esc(fmtCoachPts(Math.abs(pts)))} ${esc(lastName(owner))}</span>`, SKED_TIPS.hcGold);
   }
   if (n >= 4) {
-    return `<span class="hc-chip">HC ${esc(rec)} · dead</span>`;
+    return tip(`<span class="hc-chip">HC ${esc(rec)} · dead</span>`, SKED_TIPS.hcDead);
   }
-  return `<span class="hc-chip">HC ${esc(rec)} · n=${n}</span>`;
+  return tip(`<span class="hc-chip">HC ${esc(rec)} · n=${n}</span>`, SKED_TIPS.hcN);
 }
 
 function prepOf(abbr) {
@@ -809,12 +809,13 @@ function prepChipOne(kind, block, name) {
   const pts = num(block.pts) || 0;
   if (n < 1) return "";
   if (n >= 4 && pts !== 0) {
-    return `<span class="hc-chip gold">${esc(kind)} ${esc(fmtCoachPts(pts))} ${esc(lastName(name))}</span>`;
+    const goldTip = kind === "W1" ? SKED_TIPS.w1Gold : SKED_TIPS.byeGold;
+    return tip(`<span class="hc-chip gold">${esc(kind)} ${esc(fmtCoachPts(pts))} ${esc(lastName(name))}</span>`, goldTip);
   }
   if (n >= 4) {
-    return `<span class="hc-chip">${esc(kind)} ${w}-${l} · dead</span>`;
+    return tip(`<span class="hc-chip">${esc(kind)} ${w}-${l} · dead</span>`, SKED_TIPS.w1Floor);
   }
-  return `<span class="hc-chip">${esc(kind)} ${w}-${l} · n=${n}</span>`;
+  return tip(`<span class="hc-chip">${esc(kind)} ${w}-${l} · n=${n}</span>`, SKED_TIPS.w1Floor);
 }
 
 function prepChipHtml(game) {
@@ -1355,6 +1356,30 @@ function esc(s) {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
 }
+
+function tip(html, text) {
+  const t = String(text ?? "");
+  return `<span class="sked-tip" data-tip="${esc(t)}" title="${esc(t)}" tabindex="0">${html}</span>`;
+}
+
+const SKED_TIPS = {
+  edge: "Street minus our number, home view. Plus = we like the home. Minus = we like the away. Example: −7.0 AWAY means we have the visitor getting 7 more points than the market. Copper number = |edge| ≥ 1.5 or we crossed 3/7. Highlight is not a ticket.",
+  crosses: "Our line and the market sit on opposite sides of a key number (3 or 7). Landing there is common. That is why a half-point is the bet. Still not an auto-fire.",
+  fire: "Highlighted when |edge| is about 1.5+ or the number crosses 3 or 7. We show the disagreement. We do not auto-bet.",
+  our: "Our home-perspective spread from the library: ratings + FA + injuries + HFA + coach/prep. Negative = home favored.",
+  mkt: "The street number you typed (or the loaded open). Shop 3+ books. This is what we subtract from to get edge.",
+  hcGold: "Coach vs coach, SU, home view. Moves the line (cap 1). n≥4 and outside the dead zone. Not ATS.",
+  hcDead: "Enough games (n≥4) but the win rate is too close to .500. Number is 0.",
+  hcN: "Under 4 H2H games. We will not put a number on it.",
+  w1Gold: "This coach's career Week 1 ATS, capped at 1. Copper = it is on the line this week.",
+  byeGold: "This coach's career post-bye ATS, capped at 1. Copper = it is on the line this week.",
+  w1Floor: "Same floor as coach H2H: 4 games or the chip is dead / n= only.",
+  wx: "Weather shades the TOTAL only, never the spread. Dome/closed = 0. Wind is the main lever.",
+  ourOu: "Our total from 2025 PPG + weather. Not market + weather.",
+  totEdge: "Market O/U minus our O/U. Plus = we are under the street. Copper if |edge| ≥ 1.5. Not a ticket.",
+  cover: "Chance the home covers that number from historical NFL margins. Info only.",
+  hfa: "Home-field we add to every non-neutral game. Melbourne is 0.",
+};
 
 function toast(msg) {
   const el = document.getElementById("toast");
@@ -2290,17 +2315,17 @@ function wxStripHtml(game, mkt) {
   const tempVal = wx.temp === "" || wx.temp == null ? "" : wx.temp;
   const ourHtml = ourOu === null
     ? ""
-    : `<span class="wx-our${edgeGold ? " gold" : ""}">OUR O/U ${esc(Number(ourOu).toFixed(1))}</span>`;
+    : tip(`<span class="wx-our${edgeGold ? " gold" : ""}">OUR O/U ${esc(Number(ourOu).toFixed(1))}</span>`, SKED_TIPS.ourOu);
   const edgeHtml = tEdge == null
     ? ""
-    : `<span class="wx-edge${edgeGold ? " gold" : ""}">TOT EDGE ${esc((tEdge > 0 ? "+" : tEdge < 0 ? "−" : "") + Math.abs(tEdge).toFixed(1))}</span>`;
+    : tip(`<span class="wx-edge${edgeGold ? " gold" : ""}">TOT EDGE ${esc((tEdge > 0 ? "+" : tEdge < 0 ? "−" : "") + Math.abs(tEdge).toFixed(1))}</span>`, SKED_TIPS.totEdge);
   return `<div class="wx-strip">
     <label>Roof <select class="mono" data-wx="${esc(game.id)}" data-wx-field="roof" aria-label="Roof">${roofOpts}</select></label>
     <label>Wind <input class="mono" type="number" min="0" step="1" data-wx="${esc(game.id)}" data-wx-field="wind" value="${esc(windVal)}" placeholder="mph" aria-label="Wind mph"></label>
     <label>Temp <input class="mono" type="number" step="1" data-wx="${esc(game.id)}" data-wx-field="temp" value="${esc(tempVal)}" placeholder="°F" aria-label="Temp F"></label>
     <label>Precip <select class="mono" data-wx="${esc(game.id)}" data-wx-field="precip" aria-label="Precip">${precipOpts}</select></label>
     <div class="wx-chips">
-      <span class="wx-chip${gold ? " gold" : ""}">WX ${esc(fmtWx(total))}</span>
+      ${tip(`<span class="wx-chip${gold ? " gold" : ""}">WX ${esc(fmtWx(total))}</span>`, SKED_TIPS.wx)}
       ${ourHtml}
       ${edgeHtml}
     </div>
@@ -2559,7 +2584,7 @@ function coverHelperHtml(ourH, mktH) {
   const mktP = coverProb(mktH);
   if (ourP === null && mktP === null) return "";
   const bit = (lab, line, p) => lab + " " + fmtSpreadNum(line) + " cover " + fmtCoverPct(p);
-  return `<p class="sked-cover">${esc(bit("our", ourH, ourP))} · ${esc(bit("mkt", mktH, mktP))}</p>`;
+  return `<p class="sked-cover sked-tip" data-tip="${esc(SKED_TIPS.cover)}" title="${esc(SKED_TIPS.cover)}" tabindex="0">${esc(bit("our", ourH, ourP))} · ${esc(bit("mkt", mktH, mktP))}</p>`;
 }
 
 function pickAbbr(text) {
@@ -2850,6 +2875,13 @@ function renderSchedule() {
   const empty = document.getElementById("sked-empty-ratings");
   const hfaEl = document.getElementById("hfa-input");
   if (hfaEl && String(hfaEl.value) !== String(hfa)) hfaEl.value = hfa;
+  const hfaCtrl = document.querySelector(".hfa-ctrl");
+  if (hfaCtrl && !hfaCtrl.hasAttribute("data-tip")) {
+    hfaCtrl.classList.add("sked-tip");
+    hfaCtrl.setAttribute("data-tip", SKED_TIPS.hfa);
+    hfaCtrl.setAttribute("title", SKED_TIPS.hfa);
+    hfaCtrl.tabIndex = 0;
+  }
   if (sub) {
     sub.textContent = "Week " + currentWeek + " · market as of 19 Aug 2026 · our number from the library · our O/U from 2025 ppg + weather · weather shades the total, not the spread · coach H2H follows the person, 4-game minimum, cap 1 point, SU not ATS · Week 1 and bye are extra prep, coach career ATS, 4-game min, cap 1";
   }
@@ -2894,13 +2926,15 @@ function renderSchedule() {
           fire = Math.abs(edge) >= 1.5 || keys.length > 0;
           const sign = edge > 0 ? "+" : edge < 0 ? "−" : "";
           const side = edge >= 1.5 ? "HOME" : edge <= -1.5 ? "AWAY" : "";
-          edgeHtml = `<span class="val${fire ? " gold" : ""}">${sign}${Math.abs(edge).toFixed(1)}</span>`
+          const signed = sign + Math.abs(edge).toFixed(1);
+          const numTip = `This edge is ${signed}${side ? " " + side : ""}. Street minus our number, home view. Plus = we like the home. Minus = we like the away.`;
+          edgeHtml = tip(`<span class="val${fire ? " gold" : ""}">${signed}</span>`, fire ? numTip + " " + SKED_TIPS.fire : numTip)
             + (side ? `<span class="sked-side">${side}</span>` : "")
-            + (keys.length ? `<span class="note">crosses ${keys.join(" / ")}</span>` : "");
+            + (keys.length ? tip(`<span class="note">crosses ${keys.join(" / ")}</span>`, SKED_TIPS.crosses) : "");
         }
       }
       const ouVal = mkt.ou == null ? "" : mkt.ou;
-      return `<article class="sked-row${fire ? " is-fire" : ""}" data-game="${esc(g.id)}">
+      return `<article class="sked-row${fire ? " is-fire sked-tip" : ""}"${fire ? ` data-tip="${esc(SKED_TIPS.fire)}" title="${esc(SKED_TIPS.fire)}"` : ""} data-game="${esc(g.id)}">
         <div class="sked-kick">${et ? esc(et.clock) + " ET" : "—"}</div>
         <div class="sked-match">
           <p class="teams-line">${match}</p>
@@ -2909,12 +2943,12 @@ function renderSchedule() {
           <p class="sked-venue">${esc(g.venue || "")}${g.city ? " · " + esc(g.city) : ""}</p>
           ${g.broadcast ? `<span class="sked-bc">${esc(g.broadcast)}</span>` : ""}
         </div>
-        <div class="sked-mkt">
+        <div class="sked-mkt sked-tip" data-tip="${esc(SKED_TIPS.mkt)}" title="${esc(SKED_TIPS.mkt)}" tabindex="0">
           <label>Mkt <input class="mono" data-odds="${esc(g.id)}" value="${esc(mkt.odds)}" placeholder="SEA -3.5" spellcheck="false"></label>
           <label>O/U <input class="mono" type="number" step="0.5" data-ou="${esc(g.id)}" value="${esc(ouVal)}"></label>
         </div>
-        <div class="sked-our"><span class="lbl">Our line</span><span class="val">${esc(ourHtml)}</span></div>
-        <div class="sked-edge"><span class="lbl">Edge</span>${edgeHtml === "—" ? '<span class="val">—</span>' : edgeHtml}${coachChipHtml(g)}${prepChipHtml(g)}</div>
+        <div class="sked-our sked-tip" data-tip="${esc(SKED_TIPS.our)}" title="${esc(SKED_TIPS.our)}" tabindex="0"><span class="lbl">Our line</span><span class="val">${esc(ourHtml)}</span></div>
+        <div class="sked-edge sked-tip" data-tip="${esc(SKED_TIPS.edge)}" title="${esc(SKED_TIPS.edge)}" tabindex="0"><span class="lbl">Edge</span>${edgeHtml === "—" ? '<span class="val">—</span>' : edgeHtml}${coachChipHtml(g)}${prepChipHtml(g)}</div>
         ${wxStripHtml(g, mkt)}
         ${hasOurNumber(g) ? coverHelperHtml(ourHomeSpread(g, hfa), mkt.parsed.homeLine) : ""}
       </article>`;
