@@ -1,0 +1,194 @@
+{
+  "name": "NFL Scout vibe filters",
+  "updated": "2026-08-20",
+  "purpose": "Keep club-room NFL news. Quiet is better than junk.",
+  "pull": {
+    "news_per_club": 10,
+    "keep": 3,
+    "note": "Pull ~10 search_news hits, then filter, then keep 3. Do not backfill a slot with a leftover that failed."
+  },
+  "keep": [
+    "Injury, PUP, IR, designation, surgery, or practice status for this club or a player on this club",
+    "Signing, cut, trade, extension, tryout, or roster battle on this club",
+    "Joint practice, preseason, or camp involving this club as a participant",
+    "Ownership, stadium, or staff move for this club",
+    "A current player or coach of this club in this week's news (rankings, quotes, snaps)"
+  ],
+  "drop": [
+    "Other pro sports (MLB, NBA, NHL, MLS, F1, golf, tennis, boxing) even if the city matches",
+    "College football (uniforms, portal, NCAA, campus rivalry) unless the person is on this club's current roster this week",
+    "Wrong club: this team is not a participant. Do not park leftover league stories here",
+    "Celebrity, streamer, flag football, or crossover stunt",
+    "Trading cards, merch, creator lists, podcast endings, fan uniform edits",
+    "Body/looks, locker-room gag, hot-dog fridge, mental-health PR clapback",
+    "Nostalgia recap of a game or career more than ~2 years old with no new news",
+    "Near-duplicate of another item already kept for this club"
+  ],
+  "must_be_about_this_club": true,
+  "exclude_terms": {
+    "ARI": [
+      "Diamondbacks",
+      "Suns",
+      "Coyotes"
+    ],
+    "ATL": [
+      "Braves",
+      "Hawks"
+    ],
+    "BAL": [
+      "Orioles"
+    ],
+    "BOS_NE": [
+      "Celtics",
+      "Red Sox",
+      "Bruins"
+    ],
+    "CHI": [
+      "Baylor",
+      "Cubs",
+      "White Sox",
+      "Bulls",
+      "Blackhawks"
+    ],
+    "DEN": [
+      "Boise State",
+      "Nuggets",
+      "Rockies",
+      "Avalanche"
+    ],
+    "DET": [
+      "Tigers",
+      "Pistons",
+      "Red Wings"
+    ],
+    "HOU": [
+      "Texas Tech",
+      "Astros",
+      "Rockets"
+    ],
+    "KC": [
+      "Texas Tech",
+      "Royals"
+    ],
+    "LAC": [
+      "Clippers",
+      "Lakers"
+    ],
+    "LAR": [
+      "Lakers",
+      "Dodgers",
+      "Kings"
+    ],
+    "MIA": [
+      "Heat",
+      "Marlins"
+    ],
+    "MIN": [
+      "Twins",
+      "Timberwolves",
+      "Wild"
+    ],
+    "NE": [
+      "Knicks",
+      "Celtics",
+      "Red Sox",
+      "NBA"
+    ],
+    "NO": [
+      "Pelicans"
+    ],
+    "NYG": [
+      "Knicks",
+      "Yankees",
+      "Mets",
+      "Rangers"
+    ],
+    "NYJ": [
+      "Knicks",
+      "Yankees",
+      "Mets",
+      "Aston Martin",
+      "F1",
+      "Formula"
+    ],
+    "PHI": [
+      "Phillies",
+      "Sixers",
+      "Flyers"
+    ],
+    "PIT": [
+      "Pirates",
+      "Penguins"
+    ],
+    "SEA": [
+      "Mariners",
+      "Kraken"
+    ],
+    "SF": [
+      "Giants baseball",
+      "Warriors"
+    ],
+    "TB": [
+      "Baylor",
+      "Rays",
+      "Lightning"
+    ],
+    "TEN": [
+      "Volunteers",
+      "Vols",
+      "Neyland",
+      "Texas Tech",
+      "Alabama"
+    ],
+    "WSH": [
+      "Nationals",
+      "Capitals",
+      "Wizards"
+    ]
+  },
+  "college_flags": [
+    "transfer portal",
+    "ncaa",
+    "eligibility",
+    "volunteers",
+    "vols",
+    "neyland",
+    "baylor",
+    "texas tech",
+    "boise state",
+    "college football",
+    "throwback uniforms for"
+  ],
+  "other_sport_flags": [
+    "nba",
+    "mlb",
+    "nhl",
+    "mls",
+    "knicks",
+    "diamondbacks",
+    "formula 1",
+    "f1",
+    "aston martin",
+    "world series",
+    "stanley cup",
+    "finals mvp"
+  ],
+  "filler_flags": [
+    "trading card",
+    "topps",
+    "must-follow",
+    "content creator",
+    "podcast run",
+    "fan edit",
+    "facemask",
+    "hot dog",
+    "tight shorts",
+    "meme nicknames"
+  ],
+  "nostalgia_flags": [
+    "fans relive",
+    "unstoppable a-train",
+    "years later",
+    "classic clip"
+  ]
+}
