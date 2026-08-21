@@ -19,21 +19,21 @@
       <span class="wm-mark" aria-hidden="true">◆</span>
       <span class="wm-stack">
         <span class="wm-kicker">NFL SCOUT · THE DESK · 2026</span>
-        <span class="wm-tag">Bet a number, not a team.</span>
+        <span class="wm-tag">Who’s better, and by how much.</span>
       </span>
     </a>
 
     <nav class="nav" aria-label="Desk sections">
-      <a href="#desk" data-nav="desk">Desk</a>
-      <a href="#card" data-nav="card">Card</a>
+      <a href="#desk" data-nav="desk">Home</a>
+      <a href="#card" data-nav="card">This week</a>
       <a href="#teams" data-nav="teams">Teams</a>
-      <a href="#schedule" data-nav="schedule">Schedule</a>
-      <a href="#residuals" data-nav="residuals">Residuals</a>
-      <a href="#keys" data-nav="keys">Keys</a>
-      <a href="#vibe" data-nav="vibe">Vibe</a>
-      <a href="#clock" data-nav="clock">Clock</a>
-      <a href="#playbook" data-nav="playbook">Playbook</a>
-      <a href="#tickets" data-nav="tickets">Tickets</a>
+      <a href="#schedule" data-nav="schedule">Games</a>
+      <a href="#residuals" data-nav="residuals">After</a>
+      <a href="#keys" data-nav="keys">3 &amp; 7</a>
+      <a href="#vibe" data-nav="vibe">Buzz</a>
+      <a href="#clock" data-nav="clock">Plan</a>
+      <a href="#playbook" data-nav="playbook">Rules</a>
+      <a href="#tickets" data-nav="tickets">Bets</a>
     </nav>
 
     <div class="mast-week">
@@ -49,9 +49,9 @@
     <!-- ========== DESK ========== -->
     <section id="desk" class="view is-active" data-view="desk" aria-labelledby="desk-title">
       <div class="hero">
-        <p class="eyebrow">Brett Cunningham · America/New_York · Season 2026</p>
-        <h1 id="desk-title">Bet a number, <em>not a team.</em></h1>
-        <p class="lede">A Billy Walters process desk. Fire <span class="mono">$150</span> only with ~1.5 points of edge or a key-number reason. Five windows are not five must-bets. Pass is a result. Profit is variance. The league is even.</p>
+        <p class="eyebrow">NFL 2026 · a ratings desk, not a fan page</p>
+        <h1 id="desk-title">Who’s better, <em>and by how much.</em></h1>
+        <p class="lede">We rate every NFL team against a league-average club. Then we turn that into a predicted gap for each game and compare it to the sportsbook. If we disagree by about a field goal, we look at a bet. If not, we skip. No favorite teams.</p>
         <ul class="hero-meta" id="hero-meta">
           <li>Wednesday 19 Aug 2026</li>
           <li>Preseason</li>
@@ -59,15 +59,25 @@
           <li>TNF decision window</li>
         </ul>
         <div class="key-chips" aria-hidden="true">
-          <span class="key-chip"><em>3</em><small>first key</small></span>
-          <span class="key-chip"><em>7</em><small>then 6 / 14</small></span>
+          <span class="key-chip"><em>3</em><small>field goal</small></span>
+          <span class="key-chip"><em>7</em><small>touchdown</small></span>
         </div>
+      </div>
+
+      <div class="start-path" id="start-path">
+        <p class="section-label">How to read this</p>
+        <ol>
+          <li><a href="#teams">Teams</a> — plus is better than average. Minus is worse. Tap a club to see why.</li>
+          <li><a href="#schedule">Games</a> — tap a matchup. <strong>Our line</strong> is the gap we expect. <strong>Street</strong> is the sportsbook.</li>
+          <li>Copper means we disagree by about a field goal, or we landed on opposite sides of 3 or 7. That is a look, not an automatic bet.</li>
+          <li>Skip is normal. Most games we do not bet.</li>
+        </ol>
       </div>
 
       <div class="kpi-grid" id="kpi-grid" aria-live="polite"></div>
 
       <div class="desk-settings">
-        <label>Sharp book
+        <label>Book we grade the last number against
           <input id="sharp-book-desk" type="text" class="mono" spellcheck="false" autocomplete="off">
         </label>
       </div>
@@ -75,16 +85,16 @@
       <div class="split-wrap">
         <div class="split-head">
           <h2>This week’s <span class="mono">$1,000</span></h2>
-          <p>Process $150 · Entertainment $50 · leftover stays on the felt.</p>
+          <p>$150 on a one-game bet is the score. $50 parlays are for fun. Leftover stays unspent.</p>
         </div>
         <div class="split-bar" id="split-bar" role="img" aria-label="Budget split"></div>
         <ul class="split-legend" id="split-legend"></ul>
       </div>
 
       <div class="empty-desk" id="empty-desk">
-        <p class="empty-kicker">Preseason · the card is honest</p>
-        <h2>Week 1 isn’t open. The card is blank on purpose.</h2>
-        <p>Do not invent 2026 matchups, lines, or scores. Shop Monday. Decide TNF Wednesday after 4pm ET status. Load SAMPLE tickets only to see the ledger move — they are not season process.</p>
+        <p class="empty-kicker">Preseason · no bets yet</p>
+        <h2>Week 1 betting hasn’t started. The card is blank on purpose.</h2>
+        <p>You can still open Teams and Games to see how we rate clubs. We will not invent scores. Real bets wait until the regular season.</p>
       </div>
 
       <div class="week-run">
@@ -92,48 +102,62 @@
         <ol class="run-strip">
           <li>
             <span class="run-day">Mon</span>
-            <strong>Shop openers</strong>
-            <p>3+ books. Log the number. Do not fire yet unless it’s fat.</p>
+            <strong>First look</strong>
+            <p>Write down the sportsbook numbers. Don’t bet yet unless the gap is huge.</p>
           </li>
           <li class="is-now">
             <span class="run-day">Wed</span>
-            <strong>TNF after 4pm ET</strong>
-            <p>Official game status. ~1.5 or a key — or PASS.</p>
+            <strong>Thursday game</strong>
+            <p>Wait for the official injury report (4pm ET). Bet or skip.</p>
           </li>
           <li>
             <span class="run-day">Fri</span>
-            <strong>Sunday status</strong>
-            <p>4pm ET print. Lock fav/over or pass. Dogs wait.</p>
+            <strong>Sunday games</strong>
+            <p>Same idea after Friday’s injury report. Skip is fine.</p>
           </li>
           <li>
             <span class="run-day">Sun</span>
-            <strong>Public / dogs</strong>
-            <p>Dogs &amp; unders only if the public actually pushed.</p>
+            <strong>Underdogs</strong>
+            <p>Only if the public actually moved the number. Otherwise leave it.</p>
           </li>
         </ol>
+
+        <details class="words">
+          <summary>Words a friend might not know</summary>
+          <dl>
+            <div><dt>Line</dt><dd>The point handicap. Chiefs −3 means Kansas City must win by more than 3.</dd></div>
+            <div><dt>Our line</dt><dd>The gap we expect, from the home team’s view.</dd></div>
+            <div><dt>Street</dt><dd>What the sportsbook is offering right now.</dd></div>
+            <div><dt>Edge</dt><dd>How far those two numbers are apart.</dd></div>
+            <div><dt>Skip</dt><dd>We looked and did not bet. That counts as a decision.</dd></div>
+            <div><dt>Straight</dt><dd>One game, $150. This is what we grade.</dd></div>
+            <div><dt>Parlay</dt><dd>Several games at once, $50. For fun, not the score.</dd></div>
+            <div><dt>3 and 7</dt><dd>NFL games land on field goals and touchdowns a lot. A half-point around those numbers matters.</dd></div>
+          </dl>
+        </details>
       </div>
     </section>
 
     <!-- ========== CARD ========== -->
     <section id="card" class="view" data-view="card" hidden aria-labelledby="card-title">
       <div class="view-head felt-head">
-        <p class="eyebrow">The weekly card · five windows · pass is legal</p>
-        <h1 id="card-title">The card</h1>
-        <p class="lede">Each window holds one process straight and one entertainment parlay. A blank window is unfinished. A PASS is finished. Do not chase SNF/MNF after a losing Sunday.</p>
+        <p class="eyebrow">This week · skip is allowed</p>
+        <h1 id="card-title">This week</h1>
+        <p class="lede">Each time slot can hold one $150 one-game bet and one $50 parlay. An empty slot is unfinished. Skip is finished. Do not chase Sunday or Monday night after a bad afternoon.</p>
       </div>
       <div class="window-grid" id="window-grid"></div>
       <aside class="holiday-note">
-        <span class="mono">THU_HOL · FRI · SAT</span>
-        <p>Holiday extras: one straight per game, still inside the $1,000 week. Log them from Tickets with the holiday window. They do not replace TNF / Sunday / primetime slots.</p>
+        <span class="mono">Holiday extras</span>
+        <p>Thanksgiving and Friday/Saturday extras: one $150 bet per game, still inside the $1,000 week. They do not replace Thursday, Sunday, or primetime slots.</p>
       </aside>
     </section>
 
     <!-- ========== TEAMS ========== -->
     <section id="teams" class="view" data-view="teams" hidden aria-labelledby="teams-title">
       <div class="view-head">
-        <p class="eyebrow">Walters library · 0.0 is league average · plus is better</p>
-        <h1 id="teams-title">The library</h1>
-        <p class="lede">2025 prior is the Week 1 baseline. It tapers to 0 after 17 games; in-season current updates 90/10 (Walters W20). 2026 FA net sits on top of last year and tapers off over the same 17 games. Injuries are weekly points on official status — they do not taper. Effective = algorithm + FA + injury + adjust + context. Do not seed a pet team — the league is even.</p>
+        <p class="eyebrow">0.0 is a league-average club · plus is better</p>
+        <h1 id="teams-title">Teams</h1>
+        <p class="lede">Every club starts from last season, then we add roster changes, Week-1 starter rookies, Madden’s equal 22, and injuries. Tap a team to see the pile-up. Plus means better than average. The number on the card is not “they will win by this many.”</p>
       </div>
       <div class="teams-tools">
         <div class="filters" id="team-filters" role="tablist" aria-label="Filter clubs"></div>
@@ -162,21 +186,21 @@
     <section id="schedule" class="view" data-view="schedule" hidden aria-labelledby="schedule-title">
       <div class="sked-head-wrap">
         <div class="view-head">
-          <p class="eyebrow">Our number vs the street · fire is a highlight, not a ticket</p>
-          <h1 id="schedule-title">The slate</h1>
-          <p class="lede" id="sked-sub">Week 1 · market as of 19 Aug 2026 · our number from the library · weather shades the total, not the spread · coach H2H follows the person, 4-game minimum, cap 1 point, SU not ATS · Week 1 and bye are extra prep, coach career ATS, 4-game min, cap 1</p>
+          <p class="eyebrow">Our guess vs the sportsbook · copper is a look, not a ticket</p>
+          <h1 id="schedule-title">Games</h1>
+          <p class="lede" id="sked-sub">Tap a game. Our line is the gap we expect. Street is the sportsbook. Copper means we disagree enough to look.</p>
         </div>
         <div class="hfa-ctrl">
-          <label for="hfa-input">League HFA</label>
+          <label for="hfa-input">Home-field points</label>
           <button type="button" class="week-btn" id="hfa-minus" aria-label="Decrease HFA">−</button>
           <input id="hfa-input" type="number" step="0.5" value="2" inputmode="decimal">
           <button type="button" class="week-btn" id="hfa-plus" aria-label="Increase HFA">+</button>
         </div>
       </div>
       <div class="empty-desk" id="sked-empty-ratings" hidden>
-        <p class="empty-kicker">Library is even</p>
-        <h2>Every club is 0. Set a number on Teams and the schedule grows a line.</h2>
-        <p>0.0 is league average. Plus is better. Our home spread is −(home − away + HFA). Neutral sites (Melbourne) get HFA 0. We do not auto-bet — we show the number.</p>
+        <p class="empty-kicker">Ratings are even</p>
+        <h2>Every club is still 0. Open Teams, then come back — each game will grow a number.</h2>
+        <p>Zero is average. Plus is better. Home teams get a couple of extra points for playing at home, except neutral sites. We show the number. We do not auto-bet.</p>
       </div>
       <div id="sked-board"></div>
     </section>
@@ -184,9 +208,9 @@
     <!-- ========== RESIDUALS ========== -->
     <section id="residuals" class="view" data-view="residuals" hidden aria-labelledby="residuals-title">
       <div class="view-head">
-        <p class="eyebrow">Close ledger · we type the number · no scraped 2026 results</p>
-        <h1 id="residuals-title">Residuals</h1>
-        <p class="lede">Grade the model against the close. Profit is variance. Do not seed 2026 results.</p>
+        <p class="eyebrow">After the games · we type the last number</p>
+        <h1 id="residuals-title">After the games</h1>
+        <p class="lede">Did our number beat the sportsbook’s last number? Wins and losses bounce around. The last number is the grade.</p>
       </div>
       <div class="table-wrap">
         <table class="ledger" id="residuals-table">
@@ -232,9 +256,9 @@
     <!-- ========== KEYS ========== -->
     <section id="keys" class="view" data-view="keys" hidden aria-labelledby="keys-title">
       <div class="view-head">
-        <p class="eyebrow">Land rates · point value · cover at the number</p>
-        <h1 id="keys-title">Keys</h1>
-        <p class="lede">NFL scoring clusters. Crossing 3 or 7 is why a half-point is the bet. Loaded from keys-nfl.json — empty if the file is not here.</p>
+        <p class="eyebrow">Why a half-point matters</p>
+        <h1 id="keys-title">3 and 7</h1>
+        <p class="lede">NFL games land on field goals (3) and touchdowns (7) a lot. If we sit on one side of that number and the sportsbook sits on the other, the half-point is the whole bet.</p>
       </div>
       <div id="keys-board"></div>
     </section>
@@ -242,9 +266,9 @@
     <!-- ========== VIBE ========== -->
     <section id="vibe" class="view" data-view="vibe" hidden aria-labelledby="vibe-title">
       <div class="view-head">
-        <p class="eyebrow">Nightly rooms · Saturday rollup · league even</p>
-        <h1 id="vibe-title">Vibe check</h1>
-        <p class="lede">What the rooms are saying this vibe week. Volume and topic titles only — no invented chatter. Quiet clubs stay quiet. The league is even.</p>
+        <p class="eyebrow">What people are talking about · not a bet</p>
+        <h1 id="vibe-title">Buzz</h1>
+        <p class="lede">A nightly scan of what is loud around each club. Stories only. Quiet rooms stay blank. This is not a reason to bet.</p>
       </div>
       <div class="vibe-tools">
         <label class="sort-field">
@@ -258,9 +282,9 @@
     <!-- ========== CLOCK ========== -->
     <section id="clock" class="view" data-view="clock" hidden aria-labelledby="clock-title">
       <div class="view-head">
-        <p class="eyebrow">Line calendar · folklore is labeled · not a system</p>
-        <h1 id="clock-title">The week clock</h1>
-        <p class="lede">Action in plain English. TNF always-under, fade-the-public, and RLM-as-a-trigger are folklore. We do not run them. Today is Wednesday — TNF decision after 4pm ET status.</p>
+        <p class="eyebrow">When we look at each game</p>
+        <h1 id="clock-title">The week plan</h1>
+        <p class="lede">A calendar for when a number is worth deciding. Old stories like “Thursday is always under” are labeled folklore. We do not run those.</p>
       </div>
       <ul class="clock-legend">
         <li><span class="chip chip-verified">VERIFIED</span> NFL clock or a desk rule we can audit</li>
@@ -274,9 +298,9 @@
     <!-- ========== PLAYBOOK ========== -->
     <section id="playbook" class="view" data-view="playbook" hidden aria-labelledby="playbook-title">
       <div class="view-head">
-        <p class="eyebrow">Walters-derived · copy, keep, adapt, or ignore</p>
-        <h1 id="playbook-title">Playbook</h1>
-        <p class="lede">COPY = we run it. ENTERTAINMENT = the $50 parlay stays on the card, not in the score. ADAPT = keep the idea, change the mechanic. IGNORE = folklore / not our book.</p>
+        <p class="eyebrow">What we run, what we ignore</p>
+        <h1 id="playbook-title">Rules</h1>
+        <p class="lede">COPY = we actually do this. ENTERTAINMENT = the $50 parlay, not the grade. ADAPT = keep the idea, change the mechanic. IGNORE = a story we do not bet on.</p>
       </div>
       <div class="filters" id="playbook-filters" role="tablist" aria-label="Filter playbook"></div>
       <div class="playbook-grid" id="playbook-grid"></div>
@@ -285,9 +309,9 @@
     <!-- ========== TICKETS ========== -->
     <section id="tickets" class="view" data-view="tickets" hidden aria-labelledby="tickets-title">
       <div class="view-head">
-        <p class="eyebrow">Ledger · localStorage · CLV of straights is the score</p>
-        <h1 id="tickets-title">Tickets</h1>
-        <p class="lede">Process lives on straights. Parlays stay visible and tagged entertainment. SAMPLE rows are season EXAMPLE — they never count toward 2026 KPIs. Close is the sharp book, juice taken out of the probability, not a second -110 from a square.</p>
+        <p class="eyebrow">Bets we logged · one-game bets are the score</p>
+        <h1 id="tickets-title">Bets</h1>
+        <p class="lede">The grade is whether our $150 one-game bets beat the sportsbook’s last number. Parlays stay visible and tagged as fun. Sample rows are examples and do not count.</p>
       </div>
       <div class="ticket-toolbar">
         <button type="button" class="btn btn-fill" id="btn-add">Log ticket</button>
@@ -334,7 +358,7 @@
   </main>
 
   <footer class="colophon">
-    <p>NFL Scout · Brett’s desk · Process scored on CLV · Entertainment stays on the card.</p>
+    <p>NFL Scout · Who’s better, and by how much · one-game bets are the score · parlays are for fun.</p>
     <p class="colophon-keys" aria-hidden="true"><span>3</span><span>7</span></p>
   </footer>
 

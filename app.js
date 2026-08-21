@@ -1639,23 +1639,23 @@ function tip(html, text) {
 }
 
 const SKED_TIPS = {
-  edge: "Street minus our number, home view. Plus = we like the home. Minus = we like the away. Example: −7.0 AWAY means we have the visitor getting 7 more points than the market. Copper number = |edge| ≥ 1.5 or we crossed 3/7. Highlight is not a ticket.",
-  crosses: "Our line and the market sit on opposite sides of a key number (3 or 7). Landing there is common. That is why a half-point is the bet. Still not an auto-fire.",
-  fire: "Highlighted when |edge| is about 1.5+ or the number crosses 3 or 7. We show the disagreement. We do not auto-bet.",
-  our: "Our home-perspective spread from the library: ratings + FA + draft + Madden 22 + injuries + HFA + coach/prep + career ATS. Negative = home favored.",
-  mkt: "The street number you typed (or the loaded open). Shop 3+ books. This is what we subtract from to get edge.",
+  edge: "How far our number is from the sportsbook. Plus = we like the home team more than they do. Minus = we like the visitor. Copper means the gap is about a field goal, or we sit on opposite sides of 3 or 7. Highlight is not a ticket.",
+  crosses: "We sit on one side of 3 or 7 and the sportsbook sits on the other. NFL games land on field goals and touchdowns a lot, so that half-point is the bet. Still not automatic.",
+  fire: "Copper when we disagree with the sportsbook by about a field goal, or we landed on opposite sides of 3 or 7. We show the disagreement. We do not auto-bet.",
+  our: "The gap we expect, from the home team’s view. Minus means we think the home team is better. Built from last year, roster changes, rookies, Madden, injuries, and home field.",
+  mkt: "The sportsbook number. Compare it to our line. The difference is the edge.",
   hcGold: "Coach vs coach, SU, home view. Moves the line (cap 1). n≥4 and outside the dead zone. Not ATS.",
   hcDead: "Enough games (n≥4) but the win rate is too close to .500. Number is 0.",
   hcN: "Under 4 H2H games. We will not put a number on it.",
   w1Gold: "This coach's career Week 1 ATS, capped at 1. Copper = it is on the line this week.",
   byeGold: "This coach's career post-bye ATS, capped at 1. Copper = it is on the line this week.",
   w1Floor: "Same floor as coach H2H: 4 games or the chip is dead / n= only.",
-  ats: "Career ATS as a head coach. Follows the person. Slight. Cap 0.35. 16-game floor. Dead inside 0.04 of .500. Full weight at 48 games. Does not replace SU H2H.",
-  wx: "Weather shades the TOTAL only, never the spread. Dome/closed = 0. Wind is the main lever.",
-  ourOu: "Our total from 2025 PPG + weather. Not market + weather.",
-  totEdge: "Market O/U minus our O/U. Plus = we are under the street. Copper if |edge| ≥ 1.5. Not a ticket.",
-  cover: "Chance the home covers that number from historical NFL margins. Info only.",
-  hfa: "Home-field we add to every non-neutral game. Melbourne is 0.",
+  ats: "This coach’s career record against the sportsbook, not just wins and losses. A small nudge. It does not replace head-to-head wins.",
+  wx: "Weather only changes the expected combined score, not who we think wins. A dome is zero. Wind matters most.",
+  ourOu: "The combined score we expect (both teams). Built from last year’s scoring, then weather.",
+  totEdge: "Sportsbook total minus our total. Plus means we expect a lower-scoring game than they do. Copper if the gap is about 1.5. Not a ticket.",
+  cover: "How often a home team has beaten that point gap in past NFL games. Info only.",
+  hfa: "Extra points we give the home team for playing at home. Neutral sites (Melbourne) get zero.",
 };
 
 function toast(msg) {
@@ -1708,25 +1708,25 @@ function renderKPIs() {
   const clvClass = k.avgCLV === null ? "" : k.avgCLV > 0 ? "up" : k.avgCLV < 0 ? "down" : "";
   document.getElementById("kpi-grid").innerHTML = `
     <article class="kpi gold">
-      <p class="kpi-label">Weekly budget remaining</p>
+      <p class="kpi-label">Money left this week</p>
       <p class="kpi-val">${esc(moneyInt(k.remaining))}</p>
-      <p class="kpi-note">$1,000 − stakes this week</p>
+      <p class="kpi-note">$1,000 minus what we already bet</p>
     </article>
     <article class="kpi process">
-      <p class="kpi-label">Process P/L</p>
+      <p class="kpi-label">One-game P/L</p>
       <p class="kpi-val ${plClass}">${k.gradedPL ? esc(money(k.processPL)) : "—"}</p>
-      <p class="kpi-note">Straights only · parlays off the score</p>
+      <p class="kpi-note">$150 bets only · parlays are for fun</p>
     </article>
     <article class="kpi">
-      <p class="kpi-label">Avg CLV pts</p>
+      <p class="kpi-label">Beat the last number?</p>
       <p class="kpi-val ${clvClass}">${k.avgCLV === null ? "—" : esc(pts(k.avgCLV))}</p>
-      <p class="kpi-note">${k.clvCount ? k.clvCount + " straight" + (k.clvCount === 1 ? "" : "s") + " with a close" : "Straights with a close"}</p>
+      <p class="kpi-note">${k.clvCount ? k.clvCount + " one-game bet" + (k.clvCount === 1 ? "" : "s") + " vs the last sportsbook number" : "Did we get a better number than the last one?"}</p>
       ${k.avgClvProb === null ? "" : `<p class="kpi-sub ${k.avgClvProb > 0 ? "up" : k.avgClvProb < 0 ? "down" : ""}">avg clv_prob ${esc(fmtClvProb(k.avgClvProb))} · ${k.clvProbCount} process</p>`}
     </article>
     <article class="kpi pass">
-      <p class="kpi-label">Passes this week</p>
+      <p class="kpi-label">Games we skipped</p>
       <p class="kpi-val">${k.passes}</p>
-      <p class="kpi-note">A pass is a result, not a miss</p>
+      <p class="kpi-note">A skip is a decision, not a miss</p>
     </article>`;
 
   const tot = WEEKLY_BUDGET || 1;
@@ -1742,9 +1742,9 @@ function renderKPIs() {
     `Process ${moneyInt(k.processStakes)}, entertainment ${moneyInt(k.entStakes)}, leftover ${moneyInt(k.leftover)}`
   );
   document.getElementById("split-legend").innerHTML = `
-    <li><i class="i-p"></i>Process ${esc(moneyInt(k.processStakes))}</li>
-    <li><i class="i-e"></i>Entertainment ${esc(moneyInt(k.entStakes))}</li>
-    <li><i class="i-l"></i>Leftover ${esc(moneyInt(k.leftover))}</li>`;
+    <li><i class="i-p"></i>One-game ${esc(moneyInt(k.processStakes))}</li>
+    <li><i class="i-e"></i>Fun ${esc(moneyInt(k.entStakes))}</li>
+    <li><i class="i-l"></i>Unspent ${esc(moneyInt(k.leftover))}</li>`;
 
   document.getElementById("empty-desk").hidden = k.hasSeason;
 }
@@ -2595,7 +2595,7 @@ function marketFavLabel(parsed) {
 
 function gameLeadCopy(game) {
   if (!hasOurNumber(game)) {
-    return "The library is even and we have no number.";
+    return "We do not have a number yet. The ratings are still even.";
   }
   const mkt = marketFor(game);
   const parsed = mkt.parsed || {};
@@ -2604,27 +2604,26 @@ function gameLeadCopy(game) {
   const mktLabel = marketFavLabel(parsed);
   const marketHome = parsed.homeLine;
   const parts = [];
-  if (mktLabel && marketHome != null && Number.isFinite(marketHome)) {
-    parts.push("Market has " + mktLabel + " (home " + fmtSpreadNum(marketHome) + ").");
-  } else if (mkt.odds) {
-    parts.push("Market is " + String(mkt.odds) + ".");
-  } else {
-    parts.push("No market number yet.");
-  }
   if (ourH != null && Number.isFinite(ourH)) {
-    parts.push("We have " + ourLabel + " (that is home " + game.home + " " + fmtSpreadNum(ourH) + ").");
+    parts.push("We think the gap is " + ourLabel + ".");
+  }
+  if (mktLabel && marketHome != null && Number.isFinite(marketHome)) {
+    parts.push("The sportsbook has " + mktLabel + ".");
+  } else if (mkt.odds) {
+    parts.push("The sportsbook number is " + String(mkt.odds) + ".");
   } else {
-    parts.push("We have no number.");
+    parts.push("No sportsbook number yet.");
   }
   const edge = edgePts(ourH, marketHome);
   if (edge != null) {
-    const side = edge < 0 ? "the away" : edge > 0 ? "the home" : "neither side";
-    parts.push("Edge = marketHome − ourHome = " + fmtEdgeNum(edge) + (edge === 0 ? "." : " on " + side + "."));
+    if (edge === 0) parts.push("We agree with the sportsbook.");
+    else parts.push("We disagree by " + Math.abs(edge).toFixed(1) + " points.");
     const mktFav = parsed.fav;
     const ourFav = ourH < 0 ? game.home : ourH > 0 ? game.away : null;
     if (mktFav && ourFav && normAbbr(mktFav) !== normAbbr(ourFav)) {
-      parts.push("We flipped the favorite.");
+      parts.push("We even flipped who the favorite is.");
     }
+    parts.push("Copper means that gap is big enough to look at — not an automatic bet.");
   }
   return parts.join(" ");
 }
@@ -2682,14 +2681,14 @@ function renderGameSheet() {
   const pA = getProfile(away);
   const pH = getProfile(home);
   const clubRows = [
-    ["Algorithm", algorithmBase(away), algorithmBase(home)],
-    ["FA", faTerm(away), faTerm(home)],
-    ["Draft", draftTerm(away), draftTerm(home)],
+    ["Last year", algorithmBase(away), algorithmBase(home)],
+    ["Roster changes", faTerm(away), faTerm(home)],
+    ["Rookies", draftTerm(away), draftTerm(home)],
     ["Madden 22", maddenTerm(away), maddenTerm(home)],
-    ["Injury", injuryTerm(away), injuryTerm(home)],
-    ["Adjust", num(pA.user_adjust) || 0, num(pH.user_adjust) || 0],
-    ["Context", contextSum(pA), contextSum(pH)],
-    ["Effective", eff(away), eff(home)],
+    ["Injuries", injuryTerm(away), injuryTerm(home)],
+    ["Manual", num(pA.user_adjust) || 0, num(pH.user_adjust) || 0],
+    ["Extra notes", contextSum(pA), contextSum(pH)],
+    ["Our rating", eff(away), eff(home)],
   ];
   const table = clubRows.map((r, i) => {
     const cls = i === clubRows.length - 1 ? " is-eff" : "";
@@ -2718,13 +2717,13 @@ function renderGameSheet() {
   const hfaNote = game.neutral ? "neutral / Melbourne · 0" : "";
 
   const stack = [
-    { label: "homeEff − awayEff", val: diff, note: "" },
-    { label: "+ HFA", val: hfaUsed, note: hfaNote },
-    { label: "+ coach_term", val: coach, note: coachSheetNote(game) },
-    { label: "+ prep_net", val: prep, note: prepSheetNote(game) },
-    { label: "+ ats_net", val: ats, note: atsSheetNote(game) },
-    { label: "gap", val: gap, note: "that sum", sum: true },
-    { label: "ourHomeLine = −(gap)", val: hasOurNumber(game) ? ourLine : 0, note: hasOurNumber(game) ? "" : "library even · no number", hideVal: !hasOurNumber(game) },
+    { label: "Home rating minus away", val: diff, note: "" },
+    { label: "+ home field", val: hfaUsed, note: hfaNote },
+    { label: "+ coaches", val: coach, note: coachSheetNote(game) },
+    { label: "+ week 1 / bye", val: prep, note: prepSheetNote(game) },
+    { label: "+ vs the spread (career)", val: ats, note: atsSheetNote(game) },
+    { label: "Combined gap", val: gap, note: "add those up", sum: true },
+    { label: "Our line (flip the sign)", val: hasOurNumber(game) ? ourLine : 0, note: hasOurNumber(game) ? "" : "ratings even · no number", hideVal: !hasOurNumber(game) },
   ];
   const stackHtml = stack.map((s) => `
     <div class="game-stack-row${s.sum ? " is-sum" : ""}">
@@ -2737,25 +2736,25 @@ function renderGameSheet() {
     const side = edge != null && edge < 0 ? " · away" : edge != null && edge > 0 ? " · home" : "";
     compare = `<div class="game-compare">
       <div class="game-stack-row">
-        <span class="game-stack-label">Market home line</span>
+        <span class="game-stack-label">Sportsbook</span>
         <span class="game-stack-val mono">${esc(marketHome == null ? "—" : fmtSpreadNum(marketHome))}</span>
       </div>
       <div class="game-stack-row">
-        <span class="game-stack-label">Our home line</span>
+        <span class="game-stack-label">Our line</span>
         <span class="game-stack-val mono">${esc(fmtSpreadNum(ourLine))}</span>
       </div>
       <div class="game-stack-row">
-        <span class="game-stack-label">Our line (favorite)</span>
+        <span class="game-stack-label">In English</span>
         <span class="game-stack-val mono">${esc(formatOurLine(ourLine, home, away))}</span>
       </div>
       <div class="game-stack-row${fire ? " is-copper" : ""}">
-        <span class="game-stack-label">Edge${side}</span>
+        <span class="game-stack-label">We disagree${side}</span>
         <span class="game-stack-val mono">${esc(fmtEdgeNum(edge))}</span>
       </div>
-      <p class="game-sheet-keys">${keys.length ? "Crosses " + keys.join(" / ") + "." : "Does not cross 3 or 7."} Copper highlight is not a ticket.</p>
+      <p class="game-sheet-keys">${keys.length ? "This sits on opposite sides of " + keys.join(" / ") + "." : "This does not sit on opposite sides of 3 or 7."} Copper is a look, not a ticket.</p>
     </div>`;
   } else {
-    compare = `<p class="game-sheet-none">The library is even. We do not post a number.</p>`;
+    compare = `<p class="game-sheet-none">Ratings are even. We do not post a number yet.</p>`;
   }
 
   const tot = ourTotal(game);
@@ -2778,7 +2777,7 @@ function renderGameSheet() {
 
   body.innerHTML = `
     <p class="game-sheet-lead">${esc(gameLeadCopy(game))}</p>
-    <p class="section-label">Home perspective</p>
+    <p class="section-label">How we built the number</p>
     <div class="table-wrap">
       <table class="game-club-table">
         <thead><tr><th></th><th>Away · ${esc(away)}</th><th>Home · ${esc(home)}</th></tr></thead>
@@ -3526,7 +3525,7 @@ function renderSchedule() {
     hfaCtrl.tabIndex = 0;
   }
   if (sub) {
-    sub.textContent = "Week " + currentWeek + " · market as of 19 Aug 2026 · our number from the library · our O/U from 2025 ppg + weather · weather shades the total, not the spread · coach H2H follows the person, 4-game minimum, cap 1 point, SU not ATS · Week 1 and bye are extra prep, coach career ATS, 4-game min, cap 1 · career ATS is a slight, 16-game floor, cap 0.35";
+    sub.textContent = "Week " + currentWeek + ". Tap a game. Our line is the gap we expect. Street is the sportsbook. Copper means we disagree enough to look — not an automatic bet. Weather only changes the combined score." 
   }
   if (!board) return;
   if (!nflData || !nflData.games.length) {
@@ -3570,7 +3569,7 @@ function renderSchedule() {
           const sign = edge > 0 ? "+" : edge < 0 ? "−" : "";
           const side = edge >= 1.5 ? "HOME" : edge <= -1.5 ? "AWAY" : "";
           const signed = sign + Math.abs(edge).toFixed(1);
-          const numTip = `This edge is ${signed}${side ? " " + side : ""}. Street minus our number, home view. Plus = we like the home. Minus = we like the away.`;
+          const numTip = `We disagree by ${signed}${side ? " " + side : ""}. Plus means we like the home team more than the sportsbook does.`;
           edgeHtml = tip(`<span class="val${fire ? " gold" : ""}">${signed}</span>`, fire ? numTip + " " + SKED_TIPS.fire : numTip)
             + (side ? `<span class="sked-side">${side}</span>` : "")
             + (keys.length ? tip(`<span class="note">crosses ${keys.join(" / ")}</span>`, SKED_TIPS.crosses) : "");
@@ -3581,18 +3580,18 @@ function renderSchedule() {
         <button type="button" class="sked-kick sked-open-game" data-open-game="${esc(g.id)}" aria-haspopup="dialog" aria-controls="game-sheet">${et ? esc(et.clock) + " ET" : "—"}</button>
         <div class="sked-match sked-open-game" data-open-game="${esc(g.id)}" tabindex="0" aria-haspopup="dialog" aria-controls="game-sheet">
           <p class="teams-line">${match}</p>
-          <button type="button" class="sked-how" data-open-game="${esc(g.id)}" aria-haspopup="dialog" aria-controls="game-sheet">How we got here</button>
+          <button type="button" class="sked-how" data-open-game="${esc(g.id)}" aria-haspopup="dialog" aria-controls="game-sheet">Why this number</button>
         </div>
         <div>
           <button type="button" class="sked-venue sked-open-game" data-open-game="${esc(g.id)}" aria-haspopup="dialog" aria-controls="game-sheet">${esc(g.venue || "")}${g.city ? " · " + esc(g.city) : ""}</button>
           ${g.broadcast ? `<span class="sked-bc">${esc(g.broadcast)}</span>` : ""}
         </div>
         <div class="sked-mkt sked-tip" data-tip="${esc(SKED_TIPS.mkt)}" title="${esc(SKED_TIPS.mkt)}" tabindex="0">
-          <label>Mkt <input class="mono" data-odds="${esc(g.id)}" value="${esc(mkt.odds)}" placeholder="SEA -3.5" spellcheck="false"></label>
+          <label>Street <input class="mono" data-odds="${esc(g.id)}" value="${esc(mkt.odds)}" placeholder="SEA -3.5" spellcheck="false"></label>
           <label>O/U <input class="mono" type="number" step="0.5" data-ou="${esc(g.id)}" value="${esc(ouVal)}"></label>
         </div>
         <div class="sked-our sked-tip" data-tip="${esc(SKED_TIPS.our)}" title="${esc(SKED_TIPS.our)}" tabindex="0"><span class="lbl">Our line</span><span class="val">${esc(ourHtml)}</span></div>
-        <div class="sked-edge sked-tip" data-tip="${esc(SKED_TIPS.edge)}" title="${esc(SKED_TIPS.edge)}" tabindex="0"><span class="lbl">Edge</span>${edgeHtml === "—" ? '<span class="val">—</span>' : edgeHtml}${coachChipHtml(g)}${prepChipHtml(g)}${atsChipHtml(g)}</div>
+        <div class="sked-edge sked-tip" data-tip="${esc(SKED_TIPS.edge)}" title="${esc(SKED_TIPS.edge)}" tabindex="0"><span class="lbl">Gap</span>${edgeHtml === "—" ? '<span class="val">—</span>' : edgeHtml}${coachChipHtml(g)}${prepChipHtml(g)}${atsChipHtml(g)}</div>
         ${wxStripHtml(g, mkt)}
         ${hasOurNumber(g) ? coverHelperHtml(ourHomeSpread(g, hfa), mkt.parsed.homeLine) : ""}
       </article>`;

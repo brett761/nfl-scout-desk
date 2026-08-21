@@ -2454,3 +2454,54 @@ button.sked-venue {
 }
 .sked-how:hover,
 .sked-how:focus-visible { color: var(--copper-hot); text-decoration: underline; }
+
+/* ---------- friend-readable start path ---------- */
+.start-path {
+  max-width: 68ch;
+  margin: 0 0 36px;
+  padding: 20px 22px 8px;
+  border: 1px solid var(--slate-line);
+  background: rgba(60, 61, 64, 0.35);
+}
+.start-path ol {
+  margin: 0 0 12px;
+  padding: 0 0 0 1.2em;
+}
+.start-path li {
+  margin: 0 0 10px;
+  color: var(--cloud);
+}
+.start-path a { color: var(--copper); }
+.words {
+  max-width: 68ch;
+  margin: 28px 0 0;
+  border-top: 1px solid var(--slate-line);
+  padding-top: 16px;
+}
+.words summary {
+  cursor: pointer;
+  color: var(--copper);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  list-style: none;
+}
+.words summary::-webkit-details-marker { display: none; }
+.words dl {
+  display: grid;
+  gap: 12px;
+  margin: 16px 0 0;
+}
+.words dt {
+  font-weight: 650;
+  color: var(--white);
+}
+.words dd {
+  margin: 2px 0 0;
+  color: var(--slate);
+}
+@media (max-width: 720px) {
+  .nav { justify-content: flex-start; max-width: none; }
+  .nav a { padding: 8px 7px; letter-spacing: 0.04em; }
+}
