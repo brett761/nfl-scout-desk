@@ -14,8 +14,11 @@ const SEASON = 2026;
 const HFA_DEFAULT = 2;
 const TAPER_N = 17;
 const WEEKLY_BUDGET = 1000;
-const STRAIGHT_STAKE = 150;
-const PARLAY_STAKE = 50;
+const UNIT = 50;
+const WEEKLY_UNITS = 20;
+const MAX_UNITS = 4;
+const DEFAULT_STRAIGHT_UNITS = 3;
+const PARLAY_UNITS = 1;
 
 const WINDOWS = [
   { id: "TNF", label: "Thursday Night", short: "TNF" },
@@ -122,7 +125,7 @@ const CLOCK = [
 const PLAYBOOK = [
   {
     id: "W01", name: "Value first", tag: "COPY",
-    principle: "A bet needs a number. Fire the $150 straight only if your number is about 1.5 points better than the best shopped line, or you have a key-number reason (3, 6, 7, 14).",
+    principle: "A bet needs a number. Fire a process straight only if your number is about 1.5 points better than the best shopped line, or you have a key-number reason (3, 6, 7, 14). Size comes after.",
     when: "Before every straight. No edge, no ticket.",
     how: "Compare our number to the best of 3+ books. Thin extra that is not a key = PASS. Process is judged on whether we took value, not whether it cashed.",
   },
@@ -130,13 +133,13 @@ const PLAYBOOK = [
     id: "W02", name: "Three pillars", tag: "COPY",
     principle: "Handicap the game, then price the number, then size the bankroll. Skipping a pillar is how a card turns into a vibe.",
     when: "Every ticket, every window.",
-    how: "No price without a handicap. No fire without a price. $150 is the size only after the first two pillars clear.",
+    how: "No price without a handicap. No fire without a price. Size in units only after the first two pillars clear.",
   },
   {
     id: "W03", name: "Bankroll 1–3%", tag: "COPY",
-    principle: "Walters sizes 1–3% of bankroll. Our $1,000 is a weekly budget, not a season roll. $150 is the unit inside that capped week.",
-    when: "When sizing any straight. Holiday extras still hold the week at $1,000.",
-    how: "Do not invent a season bankroll to justify bigger fires. $50 parlays do not eat the process unit.",
+    principle: "One unit is $50. The $1,000 week is 20 units, not a season roll. 1u is a look, 2u is standard, 3u is a full play (~1.5 or a key), 4u is the cap.",
+    when: "When sizing any straight. Holiday extras still hold the week at 20 units.",
+    how: "Do not invent a season bankroll to justify bigger fires. 1u parlays do not eat the process grade.",
   },
   {
     id: "W06", name: "Line shop 3+ books", tag: "COPY",
@@ -166,7 +169,7 @@ const PLAYBOOK = [
     id: "W12", name: "No chase", tag: "COPY",
     principle: "A losing Sunday does not raise Monday's unit. Variance is not information.",
     when: "After any L, especially Sunday into SNF/MNF.",
-    how: "Same $150 or a PASS. Never two units to get it back. Parlays stay $50 and stay in their lock window.",
+    how: "Same units or a PASS. Never add units to get it back. Parlays stay 1u and stay in their lock window.",
   },
   {
     id: "W13", name: "Passes are a feature", tag: "COPY",
@@ -176,7 +179,7 @@ const PLAYBOOK = [
   },
   {
     id: "W14", name: "Parlays are not +EV", tag: "ENTERTAINMENT",
-    principle: "Keep the $50 parlay as entertainment. Do not score it as process. CLV, pass rate, key-number discipline, and process P/L live on straights only.",
+    principle: "Keep the 1u parlay as entertainment. Do not score it as process. CLV, pass rate, key-number discipline, and process P/L live on straights only.",
     when: "Every Parlay / SGP / Multi.",
     how: "purpose=Entertainment. Same lock window as the straight. After a losing Sunday, do not add a revenge parlay.",
   },
@@ -218,7 +221,7 @@ const PLAYBOOK = [
   },
   {
     id: "W27", name: "Bet late for volume", tag: "IGNORE",
-    principle: "Pros who need to get down large sometimes wait for limits to rise. We are a $150 desk. Late is for INFO, not for size.",
+    principle: "Pros who need to get down large sometimes wait for limits to rise. We are a 20-unit weekly desk. Late is for INFO, not for size.",
     when: "Do not use volume as a reason to wait.",
     how: "We bet early for PRICE_CLV or late for INFO. We do not wait for the window to 'hold more.' Ignore as a sizing rule.",
   },
@@ -250,7 +253,7 @@ const PLAYBOOK = [
     id: "W33", name: "No add into resistance", tag: "COPY",
     principle: "If the price gets worse after we like it, that is a stop, not a sale. Do not add. Sunday-night double-up is suicide.",
     when: "Any number that moved against us after we wrote it.",
-    how: "One $150 or a PASS. Never a second unit on the same side because the juice got longer.",
+    how: "One ticket or a PASS. Never a second unit on the same side because the juice got longer.",
   },
   {
     id: "W34", name: "Leftovers after a move", tag: "COPY",
@@ -308,6 +311,7 @@ const SAMPLES = [
     pick: "Example B +3.5",
     bet_line: 3.5,
     juice: -110,
+    units: 3,
     stake: 150,
     book: "BookAlpha",
     close_line: 3.0,
@@ -390,10 +394,38 @@ function computeProfit(ticket) {
   return null;
 }
 
-function stakeFor(type) {
+function clampUnits(raw, type) {
   if (type === "PASS") return 0;
-  if (type === "Parlay") return PARLAY_STAKE;
-  return STRAIGHT_STAKE;
+  if (type === "Parlay") return PARLAY_UNITS;
+  const n = Math.round(Number(raw));
+  if (!Number.isFinite(n) || n < 1) return DEFAULT_STRAIGHT_UNITS;
+  return Math.min(MAX_UNITS, n);
+}
+
+function inferUnits(ticket) {
+  if (!ticket) return DEFAULT_STRAIGHT_UNITS;
+  const type = ticket.ticket_type || ticket;
+  if (type === "PASS") return 0;
+  if (type === "Parlay") return PARLAY_UNITS;
+  const u = num(ticket.units);
+  if (u != null) return clampUnits(u, type);
+  const s = num(ticket.stake);
+  if (s != null && UNIT) return clampUnits(s / UNIT, type);
+  return DEFAULT_STRAIGHT_UNITS;
+}
+
+function stakeFromUnits(units) {
+  return (num(units) || 0) * UNIT;
+}
+
+function stakeFor(type, units) {
+  return stakeFromUnits(clampUnits(units, type));
+}
+
+function fmtUnits(u) {
+  const n = num(u);
+  if (n == null) return "—";
+  return n + "u";
 }
 
 function purposeFor(type) {
@@ -1056,9 +1088,11 @@ function crossesKeys(ourLine, mktLine) {
 function enrich(t) {
   const ticket = { ...t };
   if (!ticket.id) ticket.id = uid();
-  ticket.stake = stakeFor(ticket.ticket_type);
+  ticket.units = inferUnits(ticket);
+  ticket.stake = stakeFromUnits(ticket.units);
   if (ticket.ticket_type === "PASS") {
     ticket.purpose = "Process";
+    ticket.units = 0;
     ticket.stake = 0;
     if (!ticket.result || ticket.result === "PENDING") ticket.result = "VOID";
   } else {
@@ -1709,13 +1743,13 @@ function renderKPIs() {
   document.getElementById("kpi-grid").innerHTML = `
     <article class="kpi gold">
       <p class="kpi-label">Money left this week</p>
-      <p class="kpi-val">${esc(moneyInt(k.remaining))}</p>
-      <p class="kpi-note">$1,000 minus what we already bet</p>
+      <p class="kpi-val">${esc(moneyInt(k.remaining))}<small class="kpi-units"> · ${esc(String(Math.max(0, Math.round(k.remaining / UNIT))))}u</small></p>
+      <p class="kpi-note">20 units · $50 each · leftover stays unspent</p>
     </article>
     <article class="kpi process">
       <p class="kpi-label">One-game P/L</p>
       <p class="kpi-val ${plClass}">${k.gradedPL ? esc(money(k.processPL)) : "—"}</p>
-      <p class="kpi-note">$150 bets only · parlays are for fun</p>
+      <p class="kpi-note">One-game bets only · parlays are for fun</p>
     </article>
     <article class="kpi">
       <p class="kpi-label">Beat the last number?</p>
@@ -1773,7 +1807,7 @@ function renderCard() {
         <p class="slip-win">${esc(w.short)}</p>
         <h3>${esc(w.label)}</h3>
         <div class="slot">
-          <div class="slot-kicker"><span>$150 straight</span><span class="tag tag-process">PROCESS</span></div>
+          <div class="slot-kicker"><span>${sTicket && sTicket.ticket_type !== "PASS" ? esc(fmtUnits(inferUnits(sTicket)) + " straight") : "1–3u straight"}</span><span class="tag tag-process">PROCESS</span></div>
           <p class="slot-status ${sStat.code.toLowerCase()}">${sStat.label}</p>
           ${sTicket ? `
             <p class="slot-pick">${esc(sTicket.pick || sTicket.ticket_type)}</p>
@@ -1781,7 +1815,7 @@ function renderCard() {
           ` : `<p class="slot-pick">No number yet.</p>`}
         </div>
         <div class="slot">
-          <div class="slot-kicker"><span>$50 parlay</span><span class="tag tag-ent">ENTERTAINMENT</span></div>
+          <div class="slot-kicker"><span>1u parlay</span><span class="tag tag-ent">ENTERTAINMENT</span></div>
           <p class="slot-status ${pStat.code.toLowerCase()}">${pStat.label}</p>
           ${parlay ? `
             <p class="slot-pick">${esc(parlay.pick)}</p>
@@ -1875,7 +1909,7 @@ function renderLedger() {
       <td>${esc(t.pick)}</td>
       <td class="num">${t.bet_line == null || t.bet_line === "" ? "—" : esc(t.bet_line)}</td>
       <td class="num">${t.juice == null || t.juice === "" ? "—" : esc(t.juice)}</td>
-      <td class="num">${esc(money(num(t.stake) ?? 0))}</td>
+      <td class="num">${esc(fmtUnits(inferUnits(t)))} · ${esc(money(num(t.stake) ?? 0))}</td>
       <td>${esc(t.book)}</td>
       <td class="num">${t.close_line == null || t.close_line === "" ? "—" : esc(t.close_line)}</td>
       <td class="num ${clv > 0 ? "profit-up" : clv < 0 ? "profit-down" : ""}">${esc(pts(clv))}${clvProbHtml}</td>
@@ -3976,7 +4010,16 @@ function fillWindowSelect() {
 
 function syncStakePurpose() {
   const type = document.getElementById("f-type").value;
-  document.getElementById("f-stake").value = stakeFor(type);
+  const unitsEl = document.getElementById("f-units");
+  let units;
+  if (type === "PASS") units = 0;
+  else if (type === "Parlay") units = PARLAY_UNITS;
+  else units = clampUnits(unitsEl && unitsEl.value !== "" ? unitsEl.value : DEFAULT_STRAIGHT_UNITS, type);
+  if (unitsEl) {
+    unitsEl.value = units;
+    unitsEl.readOnly = type !== "Straight";
+  }
+  document.getElementById("f-stake").value = stakeFromUnits(units);
   document.getElementById("f-purpose").value = purposeFor(type);
   if (type === "PASS") {
     document.getElementById("f-result").value = "VOID";
@@ -3996,6 +4039,8 @@ function openSheet(opts = {}) {
   document.getElementById("f-week").value = opts.week ?? currentWeek;
   document.getElementById("f-window").value = opts.window || "TNF";
   document.getElementById("f-type").value = opts.ticket_type || "Straight";
+  const unitsEl = document.getElementById("f-units");
+  if (unitsEl) unitsEl.value = inferUnits(opts);
   document.getElementById("f-market").value = opts.market || "Spread";
   document.getElementById("f-game").value = opts.game || "";
   document.getElementById("f-pick").value = opts.pick || (opts.ticket_type === "PASS" ? "PASS" : "");
@@ -4042,7 +4087,8 @@ function readForm() {
     pick: data.pick,
     bet_line: data.bet_line === "" ? null : num(data.bet_line),
     juice: data.juice === "" ? -110 : num(data.juice),
-    stake: stakeFor(type),
+    units: clampUnits(data.units, type),
+    stake: stakeFromUnits(clampUnits(data.units, type)),
     book: data.book,
     close_line: data.close_line === "" ? null : num(data.close_line),
     close_book: data.close_book || sharpBook || SHARP_BOOK_DEFAULT,
@@ -4264,6 +4310,8 @@ function bind() {
   });
 
   document.getElementById("f-type").addEventListener("change", syncStakePurpose);
+  const unitsEl = document.getElementById("f-units");
+  if (unitsEl) unitsEl.addEventListener("input", syncStakePurpose);
   document.getElementById("ticket-form").addEventListener("submit", (e) => {
     e.preventDefault();
     const t = readForm();

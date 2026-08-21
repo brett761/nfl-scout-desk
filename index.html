@@ -85,7 +85,7 @@
       <div class="split-wrap">
         <div class="split-head">
           <h2>This week’s <span class="mono">$1,000</span></h2>
-          <p>$150 on a one-game bet is the score. $50 parlays are for fun. Leftover stays unspent.</p>
+          <p>One unit is $50. A full play is 3 units. 1u parlays are for fun. Leftover stays unspent.</p>
         </div>
         <div class="split-bar" id="split-bar" role="img" aria-label="Budget split"></div>
         <ul class="split-legend" id="split-legend"></ul>
@@ -130,8 +130,9 @@
             <div><dt>Street</dt><dd>What the sportsbook is offering right now.</dd></div>
             <div><dt>Edge</dt><dd>How far those two numbers are apart.</dd></div>
             <div><dt>Skip</dt><dd>We looked and did not bet. That counts as a decision.</dd></div>
-            <div><dt>Straight</dt><dd>One game, $150. This is what we grade.</dd></div>
-            <div><dt>Parlay</dt><dd>Several games at once, $50. For fun, not the score.</dd></div>
+            <div><dt>Unit</dt><dd>$50. The week is 20 units ($1,000). 1u look, 2u standard, 3u full, 4u max.</dd></div>
+            <div><dt>Straight</dt><dd>One game, sized in units. This is what we grade.</dd></div>
+            <div><dt>Parlay</dt><dd>Several games at once, 1 unit. For fun, not the score.</dd></div>
             <div><dt>3 and 7</dt><dd>NFL games land on field goals and touchdowns a lot. A half-point around those numbers matters.</dd></div>
           </dl>
         </details>
@@ -143,12 +144,12 @@
       <div class="view-head felt-head">
         <p class="eyebrow">This week · skip is allowed</p>
         <h1 id="card-title">This week</h1>
-        <p class="lede">Each time slot can hold one $150 one-game bet and one $50 parlay. An empty slot is unfinished. Skip is finished. Do not chase Sunday or Monday night after a bad afternoon.</p>
+        <p class="lede">Each time slot can hold one process straight (1–3 units) and one 1u parlay. An empty slot is unfinished. Skip is finished. Do not chase Sunday or Monday night after a bad afternoon.</p>
       </div>
       <div class="window-grid" id="window-grid"></div>
       <aside class="holiday-note">
         <span class="mono">Holiday extras</span>
-        <p>Thanksgiving and Friday/Saturday extras: one $150 bet per game, still inside the $1,000 week. They do not replace Thursday, Sunday, or primetime slots.</p>
+        <p>Thanksgiving and Friday/Saturday extras: one process bet per game, still inside the 20-unit week. They do not replace Thursday, Sunday, or primetime slots.</p>
       </aside>
     </section>
 
@@ -311,7 +312,7 @@
       <div class="view-head">
         <p class="eyebrow">Bets we logged · one-game bets are the score</p>
         <h1 id="tickets-title">Bets</h1>
-        <p class="lede">The grade is whether our $150 one-game bets beat the sportsbook’s last number. Parlays stay visible and tagged as fun. Sample rows are examples and do not count.</p>
+        <p class="lede">The grade is whether our one-game bets beat the sportsbook’s last number. Size them in units. Parlays stay visible and tagged as fun. Sample rows are examples and do not count.</p>
       </div>
       <div class="ticket-toolbar">
         <button type="button" class="btn btn-fill" id="btn-add">Log ticket</button>
@@ -421,6 +422,10 @@
         <label class="field">
           <span>Juice</span>
           <input name="juice" id="f-juice" type="number" step="1" value="-110" class="mono">
+        </label>
+        <label class="field">
+          <span>Units</span>
+          <input name="units" id="f-units" type="number" min="0" max="4" step="1" value="3" class="mono">
         </label>
         <label class="field">
           <span>Stake</span>

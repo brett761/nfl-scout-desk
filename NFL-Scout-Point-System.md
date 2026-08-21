@@ -2,7 +2,7 @@
 Draft for review. 19 Aug 2026. 0.0 is league average. Plus is better. We bet a number, not a team.
 
 ## What we are doing
-Power-rate every club, then price every game. Fire a $150 straight only if our number is about 1.5 points better than the shopped line, or the edge crosses a key (3, then 7). Pass is a result. Process is scored on closing-line value of the straights, not weekly W/L. $50 parlays stay on the card as entertainment and are not part of this grade.
+Power-rate every club, then price every game. Fire a process straight only if our number is about 1.5 points better than the shopped line, or the edge crosses a key (3, then 7). Size in units after the number: $50 = 1u, 20u in the $1,000 week. 1u look, 2u standard, 3u full, 4u cap. Pass is a result. Process is scored on closing-line value of the straights, not weekly W/L. 1u parlays stay on the card as entertainment and are not part of this grade.
 
 The league is even. No pet teams.
 
