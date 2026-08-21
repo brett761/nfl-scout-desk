@@ -3334,7 +3334,7 @@ function vibeTopicTitle(t) {
 function vibeTeamRow(entry, abbr) {
   if (!entry || typeof entry !== "object") return { abbr, volume: null, topics: [] };
   const volume = entry.volume ?? entry.count ?? entry.posts ?? entry.n ?? null;
-  const raw = entry.topics || entry.stories || entry.headlines || entry.titles || [];
+  const raw = entry.topics || entry.items || entry.stories || entry.headlines || entry.titles || [];
   const topics = Array.isArray(raw) ? raw.map(vibeTopicTitle).filter(Boolean).slice(0, 3) : [];
   return { abbr, volume: volume === "" ? null : volume, topics };
 }
