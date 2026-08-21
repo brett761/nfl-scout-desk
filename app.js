@@ -278,7 +278,7 @@ const PLAYBOOK = [
   },
   {
     id: "W38", name: "Two signatures", tag: "ADAPT",
-    principle: "The computer (prior + FA + injury + weather) and the qualitative read (will he play, scheme) must agree. If they fight, pass.",
+    principle: "The computer (prior + FA + draft + injury + weather) and the qualitative read (will he play, scheme) must agree. If they fight, pass.",
     when: "Before every $150.",
     how: "If the model says fire and the film/status says no, PASS. If the story says fire and the model is dead, PASS.",
   },
@@ -434,13 +434,24 @@ function normAbbr(abbr) {
      FA is a Week-1 correction to last year's roster. It fades with the 17-game
      taper: at n=0, fa_term = net; at n=17, fa_term = 0. Do not fold FA into
      algorithm_base — keep the prior number honest / visible.
+   draft_raw(abbr) = draft-2026.json team net (0 if missing / failed load).
+     net is already team-capped ±4. If net is missing, sum starters[].pts and clamp ±4.
+   draft_term(abbr) = draft_raw(abbr) * draft_fade
+     draft_fade = max(0, (window − n) / window) where window = window_games or 4
+     and n = gamesPlayed2026(abbr). Week 1 (n=0) is 100%. Gone after 4 games.
+     Do not use the 17-game FA taper. Incoming rookies only. Starters only.
+     Year-1 fade is baked into pts. Does not rewrite the 2025 prior.
+   madden_term(abbr) = madden-2026.json team net (0 if missing).
+     Same 22 per club: top 11 OFF + top 11 DEF by OVR. K/P/LS out.
+     Surplus vs league mean of those 22. 4 OVR ≈ 1 point. Cap ±2.
+     Launch snapshot. Does not fade. Does not rewrite the 2025 prior.
    user_adjust = optional override on top of the algorithm (old "base").
    Injuries are a weekly point value. They do NOT taper with the 17-game prior.
    They stay until the row is off or deleted.
      row_pts = −round2(pos_base * status_mult), clamp [−cap_player, 0]
      injury_term = clamp(sum of ON rows, −cap_team, 0)
-   Effective = algorithm + FA + injury + adjust + context
-   = algorithm_base + fa_term + injury_term + user_adjust + sum of active (on) context.
+   Effective = algorithm + FA + draft + madden + injury + adjust + context
+   = algorithm_base + fa_term + draft_term + madden_term + injury_term + user_adjust + sum of active (on) context.
 
    Taper (do not invent another formula):
      N = 17
@@ -451,7 +462,7 @@ function normAbbr(abbr) {
      current starts at 0 until 2026 results exist.
      When n = 0, blended = prior.
 
-   ourHomeLine = −(homeEff − awayEff + hfa + coach_term + prep_net)
+   ourHomeLine = −(homeEff − awayEff + hfa + coach_term + prep_net + ats_net)
      negative = home favored. Example: SEA +4, NE +1, HFA 2, SEA home
      → −(4 − 1 + 2) = −5  (SEA −5).
      coach_term is a GAME number (home-perspective SU H2H). Positive =
@@ -462,7 +473,12 @@ function normAbbr(abbr) {
      bye_term(abbr)   = coaches[abbr].bye.pts    (0 unless that club is
      coming off a bye THIS game). prep_net = week1_term(home) − week1_term(away)
      + bye_term(home) − bye_term(away). ATS preferred. 0 if load fails.
-     eff() stays algorithm + FA + injury + adjust + context.
+     ats_net is a GAME number (career HC ATS, slight). Follows the person
+     across buildings. ats_net = ats_pts(home) − ats_pts(away). Positive =
+     home coach has the better ATS book = home favored more. min n 16,
+     cap 0.35, dead zone 0.04, full weight at 48. 0 if load fails /
+     first-year / dead / n too small. Does not replace SU H2H.
+     eff() stays algorithm + FA + draft + injury + adjust + context.
 
    Neutral site (game.neutral, e.g. Melbourne LAR vs SF): hfa = 0.
 
@@ -567,6 +583,49 @@ function faTerm(abbr) {
   return faRaw(a) * taperFor(a).wPrior;
 }
 
+function draftTeam(abbr) {
+  const a = normAbbr(abbr);
+  if (!draftData || !draftData.teams) return null;
+  return draftData.teams[a] || null;
+}
+
+function draftRaw(abbr) {
+  const t = draftTeam(abbr);
+  if (!t) return 0;
+  const n = num(t.net);
+  if (n !== null) return n;
+  const cap = (draftData && draftData.scoring && num(draftData.scoring.cap_team_net)) ?? 4;
+  let sum = 0;
+  for (const row of (t.starters || [])) sum += num(row.pts) || 0;
+  return Math.max(-cap, Math.min(cap, sum));
+}
+
+function draftWindow() {
+  return (draftData && num(draftData.window_games)) || 4;
+}
+
+function draftFade(abbr) {
+  const window = draftWindow();
+  return Math.max(0, (window - taperFor(abbr).n) / window);
+}
+
+function draftTerm(abbr) {
+  const a = normAbbr(abbr);
+  return draftRaw(a) * draftFade(a);
+}
+
+function maddenTeam(abbr) {
+  const a = normAbbr(abbr);
+  if (!maddenData || !maddenData.teams) return null;
+  return maddenData.teams[a] || null;
+}
+
+function maddenTerm(abbr) {
+  const t = maddenTeam(abbr);
+  if (!t) return 0;
+  return num(t.net) || 0;
+}
+
 function round2(n) {
   return Math.round(Number(n) * 100) / 100;
 }
@@ -665,7 +724,7 @@ function seedInjuriesIfNeeded() {
 function eff(abbr) {
   const a = normAbbr(abbr);
   const p = getProfile(a);
-  return algorithmBase(a) + faTerm(a) + injuryTerm(a) + (num(p.user_adjust) || 0) + contextSum(p);
+  return algorithmBase(a) + faTerm(a) + draftTerm(a) + maddenTerm(a) + injuryTerm(a) + (num(p.user_adjust) || 0) + contextSum(p);
 }
 
 function coachOf(abbr) {
@@ -859,11 +918,99 @@ function prepSheetLines(abbr) {
       <p class="team-hc-prep">${esc(line("Post-bye", c.bye))}</p>`;
 }
 
+function atsOf(abbr) {
+  if (!atsData || !atsData.coaches) return null;
+  return atsData.coaches[normAbbr(abbr)] || null;
+}
+
+function atsScoring() {
+  const s = atsData && atsData.scoring;
+  return {
+    min_n: (s && num(s.min_n)) ?? 16,
+    dead_zone: (s && num(s.dead_zone)) ?? 0.04,
+    max_pts: (s && num(s.max_pts)) ?? 0.35,
+    n_full: (s && num(s.n_full)) ?? 48,
+  };
+}
+
+function recomputeAtsPts(c) {
+  const w = num(c && c.wins) || 0;
+  const l = num(c && c.losses) || 0;
+  const n = num(c && c.n) ?? (w + l);
+  const { min_n, dead_zone, max_pts, n_full } = atsScoring();
+  if (!n || n < min_n) return 0;
+  const rate = w / n;
+  if (Math.abs(rate - 0.5) < dead_zone) return 0;
+  const raw = (rate - 0.5) * 2 * Math.min(1, n / n_full);
+  return Math.max(-max_pts, Math.min(max_pts, raw));
+}
+
+function atsPts(abbr) {
+  const c = atsOf(abbr);
+  if (!c) return 0;
+  const w = num(c.wins) || 0;
+  const l = num(c.losses) || 0;
+  const n = num(c.n) ?? (w + l);
+  const rate = n ? w / n : (num(c.rate) || 0);
+  const { min_n, dead_zone } = atsScoring();
+  if (n < min_n || Math.abs(rate - 0.5) < dead_zone) return 0;
+  const stored = num(c.pts);
+  if (stored !== null) return stored;
+  return recomputeAtsPts(c);
+}
+
+function atsNet(game) {
+  if (!atsData || !game) return 0;
+  return atsPts(game.home) - atsPts(game.away);
+}
+
+function atsChipHtml(game) {
+  if (!atsData || !game) return "";
+  const net = atsNet(game);
+  if (!net) return "";
+  const owner = net > 0 ? coachName(game.home) : coachName(game.away);
+  return tip(`<span class="hc-chip">${esc("ATS " + fmtCoachPts(Math.abs(net)) + " " + lastName(owner))}</span>`, SKED_TIPS.ats);
+}
+
+function atsSheetLine(abbr) {
+  if (!atsData) return "";
+  const c = atsOf(abbr);
+  const w = c ? (num(c.wins) || 0) : 0;
+  const l = c ? (num(c.losses) || 0) : 0;
+  const n = c ? (num(c.n) ?? (w + l)) : 0;
+  const pts = atsPts(abbr);
+  const { min_n } = atsScoring();
+  let tail = "0";
+  if (n >= min_n && pts !== 0) tail = fmtCoachPts(pts);
+  else if (n >= min_n) tail = "0";
+  else if (n > 0) tail = "n=" + n;
+  return `<p class="team-hc-prep">${esc("Career ATS " + w + "-" + l + " · " + tail)}</p>`;
+}
+
+function atsSheetNote(game) {
+  const bit = (abbr) => {
+    const c = atsOf(abbr);
+    const name = (c && c.name) || coachName(abbr) || abbr;
+    const last = lastName(name);
+    const w = c ? (num(c.wins) || 0) : 0;
+    const l = c ? (num(c.losses) || 0) : 0;
+    const n = c ? (num(c.n) ?? (w + l)) : 0;
+    const pts = atsPts(abbr);
+    const { min_n } = atsScoring();
+    if (n < 1) return last + " n=0";
+    if (n < min_n) return last + " " + w + "-" + l + " · n too small";
+    if (pts === 0) return last + " " + w + "-" + l + " · dead";
+    return last + " " + w + "-" + l + " · " + fmtCoachPts(pts);
+  };
+  if (!game) return "";
+  return bit(game.home) + " / " + bit(game.away);
+}
+
 function ourHomeSpread(game, hfaVal) {
   const pad = game && game.neutral ? 0 : (hfaVal ?? hfa);
   const homeE = eff(game.home);
   const awayE = eff(game.away);
-  return -(homeE - awayE + pad + coachTerm(game) + prepNet(game));
+  return -(homeE - awayE + pad + coachTerm(game) + prepNet(game) + atsNet(game));
 }
 
 function parseMarket(details, homeAbbr, awayAbbr) {
@@ -933,12 +1080,15 @@ let lastFocus = null;
 let nflData = null; // { teams, games, pulled, ... } from ./data/nfl-2026.json
 let priorData = null; // { teams, ranges, weights, taper } from ./data/prior-2025.json
 let faData = null; // { teams, scoring, season } from ./data/fa-2026.json; null if missing
+let draftData = null; // { teams, scoring, season, window_games } from ./data/draft-2026.json; null if missing
+let maddenData = null; // { teams, scoring } from ./data/madden-2026.json; null if missing
 let injuryScale = null; // from ./data/injury-scale.json
 let injurySeed = null;  // optional ./data/injury-2026.json; null if missing
 let notesSeed = null;  // optional ./data/profile-notes.json; null if missing
 let weatherScale = null; // from ./data/weather-scale.json
 let coachData = null; // from ./data/coaches-2026.json; null if missing → coach_term 0
 let prepData = null; // from ./data/coach-prep-2026.json; null if missing → prep_net 0
+let atsData = null; // from ./data/coach-ats-2026.json; null if missing → ats_net 0
 let keysData = null; // from ./data/keys-nfl.json; null if missing
 let vibeIndex = null; // from ./data/vibe-check/index.json; null if missing
 let vibeWeeksCal = null; // from ./data/vibe-check/weeks.json; null if missing
@@ -980,7 +1130,7 @@ function save() {
 }
 
 function emptyProfile() {
-  return { base: 0, notes: "", context: [], user_adjust: 0, locked_base: false, injuries: [] };
+  return { base: 0, notes: "", context: [], user_adjust: 0, locked_base: false, injuries: [], adjust_log: [] };
 }
 
 function normalizeProfile(p) {
@@ -1011,6 +1161,13 @@ function normalizeProfile(p) {
       on: r.on !== false,
       custom: r.custom === true,
     })) : [],
+    adjust_log: Array.isArray(p.adjust_log) ? p.adjust_log.map((r) => ({
+      id: r.id || uid(),
+      ts: typeof r.ts === "string" && r.ts ? r.ts : new Date().toISOString(),
+      from: num(r.from) ?? 0,
+      to: num(r.to) ?? 0,
+      why: typeof r.why === "string" ? r.why : "",
+    })) : [],
   };
 }
 
@@ -1022,6 +1179,90 @@ function setProfile(abbr, patch) {
   const a = normAbbr(abbr);
   profiles[a] = { ...getProfile(a), ...patch };
   saveProfiles();
+}
+
+let adjustBurstFrom = null;
+let adjustLogTimer = null;
+
+function readAdjustWhy() {
+  const el = document.getElementById("tp-adjust-why");
+  return el ? String(el.value || "").trim() : "";
+}
+
+function markAdjustWhyNeeded(on) {
+  const el = document.getElementById("tp-adjust-why");
+  if (!el) return;
+  el.classList.toggle("is-needed", !!on);
+}
+
+function applyAdjust(next, opts = {}) {
+  if (!profileAbbr) return;
+  const cur = num(getProfile(profileAbbr).user_adjust) || 0;
+  const val = opts.snap === false ? (num(next) ?? 0) : snapHalf(next);
+  if (adjustBurstFrom === null) adjustBurstFrom = cur;
+  setProfile(profileAbbr, { user_adjust: val });
+  if (opts.writeInput !== false) {
+    const inp = document.getElementById("tp-adjust");
+    if (inp) inp.value = val;
+  }
+  refreshTeamDerived();
+  clearTimeout(adjustLogTimer);
+  adjustLogTimer = setTimeout(commitAdjustLog, 700);
+}
+
+function commitAdjustLog() {
+  if (!profileAbbr) return;
+  const why = readAdjustWhy();
+  const p = getProfile(profileAbbr);
+  const to = num(p.user_adjust) || 0;
+  const from = adjustBurstFrom;
+  if (from === null || from === to) {
+    adjustBurstFrom = null;
+    markAdjustWhyNeeded(false);
+    return;
+  }
+  if (!why) {
+    markAdjustWhyNeeded(true);
+    const el = document.getElementById("tp-adjust-why");
+    if (el && document.activeElement !== el) el.focus();
+    return;
+  }
+  const log = (p.adjust_log || []).slice();
+  log.unshift({
+    id: uid(),
+    ts: new Date().toISOString(),
+    from,
+    to,
+    why,
+  });
+  adjustBurstFrom = null;
+  markAdjustWhyNeeded(false);
+  setProfile(profileAbbr, { adjust_log: log });
+  renderAdjustLog();
+}
+
+function fmtAdjustWhen(ts) {
+  const et = toET(ts);
+  if (!et) return ts || "";
+  return et.label + " · " + et.clock + " ET";
+}
+
+function adjustLogHtml(abbr) {
+  const log = getProfile(abbr).adjust_log || [];
+  if (!log.length) return '<p class="adjust-log-empty">No overrides logged.</p>';
+  return '<ol class="adjust-log">' + log.map((r) => (
+    "<li>"
+    + '<span class="adjust-log-when">' + esc(fmtAdjustWhen(r.ts)) + "</span>"
+    + '<span class="adjust-log-move">' + esc(fmtRtg(r.from)) + " → " + esc(fmtRtg(r.to)) + "</span>"
+    + '<span class="adjust-log-why">' + esc(r.why) + "</span>"
+    + "</li>"
+  )).join("") + "</ol>";
+}
+
+function renderAdjustLog() {
+  const box = document.getElementById("tp-adjust-log");
+  if (!box || !profileAbbr) return;
+  box.innerHTML = adjustLogHtml(profileAbbr);
 }
 
 function migrateAllProfiles() {
@@ -1143,11 +1384,14 @@ async function loadNfl() {
   const nflReq = fetch("./data/nfl-2026.json");
   const priorReq = fetch("./data/prior-2025.json");
   const faReq = fetch("./data/fa-2026.json");
+  const draftReq = fetch("./data/draft-2026.json");
+  const maddenReq = fetch("./data/madden-2026.json");
   const scaleReq = fetch("./data/injury-scale.json");
   const injReq = fetch("./data/injury-2026.json");
   const wxReq = fetch("./data/weather-scale.json");
   const coachReq = fetch("./data/coaches-2026.json");
   const prepReq = fetch("./data/coach-prep-2026.json");
+  const atsReq = fetch("./data/coach-ats-2026.json");
   const keysReq = fetch("./data/keys-nfl.json");
   const schemeReq = fetch("./data/scheme-2025.json");
   const totalsReq = fetch("./data/totals-model.json");
@@ -1182,6 +1426,26 @@ async function loadNfl() {
   } catch (err) {
     faData = null;
     console.warn("fa-2026.json", err);
+  }
+  try {
+    const res = await draftReq;
+    if (!res.ok) throw new Error(String(res.status));
+    const data = await res.json();
+    if (!data || !data.teams || typeof data.teams !== "object") throw new Error("bad draft");
+    draftData = data;
+  } catch (err) {
+    draftData = null;
+    console.warn("draft-2026.json", err);
+  }
+  try {
+    const res = await maddenReq;
+    if (!res.ok) throw new Error(String(res.status));
+    const data = await res.json();
+    if (!data || !data.teams || typeof data.teams !== "object") throw new Error("bad madden");
+    maddenData = data;
+  } catch (err) {
+    maddenData = null;
+    console.warn("madden-2026.json", err);
   }
   try {
     const res = await scaleReq;
@@ -1253,6 +1517,16 @@ async function loadNfl() {
   } catch (err) {
     prepData = null;
     console.warn("coach-prep-2026.json", err);
+  }
+  try {
+    const res = await atsReq;
+    if (!res.ok) throw new Error(String(res.status));
+    const data = await res.json();
+    if (!data || !data.coaches || typeof data.coaches !== "object") throw new Error("bad ats");
+    atsData = data;
+  } catch (err) {
+    atsData = null;
+    console.warn("coach-ats-2026.json", err);
   }
   try {
     const res = await keysReq;
@@ -1368,7 +1642,7 @@ const SKED_TIPS = {
   edge: "Street minus our number, home view. Plus = we like the home. Minus = we like the away. Example: −7.0 AWAY means we have the visitor getting 7 more points than the market. Copper number = |edge| ≥ 1.5 or we crossed 3/7. Highlight is not a ticket.",
   crosses: "Our line and the market sit on opposite sides of a key number (3 or 7). Landing there is common. That is why a half-point is the bet. Still not an auto-fire.",
   fire: "Highlighted when |edge| is about 1.5+ or the number crosses 3 or 7. We show the disagreement. We do not auto-bet.",
-  our: "Our home-perspective spread from the library: ratings + FA + injuries + HFA + coach/prep. Negative = home favored.",
+  our: "Our home-perspective spread from the library: ratings + FA + draft + Madden 22 + injuries + HFA + coach/prep + career ATS. Negative = home favored.",
   mkt: "The street number you typed (or the loaded open). Shop 3+ books. This is what we subtract from to get edge.",
   hcGold: "Coach vs coach, SU, home view. Moves the line (cap 1). n≥4 and outside the dead zone. Not ATS.",
   hcDead: "Enough games (n≥4) but the win rate is too close to .500. Number is 0.",
@@ -1376,6 +1650,7 @@ const SKED_TIPS = {
   w1Gold: "This coach's career Week 1 ATS, capped at 1. Copper = it is on the line this week.",
   byeGold: "This coach's career post-bye ATS, capped at 1. Copper = it is on the line this week.",
   w1Floor: "Same floor as coach H2H: 4 games or the chip is dead / n= only.",
+  ats: "Career ATS as a head coach. Follows the person. Slight. Cap 0.35. 16-game floor. Dead inside 0.04 of .500. Full weight at 48 games. Does not replace SU H2H.",
   wx: "Weather shades the TOTAL only, never the spread. Dome/closed = 0. Wind is the main lever.",
   ourOu: "Our total from 2025 PPG + weather. Not market + weather.",
   totEdge: "Market O/U minus our O/U. Plus = we are under the street. Copper if |edge| ≥ 1.5. Not a ticket.",
@@ -1806,10 +2081,13 @@ function renderTeams() {
     const open = profileAbbr === t.abbr;
     const rank = ranks[t.abbr];
     const faN = faRaw(t.abbr);
+    const draftN = draftRaw(t.abbr);
     const injN = injuryTerm(t.abbr);
     const extras = [
       rank ? `<span class="club-prior">PRIOR #${rank}</span>` : "",
       Math.abs(faN) >= 0.3 ? `<span class="club-fa ${rtgClass(faN)}">FA ${esc(fmtRtg(faN))}</span>` : "",
+      Math.abs(draftN) >= 0.3 ? `<span class="club-draft ${rtgClass(draftN)}">DRFT ${esc(fmtRtg(draftN))}</span>` : "",
+      Math.abs(maddenTerm(t.abbr)) >= 0.3 ? `<span class="club-madden ${rtgClass(maddenTerm(t.abbr))}">MAD ${esc(fmtRtg(maddenTerm(t.abbr)))}</span>` : "",
       injN <= -0.3 ? `<span class="club-inj minus">INJ ${esc(fmtRtg(injN))}</span>` : "",
       adj ? `<span class="club-ctx">adj ${esc(fmtRtg(adj))}</span>` : "",
       ctxN ? `<span class="club-ctx">${ctxN} ctx</span>` : "",
@@ -2034,6 +2312,76 @@ function faBlockHtml(abbr) {
   </div>`;
 }
 
+function draftRowHtml(row) {
+  const rd = row.round != null && row.round !== "" ? "R" + row.round : "";
+  const pk = row.pick != null && row.pick !== "" ? "#" + row.pick : "";
+  const pick = [rd, pk].filter(Boolean).join(" ");
+  const meta = [row.pos, pick].filter(Boolean).join(" · ");
+  return `<div class="fa-row">
+      <span class="fa-row-who">
+        <span class="fa-row-name">${esc(row.name || "")}</span>
+        <span class="fa-row-meta">${esc(meta)}</span>
+      </span>
+      <span class="fa-row-pts ${rtgClass(row.pts)}">${esc(fmtRtg(row.pts))}</span>
+      <span class="fa-row-note">${esc(row.note || "")}</span>
+    </div>`;
+}
+
+function draftBlockHtml(abbr) {
+  const t = draftTeam(abbr);
+  const starters = (t && Array.isArray(t.starters)) ? t.starters : [];
+  const net = draftRaw(abbr);
+  const term = draftTerm(abbr);
+  const pct = Math.round(draftFade(abbr) * 100);
+  const list = starters.length
+    ? starters.map(draftRowHtml).join("")
+    : '<p class="fa-empty">No Week 1 starter rookies scored for this club.</p>';
+  return `<div class="fa-block draft-block">
+    <p class="prior-kicker">2026 draft · Week 1 starters · fades over 4 games</p>
+    <div class="fa-net">
+      <small>NET</small>
+      <em class="${rtgClass(net)}">${esc(fmtRtg(net))}</em>
+      <span class="fa-net-note">on the board ${esc(fmtRtg(term))} · ${pct}%</span>
+    </div>
+    ${list}
+    <p class="prior-note">Starters only. Surplus vs replacement. Year-1 fade already in the points. Depth is 0. Not FA.</p>
+  </div>`;
+}
+
+function maddenUnitHtml(rows, label) {
+  const list = (rows || []).map((row) => `<div class="fa-row">
+      <span class="fa-row-who">
+        <span class="fa-row-name">${esc(row.name || "")}</span>
+        <span class="fa-row-meta">${esc(row.pos || "")}</span>
+      </span>
+      <span class="fa-row-pts">${esc(row.ovr != null ? Number(row.ovr).toFixed(0) : "")}</span>
+    </div>`).join("");
+  return `<div class="fa-in">
+      <p class="fa-list-kicker">${esc(label)}</p>
+      ${list || '<p class="fa-empty">None.</p>'}
+    </div>`;
+}
+
+function maddenBlockHtml(abbr) {
+  const t = maddenTeam(abbr);
+  const net = maddenTerm(abbr);
+  const ovr = t && t.ovr != null ? t.ovr : "—";
+  const n = t && t.n != null ? t.n : 0;
+  return `<div class="fa-block madden-block">
+    <p class="prior-kicker">Madden 27 · same 22 (11 OFF + 11 DEF)</p>
+    <div class="fa-net">
+      <small>NET</small>
+      <em class="${rtgClass(net)}">${esc(fmtRtg(net))}</em>
+      <span class="fa-net-note">unit OVR ${esc(String(ovr))} · n=${esc(String(n))}</span>
+    </div>
+    <div class="fa-lists">
+      ${maddenUnitHtml(t && t.off, "OFF")}
+      ${maddenUnitHtml(t && t.def, "DEF")}
+    </div>
+    <p class="prior-note">Equal count. Top 11 per side by OVR. Kickers out. 4 OVR ≈ 1 point vs league mean, cap ±2. Launch snapshot. Not FA.</p>
+  </div>`;
+}
+
 function injurySelectOptions(keys, selected) {
   const list = keys.slice();
   if (selected && !list.includes(selected)) list.push(selected);
@@ -2081,7 +2429,7 @@ function renderTeamSheet() {
     <div>
       <h2 id="team-sheet-title">${esc(team.name)}</h2>
       <p>${esc(team.abbr)} · ${esc(team.conf)} ${esc(team.div)}</p>
-      ${coachName(team.abbr) ? `<p class="team-hc">2026 HC: ${esc(coachName(team.abbr))}</p>${prepSheetLines(team.abbr)}` : ""}
+      ${coachName(team.abbr) ? `<p class="team-hc">2026 HC: ${esc(coachName(team.abbr))}</p>${prepSheetLines(team.abbr)}${atsSheetLine(team.abbr)}` : ""}
     </div>`;
   const ctxRows = (p.context || []).map((c) => `
     <div class="ctx-row" data-ctx="${esc(c.id)}">
@@ -2094,9 +2442,12 @@ function renderTeamSheet() {
   const adj = num(p.user_adjust) || 0;
   const ctx = contextSum(p);
   const fa = faTerm(team.abbr);
+  const draft = draftTerm(team.abbr);
   body.innerHTML = `
     ${priorBlockHtml(team.abbr)}
     ${faBlockHtml(team.abbr)}
+    ${draftBlockHtml(team.abbr)}
+    ${maddenBlockHtml(team.abbr)}
     ${injBlockHtml(team.abbr)}
     ${schemeBlockHtml(team.abbr)}
     <div class="tp-eff-row">
@@ -2113,7 +2464,12 @@ function renderTeamSheet() {
         <em id="tp-eff" class="${rtgClass(e)}">${esc(fmtRtg(e))}</em>
       </div>
     </div>
-    <p class="tp-eff-break" id="tp-eff-break">Effective = algorithm ${esc(fmtRtg(algo))} + FA ${esc(fmtRtg(fa))} + injury ${esc(fmtRtg(injuryTerm(team.abbr)))} + adjust ${esc(fmtRtg(adj))} + context ${esc(fmtRtg(ctx))}</p>
+    <label class="field">
+      <span>Why this override</span>
+      <input id="tp-adjust-why" type="text" placeholder="Say why. It gets a timestamp." autocomplete="off">
+    </label>
+    <div id="tp-adjust-log" class="adjust-log-wrap">${adjustLogHtml(team.abbr)}</div>
+    <p class="tp-eff-break" id="tp-eff-break">Effective = algorithm ${esc(fmtRtg(algo))} + FA ${esc(fmtRtg(fa))} + draft ${esc(fmtRtg(draft))} + madden ${esc(fmtRtg(maddenTerm(team.abbr)))} + injury ${esc(fmtRtg(injuryTerm(team.abbr)))} + adjust ${esc(fmtRtg(adj))} + context ${esc(fmtRtg(ctx))}</p>
     <label class="field">
       <span>Context stack</span>
     </label>
@@ -2142,6 +2498,8 @@ function refreshTeamDerived() {
   if (br) {
     br.textContent = "Effective = algorithm " + fmtRtg(algorithmBase(profileAbbr))
       + " + FA " + fmtRtg(faTerm(profileAbbr))
+      + " + draft " + fmtRtg(draftTerm(profileAbbr))
+      + " + madden " + fmtRtg(maddenTerm(profileAbbr))
       + " + injury " + fmtRtg(injuryTerm(profileAbbr))
       + " + adjust " + fmtRtg(num(p.user_adjust) || 0)
       + " + context " + fmtRtg(contextSum(p));
@@ -2181,6 +2539,7 @@ function openTeamProfile(abbr) {
 }
 
 function closeTeamSheet(opts = {}) {
+  commitAdjustLog();
   const sheet = document.getElementById("team-sheet");
   if (sheet) sheet.hidden = true;
   profileAbbr = null;
@@ -2325,6 +2684,8 @@ function renderGameSheet() {
   const clubRows = [
     ["Algorithm", algorithmBase(away), algorithmBase(home)],
     ["FA", faTerm(away), faTerm(home)],
+    ["Draft", draftTerm(away), draftTerm(home)],
+    ["Madden 22", maddenTerm(away), maddenTerm(home)],
     ["Injury", injuryTerm(away), injuryTerm(home)],
     ["Adjust", num(pA.user_adjust) || 0, num(pH.user_adjust) || 0],
     ["Context", contextSum(pA), contextSum(pH)],
@@ -2345,7 +2706,8 @@ function renderGameSheet() {
   const hfaUsed = game.neutral ? 0 : hfa;
   const coach = coachTerm(game);
   const prep = prepNet(game);
-  const gap = diff + hfaUsed + coach + prep;
+  const ats = atsNet(game);
+  const gap = diff + hfaUsed + coach + prep + ats;
   const ourLine = ourHomeSpread(game, hfa);
   const mkt = marketFor(game);
   const marketHome = mkt.parsed && mkt.parsed.homeLine;
@@ -2360,6 +2722,7 @@ function renderGameSheet() {
     { label: "+ HFA", val: hfaUsed, note: hfaNote },
     { label: "+ coach_term", val: coach, note: coachSheetNote(game) },
     { label: "+ prep_net", val: prep, note: prepSheetNote(game) },
+    { label: "+ ats_net", val: ats, note: atsSheetNote(game) },
     { label: "gap", val: gap, note: "that sum", sum: true },
     { label: "ourHomeLine = −(gap)", val: hasOurNumber(game) ? ourLine : 0, note: hasOurNumber(game) ? "" : "library even · no number", hideVal: !hasOurNumber(game) },
   ];
@@ -3163,7 +3526,7 @@ function renderSchedule() {
     hfaCtrl.tabIndex = 0;
   }
   if (sub) {
-    sub.textContent = "Week " + currentWeek + " · market as of 19 Aug 2026 · our number from the library · our O/U from 2025 ppg + weather · weather shades the total, not the spread · coach H2H follows the person, 4-game minimum, cap 1 point, SU not ATS · Week 1 and bye are extra prep, coach career ATS, 4-game min, cap 1";
+    sub.textContent = "Week " + currentWeek + " · market as of 19 Aug 2026 · our number from the library · our O/U from 2025 ppg + weather · weather shades the total, not the spread · coach H2H follows the person, 4-game minimum, cap 1 point, SU not ATS · Week 1 and bye are extra prep, coach career ATS, 4-game min, cap 1 · career ATS is a slight, 16-game floor, cap 0.35";
   }
   if (!board) return;
   if (!nflData || !nflData.games.length) {
@@ -3229,7 +3592,7 @@ function renderSchedule() {
           <label>O/U <input class="mono" type="number" step="0.5" data-ou="${esc(g.id)}" value="${esc(ouVal)}"></label>
         </div>
         <div class="sked-our sked-tip" data-tip="${esc(SKED_TIPS.our)}" title="${esc(SKED_TIPS.our)}" tabindex="0"><span class="lbl">Our line</span><span class="val">${esc(ourHtml)}</span></div>
-        <div class="sked-edge sked-tip" data-tip="${esc(SKED_TIPS.edge)}" title="${esc(SKED_TIPS.edge)}" tabindex="0"><span class="lbl">Edge</span>${edgeHtml === "—" ? '<span class="val">—</span>' : edgeHtml}${coachChipHtml(g)}${prepChipHtml(g)}</div>
+        <div class="sked-edge sked-tip" data-tip="${esc(SKED_TIPS.edge)}" title="${esc(SKED_TIPS.edge)}" tabindex="0"><span class="lbl">Edge</span>${edgeHtml === "—" ? '<span class="val">—</span>' : edgeHtml}${coachChipHtml(g)}${prepChipHtml(g)}${atsChipHtml(g)}</div>
         ${wxStripHtml(g, mkt)}
         ${hasOurNumber(g) ? coverHelperHtml(ourHomeSpread(g, hfa), mkt.parsed.homeLine) : ""}
       </article>`;
@@ -4032,21 +4395,24 @@ function bind() {
   const gameClose = document.getElementById("game-sheet-close");
   if (gameClose) gameClose.addEventListener("click", () => closeGameSheet());
   document.getElementById("team-sheet-close").addEventListener("click", () => closeTeamSheet());
+  document.getElementById("team-sheet").addEventListener("keydown", (e) => {
+    if (e.target.id === "tp-adjust-why" && e.key === "Enter") {
+      e.preventDefault();
+      commitAdjustLog();
+    }
+  });
+  document.getElementById("team-sheet").addEventListener("focusout", (e) => {
+    if (e.target && e.target.id === "tp-adjust-why") commitAdjustLog();
+  });
   document.getElementById("team-sheet").addEventListener("click", (e) => {
     if (e.target.id === "tp-adjust-minus") {
       const inp = document.getElementById("tp-adjust");
-      const next = snapHalf((num(inp.value) || 0) - 0.5);
-      inp.value = next;
-      setProfile(profileAbbr, { user_adjust: next });
-      refreshTeamDerived();
+      applyAdjust((num(inp.value) || 0) - 0.5);
       return;
     }
     if (e.target.id === "tp-adjust-plus") {
       const inp = document.getElementById("tp-adjust");
-      const next = snapHalf((num(inp.value) || 0) + 0.5);
-      inp.value = next;
-      setProfile(profileAbbr, { user_adjust: next });
-      refreshTeamDerived();
+      applyAdjust((num(inp.value) || 0) + 0.5);
       return;
     }
     if (e.target.id === "tp-ctx-add") {
@@ -4115,8 +4481,7 @@ function bind() {
     }
     if (e.target.id === "tp-adjust") {
       const next = num(e.target.value);
-      setProfile(profileAbbr, { user_adjust: next === null ? 0 : next });
-      refreshTeamDerived();
+      applyAdjust(next === null ? 0 : next, { snap: false, writeInput: false });
       return;
     }
     const text = e.target.closest("[data-ctx-text]");
@@ -4154,10 +4519,7 @@ function bind() {
   document.getElementById("team-sheet").addEventListener("change", (e) => {
     if (!profileAbbr) return;
     if (e.target.id === "tp-adjust") {
-      const next = snapHalf(e.target.value);
-      e.target.value = next;
-      setProfile(profileAbbr, { user_adjust: next });
-      refreshTeamDerived();
+      applyAdjust(e.target.value);
       return;
     }
     const on = e.target.closest("[data-ctx-on]");
