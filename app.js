@@ -667,6 +667,20 @@ function maddenTerm(abbr) {
   return num(t.net) || 0;
 }
 
+function sosTeam(abbr) {
+  const a = normAbbr(abbr);
+  if (!sosData || !sosData.teams) return null;
+  return sosData.teams[a] || null;
+}
+
+function sosTerm(abbr) {
+  const t = sosTeam(abbr);
+  if (!t) return 0;
+  const n = num(t.net);
+  return n === null ? 0 : n;
+}
+
+
 function round2(n) {
   return Math.round(Number(n) * 100) / 100;
 }
@@ -765,7 +779,7 @@ function seedInjuriesIfNeeded() {
 function eff(abbr) {
   const a = normAbbr(abbr);
   const p = getProfile(a);
-  return algorithmBase(a) + faTerm(a) + draftTerm(a) + maddenTerm(a) + injuryTerm(a) + (num(p.user_adjust) || 0) + contextSum(p);
+  return algorithmBase(a) + faTerm(a) + draftTerm(a) + maddenTerm(a) + sosTerm(a) + injuryTerm(a) + (num(p.user_adjust) || 0) + contextSum(p);
 }
 
 function coachOf(abbr) {
@@ -1256,6 +1270,7 @@ let priorData = null; // { teams, ranges, weights, taper } from ./data/prior-202
 let faData = null; // { teams, scoring, season } from ./data/fa-2026.json; null if missing
 let draftData = null; // { teams, scoring, season, window_games } from ./data/draft-2026.json; null if missing
 let maddenData = null; // { teams, scoring } from ./data/madden-2026.json; null if missing
+let sosData = null; // { teams } from ./data/sos-2025.json; realized SOS + record; null if missing
 let injuryScale = null; // from ./data/injury-scale.json
 let injurySeed = null;  // optional ./data/injury-2026.json; null if missing
 let notesSeed = null;  // optional ./data/profile-notes.json; null if missing
@@ -1560,6 +1575,7 @@ async function loadNfl() {
   const faReq = fetch("./data/fa-2026.json");
   const draftReq = fetch("./data/draft-2026.json");
   const maddenReq = fetch("./data/madden-2026.json");
+  const sosReq = fetch("./data/sos-2025.json");
   const scaleReq = fetch("./data/injury-scale.json");
   const injReq = fetch("./data/injury-2026.json");
   const wxReq = fetch("./data/weather-scale.json");
@@ -1620,6 +1636,16 @@ async function loadNfl() {
   } catch (err) {
     maddenData = null;
     console.warn("madden-2026.json", err);
+  }
+  try {
+    const res = await sosReq;
+    if (!res.ok) throw new Error(String(res.status));
+    const data = await res.json();
+    if (!data || !data.teams || typeof data.teams !== "object") throw new Error("bad sos");
+    sosData = data;
+  } catch (err) {
+    sosData = null;
+    console.warn("sos-2025.json", err);
   }
   try {
     const res = await scaleReq;
@@ -2266,6 +2292,7 @@ function renderTeams() {
       Math.abs(faN) >= 0.3 ? `<span class="club-fa ${rtgClass(faN)}">FA ${esc(fmtRtg(faN))}</span>` : "",
       Math.abs(draftN) >= 0.3 ? `<span class="club-draft ${rtgClass(draftN)}">DRFT ${esc(fmtRtg(draftN))}</span>` : "",
       Math.abs(maddenTerm(t.abbr)) >= 0.3 ? `<span class="club-madden ${rtgClass(maddenTerm(t.abbr))}">MAD ${esc(fmtRtg(maddenTerm(t.abbr)))}</span>` : "",
+      Math.abs(sosTerm(t.abbr)) >= 0.3 ? `<span class="club-sos ${rtgClass(sosTerm(t.abbr))}">SOS ${esc(fmtRtg(sosTerm(t.abbr)))}</span>` : "",
       injN <= -0.3 ? `<span class="club-inj minus">INJ ${esc(fmtRtg(injN))}</span>` : "",
       adj ? `<span class="club-ctx">adj ${esc(fmtRtg(adj))}</span>` : "",
       ctxN ? `<span class="club-ctx">${ctxN} ctx</span>` : "",
@@ -2647,7 +2674,7 @@ function renderTeamSheet() {
       <input id="tp-adjust-why" type="text" placeholder="Say why. It gets a timestamp." autocomplete="off">
     </label>
     <div id="tp-adjust-log" class="adjust-log-wrap">${adjustLogHtml(team.abbr)}</div>
-    <p class="tp-eff-break" id="tp-eff-break">Effective = algorithm ${esc(fmtRtg(algo))} + FA ${esc(fmtRtg(fa))} + draft ${esc(fmtRtg(draft))} + madden ${esc(fmtRtg(maddenTerm(team.abbr)))} + injury ${esc(fmtRtg(injuryTerm(team.abbr)))} + adjust ${esc(fmtRtg(adj))} + context ${esc(fmtRtg(ctx))}</p>
+    <p class="tp-eff-break" id="tp-eff-break">Effective = algorithm ${esc(fmtRtg(algo))} + FA ${esc(fmtRtg(fa))} + draft ${esc(fmtRtg(draft))} + madden ${esc(fmtRtg(maddenTerm(team.abbr)))} + SOS ${esc(fmtRtg(sosTerm(team.abbr)))} + injury ${esc(fmtRtg(injuryTerm(team.abbr)))} + adjust ${esc(fmtRtg(adj))} + context ${esc(fmtRtg(ctx))}</p>
     <label class="field">
       <span>Context stack</span>
     </label>
@@ -2678,6 +2705,7 @@ function refreshTeamDerived() {
       + " + FA " + fmtRtg(faTerm(profileAbbr))
       + " + draft " + fmtRtg(draftTerm(profileAbbr))
       + " + madden " + fmtRtg(maddenTerm(profileAbbr))
+      + " + SOS " + fmtRtg(sosTerm(profileAbbr))
       + " + injury " + fmtRtg(injuryTerm(profileAbbr))
       + " + adjust " + fmtRtg(num(p.user_adjust) || 0)
       + " + context " + fmtRtg(contextSum(p));
@@ -2873,6 +2901,7 @@ function renderGameSheet() {
     ["Roster changes", faTerm(away), faTerm(home)],
     ["Rookies", draftTerm(away), draftTerm(home)],
     ["Madden 22", maddenTerm(away), maddenTerm(home)],
+    ["Last year SOS", sosTerm(away), sosTerm(home)],
     ["Injuries", injuryTerm(away), injuryTerm(home)],
     ["Manual", num(pA.user_adjust) || 0, num(pH.user_adjust) || 0],
     ["Extra notes", contextSum(pA), contextSum(pH)],
