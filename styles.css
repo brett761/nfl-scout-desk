@@ -2522,32 +2522,38 @@ button.sked-venue {
 
 .kpi-units { font-size: 0.45em; letter-spacing: 0.04em; font-weight: 600; color: var(--slate); }
 
-@media (max-width: 720px) {
-  html, body { overflow-x: hidden; }
-  .frame { inset: 4px; }
-  .frame::before, .frame::after { width: 12px; height: 12px; }
-  .mast { padding: 10px 12px; gap: 8px; }
-  .wm-kicker, .wm-tag { white-space: normal; }
+@media (max-width: 900px) {
+  html, body { overflow-x: clip; max-width: 100%; }
+  .frame { display: none; }
+  .mast {
+    grid-template-columns: minmax(0, 1fr) auto;
+    padding: 8px 12px;
+    gap: 8px;
+  }
+  .wm-kicker { white-space: normal; font-size: 12px; letter-spacing: 0.08em; }
   .wm-tag { display: none; }
   .hero {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-    padding: 4px 0 28px 16px;
+    display: block;
+    padding: 8px 0 28px 12px;
   }
   .hero-bee {
-    width: min(200px, 62vw);
+    display: block;
+    width: 140px;
+    max-width: 42vw;
     height: auto;
+    margin: 0 0 14px;
   }
-  .hero-copy { width: 100%; flex: none; }
+  .hero-copy { display: block; width: 100%; max-width: 100%; }
   h1 {
-    font-size: clamp(32px, 10vw, 44px);
-    letter-spacing: 0.04em;
-    overflow-wrap: anywhere;
+    font-size: 32px;
+    letter-spacing: 0.03em;
+    line-height: 1.05;
+    max-width: 100%;
+    overflow-wrap: break-word;
   }
   .lede { max-width: 100%; }
   .hero-meta { margin-top: 16px; }
-  main { padding: 20px 14px 80px; }
+  main { padding: 16px 12px 80px; max-width: 100%; }
   .nav {
     flex-wrap: nowrap;
     overflow-x: auto;
