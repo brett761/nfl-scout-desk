@@ -2358,13 +2358,13 @@ function teamSkedHtml(abbr) {
 }
 
 function pillarWeights() {
-  const w = (priorData && priorData.weights) || { off: 0.3, def: 0.35, st: 0.1, take: 0.125, give: 0.125 };
+  const w = (priorData && priorData.weights) || { off: 0.325, def: 0.325, st: 0.1, take: 0.125, give: 0.125 };
   return w;
 }
 
 function pillarRanges() {
   return (priorData && priorData.ranges) || {
-    off: { lo: -10, hi: 8 },
+    off: { lo: -12, hi: 12 },
     def: { lo: -12, hi: 12 },
     st: { lo: -4, hi: 4 },
     take: { lo: -5, hi: 5 },
@@ -2453,7 +2453,7 @@ function priorBlockHtml(abbr) {
         <span>${esc(copy.line)}</span>
       </div>
     </div>
-    <p class="prior-note">Best D is +12, worst −12. Offense +8 / −10. Those stay visible. The number on the board is the weighted blend.</p>
+    <p class="prior-note">Offense and defense sit on the same ±12 scale and the same weight. Those stay visible. The number on the board is the blend.</p>
     <p class="prior-wts">${esc(wLine)}</p>
   </div>`;
 }

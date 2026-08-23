@@ -10,8 +10,8 @@
   },
   "ranges": {
     "off": {
-      "lo": -10,
-      "hi": 8,
+      "lo": -12,
+      "hi": 12,
       "stat": "points scored per game",
       "better": "higher"
     },
@@ -41,8 +41,8 @@
     }
   },
   "weights": {
-    "off": 0.3,
-    "def": 0.35,
+    "off": 0.325,
+    "def": 0.325,
     "st": 0.1,
     "take": 0.125,
     "give": 0.125
@@ -53,7 +53,7 @@
     "week1": "n = 0 \u2192 100% 2025 prior",
     "after_17": "n = 17 \u2192 0% prior, 100% 2026",
     "current_update": "90/10: current := 0.9 * current + 0.1 * game_observation (Walters W20)",
-    "note": "Pillars are on Brett's scales so a +12 defense stays visible. Combined prior is a weighted sum so it can sit on a spread. Context stack still adds on top."
+    "note": "Offense and defense sit on the same \u00b112 min-max scale and the same 32.5% weight. Combined prior is the weighted sum so it can sit on a spread. Context stack still adds on top. Equalized 2026-08-23; raw 2025 PPG unchanged."
   },
   "teams": {
     "ARI": {
@@ -67,13 +67,13 @@
         "st_fgm": 25
       },
       "pillars": {
-        "off": -2.6,
+        "off": -2.13,
         "def": -9.4,
         "st": -3.52,
         "take": 0.17,
         "give": -0.26
       },
-      "prior": -4.43
+      "prior": -4.11
     },
     "ATL": {
       "raw": {
@@ -86,13 +86,13 @@
         "st_fgm": 32
       },
       "pillars": {
-        "off": -2.71,
+        "off": -2.28,
         "def": 0.09,
         "st": -2.84,
         "take": 1.55,
         "give": 1.32
       },
-      "prior": -0.71
+      "prior": -0.64
     },
     "BAL": {
       "raw": {
@@ -105,13 +105,13 @@
         "st_fgm": 30
       },
       "pillars": {
-        "off": 1.82,
+        "off": 3.75,
         "def": 0.47,
         "st": -2.16,
         "take": 0.52,
         "give": -1.32
       },
-      "prior": 0.39
+      "prior": 1.06
     },
     "BUF": {
       "raw": {
@@ -124,13 +124,13 @@
         "st_fgm": 19
       },
       "pillars": {
-        "off": 5.57,
+        "off": 8.76,
         "def": 4.0,
         "st": -0.16,
         "take": 0.52,
         "give": 0.79
       },
-      "prior": 3.22
+      "prior": 4.29
     },
     "CAR": {
       "raw": {
@@ -143,13 +143,13 @@
         "st_fgm": 24
       },
       "pillars": {
-        "off": -5.47,
+        "off": -5.96,
         "def": 2.33,
         "st": -2.75,
         "take": 0.86,
         "give": -1.32
       },
-      "prior": -1.16
+      "prior": -1.51
     },
     "CHI": {
       "raw": {
@@ -162,13 +162,13 @@
         "st_fgm": 33
       },
       "pillars": {
-        "off": 2.92,
+        "off": 5.23,
         "def": -1.4,
         "st": -2.56,
         "take": 5.0,
         "give": 5.0
       },
-      "prior": 1.38
+      "prior": 2.24
     },
     "CIN": {
       "raw": {
@@ -181,13 +181,13 @@
         "st_fgm": 25
       },
       "pillars": {
-        "off": 1.26,
+        "off": 3.02,
         "def": -9.77,
         "st": -0.3,
         "take": 0.86,
         "give": -1.84
       },
-      "prior": -3.19
+      "prior": -2.35
     },
     "CLE": {
       "raw": {
@@ -200,13 +200,13 @@
         "st_fgm": 24
       },
       "pillars": {
-        "off": -7.57,
+        "off": -8.76,
         "def": 2.51,
         "st": -2.09,
         "take": -0.17,
         "give": -2.37
       },
-      "prior": -1.92
+      "prior": -2.56
     },
     "DAL": {
       "raw": {
@@ -219,13 +219,13 @@
         "st_fgm": 36
       },
       "pillars": {
-        "off": 4.91,
+        "off": 7.88,
         "def": -12.0,
         "st": -2.44,
         "take": -2.24,
         "give": -0.26
       },
-      "prior": -3.28
+      "prior": -1.9
     },
     "DEN": {
       "raw": {
@@ -238,13 +238,13 @@
         "st_fgm": 28
       },
       "pillars": {
-        "off": 0.38,
+        "off": 1.84,
         "def": 9.95,
         "st": -0.49,
         "take": -1.55,
         "give": 1.84
       },
-      "prior": 3.58
+      "prior": 3.82
     },
     "DET": {
       "raw": {
@@ -257,13 +257,13 @@
         "st_fgm": 27
       },
       "pillars": {
-        "off": 5.57,
+        "off": 8.76,
         "def": -1.21,
         "st": -1.38,
         "take": 0.17,
         "give": 2.89
       },
-      "prior": 1.49
+      "prior": 2.7
     },
     "GB": {
       "raw": {
@@ -276,13 +276,13 @@
         "st_fgm": 28
       },
       "pillars": {
-        "off": -0.28,
+        "off": 0.96,
         "def": 4.56,
         "st": -2.8,
         "take": -1.55,
         "give": 3.95
       },
-      "prior": 1.53
+      "prior": 1.81
     },
     "HOU": {
       "raw": {
@@ -295,13 +295,13 @@
         "st_fgm": 48
       },
       "pillars": {
-        "off": 0.6,
+        "off": 2.13,
         "def": 11.63,
         "st": -1.72,
         "take": 3.62,
         "give": 4.47
       },
-      "prior": 5.09
+      "prior": 5.31
     },
     "IND": {
       "raw": {
@@ -314,13 +314,13 @@
         "st_fgm": 34
       },
       "pillars": {
-        "off": 4.58,
+        "off": 7.44,
         "def": -1.02,
         "st": -1.49,
         "take": 0.86,
         "give": -1.32
       },
-      "prior": 0.81
+      "prior": 1.88
     },
     "JAX": {
       "raw": {
@@ -333,13 +333,13 @@
         "st_fgm": 30
       },
       "pillars": {
-        "off": 5.13,
+        "off": 8.17,
         "def": 7.16,
         "st": 1.33,
         "take": 4.31,
         "give": 1.32
       },
-      "prior": 4.88
+      "prior": 5.82
     },
     "KC": {
       "raw": {
@@ -352,13 +352,13 @@
         "st_fgm": 33
       },
       "pillars": {
-        "off": -2.16,
+        "off": -1.55,
         "def": 8.09,
         "st": -2.32,
         "take": -1.55,
         "give": 2.89
       },
-      "prior": 2.12
+      "prior": 2.06
     },
     "LAC": {
       "raw": {
@@ -371,13 +371,13 @@
         "st_fgm": 38
       },
       "pillars": {
-        "off": -1.83,
+        "off": -1.1,
         "def": 6.79,
         "st": -1.67,
         "take": 1.55,
         "give": -0.26
       },
-      "prior": 1.82
+      "prior": 1.84
     },
     "LAR": {
       "raw": {
@@ -390,13 +390,13 @@
         "st_fgm": 22
       },
       "pillars": {
-        "off": 8.0,
+        "off": 12.0,
         "def": 6.05,
         "st": -3.21,
         "take": 2.59,
         "give": 2.89
       },
-      "prior": 4.88
+      "prior": 6.23
     },
     "LV": {
       "raw": {
@@ -409,13 +409,13 @@
         "st_fgm": 22
       },
       "pillars": {
-        "off": -10.0,
+        "off": -12.0,
         "def": -3.26,
         "st": -2.9,
         "take": -0.86,
         "give": -1.32
       },
-      "prior": -4.7
+      "prior": -5.52
     },
     "MIA": {
       "raw": {
@@ -428,13 +428,13 @@
         "st_fgm": 27
       },
       "pillars": {
-        "off": -3.15,
+        "off": -2.87,
         "def": -2.33,
         "st": 0.12,
         "take": 0.52,
         "give": -1.84
       },
-      "prior": -1.91
+      "prior": -1.84
     },
     "MIN": {
       "raw": {
@@ -447,13 +447,13 @@
         "st_fgm": 33
       },
       "pillars": {
-        "off": -3.37,
+        "off": -3.17,
         "def": 7.53,
         "st": -1.5,
         "take": 0.86,
         "give": -5.0
       },
-      "prior": 0.96
+      "prior": 0.75
     },
     "NE": {
       "raw": {
@@ -466,13 +466,13 @@
         "st_fgm": 27
       },
       "pillars": {
-        "off": 6.12,
+        "off": 9.5,
         "def": 9.02,
         "st": 2.67,
         "take": 0.17,
         "give": 2.37
       },
-      "prior": 5.58
+      "prior": 6.6
     },
     "NO": {
       "raw": {
@@ -485,13 +485,13 @@
         "st_fgm": 30
       },
       "pillars": {
-        "off": -5.8,
+        "off": -6.4,
         "def": 2.14,
         "st": -4.0,
         "take": 0.52,
         "give": -1.84
       },
-      "prior": -1.56
+      "prior": -1.95
     },
     "NYG": {
       "raw": {
@@ -504,13 +504,13 @@
         "st_fgm": 23
       },
       "pillars": {
-        "off": -0.94,
+        "off": 0.07,
         "def": -4.0,
         "st": -0.38,
         "take": -1.21,
         "give": 1.84
       },
-      "prior": -1.64
+      "prior": -1.24
     },
     "NYJ": {
       "raw": {
@@ -523,13 +523,13 @@
         "st_fgm": 28
       },
       "pillars": {
-        "off": -6.25,
+        "off": -6.99,
         "def": -11.07,
         "st": 4.0,
         "take": -5.0,
         "give": -1.32
       },
-      "prior": -6.14
+      "prior": -6.26
     },
     "PHI": {
       "raw": {
@@ -542,13 +542,13 @@
         "st_fgm": 20
       },
       "pillars": {
-        "off": -1.06,
+        "off": -0.07,
         "def": 8.47,
         "st": -3.7,
         "take": 0.86,
         "give": 2.89
       },
-      "prior": 2.75
+      "prior": 2.83
     },
     "PIT": {
       "raw": {
@@ -561,13 +561,13 @@
         "st_fgm": 27
       },
       "pillars": {
-        "off": 0.16,
+        "off": 1.55,
         "def": 1.58,
         "st": -2.58,
         "take": 2.93,
         "give": 2.89
       },
-      "prior": 1.07
+      "prior": 1.49
     },
     "SEA": {
       "raw": {
@@ -580,13 +580,13 @@
         "st_fgm": 41
       },
       "pillars": {
-        "off": 5.68,
+        "off": 8.91,
         "def": 12.0,
         "st": 2.78,
         "take": 2.24,
         "give": -3.95
       },
-      "prior": 5.97
+      "prior": 6.86
     },
     "SF": {
       "raw": {
@@ -599,13 +599,13 @@
         "st_fgm": 33
       },
       "pillars": {
-        "off": 2.7,
+        "off": 4.93,
         "def": 3.44,
         "st": -1.78,
         "take": -0.86,
         "give": -0.79
       },
-      "prior": 1.63
+      "prior": 2.34
     },
     "TB": {
       "raw": {
@@ -618,13 +618,13 @@
         "st_fgm": 32
       },
       "pillars": {
-        "off": -0.94,
+        "off": 0.07,
         "def": -1.02,
         "st": -2.6,
         "take": 1.55,
         "give": 2.37
       },
-      "prior": -0.41
+      "prior": -0.08
     },
     "TEN": {
       "raw": {
@@ -637,13 +637,13 @@
         "st_fgm": 29
       },
       "pillars": {
-        "off": -7.24,
+        "off": -8.32,
         "def": -8.28,
         "st": 0.5,
         "take": -1.55,
         "give": 0.79
       },
-      "prior": -5.12
+      "prior": -5.44
     },
     "WSH": {
       "raw": {
@@ -656,13 +656,40 @@
         "st_fgm": 23
       },
       "pillars": {
-        "off": -2.6,
+        "off": -2.13,
         "def": -5.3,
         "st": 0.08,
         "take": -2.93,
         "give": -1.32
       },
-      "prior": -3.16
+      "prior": -2.94
+    }
+  },
+  "equalized_od": {
+    "on": "2026-08-23",
+    "was": {
+      "off_range": [
+        -10,
+        8
+      ],
+      "def_range": [
+        -12,
+        12
+      ],
+      "off_w": 0.3,
+      "def_w": 0.35
+    },
+    "now": {
+      "off_range": [
+        -12,
+        12
+      ],
+      "def_range": [
+        -12,
+        12
+      ],
+      "off_w": 0.325,
+      "def_w": 0.325
     }
   }
 }
