@@ -4283,7 +4283,7 @@ function staffRoleName(role) {
 function staffSchemeLine(role) {
   if (!role || typeof role !== "object") return "";
   const s = String(role.scheme || "").trim();
-  if (!s || s.toLowerCase() === "unknown") return "";
+  if (!s || s.toLowerCase() === "unknown" || s.toLowerCase().startsWith("unknown")) return "";
   return s;
 }
 
@@ -4363,10 +4363,10 @@ function renderStaff() {
         <span>${esc(t.name || "")}</span>
       </div>
       <div class="staff-roles">
-        ${staffRoleCard("HC", { name: c.hc, bio: on ? c.hc_bio : "" })}
-        ${staffRoleCard("OC", on ? oc : { name: oc.name, scheme: oc.scheme })}
-        ${staffRoleCard("DC", on ? dc : { name: dc.name, scheme: dc.scheme })}
-        ${staffRoleCard("ST", on ? st : { name: st.name, scheme: st.scheme })}
+        ${staffRoleCard("HC", { name: c.hc, bio: c.hc_bio })}
+        ${staffRoleCard("OC", oc)}
+        ${staffRoleCard("DC", dc)}
+        ${staffRoleCard("ST", st)}
       </div>
       ${hist}
     </button>`;
