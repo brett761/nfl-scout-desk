@@ -473,6 +473,11 @@ function normAbbr(abbr) {
      and n = gamesPlayed2026(abbr). Week 1 (n=0) is 100%. Gone after 4 games.
      Do not use the 17-game FA taper. Incoming rookies only. Starters only.
      Year-1 fade is baked into pts. Does not rewrite the 2025 prior.
+   return_raw(abbr) = return-2026.json team net (0 if missing).
+     Starters hurt in 2025, healthy for 2026. Surplus vs the injured year.
+     Still-PUP names stay on the injury layer. Cap 1.5 / player, 2.5 / team.
+   return_term(abbr) = return_raw(abbr) * w_prior (same taper as FA).
+     Does not rewrite the 2025 prior.
    madden_term(abbr) = madden-2026.json team net (0 if missing).
      Same 22 per club: top 11 OFF + top 11 DEF by OVR. K/P/LS out.
      Surplus vs league mean of those 22. 4 OVR ≈ 1 point. Cap ±2.
@@ -680,6 +685,28 @@ function sosTerm(abbr) {
   return n === null ? 0 : n;
 }
 
+function returnTeam(abbr) {
+  const a = normAbbr(abbr);
+  if (!returnData || !returnData.teams) return null;
+  return returnData.teams[a] || null;
+}
+
+function returnRaw(abbr) {
+  const t = returnTeam(abbr);
+  if (!t) return 0;
+  const n = num(t.net);
+  if (n !== null) return n;
+  const cap = (returnData && returnData.scoring && num(returnData.scoring.cap_team_net)) ?? 2.5;
+  let sum = 0;
+  for (const row of (t.players || [])) sum += num(row.pts) || 0;
+  return Math.max(-cap, Math.min(cap, sum));
+}
+
+function returnTerm(abbr) {
+  const a = normAbbr(abbr);
+  return returnRaw(a) * taperFor(a).wPrior;
+}
+
 
 function round2(n) {
   return Math.round(Number(n) * 100) / 100;
@@ -779,7 +806,7 @@ function seedInjuriesIfNeeded() {
 function eff(abbr) {
   const a = normAbbr(abbr);
   const p = getProfile(a);
-  return algorithmBase(a) + faTerm(a) + draftTerm(a) + maddenTerm(a) + sosTerm(a) + injuryTerm(a) + (num(p.user_adjust) || 0) + contextSum(p);
+  return algorithmBase(a) + faTerm(a) + draftTerm(a) + maddenTerm(a) + sosTerm(a) + returnTerm(a) + injuryTerm(a) + (num(p.user_adjust) || 0) + contextSum(p);
 }
 
 function coachOf(abbr) {
@@ -1271,6 +1298,7 @@ let faData = null; // { teams, scoring, season } from ./data/fa-2026.json; null 
 let draftData = null; // { teams, scoring, season, window_games } from ./data/draft-2026.json; null if missing
 let maddenData = null; // { teams, scoring } from ./data/madden-2026.json; null if missing
 let sosData = null; // { teams } from ./data/sos-2025.json; realized SOS + record; null if missing
+let returnData = null; // { teams } from ./data/return-2026.json; last-year-hurt, this-year-healthy; null if missing
 let injuryScale = null; // from ./data/injury-scale.json
 let injurySeed = null;  // optional ./data/injury-2026.json; null if missing
 let notesSeed = null;  // optional ./data/profile-notes.json; null if missing
@@ -1576,6 +1604,7 @@ async function loadNfl() {
   const draftReq = fetch("./data/draft-2026.json");
   const maddenReq = fetch("./data/madden-2026.json");
   const sosReq = fetch("./data/sos-2025.json");
+  const returnReq = fetch("./data/return-2026.json");
   const scaleReq = fetch("./data/injury-scale.json");
   const injReq = fetch("./data/injury-2026.json");
   const wxReq = fetch("./data/weather-scale.json");
@@ -1646,6 +1675,16 @@ async function loadNfl() {
   } catch (err) {
     sosData = null;
     console.warn("sos-2025.json", err);
+  }
+  try {
+    const res = await returnReq;
+    if (!res.ok) throw new Error(String(res.status));
+    const data = await res.json();
+    if (!data || !data.teams || typeof data.teams !== "object") throw new Error("bad return");
+    returnData = data;
+  } catch (err) {
+    returnData = null;
+    console.warn("return-2026.json", err);
   }
   try {
     const res = await scaleReq;
@@ -2293,6 +2332,7 @@ function renderTeams() {
       Math.abs(draftN) >= 0.3 ? `<span class="club-draft ${rtgClass(draftN)}">DRFT ${esc(fmtRtg(draftN))}</span>` : "",
       Math.abs(maddenTerm(t.abbr)) >= 0.3 ? `<span class="club-madden ${rtgClass(maddenTerm(t.abbr))}">MAD ${esc(fmtRtg(maddenTerm(t.abbr)))}</span>` : "",
       Math.abs(sosTerm(t.abbr)) >= 0.3 ? `<span class="club-sos ${rtgClass(sosTerm(t.abbr))}">SOS ${esc(fmtRtg(sosTerm(t.abbr)))}</span>` : "",
+      Math.abs(returnTerm(t.abbr)) >= 0.3 ? `<span class="club-return ${rtgClass(returnTerm(t.abbr))}">BACK ${esc(fmtRtg(returnTerm(t.abbr)))}</span>` : "",
       injN <= -0.3 ? `<span class="club-inj minus">INJ ${esc(fmtRtg(injN))}</span>` : "",
       adj ? `<span class="club-ctx">adj ${esc(fmtRtg(adj))}</span>` : "",
       ctxN ? `<span class="club-ctx">${ctxN} ctx</span>` : "",
@@ -2517,6 +2557,44 @@ function faBlockHtml(abbr) {
   </div>`;
 }
 
+
+function returnRowHtml(row) {
+  const meta = [row.pos, row.injury].filter(Boolean).join(" · ");
+  return `<div class="fa-row">
+      <span class="fa-row-who">
+        <span class="fa-row-name">${esc(row.name || "")}</span>
+        <span class="fa-row-meta">${esc(meta)}</span>
+      </span>
+      <span class="fa-row-pts ${rtgClass(row.pts)}">${esc(fmtRtg(row.pts))}</span>
+      <span class="fa-row-note">${esc(row.note || "")}</span>
+    </div>`;
+}
+
+function returnBlockHtml(abbr) {
+  const t = returnTeam(abbr);
+  const players = (t && Array.isArray(t.players)) ? t.players : [];
+  if (!players.length) {
+    return `<div class="fa-block return-block">
+      <p class="prior-kicker">Back from 2025 · fades with prior</p>
+      <p class="prior-note">No returning-health starters scored for this club. Still-hurt names stay on the injury layer.</p>
+    </div>`;
+  }
+  const net = returnRaw(abbr);
+  const term = returnTerm(abbr);
+  const pct = Math.round(taperFor(abbr).wPrior * 100);
+  const list = players.map(returnRowHtml).join("");
+  return `<div class="fa-block return-block">
+    <p class="prior-kicker">Back from 2025 · fades with prior</p>
+    <div class="fa-net">
+      <small>NET</small>
+      <em class="${rtgClass(net)}">${esc(fmtRtg(net))}</em>
+      <span class="fa-net-note">on the board ${esc(fmtRtg(term))} · ${pct}%</span>
+    </div>
+    ${list}
+    <p class="prior-note">Hurt last year, healthy this year. Like a FA add. Anyone still on PUP/IR is not here.</p>
+  </div>`;
+}
+
 function draftRowHtml(row) {
   const rd = row.round != null && row.round !== "" ? "R" + row.round : "";
   const pk = row.pick != null && row.pick !== "" ? "#" + row.pick : "";
@@ -2651,6 +2729,7 @@ function renderTeamSheet() {
   body.innerHTML = `
     ${priorBlockHtml(team.abbr)}
     ${faBlockHtml(team.abbr)}
+    ${returnBlockHtml(team.abbr)}
     ${draftBlockHtml(team.abbr)}
     ${maddenBlockHtml(team.abbr)}
     ${injBlockHtml(team.abbr)}
@@ -2674,7 +2753,7 @@ function renderTeamSheet() {
       <input id="tp-adjust-why" type="text" placeholder="Say why. It gets a timestamp." autocomplete="off">
     </label>
     <div id="tp-adjust-log" class="adjust-log-wrap">${adjustLogHtml(team.abbr)}</div>
-    <p class="tp-eff-break" id="tp-eff-break">Effective = algorithm ${esc(fmtRtg(algo))} + FA ${esc(fmtRtg(fa))} + draft ${esc(fmtRtg(draft))} + madden ${esc(fmtRtg(maddenTerm(team.abbr)))} + SOS ${esc(fmtRtg(sosTerm(team.abbr)))} + injury ${esc(fmtRtg(injuryTerm(team.abbr)))} + adjust ${esc(fmtRtg(adj))} + context ${esc(fmtRtg(ctx))}</p>
+    <p class="tp-eff-break" id="tp-eff-break">Effective = algorithm ${esc(fmtRtg(algo))} + FA ${esc(fmtRtg(fa))} + back ${esc(fmtRtg(returnTerm(team.abbr)))} + draft ${esc(fmtRtg(draft))} + madden ${esc(fmtRtg(maddenTerm(team.abbr)))} + SOS ${esc(fmtRtg(sosTerm(team.abbr)))} + injury ${esc(fmtRtg(injuryTerm(team.abbr)))} + adjust ${esc(fmtRtg(adj))} + context ${esc(fmtRtg(ctx))}</p>
     <label class="field">
       <span>Context stack</span>
     </label>
@@ -2703,6 +2782,7 @@ function refreshTeamDerived() {
   if (br) {
     br.textContent = "Effective = algorithm " + fmtRtg(algorithmBase(profileAbbr))
       + " + FA " + fmtRtg(faTerm(profileAbbr))
+      + " + back " + fmtRtg(returnTerm(profileAbbr))
       + " + draft " + fmtRtg(draftTerm(profileAbbr))
       + " + madden " + fmtRtg(maddenTerm(profileAbbr))
       + " + SOS " + fmtRtg(sosTerm(profileAbbr))
@@ -2899,6 +2979,7 @@ function renderGameSheet() {
   const clubRows = [
     ["Last year", algorithmBase(away), algorithmBase(home)],
     ["Roster changes", faTerm(away), faTerm(home)],
+    ["Back from injury", returnTerm(away), returnTerm(home)],
     ["Rookies", draftTerm(away), draftTerm(home)],
     ["Madden 22", maddenTerm(away), maddenTerm(home)],
     ["Last year SOS", sosTerm(away), sosTerm(home)],
