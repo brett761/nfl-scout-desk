@@ -277,7 +277,7 @@ const PLAYBOOK = [
     id: "W37", name: "Road / rest / turf checklist", tag: "ADAPT",
     principle: "Road after MNF, consecutive road, time-zone change, opposite turf, bounceback after a blowout are adjustments, not a second prior.",
     when: "Sunday card write-up.",
-    how: "One line in context if it applies. Not an ATS filter. If it cannot be a point, it is not on the ticket.",
+    how: "The travel / trap / rest flag is already a game chip (cap 0.5). Resting starters or anything it misses still goes on a context row.",
   },
   {
     id: "W38", name: "Two signatures", tag: "ADAPT",
@@ -494,7 +494,7 @@ function normAbbr(abbr) {
      current starts at 0 until 2026 results exist.
      When n = 0, blended = prior.
 
-   ourHomeLine = −(homeEff − awayEff + hfa + coach_term + prep_net + ats_net)
+   ourHomeLine = −(homeEff − awayEff + hfa + coach_term + prep_net + ats_net + sched_net)
      negative = home favored. Example: SEA +4, NE +1, HFA 2, SEA home
      → −(4 − 1 + 2) = −5  (SEA −5).
      coach_term is a GAME number (home-perspective SU H2H). Positive =
@@ -510,6 +510,15 @@ function normAbbr(abbr) {
      home coach has the better ATS book = home favored more. min n 16,
      cap 0.35, dead zone 0.04, full weight at 48. 0 if load fails /
      first-year / dead / n too small. Does not replace SU H2H.
+     sched_net is a GAME number (travel / trap / extra rest). Cap ±0.5.
+     Travel is the road club only (0 on neutral). 2 time zones −0.25,
+     3 zones −0.35, plus −0.15 if a Pacific club kicks before 4pm ET,
+     plus −0.25 if fewer than 6 days since the last game. Travel floor −0.5.
+     Trap −0.25 if weeks 2–16, this club is ≥4 better than the opponent,
+     and next week is a division game. Extra rest +0.25 if ≥10 days since
+     the last game and this is not a post-bye week (bye already lives in prep).
+     Resting starters is still a human context row. sched_net = clamp(
+     home_pts − away_pts, ±0.5). Does not rewrite the prior.
      eff() stays algorithm + FA + draft + injury + adjust + context.
 
    Neutral site (game.neutral, e.g. Melbourne LAR vs SF): hfa = 0.
@@ -892,6 +901,137 @@ function prepNet(game) {
     + byeTerm(game.home, w) - byeTerm(game.away, w);
 }
 
+const SCHED_TZ = {
+  SEA: 3, SF: 3, LAR: 3, LAC: 3, LV: 3,
+  DEN: 2, ARI: 2,
+  CHI: 1, GB: 1, MIN: 1, TEN: 1, HOU: 1, DAL: 1, NO: 1, KC: 1
+};
+
+function schedTz(abbr) {
+  return SCHED_TZ[normAbbr(abbr)] || 0;
+}
+
+function teamMeta(abbr) {
+  const a = normAbbr(abbr);
+  const list = (nflData && nflData.teams) || [];
+  return list.find((x) => x.abbr === a) || null;
+}
+
+function schedNeighbor(abbr, game, dir) {
+  if (!nflData || !game || !game.date) return null;
+  const a = normAbbr(abbr);
+  const here = new Date(game.date);
+  if (Number.isNaN(here.getTime())) return null;
+  let best = null;
+  let bestT = null;
+  for (const g of nflData.games) {
+    if (!g || !g.date) continue;
+    if (g.home !== a && g.away !== a) continue;
+    if (g.id && game.id && g.id === game.id) continue;
+    const t = new Date(g.date);
+    if (Number.isNaN(t.getTime())) continue;
+    if (dir < 0 && t >= here) continue;
+    if (dir > 0 && t <= here) continue;
+    if (bestT == null || (dir < 0 ? t > bestT : t < bestT)) {
+      best = g;
+      bestT = t;
+    }
+  }
+  return best;
+}
+
+function schedDays(prev, game) {
+  if (!prev || !game || !prev.date || !game.date) return null;
+  const a = new Date(prev.date);
+  const b = new Date(game.date);
+  if (Number.isNaN(a.getTime()) || Number.isNaN(b.getTime())) return null;
+  return (b - a) / 86400000;
+}
+
+function sameDivision(a, b) {
+  const ta = teamMeta(a);
+  const tb = teamMeta(b);
+  if (!ta || !tb) return false;
+  return ta.conf === tb.conf && ta.div === tb.div;
+}
+
+function schedClub(abbr, game) {
+  const a = normAbbr(abbr);
+  let pts = 0;
+  const bits = [];
+  if (!game) return { pts: 0, bits };
+  const isAway = game.away === a;
+  const prev = schedNeighbor(a, game, -1);
+
+  if (isAway && !game.neutral) {
+    let travel = 0;
+    const hop = Math.abs(schedTz(a) - schedTz(game.home));
+    if (hop >= 3) {
+      travel -= 0.35;
+      bits.push("3-zone");
+    } else if (hop >= 2) {
+      travel -= 0.25;
+      bits.push("2-zone");
+    }
+    const et = toET(game.date);
+    if (schedTz(a) >= 3 && et && Number.isFinite(et.hour) && et.hour < 16) {
+      travel -= 0.15;
+      bits.push("early PT");
+    }
+    const days = schedDays(prev, game);
+    if (days != null && days < 6) {
+      travel -= 0.25;
+      bits.push("short week");
+    }
+    if (travel < -0.5) travel = -0.5;
+    pts += travel;
+  }
+
+  if (!clubOffBye(a, game.week)) {
+    const days = schedDays(prev, game);
+    if (days != null && days >= 10) {
+      pts += 0.25;
+      bits.push("extra rest");
+    }
+  }
+
+  const w = Number(game.week);
+  if (w >= 2 && w <= 16) {
+    const opp = game.home === a ? game.away : game.home;
+    if (eff(a) - eff(opp) >= 4) {
+      const nxt = schedNeighbor(a, game, 1);
+      if (nxt) {
+        const nxtOpp = nxt.home === a ? nxt.away : nxt.home;
+        if (sameDivision(a, nxtOpp)) {
+          pts -= 0.25;
+          bits.push("trap");
+        }
+      }
+    }
+  }
+  return { pts, bits };
+}
+
+function schedNet(game) {
+  if (!game) return 0;
+  const n = schedClub(game.home, game).pts - schedClub(game.away, game).pts;
+  if (n > 0.5) return 0.5;
+  if (n < -0.5) return -0.5;
+  return Math.round(n * 100) / 100;
+}
+
+function schedSheetNote(game) {
+  if (!game) return "";
+  const home = schedClub(game.home, game);
+  const away = schedClub(game.away, game);
+  const bits = [];
+  if (away.bits.length) bits.push(game.away + " " + away.bits.join("+"));
+  if (home.bits.length) bits.push(game.home + " " + home.bits.join("+"));
+  if (!bits.length) return "no schedule flag";
+  return bits.join(" / ");
+}
+
+
 function prepChipOne(kind, block, name) {
   if (!block) return "";
   const w = num(block.wins) || 0;
@@ -1042,7 +1182,7 @@ function ourHomeSpread(game, hfaVal) {
   const pad = game && game.neutral ? 0 : (hfaVal ?? hfa);
   const homeE = eff(game.home);
   const awayE = eff(game.away);
-  return -(homeE - awayE + pad + coachTerm(game) + prepNet(game) + atsNet(game));
+  return -(homeE - awayE + pad + coachTerm(game) + prepNet(game) + atsNet(game) + schedNet(game));
 }
 
 function parseMarket(details, homeAbbr, awayAbbr) {
@@ -1685,6 +1825,7 @@ const SKED_TIPS = {
   byeGold: "This coach's career post-bye ATS, capped at 1. Copper = it is on the line this week.",
   w1Floor: "Same floor as coach H2H: 4 games or the chip is dead / n= only.",
   ats: "This coach’s career record against the sportsbook, not just wins and losses. A small nudge. It does not replace head-to-head wins.",
+  sched: "Road travel, a short week, looking ahead to a division game, or extra rest that is not a bye. Cap half a point. Does not replace the bye chip.",
   wx: "Weather only changes the expected combined score, not who we think wins. A dome is zero. Wind matters most.",
   ourOu: "The combined score we expect (both teams). Built from last year’s scoring, then weather.",
   totEdge: "Sportsbook total minus our total. Plus means we expect a lower-scoring game than they do. Copper if the gap is about 1.5. Not a ticket.",
@@ -2740,7 +2881,8 @@ function renderGameSheet() {
   const coach = coachTerm(game);
   const prep = prepNet(game);
   const ats = atsNet(game);
-  const gap = diff + hfaUsed + coach + prep + ats;
+  const sched = schedNet(game);
+  const gap = diff + hfaUsed + coach + prep + ats + sched;
   const ourLine = ourHomeSpread(game, hfa);
   const mkt = marketFor(game);
   const marketHome = mkt.parsed && mkt.parsed.homeLine;
@@ -2756,6 +2898,7 @@ function renderGameSheet() {
     { label: "+ coaches", val: coach, note: coachSheetNote(game) },
     { label: "+ week 1 / bye", val: prep, note: prepSheetNote(game) },
     { label: "+ vs the spread (career)", val: ats, note: atsSheetNote(game) },
+    { label: "+ travel / trap / rest", val: sched, note: schedSheetNote(game) },
     { label: "Combined gap", val: gap, note: "add those up", sum: true },
     { label: "Our line (flip the sign)", val: hasOurNumber(game) ? ourLine : 0, note: hasOurNumber(game) ? "" : "ratings even · no number", hideVal: !hasOurNumber(game) },
   ];

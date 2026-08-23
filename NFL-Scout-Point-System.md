@@ -19,11 +19,12 @@ home-field = 2   (0 on a neutral field)
 coach H2H  = one coach vs the other, career as HCs
 prep       = Week 1 form and/or coming off a bye
 career ATS = each HC's all-time ATS as a head coach (slight)
+schedule   = travel / trap / extra rest (not bye, not resting starters)
 ```
 
 **Our spread (home perspective, negative = home favored)**
 ```
-our home line = −(home effective − away effective + home-field + coach H2H + prep + career ATS)
+our home line = −(home effective − away effective + home-field + coach H2H + prep + career ATS + schedule)
 ```
 
 Example: home +4, away +1, HFA 2, no coach/prep/ATS → our line is home −5.
@@ -152,6 +153,34 @@ Current Week 1 ATS that actually print: Jim Harbaugh 6–0 (+0.75), McVay 7–2 
 Bye movers: Vrabel 6–2 (+0.50), McCarthy 14–6 (+0.40), Sirianni 4–1 (+0.38), Stefanski 1–5 (−0.50). Reid 21–16 after a bye is dead.
 
 ---
+
+
+---
+
+## 7b. Travel / trap / rest
+A small game flag. Cap ±0.5. Does not rewrite the prior. Does not replace Week 1 / bye prep.
+
+Net is home points minus away points.
+
+**Travel** (road club only; 0 on a neutral field)
+- 2 time zones: −0.25
+- 3 time zones: −0.35
+- Pacific club kicking before 4pm ET: extra −0.15
+- Fewer than 6 days since the last game: extra −0.25
+- One club’s travel cannot go past −0.50
+
+**Trap**
+- Weeks 2–16 only
+- This club is at least 4 points better than the opponent on our rating
+- Next week is a division game
+- −0.25 (they may be looking ahead)
+
+**Extra rest**
+- 10 or more days since the last game
+- 0 if this is a post-bye week (that already lives on the coach bye chip)
+- +0.25
+
+Resting starters is still a human context row. We will not guess a clinch.
 
 ## 8. Career ATS (slight)
 Follows the person, not the building. Regular season + playoffs as head coach. No coordinator ATS. No preseason. Pushes out of n.

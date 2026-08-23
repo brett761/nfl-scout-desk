@@ -1,0 +1,33 @@
+{
+  "name": "Travel / trap / rest flag",
+  "updated": "2026-08-23",
+  "note": "Game extra. Does not rewrite the 2025 prior. Does not replace Week 1 / bye prep. Resting starters is still a context row.",
+  "cap": 0.5,
+  "travel": {
+    "zones_2": -0.25,
+    "zones_3": -0.35,
+    "early_pt": -0.15,
+    "early_pt_hour_et": 16,
+    "short_week_days": 6,
+    "short_week": -0.25,
+    "club_floor": -0.5,
+    "neutral": 0
+  },
+  "trap": {
+    "weeks": [2, 16],
+    "fav_gap": 4,
+    "pts": -0.25,
+    "next_must_be": "division"
+  },
+  "rest": {
+    "min_days": 10,
+    "pts": 0.25,
+    "skip_if_off_bye": true
+  },
+  "tz": {
+    "PT": ["SEA", "SF", "LAR", "LAC", "LV"],
+    "MT": ["DEN", "ARI"],
+    "CT": ["CHI", "GB", "MIN", "TEN", "HOU", "DAL", "NO", "KC"],
+    "ET": "all others"
+  }
+}
