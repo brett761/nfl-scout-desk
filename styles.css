@@ -118,8 +118,8 @@ body {
 }
 .wm-mark {
   display: block;
-  width: 60px;
-  height: 60px;
+  width: 48px;
+  height: 48px;
   object-fit: contain;
   flex-shrink: 0;
 }
@@ -282,17 +282,22 @@ button, .btn, .file-btn {
 /* ---------- DESK ---------- */
 .hero {
   position: relative;
-  padding: 12px 0 48px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 12px 0 48px 28px;
   border-bottom: 1px solid var(--slate-dim);
   margin-bottom: 40px;
 }
 .hero-bee {
   display: block;
-  width: 168px;
-  height: 168px;
+  width: 200px;
+  height: auto;
   object-fit: contain;
-  margin: 0 0 20px;
+  flex-shrink: 0;
+  margin: 0;
 }
+.hero-copy { min-width: 0; flex: 1; }
 .hero-meta {
   display: flex;
   flex-wrap: wrap;
