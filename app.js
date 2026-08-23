@@ -4303,11 +4303,13 @@ function staffHistHtml(role) {
 function staffRoleCard(label, role) {
   const name = staffRoleName(role);
   const scheme = staffSchemeLine(role);
+  const bio = role && typeof role.bio === "string" ? role.bio.trim() : "";
   return `<div class="staff-role">
     <small>${esc(label)}</small>
     <div>
       <em>${esc(name)}</em>
       ${scheme ? `<span class="staff-scheme">${esc(scheme)}</span>` : ""}
+      ${bio ? `<p class="staff-bio">${esc(bio)}</p>` : ""}
     </div>
   </div>`;
 }
@@ -4323,7 +4325,7 @@ function staffBlockHtml(abbr) {
   return `<div class="fa-block staff-block">
     <p class="prior-kicker">2026 staff · not a line</p>
     <div class="staff-roles">
-      ${staffRoleCard("HC", { name: c.hc })}
+      ${staffRoleCard("HC", { name: c.hc, bio: c.hc_bio })}
       ${staffRoleCard("OC", c.oc)}
       ${staffRoleCard("DC", c.dc)}
       ${staffRoleCard("ST", c.st)}
@@ -4361,10 +4363,10 @@ function renderStaff() {
         <span>${esc(t.name || "")}</span>
       </div>
       <div class="staff-roles">
-        ${staffRoleCard("HC", { name: c.hc })}
-        ${staffRoleCard("OC", oc)}
-        ${staffRoleCard("DC", dc)}
-        ${staffRoleCard("ST", st)}
+        ${staffRoleCard("HC", { name: c.hc, bio: on ? c.hc_bio : "" })}
+        ${staffRoleCard("OC", on ? oc : { name: oc.name, scheme: oc.scheme })}
+        ${staffRoleCard("DC", on ? dc : { name: dc.name, scheme: dc.scheme })}
+        ${staffRoleCard("ST", on ? st : { name: st.name, scheme: st.scheme })}
       </div>
       ${hist}
     </button>`;
