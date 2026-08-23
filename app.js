@@ -2198,7 +2198,10 @@ function filteredTeams() {
   let rows = nflData.teams.slice();
   if (teamConf) rows = rows.filter((t) => t.conf === teamConf);
   if (teamDiv) rows = rows.filter((t) => t.div === teamDiv);
-  const rating = (t) => eff(t.abbr);
+  const rating = (t) => {
+    const n = eff(t.abbr);
+    return Number.isFinite(n) ? n : 0;
+  };
   rows.sort((a, b) => {
     if (teamSort === "rating-desc") return rating(b) - rating(a) || a.name.localeCompare(b.name);
     if (teamSort === "rating-asc") return rating(a) - rating(b) || a.name.localeCompare(b.name);
@@ -2249,7 +2252,7 @@ function renderTeams() {
   if (sortEl && sortEl.value !== teamSort) sortEl.value = teamSort;
   const ranks = priorRankMap();
   grid.innerHTML = filteredTeams().map((t) => {
-    const blend = algorithmBase(t.abbr);
+    const blend = eff(t.abbr);
     const p = getProfile(t.abbr);
     const ctxN = (p.context || []).length;
     const adj = num(p.user_adjust) || 0;
