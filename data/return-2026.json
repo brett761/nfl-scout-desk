@@ -1,0 +1,172 @@
+{
+  "season": 2026,
+  "kind": "returning_health",
+  "pulled": "2026-08-23",
+  "note": "Starters who missed real 2025 time and are healthy for 2026. Surplus vs the injured year already in the prior. Same idea as a FA add. Does not rewrite the 2025 prior. Anyone still on PUP/IR (Parsons, Kittle, Mykel Williams, Charbonnet, Ekwonu) stays on the injury layer only.",
+  "scoring": {
+    "star": 1.0,
+    "starter": 0.6,
+    "cap_per_player": 1.5,
+    "cap_team_net": 2.5,
+    "taper": "fades with the 17-game prior (same as FA)"
+  },
+  "skipped": [
+    {
+      "name": "Micah Parsons",
+      "abbr": "GB",
+      "why": "ACL Week 15; still PUP, Week 6 target. Injury layer already has him."
+    },
+    {
+      "name": "George Kittle",
+      "abbr": "SF",
+      "why": "Achilles; still PUP."
+    },
+    {
+      "name": "Mykel Williams",
+      "abbr": "SF",
+      "why": "ACL; still PUP, Week 1 long shot."
+    },
+    {
+      "name": "Zach Charbonnet",
+      "abbr": "SEA",
+      "why": "ACL; still PUP."
+    },
+    {
+      "name": "Ikem Ekwonu",
+      "abbr": "CAR",
+      "why": "patellar tendon; still PUP."
+    }
+  ],
+  "sources": [
+    "https://www.foxsports.com/articles/nfl/mahomes-parsons-and-trio-of-49ers-highlight-the-nfl-stars-returning-from-injuries-this-season",
+    "https://www.nfl.com/news/chiefs-qb-patrick-mahomes-knee-fully-cleared-to-participate-in-training-camp",
+    "https://www.espn.com/nfl/story/_/id/49463610/colts-daniel-jones-says-fully-cleared-achilles-injury",
+    "https://www.cbssports.com/nfl/news/giants-malik-nabers-return-to-team-drills/",
+    "https://www.espn.com/nfl/story/_/id/49480322/ravens-madubuike-neck-practices-1st-10-months"
+  ],
+  "teams": {
+    "KC": {
+      "players": [
+        {
+          "name": "Patrick Mahomes",
+          "pos": "QB1",
+          "tier": "star",
+          "pts": 1.0,
+          "games_played_2025": 14,
+          "injury": "ACL/LCL Week 15",
+          "status_2026": "cleared full camp, expected Week 1",
+          "note": "Star QB. Last 3 KC games after he went down: one TD. 14 games already sit in the 2025 prior, so this is not a +2 FA add.",
+          "source": "https://www.nfl.com/news/chiefs-qb-patrick-mahomes-knee-fully-cleared-to-participate-in-training-camp"
+        }
+      ],
+      "net": 1.0
+    },
+    "IND": {
+      "players": [
+        {
+          "name": "Daniel Jones",
+          "pos": "QB1",
+          "tier": "starter",
+          "pts": 0.7,
+          "games_played_2025": 13,
+          "injury": "Achilles Week 14",
+          "status_2026": "full go in camp, Week 1 starter",
+          "note": "Re-sign, not FA. 13 games already in the Colts prior. Chip is the last month without him.",
+          "source": "https://www.espn.com/nfl/story/_/id/49463610/colts-daniel-jones-says-fully-cleared-achilles-injury"
+        }
+      ],
+      "net": 0.7
+    },
+    "NYG": {
+      "players": [
+        {
+          "name": "Malik Nabers",
+          "pos": "WR1",
+          "tier": "star",
+          "pts": 1.0,
+          "games_played_2025": 3,
+          "injury": "ACL Week 4",
+          "status_2026": "team drills, on track for Week 1",
+          "note": "WR1 missed most of 2025. Like adding a star back, not a new FA.",
+          "source": "https://www.cbssports.com/nfl/news/giants-malik-nabers-return-to-team-drills/"
+        }
+      ],
+      "net": 1.0
+    },
+    "SF": {
+      "players": [
+        {
+          "name": "Fred Warner",
+          "pos": "LB",
+          "tier": "star",
+          "pts": 1.0,
+          "games_played_2025": 6,
+          "injury": "broken/dislocated ankle Week 6",
+          "status_2026": "full-go since camp open, Week 1",
+          "note": "All-Pro LB missed most of 2025. Cleared. Not on PUP.",
+          "source": "https://www.foxsports.com/articles/nfl/mahomes-parsons-and-trio-of-49ers-highlight-the-nfl-stars-returning-from-injuries-this-season"
+        },
+        {
+          "name": "Nick Bosa",
+          "pos": "EDGE1",
+          "tier": "star",
+          "pts": 1.0,
+          "games_played_2025": 3,
+          "injury": "ACL Week 3",
+          "status_2026": "expected Week 1; camp tendinitis managed, not on PUP",
+          "note": "Star edge missed almost all of 2025. Haircut vs a clean +1.5 because of camp tendinitis.",
+          "source": "https://www.foxsports.com/articles/nfl/mahomes-parsons-and-trio-of-49ers-highlight-the-nfl-stars-returning-from-injuries-this-season"
+        }
+      ],
+      "net": 2.0
+    },
+    "BAL": {
+      "players": [
+        {
+          "name": "Nnamdi Madubuike",
+          "pos": "IDL",
+          "tier": "star",
+          "pts": 1.0,
+          "games_played_2025": 2,
+          "injury": "neck Week 2, April surgery",
+          "status_2026": "off PUP July 29, ramping, on track this season",
+          "note": "Pro Bowl IDL missed 15 games. Athletic called a healthy return as big as an FA add.",
+          "source": "https://www.espn.com/nfl/story/_/id/49480322/ravens-madubuike-neck-practices-1st-10-months"
+        }
+      ],
+      "net": 1.0
+    },
+    "WSH": {
+      "players": [
+        {
+          "name": "Jayden Daniels",
+          "pos": "QB1",
+          "tier": "star",
+          "pts": 1.2,
+          "games_played_2025": 7,
+          "injury": "knee, hamstring, dislocated elbow; shut down December",
+          "status_2026": "healthy, expected Week 1",
+          "note": "Star QB in only 7 games. Commanders 5-12 prior is the hurt version.",
+          "source": "https://www.usatoday.com/story/sports/nfl/2026/03/19/jayden-daniels-injury-update-commanders-qb-gives-nfl-offseason-health-update/89223051007/"
+        }
+      ],
+      "net": 1.2
+    },
+    "CIN": {
+      "players": [
+        {
+          "name": "Joe Burrow",
+          "pos": "QB1",
+          "tier": "star",
+          "pts": 1.0,
+          "games_played_2025": 8,
+          "injury": "turf toe Week 2, returned late",
+          "status_2026": "healthy",
+          "note": "Star QB half a season. Bengals 6-11 prior is the hurt version.",
+          "source": "https://ftnfantasy.com/nfl/should-you-draft-jayden-daniels-or-joe-burrow-in-2026-fantasy-football"
+        }
+      ],
+      "net": 1.0
+    }
+  }
+}
