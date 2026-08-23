@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Geist+Mono:wght@400;500;600&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=m3">
+  <link rel="stylesheet" href="styles.css?v=staff1">
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
@@ -33,6 +33,7 @@
       <a href="#desk" data-nav="desk">Home</a>
       <a href="#card" data-nav="card">This week</a>
       <a href="#teams" data-nav="teams">Teams</a>
+      <a href="#staff" data-nav="staff">Staff</a>
       <a href="#schedule" data-nav="schedule">Games</a>
       <a href="#residuals" data-nav="residuals">After</a>
       <a href="#keys" data-nav="keys">3 &amp; 7</a>
@@ -188,6 +189,16 @@
       <p class="table-empty" id="team-grid-empty" hidden>Serve the desk over http so the 2026 library can load (python3 -m http.server from this folder).</p>
     </section>
 
+
+    <!-- ========== STAFF ========== -->
+    <section id="staff" class="view" data-view="staff" hidden aria-labelledby="staff-title">
+      <div class="view-head">
+        <p class="eyebrow">Coordinators · names and history · not a line</p>
+        <h1 id="staff-title">Staff</h1>
+        <p class="lede">OC, DC, and special teams for all 32 clubs. Scheme only when a source named it. This does not move the number.</p>
+      </div>
+      <div class="staff-grid" id="staff-grid"></div>
+    </section>
     <!-- ========== SCHEDULE ========== -->
     <section id="schedule" class="view" data-view="schedule" hidden aria-labelledby="schedule-title">
       <div class="sked-head-wrap">
@@ -518,6 +529,6 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
-  <script src="app.js?v=back1"></script>
+  <script src="app.js?v=staff1"></script>
 </body>
 </html>

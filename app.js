@@ -1299,6 +1299,8 @@ let draftData = null; // { teams, scoring, season, window_games } from ./data/dr
 let maddenData = null; // { teams, scoring } from ./data/madden-2026.json; null if missing
 let sosData = null; // { teams } from ./data/sos-2025.json; realized SOS + record; null if missing
 let returnData = null; // { teams } from ./data/return-2026.json; last-year-hurt, this-year-healthy; null if missing
+let staffData = null; // { clubs } from ./data/staff-2026.json; OC/DC/ST research; null if missing
+let staffOpenAbbr = null;
 let injuryScale = null; // from ./data/injury-scale.json
 let injurySeed = null;  // optional ./data/injury-2026.json; null if missing
 let notesSeed = null;  // optional ./data/profile-notes.json; null if missing
@@ -1605,6 +1607,7 @@ async function loadNfl() {
   const maddenReq = fetch("./data/madden-2026.json");
   const sosReq = fetch("./data/sos-2025.json");
   const returnReq = fetch("./data/return-2026.json");
+  const staffReq = fetch("./data/staff-2026.json");
   const scaleReq = fetch("./data/injury-scale.json");
   const injReq = fetch("./data/injury-2026.json");
   const wxReq = fetch("./data/weather-scale.json");
@@ -1685,6 +1688,16 @@ async function loadNfl() {
   } catch (err) {
     returnData = null;
     console.warn("return-2026.json", err);
+  }
+  try {
+    const res = await staffReq;
+    if (!res.ok) throw new Error(String(res.status));
+    const data = await res.json();
+    if (!data || !data.clubs || typeof data.clubs !== "object") throw new Error("bad staff");
+    staffData = data;
+  } catch (err) {
+    staffData = null;
+    console.warn("staff-2026.json", err);
   }
   try {
     const res = await scaleReq;
@@ -2734,6 +2747,7 @@ function renderTeamSheet() {
     ${maddenBlockHtml(team.abbr)}
     ${injBlockHtml(team.abbr)}
     ${schemeBlockHtml(team.abbr)}
+    ${staffBlockHtml(team.abbr)}
     <div class="tp-eff-row">
       <label class="field" style="margin:0">
         <span>Adjust</span>
@@ -4254,6 +4268,109 @@ function renderVibe() {
     <p class="vibe-sent">Sentiment scores later.</p>`;
 }
 
+
+function staffClub(abbr) {
+  const a = normAbbr(abbr);
+  if (!staffData || !staffData.clubs) return null;
+  return staffData.clubs[a] || null;
+}
+
+function staffRoleName(role) {
+  if (!role || typeof role !== "object") return "—";
+  return role.name || "—";
+}
+
+function staffSchemeLine(role) {
+  if (!role || typeof role !== "object") return "";
+  const s = String(role.scheme || "").trim();
+  if (!s || s.toLowerCase() === "unknown") return "";
+  return s;
+}
+
+function staffHistHtml(role) {
+  const hist = (role && Array.isArray(role.nfl_history)) ? role.nfl_history : [];
+  if (!hist.length) return "<p class=\"prior-note\">No NFL history listed.</p>";
+  const items = hist.map((h) => {
+    const years = h.years || "";
+    const team = h.team || "";
+    const title = h.title || "";
+    const hc = h.head_coach ? " · HC " + h.head_coach : "";
+    return `<li><b>${esc(years)}</b> ${esc(team)} — ${esc(title)}${esc(hc)}</li>`;
+  }).join("");
+  return `<ul>${items}</ul>`;
+}
+
+function staffRoleCard(label, role) {
+  const name = staffRoleName(role);
+  const scheme = staffSchemeLine(role);
+  return `<div class="staff-role">
+    <small>${esc(label)}</small>
+    <div>
+      <em>${esc(name)}</em>
+      ${scheme ? `<span class="staff-scheme">${esc(scheme)}</span>` : ""}
+    </div>
+  </div>`;
+}
+
+function staffBlockHtml(abbr) {
+  const c = staffClub(abbr);
+  if (!c) {
+    return `<div class="fa-block staff-block">
+      <p class="prior-kicker">2026 staff · not a line</p>
+      <p class="prior-note">No coordinator file loaded for this club.</p>
+    </div>`;
+  }
+  return `<div class="fa-block staff-block">
+    <p class="prior-kicker">2026 staff · not a line</p>
+    <div class="staff-roles">
+      ${staffRoleCard("HC", { name: c.hc })}
+      ${staffRoleCard("OC", c.oc)}
+      ${staffRoleCard("DC", c.dc)}
+      ${staffRoleCard("ST", c.st)}
+    </div>
+    <p class="prior-note">Scheme only when a source named it. Does not move the number. Full history is on the Staff tab.</p>
+  </div>`;
+}
+
+function renderStaff() {
+  const grid = document.getElementById("staff-grid");
+  if (!grid) return;
+  if (!nflData || !Array.isArray(nflData.teams) || !nflData.teams.length) {
+    grid.innerHTML = "<p class=\"table-empty\">Teams have not loaded yet.</p>";
+    return;
+  }
+  if (!staffData || !staffData.clubs) {
+    grid.innerHTML = "<p class=\"table-empty\">Coordinator file did not load.</p>";
+    return;
+  }
+  const open = staffOpenAbbr;
+  grid.innerHTML = nflData.teams.map((t) => {
+    const c = staffClub(t.abbr) || {};
+    const on = open === t.abbr;
+    const oc = c.oc || {};
+    const dc = c.dc || {};
+    const st = c.st || {};
+    const hist = on ? `<div class="staff-hist">
+      <div><p class="staff-hist-k">OC · ${esc(staffRoleName(oc))}</p>${staffHistHtml(oc)}</div>
+      <div><p class="staff-hist-k">DC · ${esc(staffRoleName(dc))}</p>${staffHistHtml(dc)}</div>
+      <div><p class="staff-hist-k">ST · ${esc(staffRoleName(st))}</p>${staffHistHtml(st)}</div>
+    </div>` : "";
+    return `<button type="button" class="staff-card${on ? " is-open" : ""}" data-staff="${esc(t.abbr)}">
+      <div class="staff-card-head">
+        <strong>${esc(t.abbr)}</strong>
+        <span>${esc(t.name || "")}</span>
+      </div>
+      <div class="staff-roles">
+        ${staffRoleCard("HC", { name: c.hc })}
+        ${staffRoleCard("OC", oc)}
+        ${staffRoleCard("DC", dc)}
+        ${staffRoleCard("ST", st)}
+      </div>
+      ${hist}
+    </button>`;
+  }).join("");
+}
+
 function render() {
   renderKPIs();
   renderCard();
@@ -4263,6 +4380,7 @@ function render() {
   renderResiduals();
   renderKeys();
   renderVibe();
+  renderStaff();
   syncSharpBookInputs();
   if (gameSheetId) renderGameSheet();
 }
@@ -4407,7 +4525,7 @@ function parseHash() {
 
 function fromHash() {
   const { view, team, game } = parseHash();
-  const known = ["desk", "card", "teams", "schedule", "residuals", "keys", "vibe", "clock", "playbook", "tickets"];
+  const known = ["desk", "card", "teams", "staff", "schedule", "residuals", "keys", "vibe", "clock", "playbook", "tickets"];
   showView(known.includes(view) ? view : "desk");
   if (game) {
     if (nflData && nflData.games && nflData.games.length) openGameSheet(game, { silent: true });
@@ -4479,6 +4597,17 @@ function bind() {
   renderClock();
   renderPlaybook();
 
+
+  const staffGrid = document.getElementById("staff-grid");
+  if (staffGrid) {
+    staffGrid.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-staff]");
+      if (!btn) return;
+      const abbr = btn.getAttribute("data-staff");
+      staffOpenAbbr = staffOpenAbbr === abbr ? null : abbr;
+      renderStaff();
+    });
+  }
   window.addEventListener("hashchange", fromHash);
   fromHash();
 
