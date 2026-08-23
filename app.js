@@ -2706,10 +2706,20 @@ function openTeamProfile(abbr) {
     ticketSheet.hidden = true;
   }
   renderTeamSheet();
-  document.getElementById("team-sheet").hidden = false;
+  const sheet = document.getElementById("team-sheet");
   document.getElementById("overlay").hidden = false;
-  const adjEl = document.getElementById("tp-adjust");
-  if (adjEl) adjEl.focus();
+  if (sheet) {
+    sheet.hidden = false;
+    sheet.scrollTop = 0;
+  }
+  const body = document.getElementById("team-sheet-body");
+  if (body) body.scrollTop = 0;
+  const closer = document.getElementById("team-sheet-close");
+  if (closer) closer.focus();
+  requestAnimationFrame(() => {
+    if (sheet) sheet.scrollTop = 0;
+    if (body) body.scrollTop = 0;
+  });
   renderTeams();
 }
 
