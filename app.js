@@ -4505,6 +4505,16 @@ function featuredLookGame() {
   return best;
 }
 
+const FRIEND_PICK_KEY = "bmb-friend-pick";
+
+function loadFriendPick() {
+  try { return JSON.parse(localStorage.getItem(FRIEND_PICK_KEY) || "null"); } catch { return null; }
+}
+
+function saveFriendPick(pick) {
+  try { localStorage.setItem(FRIEND_PICK_KEY, JSON.stringify(pick)); } catch { /* ignore */ }
+}
+
 function renderHomeLook() {
   const el = document.getElementById("home-look");
   if (!el) return;
@@ -4528,12 +4538,21 @@ function renderHomeLook() {
   if (look) line += " That is a look, not a ticket.";
   else line += " Close. Not a fire.";
   const when = "Week " + feat.week;
+  const picked = loadFriendPick();
+  const onAway = picked && String(picked.id) === String(g.id) && picked.side === "away";
+  const onHome = picked && String(picked.id) === String(g.id) && picked.side === "home";
   el.hidden = false;
-  el.innerHTML = `<p class="section-label">${esc(when)} · tap to open</p>
-    <button type="button" class="home-look-card" data-home-game="${esc(g.id)}">
-      <strong>${esc(away)} at ${esc(home)}</strong>
-      <span>${esc(line)}</span>
-    </button>`;
+  el.innerHTML = `<p class="section-label">${esc(when)} · who do you like?</p>
+    <div class="home-look-card">
+      <button type="button" class="home-look-story" data-home-game="${esc(g.id)}">
+        <strong>${esc(away)} at ${esc(home)}</strong>
+        <span>${esc(line)}</span>
+      </button>
+      <div class="home-look-sides">
+        <button type="button" class="home-look-side${onAway ? " is-on" : ""}" data-home-game="${esc(g.id)}" data-home-side="away">${esc(away)}</button>
+        <button type="button" class="home-look-side${onHome ? " is-on" : ""}" data-home-game="${esc(g.id)}" data-home-side="home">${esc(home)}</button>
+      </div>
+    </div>`;
 }
 
 function render() {
@@ -4936,6 +4955,26 @@ function bind() {
       const abbr = btn.dataset.homeTeam;
       if (location.hash !== "#team-" + abbr) history.replaceState(null, "", "#team-" + abbr);
       openTeamProfile(abbr);
+    });
+  }
+  const homeLook = document.getElementById("home-look");
+  if (homeLook) {
+    homeLook.addEventListener("click", (e) => {
+      const sideBtn = e.target.closest("[data-home-side]");
+      const gameBtn = e.target.closest("[data-home-game]");
+      if (!sideBtn && !gameBtn) return;
+      const id = (sideBtn || gameBtn).dataset.homeGame;
+      if (!id) return;
+      if (sideBtn) {
+        const g = gameById(id);
+        const side = sideBtn.dataset.homeSide;
+        const nick = g ? clubNick(side === "home" ? g.home : g.away) : side;
+        saveFriendPick({ id, side, nick, ts: Date.now() });
+        toast("You picked the " + nick + ".");
+        renderHomeLook();
+      }
+      if (location.hash !== "#game-" + id) history.replaceState(null, "", "#game-" + id);
+      openGameSheet(id);
     });
   }
   document.getElementById("team-grid").addEventListener("click", (e) => {

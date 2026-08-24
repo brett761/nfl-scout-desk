@@ -2632,17 +2632,22 @@ button.sked-venue {
 }
 .home-look { margin: 0 0 28px; }
 .home-look-card {
-  display: block;
-  width: 100%;
-  text-align: left;
   background: var(--charcoal);
   border: 1px solid var(--copper);
   color: var(--cloud);
+}
+.home-look-story {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  color: inherit;
   padding: 16px 18px;
   cursor: pointer;
   font: inherit;
 }
-.home-look-card strong {
+.home-look-story strong {
   display: block;
   font-family: var(--display, "Barlow Condensed", sans-serif);
   font-size: 22px;
@@ -2650,5 +2655,26 @@ button.sked-venue {
   text-transform: uppercase;
   margin-bottom: 8px;
 }
-.home-look-card span { color: var(--muted); font-size: 14px; line-height: 1.45; }
-.home-look-card:hover { background: #141418; }
+.home-look-story span { color: var(--muted); font-size: 14px; line-height: 1.45; }
+.home-look-story:hover { background: #141418; }
+.home-look-sides {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--slate-dim);
+  border-top: 1px solid var(--slate-dim);
+}
+.home-look-side {
+  background: #0B0B0E;
+  border: 0;
+  color: var(--copper);
+  font-family: var(--display, "Barlow Condensed", sans-serif);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 14px 12px;
+  cursor: pointer;
+}
+.home-look-side:hover { background: #141418; }
+.home-look-side.is-on { background: var(--copper); color: #0B0B0E; }
