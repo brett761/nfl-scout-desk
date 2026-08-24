@@ -4300,6 +4300,26 @@ function staffHistHtml(role) {
   return `<ul>${items}</ul>`;
 }
 
+function staffKindLabel(kind) {
+  if (kind === "hc") return "Coach of the Year";
+  if (kind === "oc") return "OC of the Year";
+  if (kind === "dc") return "DC of the Year";
+  if (kind === "st") return "ST of the Year";
+  return "of the Year";
+}
+
+function staffAwardStars(role) {
+  const awards = role && Array.isArray(role.awards) ? role.awards : [];
+  if (!awards.length) return "";
+  const stars = "★".repeat(Math.min(awards.length, 4));
+  const tip = awards.map((a) => {
+    const year = a && a.year != null ? String(a.year) : "";
+    const award = a && a.award ? String(a.award) : staffKindLabel(a && a.kind);
+    return (year + " " + award).trim();
+  }).join(" · ");
+  return ` <span class="staff-stars" title="${esc(tip)}">${stars}</span>`;
+}
+
 function staffRoleCard(label, role) {
   const name = staffRoleName(role);
   const scheme = staffSchemeLine(role);
@@ -4307,7 +4327,7 @@ function staffRoleCard(label, role) {
   return `<div class="staff-role">
     <small>${esc(label)}</small>
     <div>
-      <em>${esc(name)}</em>
+      <em>${esc(name)}${staffAwardStars(role)}</em>
       ${scheme ? `<span class="staff-scheme">${esc(scheme)}</span>` : ""}
       ${bio ? `<p class="staff-bio">${esc(bio)}</p>` : ""}
     </div>
@@ -4325,7 +4345,7 @@ function staffBlockHtml(abbr) {
   return `<div class="fa-block staff-block">
     <p class="prior-kicker">2026 staff · not a line</p>
     <div class="staff-roles">
-      ${staffRoleCard("HC", { name: c.hc, bio: c.hc_bio })}
+      ${staffRoleCard("HC", { name: c.hc, bio: c.hc_bio, awards: c.hc_awards })}
       ${staffRoleCard("OC", c.oc)}
       ${staffRoleCard("DC", c.dc)}
       ${staffRoleCard("ST", c.st)}
@@ -4363,7 +4383,7 @@ function renderStaff() {
         <span>${esc(t.name || "")}</span>
       </div>
       <div class="staff-roles">
-        ${staffRoleCard("HC", { name: c.hc, bio: c.hc_bio })}
+        ${staffRoleCard("HC", { name: c.hc, bio: c.hc_bio, awards: c.hc_awards })}
         ${staffRoleCard("OC", oc)}
         ${staffRoleCard("DC", dc)}
         ${staffRoleCard("ST", st)}
