@@ -40,10 +40,10 @@ Last year’s 17-game stats, scaled, then blended so a +12 defense does not beco
 
 | Pillar | Scale | What it is | Weight |
 |---|---|---|---|
-| Offense | −10 to +8 | Points scored / game | 30% |
+| Offense | −12 to +12 | Points scored / game | 35% |
 | Defense | −12 to +12 | Points allowed / game | 35% |
 | Special teams | −4 to +4 | Return TDs + FG% vs league | 10% |
-| Takeaways | −5 to +5 | Takeaways | 12.5% |
+| Takeaways | −5 to +5 | Takeaways | 7.5% |
 | Giveaways | −5 to +5 | Giveaways (minus is sloppy) | 12.5% |
 
 2025 endpoints we locked: offense Rams 30.5 = +8 / Raiders 14.2 = −10. Defense Seahawks 17.2 = +12 / Cowboys 30.1 = −12.
