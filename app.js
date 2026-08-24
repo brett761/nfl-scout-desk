@@ -4459,8 +4459,86 @@ function renderHomePicks() {
     }).join("")}</div>`;
 }
 
+
+function friendUrl(hash) {
+  const h = String(hash || "").startsWith("#") ? String(hash) : "#" + String(hash || "");
+  return "https://bmoneybets.com/" + h;
+}
+
+function copyFriendLink(hash) {
+  const url = friendUrl(hash);
+  const done = () => toast("Link copied");
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url).then(done).catch(() => toast(url));
+    return;
+  }
+  toast(url);
+}
+
+function clubNick(abbr) {
+  const t = teamByAbbr(abbr);
+  if (t && t.nick) return t.nick;
+  if (t && t.name) return t.name;
+  return String(abbr || "").toUpperCase();
+}
+
+function lookWeek() {
+  return seasonPhaseLine() === "Preseason" ? 1 : currentWeek;
+}
+
+function featuredLookGame() {
+  if (!nflData || !nflData.games) return null;
+  const week = lookWeek();
+  let best = null;
+  let bestAbs = -1;
+  for (const g of nflData.games) {
+    if (Number(g.week) !== Number(week) || !hasOurNumber(g)) continue;
+    const mkt = marketFor(g);
+    const ourH = ourHomeSpread(g, hfa);
+    const edge = edgePts(ourH, mkt.parsed && mkt.parsed.homeLine);
+    const mag = edge == null ? 0 : Math.abs(edge);
+    if (mag > bestAbs) {
+      bestAbs = mag;
+      best = { game: g, ourH, edge, mkt, week };
+    }
+  }
+  return best;
+}
+
+function renderHomeLook() {
+  const el = document.getElementById("home-look");
+  if (!el) return;
+  const feat = featuredLookGame();
+  if (!feat) {
+    el.hidden = true;
+    el.innerHTML = "";
+    return;
+  }
+  const g = feat.game;
+  const home = clubNick(g.home);
+  const away = clubNick(g.away);
+  const ourFav = feat.ourH < 0 ? home : feat.ourH > 0 ? away : null;
+  const ourPts = feat.ourH == null ? null : Math.abs(feat.ourH);
+  const street = feat.mkt && feat.mkt.odds ? feat.mkt.odds : "";
+  const look = feat.edge != null && Math.abs(feat.edge) >= 1.5;
+  let line = look && ourFav
+    ? "We like the " + ourFav + " by about " + ourPts.toFixed(1) + "."
+    : home + " vs " + away + ". We have " + formatOurLine(feat.ourH, g.home, g.away) + ".";
+  if (street) line += " The sportsbook has " + street + ".";
+  if (look) line += " That is a look, not a ticket.";
+  else line += " Close. Not a fire.";
+  const when = "Week " + feat.week;
+  el.hidden = false;
+  el.innerHTML = `<p class="section-label">${esc(when)} · tap to open</p>
+    <button type="button" class="home-look-card" data-home-game="${esc(g.id)}">
+      <strong>${esc(away)} at ${esc(home)}</strong>
+      <span>${esc(line)}</span>
+    </button>`;
+}
+
 function render() {
   renderHero();
+  renderHomeLook();
   renderHomePicks();
   renderKPIs();
   renderCard();
