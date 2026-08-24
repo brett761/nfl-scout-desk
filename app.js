@@ -1886,8 +1886,7 @@ function esc(s) {
 }
 
 function tip(html, text) {
-  const t = String(text ?? "");
-  return `<span class="sked-tip" data-tip="${esc(t)}" title="${esc(t)}" tabindex="0">${html}</span>`;
+  return html;
 }
 
 const SKED_TIPS = {
@@ -3551,7 +3550,7 @@ function coverHelperHtml(ourH, mktH) {
   const mktP = coverProb(mktH);
   if (ourP === null && mktP === null) return "";
   const bit = (lab, line, p) => lab + " " + fmtSpreadNum(line) + " cover " + fmtCoverPct(p);
-  return `<p class="sked-cover sked-tip" data-tip="${esc(SKED_TIPS.cover)}" title="${esc(SKED_TIPS.cover)}" tabindex="0">${esc(bit("our", ourH, ourP))} · ${esc(bit("mkt", mktH, mktP))}</p>`;
+  return `<p class="sked-cover">${esc(bit("our", ourH, ourP))} · ${esc(bit("mkt", mktH, mktP))}</p>`;
 }
 
 function pickAbbr(text) {
@@ -3843,11 +3842,11 @@ function renderSchedule() {
   const hfaEl = document.getElementById("hfa-input");
   if (hfaEl && String(hfaEl.value) !== String(hfa)) hfaEl.value = hfa;
   const hfaCtrl = document.querySelector(".hfa-ctrl");
-  if (hfaCtrl && !hfaCtrl.hasAttribute("data-tip")) {
-    hfaCtrl.classList.add("sked-tip");
-    hfaCtrl.setAttribute("data-tip", SKED_TIPS.hfa);
-    hfaCtrl.setAttribute("title", SKED_TIPS.hfa);
-    hfaCtrl.tabIndex = 0;
+  if (hfaCtrl) {
+    hfaCtrl.classList.remove("sked-tip");
+    hfaCtrl.removeAttribute("data-tip");
+    hfaCtrl.removeAttribute("title");
+    hfaCtrl.removeAttribute("tabindex");
   }
   if (sub) {
     sub.textContent = "Week " + currentWeek + ". Tap a game. Our line is the gap we expect. Street is the sportsbook. Copper means we disagree enough to look — not an automatic bet. Weather only changes the combined score." 
@@ -3901,7 +3900,7 @@ function renderSchedule() {
         }
       }
       const ouVal = mkt.ou == null ? "" : mkt.ou;
-      return `<article class="sked-row${fire ? " is-fire sked-tip" : ""}"${fire ? ` data-tip="${esc(SKED_TIPS.fire)}" title="${esc(SKED_TIPS.fire)}"` : ""} data-game="${esc(g.id)}">
+      return `<article class="sked-row${fire ? " is-fire" : ""}" data-game="${esc(g.id)}">
         <button type="button" class="sked-kick sked-open-game" data-open-game="${esc(g.id)}" aria-haspopup="dialog" aria-controls="game-sheet">${et ? esc(et.clock) + " ET" : "—"}</button>
         <div class="sked-match sked-open-game" data-open-game="${esc(g.id)}" tabindex="0" aria-haspopup="dialog" aria-controls="game-sheet">
           <p class="teams-line">${match}</p>
@@ -3911,12 +3910,12 @@ function renderSchedule() {
           <button type="button" class="sked-venue sked-open-game" data-open-game="${esc(g.id)}" aria-haspopup="dialog" aria-controls="game-sheet">${esc(g.venue || "")}${g.city ? " · " + esc(g.city) : ""}</button>
           ${g.broadcast ? `<span class="sked-bc">${esc(g.broadcast)}</span>` : ""}
         </div>
-        <div class="sked-mkt sked-tip" data-tip="${esc(SKED_TIPS.mkt)}" title="${esc(SKED_TIPS.mkt)}" tabindex="0">
+        <div class="sked-mkt">
           <label>Street <input class="mono" data-odds="${esc(g.id)}" value="${esc(mkt.odds)}" placeholder="SEA -3.5" spellcheck="false"></label>
           <label>O/U <input class="mono" type="number" step="0.5" data-ou="${esc(g.id)}" value="${esc(ouVal)}"></label>
         </div>
-        <div class="sked-our sked-tip" data-tip="${esc(SKED_TIPS.our)}" title="${esc(SKED_TIPS.our)}" tabindex="0"><span class="lbl">Our line</span><span class="val">${esc(ourHtml)}</span></div>
-        <div class="sked-edge sked-tip" data-tip="${esc(SKED_TIPS.edge)}" title="${esc(SKED_TIPS.edge)}" tabindex="0"><span class="lbl">Gap</span>${edgeHtml === "—" ? '<span class="val">—</span>' : edgeHtml}${coachChipHtml(g)}${prepChipHtml(g)}${atsChipHtml(g)}</div>
+        <div class="sked-our"><span class="lbl">Our line</span><span class="val">${esc(ourHtml)}</span></div>
+        <div class="sked-edge"><span class="lbl">Gap</span>${edgeHtml === "—" ? '<span class="val">—</span>' : edgeHtml}${coachChipHtml(g)}${prepChipHtml(g)}${atsChipHtml(g)}</div>
         ${wxStripHtml(g, mkt)}
         ${hasOurNumber(g) ? coverHelperHtml(ourHomeSpread(g, hfa), mkt.parsed.homeLine) : ""}
       </article>`;

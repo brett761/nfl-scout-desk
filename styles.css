@@ -2170,7 +2170,13 @@ input[readonly] { color: var(--muted); }
 }
 
 
-/* ---------- slate card tooltips (hover + tap/focus) ---------- */
+/* Slate card help popovers off — they trapped taps on mobile. */
+.sked-tip::after { display: none !important; content: none !important; }
+.sked-tip:hover::after,
+.sked-tip:focus::after,
+.sked-tip:focus-within::after { display: none !important; }
+.sked-tip { cursor: inherit; }
+
 .sked-tip {
   position: relative;
   cursor: default;
