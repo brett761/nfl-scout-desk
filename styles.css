@@ -2579,6 +2579,15 @@ button.sked-venue {
 .staff-role em { font-style: normal; font-weight: 600; }
 .staff-role .staff-stars { color: var(--copper); letter-spacing: 0.06em; margin-left: 4px; font-size: 12px; font-weight: 700; }
 .staff-role .staff-scheme { display: block; color: var(--muted); font-weight: 400; font-size: 12px; }
+.staff-ats-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 4px 0 0; }
+.staff-ats { font-family: var(--mono); font-size: 12px; letter-spacing: 0.04em; color: var(--muted); }
+.staff-ats.plus { color: var(--process); }
+.staff-ats.minus { color: var(--lose); }
+.staff-ats.even { color: var(--muted); }
+.club-staff-ats { display: flex; flex-wrap: wrap; gap: 8px; width: 100%; font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; }
+.club-staff-ats em { font-style: normal; color: var(--muted); }
+.club-staff-ats em.plus { color: var(--process); }
+.club-staff-ats em.minus { color: var(--lose); }
 .staff-hist { margin-top: 12px; display: grid; gap: 10px; }
 .staff-hist-k { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--copper); margin: 0 0 4px; }
 .staff-hist ul { margin: 0; padding: 0; list-style: none; }

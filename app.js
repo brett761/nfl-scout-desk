@@ -1300,6 +1300,7 @@ let maddenData = null; // { teams, scoring } from ./data/madden-2026.json; null 
 let sosData = null; // { teams } from ./data/sos-2025.json; realized SOS + record; null if missing
 let returnData = null; // { teams } from ./data/return-2026.json; last-year-hurt, this-year-healthy; null if missing
 let staffData = null; // { clubs } from ./data/staff-2026.json; OC/DC/ST research; null if missing
+let staffAtsData = null; // { clubs } last3 + 2026 ATS; not a line
 let staffOpenAbbr = null;
 let injuryScale = null; // from ./data/injury-scale.json
 let injurySeed = null;  // optional ./data/injury-2026.json; null if missing
@@ -1608,6 +1609,7 @@ async function loadNfl() {
   const sosReq = fetch("./data/sos-2025.json");
   const returnReq = fetch("./data/return-2026.json");
   const staffReq = fetch("./data/staff-2026.json");
+  const staffAtsReq = fetch("./data/staff-ats-2026.json");
   const scaleReq = fetch("./data/injury-scale.json");
   const injReq = fetch("./data/injury-2026.json");
   const wxReq = fetch("./data/weather-scale.json");
@@ -1698,6 +1700,16 @@ async function loadNfl() {
   } catch (err) {
     staffData = null;
     console.warn("staff-2026.json", err);
+  }
+  try {
+    const res = await staffAtsReq;
+    if (!res.ok) throw new Error(String(res.status));
+    const data = await res.json();
+    if (!data || !data.clubs || typeof data.clubs !== "object") throw new Error("bad staff ats");
+    staffAtsData = data;
+  } catch (err) {
+    staffAtsData = null;
+    console.warn("staff-ats-2026.json", err);
   }
   try {
     const res = await scaleReq;
@@ -2348,6 +2360,7 @@ function renderTeams() {
       injN <= -0.3 ? `<span class="club-inj minus">INJ ${esc(fmtRtg(injN))}</span>` : "",
       adj ? `<span class="club-ctx">adj ${esc(fmtRtg(adj))}</span>` : "",
       ctxN ? `<span class="club-ctx">${ctxN} ctx</span>` : "",
+      staffAtsClubLine(t.abbr),
     ].filter(Boolean).join("");
     return `<button type="button" class="club${open ? " is-open" : ""}" data-team="${esc(t.abbr)}">
       <img class="club-logo" src="${esc(t.logo)}" alt="" width="40" height="40">
@@ -4330,14 +4343,53 @@ function staffAwardStars(role) {
   return ` <span class="staff-stars" title="${esc(tip)}">${stars}</span>`;
 }
 
-function staffRoleCard(label, role) {
+function staffAtsOf(abbr) {
+  if (!staffAtsData || !staffAtsData.clubs) return null;
+  return staffAtsData.clubs[normAbbr(abbr)] || null;
+}
+
+function staffAtsClass(rec) {
+  const n = rec ? Number(rec.n) || 0 : 0;
+  if (!n) return "even";
+  const rate = rec.rate != null ? Number(rec.rate) : (Number(rec.w) || 0) / n;
+  if (rate > 0.5) return "plus";
+  if (rate < 0.5) return "minus";
+  return "even";
+}
+
+function staffAtsFmt(rec, empty) {
+  if (!rec || !(Number(rec.n) || 0)) return empty == null ? "—" : empty;
+  const w = Number(rec.w) || 0;
+  const l = Number(rec.l) || 0;
+  const p = Number(rec.p) || 0;
+  return p ? (w + "-" + l + "-" + p) : (w + "-" + l);
+}
+
+function staffAtsMarks(ats) {
+  if (!ats) return "";
+  return `<p class="staff-ats-row"><span class="staff-ats ${staffAtsClass(ats.last3)}">3yr ${esc(staffAtsFmt(ats.last3, "—"))}</span><span class="staff-ats ${staffAtsClass(ats.y2026)}">26 ${esc(staffAtsFmt(ats.y2026, "0-0"))}</span></p>`;
+}
+
+function staffAtsClubLine(abbr) {
+  const sa = staffAtsOf(abbr);
+  if (!sa) return "";
+  const bits = ["hc", "oc", "dc"].map((k) => {
+    const rec = sa[k] && sa[k].last3;
+    return `<em class="${staffAtsClass(rec)}">${k.toUpperCase()} ${esc(staffAtsFmt(rec, "—"))}</em>`;
+  });
+  return `<span class="club-staff-ats">${bits.join("")}</span>`;
+}
+
+function staffRoleCard(label, role, ats) {
   const name = staffRoleName(role);
   const scheme = staffSchemeLine(role);
   const bio = role && typeof role.bio === "string" ? role.bio.trim() : "";
+  const atsHtml = label === "ST" ? "" : staffAtsMarks(ats);
   return `<div class="staff-role">
     <small>${esc(label)}</small>
     <div>
       <em>${esc(name)}${staffAwardStars(role)}</em>
+      ${atsHtml}
       ${scheme ? `<span class="staff-scheme">${esc(scheme)}</span>` : ""}
       ${bio ? `<p class="staff-bio">${esc(bio)}</p>` : ""}
     </div>
@@ -4355,12 +4407,12 @@ function staffBlockHtml(abbr) {
   return `<div class="fa-block staff-block">
     <p class="prior-kicker">2026 staff · not a line</p>
     <div class="staff-roles">
-      ${staffRoleCard("HC", { name: c.hc, bio: c.hc_bio, awards: c.hc_awards })}
-      ${staffRoleCard("OC", c.oc)}
-      ${staffRoleCard("DC", c.dc)}
+      ${staffRoleCard("HC", { name: c.hc, bio: c.hc_bio, awards: c.hc_awards }, staffAtsOf(abbr) && staffAtsOf(abbr).hc)}
+      ${staffRoleCard("OC", c.oc, staffAtsOf(abbr) && staffAtsOf(abbr).oc)}
+      ${staffRoleCard("DC", c.dc, staffAtsOf(abbr) && staffAtsOf(abbr).dc)}
       ${staffRoleCard("ST", c.st)}
     </div>
-    <p class="prior-note">Scheme only when a source named it. Does not move the number. Full history is on the Staff tab.</p>
+    <p class="prior-note">ATS is the job, last three years plus this year. Green over .500, red under. Does not move the number.</p>
   </div>`;
 }
 
@@ -4393,9 +4445,9 @@ function renderStaff() {
         <span>${esc(t.name || "")}</span>
       </div>
       <div class="staff-roles">
-        ${staffRoleCard("HC", { name: c.hc, bio: c.hc_bio, awards: c.hc_awards })}
-        ${staffRoleCard("OC", oc)}
-        ${staffRoleCard("DC", dc)}
+        ${staffRoleCard("HC", { name: c.hc, bio: c.hc_bio, awards: c.hc_awards }, staffAtsOf(t.abbr) && staffAtsOf(t.abbr).hc)}
+        ${staffRoleCard("OC", oc, staffAtsOf(t.abbr) && staffAtsOf(t.abbr).oc)}
+        ${staffRoleCard("DC", dc, staffAtsOf(t.abbr) && staffAtsOf(t.abbr).dc)}
         ${staffRoleCard("ST", st)}
       </div>
       ${hist}

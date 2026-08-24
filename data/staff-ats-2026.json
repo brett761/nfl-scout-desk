@@ -1,0 +1,2237 @@
+{
+  "season": 2026,
+  "pulled": "2026-08-24",
+  "window": "last3 = 2023-2025 regular + playoffs. y2026 = running 2026 regular + playoffs.",
+  "source": "nflverse nfldata games.csv close spread. OC/DC stints from staff-2026.json histories. HC from game coach names.",
+  "note": "Not a line. Green/red on the team sheet only. Role-specific: HC follows the coach; OC/DC get the club ATS in seasons they were listed as that coordinator.",
+  "clubs": {
+    "ARI": {
+      "hc": {
+        "name": "Mike LaFleur",
+        "last3": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        }
+      },
+      "oc": {
+        "name": "Nathaniel Hackett",
+        "last3": {
+          "w": 12,
+          "l": 21,
+          "p": 1,
+          "n": 33,
+          "rate": 0.3636,
+          "seasons": [
+            "NYJ 2024",
+            "NYJ 2023"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "ARI 2026 (no games)"
+          ]
+        }
+      },
+      "dc": {
+        "name": "Nick Rallis",
+        "last3": {
+          "w": 26,
+          "l": 25,
+          "p": 0,
+          "n": 51,
+          "rate": 0.5098,
+          "seasons": [
+            "ARI 2024",
+            "ARI 2025",
+            "ARI 2023"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "ARI 2026 (no games)"
+          ]
+        }
+      }
+    },
+    "ATL": {
+      "hc": {
+        "name": "Kevin Stefanski",
+        "last3": {
+          "w": 21,
+          "l": 29,
+          "p": 2,
+          "n": 50,
+          "rate": 0.42,
+          "seasons": [
+            "CLE 2023",
+            "CLE 2024",
+            "CLE 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        }
+      },
+      "oc": {
+        "name": "Tommy Rees",
+        "last3": {
+          "w": 8,
+          "l": 9,
+          "p": 0,
+          "n": 17,
+          "rate": 0.4706,
+          "seasons": [
+            "CLE 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "ATL 2026 (no games)"
+          ]
+        }
+      },
+      "dc": {
+        "name": "Jeff Ulbrich",
+        "last3": {
+          "w": 21,
+          "l": 29,
+          "p": 1,
+          "n": 50,
+          "rate": 0.42,
+          "seasons": [
+            "NYJ 2024",
+            "NYJ 2023",
+            "ATL 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "ATL 2026 (no games)"
+          ]
+        }
+      }
+    },
+    "BAL": {
+      "hc": {
+        "name": "Jesse Minter",
+        "last3": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        }
+      },
+      "oc": {
+        "name": "Declan Doyle",
+        "last3": {
+          "w": 11,
+          "l": 7,
+          "p": 1,
+          "n": 18,
+          "rate": 0.6111,
+          "seasons": [
+            "CHI 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "BAL 2026 (no games)"
+          ]
+        }
+      },
+      "dc": {
+        "name": "Anthony Weaver",
+        "last3": {
+          "w": 15,
+          "l": 19,
+          "p": 0,
+          "n": 34,
+          "rate": 0.4412,
+          "seasons": [
+            "MIA 2024",
+            "MIA 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "BAL 2026 (no games)"
+          ]
+        }
+      }
+    },
+    "BUF": {
+      "hc": {
+        "name": "Joe Brady",
+        "last3": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        }
+      },
+      "oc": {
+        "name": "Pete Carmichael Jr.",
+        "last3": {
+          "w": 6,
+          "l": 10,
+          "p": 1,
+          "n": 16,
+          "rate": 0.375,
+          "seasons": [
+            "NO 2023"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "BUF 2026 (no games)"
+          ]
+        }
+      },
+      "dc": {
+        "name": "Jim Leonhard",
+        "last3": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "BUF 2026 (no games)"
+          ]
+        }
+      }
+    },
+    "CAR": {
+      "hc": {
+        "name": "Dave Canales",
+        "last3": {
+          "w": 19,
+          "l": 16,
+          "p": 0,
+          "n": 35,
+          "rate": 0.5429,
+          "seasons": [
+            "CAR 2024",
+            "CAR 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        }
+      },
+      "oc": {
+        "name": "Brad Idzik",
+        "last3": {
+          "w": 19,
+          "l": 16,
+          "p": 0,
+          "n": 35,
+          "rate": 0.5429,
+          "seasons": [
+            "CAR 2024",
+            "CAR 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "CAR 2026 (no games)"
+          ]
+        }
+      },
+      "dc": {
+        "name": "Ejiro Evero",
+        "last3": {
+          "w": 23,
+          "l": 27,
+          "p": 2,
+          "n": 50,
+          "rate": 0.46,
+          "seasons": [
+            "CAR 2023",
+            "CAR 2024",
+            "CAR 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "CAR 2026 (no games)"
+          ]
+        }
+      }
+    },
+    "CHI": {
+      "hc": {
+        "name": "Ben Johnson",
+        "last3": {
+          "w": 11,
+          "l": 7,
+          "p": 1,
+          "n": 18,
+          "rate": 0.6111,
+          "seasons": [
+            "CHI 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        }
+      },
+      "oc": {
+        "name": "Press Taylor",
+        "last3": {
+          "w": 19,
+          "l": 15,
+          "p": 0,
+          "n": 34,
+          "rate": 0.5588,
+          "seasons": [
+            "JAX 2024",
+            "JAX 2023"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "CHI 2026 (no games)"
+          ]
+        }
+      },
+      "dc": {
+        "name": "Dennis Allen",
+        "last3": {
+          "w": 11,
+          "l": 7,
+          "p": 1,
+          "n": 18,
+          "rate": 0.6111,
+          "seasons": [
+            "CHI 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "CHI 2026 (no games)"
+          ]
+        }
+      }
+    },
+    "CIN": {
+      "hc": {
+        "name": "Zac Taylor",
+        "last3": {
+          "w": 25,
+          "l": 24,
+          "p": 2,
+          "n": 49,
+          "rate": 0.5102,
+          "seasons": [
+            "CIN 2023",
+            "CIN 2024",
+            "CIN 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        }
+      },
+      "oc": {
+        "name": "Dan Pitcher",
+        "last3": {
+          "w": 18,
+          "l": 16,
+          "p": 0,
+          "n": 34,
+          "rate": 0.5294,
+          "seasons": [
+            "CIN 2024",
+            "CIN 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "CIN 2026 (no games)"
+          ]
+        }
+      },
+      "dc": {
+        "name": "Al Golden",
+        "last3": {
+          "w": 8,
+          "l": 9,
+          "p": 0,
+          "n": 17,
+          "rate": 0.4706,
+          "seasons": [
+            "CIN 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "CIN 2026 (no games)"
+          ]
+        }
+      }
+    },
+    "CLE": {
+      "hc": {
+        "name": "Todd Monken",
+        "last3": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        }
+      },
+      "oc": {
+        "name": "Travis Switzer",
+        "last3": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "CLE 2026 (no games)"
+          ]
+        }
+      },
+      "dc": {
+        "name": "Mike Rutenberg",
+        "last3": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "CLE 2026 (no games)"
+          ]
+        }
+      }
+    },
+    "DAL": {
+      "hc": {
+        "name": "Brian Schottenheimer",
+        "last3": {
+          "w": 7,
+          "l": 10,
+          "p": 0,
+          "n": 17,
+          "rate": 0.4118,
+          "seasons": [
+            "DAL 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        }
+      },
+      "oc": {
+        "name": "Klayton Adams",
+        "last3": {
+          "w": 7,
+          "l": 10,
+          "p": 0,
+          "n": 17,
+          "rate": 0.4118,
+          "seasons": [
+            "DAL 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "DAL 2026 (no games)"
+          ]
+        }
+      },
+      "dc": {
+        "name": "Christian Parker",
+        "last3": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "DAL 2026 (no games)"
+          ]
+        }
+      }
+    },
+    "DEN": {
+      "hc": {
+        "name": "Sean Payton",
+        "last3": {
+          "w": 27,
+          "l": 26,
+          "p": 1,
+          "n": 53,
+          "rate": 0.5094,
+          "seasons": [
+            "DEN 2023",
+            "DEN 2024",
+            "DEN 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        }
+      },
+      "oc": {
+        "name": "Davis Webb",
+        "last3": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "DEN 2026 (no games)"
+          ]
+        }
+      },
+      "dc": {
+        "name": "Vance Joseph",
+        "last3": {
+          "w": 27,
+          "l": 26,
+          "p": 1,
+          "n": 53,
+          "rate": 0.5094,
+          "seasons": [
+            "DEN 2024",
+            "DEN 2025",
+            "DEN 2023"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "DEN 2026 (no games)"
+          ]
+        }
+      }
+    },
+    "DET": {
+      "hc": {
+        "name": "Dan Campbell",
+        "last3": {
+          "w": 34,
+          "l": 20,
+          "p": 1,
+          "n": 54,
+          "rate": 0.6296,
+          "seasons": [
+            "DET 2023",
+            "DET 2024",
+            "DET 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        }
+      },
+      "oc": {
+        "name": "Drew Petzing",
+        "last3": {
+          "w": 26,
+          "l": 25,
+          "p": 0,
+          "n": 51,
+          "rate": 0.5098,
+          "seasons": [
+            "ARI 2024",
+            "ARI 2025",
+            "ARI 2023"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "DET 2026 (no games)"
+          ]
+        }
+      },
+      "dc": {
+        "name": "Kelvin Sheppard",
+        "last3": {
+          "w": 8,
+          "l": 9,
+          "p": 0,
+          "n": 17,
+          "rate": 0.4706,
+          "seasons": [
+            "DET 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "DET 2026 (no games)"
+          ]
+        }
+      }
+    },
+    "GB": {
+      "hc": {
+        "name": "Matt LaFleur",
+        "last3": {
+          "w": 25,
+          "l": 29,
+          "p": 1,
+          "n": 54,
+          "rate": 0.463,
+          "seasons": [
+            "GB 2023",
+            "GB 2024",
+            "GB 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        }
+      },
+      "oc": {
+        "name": "Adam Stenavich",
+        "last3": {
+          "w": 25,
+          "l": 29,
+          "p": 1,
+          "n": 54,
+          "rate": 0.463,
+          "seasons": [
+            "GB 2023",
+            "GB 2024",
+            "GB 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "GB 2026 (no games)"
+          ]
+        }
+      },
+      "dc": {
+        "name": "Jonathan Gannon",
+        "last3": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "GB 2026 (no games)"
+          ]
+        }
+      }
+    },
+    "HOU": {
+      "hc": {
+        "name": "DeMeco Ryans",
+        "last3": {
+          "w": 29,
+          "l": 27,
+          "p": 1,
+          "n": 56,
+          "rate": 0.5179,
+          "seasons": [
+            "HOU 2023",
+            "HOU 2024",
+            "HOU 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        }
+      },
+      "oc": {
+        "name": "Nick Caley",
+        "last3": {
+          "w": 10,
+          "l": 9,
+          "p": 0,
+          "n": 19,
+          "rate": 0.5263,
+          "seasons": [
+            "HOU 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "HOU 2026 (no games)"
+          ]
+        }
+      },
+      "dc": {
+        "name": "Matt Burke",
+        "last3": {
+          "w": 29,
+          "l": 27,
+          "p": 1,
+          "n": 56,
+          "rate": 0.5179,
+          "seasons": [
+            "HOU 2024",
+            "HOU 2025",
+            "HOU 2023"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "HOU 2026 (no games)"
+          ]
+        }
+      }
+    },
+    "IND": {
+      "hc": {
+        "name": "Shane Steichen",
+        "last3": {
+          "w": 27,
+          "l": 24,
+          "p": 0,
+          "n": 51,
+          "rate": 0.5294,
+          "seasons": [
+            "IND 2023",
+            "IND 2024",
+            "IND 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        }
+      },
+      "oc": {
+        "name": "Jim Bob Cooter",
+        "last3": {
+          "w": 27,
+          "l": 24,
+          "p": 0,
+          "n": 51,
+          "rate": 0.5294,
+          "seasons": [
+            "IND 2024",
+            "IND 2025",
+            "IND 2023"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "IND 2026 (no games)"
+          ]
+        }
+      },
+      "dc": {
+        "name": "Lou Anarumo",
+        "last3": {
+          "w": 26,
+          "l": 23,
+          "p": 2,
+          "n": 49,
+          "rate": 0.5306,
+          "seasons": [
+            "CIN 2023",
+            "CIN 2024",
+            "IND 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "IND 2026 (no games)"
+          ]
+        }
+      }
+    },
+    "JAX": {
+      "hc": {
+        "name": "Liam Coen",
+        "last3": {
+          "w": 12,
+          "l": 6,
+          "p": 0,
+          "n": 18,
+          "rate": 0.6667,
+          "seasons": [
+            "JAX 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        }
+      },
+      "oc": {
+        "name": "Grant Udinski",
+        "last3": {
+          "w": 12,
+          "l": 6,
+          "p": 0,
+          "n": 18,
+          "rate": 0.6667,
+          "seasons": [
+            "JAX 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "JAX 2026 (no games)"
+          ]
+        }
+      },
+      "dc": {
+        "name": "Anthony Campanile",
+        "last3": {
+          "w": 12,
+          "l": 6,
+          "p": 0,
+          "n": 18,
+          "rate": 0.6667,
+          "seasons": [
+            "JAX 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "JAX 2026 (no games)"
+          ]
+        }
+      }
+    },
+    "KC": {
+      "hc": {
+        "name": "Andy Reid",
+        "last3": {
+          "w": 27,
+          "l": 30,
+          "p": 1,
+          "n": 57,
+          "rate": 0.4737,
+          "seasons": [
+            "KC 2023",
+            "KC 2024",
+            "KC 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        }
+      },
+      "oc": {
+        "name": "Eric Bieniemy",
+        "last3": {
+          "w": 6,
+          "l": 10,
+          "p": 1,
+          "n": 16,
+          "rate": 0.375,
+          "seasons": [
+            "WSH 2023"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "KC 2026 (no games)"
+          ]
+        }
+      },
+      "dc": {
+        "name": "Steve Spagnuolo",
+        "last3": {
+          "w": 27,
+          "l": 30,
+          "p": 1,
+          "n": 57,
+          "rate": 0.4737,
+          "seasons": [
+            "KC 2023",
+            "KC 2024",
+            "KC 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "KC 2026 (no games)"
+          ]
+        }
+      }
+    },
+    "LAC": {
+      "hc": {
+        "name": "Jim Harbaugh",
+        "last3": {
+          "w": 22,
+          "l": 14,
+          "p": 0,
+          "n": 36,
+          "rate": 0.6111,
+          "seasons": [
+            "LAC 2024",
+            "LAC 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        }
+      },
+      "oc": {
+        "name": "Mike McDaniel",
+        "last3": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "LAC 2026 (no games)"
+          ]
+        }
+      },
+      "dc": {
+        "name": "Chris O'Leary",
+        "last3": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "LAC 2026 (no games)"
+          ]
+        }
+      }
+    },
+    "LAR": {
+      "hc": {
+        "name": "Sean McVay",
+        "last3": {
+          "w": 34,
+          "l": 22,
+          "p": 1,
+          "n": 56,
+          "rate": 0.6071,
+          "seasons": [
+            "LAR 2023",
+            "LAR 2024",
+            "LAR 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        }
+      },
+      "oc": {
+        "name": "Nate Scheelhaase",
+        "last3": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "LAR 2026 (no games)"
+          ]
+        }
+      },
+      "dc": {
+        "name": "Chris Shula",
+        "last3": {
+          "w": 23,
+          "l": 16,
+          "p": 0,
+          "n": 39,
+          "rate": 0.5897,
+          "seasons": [
+            "LAR 2024",
+            "LAR 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "LAR 2026 (no games)"
+          ]
+        }
+      }
+    },
+    "LV": {
+      "hc": {
+        "name": "Klint Kubiak",
+        "last3": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        }
+      },
+      "oc": {
+        "name": "Andrew Janocko",
+        "last3": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "LV 2026 (no games)"
+          ]
+        }
+      },
+      "dc": {
+        "name": "Rob Leonard",
+        "last3": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "LV 2026 (no games)"
+          ]
+        }
+      }
+    },
+    "MIA": {
+      "hc": {
+        "name": "Jeff Hafley",
+        "last3": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        }
+      },
+      "oc": {
+        "name": "Bobby Slowik",
+        "last3": {
+          "w": 19,
+          "l": 18,
+          "p": 1,
+          "n": 37,
+          "rate": 0.5135,
+          "seasons": [
+            "HOU 2024",
+            "HOU 2023"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "MIA 2026 (no games)"
+          ]
+        }
+      },
+      "dc": {
+        "name": "Sean Duggan",
+        "last3": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "MIA 2026 (no games)"
+          ]
+        }
+      }
+    },
+    "MIN": {
+      "hc": {
+        "name": "Kevin O'Connell",
+        "last3": {
+          "w": 27,
+          "l": 21,
+          "p": 4,
+          "n": 48,
+          "rate": 0.5625,
+          "seasons": [
+            "MIN 2023",
+            "MIN 2024",
+            "MIN 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        }
+      },
+      "oc": {
+        "name": "Wes Phillips",
+        "last3": {
+          "w": 27,
+          "l": 21,
+          "p": 4,
+          "n": 48,
+          "rate": 0.5625,
+          "seasons": [
+            "MIN 2023",
+            "MIN 2024",
+            "MIN 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "MIN 2026 (no games)"
+          ]
+        }
+      },
+      "dc": {
+        "name": "Brian Flores",
+        "last3": {
+          "w": 27,
+          "l": 21,
+          "p": 4,
+          "n": 48,
+          "rate": 0.5625,
+          "seasons": [
+            "MIN 2024",
+            "MIN 2025",
+            "MIN 2023"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "MIN 2026 (no games)"
+          ]
+        }
+      }
+    },
+    "NE": {
+      "hc": {
+        "name": "Mike Vrabel",
+        "last3": {
+          "w": 21,
+          "l": 16,
+          "p": 1,
+          "n": 37,
+          "rate": 0.5676,
+          "seasons": [
+            "TEN 2023",
+            "NE 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        }
+      },
+      "oc": {
+        "name": "Josh McDaniels",
+        "last3": {
+          "w": 14,
+          "l": 7,
+          "p": 0,
+          "n": 21,
+          "rate": 0.6667,
+          "seasons": [
+            "NE 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "NE 2026 (no games)"
+          ]
+        }
+      },
+      "dc": {
+        "name": "Zak Kuhr",
+        "last3": {
+          "w": 14,
+          "l": 7,
+          "p": 0,
+          "n": 21,
+          "rate": 0.6667,
+          "seasons": [
+            "NE 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "NE 2026 (no games)"
+          ]
+        }
+      }
+    },
+    "NO": {
+      "hc": {
+        "name": "Kellen Moore",
+        "last3": {
+          "w": 9,
+          "l": 8,
+          "p": 0,
+          "n": 17,
+          "rate": 0.5294,
+          "seasons": [
+            "NO 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        }
+      },
+      "oc": {
+        "name": "Doug Nussmeier",
+        "last3": {
+          "w": 9,
+          "l": 8,
+          "p": 0,
+          "n": 17,
+          "rate": 0.5294,
+          "seasons": [
+            "NO 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "NO 2026 (no games)"
+          ]
+        }
+      },
+      "dc": {
+        "name": "Brandon Staley",
+        "last3": {
+          "w": 9,
+          "l": 8,
+          "p": 0,
+          "n": 17,
+          "rate": 0.5294,
+          "seasons": [
+            "NO 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "NO 2026 (no games)"
+          ]
+        }
+      }
+    },
+    "NYG": {
+      "hc": {
+        "name": "John Harbaugh",
+        "last3": {
+          "w": 30,
+          "l": 25,
+          "p": 0,
+          "n": 55,
+          "rate": 0.5455,
+          "seasons": [
+            "BAL 2023",
+            "BAL 2024",
+            "BAL 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        }
+      },
+      "oc": {
+        "name": "Matt Nagy",
+        "last3": {
+          "w": 27,
+          "l": 30,
+          "p": 1,
+          "n": 57,
+          "rate": 0.4737,
+          "seasons": [
+            "KC 2024",
+            "KC 2025",
+            "KC 2023"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "NYG 2026 (no games)"
+          ]
+        }
+      },
+      "dc": {
+        "name": "Dennard Wilson",
+        "last3": {
+          "w": 9,
+          "l": 24,
+          "p": 1,
+          "n": 33,
+          "rate": 0.2727,
+          "seasons": [
+            "TEN 2024",
+            "TEN 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "NYG 2026 (no games)"
+          ]
+        }
+      }
+    },
+    "NYJ": {
+      "hc": {
+        "name": "Aaron Glenn",
+        "last3": {
+          "w": 7,
+          "l": 10,
+          "p": 0,
+          "n": 17,
+          "rate": 0.4118,
+          "seasons": [
+            "NYJ 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        }
+      },
+      "oc": {
+        "name": "Frank Reich",
+        "last3": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "NYJ 2026 (no games)"
+          ]
+        }
+      },
+      "dc": {
+        "name": "Brian Duker",
+        "last3": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "NYJ 2026 (no games)"
+          ]
+        }
+      }
+    },
+    "PHI": {
+      "hc": {
+        "name": "Nick Sirianni",
+        "last3": {
+          "w": 31,
+          "l": 24,
+          "p": 2,
+          "n": 55,
+          "rate": 0.5636,
+          "seasons": [
+            "PHI 2023",
+            "PHI 2024",
+            "PHI 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        }
+      },
+      "oc": {
+        "name": "Sean Mannion",
+        "last3": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "PHI 2026 (no games)"
+          ]
+        }
+      },
+      "dc": {
+        "name": "Vic Fangio",
+        "last3": {
+          "w": 34,
+          "l": 23,
+          "p": 0,
+          "n": 57,
+          "rate": 0.5965,
+          "seasons": [
+            "MIA 2023",
+            "PHI 2024",
+            "PHI 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "PHI 2026 (no games)"
+          ]
+        }
+      }
+    },
+    "PIT": {
+      "hc": {
+        "name": "Mike McCarthy",
+        "last3": {
+          "w": 17,
+          "l": 18,
+          "p": 0,
+          "n": 35,
+          "rate": 0.4857,
+          "seasons": [
+            "DAL 2023",
+            "DAL 2024"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        }
+      },
+      "oc": {
+        "name": "Brian Angelichio",
+        "last3": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "PIT 2026 (no games)"
+          ]
+        }
+      },
+      "dc": {
+        "name": "Patrick Graham",
+        "last3": {
+          "w": 25,
+          "l": 24,
+          "p": 2,
+          "n": 49,
+          "rate": 0.5102,
+          "seasons": [
+            "LV 2024",
+            "LV 2025",
+            "LV 2023"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "PIT 2026 (no games)"
+          ]
+        }
+      }
+    },
+    "SEA": {
+      "hc": {
+        "name": "Mike Macdonald",
+        "last3": {
+          "w": 21,
+          "l": 16,
+          "p": 0,
+          "n": 37,
+          "rate": 0.5676,
+          "seasons": [
+            "SEA 2024",
+            "SEA 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        }
+      },
+      "oc": {
+        "name": "Brian Fleury",
+        "last3": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "SEA 2026 (no games)"
+          ]
+        }
+      },
+      "dc": {
+        "name": "Aden Durde",
+        "last3": {
+          "w": 21,
+          "l": 16,
+          "p": 0,
+          "n": 37,
+          "rate": 0.5676,
+          "seasons": [
+            "SEA 2024",
+            "SEA 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "SEA 2026 (no games)"
+          ]
+        }
+      }
+    },
+    "SF": {
+      "hc": {
+        "name": "Kyle Shanahan",
+        "last3": {
+          "w": 26,
+          "l": 30,
+          "p": 0,
+          "n": 56,
+          "rate": 0.4643,
+          "seasons": [
+            "SF 2023",
+            "SF 2024",
+            "SF 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        }
+      },
+      "oc": {
+        "name": "Klay Kubiak",
+        "last3": {
+          "w": 12,
+          "l": 7,
+          "p": 0,
+          "n": 19,
+          "rate": 0.6316,
+          "seasons": [
+            "SF 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "SF 2026 (no games)"
+          ]
+        }
+      },
+      "dc": {
+        "name": "Raheem Morris",
+        "last3": {
+          "w": 11,
+          "l": 6,
+          "p": 1,
+          "n": 17,
+          "rate": 0.6471,
+          "seasons": [
+            "LAR 2023"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "SF 2026 (no games)"
+          ]
+        }
+      }
+    },
+    "TB": {
+      "hc": {
+        "name": "Todd Bowles",
+        "last3": {
+          "w": 27,
+          "l": 27,
+          "p": 0,
+          "n": 54,
+          "rate": 0.5,
+          "seasons": [
+            "TB 2023",
+            "TB 2024",
+            "TB 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        }
+      },
+      "oc": {
+        "name": "Zac Robinson",
+        "last3": {
+          "w": 15,
+          "l": 19,
+          "p": 0,
+          "n": 34,
+          "rate": 0.4412,
+          "seasons": [
+            "ATL 2024",
+            "ATL 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "TB 2026 (no games)"
+          ]
+        }
+      },
+      "dc": {
+        "name": "Todd Bowles",
+        "last3": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        }
+      }
+    },
+    "TEN": {
+      "hc": {
+        "name": "Robert Saleh",
+        "last3": {
+          "w": 12,
+          "l": 21,
+          "p": 1,
+          "n": 33,
+          "rate": 0.3636,
+          "seasons": [
+            "NYJ 2023",
+            "NYJ 2024"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        }
+      },
+      "oc": {
+        "name": "Brian Daboll",
+        "last3": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "TEN 2026 (no games)"
+          ]
+        }
+      },
+      "dc": {
+        "name": "Gus Bradley",
+        "last3": {
+          "w": 18,
+          "l": 16,
+          "p": 0,
+          "n": 34,
+          "rate": 0.5294,
+          "seasons": [
+            "IND 2024",
+            "IND 2023"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "TEN 2026 (no games)"
+          ]
+        }
+      }
+    },
+    "WSH": {
+      "hc": {
+        "name": "Dan Quinn",
+        "last3": {
+          "w": 19,
+          "l": 18,
+          "p": 0,
+          "n": 37,
+          "rate": 0.5135,
+          "seasons": [
+            "WSH 2024",
+            "WSH 2025"
+          ]
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        }
+      },
+      "oc": {
+        "name": "David Blough",
+        "last3": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "WSH 2026 (no games)"
+          ]
+        }
+      },
+      "dc": {
+        "name": "Daronte Jones",
+        "last3": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": []
+        },
+        "y2026": {
+          "w": 0,
+          "l": 0,
+          "p": 0,
+          "n": 0,
+          "rate": null,
+          "seasons": [
+            "WSH 2026 (no games)"
+          ]
+        }
+      }
+    }
+  }
+}
