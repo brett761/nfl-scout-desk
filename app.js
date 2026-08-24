@@ -2836,14 +2836,25 @@ function openTeamProfile(abbr) {
   if (sheet) {
     sheet.hidden = false;
     sheet.scrollTop = 0;
+    sheet.scrollTo(0, 0);
   }
   const body = document.getElementById("team-sheet-body");
-  if (body) body.scrollTop = 0;
+  if (body) {
+    body.scrollTop = 0;
+    if (body.scrollTo) body.scrollTo(0, 0);
+  }
   const closer = document.getElementById("team-sheet-close");
-  if (closer) closer.focus();
-  requestAnimationFrame(() => {
-    if (sheet) sheet.scrollTop = 0;
+  if (closer) closer.focus({ preventScroll: true });
+  const pinTop = () => {
+    if (sheet) {
+      sheet.scrollTop = 0;
+      sheet.scrollTo(0, 0);
+    }
     if (body) body.scrollTop = 0;
+  };
+  requestAnimationFrame(() => {
+    pinTop();
+    requestAnimationFrame(pinTop);
   });
   renderTeams();
 }
@@ -4393,7 +4404,64 @@ function renderStaff() {
   }).join("");
 }
 
+
+function seasonPhaseLine() {
+  const games = nflData && nflData.games ? nflData.games : [];
+  const first = games.slice().sort((a, b) => String(a.date || "").localeCompare(String(b.date || "")))[0];
+  if (!first || !first.date) return "Preseason";
+  const kick = Date.parse(first.date);
+  if (!Number.isFinite(kick) || Date.now() < kick) return "Preseason";
+  return "Regular season";
+}
+
+function heroWindowLine(et) {
+  if (!et) return "";
+  const wd = et.weekday;
+  if (wd === 1) return "Monday first look";
+  if (wd === 3) return "TNF decision window";
+  if (wd === 4) return "Thursday night";
+  if (wd === 5) return "Sunday status window";
+  if (wd === 6) return "Saturday London / weather";
+  if (wd === 0) return "Sunday public / dogs";
+  return "Week is open";
+}
+
+function renderHero() {
+  const el = document.getElementById("hero-meta");
+  if (!el) return;
+  const et = toET(new Date());
+  const year = new Intl.DateTimeFormat("en-US", { timeZone: "America/New_York", year: "numeric" }).format(new Date());
+  const date = et ? (et.label + " " + year) : "";
+  const phase = seasonPhaseLine();
+  const weekLine = phase === "Preseason" ? "Week 1 not open" : ("Week " + currentWeek);
+  const win = heroWindowLine(et);
+  el.innerHTML = [date, phase, weekLine, win].filter(Boolean).map((s) => `<li>${esc(s)}</li>`).join("");
+}
+
+function renderHomePicks() {
+  const el = document.getElementById("home-picks");
+  if (!el) return;
+  if (!nflData || !nflData.teams || !nflData.teams.length) {
+    el.hidden = true;
+    el.innerHTML = "";
+    return;
+  }
+  const ranked = nflData.teams.slice().sort((a, b) => (eff(b.abbr) || 0) - (eff(a.abbr) || 0)).slice(0, 3);
+  el.hidden = false;
+  el.innerHTML = `<p class="section-label">Highest rated right now. Tap one.</p>
+    <div class="home-picks-row">${ranked.map((t) => {
+      const n = eff(t.abbr);
+      return `<button type="button" class="home-pick" data-home-team="${esc(t.abbr)}">
+        <img src="${esc(t.logo)}" alt="" width="36" height="36">
+        <span>${esc(t.nick || t.name)}</span>
+        <em class="${rtgClass(n)}">${esc(fmtRtg(n))}</em>
+      </button>`;
+    }).join("")}</div>`;
+}
+
 function render() {
+  renderHero();
+  renderHomePicks();
   renderKPIs();
   renderCard();
   renderLedger();
@@ -4782,6 +4850,16 @@ function bind() {
     if (file) importProfiles(file);
     e.target.value = "";
   });
+  const homePicks = document.getElementById("home-picks");
+  if (homePicks) {
+    homePicks.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-home-team]");
+      if (!btn) return;
+      const abbr = btn.dataset.homeTeam;
+      if (location.hash !== "#team-" + abbr) history.replaceState(null, "", "#team-" + abbr);
+      openTeamProfile(abbr);
+    });
+  }
   document.getElementById("team-grid").addEventListener("click", (e) => {
     const card = e.target.closest("[data-team]");
     if (!card) return;
