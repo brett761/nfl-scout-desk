@@ -2369,8 +2369,10 @@ function renderTeams() {
         <span class="club-name">${esc(t.name)}</span>
         <span class="club-div">${esc(t.conf)} ${esc(t.div)}</span>
       </span>
-      <span class="club-rtg ${rtgClass(blend)}">${esc(fmtRtg(blend))}</span>
-      <span class="club-chips">${extras}</span>
+      <span class="club-rtg-wrap">
+        <span class="club-rtg ${rtgClass(blend)}">${esc(fmtRtg(blend))}</span>
+        ${extras}
+      </span>
     </button>`;
   }).join("");
 }
@@ -3917,7 +3919,7 @@ function renderSchedule() {
           <p class="teams-line">${match}</p>
           <button type="button" class="sked-how" data-open-game="${esc(g.id)}" aria-haspopup="dialog" aria-controls="game-sheet">Why this number</button>
         </div>
-        <div class="sked-venue-cell">
+        <div>
           <button type="button" class="sked-venue sked-open-game" data-open-game="${esc(g.id)}" aria-haspopup="dialog" aria-controls="game-sheet">${esc(g.venue || "")}${g.city ? " · " + esc(g.city) : ""}</button>
           ${g.broadcast ? `<span class="sked-bc">${esc(g.broadcast)}</span>` : ""}
         </div>
@@ -4365,7 +4367,7 @@ function staffAtsFmt(rec, empty) {
 
 function staffAtsMarks(ats) {
   if (!ats) return "";
-  return `<p class="staff-ats-row"><span class="staff-ats ${staffAtsClass(ats.last3)}">3yr ATS ${esc(staffAtsFmt(ats.last3, "—"))}</span><span class="staff-ats ${staffAtsClass(ats.y2026)}">26 ATS ${esc(staffAtsFmt(ats.y2026, "0-0"))}</span></p>`;
+  return `<p class="staff-ats-row"><span class="staff-ats ${staffAtsClass(ats.last3)}">3yr ${esc(staffAtsFmt(ats.last3, "—"))}</span><span class="staff-ats ${staffAtsClass(ats.y2026)}">26 ${esc(staffAtsFmt(ats.y2026, "0-0"))}</span></p>`;
 }
 
 function staffAtsClubLine(abbr) {
@@ -4375,7 +4377,7 @@ function staffAtsClubLine(abbr) {
     const rec = sa[k] && sa[k].last3;
     return `<em class="${staffAtsClass(rec)}">${k.toUpperCase()} ${esc(staffAtsFmt(rec, "—"))}</em>`;
   });
-  return `<span class="club-staff-ats"><em>ATS</em> ${bits.join(" ")}</span>`;
+  return `<span class="club-staff-ats">${bits.join("")}</span>`;
 }
 
 function staffRoleCard(label, role, ats) {
