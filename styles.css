@@ -1005,15 +1005,27 @@ input[readonly] { color: var(--muted); }
   padding: 14px 14px 12px;
   cursor: pointer;
   display: grid;
-  grid-template-columns: 40px 1fr auto;
-  gap: 10px 12px;
-  align-items: center;
-  min-height: 92px;
+  grid-template-columns: 40px minmax(0, 1fr) auto;
+  grid-template-rows: auto auto;
+  gap: 8px 12px;
+  align-items: start;
+  min-height: 0;
   text-align: left;
   border: 0;
   color: inherit;
   width: 100%;
   font-family: inherit;
+}
+.club-logo { grid-column: 1; grid-row: 1; align-self: center; }
+.club-meta { grid-column: 2; grid-row: 1; align-self: center; }
+.club-rtg { grid-column: 3; grid-row: 1; }
+.club-chips {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  align-items: baseline;
 }
 .club:hover { background: var(--card-2); }
 .club.is-open { box-shadow: inset 0 2px 0 var(--copper); }
@@ -1033,12 +1045,13 @@ input[readonly] { color: var(--muted); }
   line-height: 1.2;
 }
 .club-name {
-  display: block;
-  font-size: 12px;
-  color: var(--muted);
-  white-space: nowrap;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
   overflow: hidden;
-  text-overflow: ellipsis;
+  font-size: 12px;
+  line-height: 1.25;
+  color: var(--muted);
 }
 .club-div {
   display: block;
@@ -1048,7 +1061,6 @@ input[readonly] { color: var(--muted); }
   color: var(--copper);
   margin-top: 2px;
 }
-.club-rtg-wrap { text-align: right; }
 .club-rtg {
   min-width: 64px;
   height: 52px;
@@ -1071,9 +1083,12 @@ input[readonly] { color: var(--muted); }
 .club-prior,
 .club-fa,
 .club-draft,
-.club-madden {
-  display: block;
-  margin-top: 4px;
+.club-madden,
+.club-sos,
+.club-return,
+.club-inj {
+  display: inline;
+  margin-top: 0;
   font-family: var(--mono);
   font-size: 9px;
   letter-spacing: 0.12em;
@@ -1087,15 +1102,11 @@ input[readonly] { color: var(--muted); }
 .club-draft.minus { color: #C47A7A; }
 .club-madden.plus { color: var(--process); }
 .club-madden.minus { color: #C47A7A; }
+.club-sos.plus { color: var(--process); }
+.club-sos.minus { color: #C47A7A; }
+.club-return.plus { color: var(--process); }
+.club-return.minus { color: #C47A7A; }
 .club-inj {
-  display: block;
-  margin-top: 4px;
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #C47A7A;
-}
 .club-inj.minus { color: #C47A7A; }
 
 /* ---------- team profile sheet ---------- */
@@ -2584,7 +2595,7 @@ button.sked-venue {
 .staff-ats.plus { color: var(--process); }
 .staff-ats.minus { color: var(--lose); }
 .staff-ats.even { color: var(--muted); }
-.club-staff-ats { display: flex; flex-wrap: wrap; gap: 8px; width: 100%; font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; }
+.club-staff-ats { display: flex; flex-wrap: wrap; gap: 8px 12px; flex: 1 0 100%; width: auto; font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; }
 .club-staff-ats em { font-style: normal; color: var(--muted); }
 .club-staff-ats em.plus { color: var(--process); }
 .club-staff-ats em.minus { color: var(--lose); }

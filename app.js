@@ -2369,10 +2369,8 @@ function renderTeams() {
         <span class="club-name">${esc(t.name)}</span>
         <span class="club-div">${esc(t.conf)} ${esc(t.div)}</span>
       </span>
-      <span class="club-rtg-wrap">
-        <span class="club-rtg ${rtgClass(blend)}">${esc(fmtRtg(blend))}</span>
-        ${extras}
-      </span>
+      <span class="club-rtg ${rtgClass(blend)}">${esc(fmtRtg(blend))}</span>
+      <span class="club-chips">${extras}</span>
     </button>`;
   }).join("");
 }
