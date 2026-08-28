@@ -3917,7 +3917,7 @@ function renderSchedule() {
           <p class="teams-line">${match}</p>
           <button type="button" class="sked-how" data-open-game="${esc(g.id)}" aria-haspopup="dialog" aria-controls="game-sheet">Why this number</button>
         </div>
-        <div>
+        <div class="sked-venue-cell">
           <button type="button" class="sked-venue sked-open-game" data-open-game="${esc(g.id)}" aria-haspopup="dialog" aria-controls="game-sheet">${esc(g.venue || "")}${g.city ? " · " + esc(g.city) : ""}</button>
           ${g.broadcast ? `<span class="sked-bc">${esc(g.broadcast)}</span>` : ""}
         </div>
