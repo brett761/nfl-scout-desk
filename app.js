@@ -4365,7 +4365,7 @@ function staffAtsFmt(rec, empty) {
 
 function staffAtsMarks(ats) {
   if (!ats) return "";
-  return `<p class="staff-ats-row"><span class="staff-ats ${staffAtsClass(ats.last3)}">3yr ${esc(staffAtsFmt(ats.last3, "—"))}</span><span class="staff-ats ${staffAtsClass(ats.y2026)}">26 ${esc(staffAtsFmt(ats.y2026, "0-0"))}</span></p>`;
+  return `<p class="staff-ats-row"><span class="staff-ats ${staffAtsClass(ats.last3)}">3yr ATS ${esc(staffAtsFmt(ats.last3, "—"))}</span><span class="staff-ats ${staffAtsClass(ats.y2026)}">26 ATS ${esc(staffAtsFmt(ats.y2026, "0-0"))}</span></p>`;
 }
 
 function staffAtsClubLine(abbr) {
@@ -4375,7 +4375,7 @@ function staffAtsClubLine(abbr) {
     const rec = sa[k] && sa[k].last3;
     return `<em class="${staffAtsClass(rec)}">${k.toUpperCase()} ${esc(staffAtsFmt(rec, "—"))}</em>`;
   });
-  return `<span class="club-staff-ats">${bits.join(" ")}</span>`;
+  return `<span class="club-staff-ats"><em>ATS</em> ${bits.join(" ")}</span>`;
 }
 
 function staffRoleCard(label, role, ats) {
