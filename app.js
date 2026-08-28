@@ -4375,7 +4375,7 @@ function staffAtsClubLine(abbr) {
     const rec = sa[k] && sa[k].last3;
     return `<em class="${staffAtsClass(rec)}">${k.toUpperCase()} ${esc(staffAtsFmt(rec, "—"))}</em>`;
   });
-  return `<span class="club-staff-ats">${bits.join("")}</span>`;
+  return `<span class="club-staff-ats">${bits.join(" ")}</span>`;
 }
 
 function staffRoleCard(label, role, ats) {
