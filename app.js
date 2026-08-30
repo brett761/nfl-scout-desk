@@ -486,6 +486,9 @@ function normAbbr(abbr) {
      Same 22 per club: top 11 OFF + top 11 DEF by 2025 PFF grade, min 200 snaps.
      Surplus vs league mean of those 22. 5 grade ≈ 1 point. Cap ±1.5.
      Official PFF+ CSV export. Does not fade. Does not rewrite the 2025 prior.
+   pff_pre_term(abbr) = pff-pre-2026.json team net (0 if missing).
+     2026 preseason team OVER vs league mean. 5 grade ≈ 1 point. Cap ±1.
+     Current-roster check. Does not rewrite the 2025 prior or the PFF 22.
    user_adjust = optional override on top of the algorithm (old "base").
    Injuries are a weekly point value. They do NOT taper with the 17-game prior.
    They stay until the row is off or deleted.
@@ -528,7 +531,11 @@ function normAbbr(abbr) {
      the last game and this is not a post-bye week (bye already lives in prep).
      Resting starters is still a human context row. sched_net = clamp(
      home_pts − away_pts, ±0.5). Does not rewrite the prior.
-     eff() stays algorithm + FA + draft + injury + adjust + context.
+     matchup_net is a GAME number (PFF Week 1 player-vs-defense grid).
+     GREAT +0.12, GOOD +0.05, FAIR 0, POOR −0.12. Best QB/RB/TE + top 2 WR
+     per side. matchup_net = clamp(home − away, ±0.5). Week 1 only.
+     Does not rewrite the prior.
+     eff() stays algorithm + FA + draft + madden + pff + pff_pre + injury + adjust + context.
 
    Neutral site (game.neutral, e.g. Melbourne LAR vs SF): hfa = 0.
 
@@ -688,6 +695,45 @@ function pffTerm(abbr) {
   return num(t.net) || 0;
 }
 
+function pffPreTeam(abbr) {
+  const a = normAbbr(abbr);
+  if (!pffPreData || !pffPreData.teams) return null;
+  return pffPreData.teams[a] || null;
+}
+
+function pffPreTerm(abbr) {
+  const t = pffPreTeam(abbr);
+  if (!t) return 0;
+  return num(t.net) || 0;
+}
+
+function matchupRec(game) {
+  if (!pffMatchData || !game) return null;
+  const games = pffMatchData.games || {};
+  return games[String(game.id)] || games[normAbbr(game.away) + "@" + normAbbr(game.home)] || null;
+}
+
+function matchupNet(game) {
+  const rec = matchupRec(game);
+  if (!rec) return 0;
+  const n = num(rec.net);
+  return n === null ? 0 : n;
+}
+
+function matchupChipHtml(game) {
+  const rec = matchupRec(game);
+  if (!rec) return "";
+  const net = num(rec.net) || 0;
+  if (!net) return "";
+  return tip(`<span class="hc-chip">PFF ${esc(fmtRtg(net))}</span>`, SKED_TIPS.matchup);
+}
+
+function matchupSheetNote(game) {
+  const rec = matchupRec(game);
+  if (!rec) return "no PFF matchup grid";
+  return rec.note || "";
+}
+
 function sosTeam(abbr) {
   const a = normAbbr(abbr);
   if (!sosData || !sosData.teams) return null;
@@ -822,7 +868,7 @@ function seedInjuriesIfNeeded() {
 function eff(abbr) {
   const a = normAbbr(abbr);
   const p = getProfile(a);
-  return algorithmBase(a) + faTerm(a) + draftTerm(a) + maddenTerm(a) + pffTerm(a) + sosTerm(a) + returnTerm(a) + injuryTerm(a) + (num(p.user_adjust) || 0) + contextSum(p);
+  return algorithmBase(a) + faTerm(a) + draftTerm(a) + maddenTerm(a) + pffTerm(a) + pffPreTerm(a) + sosTerm(a) + returnTerm(a) + injuryTerm(a) + (num(p.user_adjust) || 0) + contextSum(p);
 }
 
 function coachOf(abbr) {
@@ -1239,7 +1285,7 @@ function ourHomeSpread(game, hfaVal) {
   const pad = game && game.neutral ? 0 : (hfaVal ?? hfa);
   const homeE = eff(game.home);
   const awayE = eff(game.away);
-  return -(homeE - awayE + pad + coachTerm(game) + prepNet(game) + atsNet(game) + schedNet(game));
+  return -(homeE - awayE + pad + coachTerm(game) + prepNet(game) + atsNet(game) + schedNet(game) + matchupNet(game));
 }
 
 function parseMarket(details, homeAbbr, awayAbbr) {
@@ -1314,6 +1360,8 @@ let faData = null; // { teams, scoring, season } from ./data/fa-2026.json; null 
 let draftData = null; // { teams, scoring, season, window_games } from ./data/draft-2026.json; null if missing
 let maddenData = null; // { teams, scoring } from ./data/madden-2026.json; null if missing
 let pffData = null; // { teams, scoring } from ./data/pff-2026.json; null if missing
+let pffPreData = null; // 2026 PRE team OVER chip
+let pffMatchData = null; // Week 1 matchup game chip
 let sosData = null; // { teams } from ./data/sos-2025.json; realized SOS + record; null if missing
 let returnData = null; // { teams } from ./data/return-2026.json; last-year-hurt, this-year-healthy; null if missing
 let staffData = null; // { clubs } from ./data/staff-2026.json; OC/DC/ST research; null if missing
@@ -1624,6 +1672,8 @@ async function loadNfl() {
   const draftReq = fetch("./data/draft-2026.json");
   const maddenReq = fetch("./data/madden-2026.json");
   const pffReq = fetch("./data/pff-2026.json?v=pff1");
+  const pffPreReq = fetch("./data/pff-pre-2026.json?v=pff2");
+  const pffMatchReq = fetch("./data/pff-matchups-2026.json?v=pff2");
   const sosReq = fetch("./data/sos-2025.json");
   const returnReq = fetch("./data/return-2026.json");
   const staffReq = fetch("./data/staff-2026.json");
@@ -1698,6 +1748,26 @@ async function loadNfl() {
   } catch (err) {
     pffData = null;
     console.warn("pff-2026.json", err);
+  }
+  try {
+    const res = await pffPreReq;
+    if (!res.ok) throw new Error(String(res.status));
+    const data = await res.json();
+    if (!data || !data.teams || typeof data.teams !== "object") throw new Error("bad pff pre");
+    pffPreData = data;
+  } catch (err) {
+    pffPreData = null;
+    console.warn("pff-pre-2026.json", err);
+  }
+  try {
+    const res = await pffMatchReq;
+    if (!res.ok) throw new Error(String(res.status));
+    const data = await res.json();
+    if (!data || !data.games || typeof data.games !== "object") throw new Error("bad pff match");
+    pffMatchData = data;
+  } catch (err) {
+    pffMatchData = null;
+    console.warn("pff-matchups-2026.json", err);
   }
   try {
     const res = await sosReq;
@@ -1943,6 +2013,7 @@ const SKED_TIPS = {
   w1Floor: "Same floor as coach H2H: 4 games or the chip is dead / n= only.",
   ats: "This coach’s career record against the sportsbook, not just wins and losses. A small nudge. It does not replace head-to-head wins.",
   sched: "Road travel, a short week, looking ahead to a division game, or extra rest that is not a bye. Cap half a point. Does not replace the bye chip.",
+  matchup: "PFF Week 1 player vs that defense. GREAT/GOOD/POOR on the starting skill group, cap half a point. Not their betting ticket.",
   wx: "Weather only changes the expected combined score, not who we think wins. A dome is zero. Wind matters most.",
   ourOu: "The combined score we expect (both teams). Built from last year’s scoring, then weather.",
   totEdge: "Sportsbook total minus our total. Plus means we expect a lower-scoring game than they do. Copper if the gap is about 1.5. Not a ticket.",
@@ -2384,6 +2455,7 @@ function renderTeams() {
       Math.abs(draftN) >= 0.3 ? `<span class="club-draft ${rtgClass(draftN)}">DRFT ${esc(fmtRtg(draftN))}</span>` : "",
       Math.abs(maddenTerm(t.abbr)) >= 0.3 ? `<span class="club-madden ${rtgClass(maddenTerm(t.abbr))}">MAD ${esc(fmtRtg(maddenTerm(t.abbr)))}</span>` : "",
       Math.abs(pffTerm(t.abbr)) >= 0.3 ? `<span class="club-pff ${rtgClass(pffTerm(t.abbr))}">PFF ${esc(fmtRtg(pffTerm(t.abbr)))}</span>` : "",
+      Math.abs(pffPreTerm(t.abbr)) >= 0.3 ? `<span class="club-pff ${rtgClass(pffPreTerm(t.abbr))}">PRE ${esc(fmtRtg(pffPreTerm(t.abbr)))}</span>` : "",
       Math.abs(sosTerm(t.abbr)) >= 0.3 ? `<span class="club-sos ${rtgClass(sosTerm(t.abbr))}">SOS ${esc(fmtRtg(sosTerm(t.abbr)))}</span>` : "",
       Math.abs(returnTerm(t.abbr)) >= 0.3 ? `<span class="club-return ${rtgClass(returnTerm(t.abbr))}">BACK ${esc(fmtRtg(returnTerm(t.abbr)))}</span>` : "",
       injN <= -0.3 ? `<span class="club-inj minus">INJ ${esc(fmtRtg(injN))}</span>` : "",
@@ -2739,6 +2811,21 @@ function pffBlockHtml(abbr) {
   </div>`;
 }
 
+function pffPreBlockHtml(abbr) {
+  const t = pffPreTeam(abbr);
+  const net = pffPreTerm(abbr);
+  const over = t && t.over != null ? t.over : "—";
+  return `<div class="fa-block pff-block">
+    <p class="prior-kicker">PFF 2026 preseason · team OVER</p>
+    <div class="fa-net">
+      <small>NET</small>
+      <em class="${rtgClass(net)}">${esc(fmtRtg(net))}</em>
+      <span class="fa-net-note">OVER ${esc(String(over))}${t && t.record ? " · " + esc(t.record) : ""}</span>
+    </div>
+    <p class="prior-note">Preseason team grade vs league mean. 5 grade ≈ 1 point, cap ±1. Noisy. Not the 22 and not last year’s prior.</p>
+  </div>`;
+}
+
 function injurySelectOptions(keys, selected) {
   const list = keys.slice();
   if (selected && !list.includes(selected)) list.push(selected);
@@ -2807,6 +2894,7 @@ function renderTeamSheet() {
     ${draftBlockHtml(team.abbr)}
     ${maddenBlockHtml(team.abbr)}
     ${pffBlockHtml(team.abbr)}
+    ${pffPreBlockHtml(team.abbr)}
     ${injBlockHtml(team.abbr)}
     ${schemeBlockHtml(team.abbr)}
     ${staffBlockHtml(team.abbr)}
@@ -2829,7 +2917,7 @@ function renderTeamSheet() {
       <input id="tp-adjust-why" type="text" placeholder="Say why. It gets a timestamp." autocomplete="off">
     </label>
     <div id="tp-adjust-log" class="adjust-log-wrap">${adjustLogHtml(team.abbr)}</div>
-    <p class="tp-eff-break" id="tp-eff-break">Effective = algorithm ${esc(fmtRtg(algo))} + FA ${esc(fmtRtg(fa))} + back ${esc(fmtRtg(returnTerm(team.abbr)))} + draft ${esc(fmtRtg(draft))} + madden ${esc(fmtRtg(maddenTerm(team.abbr)))} + PFF ${esc(fmtRtg(pffTerm(team.abbr)))} + SOS ${esc(fmtRtg(sosTerm(team.abbr)))} + injury ${esc(fmtRtg(injuryTerm(team.abbr)))} + adjust ${esc(fmtRtg(adj))} + context ${esc(fmtRtg(ctx))}</p>
+    <p class="tp-eff-break" id="tp-eff-break">Effective = algorithm ${esc(fmtRtg(algo))} + FA ${esc(fmtRtg(fa))} + back ${esc(fmtRtg(returnTerm(team.abbr)))} + draft ${esc(fmtRtg(draft))} + madden ${esc(fmtRtg(maddenTerm(team.abbr)))} + PFF ${esc(fmtRtg(pffTerm(team.abbr)))} + PRE ${esc(fmtRtg(pffPreTerm(team.abbr)))} + SOS ${esc(fmtRtg(sosTerm(team.abbr)))} + injury ${esc(fmtRtg(injuryTerm(team.abbr)))} + adjust ${esc(fmtRtg(adj))} + context ${esc(fmtRtg(ctx))}</p>
     <label class="field">
       <span>Context stack</span>
     </label>
@@ -2862,6 +2950,7 @@ function refreshTeamDerived() {
       + " + draft " + fmtRtg(draftTerm(profileAbbr))
       + " + madden " + fmtRtg(maddenTerm(profileAbbr))
       + " + PFF " + fmtRtg(pffTerm(profileAbbr))
+      + " + PRE " + fmtRtg(pffPreTerm(profileAbbr))
       + " + SOS " + fmtRtg(sosTerm(profileAbbr))
       + " + injury " + fmtRtg(injuryTerm(profileAbbr))
       + " + adjust " + fmtRtg(num(p.user_adjust) || 0)
@@ -3071,6 +3160,7 @@ function renderGameSheet() {
     ["Rookies", draftTerm(away), draftTerm(home)],
     ["Madden 22", maddenTerm(away), maddenTerm(home)],
     ["PFF 22", pffTerm(away), pffTerm(home)],
+    ["PFF preseason", pffPreTerm(away), pffPreTerm(home)],
     ["Last year SOS", sosTerm(away), sosTerm(home)],
     ["Injuries", injuryTerm(away), injuryTerm(home)],
     ["Manual", num(pA.user_adjust) || 0, num(pH.user_adjust) || 0],
@@ -3094,7 +3184,8 @@ function renderGameSheet() {
   const prep = prepNet(game);
   const ats = atsNet(game);
   const sched = schedNet(game);
-  const gap = diff + hfaUsed + coach + prep + ats + sched;
+  const matchup = matchupNet(game);
+  const gap = diff + hfaUsed + coach + prep + ats + sched + matchup;
   const ourLine = ourHomeSpread(game, hfa);
   const mkt = marketFor(game);
   const marketHome = mkt.parsed && mkt.parsed.homeLine;
@@ -3111,6 +3202,7 @@ function renderGameSheet() {
     { label: "+ week 1 / bye", val: prep, note: prepSheetNote(game) },
     { label: "+ vs the spread (career)", val: ats, note: atsSheetNote(game) },
     { label: "+ travel / trap / rest", val: sched, note: schedSheetNote(game) },
+    { label: "+ PFF matchup", val: matchup, note: matchupSheetNote(game) },
     { label: "Combined gap", val: gap, note: "add those up", sum: true },
     { label: "Our line (flip the sign)", val: hasOurNumber(game) ? ourLine : 0, note: hasOurNumber(game) ? "" : "ratings even · no number", hideVal: !hasOurNumber(game) },
   ];
@@ -3980,7 +4072,7 @@ function renderSchedule() {
           <label>O/U <input class="mono" type="number" step="0.5" data-ou="${esc(g.id)}" value="${esc(ouVal)}"></label>
         </div>
         <div class="sked-our"><span class="lbl">Our line</span><span class="val">${esc(ourHtml)}</span></div>
-        <div class="sked-edge"><span class="lbl">Gap</span>${edgeHtml === "—" ? '<span class="val">—</span>' : edgeHtml}${coachChipHtml(g)}${prepChipHtml(g)}${atsChipHtml(g)}</div>
+        <div class="sked-edge"><span class="lbl">Gap</span>${edgeHtml === "—" ? '<span class="val">—</span>' : edgeHtml}${coachChipHtml(g)}${prepChipHtml(g)}${atsChipHtml(g)}${matchupChipHtml(g)}</div>
         ${wxStripHtml(g, mkt)}
         ${hasOurNumber(g) ? coverHelperHtml(ourHomeSpread(g, hfa), mkt.parsed.homeLine) : ""}
       </article>`;
