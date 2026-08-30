@@ -1602,7 +1602,7 @@ function marketFor(game) {
 
 async function loadNfl() {
   const nflReq = fetch("./data/nfl-2026.json");
-  const priorReq = fetch("./data/prior-2025.json?v=take1");
+  const priorReq = fetch("./data/prior-2025.json?v=st1");
   const faReq = fetch("./data/fa-2026.json");
   const draftReq = fetch("./data/draft-2026.json");
   const maddenReq = fetch("./data/madden-2026.json");
@@ -2423,7 +2423,7 @@ function teamSkedHtml(abbr) {
 }
 
 function pillarWeights() {
-  const w = (priorData && priorData.weights) || { off: 0.35, def: 0.35, st: 0.1, take: 0.075, give: 0.125 };
+  const w = (priorData && priorData.weights) || { off: 0.3875, def: 0.3875, st: 0.025, take: 0.075, give: 0.125 };
   return w;
 }
 

@@ -41,19 +41,19 @@
     }
   },
   "weights": {
-    "off": 0.35,
-    "def": 0.35,
-    "st": 0.1,
+    "off": 0.3875,
+    "def": 0.3875,
+    "st": 0.025,
     "take": 0.075,
     "give": 0.125
   },
   "taper": {
     "N": 17,
     "formula": "w_prior = (17 - n) / 17; w_curr = n / 17; blended = w_prior * prior + w_curr * current",
-    "week1": "n = 0 → 100% 2025 prior",
-    "after_17": "n = 17 → 0% prior, 100% 2026",
+    "week1": "n = 0 \u2192 100% 2025 prior",
+    "after_17": "n = 17 \u2192 0% prior, 100% 2026",
     "current_update": "90/10: current := 0.9 * current + 0.1 * game_observation (Walters W20)",
-    "note": "Offense and defense sit on the same ±12 min-max scale and the same 35% weight. Takeaways 7.5% (cut from 12.5% on 2026-08-24 after 2016–2025 win/TO research). Giveaways stay 12.5%. Combined prior is the weighted sum so it can sit on a spread. Context stack still adds on top. Raw 2025 PPG unchanged."
+    "note": "Offense and defense sit on the same \u00b112 min-max scale and the same 38.75% weight. Special teams 2.5% (cut 75% from 10% on 2026-08-30). Takeaways 7.5% (cut from 12.5% on 2026-08-24 after 2016\u20132025 win/TO research). Giveaways stay 12.5%. Combined prior is the weighted sum so it can sit on a spread. Context stack still adds on top. Raw 2025 PPG unchanged. Pillar scales unchanged."
   },
   "teams": {
     "ARI": {
@@ -73,7 +73,7 @@
         "take": 0.17,
         "give": -0.26
       },
-      "prior": -4.41
+      "prior": -4.58
     },
     "ATL": {
       "raw": {
@@ -92,7 +92,7 @@
         "take": 1.55,
         "give": 1.32
       },
-      "prior": -0.77
+      "prior": -0.64
     },
     "BAL": {
       "raw": {
@@ -111,7 +111,7 @@
         "take": 0.52,
         "give": -1.32
       },
-      "prior": 1.14
+      "prior": 1.46
     },
     "BUF": {
       "raw": {
@@ -130,7 +130,7 @@
         "take": 0.52,
         "give": 0.79
       },
-      "prior": 4.59
+      "prior": 5.08
     },
     "CAR": {
       "raw": {
@@ -149,7 +149,7 @@
         "take": 0.86,
         "give": -1.32
       },
-      "prior": -1.65
+      "prior": -1.58
     },
     "CHI": {
       "raw": {
@@ -168,7 +168,7 @@
         "take": 5.0,
         "give": 5.0
       },
-      "prior": 2.08
+      "prior": 2.42
     },
     "CIN": {
       "raw": {
@@ -187,7 +187,7 @@
         "take": 0.86,
         "give": -1.84
       },
-      "prior": -2.56
+      "prior": -2.79
     },
     "CLE": {
       "raw": {
@@ -206,7 +206,7 @@
         "take": -0.17,
         "give": -2.37
       },
-      "prior": -2.71
+      "prior": -2.78
     },
     "DAL": {
       "raw": {
@@ -225,7 +225,7 @@
         "take": -2.24,
         "give": -0.26
       },
-      "prior": -1.89
+      "prior": -1.86
     },
     "DEN": {
       "raw": {
@@ -244,7 +244,7 @@
         "take": -1.55,
         "give": 1.84
       },
-      "prior": 4.19
+      "prior": 4.67
     },
     "DET": {
       "raw": {
@@ -263,7 +263,7 @@
         "take": 0.17,
         "give": 2.89
       },
-      "prior": 2.88
+      "prior": 3.27
     },
     "GB": {
       "raw": {
@@ -282,7 +282,7 @@
         "take": -1.55,
         "give": 3.95
       },
-      "prior": 2.03
+      "prior": 2.45
     },
     "HOU": {
       "raw": {
@@ -301,7 +301,7 @@
         "take": 3.62,
         "give": 4.47
       },
-      "prior": 5.47
+      "prior": 6.12
     },
     "IND": {
       "raw": {
@@ -320,7 +320,7 @@
         "take": 0.86,
         "give": -1.32
       },
-      "prior": 2.0
+      "prior": 2.35
     },
     "JAX": {
       "raw": {
@@ -339,7 +339,7 @@
         "take": 4.31,
         "give": 1.32
       },
-      "prior": 5.99
+      "prior": 6.46
     },
     "KC": {
       "raw": {
@@ -358,7 +358,7 @@
         "take": -1.55,
         "give": 2.89
       },
-      "prior": 2.3
+      "prior": 2.72
     },
     "LAC": {
       "raw": {
@@ -377,7 +377,7 @@
         "take": 1.55,
         "give": -0.26
       },
-      "prior": 1.91
+      "prior": 2.25
     },
     "LAR": {
       "raw": {
@@ -396,7 +396,7 @@
         "take": 2.59,
         "give": 2.89
       },
-      "prior": 6.55
+      "prior": 7.47
     },
     "LV": {
       "raw": {
@@ -415,7 +415,7 @@
         "take": -0.86,
         "give": -1.32
       },
-      "prior": -5.86
+      "prior": -6.22
     },
     "MIA": {
       "raw": {
@@ -434,7 +434,7 @@
         "take": 0.52,
         "give": -1.84
       },
-      "prior": -2.0
+      "prior": -2.2
     },
     "MIN": {
       "raw": {
@@ -453,7 +453,7 @@
         "take": 0.86,
         "give": -5.0
       },
-      "prior": 0.82
+      "prior": 1.09
     },
     "NE": {
       "raw": {
@@ -472,7 +472,7 @@
         "take": 0.17,
         "give": 2.37
       },
-      "prior": 7.06
+      "prior": 7.55
     },
     "NO": {
       "raw": {
@@ -491,7 +491,7 @@
         "take": 0.52,
         "give": -1.84
       },
-      "prior": -2.08
+      "prior": -1.94
     },
     "NYG": {
       "raw": {
@@ -510,7 +510,7 @@
         "take": -1.21,
         "give": 1.84
       },
-      "prior": -1.27
+      "prior": -1.39
     },
     "NYJ": {
       "raw": {
@@ -529,7 +529,7 @@
         "take": -5.0,
         "give": -1.32
       },
-      "prior": -6.46
+      "prior": -7.44
     },
     "PHI": {
       "raw": {
@@ -548,7 +548,7 @@
         "take": 0.86,
         "give": 2.89
       },
-      "prior": 3.0
+      "prior": 3.59
     },
     "PIT": {
       "raw": {
@@ -567,7 +567,7 @@
         "take": 2.93,
         "give": 2.89
       },
-      "prior": 1.42
+      "prior": 1.73
     },
     "SEA": {
       "raw": {
@@ -586,7 +586,7 @@
         "take": 2.24,
         "give": -3.95
       },
-      "prior": 7.27
+      "prior": 7.85
     },
     "SF": {
       "raw": {
@@ -605,7 +605,7 @@
         "take": -0.86,
         "give": -0.79
       },
-      "prior": 2.59
+      "prior": 3.04
     },
     "TB": {
       "raw": {
@@ -624,7 +624,7 @@
         "take": 1.55,
         "give": 2.37
       },
-      "prior": -0.18
+      "prior": -0.02
     },
     "TEN": {
       "raw": {
@@ -643,7 +643,7 @@
         "take": -1.55,
         "give": 0.79
       },
-      "prior": -5.78
+      "prior": -6.44
     },
     "WSH": {
       "raw": {
@@ -662,7 +662,7 @@
         "take": -2.93,
         "give": -1.32
       },
-      "prior": -2.98
+      "prior": -3.26
     }
   },
   "equalized_od": {
@@ -708,6 +708,6 @@
       "take": 0.075,
       "give": 0.125
     },
-    "why": "2016–2025 regular-season wins correlate more with TO margin and giveaways than with takeaways alone (r take +0.52, give −0.50, TO diff +0.66). Cut take, leave give, push 5 points onto off/def."
+    "why": "2016\u20132025 regular-season wins correlate more with TO margin and giveaways than with takeaways alone (r take +0.52, give \u22120.50, TO diff +0.66). Cut take, leave give, push 5 points onto off/def."
   }
 }
