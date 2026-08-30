@@ -486,16 +486,15 @@ function normAbbr(abbr) {
      Same 22 per club: top 11 OFF + top 11 DEF by 2025 PFF grade, min 200 snaps.
      Surplus vs league mean of those 22. 5 grade ≈ 1 point. Cap ±1.5.
      Official PFF+ CSV export. Does not fade. Does not rewrite the 2025 prior.
-   pff_pre_term(abbr) = pff-pre-2026.json team net (0 if missing).
-     2026 preseason team OVER vs league mean. 5 grade ≈ 1 point. Cap ±1.
-     Current-roster check. Does not rewrite the 2025 prior or the PFF 22.
+   pff_pre_term is display only. Not in eff() or ourHomeLine.
+     2026 preseason team OVER stays on the club sheet so you can see it.
    user_adjust = optional override on top of the algorithm (old "base").
    Injuries are a weekly point value. They do NOT taper with the 17-game prior.
    They stay until the row is off or deleted.
      row_pts = −round2(pos_base * status_mult), clamp [−cap_player, 0]
      injury_term = clamp(sum of ON rows, −cap_team, 0)
    Effective = algorithm + FA + draft + madden + pff + injury + adjust + context
-   = algorithm_base + fa_term + draft_term + madden_term + pff_term + injury_term + user_adjust + sum of active (on) context.
+   = algorithm_base + fa_term + draft_term + madden_term + pff_term + injury_term + user_adjust + sum of active (on) context. Preseason OVER is not in this sum.
 
    Taper (do not invent another formula):
      N = 17
@@ -535,7 +534,7 @@ function normAbbr(abbr) {
      GREAT +0.12, GOOD +0.05, FAIR 0, POOR −0.12. Best QB/RB/TE + top 2 WR
      per side. matchup_net = clamp(home − away, ±0.5). Week 1 only.
      Does not rewrite the prior.
-     eff() stays algorithm + FA + draft + madden + pff + pff_pre + injury + adjust + context.
+     eff() stays algorithm + FA + draft + madden + pff + injury + adjust + context. Preseason OVER is off the number.
 
    Neutral site (game.neutral, e.g. Melbourne LAR vs SF): hfa = 0.
 
@@ -868,7 +867,7 @@ function seedInjuriesIfNeeded() {
 function eff(abbr) {
   const a = normAbbr(abbr);
   const p = getProfile(a);
-  return algorithmBase(a) + faTerm(a) + draftTerm(a) + maddenTerm(a) + pffTerm(a) + pffPreTerm(a) + sosTerm(a) + returnTerm(a) + injuryTerm(a) + (num(p.user_adjust) || 0) + contextSum(p);
+  return algorithmBase(a) + faTerm(a) + draftTerm(a) + maddenTerm(a) + pffTerm(a) + sosTerm(a) + returnTerm(a) + injuryTerm(a) + (num(p.user_adjust) || 0) + contextSum(p);
 }
 
 function coachOf(abbr) {
@@ -2455,7 +2454,6 @@ function renderTeams() {
       Math.abs(draftN) >= 0.3 ? `<span class="club-draft ${rtgClass(draftN)}">DRFT ${esc(fmtRtg(draftN))}</span>` : "",
       Math.abs(maddenTerm(t.abbr)) >= 0.3 ? `<span class="club-madden ${rtgClass(maddenTerm(t.abbr))}">MAD ${esc(fmtRtg(maddenTerm(t.abbr)))}</span>` : "",
       Math.abs(pffTerm(t.abbr)) >= 0.3 ? `<span class="club-pff ${rtgClass(pffTerm(t.abbr))}">PFF ${esc(fmtRtg(pffTerm(t.abbr)))}</span>` : "",
-      Math.abs(pffPreTerm(t.abbr)) >= 0.3 ? `<span class="club-pff ${rtgClass(pffPreTerm(t.abbr))}">PRE ${esc(fmtRtg(pffPreTerm(t.abbr)))}</span>` : "",
       Math.abs(sosTerm(t.abbr)) >= 0.3 ? `<span class="club-sos ${rtgClass(sosTerm(t.abbr))}">SOS ${esc(fmtRtg(sosTerm(t.abbr)))}</span>` : "",
       Math.abs(returnTerm(t.abbr)) >= 0.3 ? `<span class="club-return ${rtgClass(returnTerm(t.abbr))}">BACK ${esc(fmtRtg(returnTerm(t.abbr)))}</span>` : "",
       injN <= -0.3 ? `<span class="club-inj minus">INJ ${esc(fmtRtg(injN))}</span>` : "",
@@ -2822,7 +2820,7 @@ function pffPreBlockHtml(abbr) {
       <em class="${rtgClass(net)}">${esc(fmtRtg(net))}</em>
       <span class="fa-net-note">OVER ${esc(String(over))}${t && t.record ? " · " + esc(t.record) : ""}</span>
     </div>
-    <p class="prior-note">Preseason team grade vs league mean. 5 grade ≈ 1 point, cap ±1. Noisy. Not the 22 and not last year’s prior.</p>
+    <p class="prior-note">On the sheet only. Not in the rating or the line. Preseason is too noisy for the number.</p>
   </div>`;
 }
 
@@ -2917,7 +2915,7 @@ function renderTeamSheet() {
       <input id="tp-adjust-why" type="text" placeholder="Say why. It gets a timestamp." autocomplete="off">
     </label>
     <div id="tp-adjust-log" class="adjust-log-wrap">${adjustLogHtml(team.abbr)}</div>
-    <p class="tp-eff-break" id="tp-eff-break">Effective = algorithm ${esc(fmtRtg(algo))} + FA ${esc(fmtRtg(fa))} + back ${esc(fmtRtg(returnTerm(team.abbr)))} + draft ${esc(fmtRtg(draft))} + madden ${esc(fmtRtg(maddenTerm(team.abbr)))} + PFF ${esc(fmtRtg(pffTerm(team.abbr)))} + PRE ${esc(fmtRtg(pffPreTerm(team.abbr)))} + SOS ${esc(fmtRtg(sosTerm(team.abbr)))} + injury ${esc(fmtRtg(injuryTerm(team.abbr)))} + adjust ${esc(fmtRtg(adj))} + context ${esc(fmtRtg(ctx))}</p>
+    <p class="tp-eff-break" id="tp-eff-break">Effective = algorithm ${esc(fmtRtg(algo))} + FA ${esc(fmtRtg(fa))} + back ${esc(fmtRtg(returnTerm(team.abbr)))} + draft ${esc(fmtRtg(draft))} + madden ${esc(fmtRtg(maddenTerm(team.abbr)))} + PFF ${esc(fmtRtg(pffTerm(team.abbr)))} + SOS ${esc(fmtRtg(sosTerm(team.abbr)))} + injury ${esc(fmtRtg(injuryTerm(team.abbr)))} + adjust ${esc(fmtRtg(adj))} + context ${esc(fmtRtg(ctx))}</p>
     <label class="field">
       <span>Context stack</span>
     </label>
@@ -2950,7 +2948,6 @@ function refreshTeamDerived() {
       + " + draft " + fmtRtg(draftTerm(profileAbbr))
       + " + madden " + fmtRtg(maddenTerm(profileAbbr))
       + " + PFF " + fmtRtg(pffTerm(profileAbbr))
-      + " + PRE " + fmtRtg(pffPreTerm(profileAbbr))
       + " + SOS " + fmtRtg(sosTerm(profileAbbr))
       + " + injury " + fmtRtg(injuryTerm(profileAbbr))
       + " + adjust " + fmtRtg(num(p.user_adjust) || 0)
@@ -3160,7 +3157,6 @@ function renderGameSheet() {
     ["Rookies", draftTerm(away), draftTerm(home)],
     ["Madden 22", maddenTerm(away), maddenTerm(home)],
     ["PFF 22", pffTerm(away), pffTerm(home)],
-    ["PFF preseason", pffPreTerm(away), pffPreTerm(home)],
     ["Last year SOS", sosTerm(away), sosTerm(home)],
     ["Injuries", injuryTerm(away), injuryTerm(home)],
     ["Manual", num(pA.user_adjust) || 0, num(pH.user_adjust) || 0],
