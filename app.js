@@ -482,13 +482,17 @@ function normAbbr(abbr) {
      Same 22 per club: top 11 OFF + top 11 DEF by OVR. K/P/LS out.
      Surplus vs league mean of those 22. 4 OVR ≈ 1 point. Cap ±2.
      Launch snapshot. Does not fade. Does not rewrite the 2025 prior.
+   pff_term(abbr) = pff-2026.json team net (0 if missing).
+     Same 22 per club: top 11 OFF + top 11 DEF by 2025 PFF grade, min 200 snaps.
+     Surplus vs league mean of those 22. 5 grade ≈ 1 point. Cap ±1.5.
+     Official PFF+ CSV export. Does not fade. Does not rewrite the 2025 prior.
    user_adjust = optional override on top of the algorithm (old "base").
    Injuries are a weekly point value. They do NOT taper with the 17-game prior.
    They stay until the row is off or deleted.
      row_pts = −round2(pos_base * status_mult), clamp [−cap_player, 0]
      injury_term = clamp(sum of ON rows, −cap_team, 0)
-   Effective = algorithm + FA + draft + madden + injury + adjust + context
-   = algorithm_base + fa_term + draft_term + madden_term + injury_term + user_adjust + sum of active (on) context.
+   Effective = algorithm + FA + draft + madden + pff + injury + adjust + context
+   = algorithm_base + fa_term + draft_term + madden_term + pff_term + injury_term + user_adjust + sum of active (on) context.
 
    Taper (do not invent another formula):
      N = 17
@@ -672,6 +676,18 @@ function maddenTerm(abbr) {
   return num(t.net) || 0;
 }
 
+function pffTeam(abbr) {
+  const a = normAbbr(abbr);
+  if (!pffData || !pffData.teams) return null;
+  return pffData.teams[a] || null;
+}
+
+function pffTerm(abbr) {
+  const t = pffTeam(abbr);
+  if (!t) return 0;
+  return num(t.net) || 0;
+}
+
 function sosTeam(abbr) {
   const a = normAbbr(abbr);
   if (!sosData || !sosData.teams) return null;
@@ -806,7 +822,7 @@ function seedInjuriesIfNeeded() {
 function eff(abbr) {
   const a = normAbbr(abbr);
   const p = getProfile(a);
-  return algorithmBase(a) + faTerm(a) + draftTerm(a) + maddenTerm(a) + sosTerm(a) + returnTerm(a) + injuryTerm(a) + (num(p.user_adjust) || 0) + contextSum(p);
+  return algorithmBase(a) + faTerm(a) + draftTerm(a) + maddenTerm(a) + pffTerm(a) + sosTerm(a) + returnTerm(a) + injuryTerm(a) + (num(p.user_adjust) || 0) + contextSum(p);
 }
 
 function coachOf(abbr) {
@@ -1297,6 +1313,7 @@ let priorData = null; // { teams, ranges, weights, taper } from ./data/prior-202
 let faData = null; // { teams, scoring, season } from ./data/fa-2026.json; null if missing
 let draftData = null; // { teams, scoring, season, window_games } from ./data/draft-2026.json; null if missing
 let maddenData = null; // { teams, scoring } from ./data/madden-2026.json; null if missing
+let pffData = null; // { teams, scoring } from ./data/pff-2026.json; null if missing
 let sosData = null; // { teams } from ./data/sos-2025.json; realized SOS + record; null if missing
 let returnData = null; // { teams } from ./data/return-2026.json; last-year-hurt, this-year-healthy; null if missing
 let staffData = null; // { clubs } from ./data/staff-2026.json; OC/DC/ST research; null if missing
@@ -1606,6 +1623,7 @@ async function loadNfl() {
   const faReq = fetch("./data/fa-2026.json");
   const draftReq = fetch("./data/draft-2026.json");
   const maddenReq = fetch("./data/madden-2026.json");
+  const pffReq = fetch("./data/pff-2026.json?v=pff1");
   const sosReq = fetch("./data/sos-2025.json");
   const returnReq = fetch("./data/return-2026.json");
   const staffReq = fetch("./data/staff-2026.json");
@@ -1670,6 +1688,16 @@ async function loadNfl() {
   } catch (err) {
     maddenData = null;
     console.warn("madden-2026.json", err);
+  }
+  try {
+    const res = await pffReq;
+    if (!res.ok) throw new Error(String(res.status));
+    const data = await res.json();
+    if (!data || !data.teams || typeof data.teams !== "object") throw new Error("bad pff");
+    pffData = data;
+  } catch (err) {
+    pffData = null;
+    console.warn("pff-2026.json", err);
   }
   try {
     const res = await sosReq;
@@ -2355,6 +2383,7 @@ function renderTeams() {
       Math.abs(faN) >= 0.3 ? `<span class="club-fa ${rtgClass(faN)}">FA ${esc(fmtRtg(faN))}</span>` : "",
       Math.abs(draftN) >= 0.3 ? `<span class="club-draft ${rtgClass(draftN)}">DRFT ${esc(fmtRtg(draftN))}</span>` : "",
       Math.abs(maddenTerm(t.abbr)) >= 0.3 ? `<span class="club-madden ${rtgClass(maddenTerm(t.abbr))}">MAD ${esc(fmtRtg(maddenTerm(t.abbr)))}</span>` : "",
+      Math.abs(pffTerm(t.abbr)) >= 0.3 ? `<span class="club-pff ${rtgClass(pffTerm(t.abbr))}">PFF ${esc(fmtRtg(pffTerm(t.abbr)))}</span>` : "",
       Math.abs(sosTerm(t.abbr)) >= 0.3 ? `<span class="club-sos ${rtgClass(sosTerm(t.abbr))}">SOS ${esc(fmtRtg(sosTerm(t.abbr)))}</span>` : "",
       Math.abs(returnTerm(t.abbr)) >= 0.3 ? `<span class="club-return ${rtgClass(returnTerm(t.abbr))}">BACK ${esc(fmtRtg(returnTerm(t.abbr)))}</span>` : "",
       injN <= -0.3 ? `<span class="club-inj minus">INJ ${esc(fmtRtg(injN))}</span>` : "",
@@ -2662,7 +2691,7 @@ function maddenUnitHtml(rows, label) {
         <span class="fa-row-name">${esc(row.name || "")}</span>
         <span class="fa-row-meta">${esc(row.pos || "")}</span>
       </span>
-      <span class="fa-row-pts">${esc(row.ovr != null ? Number(row.ovr).toFixed(0) : "")}</span>
+      <span class="fa-row-pts">${esc(row.ovr != null ? Number(row.ovr).toFixed(0) : (row.grade != null ? Number(row.grade).toFixed(1) : ""))}</span>
     </div>`).join("");
   return `<div class="fa-in">
       <p class="fa-list-kicker">${esc(label)}</p>
@@ -2687,6 +2716,26 @@ function maddenBlockHtml(abbr) {
       ${maddenUnitHtml(t && t.def, "DEF")}
     </div>
     <p class="prior-note">Equal count. Top 11 per side by OVR. Kickers out. 4 OVR ≈ 1 point vs league mean, cap ±2. Launch snapshot. Not FA.</p>
+  </div>`;
+}
+
+function pffBlockHtml(abbr) {
+  const t = pffTeam(abbr);
+  const net = pffTerm(abbr);
+  const grade = t && t.grade != null ? t.grade : "—";
+  const n = t && t.n != null ? t.n : 0;
+  return `<div class="fa-block pff-block">
+    <p class="prior-kicker">PFF 2025 · same 22 (11 OFF + 11 DEF)</p>
+    <div class="fa-net">
+      <small>NET</small>
+      <em class="${rtgClass(net)}">${esc(fmtRtg(net))}</em>
+      <span class="fa-net-note">unit ${esc(String(grade))} · n=${esc(String(n))}</span>
+    </div>
+    <div class="fa-lists">
+      ${maddenUnitHtml(t && t.off, "OFF")}
+      ${maddenUnitHtml(t && t.def, "DEF")}
+    </div>
+    <p class="prior-note">Equal count. Top 11 per side by 2025 PFF grade, 200-snap floor. 5 grade ≈ 1 point vs league mean, cap ±1.5. Official CSV. Not the prior.</p>
   </div>`;
 }
 
@@ -2757,6 +2806,7 @@ function renderTeamSheet() {
     ${returnBlockHtml(team.abbr)}
     ${draftBlockHtml(team.abbr)}
     ${maddenBlockHtml(team.abbr)}
+    ${pffBlockHtml(team.abbr)}
     ${injBlockHtml(team.abbr)}
     ${schemeBlockHtml(team.abbr)}
     ${staffBlockHtml(team.abbr)}
@@ -2779,7 +2829,7 @@ function renderTeamSheet() {
       <input id="tp-adjust-why" type="text" placeholder="Say why. It gets a timestamp." autocomplete="off">
     </label>
     <div id="tp-adjust-log" class="adjust-log-wrap">${adjustLogHtml(team.abbr)}</div>
-    <p class="tp-eff-break" id="tp-eff-break">Effective = algorithm ${esc(fmtRtg(algo))} + FA ${esc(fmtRtg(fa))} + back ${esc(fmtRtg(returnTerm(team.abbr)))} + draft ${esc(fmtRtg(draft))} + madden ${esc(fmtRtg(maddenTerm(team.abbr)))} + SOS ${esc(fmtRtg(sosTerm(team.abbr)))} + injury ${esc(fmtRtg(injuryTerm(team.abbr)))} + adjust ${esc(fmtRtg(adj))} + context ${esc(fmtRtg(ctx))}</p>
+    <p class="tp-eff-break" id="tp-eff-break">Effective = algorithm ${esc(fmtRtg(algo))} + FA ${esc(fmtRtg(fa))} + back ${esc(fmtRtg(returnTerm(team.abbr)))} + draft ${esc(fmtRtg(draft))} + madden ${esc(fmtRtg(maddenTerm(team.abbr)))} + PFF ${esc(fmtRtg(pffTerm(team.abbr)))} + SOS ${esc(fmtRtg(sosTerm(team.abbr)))} + injury ${esc(fmtRtg(injuryTerm(team.abbr)))} + adjust ${esc(fmtRtg(adj))} + context ${esc(fmtRtg(ctx))}</p>
     <label class="field">
       <span>Context stack</span>
     </label>
@@ -2811,6 +2861,7 @@ function refreshTeamDerived() {
       + " + back " + fmtRtg(returnTerm(profileAbbr))
       + " + draft " + fmtRtg(draftTerm(profileAbbr))
       + " + madden " + fmtRtg(maddenTerm(profileAbbr))
+      + " + PFF " + fmtRtg(pffTerm(profileAbbr))
       + " + SOS " + fmtRtg(sosTerm(profileAbbr))
       + " + injury " + fmtRtg(injuryTerm(profileAbbr))
       + " + adjust " + fmtRtg(num(p.user_adjust) || 0)
@@ -3019,6 +3070,7 @@ function renderGameSheet() {
     ["Back from injury", returnTerm(away), returnTerm(home)],
     ["Rookies", draftTerm(away), draftTerm(home)],
     ["Madden 22", maddenTerm(away), maddenTerm(home)],
+    ["PFF 22", pffTerm(away), pffTerm(home)],
     ["Last year SOS", sosTerm(away), sosTerm(home)],
     ["Injuries", injuryTerm(away), injuryTerm(home)],
     ["Manual", num(pA.user_adjust) || 0, num(pH.user_adjust) || 0],

@@ -1071,7 +1071,8 @@ input[readonly] { color: var(--muted); }
 .club-prior,
 .club-fa,
 .club-draft,
-.club-madden {
+.club-madden,
+.club-pff {
   display: block;
   margin-top: 4px;
   font-family: var(--mono);
@@ -1087,6 +1088,8 @@ input[readonly] { color: var(--muted); }
 .club-draft.minus { color: #C47A7A; }
 .club-madden.plus { color: var(--process); }
 .club-madden.minus { color: #C47A7A; }
+.club-pff.plus { color: var(--process); }
+.club-pff.minus { color: #C47A7A; }
 .club-inj {
   display: block;
   margin-top: 4px;
