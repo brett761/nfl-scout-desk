@@ -1,30 +1,32 @@
 {
-  "pulled": "2026-08-19",
+  "pulled": "2026-09-01",
   "sources": [
-    "https://www.cbssports.com/nfl/news/nfl-training-camp-injury-tracker/",
-    "https://www.sharpfootballanalysis.com/analysis/nfl-injury-report-ir-tracker/",
-    "https://sports.yahoo.com/fantasy/article/nfl-training-camp-injury-report-tracking-the-latest-news-updates-for-2026-fantasy-football-163938278.html",
-    "https://www.nfl.com/news/saints-rookie-wr-jordyn-tyson-hamstring-expected-to-miss-2-months",
-    "https://www.nfl.com/news/report-cardinals-rb-jeremiyah-love-unlikely-to-play-again-in-preseason-due-to-high-ankle-sprain",
-    "https://www.nfl.com/news/niners-wr-ricky-pearsall-knee-surgery-will-miss-2026-season",
-    "https://www.nfl.com/news/george-kittle-achilles-chance-49ers-rams-week-1-australia"
+    "https://www.espn.com/nfl/story/_/id/49681232/2026-nfl-cuts-all-32-teams-cutdown-moves-updates-tracker",
+    "https://www.azcardinals.com/news/cardinals-make-moves-to-get-to-initial-53-on-roster",
+    "https://www.panthers.com/news/panthers-make-moves-to-get-to-roster-limit-53-man-roster-transactions-cuts-injured-reserve-pup-nfi",
+    "https://www.49ers.com/news/49ers-announce-moves-for-initial-53-man-roster-x1231",
+    "https://www.neworleanssaints.com/news/new-orleans-saints-53-man-roster-cut-transactions-august-30-2026-nfl-season",
+    "https://www.commanders.com/news/commanders-place-tunsil-newton-on-ir-sign-moreau-tuttle",
+    "https://www.nfl.com/news/texans-wr-jayden-higgins-torn-acl-out-2026-season",
+    "https://www.nfl.com/news/chargers-place-veteran-c-tyler-biadasz-knee-on-season-ending-injured-reserve",
+    "https://www.nfl.com/news/niners-wr-ricky-pearsall-knee-surgery-will-miss-2026-season"
   ],
   "teams": {
     "ARI": [
-      {
-        "name": "Jeremiyah Love",
-        "pos": "RB1",
-        "status": "OUT",
-        "note": "high ankle sprain in preseason opener; no surgery; out rest of preseason, Week 1 uncertain",
-        "source": "https://www.nfl.com/news/report-cardinals-rb-jeremiyah-love-unlikely-to-play-again-in-preseason-due-to-high-ankle-sprain",
-        "on": true
-      },
       {
         "name": "Chase Bisontis",
         "pos": "OG",
         "status": "IR",
         "note": "torn MCL vs Raiders; season-ending IR, was competing for starting RG",
         "source": "https://www.azcardinals.com/news/chase-bisontis-to-be-placed-on-injured-reserve",
+        "on": true
+      },
+      {
+        "name": "James Conner",
+        "pos": "RB1",
+        "status": "IR",
+        "note": "reserve/IR designated to return at cutdown; ankle from 2025, miss first four games",
+        "source": "https://www.azcardinals.com/news/cardinals-make-moves-to-get-to-initial-53-on-roster",
         "on": true
       }
     ],
@@ -43,26 +45,60 @@
         "name": "Ikem Ekwonu",
         "pos": "LT",
         "status": "PUP",
-        "note": "patellar tendon from January wild-card; still not in team drills as of Aug 17",
-        "source": "https://pantherswire.usatoday.com/story/sports/nfl/panthers/2026/08/17/panthers-training-camp-injury-update-ikem-ekwonu-dave-canales/91343016007/",
+        "note": "patellar tendon from January wild-card; moved to reserve/PUP at cutdown, miss first four",
+        "source": "https://www.panthers.com/news/panthers-make-moves-to-get-to-roster-limit-53-man-roster-transactions-cuts-injured-reserve-pup-nfi",
         "on": true
       },
       {
         "name": "Taylor Moton",
         "pos": "RT",
         "status": "NFI",
-        "note": "blood clot in lung; NFI since camp open, expected out into the regular season",
-        "source": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/panthers-put-ikem-ekwonu-on-pup-list-optimistic-hell-return-this-season",
+        "note": "blood clot in lung; reserve/NFI at cutdown, miss first four / hoped midseason",
+        "source": "https://www.panthers.com/news/panthers-make-moves-to-get-to-roster-limit-53-man-roster-transactions-cuts-injured-reserve-pup-nfi",
+        "on": true
+      },
+      {
+        "name": "Tershawn Wharton",
+        "pos": "IDL",
+        "status": "PUP",
+        "note": "neck surgery in May; reserve/PUP at cutdown, miss first four",
+        "source": "https://www.panthers.com/news/panthers-make-moves-to-get-to-roster-limit-53-man-roster-transactions-cuts-injured-reserve-pup-nfi",
         "on": true
       }
     ],
     "CHI": [
       {
-        "name": "Luther Burden III",
-        "pos": "WR1",
-        "status": "OUT",
-        "note": "groin in early-August practice; expected to miss the rest of preseason, hoped for Week 1",
-        "source": "https://www.cbssports.com/nfl/news/luther-burden-bears-injury-miss-preseason/",
+        "name": "Kyler Gordon",
+        "pos": "CB1",
+        "status": "PUP",
+        "note": "calf; left on reserve/PUP at cutdown, starting nickel out first four",
+        "source": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/kyler-gordon-stays-on-pup-as-bears-drop-to-53-players",
+        "on": true
+      }
+    ],
+    "DET": [
+      {
+        "name": "Brian Branch",
+        "pos": "S",
+        "status": "PUP",
+        "note": "Achilles from December; reserve/PUP at cutdown, miss first four",
+        "source": "https://www.profootballrumors.com/2026/08/lions-place-brian-branch-kerby-joseph-on-pup-list-team-down-to-53",
+        "on": true
+      },
+      {
+        "name": "Kerby Joseph",
+        "pos": "S",
+        "status": "PUP",
+        "note": "degenerative knee; reserve/PUP at cutdown, miss first four",
+        "source": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/report-kerby-joseph-will-open-season-on-reserve-pup-list",
+        "on": true
+      },
+      {
+        "name": "Cade Mays",
+        "pos": "C",
+        "status": "IR",
+        "note": "wrist fracture; IR designated to return at cutdown, expected starter out first four",
+        "source": "https://www.cbssports.com/fantasy/football/news/lions-cade-mays-placed-on-ir-designated-to-return/",
         "on": true
       }
     ],
@@ -71,18 +107,26 @@
         "name": "Micah Parsons",
         "pos": "EDGE1",
         "status": "PUP",
-        "note": "ACL/meniscus from 2025; still on PUP, Week 6 vs Cowboys called realistic",
-        "source": "https://www.espn.com/nfl/story/_/id/49531325/packers-micah-parsons-playing-vs-cowboys-week-6-realistic",
+        "note": "ACL/meniscus from 2025; reserve/PUP at cutdown, miss first four, Week 6 vs DAL still the optimistic target",
+        "source": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/packers-cut-roster-to-53-confirm-placement-of-micah-parsons-on-reserve-pup",
         "on": true
       }
     ],
-    "IND": [
+    "HOU": [
       {
-        "name": "Alec Pierce",
+        "name": "Jayden Higgins",
         "pos": "WR2",
-        "status": "PUP",
-        "note": "still on active/PUP (ankle) as of mid-August; expected off in time for Week 1",
-        "source": "https://sports.yahoo.com/fantasy/article/nfl-training-camp-injury-report-tracking-the-latest-news-updates-for-2026-fantasy-football-163938278.html",
+        "status": "IR",
+        "note": "torn ACL in Raiders joint practice; season-ending IR, was expected to start opposite Nico Collins",
+        "source": "https://www.nfl.com/news/texans-wr-jayden-higgins-torn-acl-out-2026-season",
+        "on": true
+      },
+      {
+        "name": "Tank Dell",
+        "pos": "WR2",
+        "status": "IR",
+        "note": "comeback from 2024 multi-ligament knee; IR designated to return at cutdown, miss first four",
+        "source": "https://www.espn.com/nfl/story/_/id/49777386/texans-place-tank-dell-ir-wr-least-4-weeks",
         "on": true
       }
     ],
@@ -90,9 +134,19 @@
       {
         "name": "Tyler Biadasz",
         "pos": "C",
-        "status": "OUT",
-        "note": "carted off 49ers joint practice Aug 18; multi-ligament knee, long-term absence",
-        "source": "https://www.cbssports.com/fantasy/football/news/chargers-tyler-biadasz-set-for-long-term-absence-due-to-knee-injury/",
+        "status": "IR",
+        "note": "ACL / multi-ligament left knee at 49ers joint practice; season-ending IR Aug 23",
+        "source": "https://www.nfl.com/news/chargers-place-veteran-c-tyler-biadasz-knee-on-season-ending-injured-reserve",
+        "on": true
+      }
+    ],
+    "NE": [
+      {
+        "name": "Harold Landry",
+        "pos": "EDGE1",
+        "status": "PUP",
+        "note": "knee surgery after 2025; reserve/PUP at cutdown, miss first four",
+        "source": "https://www.profootballrumors.com/2026/08/patriots-shift-harold-landry-to-reserve-pup-list-set-initial-53-man-roster",
         "on": true
       }
     ],
@@ -100,17 +154,9 @@
       {
         "name": "Jordyn Tyson",
         "pos": "WR2",
-        "status": "OUT",
-        "note": "hamstring in Jaguars joint practice; ~2 months, IR candidate to start the season",
-        "source": "https://www.nfl.com/news/saints-rookie-wr-jordyn-tyson-hamstring-expected-to-miss-2-months",
-        "on": true
-      },
-      {
-        "name": "Alvin Kamara",
-        "pos": "RB1",
-        "status": "OUT",
-        "note": "left Cowboys joint practice Aug 18 with a knee; Schefter MCL sprain / miss Week 1, Underhill not a tear / few weeks",
-        "source": "https://www.cbssports.com/nfl/news/nfl-training-camp-injury-tracker/",
+        "status": "IR",
+        "note": "hamstring in Jaguars joint practice; IR designated to return at cutdown, miss first four / ~2 months",
+        "source": "https://www.neworleanssaints.com/news/new-orleans-saints-53-man-roster-cut-transactions-august-30-2026-nfl-season",
         "on": true
       },
       {
@@ -122,41 +168,13 @@
         "on": true
       }
     ],
-    "NYJ": [
-      {
-        "name": "Breece Hall",
-        "pos": "RB1",
-        "status": "OUT",
-        "note": "non-contact groin strain Aug 17; out 2-3 weeks, Glenn expects Week 1",
-        "source": "https://www.sportsnet.ca/nfl/article/jets-rb-breece-hall-sidelined-two-to-three-weeks-with-groin-strain-expected-back-week-1/",
-        "on": true
-      }
-    ],
-    "PHI": [
-      {
-        "name": "Makai Lemon",
-        "pos": "WR2",
-        "status": "OUT",
-        "note": "hamstring since Aug 3; still out of team drills as of Aug 17, missed preseason opener",
-        "source": "https://www.nbcsportsphiladelphia.com/nfl/philadelphia-eagles/makai-lemon-injury-roobs-observations-eagles-devonta-smith-jalen-hurts/746660/",
-        "on": true
-      },
-      {
-        "name": "Jonathan Greenard",
-        "pos": "EDGE1",
-        "status": "PUP",
-        "note": "pec strain on PUP; Fangio Aug 11 said a couple of weeks at least, still listed mid-August",
-        "source": "https://www.phillyvoice.com/eagles-edge-jonathan-greenard-injury-update-training-camp-pectoral-strain/",
-        "on": true
-      }
-    ],
     "SEA": [
       {
         "name": "Zach Charbonnet",
         "pos": "RB1",
         "status": "PUP",
-        "note": "ACL surgery Feb 20; still active/PUP as of Aug 16, likely to open season on reserve/PUP",
-        "source": "https://www.cbssports.com/fantasy/football/news/seahawks-zach-charbonnet-remains-in-recovery-mode/",
+        "note": "ACL surgery Feb 20; reserve/PUP at cutdown, miss first four",
+        "source": "https://www.espn.com/nfl/story/_/id/49778534/seahawks-zach-charbonnet-remains-pup-list-miss-least-first-four-games",
         "on": true
       }
     ],
@@ -170,19 +188,19 @@
         "on": true
       },
       {
-        "name": "George Kittle",
-        "pos": "TE1",
-        "status": "PUP",
-        "note": "Achilles from January playoffs; still active/PUP Aug 16, targeting Week 1 / off PUP by Aug 30",
-        "source": "https://www.nfl.com/news/george-kittle-achilles-chance-49ers-rams-week-1-australia",
-        "on": true
-      },
-      {
         "name": "Mykel Williams",
         "pos": "EDGE1",
         "status": "PUP",
-        "note": "ACL + meniscus from 2025; still not practicing, Shanahan called Week 1 a long shot (Aug 18)",
-        "source": "https://www.nbcsportsbayarea.com/nfl/san-francisco-49ers/kyle-shanahan-mykel-williams-injury-update/1957316/",
+        "note": "ACL + meniscus from 2025; reserve/PUP at cutdown, miss first four, earliest Week 5",
+        "source": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/49ers-move-mykel-williams-to-reserve-pup-and-christian-kirk-to-ir-during-cut-to-53-man-roster",
+        "on": true
+      },
+      {
+        "name": "Christian Kirk",
+        "pos": "WR2",
+        "status": "IR",
+        "note": "calf; IR designated to return at cutdown, miss first four",
+        "source": "https://www.49ers.com/news/49ers-announce-moves-for-initial-53-man-roster-x1231",
         "on": true
       }
     ],
@@ -191,8 +209,16 @@
         "name": "Laremy Tunsil",
         "pos": "LT",
         "status": "IR",
-        "note": "torn triceps Aug 8, surgery; miss significant portion / most of 2026",
-        "source": "https://www.cbssports.com/nfl/news/commanders-laremy-tunsil-torn-triceps-will-miss-most-of-2026-season/",
+        "note": "torn triceps Aug 8, surgery; placed on IR Aug 31, miss significant portion / most of 2026",
+        "source": "https://www.commanders.com/news/commanders-place-tunsil-newton-on-ir-sign-moreau-tuttle",
+        "on": true
+      },
+      {
+        "name": "Trey Amos",
+        "pos": "CB1",
+        "status": "IR",
+        "note": "ankle after camp return from 2025 fibula; IR designated to return at cutdown, projected starting CB miss first four",
+        "source": "https://www.profootballrumors.com/2026/08/commanders-move-down-to-53-cb-trey-amos-rb-jeremy-mcnichols-in-ir-return-spots",
         "on": true
       }
     ]

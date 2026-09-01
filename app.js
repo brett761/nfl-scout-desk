@@ -9,6 +9,7 @@ const HFA_KEY = "nflScout.hfa";
 const WEATHER_KEY = "nflScout.weather.v1";
 const RESIDUALS_KEY = "nflScout.residuals.v1";
 const SHARP_BOOK_KEY = "nflScout.sharpBook";
+const INJURY_SEED_PULLED_KEY = "injurySeedPulled";
 const SHARP_BOOK_DEFAULT = "Pinnacle";
 const SEASON = 2026;
 const HFA_DEFAULT = 2;
@@ -852,14 +853,45 @@ function seedNotesIfNeeded() {
 
 function seedInjuriesIfNeeded() {
   if (!injurySeed || !injurySeed.teams || typeof injurySeed.teams !== "object") return;
+  let storedPulled = "";
+  try { storedPulled = localStorage.getItem(INJURY_SEED_PULLED_KEY) || ""; } catch { storedPulled = ""; }
+  const seedPulled = typeof injurySeed.pulled === "string" ? injurySeed.pulled : "";
+  const pulledNewer = !!(seedPulled && (!storedPulled || seedPulled > storedPulled));
   let changed = false;
-  for (const [abbr, rows] of Object.entries(injurySeed.teams)) {
-    const a = normAbbr(abbr);
-    const raw = profiles[a];
-    if (raw && typeof raw === "object" && Object.prototype.hasOwnProperty.call(raw, "injuries")) continue;
-    const list = Array.isArray(rows) ? rows.map(seedInjuryRow) : [];
-    profiles[a] = { ...getProfile(a), injuries: list };
-    changed = true;
+  if (pulledNewer) {
+    const seeded = new Set();
+    for (const [abbr, rows] of Object.entries(injurySeed.teams)) {
+      const a = normAbbr(abbr);
+      seeded.add(a);
+      const p = getProfile(a);
+      const existing = Array.isArray(p.injuries) ? p.injuries : [];
+      const custom = existing.filter((r) => r && r.custom === true);
+      const list = Array.isArray(rows) ? rows.map(seedInjuryRow) : [];
+      profiles[a] = { ...p, injuries: list.concat(custom) };
+      changed = true;
+    }
+    for (const key of Object.keys(profiles)) {
+      const a = normAbbr(key);
+      if (seeded.has(a)) continue;
+      const p = getProfile(a);
+      const existing = Array.isArray(p.injuries) ? p.injuries : [];
+      if (!existing.length) continue;
+      const hadSeeded = existing.some((r) => r && r.custom !== true);
+      if (!hadSeeded) continue;
+      const custom = existing.filter((r) => r && r.custom === true);
+      profiles[a] = { ...p, injuries: custom };
+      changed = true;
+    }
+    try { localStorage.setItem(INJURY_SEED_PULLED_KEY, seedPulled); } catch { /* ignore */ }
+  } else {
+    for (const [abbr, rows] of Object.entries(injurySeed.teams)) {
+      const a = normAbbr(abbr);
+      const raw = profiles[a];
+      if (raw && typeof raw === "object" && Object.prototype.hasOwnProperty.call(raw, "injuries")) continue;
+      const list = Array.isArray(rows) ? rows.map(seedInjuryRow) : [];
+      profiles[a] = { ...getProfile(a), injuries: list };
+      changed = true;
+    }
   }
   if (changed) saveProfiles();
 }
@@ -1678,7 +1710,7 @@ async function loadNfl() {
   const staffReq = fetch("./data/staff-2026.json");
   const staffAtsReq = fetch("./data/staff-ats-2026.json");
   const scaleReq = fetch("./data/injury-scale.json");
-  const injReq = fetch("./data/injury-2026.json");
+  const injReq = fetch("./data/injury-2026.json?v=cut1");
   const wxReq = fetch("./data/weather-scale.json");
   const coachReq = fetch("./data/coaches-2026.json");
   const prepReq = fetch("./data/coach-prep-2026.json");
