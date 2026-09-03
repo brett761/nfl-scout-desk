@@ -10,6 +10,7 @@ const WEATHER_KEY = "nflScout.weather.v1";
 const RESIDUALS_KEY = "nflScout.residuals.v1";
 const SHARP_BOOK_KEY = "nflScout.sharpBook";
 const INJURY_SEED_PULLED_KEY = "injurySeedPulled";
+const TICKETS_SEED_PULLED_KEY = "nflScout.ticketsSeedPulled.v1";
 const SHARP_BOOK_DEFAULT = "Pinnacle";
 const SEASON = 2026;
 const HFA_DEFAULT = 2;
@@ -1363,7 +1364,8 @@ function enrich(t) {
   const ticket = { ...t };
   if (!ticket.id) ticket.id = uid();
   ticket.units = inferUnits(ticket);
-  ticket.stake = stakeFromUnits(ticket.units);
+  const explicitStake = num(t.stake);
+  ticket.stake = explicitStake != null ? explicitStake : stakeFromUnits(ticket.units);
   if (ticket.ticket_type === "PASS") {
     ticket.purpose = "Process";
     ticket.units = 0;
@@ -1401,6 +1403,7 @@ let staffOpenAbbr = null;
 let injuryScale = null; // from ./data/injury-scale.json
 let injurySeed = null;  // optional ./data/injury-2026.json; null if missing
 let notesSeed = null;  // optional ./data/profile-notes.json; null if missing
+let ticketsSeed = null; // optional ./data/tickets-2026.json; null if missing
 let weatherScale = null; // from ./data/weather-scale.json
 let coachData = null; // from ./data/coaches-2026.json; null if missing → coach_term 0
 let prepData = null; // from ./data/coach-prep-2026.json; null if missing → prep_net 0
@@ -1443,6 +1446,26 @@ function load() {
 
 function save() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(tickets));
+}
+
+function seedTicketsIfNeeded() {
+  if (!ticketsSeed || !Array.isArray(ticketsSeed.tickets)) return;
+  let storedPulled = "";
+  try { storedPulled = localStorage.getItem(TICKETS_SEED_PULLED_KEY) || ""; } catch { storedPulled = ""; }
+  const seedPulled = typeof ticketsSeed.pulled === "string" ? ticketsSeed.pulled : "";
+  const pulledNewer = !!(seedPulled && (!storedPulled || seedPulled > storedPulled));
+  const have = new Set(tickets.map((t) => t && t.id).filter(Boolean));
+  const missing = ticketsSeed.tickets.some((t) => t && t.id && !have.has(t.id));
+  if (!pulledNewer && !missing) return;
+  for (const raw of ticketsSeed.tickets) {
+    if (!raw || !raw.id) continue;
+    const next = enrich(raw);
+    const i = tickets.findIndex((t) => t.id === next.id);
+    if (i >= 0) tickets[i] = next;
+    else tickets.push(next);
+  }
+  save();
+  try { localStorage.setItem(TICKETS_SEED_PULLED_KEY, seedPulled); } catch { /* ignore */ }
 }
 
 function emptyProfile() {
@@ -1881,6 +1904,17 @@ async function loadNfl() {
     console.warn("profile-notes.json", err);
   }
   seedNotesIfNeeded();
+  try {
+    const res = await fetch("./data/tickets-2026.json?v=tix1");
+    if (!res.ok) throw new Error(String(res.status));
+    const data = await res.json();
+    if (!data || !Array.isArray(data.tickets)) throw new Error("bad tickets seed");
+    ticketsSeed = data;
+  } catch (err) {
+    ticketsSeed = null;
+    console.warn("tickets-2026.json", err);
+  }
+  seedTicketsIfNeeded();
   try {
     const res = await wxReq;
     if (!res.ok) throw new Error(String(res.status));
