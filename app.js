@@ -4633,8 +4633,10 @@ function seasonPhaseLine() {
   const first = games.slice().sort((a, b) => String(a.date || "").localeCompare(String(b.date || "")))[0];
   if (!first || !first.date) return "Preseason";
   const kick = Date.parse(first.date);
-  if (!Number.isFinite(kick) || Date.now() < kick) return "Preseason";
-  return "Regular season";
+  if (Number.isFinite(kick) && Date.now() >= kick) return "Regular season";
+  const cut = Date.parse("2026-08-30T00:00:00-04:00");
+  if (Number.isFinite(cut) && Date.now() >= cut) return "Week 1 card open";
+  return "Preseason";
 }
 
 function heroWindowLine(et) {
@@ -4656,7 +4658,7 @@ function renderHero() {
   const year = new Intl.DateTimeFormat("en-US", { timeZone: "America/New_York", year: "numeric" }).format(new Date());
   const date = et ? (et.label + " " + year) : "";
   const phase = seasonPhaseLine();
-  const weekLine = phase === "Preseason" ? "Week 1 not open" : ("Week " + currentWeek);
+  const weekLine = phase === "Preseason" ? "Week 1 not open" : (phase === "Week 1 card open" ? "Week 1" : ("Week " + currentWeek));
   const win = heroWindowLine(et);
   el.innerHTML = [date, phase, weekLine, win].filter(Boolean).map((s) => `<li>${esc(s)}</li>`).join("");
 }
@@ -4706,7 +4708,9 @@ function clubNick(abbr) {
 }
 
 function lookWeek() {
-  return seasonPhaseLine() === "Preseason" ? 1 : currentWeek;
+  const phase = seasonPhaseLine();
+  if (phase === "Preseason" || phase === "Week 1 card open") return 1;
+  return currentWeek;
 }
 
 function featuredLookGame() {
