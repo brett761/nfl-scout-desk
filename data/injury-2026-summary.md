@@ -1,9 +1,9 @@
-# 2026 NFL injuries — Scout desk seed (preseason)
-Pulled Wednesday 19 August 2026 (ET). 20 sourced rows, 13 clubs. Starters / snap-takers and notable rookies only; camp tweaks omitted. No invented names.
-Sources: [CBS tracker](https://www.cbssports.com/nfl/news/nfl-training-camp-injury-tracker/), [Sharp IR/PUP](https://www.sharpfootballanalysis.com/analysis/nfl-injury-report-ir-tracker/), [Yahoo camp report](https://sports.yahoo.com/fantasy/article/nfl-training-camp-injury-report-tracking-the-latest-news-updates-for-2026-fantasy-football-163938278.html), NFL.com (Tyson, Love, Pearsall, Kittle), team pages (Walker, Bisontis), ESPN (Parsons, Bresee), CBS (Biadasz, Burden, Tunsil, Charbonnet), NBC/PhillyVoice (Lemon, Greenard, Moton), Panthers Wire (Ekwonu), NBC Sports Bay Area (Williams).
-IR (5): Jalon Walker ATL EDGE1 ACL; Chase Bisontis ARI OG MCL; Bryan Bresee NO IDL ACL; Ricky Pearsall SF WR2 PCL; Laremy Tunsil WSH LT triceps.
-OUT (7): Jordyn Tyson NO WR2 hamstring ~2 months; Makai Lemon PHI WR2 hamstring still out of drills; Jeremiyah Love ARI RB1 high ankle; Alvin Kamara NO RB1 knee/MCL; Tyler Biadasz LAC C multi-ligament knee; Breece Hall NYJ RB1 groin 2–3 weeks; Luther Burden III CHI WR1 groin (preseason).
-PUP (7): Micah Parsons GB EDGE1 ACL; Jonathan Greenard PHI EDGE1 pec; George Kittle SF TE1 Achilles; Mykel Williams SF EDGE1 ACL; Zach Charbonnet SEA RB1 ACL; Ikem Ekwonu CAR LT patellar; Alec Pierce IND WR2 ankle.
-NFI (1): Taylor Moton CAR RT blood clot, expected into the regular season.
-Omitted as rest/noise: Puka Nacua, Myles Garrett (McVay: back next week); Chuba Hubbard week-to-week; Nick Bosa tendinitis, not PUP. Clubs with no sourced starter/rookie row are simply absent.
-File: `desk/data/injury-2026.json`
+# 2026 NFL injuries — Scout desk working Week-1 seed
+Pulled Sunday 6 September 2026 (ET). 47 starter/snap-taker/notable-rookie rows (prior cutdown seed: 23). This is an unofficial working line from the already-pulled ESPN injury board; official NFL.com designations are due Wednesday around 4pm ET for the Week-1 openers.
+
+Sources: https://www.espn.com/nfl/injuries; https://www.nfl.com/injuries
+
+Working soft-Q on:true (0.35x): ARI Will Johnson, CIN Ja'Marr Chase, CIN Tee Higgins, DEN Marvin Mims Jr., DET Ennis Rakestraw Jr., JAX Bhayshul Tuten, KC R Mason Thomas, KC Josh Simmons, LAC Rashawn Slater, LAR Alaric Jackson, NE TreVeyon Henderson, NO Alvin Kamara, NYG Francis Mauigoa, NYJ Joseph Ossai, SEA Nick Emmanwori, TB Jalen McMillan, TEN Carnell Tate.
+Firm/current rows added or firmed from ESPN: CAR Brady Christensen, DET Isiah Pacheco, ATL James Pearce Jr., IND Cam Taylor-Britt, PHI Jonathan Greenard, WSH Deatrich Wise Jr., TEN Andre James.
+
+Kept the 1 September cutdown IR/PUP/NFI rows, updating labels/details from ESPN where available. Excluded Mahomes (on track), Kittle/Bosa/McCaffrey (traveling/full/returning/trending right), and depth/rotation/undrafted/punter noise. Jonathan Greenard is firm OUT (ESPN says Philadelphia is worried he could miss Week 1). On Wednesday, replace soft Qs with official NFL designations, remove Probable, and publish the FINAL line.
