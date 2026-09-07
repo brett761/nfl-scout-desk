@@ -1,9 +1,8 @@
-# 2026 NFL injuries — Scout desk working Week-1 seed
-Pulled Sunday 6 September 2026 (ET). 47 starter/snap-taker/notable-rookie rows (prior cutdown seed: 23). This is an unofficial working line from the already-pulled ESPN injury board; official NFL.com designations are due Wednesday around 4pm ET for the Week-1 openers.
+# 2026 NFL injuries — Scout desk official-interim Week 1
+Pulled Monday 7 September 2026 (ET). First official NFL practice report is now in for the compressed Wednesday opener (NE @ SEA); this is the OFFICIAL-INTERIM line for NE/SEA only, not final game statuses. Sunday/Monday games and Melbourne (SF/LAR) remain on the prior ESPN working seed where applicable.
 
-Sources: https://www.espn.com/nfl/injuries; https://www.nfl.com/injuries
+Sources: https://www.espn.com/nfl/injuries; https://www.nfl.com/injuries; https://www.seahawks.com/news/2026-week-1-injury-report-seahawks-vs-patriots
 
-Working soft-Q on:true (0.35x): ARI Will Johnson, CIN Ja'Marr Chase, CIN Tee Higgins, DEN Marvin Mims Jr., DET Ennis Rakestraw Jr., JAX Bhayshul Tuten, KC R Mason Thomas, KC Josh Simmons, LAC Rashawn Slater, LAR Alaric Jackson, NE TreVeyon Henderson, NO Alvin Kamara, NYG Francis Mauigoa, NYJ Joseph Ossai, SEA Nick Emmanwori, TB Jalen McMillan, TEN Carnell Tate.
-Firm/current rows added or firmed from ESPN: CAR Brady Christensen, DET Isiah Pacheco, ATL James Pearce Jr., IND Cam Taylor-Britt, PHI Jonathan Greenard, WSH Deatrich Wise Jr., TEN Andre James.
+NE/SEA official-interim rows: Christian Barmore (QUESTIONABLE, DNP Sunday), TreVeyon Henderson (DOUBTFUL, DNP Sunday; expected-miss lean), Ty Okada (DOUBTFUL, DNP Sunday), Anthony Bradford (QUESTIONABLE, limited Sunday), Nick Emmanwori (QUESTIONABLE, limited Sunday), and Tory Horton (QUESTIONABLE, limited Sunday). Harold Landry and Zach Charbonnet remain firm PUP rows. Reserve/depth rows and full participants were omitted.
 
-Kept the 1 September cutdown IR/PUP/NFI rows, updating labels/details from ESPN where available. Excluded Mahomes (on track), Kittle/Bosa/McCaffrey (traveling/full/returning/trending right), and depth/rotation/undrafted/punter noise. Jonathan Greenard is firm OUT (ESPN says Philadelphia is worried he could miss Week 1). On Wednesday, replace soft Qs with official NFL designations, remove Probable, and publish the FINAL line.
+Final lock still waits for official game-status designations (Out/Doubtful/Questionable/Probable) closer to Wednesday kickoff; the desk should not label this interim practice report as the final line.
