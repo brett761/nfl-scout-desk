@@ -1,8 +1,8 @@
 # 2026 NFL injuries — Scout desk official-interim Week 1
-Pulled Monday 7 September 2026 (ET). First official NFL practice report is now in for the compressed Wednesday opener (NE @ SEA); this is the OFFICIAL-INTERIM line for NE/SEA only, not final game statuses. Sunday/Monday games and Melbourne (SF/LAR) remain on the prior ESPN working seed where applicable.
+Pulled Tuesday 8 September 2026 (~2:30pm ET). NE @ SEA Monday practice layer refreshed from latest official nfl.com statuses. Still OFFICIAL-INTERIM (not Tuesday FINAL Out/Doubtful/Q/Probable designations). Desk remains closed until Wed Sep 9 open/lock. Melbourne (SF/LAR) and Sunday/MNF still show "No Injuries Reported" on nfl.com — season-long IR/PUP/ESPN rows left as-is; no invented Melbourne designations.
 
 Sources: https://www.espn.com/nfl/injuries; https://www.nfl.com/injuries; https://www.seahawks.com/news/2026-week-1-injury-report-seahawks-vs-patriots
 
-NE/SEA official-interim rows: Christian Barmore (QUESTIONABLE, DNP Sunday), TreVeyon Henderson (DOUBTFUL, DNP Sunday; expected-miss lean), Ty Okada (DOUBTFUL, DNP Sunday), Anthony Bradford (QUESTIONABLE, limited Sunday), Nick Emmanwori (QUESTIONABLE, limited Sunday), and Tory Horton (QUESTIONABLE, limited Sunday). Harold Landry and Zach Charbonnet remain firm PUP rows. Reserve/depth rows and full participants were omitted.
+NE/SEA after refresh: TreVeyon Henderson (DOUBTFUL on, consecutive DNPs; not yet official Out), Ty Okada (DOUBTFUL on, DNP), Nick Emmanwori (QUESTIONABLE on, Limited), Tory Horton (WR2 QUESTIONABLE on, Limited). Harold Landry and Zach Charbonnet remain firm PUP on. Off the number this ship: Christian Barmore (Full Participation; was Q), Anthony Bradford (Full Participation; was Q). Omitted/depth (not on number): Ben Brown (DNP / reports OUT, reserve C), Josh Jones (Limited backup OT), and other Full participants (AJ Barner, Julian Neal, Emanuel Wilson).
 
-Final lock still waits for official game-status designations (Out/Doubtful/Questionable/Probable) closer to Wednesday kickoff; the desk should not label this interim practice report as the final line.
+Final lock still waits for official game-status designations closer to Wednesday kickoff.
