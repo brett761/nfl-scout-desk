@@ -1,9 +1,9 @@
 {
-  "pulled": "2026-09-08",
+  "pulled": "2026-09-09",
   "sources": [
-    "https://www.espn.com/nfl/injuries",
     "https://www.nfl.com/injuries",
-    "https://www.seahawks.com/news/2026-week-1-injury-report-seahawks-vs-patriots"
+    "https://www.seahawks.com/news/ty-okada-out-nick-emmanwori-questionable-for-seahawks-season-opener-vs-patriots",
+    "https://www.espn.com/nfl/injuries"
   ],
   "teams": {
     "ARI": [
@@ -253,8 +253,32 @@
         "name": "Alaric Jackson",
         "pos": "LT",
         "status": "QUESTIONABLE",
-        "note": "Jackson missed practice Wednesday due to management of his blood clot issue, Stu Jackson and Zach Edwards of the Rams' official site report.",
-        "source": "https://www.espn.com/nfl/injuries",
+        "note": "Official Melbourne practice: Did Not Participate (blood clot management). Keep QUESTIONABLE on number until game designation.",
+        "source": "https://www.nfl.com/injuries",
+        "on": true
+      },
+      {
+        "name": "Aaron Donald",
+        "pos": "EDGE1",
+        "status": "QUESTIONABLE",
+        "note": "Melbourne practice: Limited only (nfl.com). Do NOT mark Out \u2014 QUESTIONABLE until official game status.",
+        "source": "https://www.nfl.com/injuries",
+        "on": true
+      },
+      {
+        "name": "Myles Garrett",
+        "pos": "EDGE1",
+        "status": "QUESTIONABLE",
+        "note": "Melbourne practice: Did Not Participate (nfl.com). Starter \u2014 QUESTIONABLE until designation (not invented Out).",
+        "source": "https://www.nfl.com/injuries",
+        "on": true
+      },
+      {
+        "name": "Tyler Higbee",
+        "pos": "TE1",
+        "status": "QUESTIONABLE",
+        "note": "Melbourne practice: Did Not Participate (nfl.com). TE1 \u2014 QUESTIONABLE until designation.",
+        "source": "https://www.nfl.com/injuries",
         "on": true
       }
     ],
@@ -270,8 +294,8 @@
       {
         "name": "TreVeyon Henderson",
         "pos": "RB1",
-        "status": "DOUBTFUL",
-        "note": "Official Week 1 practice: consecutive DNPs (ankle) including latest nfl.com report; not yet officially Out. Prefer DOUBTFUL until Wednesday game designation.",
+        "status": "OUT",
+        "note": "FINAL Week 1 game status OUT (ankle). Official nfl.com designation for Wednesday opener.",
         "source": "https://www.nfl.com/injuries",
         "on": true
       }
@@ -334,14 +358,6 @@
     ],
     "SEA": [
       {
-        "name": "Nick Emmanwori",
-        "pos": "S",
-        "status": "QUESTIONABLE",
-        "note": "Official Week 1 practice: Limited (ankle) on latest nfl.com report; final game status pending for Wednesday.",
-        "source": "https://www.nfl.com/injuries",
-        "on": true
-      },
-      {
         "name": "Zach Charbonnet",
         "pos": "RB1",
         "status": "PUP",
@@ -352,16 +368,24 @@
       {
         "name": "Ty Okada",
         "pos": "S",
-        "status": "DOUBTFUL",
-        "note": "Official Week 1 practice: Did Not Participate (hamstring) on latest nfl.com report; starting safety, final game status pending.",
-        "source": "https://www.nfl.com/injuries",
+        "status": "OUT",
+        "note": "FINAL Week 1 game status OUT (hamstring). Official designation for Wednesday opener vs Patriots (was Doubtful).",
+        "source": "https://www.seahawks.com/news/ty-okada-out-nick-emmanwori-questionable-for-seahawks-season-opener-vs-patriots",
+        "on": true
+      },
+      {
+        "name": "Nick Emmanwori",
+        "pos": "S",
+        "status": "QUESTIONABLE",
+        "note": "FINAL Week 1 game status QUESTIONABLE (ankle) for Wednesday opener.",
+        "source": "https://www.seahawks.com/news/ty-okada-out-nick-emmanwori-questionable-for-seahawks-season-opener-vs-patriots",
         "on": true
       },
       {
         "name": "Tory Horton",
         "pos": "WR2",
         "status": "QUESTIONABLE",
-        "note": "Official Week 1 practice: Limited (hamstring) on latest nfl.com report; final game status pending for Wednesday.",
+        "note": "FINAL Week 1 game status QUESTIONABLE (hamstring) for Wednesday opener.",
         "source": "https://www.nfl.com/injuries",
         "on": true
       }
@@ -376,6 +400,14 @@
         "on": true
       },
       {
+        "name": "Ricky Pearsall",
+        "pos": "WR2",
+        "status": "IR",
+        "note": "PCL knee surgery; placed on IR, out for 2026",
+        "source": "https://www.espn.com/nfl/injuries",
+        "on": true
+      },
+      {
         "name": "Mykel Williams",
         "pos": "EDGE1",
         "status": "PUP",
@@ -384,11 +416,19 @@
         "on": true
       },
       {
-        "name": "Ricky Pearsall",
-        "pos": "WR2",
-        "status": "IR",
-        "note": "PCL knee surgery; placed on IR, out for 2026",
-        "source": "https://www.espn.com/nfl/injuries",
+        "name": "Nick Bosa",
+        "pos": "EDGE1",
+        "status": "QUESTIONABLE",
+        "note": "Melbourne practice layer: Limited (nfl.com). No official game status yet \u2014 QUESTIONABLE until designation.",
+        "source": "https://www.nfl.com/injuries",
+        "on": true
+      },
+      {
+        "name": "George Kittle",
+        "pos": "TE1",
+        "status": "QUESTIONABLE",
+        "note": "Melbourne practice layer: Limited (nfl.com). No official game status yet \u2014 QUESTIONABLE until designation.",
+        "source": "https://www.nfl.com/injuries",
         "on": true
       }
     ],
