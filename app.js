@@ -495,9 +495,10 @@ function normAbbr(abbr) {
    They stay until the row is off or deleted.
      row_pts = −round2((impact ?? pos_base) * status_mult), clamp [−cap_player, 0]
      impact = full-Out surplus vs replacement (spread pts). Prefer auto from
-     Madden/PFF name match: pos_base + (ovr−league_ovr)/ovr_per_point and/or
-     (grade−league_grade)/grade_per_point; auto = clamp(max(0.2, best), 0.2, cap_player).
-     Prefer max across sources. impact_source: madden|pff|madden+pff|manual.
+     Madden/PFF name match (Madden-first): if Madden ovr matched use
+     pos_base + (ovr−league_ovr)/ovr_per_point; else if PFF grade matched use
+     pos_base + (grade−league_grade)/grade_per_point. auto = clamp(max(0.2, raw), 0.2, cap_player).
+     impact_source: madden|pff|manual (not madden+pff max).
      Precedence: manual → auto match → seed impact → pos_base.
      injury_term = clamp(sum of ON rows, −cap_team, 0)
    Effective = algorithm + FA + draft + madden + pff + injury + adjust + context
@@ -890,7 +891,7 @@ function injuryPosBase(pos) {
   return (injuryScale && injuryScale.positions && num(injuryScale.positions[pos])) || 0;
 }
 
-/** Auto full-Out impact from Madden/PFF name match, or null if neither matches. */
+/** Auto full-Out impact from Madden/PFF name match (Madden-first), or null if neither matches. */
 function injuryAutoImpact(abbr, name, pos) {
   const hit = lookupInjuryPlayer(abbr, name);
   if (!hit || (hit.ovr == null && hit.grade == null)) return null;
@@ -901,22 +902,19 @@ function injuryAutoImpact(abbr, name, pos) {
   const ovrPer = (maddenSc && num(maddenSc.ovr_per_point)) ?? 4;
   const leagueGrade = (pffSc && num(pffSc.league_grade)) ?? 71.47;
   const gradePer = (pffSc && num(pffSc.grade_per_point)) ?? 5;
-  const cands = [];
-  const sources = [];
+  let raw = null;
+  let source = null;
   if (hit.ovr != null && ovrPer) {
-    cands.push(posBase + (hit.ovr - leagueOvr) / ovrPer);
-    sources.push("madden");
+    raw = posBase + (hit.ovr - leagueOvr) / ovrPer;
+    source = "madden";
+  } else if (hit.grade != null && gradePer) {
+    raw = posBase + (hit.grade - leagueGrade) / gradePer;
+    source = "pff";
   }
-  if (hit.grade != null && gradePer) {
-    cands.push(posBase + (hit.grade - leagueGrade) / gradePer);
-    sources.push("pff");
-  }
-  if (!cands.length) return null;
-  const best = Math.max(...cands);
+  if (raw == null || !source) return null;
   const cap = injuryCapPlayer();
-  const impact = Math.max(0.2, Math.min(cap, Math.max(0.2, best)));
-  const source = sources.length === 2 ? "madden+pff" : sources[0];
-  return { impact: round2(impact), source, best: round2(best), hit };
+  const impact = Math.max(0.2, Math.min(cap, Math.max(0.2, raw)));
+  return { impact: round2(impact), source, best: round2(raw), hit };
 }
 
 function applyInjuryImpactFields(row, abbr) {
@@ -1878,7 +1876,7 @@ async function loadNfl() {
   const staffReq = fetch("./data/staff-2026.json");
   const staffAtsReq = fetch("./data/staff-ats-2026.json");
   const scaleReq = fetch("./data/injury-scale.json");
-  const injReq = fetch("./data/injury-2026.json?v=imp2");
+  const injReq = fetch("./data/injury-2026.json?v=imp3");
   const wxReq = fetch("./data/weather-scale.json");
   const coachReq = fetch("./data/coaches-2026.json");
   const prepReq = fetch("./data/coach-prep-2026.json");

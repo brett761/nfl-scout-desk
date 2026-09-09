@@ -4,6 +4,8 @@ Pulled Wednesday 9 September 2026 after the official Thursday Game Status window
 
 **2026-09-09b — per-player impact:** seed rows carried manual `impact` (full-Out surplus vs replacement). Scoring `pts = −(impact × status_mult)` when set; else pos×status.
 
+**2026-09-09d — Madden-first (stop PFF max blowups):** same name-match, but if Madden ovr matched use only Madden-derived impact; else if PFF grade matched use PFF. No `Math.max` across sources. Charbonnet Madden 83 → ~1.37 (PUP −1.37), not PFF 85.2 → 3.35. Emmanwori stays Madden 86 → ~2.02 (Q −0.71). `impact_source` is `madden` or `pff` (not `madden+pff`). Cache `app.js?v=imp3` / `injury-2026.json?v=imp3`.
+
 **2026-09-09c — auto impact from Madden/PFF:** name-match within the injury club (then global) fills `impact` from Madden OVR and/or PFF grade: `pos_base + (ovr−79.93)/4` or `(grade−71.47)/5`, take **max** of available sources, floor 0.2, cap `cap_player`. Emmanwori ≈ 2.02 (Q ≈ −0.71); Horton floors near 0.20 (Q ≈ −0.07). Seed `impact` kept only for unmatched judgment names; `impact_source: manual` (or UI edit) wins on reseed.
 
 Sources: https://www.nfl.com/injuries; https://www.seahawks.com/news/ty-okada-out-nick-emmanwori-questionable-for-seahawks-season-opener-vs-patriots; https://sicscore.com/news/49ers-vs-rams-injury-report-key-injuries-and-player-statuses-for-week-1; https://www.espn.com/nfl/injuries
