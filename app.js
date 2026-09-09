@@ -493,7 +493,8 @@ function normAbbr(abbr) {
    user_adjust = optional override on top of the algorithm (old "base").
    Injuries are a weekly point value. They do NOT taper with the 17-game prior.
    They stay until the row is off or deleted.
-     row_pts = −round2(pos_base * status_mult), clamp [−cap_player, 0]
+     row_pts = −round2((impact ?? pos_base) * status_mult), clamp [−cap_player, 0]
+     impact = optional per-player full-Out surplus vs replacement (spread pts)
      injury_term = clamp(sum of ON rows, −cap_team, 0)
    Effective = algorithm + FA + draft + madden + pff + injury + adjust + context
    = algorithm_base + fa_term + draft_term + madden_term + pff_term + injury_term + user_adjust + sum of active (on) context. Preseason OVER is not in this sum.
@@ -797,9 +798,12 @@ function injuryStatusKeys() {
   return ["IR", "OUT", "PUP", "NFI", "DOUBTFUL", "QUESTIONABLE", "PROBABLE"];
 }
 
-function injuryRowPts(pos, status) {
-  const base = (injuryScale && injuryScale.positions && num(injuryScale.positions[pos])) || 0;
+function injuryRowPts(pos, status, impact) {
   const mult = (injuryScale && injuryScale.status && num(injuryScale.status[status])) || 0;
+  const imp = num(impact);
+  const base = (imp != null)
+    ? imp
+    : ((injuryScale && injuryScale.positions && num(injuryScale.positions[pos])) || 0);
   const raw = -round2(base * mult);
   const cap = injuryCapPlayer();
   return Math.max(-cap, Math.min(0, raw));
@@ -824,12 +828,14 @@ function seedOnFlag(status, raw) {
 function seedInjuryRow(raw) {
   const pos = raw && raw.pos ? String(raw.pos) : "DEPTH";
   const status = raw && raw.status ? String(raw.status).toUpperCase() : "QUESTIONABLE";
+  const impact = raw && raw.impact != null && raw.impact !== "" ? num(raw.impact) : null;
   return {
     id: uid(),
     name: raw && typeof raw.name === "string" ? raw.name : "",
     pos,
     status,
-    pts: injuryRowPts(pos, status),
+    impact,
+    pts: injuryRowPts(pos, status, impact),
     on: seedOnFlag(status, raw),
     custom: false,
   };
@@ -1733,7 +1739,7 @@ async function loadNfl() {
   const staffReq = fetch("./data/staff-2026.json");
   const staffAtsReq = fetch("./data/staff-ats-2026.json");
   const scaleReq = fetch("./data/injury-scale.json");
-  const injReq = fetch("./data/injury-2026.json?v=nfl3");
+  const injReq = fetch("./data/injury-2026.json?v=imp1");
   const wxReq = fetch("./data/weather-scale.json");
   const coachReq = fetch("./data/coaches-2026.json");
   const prepReq = fetch("./data/coach-prep-2026.json");
@@ -2899,10 +2905,12 @@ function injurySelectOptions(keys, selected) {
 function injRowHtml(row) {
   const posOpts = injurySelectOptions(injuryPosKeys(), row.pos);
   const stOpts = injurySelectOptions(injuryStatusKeys(), row.status);
+  const impactVal = row.impact != null && row.impact !== "" ? esc(row.impact) : "";
   return `<div class="inj-row" data-inj="${esc(row.id)}">
       <input type="text" data-inj-name="${esc(row.id)}" value="${esc(row.name)}" placeholder="Name" autocomplete="off">
       <select data-inj-pos="${esc(row.id)}" aria-label="Position">${posOpts}</select>
       <select data-inj-status="${esc(row.id)}" aria-label="Status">${stOpts}</select>
+      <input type="number" class="mono" step="0.01" min="0" data-inj-impact="${esc(row.id)}" value="${impactVal}" placeholder="imp" title="Full-Out impact (surplus vs replacement)" aria-label="Impact">
       <input type="number" class="mono" step="0.01" data-inj-pts="${esc(row.id)}" value="${esc(row.pts)}" aria-label="Injury points">
       <input type="checkbox" class="ctx-on" data-inj-on="${esc(row.id)}" ${row.on ? "checked" : ""} aria-label="Injury on">
       <button type="button" class="ctx-del" data-inj-del="${esc(row.id)}" aria-label="Delete injury">×</button>
@@ -5355,7 +5363,8 @@ function bind() {
         name: "",
         pos,
         status,
-        pts: injuryRowPts(pos, status),
+        impact: null,
+        pts: injuryRowPts(pos, status, null),
         on: false,
         custom: false,
       });
@@ -5425,6 +5434,22 @@ function bind() {
       setProfile(profileAbbr, p);
       return;
     }
+    const injImpact = e.target.closest("[data-inj-impact]");
+    if (injImpact) {
+      const p = getProfile(profileAbbr);
+      const row = p.injuries.find((r) => r.id === injImpact.dataset.injImpact);
+      if (!row) return;
+      const v = num(injImpact.value);
+      row.impact = v;
+      row.custom = false;
+      row.pts = injuryRowPts(row.pos, row.status, row.impact);
+      const rowEl = e.target.closest(".inj-row");
+      const ptsInp = rowEl && rowEl.querySelector("[data-inj-pts]");
+      if (ptsInp) ptsInp.value = row.pts;
+      setProfile(profileAbbr, p);
+      refreshTeamDerived();
+      return;
+    }
     const injPts = e.target.closest("[data-inj-pts]");
     if (injPts) {
       const p = getProfile(profileAbbr);
@@ -5464,7 +5489,7 @@ function bind() {
       if (injPos) row.pos = injPos.value;
       if (injStatus) row.status = injStatus.value;
       if (!row.custom) {
-        row.pts = injuryRowPts(row.pos, row.status);
+        row.pts = injuryRowPts(row.pos, row.status, row.impact);
         const rowEl = e.target.closest(".inj-row");
         const ptsInp = rowEl && rowEl.querySelector("[data-inj-pts]");
         if (ptsInp) ptsInp.value = row.pts;

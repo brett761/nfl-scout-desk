@@ -29,5 +29,5 @@
     "K": 0.2,
     "DEPTH": 0.2
   },
-  "note": "Surplus vs replacement on a spread. Wait for official status (TNF Wed 4pm ET, Sunday Fri 4pm ET, 90-min inactives). Unofficial DNP is not a row. Totals/K are a different market."
+  "note": "Surplus vs replacement on a spread. Optional per-player `impact` on a seed/profile row is the full-Out surplus (positive points). Scoring: pts = \u2212round2((impact ?? pos_base) \u00d7 status_mult), clamp [\u2212cap_player, 0]. Pos stays for display and is the default only when impact is absent. Status mult: IR/OUT/PUP/NFI 1.0, DOUBTFUL 0.75, QUESTIONABLE 0.35, PROBABLE 0. Wait for official status (TNF Wed 4pm ET, Sunday Fri 4pm ET, 90-min inactives). Unofficial DNP is not a row. Totals/K are a different market."
 }
