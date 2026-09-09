@@ -2,7 +2,9 @@
 
 Pulled Wednesday 9 September 2026 after the official Thursday Game Status window (~4:00 p.m. ET). Desk is **open**.
 
-**2026-09-09b — per-player impact:** seed rows now carry `impact` (full-Out surplus vs replacement on the spread). Scoring is `pts = −(impact × status_mult)` when impact is set; otherwise the old pos×status fallback. Retagged so star/high-snap names (e.g. Emmanwori 1.8, Donald 2.2, Chase 1.8) are not stuck at position averages; depth names (e.g. Horton 0.30) discount less.
+**2026-09-09b — per-player impact:** seed rows carried manual `impact` (full-Out surplus vs replacement). Scoring `pts = −(impact × status_mult)` when set; else pos×status.
+
+**2026-09-09c — auto impact from Madden/PFF:** name-match within the injury club (then global) fills `impact` from Madden OVR and/or PFF grade: `pos_base + (ovr−79.93)/4` or `(grade−71.47)/5`, take **max** of available sources, floor 0.2, cap `cap_player`. Emmanwori ≈ 2.02 (Q ≈ −0.71); Horton floors near 0.20 (Q ≈ −0.07). Seed `impact` kept only for unmatched judgment names; `impact_source: manual` (or UI edit) wins on reseed.
 
 Sources: https://www.nfl.com/injuries; https://www.seahawks.com/news/ty-okada-out-nick-emmanwori-questionable-for-seahawks-season-opener-vs-patriots; https://sicscore.com/news/49ers-vs-rams-injury-report-key-injuries-and-player-statuses-for-week-1; https://www.espn.com/nfl/injuries
 

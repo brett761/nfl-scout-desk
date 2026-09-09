@@ -494,7 +494,11 @@ function normAbbr(abbr) {
    Injuries are a weekly point value. They do NOT taper with the 17-game prior.
    They stay until the row is off or deleted.
      row_pts = −round2((impact ?? pos_base) * status_mult), clamp [−cap_player, 0]
-     impact = optional per-player full-Out surplus vs replacement (spread pts)
+     impact = full-Out surplus vs replacement (spread pts). Prefer auto from
+     Madden/PFF name match: pos_base + (ovr−league_ovr)/ovr_per_point and/or
+     (grade−league_grade)/grade_per_point; auto = clamp(max(0.2, best), 0.2, cap_player).
+     Prefer max across sources. impact_source: madden|pff|madden+pff|manual.
+     Precedence: manual → auto match → seed impact → pos_base.
      injury_term = clamp(sum of ON rows, −cap_team, 0)
    Effective = algorithm + FA + draft + madden + pff + injury + adjust + context
    = algorithm_base + fa_term + draft_term + madden_term + pff_term + injury_term + user_adjust + sum of active (on) context. Preseason OVER is not in this sum.
@@ -825,16 +829,141 @@ function seedOnFlag(status, raw) {
   return st === "IR" || st === "OUT" || st === "PUP" || st === "NFI" || st === "DOUBTFUL";
 }
 
-function seedInjuryRow(raw) {
+function normInjuryName(name) {
+  let s = String(name || "").toLowerCase().replace(/[^\w\s]/g, " ").replace(/\s+/g, " ").trim();
+  const parts = s.split(" ").filter(Boolean);
+  while (parts.length && /^(jr|sr|ii|iii|iv)$/.test(parts[parts.length - 1])) parts.pop();
+  return parts.join(" ");
+}
+
+function mergeInjuryPlayerEntry(map, name, patch) {
+  const key = normInjuryName(name);
+  if (!key) return;
+  const cur = map.get(key) || { name: String(name || ""), sources: [] };
+  if (patch.ovr != null) cur.ovr = patch.ovr;
+  if (patch.grade != null) cur.grade = patch.grade;
+  if (patch.snaps != null) cur.snaps = patch.snaps;
+  if (patch.source && !cur.sources.includes(patch.source)) cur.sources.push(patch.source);
+  if (!cur.name) cur.name = String(name || "");
+  map.set(key, cur);
+}
+
+function buildInjuryPlayerIndex() {
+  injuryPlayerByTeam = Object.create(null);
+  injuryPlayerGlobal = new Map();
+  const ingest = (data, source, ovrKey, gradeKey) => {
+    if (!data || !data.teams || typeof data.teams !== "object") return;
+    for (const [abbrRaw, team] of Object.entries(data.teams)) {
+      const abbr = normAbbr(abbrRaw);
+      if (!injuryPlayerByTeam[abbr]) injuryPlayerByTeam[abbr] = new Map();
+      for (const side of ["off", "def"]) {
+        const rows = team && Array.isArray(team[side]) ? team[side] : [];
+        for (const row of rows) {
+          if (!row || typeof row.name !== "string") continue;
+          const patch = { source };
+          if (ovrKey && row[ovrKey] != null) patch.ovr = num(row[ovrKey]);
+          if (gradeKey && row[gradeKey] != null) {
+            patch.grade = num(row[gradeKey]);
+            if (row.snaps != null) patch.snaps = num(row.snaps);
+          }
+          mergeInjuryPlayerEntry(injuryPlayerByTeam[abbr], row.name, patch);
+          mergeInjuryPlayerEntry(injuryPlayerGlobal, row.name, patch);
+        }
+      }
+    }
+  };
+  ingest(maddenData, "madden", "ovr", null);
+  ingest(pffData, "pff", null, "grade");
+}
+
+function lookupInjuryPlayer(abbr, name) {
+  const key = normInjuryName(name);
+  if (!key) return null;
+  const a = normAbbr(abbr);
+  const teamMap = injuryPlayerByTeam && injuryPlayerByTeam[a];
+  if (teamMap && teamMap.has(key)) return teamMap.get(key);
+  if (injuryPlayerGlobal && injuryPlayerGlobal.has(key)) return injuryPlayerGlobal.get(key);
+  return null;
+}
+
+function injuryPosBase(pos) {
+  return (injuryScale && injuryScale.positions && num(injuryScale.positions[pos])) || 0;
+}
+
+/** Auto full-Out impact from Madden/PFF name match, or null if neither matches. */
+function injuryAutoImpact(abbr, name, pos) {
+  const hit = lookupInjuryPlayer(abbr, name);
+  if (!hit || (hit.ovr == null && hit.grade == null)) return null;
+  const posBase = injuryPosBase(pos);
+  const maddenSc = maddenData && maddenData.scoring ? maddenData.scoring : null;
+  const pffSc = pffData && pffData.scoring ? pffData.scoring : null;
+  const leagueOvr = (maddenSc && num(maddenSc.league_ovr)) ?? 79.93;
+  const ovrPer = (maddenSc && num(maddenSc.ovr_per_point)) ?? 4;
+  const leagueGrade = (pffSc && num(pffSc.league_grade)) ?? 71.47;
+  const gradePer = (pffSc && num(pffSc.grade_per_point)) ?? 5;
+  const cands = [];
+  const sources = [];
+  if (hit.ovr != null && ovrPer) {
+    cands.push(posBase + (hit.ovr - leagueOvr) / ovrPer);
+    sources.push("madden");
+  }
+  if (hit.grade != null && gradePer) {
+    cands.push(posBase + (hit.grade - leagueGrade) / gradePer);
+    sources.push("pff");
+  }
+  if (!cands.length) return null;
+  const best = Math.max(...cands);
+  const cap = injuryCapPlayer();
+  const impact = Math.max(0.2, Math.min(cap, Math.max(0.2, best)));
+  const source = sources.length === 2 ? "madden+pff" : sources[0];
+  return { impact: round2(impact), source, best: round2(best), hit };
+}
+
+function applyInjuryImpactFields(row, abbr) {
+  if (!row) return row;
+  if (row.impact_source === "manual") {
+    row.pts = injuryRowPts(row.pos, row.status, row.impact);
+    return row;
+  }
+  const auto = injuryAutoImpact(abbr, row.name, row.pos);
+  if (auto) {
+    row.impact = auto.impact;
+    row.impact_source = auto.source;
+  }
+  row.pts = injuryRowPts(row.pos, row.status, row.impact);
+  return row;
+}
+
+function seedInjuryRow(raw, abbr, prior) {
   const pos = raw && raw.pos ? String(raw.pos) : "DEPTH";
   const status = raw && raw.status ? String(raw.status).toUpperCase() : "QUESTIONABLE";
-  const impact = raw && raw.impact != null && raw.impact !== "" ? num(raw.impact) : null;
+  const seedImpact = raw && raw.impact != null && raw.impact !== "" ? num(raw.impact) : null;
+  const seedManual = !!(raw && raw.impact_source === "manual");
+  const priorManual = !!(prior && prior.impact_source === "manual");
+  let impact = null;
+  let impact_source = null;
+  if (priorManual) {
+    impact = prior.impact != null && prior.impact !== "" ? num(prior.impact) : seedImpact;
+    impact_source = "manual";
+  } else if (seedManual) {
+    impact = seedImpact;
+    impact_source = "manual";
+  } else {
+    const auto = injuryAutoImpact(abbr, raw && raw.name, pos);
+    if (auto) {
+      impact = auto.impact;
+      impact_source = auto.source;
+    } else if (seedImpact != null) {
+      impact = seedImpact;
+    }
+  }
   return {
     id: uid(),
     name: raw && typeof raw.name === "string" ? raw.name : "",
     pos,
     status,
     impact,
+    impact_source,
     pts: injuryRowPts(pos, status, impact),
     on: seedOnFlag(status, raw),
     custom: false,
@@ -873,7 +1002,15 @@ function seedInjuriesIfNeeded() {
       const p = getProfile(a);
       const existing = Array.isArray(p.injuries) ? p.injuries : [];
       const custom = existing.filter((r) => r && r.custom === true);
-      const list = Array.isArray(rows) ? rows.map(seedInjuryRow) : [];
+      const priorByName = new Map();
+      for (const r of existing) {
+        if (!r || r.custom === true) continue;
+        const k = normInjuryName(r.name);
+        if (k) priorByName.set(k, r);
+      }
+      const list = Array.isArray(rows)
+        ? rows.map((raw) => seedInjuryRow(raw, a, priorByName.get(normInjuryName(raw && raw.name))))
+        : [];
       profiles[a] = { ...p, injuries: list.concat(custom) };
       changed = true;
     }
@@ -895,7 +1032,7 @@ function seedInjuriesIfNeeded() {
       const a = normAbbr(abbr);
       const raw = profiles[a];
       if (raw && typeof raw === "object" && Object.prototype.hasOwnProperty.call(raw, "injuries")) continue;
-      const list = Array.isArray(rows) ? rows.map(seedInjuryRow) : [];
+      const list = Array.isArray(rows) ? rows.map((raw) => seedInjuryRow(raw, a, null)) : [];
       profiles[a] = { ...getProfile(a), injuries: list };
       changed = true;
     }
@@ -1408,6 +1545,8 @@ let staffAtsData = null; // { clubs } last3 + 2026 ATS; not a line
 let staffOpenAbbr = null;
 let injuryScale = null; // from ./data/injury-scale.json
 let injurySeed = null;  // optional ./data/injury-2026.json; null if missing
+let injuryPlayerByTeam = null; // abbr → Map(normName → {ovr?, grade?, snaps?, sources[]})
+let injuryPlayerGlobal = null; // Map(normName → {ovr?, grade?, snaps?, sources[]})
 let notesSeed = null;  // optional ./data/profile-notes.json; null if missing
 let ticketsSeed = null; // optional ./data/tickets-2026.json; null if missing
 let weatherScale = null; // from ./data/weather-scale.json
@@ -1739,7 +1878,7 @@ async function loadNfl() {
   const staffReq = fetch("./data/staff-2026.json");
   const staffAtsReq = fetch("./data/staff-ats-2026.json");
   const scaleReq = fetch("./data/injury-scale.json");
-  const injReq = fetch("./data/injury-2026.json?v=imp1");
+  const injReq = fetch("./data/injury-2026.json?v=imp2");
   const wxReq = fetch("./data/weather-scale.json");
   const coachReq = fetch("./data/coaches-2026.json");
   const prepReq = fetch("./data/coach-prep-2026.json");
@@ -1898,6 +2037,7 @@ async function loadNfl() {
     injurySeed = null;
     console.warn("injury-2026.json", err);
   }
+  buildInjuryPlayerIndex();
   seedInjuriesIfNeeded();
   try {
     const res = await fetch("./data/profile-notes.json");
@@ -2906,11 +3046,15 @@ function injRowHtml(row) {
   const posOpts = injurySelectOptions(injuryPosKeys(), row.pos);
   const stOpts = injurySelectOptions(injuryStatusKeys(), row.status);
   const impactVal = row.impact != null && row.impact !== "" ? esc(row.impact) : "";
+  const srcHint = row.impact_source ? String(row.impact_source) : "";
+  const impactTitle = srcHint
+    ? `Full-Out impact · ${srcHint}`
+    : "Full-Out impact (surplus vs replacement)";
   return `<div class="inj-row" data-inj="${esc(row.id)}">
       <input type="text" data-inj-name="${esc(row.id)}" value="${esc(row.name)}" placeholder="Name" autocomplete="off">
       <select data-inj-pos="${esc(row.id)}" aria-label="Position">${posOpts}</select>
       <select data-inj-status="${esc(row.id)}" aria-label="Status">${stOpts}</select>
-      <input type="number" class="mono" step="0.01" min="0" data-inj-impact="${esc(row.id)}" value="${impactVal}" placeholder="imp" title="Full-Out impact (surplus vs replacement)" aria-label="Impact">
+      <input type="number" class="mono" step="0.01" min="0" data-inj-impact="${esc(row.id)}" value="${impactVal}" placeholder="imp" title="${esc(impactTitle)}" aria-label="Impact">
       <input type="number" class="mono" step="0.01" data-inj-pts="${esc(row.id)}" value="${esc(row.pts)}" aria-label="Injury points">
       <input type="checkbox" class="ctx-on" data-inj-on="${esc(row.id)}" ${row.on ? "checked" : ""} aria-label="Injury on">
       <button type="button" class="ctx-del" data-inj-del="${esc(row.id)}" aria-label="Delete injury">×</button>
@@ -5364,6 +5508,7 @@ function bind() {
         pos,
         status,
         impact: null,
+        impact_source: null,
         pts: injuryRowPts(pos, status, null),
         on: false,
         custom: false,
@@ -5431,6 +5576,28 @@ function bind() {
       const row = p.injuries.find((r) => r.id === injName.dataset.injName);
       if (!row) return;
       row.name = injName.value;
+      if (row.impact_source !== "manual" && !row.custom) {
+        const prevSrc = row.impact_source;
+        const prevImp = row.impact;
+        row.impact = null;
+        row.impact_source = null;
+        applyInjuryImpactFields(row, profileAbbr);
+        if (row.impact == null && prevImp != null && !prevSrc) row.impact = prevImp;
+        row.pts = injuryRowPts(row.pos, row.status, row.impact);
+        const rowEl = e.target.closest(".inj-row");
+        const impInp = rowEl && rowEl.querySelector("[data-inj-impact]");
+        const ptsInp = rowEl && rowEl.querySelector("[data-inj-pts]");
+        if (impInp) {
+          impInp.value = row.impact != null ? row.impact : "";
+          impInp.title = row.impact_source
+            ? `Full-Out impact · ${row.impact_source}`
+            : "Full-Out impact (surplus vs replacement)";
+        }
+        if (ptsInp) ptsInp.value = row.pts;
+        setProfile(profileAbbr, p);
+        refreshTeamDerived();
+        return;
+      }
       setProfile(profileAbbr, p);
       return;
     }
@@ -5441,11 +5608,13 @@ function bind() {
       if (!row) return;
       const v = num(injImpact.value);
       row.impact = v;
+      row.impact_source = "manual";
       row.custom = false;
       row.pts = injuryRowPts(row.pos, row.status, row.impact);
       const rowEl = e.target.closest(".inj-row");
       const ptsInp = rowEl && rowEl.querySelector("[data-inj-pts]");
       if (ptsInp) ptsInp.value = row.pts;
+      injImpact.title = "Full-Out impact · manual";
       setProfile(profileAbbr, p);
       refreshTeamDerived();
       return;
@@ -5489,10 +5658,23 @@ function bind() {
       if (injPos) row.pos = injPos.value;
       if (injStatus) row.status = injStatus.value;
       if (!row.custom) {
-        row.pts = injuryRowPts(row.pos, row.status, row.impact);
+        if (injPos && row.impact_source !== "manual") {
+          row.impact = null;
+          row.impact_source = null;
+          applyInjuryImpactFields(row, profileAbbr);
+        } else {
+          row.pts = injuryRowPts(row.pos, row.status, row.impact);
+        }
         const rowEl = e.target.closest(".inj-row");
         const ptsInp = rowEl && rowEl.querySelector("[data-inj-pts]");
+        const impInp = rowEl && rowEl.querySelector("[data-inj-impact]");
         if (ptsInp) ptsInp.value = row.pts;
+        if (impInp && injPos && row.impact_source !== "manual") {
+          impInp.value = row.impact != null ? row.impact : "";
+          impInp.title = row.impact_source
+            ? `Full-Out impact · ${row.impact_source}`
+            : "Full-Out impact (surplus vs replacement)";
+        }
       }
       setProfile(profileAbbr, p);
       refreshTeamDerived();
