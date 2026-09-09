@@ -2049,7 +2049,7 @@ async function loadNfl() {
   }
   seedNotesIfNeeded();
   try {
-    const res = await fetch("./data/tickets-2026.json?v=tix1");
+    const res = await fetch("./data/tickets-2026.json?v=tix2");
     if (!res.ok) throw new Error(String(res.status));
     const data = await res.json();
     if (!data || !Array.isArray(data.tickets)) throw new Error("bad tickets seed");
