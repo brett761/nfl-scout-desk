@@ -2696,3 +2696,42 @@ button.sked-venue {
 }
 .home-look-side:hover { background: #141418; }
 .home-look-side.is-on { background: var(--copper); color: #0B0B0E; }
+
+
+/* Running W/L tally strip (home + bets) */
+.home-tally, .bets-tally {
+  margin: 0 0 28px;
+}
+.tally-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  align-items: baseline;
+  padding: 14px 18px;
+  background: var(--charcoal);
+  border: 1px solid var(--slate-dim);
+  border-left: 3px solid var(--copper);
+  font-size: 14px;
+  color: var(--muted);
+}
+.tally-strip em {
+  font-style: normal;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 11px;
+  color: var(--muted);
+  margin-right: 6px;
+}
+.tally-strip strong {
+  font-weight: 700;
+  color: var(--ink, #EBEEF0);
+  font-variant-numeric: tabular-nums;
+}
+.tally-strip strong.up { color: var(--process); }
+.tally-strip strong.down { color: var(--lose); }
+.tally-strip small {
+  color: var(--slate);
+  font-size: 12px;
+  margin-left: 4px;
+}
+.bets-tally { margin: 0 0 18px; }

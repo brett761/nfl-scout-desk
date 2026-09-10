@@ -380,10 +380,32 @@ function computeCLV(ticket) {
   return bet - close;
 }
 
+function normalizeResult(result) {
+  const r = String(result || "").trim().toUpperCase();
+  if (!r) return "";
+  if (r === "WIN" || r === "W") return "W";
+  if (r === "LOSS" || r === "L") return "L";
+  if (r === "PUSH" || r === "P") return "P";
+  if (r === "VOID") return "VOID";
+  if (r === "PENDING" || r === "PASS") return r;
+  return r;
+}
+
 function computeProfit(ticket) {
-  const result = ticket.result;
+  const raw = ticket.result;
+  if (!raw) return null;
+  const result = normalizeResult(raw);
   if (!result || result === "PENDING" || result === "PASS") return null;
   if (result === "P" || result === "VOID") return 0;
+  // Prefer explicit profit (Kalshi / logged payouts) when it matches the grade.
+  // Especially needed when juice is null. Ignore stale profit after a re-grade.
+  if (result === "W" || result === "L") {
+    const explicit = num(ticket.profit);
+    if (explicit !== null) {
+      if (result === "W" && explicit >= 0) return explicit;
+      if (result === "L" && explicit <= 0) return explicit;
+    }
+  }
   const stake = num(ticket.stake) ?? 0;
   if (result === "L") return -stake;
   if (result === "W") {
@@ -2049,7 +2071,7 @@ async function loadNfl() {
   }
   seedNotesIfNeeded();
   try {
-    const res = await fetch("./data/tickets-2026.json?v=tix2");
+    const res = await fetch("./data/tickets-2026.json?v=pl1");
     if (!res.ok) throw new Error(String(res.status));
     const data = await res.json();
     if (!data || !Array.isArray(data.tickets)) throw new Error("bad tickets seed");
@@ -2244,8 +2266,35 @@ function weekTickets() {
   return tickets.filter((t) => isSeasonTicket(t) && Number(t.week) === Number(currentWeek));
 }
 
+function seasonTickets() {
+  return tickets.filter((t) => isSeasonTicket(t));
+}
+
+function tallyRecord(list) {
+  let w = 0, l = 0, p = 0;
+  for (const t of list) {
+    const r = normalizeResult(t.result);
+    if (r === "W") w += 1;
+    else if (r === "L") l += 1;
+    else if (r === "P") p += 1;
+  }
+  return { w, l, p, text: p ? (w + "–" + l + "–" + p) : (w + "–" + l) };
+}
+
+function sumPL(list) {
+  return list.reduce((s, t) => {
+    const p = computeProfit(t);
+    return s + (p === null ? 0 : p);
+  }, 0);
+}
+
+function hasGradedPL(list) {
+  return list.some((t) => computeProfit(t) !== null);
+}
+
 function kpis() {
   const week = weekTickets();
+  const season = seasonTickets();
   const stakes = week.reduce((s, t) => s + (num(t.stake) || 0), 0);
   const remaining = WEEKLY_BUDGET - stakes;
   const processStakes = week
@@ -2255,11 +2304,23 @@ function kpis() {
     .filter((t) => t.ticket_type === "Parlay")
     .reduce((s, t) => s + (num(t.stake) || 0), 0);
   const straights = week.filter((t) => t.ticket_type === "Straight");
-  const processPL = straights.reduce((s, t) => {
-    const p = computeProfit(t);
-    return s + (p === null ? 0 : p);
-  }, 0);
-  const gradedPL = straights.some((t) => computeProfit(t) !== null);
+  const processPL = sumPL(straights);
+  const gradedPL = hasGradedPL(straights);
+  const processRecord = tallyRecord(straights.filter((t) => {
+    const r = normalizeResult(t.result);
+    return r === "W" || r === "L" || r === "P";
+  }));
+  const seasonStraights = season.filter((t) => t.ticket_type === "Straight");
+  const processSeasonPL = sumPL(seasonStraights);
+  const gradedSeasonPL = hasGradedPL(seasonStraights);
+  const processSeasonRecord = tallyRecord(seasonStraights.filter((t) => {
+    const r = normalizeResult(t.result);
+    return r === "W" || r === "L" || r === "P";
+  }));
+  const seasonEnt = season.filter((t) => t.ticket_type === "Parlay");
+  const entSeasonPL = sumPL(seasonEnt);
+  const gradedEntSeason = hasGradedPL(seasonEnt);
+  const allSeasonPL = processSeasonPL + entSeasonPL;
   const clvs = straights.map((t) => computeCLV(t)).filter((n) => n !== null);
   const avgCLV = clvs.length ? clvs.reduce((a, b) => a + b, 0) / clvs.length : null;
   const clvProbs = straights.map((t) => computeClvProb(t)).filter((n) => n !== null);
@@ -2267,38 +2328,91 @@ function kpis() {
   const passes = week.filter((t) => t.ticket_type === "PASS").length;
   const leftover = Math.max(0, WEEKLY_BUDGET - processStakes - entStakes);
   const hasSeason = week.length > 0;
+  const hasSettled = gradedSeasonPL || gradedEntSeason || gradedPL;
   return {
     remaining, processStakes, entStakes, leftover, processPL, gradedPL,
+    processRecord, processSeasonPL, gradedSeasonPL, processSeasonRecord,
+    entSeasonPL, gradedEntSeason, allSeasonPL, hasSettled,
     avgCLV, clvCount: clvs.length, avgClvProb, clvProbCount: clvProbs.length,
     passes, stakes, hasSeason,
   };
 }
 
+function moneyPL(n) {
+  if (n === null || n === undefined || Number.isNaN(n)) return "—";
+  const sign = n > 0 ? "+" : n < 0 ? "−" : "";
+  const abs = Math.abs(n);
+  const body = Number.isInteger(abs) || Math.abs(abs - Math.round(abs)) < 1e-9
+    ? Math.round(abs).toLocaleString("en-US")
+    : abs.toFixed(2);
+  return sign + "$" + body;
+}
+
+function plClass(n, graded) {
+  if (!graded) return "";
+  if (n > 0) return "up";
+  if (n < 0) return "down";
+  return "";
+}
+
+function tallyStripHtml(k) {
+  if (!k.hasSettled) return "";
+  const season = k.gradedSeasonPL ? esc(moneyPL(k.processSeasonPL)) : "—";
+  const record = k.gradedSeasonPL ? esc(k.processSeasonRecord.text) : "—";
+  const week = k.gradedPL ? esc(moneyPL(k.processPL)) : "—";
+  const weekRec = k.gradedPL ? esc(k.processRecord.text) : "";
+  const fun = k.gradedEntSeason ? esc(moneyPL(k.entSeasonPL)) : "—";
+  return `<div class="tally-strip" role="status">
+    <span><em>Season one-game</em> <strong class="${plClass(k.processSeasonPL, k.gradedSeasonPL)}">${season}</strong> · ${record}</span>
+    <span><em>Week ${esc(String(currentWeek))}</em> <strong class="${plClass(k.processPL, k.gradedPL)}">${week}</strong>${weekRec ? " · " + weekRec : ""}</span>
+    <span><em>Fun bets</em> <strong class="${plClass(k.entSeasonPL, k.gradedEntSeason)}">${fun}</strong> <small>(don’t score the desk)</small></span>
+  </div>`;
+}
+
+function renderTallyStrips() {
+  const k = kpis();
+  const html = tallyStripHtml(k);
+  const home = document.getElementById("home-tally");
+  if (home) {
+    home.hidden = !html;
+    home.innerHTML = html;
+  }
+  const bets = document.getElementById("bets-tally");
+  if (bets) {
+    bets.hidden = !html;
+    bets.innerHTML = html;
+  }
+}
+
 function renderKPIs() {
   const k = kpis();
-  const plClass = !k.gradedPL ? "" : k.processPL > 0 ? "up" : k.processPL < 0 ? "down" : "";
-  const clvClass = k.avgCLV === null ? "" : k.avgCLV > 0 ? "up" : k.avgCLV < 0 ? "down" : "";
+  const seasonClass = plClass(k.processSeasonPL, k.gradedSeasonPL);
+  const weekClass = plClass(k.processPL, k.gradedPL);
+  const funClass = plClass(k.entSeasonPL, k.gradedEntSeason);
+  const clvLine = k.avgCLV === null
+    ? ""
+    : `<p class="kpi-sub ${k.avgCLV > 0 ? "up" : k.avgCLV < 0 ? "down" : ""}">avg CLV ${esc(pts(k.avgCLV))}${k.avgClvProb === null ? "" : " · clv_prob " + esc(fmtClvProb(k.avgClvProb))}</p>`;
   document.getElementById("kpi-grid").innerHTML = `
+    <article class="kpi process">
+      <p class="kpi-label">Season one-game P/L</p>
+      <p class="kpi-val ${seasonClass}">${k.gradedSeasonPL ? esc(moneyPL(k.processSeasonPL)) : "—"}</p>
+      <p class="kpi-note">${k.gradedSeasonPL ? esc(k.processSeasonRecord.text) + " · straights only" : "One-game bets only · parlays are for fun"}</p>
+      ${clvLine}
+    </article>
+    <article class="kpi process">
+      <p class="kpi-label">Week process P/L</p>
+      <p class="kpi-val ${weekClass}">${k.gradedPL ? esc(moneyPL(k.processPL)) : "—"}</p>
+      <p class="kpi-note">${k.gradedPL ? "This week " + esc(k.processRecord.text) : "This week’s one-game bets"}${k.passes ? " · " + k.passes + " skip" + (k.passes === 1 ? "" : "s") : ""}</p>
+    </article>
+    <article class="kpi pass">
+      <p class="kpi-label">Season fun P/L</p>
+      <p class="kpi-val ${funClass}">${k.gradedEntSeason ? esc(moneyPL(k.entSeasonPL)) : "—"}</p>
+      <p class="kpi-note">Fun bets (don’t score the desk)</p>
+    </article>
     <article class="kpi gold">
       <p class="kpi-label">Money left this week</p>
       <p class="kpi-val">${esc(moneyInt(k.remaining))}<small class="kpi-units"> · ${esc(String(Math.max(0, Math.round(k.remaining / UNIT))))}u</small></p>
       <p class="kpi-note">20 units · $50 each · leftover stays unspent</p>
-    </article>
-    <article class="kpi process">
-      <p class="kpi-label">One-game P/L</p>
-      <p class="kpi-val ${plClass}">${k.gradedPL ? esc(money(k.processPL)) : "—"}</p>
-      <p class="kpi-note">One-game bets only · parlays are for fun</p>
-    </article>
-    <article class="kpi">
-      <p class="kpi-label">Beat the last number?</p>
-      <p class="kpi-val ${clvClass}">${k.avgCLV === null ? "—" : esc(pts(k.avgCLV))}</p>
-      <p class="kpi-note">${k.clvCount ? k.clvCount + " one-game bet" + (k.clvCount === 1 ? "" : "s") + " vs the last sportsbook number" : "Did we get a better number than the last one?"}</p>
-      ${k.avgClvProb === null ? "" : `<p class="kpi-sub ${k.avgClvProb > 0 ? "up" : k.avgClvProb < 0 ? "down" : ""}">avg clv_prob ${esc(fmtClvProb(k.avgClvProb))} · ${k.clvProbCount} process</p>`}
-    </article>
-    <article class="kpi pass">
-      <p class="kpi-label">Games we skipped</p>
-      <p class="kpi-val">${k.passes}</p>
-      <p class="kpi-note">A skip is a decision, not a miss</p>
     </article>`;
 
   const tot = WEEKLY_BUDGET || 1;
@@ -2319,6 +2433,7 @@ function renderKPIs() {
     <li><i class="i-l"></i>Unspent ${esc(moneyInt(k.leftover))}</li>`;
 
   document.getElementById("empty-desk").hidden = k.hasSeason;
+  renderTallyStrips();
 }
 
 /* ---------- card ---------- */
@@ -2326,7 +2441,7 @@ function renderKPIs() {
 function slotStatus(ticket) {
   if (!ticket) return { code: "EMPTY", label: "EMPTY" };
   if (ticket.ticket_type === "PASS") return { code: "PASS", label: "PASS" };
-  const r = ticket.result;
+  const r = normalizeResult(ticket.result);
   if (r && r !== "PENDING") return { code: "GRADED", label: "GRADED · " + r };
   return { code: "LOCKED", label: "LOCKED" };
 }
@@ -2451,7 +2566,7 @@ function renderLedger() {
       <td>${esc(t.book)}</td>
       <td class="num">${t.close_line == null || t.close_line === "" ? "—" : esc(t.close_line)}</td>
       <td class="num ${clv > 0 ? "profit-up" : clv < 0 ? "profit-down" : ""}">${esc(pts(clv))}${clvProbHtml}</td>
-      <td class="num">${esc(t.result || "PENDING")}</td>
+      <td class="num">${esc(normalizeResult(t.result) || t.result || "PENDING")}</td>
       <td class="num ${pClass}">${profit === null ? "—" : esc(money(profit))}</td>
       <td class="notes">${esc(t.notes)}</td>
       <td>
@@ -5031,7 +5146,11 @@ function openSheet(opts = {}) {
   document.getElementById("f-book").value = opts.book || "";
   document.getElementById("f-timing").value = opts.timing_thesis || "PRICE_CLV";
   document.getElementById("f-notes").value = opts.notes || "";
-  document.getElementById("f-result").value = opts.result || (opts.ticket_type === "PASS" ? "VOID" : "PENDING");
+  const rawResult = opts.result || (opts.ticket_type === "PASS" ? "VOID" : "PENDING");
+  const normR = normalizeResult(rawResult);
+  document.getElementById("f-result").value = (normR === "W" || normR === "L" || normR === "P" || normR === "VOID" || normR === "PENDING")
+    ? (normR || "PENDING")
+    : (rawResult || "PENDING");
   document.getElementById("f-close").value = opts.close_line ?? "";
   const closeBookEl = document.getElementById("f-close-book");
   if (closeBookEl) closeBookEl.value = opts.close_book || sharpBook || SHARP_BOOK_DEFAULT;
@@ -5079,6 +5198,7 @@ function readForm() {
     timing_thesis: data.timing_thesis,
     notes: data.notes,
     sample: sample,
+    profit: existing && existing.profit != null ? existing.profit : null,
   });
 }
 
