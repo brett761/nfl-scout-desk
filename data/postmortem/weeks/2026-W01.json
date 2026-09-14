@@ -2,17 +2,17 @@
   "season": 2026,
   "week": 1,
   "label": "2026-W01",
-  "pulled": "2026-09-14T03:10:12Z",
-  "status": "PARTIAL \u2014 SNF DAL@NYG in progress; MNF DEN@KC scheduled. Grade will refresh after MNF.",
+  "pulled": "2026-09-14T13:11:24Z",
+  "status": "PARTIAL \u2014 SNF DAL@NYG FINAL; MNF DEN@KC scheduled Mon 8:15pm ET. Full close after MNF.",
   "sign_convention": "home-centric spreads (neg=home fav); projected_home_margin=-spread; actual=home-away",
   "primary_metric": "abs_error_projected_vs_actual_margin",
   "summary": {
-    "games_final": 14,
-    "games_pending": 2,
+    "games_final": 15,
+    "games_pending": 1,
     "model_games_n": 1,
     "model_mae": 2.8,
-    "market_mae": 10.821,
-    "model_vs_market": "Only NE@SEA has model line. Model MAE 2.8 vs market MAE 0.5 on that game (market beat model). Week market MAE 10.821 on 14 finals \u2014 high early-season variance."
+    "market_mae": 10.833,
+    "model_vs_market": "Only NE@SEA has model line. Model MAE 2.8 vs market MAE 0.5 on that game (market beat model). Week market MAE 10.833 on 15 finals (SNF in; MNF pending)."
   },
   "rows": [
     {
@@ -672,10 +672,10 @@
       "game": "DAL@NYG",
       "away": "DAL",
       "home": "NYG",
-      "status": "STATUS_IN_PROGRESS",
-      "away_score": 14,
+      "status": "STATUS_FINAL",
+      "away_score": 20,
       "home_score": 28,
-      "actual_home_margin": null,
+      "actual_home_margin": 8,
       "model_home_spread": null,
       "model_projected_home_margin": null,
       "model_abs_error": null,
@@ -684,12 +684,13 @@
       "close_total": 47.5,
       "open_spread": 2.5,
       "open_total": 48.5,
-      "market_projected_home_margin": null,
-      "market_abs_error": null,
-      "market_signed_error": null,
+      "market_projected_home_margin": -3.0,
+      "market_abs_error": 11.0,
+      "market_signed_error": -11.0,
       "feature_stack": null,
-      "classification": "pending",
-      "tickets": []
+      "classification": "market_miss",
+      "tickets": [],
+      "classification_note": "No desk model lock \u2014 market-vs-actual only. NYG +8 as home dog +3; market projected \u22123."
     },
     {
       "espn_id": "401872931",

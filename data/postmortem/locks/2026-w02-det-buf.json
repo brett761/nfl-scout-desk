@@ -1,0 +1,47 @@
+{
+  "week": 2,
+  "season": 2026,
+  "game_id": "DET@BUF",
+  "kick": "2026-09-17T20:15:00-04:00",
+  "away": "DET",
+  "home": "BUF",
+  "espn_id": "401872932",
+  "venue": "Highmark Stadium",
+  "neutral": false,
+  "window": "TNF",
+  "model_home_spread": null,
+  "model_home_spread_source": "null_reason",
+  "null_reason": "Cannot honestly desk_compute model_home_spread for W2 TNF: injury-2026.json is cutdown-era (BUF missing; DET list pre-W1); no live desk profile / post-W1 injury pull; return layer missing DET/BUF; prep/ats/sched/matchup need app.js runtime state. Prefer null over reconstructed guess. Re-freeze after injury refresh if model becomes computable before kick.",
+  "street_home_spread": -3.5,
+  "close_at_lock": -3.5,
+  "ou_street": 53.5,
+  "street_note": "ESPN DraftKings Mon AM Sep 14: BUF \u22123.5 / 53.5 (unchanged vs Sun night). AN multi-book: book15 \u22124 / 53.5, book68 \u22123.5 / 53.5, book30 open \u22123 / 52.5 \u2014 street consensus near BUF \u22123.5 to \u22124.",
+  "edge_home": null,
+  "edge_note": "edge undefined while model null",
+  "feature_stack": {
+    "gap_note": "No feature stack frozen \u2014 injury/runtime layers unclean for honest W2 compute.",
+    "layer_snapshot_static_only": {
+      "note": "Static file nets only (NOT a model line). prior/fa/madden/pff/sos from desk JSONs; injury/return/prep/ats/sched/matchup omitted.",
+      "away_DET": {
+        "prior": 3.27,
+        "fa": -1.8,
+        "draft": 0,
+        "madden": 0.44,
+        "pff": 0.96,
+        "sos": -0.26
+      },
+      "home_BUF": {
+        "prior": 5.08,
+        "fa": 0.1,
+        "draft": 0,
+        "madden": 0.12,
+        "pff": 0.28,
+        "sos": -0.56
+      }
+    }
+  },
+  "frozen_at": "2026-09-14 9:11 AM ET (America/New_York)",
+  "frozen_at_utc": "2026-09-14T13:11:24Z",
+  "tickets": [],
+  "note": "Pre-kick TNF street freeze Mon AM board lock. Model null by design until injury layer refreshed."
+}
