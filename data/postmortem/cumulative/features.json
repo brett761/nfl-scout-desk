@@ -1,0 +1,96 @@
+{
+  "season": 2026,
+  "updated": "2026-09-14T03:10:12Z",
+  "primary_metric": "abs_error_projected_vs_actual_margin",
+  "secondary": [
+    "ats",
+    "clv",
+    "vs_close_mae"
+  ],
+  "weeks_graded": [
+    "2026-W01"
+  ],
+  "notes": "W01 partial (SNF/MNF pending). Model n=1 only.",
+  "features": {
+    "fa": {
+      "games_with_model": 1,
+      "label": "Insufficient evidence",
+      "trend": "Monitor",
+      "notes": "NE@SEA FA \u22125.7 (SEA\u2212NE) drove model dog lean; market closer to actual. Do not cut weight yet."
+    },
+    "injury": {
+      "games_with_model": 1,
+      "label": "Insufficient evidence",
+      "trend": "Monitor",
+      "notes": "Near wash on NE@SEA. Separate process issue: late QB news (ATL) moved PIT 4 pts \u2014 capture before lock."
+    },
+    "hfa": {
+      "games_with_model": 1,
+      "label": "Insufficient evidence",
+      "trend": "Unchanged",
+      "notes": "HFA=2 on SEA. Melbourne neutral catastrophe is market-only."
+    },
+    "prior": {
+      "games_with_model": 1,
+      "label": "Insufficient evidence",
+      "trend": "Unchanged"
+    },
+    "madden": {
+      "games_with_model": 1,
+      "label": "Insufficient evidence",
+      "trend": "Unchanged"
+    },
+    "pff": {
+      "games_with_model": 1,
+      "label": "Insufficient evidence",
+      "trend": "Unchanged"
+    },
+    "sos": {
+      "games_with_model": 1,
+      "label": "Insufficient evidence",
+      "trend": "Unchanged"
+    },
+    "prep": {
+      "games_with_model": 1,
+      "label": "Insufficient evidence",
+      "trend": "Unchanged"
+    },
+    "ats_coach": {
+      "games_with_model": 1,
+      "label": "Insufficient evidence",
+      "trend": "Unchanged"
+    },
+    "travel_sched": {
+      "games_with_model": 1,
+      "label": "Insufficient evidence",
+      "trend": "Unchanged"
+    },
+    "matchup_chips": {
+      "games_with_model": 1,
+      "label": "Insufficient evidence",
+      "trend": "Unchanged"
+    },
+    "draft": {
+      "games_with_model": 1,
+      "label": "Insufficient evidence",
+      "trend": "Unchanged"
+    },
+    "return": {
+      "games_with_model": 1,
+      "label": "Insufficient evidence",
+      "trend": "Unchanged"
+    },
+    "late_injury_qb_process": {
+      "games_with_model": 0,
+      "label": "Emerging signal",
+      "trend": "Monitor",
+      "notes": "Process feature: same-day starter flips (ATL Tua/Rush \u2192 PIT \u22122.5 to \u22126.5)."
+    }
+  },
+  "aggregate": {
+    "model_mae_w01": 2.8,
+    "market_mae_w01": 10.821,
+    "model_n": 1,
+    "market_n": 14
+  }
+}

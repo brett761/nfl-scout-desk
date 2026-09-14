@@ -1,0 +1,887 @@
+{
+  "season": 2026,
+  "week": 1,
+  "label": "2026-W01",
+  "pulled": "2026-09-14T03:10:12Z",
+  "status": "PARTIAL \u2014 SNF DAL@NYG in progress; MNF DEN@KC scheduled. Grade will refresh after MNF.",
+  "sign_convention": "home-centric spreads (neg=home fav); projected_home_margin=-spread; actual=home-away",
+  "primary_metric": "abs_error_projected_vs_actual_margin",
+  "summary": {
+    "games_final": 14,
+    "games_pending": 2,
+    "model_games_n": 1,
+    "model_mae": 2.8,
+    "market_mae": 10.821,
+    "model_vs_market": "Only NE@SEA has model line. Model MAE 2.8 vs market MAE 0.5 on that game (market beat model). Week market MAE 10.821 on 14 finals \u2014 high early-season variance."
+  },
+  "rows": [
+    {
+      "espn_id": "401872656",
+      "game": "NE@SEA",
+      "away": "NE",
+      "home": "SEA",
+      "status": "STATUS_FINAL",
+      "away_score": 10,
+      "home_score": 13,
+      "actual_home_margin": 3,
+      "model_home_spread": -0.2,
+      "model_projected_home_margin": 0.2,
+      "model_abs_error": 2.8,
+      "model_signed_error": -2.8,
+      "close_spread": -3.5,
+      "close_total": 44.5,
+      "open_spread": -3.5,
+      "open_total": 44.5,
+      "market_projected_home_margin": 3.5,
+      "market_abs_error": 0.5,
+      "market_signed_error": 0.5,
+      "feature_stack": {
+        "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W1 n=0 so fa/return at full prior weight, draft_fade=1",
+        "injury_pulled": "2026-09-09d",
+        "away_NE": {
+          "prior": 7.55,
+          "fa": 2.6,
+          "draft": 0,
+          "madden": 0.49,
+          "pff": 0.4,
+          "sos": -2.31,
+          "return": 0,
+          "injury": -2.53,
+          "adjust": 0,
+          "context": 0,
+          "eff": 6.2
+        },
+        "home_SEA": {
+          "prior": 7.85,
+          "fa": -3.1,
+          "draft": 0,
+          "madden": 0.27,
+          "pff": 1.04,
+          "sos": -0.04,
+          "return": 0,
+          "injury": -2.35,
+          "adjust": 0,
+          "context": 0,
+          "eff": 3.67
+        },
+        "layers_home_minus_away": {
+          "prior": 0.3,
+          "fa": -5.7,
+          "draft": 0,
+          "madden": -0.22,
+          "pff": 0.64,
+          "sos": 2.27,
+          "return": 0,
+          "injury": 0.18,
+          "adjust": 0,
+          "context": 0
+        },
+        "rating_diff_home_minus_away": -2.53,
+        "hfa": 2,
+        "coach": 0,
+        "coach_note": "Macdonald vs Vrabel SU H2H n=1 < min_n 4 \u2192 0",
+        "prep": 0.38,
+        "prep_note": "week1 SEA 0 \u2212 NE (\u22120.38) = +0.38; no bye",
+        "ats": 0.1,
+        "ats_note": "Macdonald +0.10 \u2212 Vrabel 0 (dead) = +0.10",
+        "travel": 0.35,
+        "travel_note": "NE road 3-zone \u22120.35; SEA home 0; sched_net = home\u2212away = +0.35; no short week / early-PT (NE not PT) / trap (W1)",
+        "matchup": -0.1,
+        "matchup_note": "J. Smith-Njigba WR GREAT; C. Kupp WR POOR; net \u22120.10",
+        "context_notes": {
+          "SEA": "FA corner volume after Woolen walked (desk note; no pts assigned)"
+        },
+        "gap": 0.2,
+        "component_sum": [
+          {
+            "label": "rating_diff (SEA\u2212NE)",
+            "val": -2.53
+          },
+          {
+            "label": "HFA",
+            "val": 2
+          },
+          {
+            "label": "coach",
+            "val": 0
+          },
+          {
+            "label": "prep (W1)",
+            "val": 0.38
+          },
+          {
+            "label": "ats",
+            "val": 0.1
+          },
+          {
+            "label": "travel/sched",
+            "val": 0.35
+          },
+          {
+            "label": "matchup",
+            "val": -0.1
+          },
+          {
+            "label": "gap",
+            "val": 0.2
+          },
+          {
+            "label": "model_home_spread (\u2212gap)",
+            "val": -0.2
+          }
+        ],
+        "injuries": {
+          "NE": [
+            {
+              "name": "Harold Landry",
+              "pos": "EDGE1",
+              "status": "PUP",
+              "on": true,
+              "impact": 1.41,
+              "impact_source": "pff",
+              "pts": -1.41,
+              "note": "knee surgery after 2025; reserve/PUP at cutdown, miss first four"
+            },
+            {
+              "name": "TreVeyon Henderson",
+              "pos": "RB1",
+              "status": "OUT",
+              "on": true,
+              "impact": 1.12,
+              "impact_source": "madden",
+              "pts": -1.12,
+              "note": "FINAL Week 1 game status OUT (ankle). Official nfl.com designation for Wednesday opener."
+            }
+          ],
+          "SEA": [
+            {
+              "name": "Zach Charbonnet",
+              "pos": "RB1",
+              "status": "PUP",
+              "on": true,
+              "impact": 1.37,
+              "impact_source": "madden",
+              "pts": -1.37,
+              "note": "moved to reserve/PUP (knee)"
+            },
+            {
+              "name": "Ty Okada",
+              "pos": "S",
+              "status": "OUT",
+              "on": true,
+              "impact": 0.2,
+              "impact_source": "madden",
+              "pts": -0.2,
+              "note": "FINAL Week 1 OUT (hamstring)"
+            },
+            {
+              "name": "Nick Emmanwori",
+              "pos": "S",
+              "status": "QUESTIONABLE",
+              "on": true,
+              "impact": 2.02,
+              "impact_source": "madden",
+              "pts": -0.71,
+              "note": "FINAL Week 1 QUESTIONABLE (ankle); on=true so 0.35\u00d7impact (imp3 Madden-first)"
+            },
+            {
+              "name": "Tory Horton",
+              "pos": "WR2",
+              "status": "QUESTIONABLE",
+              "on": true,
+              "impact": 0.2,
+              "impact_source": "madden",
+              "pts": -0.07,
+              "note": "FINAL Week 1 QUESTIONABLE (hamstring); on=true so 0.35\u00d7impact (imp3 Madden-first)"
+            }
+          ]
+        }
+      },
+      "classification": "partial",
+      "tickets": [
+        {
+          "id": "w1-ne-plus35",
+          "pick": "NE +3.5",
+          "result": "WIN",
+          "profit": 150,
+          "timing_thesis": "PRICE_CLV"
+        },
+        {
+          "id": "w1-jsn-atd",
+          "pick": "Jaxon Smith-Njigba ATD",
+          "result": "WIN",
+          "profit": 396,
+          "timing_thesis": "ENTERTAINMENT"
+        },
+        {
+          "id": "w1-stev-o35-rec",
+          "pick": "Rhamondre Stevenson Over 3.5 Receptions",
+          "result": "WIN",
+          "profit": 157,
+          "timing_thesis": "ENTERTAINMENT"
+        },
+        {
+          "id": "w1-pp-power-ne-sea",
+          "pick": "Holani O2.5 Rec / Stevenson O18.5 Rec Yds / Stevenson O2.5 Rec",
+          "result": "LOSS",
+          "profit": -250,
+          "timing_thesis": "ENTERTAINMENT"
+        },
+        {
+          "id": "w1-km-stev-3rec",
+          "pick": "Stevenson 3+ receptions Yes",
+          "result": "WIN",
+          "profit": 58.96,
+          "timing_thesis": "ENTERTAINMENT"
+        },
+        {
+          "id": "w1-km-stev-6rec",
+          "pick": "Stevenson 6+ receptions Yes",
+          "result": "LOSS",
+          "profit": -14.99,
+          "timing_thesis": "ENTERTAINMENT"
+        },
+        {
+          "id": "w1-km-holani-3rec",
+          "pick": "Holani 3+ receptions Yes",
+          "result": "LOSS",
+          "profit": -14.99,
+          "timing_thesis": "ENTERTAINMENT"
+        },
+        {
+          "id": "w1-km-stev-5rec",
+          "pick": "Stevenson 5+ receptions Yes",
+          "result": "WIN",
+          "profit": 42.0,
+          "timing_thesis": "ENTERTAINMENT"
+        },
+        {
+          "id": "w1-km-stev-4rec",
+          "pick": "Stevenson 4+ receptions Yes",
+          "result": "WIN",
+          "profit": 17.8,
+          "timing_thesis": "ENTERTAINMENT"
+        },
+        {
+          "id": "w1-km-stev-25yd",
+          "pick": "Stevenson 25+ receiving yards Yes",
+          "result": "WIN",
+          "profit": 13.98,
+          "timing_thesis": "ENTERTAINMENT"
+        },
+        {
+          "id": "w1-km-stev-15yd",
+          "pick": "Stevenson 15+ receiving yards Yes",
+          "result": "WIN",
+          "profit": 51.62,
+          "timing_thesis": "ENTERTAINMENT"
+        },
+        {
+          "id": "w1-km-combo-ne-sea",
+          "pick": "Henry 3+ Rec / NE +3.5 (No SEA \u22123.5) / Arroyo 1+ TD",
+          "result": "LOSS",
+          "profit": -39.99,
+          "timing_thesis": "ENTERTAINMENT"
+        }
+      ],
+      "classification_note": "Model MAE 2.8 (SEA underdog in model); market MAE 0.5. Disagreement (model NE vs market SEA -3.5) partially validated \u2014 NE covered +3.5 but SEA won outright by 3."
+    },
+    {
+      "espn_id": "401872657",
+      "game": "SF@LAR",
+      "away": "SF",
+      "home": "LAR",
+      "status": "STATUS_FINAL",
+      "away_score": 27,
+      "home_score": 7,
+      "actual_home_margin": -20,
+      "model_home_spread": null,
+      "model_projected_home_margin": null,
+      "model_abs_error": null,
+      "model_signed_error": null,
+      "close_spread": -3.5,
+      "close_total": 47.5,
+      "open_spread": -2.5,
+      "open_total": 49.5,
+      "market_projected_home_margin": 3.5,
+      "market_abs_error": 23.5,
+      "market_signed_error": 23.5,
+      "feature_stack": null,
+      "classification": "market_catastrophe",
+      "tickets": [
+        {
+          "id": "w1-lar-minus35",
+          "pick": "LAR \u22123.5",
+          "result": "LOSS",
+          "profit": -165,
+          "timing_thesis": "PRICE_CLV"
+        }
+      ],
+      "classification_note": "No desk model lock \u2014 market-vs-actual only"
+    },
+    {
+      "espn_id": "401872925",
+      "game": "TB@CIN",
+      "away": "TB",
+      "home": "CIN",
+      "status": "STATUS_FINAL",
+      "away_score": 27,
+      "home_score": 33,
+      "actual_home_margin": 6,
+      "model_home_spread": null,
+      "model_projected_home_margin": null,
+      "model_abs_error": null,
+      "model_signed_error": null,
+      "close_spread": -3.5,
+      "close_total": 50.5,
+      "open_spread": -3.5,
+      "open_total": 51.5,
+      "market_projected_home_margin": 3.5,
+      "market_abs_error": 2.5,
+      "market_signed_error": -2.5,
+      "feature_stack": null,
+      "classification": "market_strong",
+      "tickets": [
+        {
+          "id": "w1-tb-cin-u505",
+          "pick": "Under 50.5",
+          "result": "LOSS",
+          "profit": -165,
+          "timing_thesis": "PRICE_CLV"
+        }
+      ],
+      "classification_note": "No desk model lock \u2014 market-vs-actual only"
+    },
+    {
+      "espn_id": "401872923",
+      "game": "NO@DET",
+      "away": "NO",
+      "home": "DET",
+      "status": "STATUS_FINAL",
+      "away_score": 30,
+      "home_score": 31,
+      "actual_home_margin": 1,
+      "model_home_spread": null,
+      "model_projected_home_margin": null,
+      "model_abs_error": null,
+      "model_signed_error": null,
+      "close_spread": -7,
+      "close_total": 49.5,
+      "open_spread": -7,
+      "open_total": 49.5,
+      "market_projected_home_margin": 7,
+      "market_abs_error": 6,
+      "market_signed_error": 6,
+      "feature_stack": null,
+      "classification": "market_ok",
+      "tickets": [],
+      "classification_note": "No desk model lock \u2014 market-vs-actual only"
+    },
+    {
+      "espn_id": "401872924",
+      "game": "NYJ@TEN",
+      "away": "NYJ",
+      "home": "TEN",
+      "status": "STATUS_FINAL",
+      "away_score": 23,
+      "home_score": 10,
+      "actual_home_margin": -13,
+      "model_home_spread": null,
+      "model_projected_home_margin": null,
+      "model_abs_error": null,
+      "model_signed_error": null,
+      "close_spread": -1.5,
+      "close_total": 39.5,
+      "open_spread": -2.5,
+      "open_total": 38.5,
+      "market_projected_home_margin": 1.5,
+      "market_abs_error": 14.5,
+      "market_signed_error": 14.5,
+      "feature_stack": null,
+      "classification": "market_catastrophe",
+      "tickets": [],
+      "classification_note": "No desk model lock \u2014 market-vs-actual only"
+    },
+    {
+      "espn_id": "401872659",
+      "game": "BAL@IND",
+      "away": "BAL",
+      "home": "IND",
+      "status": "STATUS_FINAL",
+      "away_score": 41,
+      "home_score": 23,
+      "actual_home_margin": -18,
+      "model_home_spread": null,
+      "model_projected_home_margin": null,
+      "model_abs_error": null,
+      "model_signed_error": null,
+      "close_spread": 3,
+      "close_total": 48.5,
+      "open_spread": 3.5,
+      "open_total": 49.5,
+      "market_projected_home_margin": -3,
+      "market_abs_error": 15,
+      "market_signed_error": 15,
+      "feature_stack": null,
+      "classification": "market_catastrophe",
+      "tickets": [
+        {
+          "id": "w1-ind-plus3",
+          "pick": "IND +3",
+          "result": "LOSS",
+          "profit": -150,
+          "timing_thesis": "PRICE_CLV"
+        }
+      ],
+      "classification_note": "No desk model lock \u2014 market-vs-actual only"
+    },
+    {
+      "espn_id": "401872658",
+      "game": "ATL@PIT",
+      "away": "ATL",
+      "home": "PIT",
+      "status": "STATUS_FINAL",
+      "away_score": 13,
+      "home_score": 20,
+      "actual_home_margin": 7,
+      "model_home_spread": null,
+      "model_projected_home_margin": null,
+      "model_abs_error": null,
+      "model_signed_error": null,
+      "close_spread": -6.5,
+      "close_total": 40.5,
+      "open_spread": -2.5,
+      "open_total": 41.5,
+      "market_projected_home_margin": 6.5,
+      "market_abs_error": 0.5,
+      "market_signed_error": -0.5,
+      "feature_stack": null,
+      "classification": "market_strong",
+      "tickets": [
+        {
+          "id": "w1-pit-minus3",
+          "pick": "PIT \u22123",
+          "result": "WIN",
+          "profit": 150,
+          "timing_thesis": "PRICE_CLV"
+        }
+      ],
+      "classification_note": "No desk model lock \u2014 market-vs-actual only"
+    },
+    {
+      "espn_id": "401872661",
+      "game": "CHI@CAR",
+      "away": "CHI",
+      "home": "CAR",
+      "status": "STATUS_FINAL",
+      "away_score": 59,
+      "home_score": 37,
+      "actual_home_margin": -22,
+      "model_home_spread": null,
+      "model_projected_home_margin": null,
+      "model_abs_error": null,
+      "model_signed_error": null,
+      "close_spread": 3,
+      "close_total": 47.0,
+      "open_spread": 2.5,
+      "open_total": 45.5,
+      "market_projected_home_margin": -3,
+      "market_abs_error": 19,
+      "market_signed_error": 19,
+      "feature_stack": null,
+      "classification": "market_catastrophe",
+      "tickets": [],
+      "classification_note": "No desk model lock \u2014 market-vs-actual only"
+    },
+    {
+      "espn_id": "401872922",
+      "game": "CLE@JAX",
+      "away": "CLE",
+      "home": "JAX",
+      "status": "STATUS_FINAL",
+      "away_score": 10,
+      "home_score": 34,
+      "actual_home_margin": 24,
+      "model_home_spread": null,
+      "model_projected_home_margin": null,
+      "model_abs_error": null,
+      "model_signed_error": null,
+      "close_spread": -8.5,
+      "close_total": 40.5,
+      "open_spread": -7,
+      "open_total": 40.5,
+      "market_projected_home_margin": 8.5,
+      "market_abs_error": 15.5,
+      "market_signed_error": -15.5,
+      "feature_stack": null,
+      "classification": "market_catastrophe",
+      "tickets": [],
+      "classification_note": "No desk model lock \u2014 market-vs-actual only"
+    },
+    {
+      "espn_id": "401872660",
+      "game": "BUF@HOU",
+      "away": "BUF",
+      "home": "HOU",
+      "status": "STATUS_FINAL",
+      "away_score": 36,
+      "home_score": 31,
+      "actual_home_margin": -5,
+      "model_home_spread": null,
+      "model_projected_home_margin": null,
+      "model_abs_error": null,
+      "model_signed_error": null,
+      "close_spread": 1.5,
+      "close_total": 44.5,
+      "open_spread": 1.5,
+      "open_total": 44.5,
+      "market_projected_home_margin": -1.5,
+      "market_abs_error": 3.5,
+      "market_signed_error": 3.5,
+      "feature_stack": null,
+      "classification": "market_ok",
+      "tickets": [
+        {
+          "id": "w1-hou-pk",
+          "pick": "HOU PK",
+          "result": "LOSS",
+          "profit": -165,
+          "timing_thesis": "PRICE_CLV"
+        }
+      ],
+      "classification_note": "No desk model lock \u2014 market-vs-actual only"
+    },
+    {
+      "espn_id": "401872928",
+      "game": "MIA@LV",
+      "away": "MIA",
+      "home": "LV",
+      "status": "STATUS_FINAL",
+      "away_score": 13,
+      "home_score": 27,
+      "actual_home_margin": 14,
+      "model_home_spread": null,
+      "model_projected_home_margin": null,
+      "model_abs_error": null,
+      "model_signed_error": null,
+      "close_spread": -3,
+      "close_total": 40.5,
+      "open_spread": -3,
+      "open_total": 40.5,
+      "market_projected_home_margin": 3,
+      "market_abs_error": 11,
+      "market_signed_error": -11,
+      "feature_stack": null,
+      "classification": "market_miss",
+      "tickets": [
+        {
+          "id": "w1-lv-minus35",
+          "pick": "LV \u22123.5",
+          "result": "WIN",
+          "profit": 150,
+          "timing_thesis": "PRICE_CLV"
+        }
+      ],
+      "classification_note": "No desk model lock \u2014 market-vs-actual only"
+    },
+    {
+      "espn_id": "401872927",
+      "game": "GB@MIN",
+      "away": "GB",
+      "home": "MIN",
+      "status": "STATUS_FINAL",
+      "away_score": 22,
+      "home_score": 39,
+      "actual_home_margin": 17,
+      "model_home_spread": null,
+      "model_projected_home_margin": null,
+      "model_abs_error": null,
+      "model_signed_error": null,
+      "close_spread": -2.5,
+      "close_total": 45.5,
+      "open_spread": 1.5,
+      "open_total": 45.5,
+      "market_projected_home_margin": 2.5,
+      "market_abs_error": 14.5,
+      "market_signed_error": -14.5,
+      "feature_stack": null,
+      "classification": "market_catastrophe",
+      "tickets": [],
+      "classification_note": "No desk model lock \u2014 market-vs-actual only"
+    },
+    {
+      "espn_id": "401872929",
+      "game": "WSH@PHI",
+      "away": "WSH",
+      "home": "PHI",
+      "status": "STATUS_FINAL",
+      "away_score": 22,
+      "home_score": 24,
+      "actual_home_margin": 2,
+      "model_home_spread": null,
+      "model_projected_home_margin": null,
+      "model_abs_error": null,
+      "model_signed_error": null,
+      "close_spread": -6,
+      "close_total": 44,
+      "open_spread": -4.5,
+      "open_total": 47.5,
+      "market_projected_home_margin": 6,
+      "market_abs_error": 4,
+      "market_signed_error": 4,
+      "feature_stack": null,
+      "classification": "market_ok",
+      "tickets": [
+        {
+          "id": "w1-phi-minus45",
+          "pick": "PHI \u22124.5",
+          "result": "LOSS",
+          "profit": -165,
+          "timing_thesis": "PRICE_CLV"
+        }
+      ],
+      "classification_note": "No desk model lock \u2014 market-vs-actual only"
+    },
+    {
+      "espn_id": "401872926",
+      "game": "ARI@LAC",
+      "away": "ARI",
+      "home": "LAC",
+      "status": "STATUS_FINAL",
+      "away_score": 26,
+      "home_score": 14,
+      "actual_home_margin": -12,
+      "model_home_spread": null,
+      "model_projected_home_margin": null,
+      "model_abs_error": null,
+      "model_signed_error": null,
+      "close_spread": -9.5,
+      "close_total": 47,
+      "open_spread": -11.5,
+      "open_total": 46.5,
+      "market_projected_home_margin": 9.5,
+      "market_abs_error": 21.5,
+      "market_signed_error": 21.5,
+      "feature_stack": null,
+      "classification": "market_catastrophe",
+      "tickets": [],
+      "classification_note": "No desk model lock \u2014 market-vs-actual only"
+    },
+    {
+      "espn_id": "401872930",
+      "game": "DAL@NYG",
+      "away": "DAL",
+      "home": "NYG",
+      "status": "STATUS_IN_PROGRESS",
+      "away_score": 14,
+      "home_score": 28,
+      "actual_home_margin": null,
+      "model_home_spread": null,
+      "model_projected_home_margin": null,
+      "model_abs_error": null,
+      "model_signed_error": null,
+      "close_spread": 3,
+      "close_total": 47.5,
+      "open_spread": 2.5,
+      "open_total": 48.5,
+      "market_projected_home_margin": null,
+      "market_abs_error": null,
+      "market_signed_error": null,
+      "feature_stack": null,
+      "classification": "pending",
+      "tickets": []
+    },
+    {
+      "espn_id": "401872931",
+      "game": "DEN@KC",
+      "away": "DEN",
+      "home": "KC",
+      "status": "STATUS_SCHEDULED",
+      "away_score": 0,
+      "home_score": 0,
+      "actual_home_margin": null,
+      "model_home_spread": null,
+      "model_projected_home_margin": null,
+      "model_abs_error": null,
+      "model_signed_error": null,
+      "close_spread": -2.5,
+      "close_total": 43.5,
+      "open_spread": -2.5,
+      "open_total": 43.5,
+      "market_projected_home_margin": null,
+      "market_abs_error": null,
+      "market_signed_error": null,
+      "feature_stack": null,
+      "classification": "pending",
+      "tickets": []
+    }
+  ],
+  "best_market_abs_error": [
+    {
+      "game": "NE@SEA",
+      "mae": 0.5,
+      "margin": 3,
+      "close": -3.5
+    },
+    {
+      "game": "ATL@PIT",
+      "mae": 0.5,
+      "margin": 7,
+      "close": -6.5
+    },
+    {
+      "game": "TB@CIN",
+      "mae": 2.5,
+      "margin": 6,
+      "close": -3.5
+    },
+    {
+      "game": "BUF@HOU",
+      "mae": 3.5,
+      "margin": -5,
+      "close": 1.5
+    },
+    {
+      "game": "WSH@PHI",
+      "mae": 4,
+      "margin": 2,
+      "close": -6
+    }
+  ],
+  "worst_market_abs_error": [
+    {
+      "game": "SF@LAR",
+      "mae": 23.5,
+      "margin": -20,
+      "close": -3.5
+    },
+    {
+      "game": "ARI@LAC",
+      "mae": 21.5,
+      "margin": -12,
+      "close": -9.5
+    },
+    {
+      "game": "CHI@CAR",
+      "mae": 19,
+      "margin": -22,
+      "close": 3
+    },
+    {
+      "game": "CLE@JAX",
+      "mae": 15.5,
+      "margin": 24,
+      "close": -8.5
+    },
+    {
+      "game": "BAL@IND",
+      "mae": 15,
+      "margin": -18,
+      "close": 3
+    }
+  ],
+  "candidate_changes": [
+    {
+      "feature": "FA layer (Week 1 full weight)",
+      "bucket": "Monitor",
+      "confidence": "Insufficient evidence",
+      "evidence": "NE@SEA lock: FA home-minus-away \u22125.7 was largest driver of model liking NE; market SEA \u22123.5 closer to actual +3. n=1.",
+      "n": 1,
+      "confirm_if": "FA-driven disagreements beat market over 6+ weeks",
+      "falsify_if": "FA-driven gaps keep losing to close MAE"
+    },
+    {
+      "feature": "Injury late-news / QB status path",
+      "bucket": "Monitor",
+      "confidence": "Emerging signal (process, not weight)",
+      "evidence": "ATL@PIT: street opened ~PIT \u22122.5, closed \u22126.5 after Tagovailoa back / Rush start. Desk ticket PIT \u22123 still covered (won by 7) but close moved 4 pts. Need explicit late-injury refresh before AM locks.",
+      "n": 1,
+      "confirm_if": "Games with >2pt late injury moves show desk stale vs close",
+      "falsify_if": "Desk injury layer already capturing same moves by lock"
+    },
+    {
+      "feature": "Neutral-site HFA (Melbourne)",
+      "bucket": "Monitor",
+      "confidence": "Insufficient evidence",
+      "evidence": "SF@LAR: LAR \u22123.5 close, SF won by 20. No model lock. Catastrophe for market; do not overfit one Melbourne blowout.",
+      "n": 1
+    },
+    {
+      "feature": "Aggressive weight edits",
+      "bucket": "Unchanged",
+      "confidence": "Strong (process rule)",
+      "evidence": "Week 1 n small; skill forbids aggressive weight changes on 1 week. No weight edits proposed.",
+      "n": 14
+    }
+  ],
+  "tickets_process_check": {
+    "expected": "PIT W, IND L, HOU L, LV W, PHI L, U50.5 L (plus prior NE W, LAR L)",
+    "confirmed": true,
+    "details": [
+      {
+        "id": "w1-pit-minus3",
+        "pick": "PIT \u22123",
+        "result": "WIN",
+        "expected": "WIN",
+        "ok": true,
+        "profit": 150
+      },
+      {
+        "id": "w1-ind-plus3",
+        "pick": "IND +3",
+        "result": "LOSS",
+        "expected": "LOSS",
+        "ok": true,
+        "profit": -150
+      },
+      {
+        "id": "w1-hou-pk",
+        "pick": "HOU PK",
+        "result": "LOSS",
+        "expected": "LOSS",
+        "ok": true,
+        "profit": -165
+      },
+      {
+        "id": "w1-lv-minus35",
+        "pick": "LV \u22123.5",
+        "result": "WIN",
+        "expected": "WIN",
+        "ok": true,
+        "profit": 150
+      },
+      {
+        "id": "w1-phi-minus45",
+        "pick": "PHI \u22124.5",
+        "result": "LOSS",
+        "expected": "LOSS",
+        "ok": true,
+        "profit": -165
+      },
+      {
+        "id": "w1-tb-cin-u505",
+        "pick": "Under 50.5",
+        "result": "LOSS",
+        "expected": "LOSS",
+        "ok": true,
+        "profit": -165
+      },
+      {
+        "id": "w1-ne-plus35",
+        "pick": "NE +3.5",
+        "result": "WIN",
+        "expected": "WIN",
+        "ok": true,
+        "profit": 150
+      },
+      {
+        "id": "w1-lar-minus35",
+        "pick": "LAR \u22123.5",
+        "result": "LOSS",
+        "expected": "LOSS",
+        "ok": true,
+        "profit": -165
+      }
+    ]
+  }
+}

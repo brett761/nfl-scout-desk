@@ -1,0 +1,553 @@
+{
+  "season": 2026,
+  "week": 1,
+  "pulled": "2026-09-14T03:09:29Z",
+  "pulled_et": "2026-09-13 ~11:10 PM ET",
+  "note": "Closes = Action Network multi-book modal near-kick home spread/total (book 30 early Aug = open). ESPN pickcenter alone not trusted (can drift). PIT closed -6.5 after late ATL QB news (open ~-2.5). Ticket close_line fields may reflect bet-time working closes, not kick.",
+  "sign_convention": "Spreads home-centric (neg = home fav). actual_margin = home_score - away_score. projected_home_margin = -home_spread.",
+  "games": [
+    {
+      "espn_id": "401872656",
+      "away": "NE",
+      "home": "SEA",
+      "away_score": 10,
+      "home_score": 13,
+      "status": "STATUS_FINAL",
+      "status_detail": "Final",
+      "kick": "2026-09-10T00:20Z",
+      "actual_margin_home_minus_away": 3,
+      "open_spread": -3.5,
+      "close_spread": -3.5,
+      "open_total": 44.5,
+      "close_total": 44.5,
+      "close_spread_book_range": [
+        -3.5,
+        -3
+      ],
+      "close_total_book_range": [
+        44.5
+      ],
+      "model_home_spread": -0.2,
+      "model_home_spread_source": "lock 2026-w01-ne-sea.json",
+      "sign_convention": "home-centric book style: negative = home favored; projected_home_margin = -spread",
+      "sources": [
+        "ESPN scoreboard site.api.espn.com week=1 seasontype=2",
+        "Action Network api.actionnetwork.com/web/v1/scoreboard/nfl (book mode near-kick; book 30 as open)",
+        "TeamRankings matchup Odds cross-check"
+      ],
+      "pulled": "2026-09-14T03:09:29Z",
+      "market_projected_home_margin": 3.5,
+      "market_abs_error": 0.5,
+      "market_signed_error": 0.5,
+      "model_projected_home_margin": 0.2,
+      "model_abs_error": 2.8,
+      "model_signed_error": -2.8
+    },
+    {
+      "espn_id": "401872657",
+      "away": "SF",
+      "home": "LAR",
+      "away_score": 27,
+      "home_score": 7,
+      "status": "STATUS_FINAL",
+      "status_detail": "Final",
+      "kick": "2026-09-11T00:35Z",
+      "actual_margin_home_minus_away": -20,
+      "open_spread": -2.5,
+      "close_spread": -3.5,
+      "open_total": 49.5,
+      "close_total": 47.5,
+      "close_spread_book_range": [
+        -3.5
+      ],
+      "close_total_book_range": [
+        47.5
+      ],
+      "model_home_spread": null,
+      "model_home_spread_source": "lock 2026-w01-sf-lar.json (null)",
+      "sign_convention": "home-centric book style: negative = home favored; projected_home_margin = -spread",
+      "sources": [
+        "ESPN scoreboard site.api.espn.com week=1 seasontype=2",
+        "Action Network api.actionnetwork.com/web/v1/scoreboard/nfl (book mode near-kick; book 30 as open)",
+        "TeamRankings matchup Odds cross-check"
+      ],
+      "pulled": "2026-09-14T03:09:29Z",
+      "market_projected_home_margin": 3.5,
+      "market_abs_error": 23.5,
+      "market_signed_error": 23.5
+    },
+    {
+      "espn_id": "401872925",
+      "away": "TB",
+      "home": "CIN",
+      "away_score": 27,
+      "home_score": 33,
+      "status": "STATUS_FINAL",
+      "status_detail": "Final",
+      "kick": "2026-09-13T17:00Z",
+      "actual_margin_home_minus_away": 6,
+      "open_spread": -3.5,
+      "close_spread": -3.5,
+      "open_total": 51.5,
+      "close_total": 50.5,
+      "close_spread_book_range": [
+        -3.5
+      ],
+      "close_total_book_range": [
+        50.5
+      ],
+      "model_home_spread": null,
+      "model_home_spread_source": "no lock \u2014 not reconstructed",
+      "sign_convention": "home-centric book style: negative = home favored; projected_home_margin = -spread",
+      "sources": [
+        "ESPN scoreboard site.api.espn.com week=1 seasontype=2",
+        "Action Network api.actionnetwork.com/web/v1/scoreboard/nfl (book mode near-kick; book 30 as open)",
+        "TeamRankings matchup Odds cross-check"
+      ],
+      "pulled": "2026-09-14T03:09:29Z",
+      "market_projected_home_margin": 3.5,
+      "market_abs_error": 2.5,
+      "market_signed_error": -2.5
+    },
+    {
+      "espn_id": "401872923",
+      "away": "NO",
+      "home": "DET",
+      "away_score": 30,
+      "home_score": 31,
+      "status": "STATUS_FINAL",
+      "status_detail": "Final/OT",
+      "kick": "2026-09-13T17:00Z",
+      "actual_margin_home_minus_away": 1,
+      "open_spread": -7,
+      "close_spread": -7,
+      "open_total": 49.5,
+      "close_total": 49.5,
+      "close_spread_book_range": [
+        -7,
+        -6.5
+      ],
+      "close_total_book_range": [
+        49.5,
+        50
+      ],
+      "model_home_spread": null,
+      "model_home_spread_source": "no lock \u2014 not reconstructed",
+      "sign_convention": "home-centric book style: negative = home favored; projected_home_margin = -spread",
+      "sources": [
+        "ESPN scoreboard site.api.espn.com week=1 seasontype=2",
+        "Action Network api.actionnetwork.com/web/v1/scoreboard/nfl (book mode near-kick; book 30 as open)",
+        "TeamRankings matchup Odds cross-check"
+      ],
+      "pulled": "2026-09-14T03:09:29Z",
+      "market_projected_home_margin": 7,
+      "market_abs_error": 6,
+      "market_signed_error": 6
+    },
+    {
+      "espn_id": "401872924",
+      "away": "NYJ",
+      "home": "TEN",
+      "away_score": 23,
+      "home_score": 10,
+      "status": "STATUS_FINAL",
+      "status_detail": "Final",
+      "kick": "2026-09-13T17:00Z",
+      "actual_margin_home_minus_away": -13,
+      "open_spread": -2.5,
+      "close_spread": -1.5,
+      "open_total": 38.5,
+      "close_total": 39.5,
+      "close_spread_book_range": [
+        -1.5,
+        -1
+      ],
+      "close_total_book_range": [
+        39.5
+      ],
+      "model_home_spread": null,
+      "model_home_spread_source": "no lock \u2014 not reconstructed",
+      "sign_convention": "home-centric book style: negative = home favored; projected_home_margin = -spread",
+      "sources": [
+        "ESPN scoreboard site.api.espn.com week=1 seasontype=2",
+        "Action Network api.actionnetwork.com/web/v1/scoreboard/nfl (book mode near-kick; book 30 as open)",
+        "TeamRankings matchup Odds cross-check"
+      ],
+      "pulled": "2026-09-14T03:09:29Z",
+      "market_projected_home_margin": 1.5,
+      "market_abs_error": 14.5,
+      "market_signed_error": 14.5
+    },
+    {
+      "espn_id": "401872659",
+      "away": "BAL",
+      "home": "IND",
+      "away_score": 41,
+      "home_score": 23,
+      "status": "STATUS_FINAL",
+      "status_detail": "Final",
+      "kick": "2026-09-13T17:00Z",
+      "actual_margin_home_minus_away": -18,
+      "open_spread": 3.5,
+      "close_spread": 3,
+      "open_total": 49.5,
+      "close_total": 48.5,
+      "close_spread_book_range": [
+        3
+      ],
+      "close_total_book_range": [
+        48,
+        48.5
+      ],
+      "model_home_spread": null,
+      "model_home_spread_source": "no lock \u2014 not reconstructed",
+      "sign_convention": "home-centric book style: negative = home favored; projected_home_margin = -spread",
+      "sources": [
+        "ESPN scoreboard site.api.espn.com week=1 seasontype=2",
+        "Action Network api.actionnetwork.com/web/v1/scoreboard/nfl (book mode near-kick; book 30 as open)",
+        "TeamRankings matchup Odds cross-check"
+      ],
+      "pulled": "2026-09-14T03:09:29Z",
+      "market_projected_home_margin": -3,
+      "market_abs_error": 15,
+      "market_signed_error": 15
+    },
+    {
+      "espn_id": "401872658",
+      "away": "ATL",
+      "home": "PIT",
+      "away_score": 13,
+      "home_score": 20,
+      "status": "STATUS_FINAL",
+      "status_detail": "Final",
+      "kick": "2026-09-13T17:00Z",
+      "actual_margin_home_minus_away": 7,
+      "open_spread": -2.5,
+      "close_spread": -6.5,
+      "open_total": 41.5,
+      "close_total": 40.5,
+      "close_spread_book_range": [
+        -6.5
+      ],
+      "close_total_book_range": [
+        40.5
+      ],
+      "model_home_spread": null,
+      "model_home_spread_source": "no lock \u2014 not reconstructed",
+      "sign_convention": "home-centric book style: negative = home favored; projected_home_margin = -spread",
+      "sources": [
+        "ESPN scoreboard site.api.espn.com week=1 seasontype=2",
+        "Action Network api.actionnetwork.com/web/v1/scoreboard/nfl (book mode near-kick; book 30 as open)",
+        "TeamRankings matchup Odds cross-check"
+      ],
+      "pulled": "2026-09-14T03:09:29Z",
+      "market_projected_home_margin": 6.5,
+      "market_abs_error": 0.5,
+      "market_signed_error": -0.5
+    },
+    {
+      "espn_id": "401872661",
+      "away": "CHI",
+      "home": "CAR",
+      "away_score": 59,
+      "home_score": 37,
+      "status": "STATUS_FINAL",
+      "status_detail": "Final",
+      "kick": "2026-09-13T17:00Z",
+      "actual_margin_home_minus_away": -22,
+      "open_spread": 2.5,
+      "close_spread": 3,
+      "open_total": 45.5,
+      "close_total": 47.0,
+      "close_spread_book_range": [
+        3
+      ],
+      "close_total_book_range": [
+        46.5,
+        47,
+        47.5
+      ],
+      "model_home_spread": null,
+      "model_home_spread_source": "no lock \u2014 not reconstructed",
+      "sign_convention": "home-centric book style: negative = home favored; projected_home_margin = -spread",
+      "sources": [
+        "ESPN scoreboard site.api.espn.com week=1 seasontype=2",
+        "Action Network api.actionnetwork.com/web/v1/scoreboard/nfl (book mode near-kick; book 30 as open)",
+        "TeamRankings matchup Odds cross-check"
+      ],
+      "pulled": "2026-09-14T03:09:29Z",
+      "market_projected_home_margin": -3,
+      "market_abs_error": 19,
+      "market_signed_error": 19
+    },
+    {
+      "espn_id": "401872922",
+      "away": "CLE",
+      "home": "JAX",
+      "away_score": 10,
+      "home_score": 34,
+      "status": "STATUS_FINAL",
+      "status_detail": "Final",
+      "kick": "2026-09-13T17:00Z",
+      "actual_margin_home_minus_away": 24,
+      "open_spread": -7,
+      "close_spread": -8.5,
+      "open_total": 40.5,
+      "close_total": 40.5,
+      "close_spread_book_range": [
+        -9,
+        -8.5
+      ],
+      "close_total_book_range": [
+        40,
+        40.5
+      ],
+      "model_home_spread": null,
+      "model_home_spread_source": "no lock \u2014 not reconstructed",
+      "sign_convention": "home-centric book style: negative = home favored; projected_home_margin = -spread",
+      "sources": [
+        "ESPN scoreboard site.api.espn.com week=1 seasontype=2",
+        "Action Network api.actionnetwork.com/web/v1/scoreboard/nfl (book mode near-kick; book 30 as open)",
+        "TeamRankings matchup Odds cross-check"
+      ],
+      "pulled": "2026-09-14T03:09:29Z",
+      "market_projected_home_margin": 8.5,
+      "market_abs_error": 15.5,
+      "market_signed_error": -15.5
+    },
+    {
+      "espn_id": "401872660",
+      "away": "BUF",
+      "home": "HOU",
+      "away_score": 36,
+      "home_score": 31,
+      "status": "STATUS_FINAL",
+      "status_detail": "Final",
+      "kick": "2026-09-13T17:00Z",
+      "actual_margin_home_minus_away": -5,
+      "open_spread": 1.5,
+      "close_spread": 1.5,
+      "open_total": 44.5,
+      "close_total": 44.5,
+      "close_spread_book_range": [
+        1,
+        1.5
+      ],
+      "close_total_book_range": [
+        44.5
+      ],
+      "model_home_spread": null,
+      "model_home_spread_source": "no lock \u2014 not reconstructed",
+      "sign_convention": "home-centric book style: negative = home favored; projected_home_margin = -spread",
+      "sources": [
+        "ESPN scoreboard site.api.espn.com week=1 seasontype=2",
+        "Action Network api.actionnetwork.com/web/v1/scoreboard/nfl (book mode near-kick; book 30 as open)",
+        "TeamRankings matchup Odds cross-check"
+      ],
+      "pulled": "2026-09-14T03:09:29Z",
+      "market_projected_home_margin": -1.5,
+      "market_abs_error": 3.5,
+      "market_signed_error": 3.5
+    },
+    {
+      "espn_id": "401872928",
+      "away": "MIA",
+      "home": "LV",
+      "away_score": 13,
+      "home_score": 27,
+      "status": "STATUS_FINAL",
+      "status_detail": "Final",
+      "kick": "2026-09-13T20:25Z",
+      "actual_margin_home_minus_away": 14,
+      "open_spread": -3,
+      "close_spread": -3,
+      "open_total": 40.5,
+      "close_total": 40.5,
+      "close_spread_book_range": [
+        -3
+      ],
+      "close_total_book_range": [
+        40.5
+      ],
+      "model_home_spread": null,
+      "model_home_spread_source": "no lock \u2014 not reconstructed",
+      "sign_convention": "home-centric book style: negative = home favored; projected_home_margin = -spread",
+      "sources": [
+        "ESPN scoreboard site.api.espn.com week=1 seasontype=2",
+        "Action Network api.actionnetwork.com/web/v1/scoreboard/nfl (book mode near-kick; book 30 as open)",
+        "TeamRankings matchup Odds cross-check"
+      ],
+      "pulled": "2026-09-14T03:09:29Z",
+      "market_projected_home_margin": 3,
+      "market_abs_error": 11,
+      "market_signed_error": -11
+    },
+    {
+      "espn_id": "401872927",
+      "away": "GB",
+      "home": "MIN",
+      "away_score": 22,
+      "home_score": 39,
+      "status": "STATUS_FINAL",
+      "status_detail": "Final",
+      "kick": "2026-09-13T20:25Z",
+      "actual_margin_home_minus_away": 17,
+      "open_spread": 1.5,
+      "close_spread": -2.5,
+      "open_total": 45.5,
+      "close_total": 45.5,
+      "close_spread_book_range": [
+        -2.5,
+        -2
+      ],
+      "close_total_book_range": [
+        45.5,
+        46.5
+      ],
+      "model_home_spread": null,
+      "model_home_spread_source": "no lock \u2014 not reconstructed",
+      "sign_convention": "home-centric book style: negative = home favored; projected_home_margin = -spread",
+      "sources": [
+        "ESPN scoreboard site.api.espn.com week=1 seasontype=2",
+        "Action Network api.actionnetwork.com/web/v1/scoreboard/nfl (book mode near-kick; book 30 as open)",
+        "TeamRankings matchup Odds cross-check"
+      ],
+      "pulled": "2026-09-14T03:09:29Z",
+      "market_projected_home_margin": 2.5,
+      "market_abs_error": 14.5,
+      "market_signed_error": -14.5
+    },
+    {
+      "espn_id": "401872929",
+      "away": "WSH",
+      "home": "PHI",
+      "away_score": 22,
+      "home_score": 24,
+      "status": "STATUS_FINAL",
+      "status_detail": "Final",
+      "kick": "2026-09-13T20:25Z",
+      "actual_margin_home_minus_away": 2,
+      "open_spread": -4.5,
+      "close_spread": -6,
+      "open_total": 47.5,
+      "close_total": 44,
+      "close_spread_book_range": [
+        -6,
+        -5.5
+      ],
+      "close_total_book_range": [
+        43.5,
+        44,
+        44.5
+      ],
+      "model_home_spread": null,
+      "model_home_spread_source": "no lock \u2014 not reconstructed",
+      "sign_convention": "home-centric book style: negative = home favored; projected_home_margin = -spread",
+      "sources": [
+        "ESPN scoreboard site.api.espn.com week=1 seasontype=2",
+        "Action Network api.actionnetwork.com/web/v1/scoreboard/nfl (book mode near-kick; book 30 as open)",
+        "TeamRankings matchup Odds cross-check"
+      ],
+      "pulled": "2026-09-14T03:09:29Z",
+      "market_projected_home_margin": 6,
+      "market_abs_error": 4,
+      "market_signed_error": 4
+    },
+    {
+      "espn_id": "401872926",
+      "away": "ARI",
+      "home": "LAC",
+      "away_score": 26,
+      "home_score": 14,
+      "status": "STATUS_FINAL",
+      "status_detail": "Final",
+      "kick": "2026-09-13T20:25Z",
+      "actual_margin_home_minus_away": -12,
+      "open_spread": -11.5,
+      "close_spread": -9.5,
+      "open_total": 46.5,
+      "close_total": 47,
+      "close_spread_book_range": [
+        -9.5,
+        -8.5
+      ],
+      "close_total_book_range": [
+        46.5,
+        47,
+        47.5
+      ],
+      "model_home_spread": null,
+      "model_home_spread_source": "no lock \u2014 not reconstructed",
+      "sign_convention": "home-centric book style: negative = home favored; projected_home_margin = -spread",
+      "sources": [
+        "ESPN scoreboard site.api.espn.com week=1 seasontype=2",
+        "Action Network api.actionnetwork.com/web/v1/scoreboard/nfl (book mode near-kick; book 30 as open)",
+        "TeamRankings matchup Odds cross-check"
+      ],
+      "pulled": "2026-09-14T03:09:29Z",
+      "market_projected_home_margin": 9.5,
+      "market_abs_error": 21.5,
+      "market_signed_error": 21.5
+    },
+    {
+      "espn_id": "401872930",
+      "away": "DAL",
+      "home": "NYG",
+      "away_score": 14,
+      "home_score": 28,
+      "status": "STATUS_IN_PROGRESS",
+      "status_detail": "5:42 - 4th Quarter",
+      "kick": "2026-09-14T00:20Z",
+      "actual_margin_home_minus_away": null,
+      "open_spread": 2.5,
+      "close_spread": 3,
+      "open_total": 48.5,
+      "close_total": 47.5,
+      "close_spread_book_range": [
+        3
+      ],
+      "close_total_book_range": [
+        47.5
+      ],
+      "model_home_spread": null,
+      "model_home_spread_source": "no lock \u2014 not reconstructed",
+      "sign_convention": "home-centric book style: negative = home favored; projected_home_margin = -spread",
+      "sources": [
+        "ESPN scoreboard site.api.espn.com week=1 seasontype=2",
+        "Action Network api.actionnetwork.com/web/v1/scoreboard/nfl (book mode near-kick; book 30 as open)",
+        "TeamRankings matchup Odds cross-check"
+      ],
+      "pulled": "2026-09-14T03:09:29Z"
+    },
+    {
+      "espn_id": "401872931",
+      "away": "DEN",
+      "home": "KC",
+      "away_score": 0,
+      "home_score": 0,
+      "status": "STATUS_SCHEDULED",
+      "status_detail": "Mon, September 14th at 8:15 PM EDT",
+      "kick": "2026-09-15T00:15Z",
+      "actual_margin_home_minus_away": null,
+      "open_spread": -2.5,
+      "close_spread": -2.5,
+      "open_total": 43.5,
+      "close_total": 43.5,
+      "close_spread_book_range": [
+        -2.5
+      ],
+      "close_total_book_range": [
+        43.5
+      ],
+      "model_home_spread": null,
+      "model_home_spread_source": "no lock \u2014 not reconstructed",
+      "sign_convention": "home-centric book style: negative = home favored; projected_home_margin = -spread",
+      "sources": [
+        "ESPN scoreboard site.api.espn.com week=1 seasontype=2",
+        "Action Network api.actionnetwork.com/web/v1/scoreboard/nfl (book mode near-kick; book 30 as open)",
+        "TeamRankings matchup Odds cross-check"
+      ],
+      "pulled": "2026-09-14T03:09:29Z"
+    }
+  ]
+}
