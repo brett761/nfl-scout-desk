@@ -1,9 +1,9 @@
 {
   "season": 2026,
   "game": "Madden NFL 27",
-  "pulled": "2026-08-25",
+  "pulled": "2026-09-15",
   "source": "/workspace/nfl-scout/desk/data/madden-27-players.json",
-  "player_count": 2364,
+  "player_count": 1871,
   "scoring": {
     "n_off": 11,
     "n_def": 11,
@@ -15,7 +15,7 @@
     ],
     "ovr_per_point": 4.0,
     "cap": 2.0,
-    "league_ovr": 79.93,
+    "league_ovr": 81.53,
     "note": "Same 22 players per club (11 OFF + 11 DEF by OVR). Surplus vs league mean of those 22. 4 OVR \u2248 1 point, cap \u00b12. Does not rewrite the 2025 prior."
   },
   "teams": {
@@ -23,9 +23,9 @@
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "ovr": 79.5,
-      "off_ovr": 82.45,
-      "def_ovr": 76.55,
+      "ovr": 80.27,
+      "off_ovr": 82.27,
+      "def_ovr": 78.27,
       "off": [
         {
           "name": "Trey McBride",
@@ -78,9 +78,9 @@
           "ovr": 77.0
         },
         {
-          "name": "Trey Benson",
-          "pos": "HB",
-          "ovr": 77.0
+          "name": "Chase Bisontis",
+          "pos": "RG",
+          "ovr": 75.0
         }
       ],
       "def": [
@@ -88,6 +88,16 @@
           "name": "Budda Baker",
           "pos": "SS",
           "ovr": 90.0
+        },
+        {
+          "name": "Josh Sweat",
+          "pos": "REDG",
+          "ovr": 85.0
+        },
+        {
+          "name": "Mack Wilson Sr",
+          "pos": "MIKE",
+          "ovr": 80.0
         },
         {
           "name": "Garrett Williams",
@@ -100,11 +110,6 @@
           "ovr": 78.0
         },
         {
-          "name": "Sean Murphy-Bunting",
-          "pos": "CB",
-          "ovr": 77.0
-        },
-        {
           "name": "Will Johnson",
           "pos": "CB",
           "ovr": 77.0
@@ -112,6 +117,11 @@
         {
           "name": "Andrew Wingard",
           "pos": "FS",
+          "ovr": 76.0
+        },
+        {
+          "name": "Zaven Collins",
+          "pos": "LEDG",
           "ovr": 76.0
         },
         {
@@ -128,27 +138,17 @@
           "name": "Andrew Billings",
           "pos": "DT",
           "ovr": 73.0
-        },
-        {
-          "name": "Starling Thomas V",
-          "pos": "CB",
-          "ovr": 73.0
-        },
-        {
-          "name": "Dadrion Taylor-Demerson",
-          "pos": "FS",
-          "ovr": 72.0
         }
       ],
-      "net": -0.11
+      "net": -0.31
     },
     "ATL": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "ovr": 80.0,
+      "ovr": 81.32,
       "off_ovr": 82.64,
-      "def_ovr": 77.36,
+      "def_ovr": 80.0,
       "off": [
         {
           "name": "Bijan Robinson",
@@ -218,17 +218,37 @@
           "ovr": 88.0
         },
         {
+          "name": "Divine Deablo",
+          "pos": "MIKE",
+          "ovr": 81.0
+        },
+        {
+          "name": "Gervon Dexter Sr",
+          "pos": "DT",
+          "ovr": 79.0
+        },
+        {
+          "name": "Jalon Walker",
+          "pos": "LEDG",
+          "ovr": 79.0
+        },
+        {
+          "name": "James Pearce Jr",
+          "pos": "REDG",
+          "ovr": 79.0
+        },
+        {
           "name": "Xavier Watts",
           "pos": "SS",
           "ovr": 79.0
         },
         {
-          "name": "Avieon Terrell",
-          "pos": "CB",
-          "ovr": 75.0
+          "name": "Samson Ebukam",
+          "pos": "REDG",
+          "ovr": 76.0
         },
         {
-          "name": "Clark Phillips III",
+          "name": "Avieon Terrell",
           "pos": "CB",
           "ovr": 75.0
         },
@@ -238,40 +258,20 @@
           "ovr": 75.0
         },
         {
-          "name": "Da'Shawn Hand",
-          "pos": "DT",
-          "ovr": 74.0
-        },
-        {
-          "name": "Billy Bowman Jr",
-          "pos": "CB",
-          "ovr": 73.0
-        },
-        {
-          "name": "Brandon Dorlus",
-          "pos": "DT",
-          "ovr": 73.0
-        },
-        {
-          "name": "Zach Harrison",
-          "pos": "DT",
-          "ovr": 73.0
-        },
-        {
-          "name": "Mike Ford Jr",
-          "pos": "CB",
-          "ovr": 72.0
+          "name": "Za'Darius Smith",
+          "pos": "LEDG",
+          "ovr": 75.0
         }
       ],
-      "net": 0.02
+      "net": -0.05
     },
     "BAL": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "ovr": 82.14,
+      "ovr": 83.82,
       "off_ovr": 83.0,
-      "def_ovr": 81.27,
+      "def_ovr": 84.64,
       "off": [
         {
           "name": "Lamar Jackson",
@@ -324,12 +324,17 @@
           "ovr": 77.0
         },
         {
-          "name": "Chris Moore",
-          "pos": "WR",
+          "name": "Ethan Pocic",
+          "pos": "C",
           "ovr": 72.0
         }
       ],
       "def": [
+        {
+          "name": "Roquan Smith",
+          "pos": "MIKE",
+          "ovr": 93.0
+        },
         {
           "name": "Kyle Hamilton",
           "pos": "SS",
@@ -338,6 +343,11 @@
         {
           "name": "Nnamdi Madubuike",
           "pos": "DT",
+          "ovr": 90.0
+        },
+        {
+          "name": "Trey Hendrickson",
+          "pos": "REDG",
           "ovr": 90.0
         },
         {
@@ -374,27 +384,17 @@
           "name": "Malaki Starks",
           "pos": "FS",
           "ovr": 78.0
-        },
-        {
-          "name": "John Jenkins",
-          "pos": "DT",
-          "ovr": 75.0
-        },
-        {
-          "name": "Broderick Washington",
-          "pos": "DT",
-          "ovr": 71.0
         }
       ],
-      "net": 0.55
+      "net": 0.57
     },
     "BUF": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "ovr": 80.41,
+      "ovr": 81.73,
       "off_ovr": 83.82,
-      "def_ovr": 77.0,
+      "def_ovr": 79.64,
       "off": [
         {
           "name": "Josh Allen",
@@ -454,6 +454,11 @@
       ],
       "def": [
         {
+          "name": "Greg Rousseau",
+          "pos": "LEDG",
+          "ovr": 88.0
+        },
+        {
           "name": "Christian Benford",
           "pos": "CB",
           "ovr": 83.0
@@ -464,19 +469,34 @@
           "ovr": 82.0
         },
         {
+          "name": "Terrel Bernard",
+          "pos": "MIKE",
+          "ovr": 82.0
+        },
+        {
           "name": "Cole Bishop",
           "pos": "FS",
           "ovr": 80.0
         },
         {
-          "name": "Geno Stone",
-          "pos": "FS",
-          "ovr": 79.0
+          "name": "Bradley Chubb",
+          "pos": "REDG",
+          "ovr": 78.0
         },
         {
           "name": "Maxwell Hairston",
           "pos": "CB",
           "ovr": 78.0
+        },
+        {
+          "name": "Mike Danna",
+          "pos": "LEDG",
+          "ovr": 77.0
+        },
+        {
+          "name": "T.J. Parker",
+          "pos": "REDG",
+          "ovr": 77.0
         },
         {
           "name": "Dee Alford",
@@ -487,37 +507,17 @@
           "name": "C.J. Gardner-Johnson",
           "pos": "SS",
           "ovr": 75.0
-        },
-        {
-          "name": "Davison Igbinosun",
-          "pos": "CB",
-          "ovr": 74.0
-        },
-        {
-          "name": "Landon Jackson",
-          "pos": "DT",
-          "ovr": 74.0
-        },
-        {
-          "name": "Damar Hamlin",
-          "pos": "SS",
-          "ovr": 73.0
-        },
-        {
-          "name": "Greg Gaines",
-          "pos": "DT",
-          "ovr": 73.0
         }
       ],
-      "net": 0.12
+      "net": 0.05
     },
     "CAR": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "ovr": 79.18,
+      "ovr": 80.68,
       "off_ovr": 80.36,
-      "def_ovr": 78.0,
+      "def_ovr": 81.0,
       "off": [
         {
           "name": "Damien Lewis",
@@ -587,6 +587,21 @@
           "ovr": 87.0
         },
         {
+          "name": "Devin Lloyd",
+          "pos": "WILL",
+          "ovr": 86.0
+        },
+        {
+          "name": "Bobby Okereke",
+          "pos": "MIKE",
+          "ovr": 82.0
+        },
+        {
+          "name": "Jaelan Phillips",
+          "pos": "REDG",
+          "ovr": 81.0
+        },
+        {
           "name": "Tre'von Moehrig",
           "pos": "FS",
           "ovr": 81.0
@@ -595,6 +610,11 @@
           "name": "Mike Jackson",
           "pos": "CB",
           "ovr": 80.0
+        },
+        {
+          "name": "Nic Scourton",
+          "pos": "LEDG",
+          "ovr": 75.0
         },
         {
           "name": "Nick Scott",
@@ -610,37 +630,17 @@
           "name": "Lee Hunter",
           "pos": "DT",
           "ovr": 74.0
-        },
-        {
-          "name": "Tershawn Wharton",
-          "pos": "DT",
-          "ovr": 74.0
-        },
-        {
-          "name": "Chau Smith-Wade",
-          "pos": "CB",
-          "ovr": 73.0
-        },
-        {
-          "name": "Isaiah Simmons",
-          "pos": "FS",
-          "ovr": 73.0
-        },
-        {
-          "name": "Akayleb Evans",
-          "pos": "CB",
-          "ovr": 71.0
         }
       ],
-      "net": -0.19
+      "net": -0.21
     },
     "CHI": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "ovr": 80.64,
+      "ovr": 81.77,
       "off_ovr": 83.0,
-      "def_ovr": 78.27,
+      "def_ovr": 80.55,
       "off": [
         {
           "name": "Joe Thuney",
@@ -705,9 +705,19 @@
           "ovr": 90.0
         },
         {
+          "name": "Devin Bush",
+          "pos": "MIKE",
+          "ovr": 86.0
+        },
+        {
           "name": "Kyler Gordon",
           "pos": "CB",
           "ovr": 83.0
+        },
+        {
+          "name": "Montez Sweat",
+          "pos": "LEDG",
+          "ovr": 82.0
         },
         {
           "name": "Grady Jarrett",
@@ -715,9 +725,9 @@
           "ovr": 81.0
         },
         {
-          "name": "Gervon Dexter Sr",
-          "pos": "DT",
-          "ovr": 79.0
+          "name": "T.J. Edwards",
+          "pos": "WILL",
+          "ovr": 81.0
         },
         {
           "name": "Xavier Woods",
@@ -740,30 +750,20 @@
           "ovr": 76.0
         },
         {
-          "name": "Beanie Bishop Jr",
+          "name": "Clark Phillips III",
           "pos": "CB",
           "ovr": 75.0
-        },
-        {
-          "name": "Cam Lewis",
-          "pos": "SS",
-          "ovr": 74.0
-        },
-        {
-          "name": "Neville Gallimore",
-          "pos": "DT",
-          "ovr": 71.0
         }
       ],
-      "net": 0.18
+      "net": 0.06
     },
     "CIN": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "ovr": 79.95,
+      "ovr": 80.55,
       "off_ovr": 81.09,
-      "def_ovr": 78.82,
+      "def_ovr": 80.0,
       "off": [
         {
           "name": "Ja'Marr Chase",
@@ -843,12 +843,22 @@
           "ovr": 80.0
         },
         {
+          "name": "Boye Mafe",
+          "pos": "REDG",
+          "ovr": 78.0
+        },
+        {
           "name": "Dax Hill",
           "pos": "CB",
           "ovr": 78.0
         },
         {
-          "name": "Kyle Dugger",
+          "name": "Cashius Howell",
+          "pos": "REDG",
+          "ovr": 77.0
+        },
+        {
+          "name": "Jordan Battle",
           "pos": "SS",
           "ovr": 77.0
         },
@@ -858,7 +868,7 @@
           "ovr": 76.0
         },
         {
-          "name": "Jordan Battle",
+          "name": "Kyle Dugger",
           "pos": "SS",
           "ovr": 76.0
         },
@@ -866,27 +876,17 @@
           "name": "Kris Jenkins Jr",
           "pos": "DT",
           "ovr": 74.0
-        },
-        {
-          "name": "Ja'Sir Taylor",
-          "pos": "CB",
-          "ovr": 71.0
-        },
-        {
-          "name": "Josh Newton",
-          "pos": "CB",
-          "ovr": 71.0
         }
       ],
-      "net": 0.0
+      "net": -0.24
     },
     "CLE": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "ovr": 77.64,
+      "ovr": 80.05,
       "off_ovr": 78.64,
-      "def_ovr": 76.64,
+      "def_ovr": 81.45,
       "off": [
         {
           "name": "Elgton Jenkins",
@@ -939,7 +939,7 @@
           "ovr": 75.0
         },
         {
-          "name": "Cedric Tillman",
+          "name": "Denzel Boston",
           "pos": "WR",
           "ovr": 74.0
         }
@@ -949,6 +949,21 @@
           "name": "Denzel Ward",
           "pos": "CB",
           "ovr": 93.0
+        },
+        {
+          "name": "Jared Verse",
+          "pos": "REDG",
+          "ovr": 88.0
+        },
+        {
+          "name": "Carson Schwesinger",
+          "pos": "MIKE",
+          "ovr": 83.0
+        },
+        {
+          "name": "Jeremiah Owusu-Koramoah",
+          "pos": "WILL",
+          "ovr": 83.0
         },
         {
           "name": "Grant Delpit",
@@ -961,6 +976,11 @@
           "ovr": 80.0
         },
         {
+          "name": "Quincy Williams",
+          "pos": "WILL",
+          "ovr": 79.0
+        },
+        {
           "name": "Tyson Campbell",
           "pos": "CB",
           "ovr": 79.0
@@ -971,45 +991,25 @@
           "ovr": 77.0
         },
         {
-          "name": "Ronnie Hickman",
-          "pos": "FS",
+          "name": "Mekhi Blackmon",
+          "pos": "CB",
           "ovr": 76.0
         },
         {
-          "name": "Emmanuel McNeil-Warren",
+          "name": "Ronnie Hickman",
           "pos": "FS",
-          "ovr": 75.0
-        },
-        {
-          "name": "Mike Hall Jr",
-          "pos": "DT",
-          "ovr": 72.0
-        },
-        {
-          "name": "Elijah Chatman",
-          "pos": "DT",
-          "ovr": 71.0
-        },
-        {
-          "name": "Damarri Mathis",
-          "pos": "CB",
-          "ovr": 70.0
-        },
-        {
-          "name": "Myles Bryant",
-          "pos": "SS",
-          "ovr": 68.0
+          "ovr": 76.0
         }
       ],
-      "net": -0.57
+      "net": -0.37
     },
     "DAL": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "ovr": 81.23,
+      "ovr": 82.32,
       "off_ovr": 83.09,
-      "def_ovr": 79.36,
+      "def_ovr": 81.55,
       "off": [
         {
           "name": "CeeDee Lamb",
@@ -1075,8 +1075,13 @@
         },
         {
           "name": "Jalen Thompson",
-          "pos": "FS",
+          "pos": "SS",
           "ovr": 85.0
+        },
+        {
+          "name": "Rashan Gary",
+          "pos": "LEDG",
+          "ovr": 84.0
         },
         {
           "name": "DaRon Bland",
@@ -1099,40 +1104,35 @@
           "ovr": 79.0
         },
         {
+          "name": "Malachi Lawrence",
+          "pos": "REDG",
+          "ovr": 78.0
+        },
+        {
           "name": "Malik Hooker",
           "pos": "FS",
           "ovr": 78.0
         },
         {
-          "name": "Derion Kendrick",
-          "pos": "CB",
-          "ovr": 74.0
+          "name": "Von Miller",
+          "pos": "LEDG",
+          "ovr": 78.0
         },
         {
-          "name": "P.J. Locke",
-          "pos": "SS",
-          "ovr": 74.0
-        },
-        {
-          "name": "Jonathan Bullard",
-          "pos": "DT",
-          "ovr": 73.0
-        },
-        {
-          "name": "Markquese Bell",
-          "pos": "SS",
-          "ovr": 72.0
+          "name": "Dee Winters",
+          "pos": "WILL",
+          "ovr": 77.0
         }
       ],
-      "net": 0.32
+      "net": 0.2
     },
     "DEN": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "ovr": 82.36,
+      "ovr": 83.95,
       "off_ovr": 84.0,
-      "def_ovr": 80.73,
+      "def_ovr": 83.91,
       "off": [
         {
           "name": "Garett Bolles",
@@ -1197,6 +1197,11 @@
           "ovr": 97.0
         },
         {
+          "name": "Nik Bonitto",
+          "pos": "REDG",
+          "ovr": 91.0
+        },
+        {
           "name": "Talanoa Hufanga",
           "pos": "SS",
           "ovr": 88.0
@@ -1205,6 +1210,16 @@
           "name": "Zach Allen",
           "pos": "DT",
           "ovr": 87.0
+        },
+        {
+          "name": "Alex Singleton",
+          "pos": "MIKE",
+          "ovr": 85.0
+        },
+        {
+          "name": "Jonathon Cooper",
+          "pos": "LEDG",
+          "ovr": 84.0
         },
         {
           "name": "Brandon Jones",
@@ -1227,24 +1242,9 @@
           "ovr": 77.0
         },
         {
-          "name": "Taylor Rapp",
-          "pos": "SS",
-          "ovr": 77.0
-        },
-        {
           "name": "Jahdae Barron",
           "pos": "CB",
           "ovr": 75.0
-        },
-        {
-          "name": "Malcolm Roach",
-          "pos": "DT",
-          "ovr": 75.0
-        },
-        {
-          "name": "Kris Abrams-Draine",
-          "pos": "CB",
-          "ovr": 73.0
         }
       ],
       "net": 0.61
@@ -1253,9 +1253,9 @@
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "ovr": 81.68,
+      "ovr": 83.5,
       "off_ovr": 84.18,
-      "def_ovr": 79.18,
+      "def_ovr": 82.82,
       "off": [
         {
           "name": "Jahmyr Gibbs",
@@ -1308,12 +1308,17 @@
           "ovr": 74.0
         },
         {
-          "name": "Greg Dortch",
+          "name": "Isaac TeSlaa",
           "pos": "WR",
           "ovr": 73.0
         }
       ],
       "def": [
+        {
+          "name": "Aidan Hutchinson",
+          "pos": "LEDG",
+          "ovr": 93.0
+        },
         {
           "name": "Brian Branch",
           "pos": "SS",
@@ -1323,6 +1328,11 @@
           "name": "Kerby Joseph",
           "pos": "FS",
           "ovr": 91.0
+        },
+        {
+          "name": "Jack Campbell",
+          "pos": "MIKE",
+          "ovr": 87.0
         },
         {
           "name": "Alim McNeill",
@@ -1336,8 +1346,18 @@
         },
         {
           "name": "Chuck Clark",
-          "pos": "FS",
+          "pos": "SS",
           "ovr": 78.0
+        },
+        {
+          "name": "Derrick Moore",
+          "pos": "LEDG",
+          "ovr": 77.0
+        },
+        {
+          "name": "D.J. Wonnum",
+          "pos": "REDG",
+          "ovr": 76.0
         },
         {
           "name": "Roger McCreary",
@@ -1348,37 +1368,17 @@
           "name": "Tyleik Williams",
           "pos": "DT",
           "ovr": 76.0
-        },
-        {
-          "name": "Christian Izien",
-          "pos": "SS",
-          "ovr": 74.0
-        },
-        {
-          "name": "Levi Onwuzurike",
-          "pos": "DT",
-          "ovr": 74.0
-        },
-        {
-          "name": "Avonte Maddox",
-          "pos": "FS",
-          "ovr": 73.0
-        },
-        {
-          "name": "Ennis Rakestraw Jr",
-          "pos": "CB",
-          "ovr": 72.0
         }
       ],
-      "net": 0.44
+      "net": 0.49
     },
     "GB": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "ovr": 78.32,
-      "off_ovr": 79.45,
-      "def_ovr": 77.18,
+      "ovr": 80.59,
+      "off_ovr": 80.0,
+      "def_ovr": 81.18,
       "off": [
         {
           "name": "Josh Jacobs",
@@ -1416,31 +1416,41 @@
           "ovr": 78.0
         },
         {
+          "name": "Jonnu Smith",
+          "pos": "TE",
+          "ovr": 76.0
+        },
+        {
+          "name": "Kaleb Johnson",
+          "pos": "HB",
+          "ovr": 74.0
+        },
+        {
           "name": "Aaron Banks",
           "pos": "LG",
           "ovr": 73.0
         },
         {
-          "name": "Anthony Belton",
-          "pos": "RG",
-          "ovr": 72.0
-        },
-        {
           "name": "Bo Melton",
           "pos": "WR",
-          "ovr": 72.0
-        },
-        {
-          "name": "Jordan Morgan",
-          "pos": "LT",
           "ovr": 72.0
         }
       ],
       "def": [
         {
+          "name": "Micah Parsons",
+          "pos": "REDG",
+          "ovr": 98.0
+        },
+        {
           "name": "Xavier McKinney",
           "pos": "SS",
           "ovr": 92.0
+        },
+        {
+          "name": "Edgerrin Cooper",
+          "pos": "WILL",
+          "ovr": 80.0
         },
         {
           "name": "Javon Hargrave",
@@ -1448,8 +1458,18 @@
           "ovr": 80.0
         },
         {
+          "name": "Zaire Franklin",
+          "pos": "MIKE",
+          "ovr": 79.0
+        },
+        {
           "name": "Devonte Wyatt",
           "pos": "DT",
+          "ovr": 78.0
+        },
+        {
+          "name": "Isaiah McDuffie",
+          "pos": "SAM",
           "ovr": 78.0
         },
         {
@@ -1471,37 +1491,17 @@
           "name": "Evan Williams",
           "pos": "FS",
           "ovr": 76.0
-        },
-        {
-          "name": "Javon Bullard",
-          "pos": "SS",
-          "ovr": 76.0
-        },
-        {
-          "name": "Chris McClellan",
-          "pos": "DT",
-          "ovr": 73.0
-        },
-        {
-          "name": "Brandon Cisse",
-          "pos": "CB",
-          "ovr": 72.0
-        },
-        {
-          "name": "Jaden Crumedy",
-          "pos": "DT",
-          "ovr": 70.0
         }
       ],
-      "net": -0.4
+      "net": -0.23
     },
     "HOU": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "ovr": 80.14,
-      "off_ovr": 80.55,
-      "def_ovr": 79.73,
+      "ovr": 82.95,
+      "off_ovr": 81.0,
+      "def_ovr": 84.91,
       "off": [
         {
           "name": "Nico Collins",
@@ -1526,6 +1526,11 @@
         {
           "name": "Woody Marks",
           "pos": "HB",
+          "ovr": 81.0
+        },
+        {
+          "name": "Kayshon Boutte",
+          "pos": "WR",
           "ovr": 80.0
         },
         {
@@ -1535,7 +1540,7 @@
         },
         {
           "name": "Trent Brown",
-          "pos": "LT",
+          "pos": "RT",
           "ovr": 79.0
         },
         {
@@ -1552,14 +1557,19 @@
           "name": "Jayden Higgins",
           "pos": "WR",
           "ovr": 77.0
-        },
-        {
-          "name": "C.J. Stroud",
-          "pos": "QB",
-          "ovr": 76.0
         }
       ],
       "def": [
+        {
+          "name": "Will Anderson Jr",
+          "pos": "LEDG",
+          "ovr": 95.0
+        },
+        {
+          "name": "Danielle Hunter",
+          "pos": "REDG",
+          "ovr": 92.0
+        },
         {
           "name": "Derek Stingley Jr",
           "pos": "CB",
@@ -1581,9 +1591,19 @@
           "ovr": 84.0
         },
         {
+          "name": "Azeez Al-Shaair",
+          "pos": "MIKE",
+          "ovr": 83.0
+        },
+        {
           "name": "Sheldon Rankins",
           "pos": "DT",
           "ovr": 81.0
+        },
+        {
+          "name": "Jadeveon Clowney",
+          "pos": "LEDG",
+          "ovr": 80.0
         },
         {
           "name": "Reed Blankenship",
@@ -1591,40 +1611,20 @@
           "ovr": 79.0
         },
         {
-          "name": "Kayden McDonald",
-          "pos": "DT",
+          "name": "E.J. Speed",
+          "pos": "SAM",
           "ovr": 75.0
-        },
-        {
-          "name": "Tommy Togiai",
-          "pos": "DT",
-          "ovr": 75.0
-        },
-        {
-          "name": "Logan Hall",
-          "pos": "DT",
-          "ovr": 74.0
-        },
-        {
-          "name": "Ja'Marcus Ingram",
-          "pos": "CB",
-          "ovr": 72.0
-        },
-        {
-          "name": "Kamari Ramsey",
-          "pos": "FS",
-          "ovr": 72.0
         }
       ],
-      "net": 0.05
+      "net": 0.36
     },
     "IND": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "ovr": 81.95,
-      "off_ovr": 83.45,
-      "def_ovr": 80.45,
+      "ovr": 82.36,
+      "off_ovr": 83.27,
+      "def_ovr": 81.45,
       "off": [
         {
           "name": "Jonathan Taylor",
@@ -1677,9 +1677,9 @@
           "ovr": 75.0
         },
         {
-          "name": "Nick Westbrook-Ikhine",
+          "name": "Ashton Dulin",
           "pos": "WR",
-          "ovr": 74.0
+          "ovr": 72.0
         }
       ],
       "def": [
@@ -1709,14 +1709,14 @@
           "ovr": 84.0
         },
         {
+          "name": "Laiatu Latu",
+          "pos": "LEDG",
+          "ovr": 82.0
+        },
+        {
           "name": "Cam Taylor-Britt",
           "pos": "CB",
           "ovr": 81.0
-        },
-        {
-          "name": "Mekhi Blackmon",
-          "pos": "CB",
-          "ovr": 76.0
         },
         {
           "name": "A.J. Haulcy",
@@ -1724,30 +1724,30 @@
           "ovr": 74.0
         },
         {
-          "name": "Derrick Nnadi",
-          "pos": "DT",
-          "ovr": 73.0
+          "name": "Arden Key",
+          "pos": "REDG",
+          "ovr": 74.0
         },
         {
-          "name": "Jaylon Jones",
-          "pos": "CB",
-          "ovr": 73.0
+          "name": "CJ Allen",
+          "pos": "MIKE",
+          "ovr": 74.0
         },
         {
-          "name": "Jerry Tillery",
-          "pos": "DT",
-          "ovr": 71.0
+          "name": "JT Tuimoloau",
+          "pos": "REDG",
+          "ovr": 74.0
         }
       ],
-      "net": 0.5
+      "net": 0.21
     },
     "JAX": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "ovr": 77.41,
+      "ovr": 79.14,
       "off_ovr": 78.36,
-      "def_ovr": 76.45,
+      "def_ovr": 79.91,
       "off": [
         {
           "name": "Trevor Lawrence",
@@ -1771,12 +1771,12 @@
         },
         {
           "name": "Ezra Cleveland",
-          "pos": "LG",
+          "pos": "RG",
           "ovr": 80.0
         },
         {
           "name": "Anton Harrison",
-          "pos": "RT",
+          "pos": "LT",
           "ovr": 77.0
         },
         {
@@ -1800,12 +1800,22 @@
           "ovr": 74.0
         },
         {
-          "name": "Emmanuel Pregnon",
-          "pos": "LG",
+          "name": "Ameer Abdullah",
+          "pos": "HB",
           "ovr": 73.0
         }
       ],
       "def": [
+        {
+          "name": "Josh Hines-Allen",
+          "pos": "REDG",
+          "ovr": 89.0
+        },
+        {
+          "name": "Foyesade Oluokun",
+          "pos": "MIKE",
+          "ovr": 86.0
+        },
         {
           "name": "Jourdan Lewis",
           "pos": "CB",
@@ -1822,6 +1832,11 @@
           "ovr": 81.0
         },
         {
+          "name": "Travon Walker",
+          "pos": "LEDG",
+          "ovr": 80.0
+        },
+        {
           "name": "Jarrian Jones",
           "pos": "CB",
           "ovr": 78.0
@@ -1832,45 +1847,30 @@
           "ovr": 76.0
         },
         {
+          "name": "Jahlani Tavai",
+          "pos": "MIKE",
+          "ovr": 75.0
+        },
+        {
+          "name": "Dennis Gardeck",
+          "pos": "SAM",
+          "ovr": 74.0
+        },
+        {
           "name": "Eric Murray",
           "pos": "FS",
           "ovr": 74.0
-        },
-        {
-          "name": "Montaric Brown",
-          "pos": "CB",
-          "ovr": 74.0
-        },
-        {
-          "name": "Albert Regis",
-          "pos": "DT",
-          "ovr": 73.0
-        },
-        {
-          "name": "Caleb Ransaw",
-          "pos": "FS",
-          "ovr": 73.0
-        },
-        {
-          "name": "DaVon Hamilton",
-          "pos": "DT",
-          "ovr": 73.0
-        },
-        {
-          "name": "Ruke Orhorhoro",
-          "pos": "DT",
-          "ovr": 73.0
         }
       ],
-      "net": -0.63
+      "net": -0.6
     },
     "KC": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "ovr": 81.18,
+      "ovr": 82.64,
       "off_ovr": 84.45,
-      "def_ovr": 77.91,
+      "def_ovr": 80.82,
       "off": [
         {
           "name": "Creed Humphrey",
@@ -1935,6 +1935,21 @@
           "ovr": 94.0
         },
         {
+          "name": "Drue Tranquill",
+          "pos": "WILL",
+          "ovr": 89.0
+        },
+        {
+          "name": "George Karlaftis",
+          "pos": "LEDG",
+          "ovr": 81.0
+        },
+        {
+          "name": "Nick Bolton",
+          "pos": "MIKE",
+          "ovr": 81.0
+        },
+        {
           "name": "L'Jarius Sneed",
           "pos": "CB",
           "ovr": 80.0
@@ -1955,45 +1970,30 @@
           "ovr": 77.0
         },
         {
-          "name": "Chamarri Conner",
-          "pos": "FS",
-          "ovr": 76.0
+          "name": "R Mason Thomas",
+          "pos": "LEDG",
+          "ovr": 77.0
         },
         {
-          "name": "Kader Kohou",
-          "pos": "CB",
+          "name": "Chamarri Conner",
+          "pos": "SS",
           "ovr": 76.0
         },
         {
           "name": "Peter Woods",
           "pos": "DT",
           "ovr": 76.0
-        },
-        {
-          "name": "Nohl Williams",
-          "pos": "CB",
-          "ovr": 74.0
-        },
-        {
-          "name": "Jaden Hicks",
-          "pos": "SS",
-          "ovr": 73.0
-        },
-        {
-          "name": "Jadon Canady",
-          "pos": "SS",
-          "ovr": 73.0
         }
       ],
-      "net": 0.31
+      "net": 0.28
     },
     "LAC": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "ovr": 79.68,
+      "ovr": 81.36,
       "off_ovr": 81.64,
-      "def_ovr": 77.73,
+      "def_ovr": 81.09,
       "off": [
         {
           "name": "Rashawn Slater",
@@ -2058,6 +2058,16 @@
           "ovr": 93.0
         },
         {
+          "name": "Khalil Mack",
+          "pos": "REDG",
+          "ovr": 86.0
+        },
+        {
+          "name": "Daiyan Henley",
+          "pos": "WILL",
+          "ovr": 82.0
+        },
+        {
           "name": "Donte Jackson",
           "pos": "CB",
           "ovr": 82.0
@@ -2073,9 +2083,19 @@
           "ovr": 80.0
         },
         {
+          "name": "Akheem Mesidor",
+          "pos": "REDG",
+          "ovr": 79.0
+        },
+        {
           "name": "Elijah Molden",
           "pos": "FS",
           "ovr": 79.0
+        },
+        {
+          "name": "Tuli Tuipulotu",
+          "pos": "LEDG",
+          "ovr": 78.0
         },
         {
           "name": "Teair Tart",
@@ -2083,40 +2103,20 @@
           "ovr": 77.0
         },
         {
-          "name": "Dalvin Tomlinson",
-          "pos": "DT",
-          "ovr": 75.0
-        },
-        {
-          "name": "Cam Hart",
-          "pos": "CB",
-          "ovr": 73.0
-        },
-        {
-          "name": "Justin Eboigbe",
-          "pos": "DT",
-          "ovr": 73.0
-        },
-        {
-          "name": "Genesis Smith",
-          "pos": "SS",
-          "ovr": 72.0
-        },
-        {
-          "name": "Jamaree Caldwell",
-          "pos": "DT",
-          "ovr": 71.0
+          "name": "Denzel Perryman",
+          "pos": "MIKE",
+          "ovr": 76.0
         }
       ],
-      "net": -0.06
+      "net": -0.04
     },
     "LAR": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "ovr": 82.73,
-      "off_ovr": 84.82,
-      "def_ovr": 80.64,
+      "ovr": 85.77,
+      "off_ovr": 85.0,
+      "def_ovr": 86.55,
       "off": [
         {
           "name": "Matthew Stafford",
@@ -2164,26 +2164,46 @@
           "ovr": 78.0
         },
         {
+          "name": "Tutu Atwell",
+          "pos": "WR",
+          "ovr": 75.0
+        },
+        {
           "name": "Tyler Higbee",
           "pos": "TE",
           "ovr": 74.0
-        },
-        {
-          "name": "Colby Parkinson",
-          "pos": "TE",
-          "ovr": 73.0
         }
       ],
       "def": [
+        {
+          "name": "Myles Garrett",
+          "pos": "REDG",
+          "ovr": 99.0
+        },
+        {
+          "name": "Aaron Donald",
+          "pos": "DT",
+          "ovr": 95.0
+        },
         {
           "name": "Trent McDuffie",
           "pos": "CB",
           "ovr": 94.0
         },
         {
+          "name": "Nate Landman",
+          "pos": "MIKE",
+          "ovr": 86.0
+        },
+        {
           "name": "Kobie Turner",
           "pos": "DT",
           "ovr": 85.0
+        },
+        {
+          "name": "Byron Young",
+          "pos": "LEDG",
+          "ovr": 84.0
         },
         {
           "name": "Kam Curl",
@@ -2209,37 +2229,17 @@
           "name": "Braden Fiske",
           "pos": "DT",
           "ovr": 80.0
-        },
-        {
-          "name": "Jaylen Watson",
-          "pos": "CB",
-          "ovr": 79.0
-        },
-        {
-          "name": "Emmanuel Forbes Jr",
-          "pos": "CB",
-          "ovr": 75.0
-        },
-        {
-          "name": "Tyler Davis",
-          "pos": "DT",
-          "ovr": 74.0
-        },
-        {
-          "name": "Ty Hamilton",
-          "pos": "DT",
-          "ovr": 71.0
         }
       ],
-      "net": 0.7
+      "net": 1.06
     },
     "LV": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "ovr": 77.45,
-      "off_ovr": 80.18,
-      "def_ovr": 74.73,
+      "ovr": 79.77,
+      "off_ovr": 80.09,
+      "def_ovr": 79.45,
       "off": [
         {
           "name": "Brock Bowers",
@@ -2287,17 +2287,22 @@
           "ovr": 73.0
         },
         {
-          "name": "Trey Zuhn III",
-          "pos": "LG",
-          "ovr": 73.0
-        },
-        {
           "name": "DJ Glaze",
           "pos": "RT",
+          "ovr": 72.0
+        },
+        {
+          "name": "Jack Bech",
+          "pos": "WR",
           "ovr": 72.0
         }
       ],
       "def": [
+        {
+          "name": "Maxx Crosby",
+          "pos": "LEDG",
+          "ovr": 97.0
+        },
         {
           "name": "Taron Johnson",
           "pos": "CB",
@@ -2309,8 +2314,23 @@
           "ovr": 82.0
         },
         {
+          "name": "Quay Walker",
+          "pos": "WILL",
+          "ovr": 80.0
+        },
+        {
+          "name": "Nakobe Dean",
+          "pos": "MIKE",
+          "ovr": 78.0
+        },
+        {
           "name": "Eric Stokes",
           "pos": "CB",
+          "ovr": 77.0
+        },
+        {
+          "name": "Kwity Paye",
+          "pos": "REDG",
           "ovr": 77.0
         },
         {
@@ -2319,50 +2339,30 @@
           "ovr": 76.0
         },
         {
+          "name": "Keyron Crawford",
+          "pos": "REDG",
+          "ovr": 75.0
+        },
+        {
+          "name": "Malcolm Koonce",
+          "pos": "LEDG",
+          "ovr": 75.0
+        },
+        {
           "name": "Darien Porter",
           "pos": "CB",
           "ovr": 74.0
-        },
-        {
-          "name": "Folorunso Fatukasi",
-          "pos": "DT",
-          "ovr": 74.0
-        },
-        {
-          "name": "Jermod McCoy",
-          "pos": "CB",
-          "ovr": 74.0
-        },
-        {
-          "name": "Adam Butler",
-          "pos": "DT",
-          "ovr": 73.0
-        },
-        {
-          "name": "Isaiah Pola-Mao",
-          "pos": "FS",
-          "ovr": 71.0
-        },
-        {
-          "name": "Decamerion Richardson",
-          "pos": "CB",
-          "ovr": 69.0
-        },
-        {
-          "name": "Jonah Laulu",
-          "pos": "DT",
-          "ovr": 69.0
         }
       ],
-      "net": -0.62
+      "net": -0.44
     },
     "MIA": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "ovr": 75.18,
-      "off_ovr": 77.36,
-      "def_ovr": 73.0,
+      "ovr": 76.41,
+      "off_ovr": 77.0,
+      "def_ovr": 75.82,
       "off": [
         {
           "name": "Aaron Brewer",
@@ -2383,11 +2383,6 @@
           "name": "Kadyn Proctor",
           "pos": "LG",
           "ovr": 77.0
-        },
-        {
-          "name": "Tutu Atwell",
-          "pos": "WR",
-          "ovr": 75.0
         },
         {
           "name": "Austin Jackson",
@@ -2418,9 +2413,19 @@
           "name": "Ollie Gordon II",
           "pos": "HB",
           "ovr": 73.0
+        },
+        {
+          "name": "Caleb Douglas",
+          "pos": "WR",
+          "ovr": 71.0
         }
       ],
       "def": [
+        {
+          "name": "Jordyn Brooks",
+          "pos": "WILL",
+          "ovr": 84.0
+        },
         {
           "name": "Zach Sieler",
           "pos": "DT",
@@ -2430,6 +2435,21 @@
           "name": "Chris Johnson",
           "pos": "CB",
           "ovr": 76.0
+        },
+        {
+          "name": "Jacob Rodriguez",
+          "pos": "MIKE",
+          "ovr": 76.0
+        },
+        {
+          "name": "Chop Robinson",
+          "pos": "LEDG",
+          "ovr": 75.0
+        },
+        {
+          "name": "Joshua Uche",
+          "pos": "REDG",
+          "ovr": 75.0
         },
         {
           "name": "Kenneth Grant",
@@ -2442,50 +2462,30 @@
           "ovr": 74.0
         },
         {
-          "name": "Lonnie Johnson Jr",
-          "pos": "FS",
-          "ovr": 73.0
-        },
-        {
           "name": "JuJu Brents",
           "pos": "CB",
           "ovr": 72.0
         },
         {
-          "name": "Jordan Phillips",
-          "pos": "DT",
-          "ovr": 71.0
+          "name": "Trey Moore",
+          "pos": "LEDG",
+          "ovr": 72.0
         },
         {
-          "name": "Alex Austin",
-          "pos": "CB",
-          "ovr": 70.0
-        },
-        {
-          "name": "Michael Taaffe",
-          "pos": "FS",
-          "ovr": 70.0
-        },
-        {
-          "name": "Nick McCloud",
-          "pos": "CB",
-          "ovr": 70.0
-        },
-        {
-          "name": "Jason Marshall Jr",
-          "pos": "CB",
-          "ovr": 69.0
+          "name": "Willie Gay Jr",
+          "pos": "SAM",
+          "ovr": 72.0
         }
       ],
-      "net": -1.19
+      "net": -1.28
     },
     "MIN": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "ovr": 79.23,
-      "off_ovr": 82.55,
-      "def_ovr": 75.91,
+      "ovr": 81.41,
+      "off_ovr": 82.45,
+      "def_ovr": 80.36,
       "off": [
         {
           "name": "Justin Jefferson",
@@ -2518,12 +2518,12 @@
           "ovr": 81.0
         },
         {
-          "name": "Jordan Mason",
+          "name": "Aaron Jones Sr",
           "pos": "HB",
-          "ovr": 81.0
+          "ovr": 80.0
         },
         {
-          "name": "Aaron Jones Sr",
+          "name": "Jordan Mason",
           "pos": "HB",
           "ovr": 80.0
         },
@@ -2545,14 +2545,29 @@
       ],
       "def": [
         {
+          "name": "Harrison Smith",
+          "pos": "FS",
+          "ovr": 87.0
+        },
+        {
           "name": "Byron Murphy Jr",
           "pos": "CB",
           "ovr": 84.0
         },
         {
+          "name": "Andrew Van Ginkel",
+          "pos": "REDG",
+          "ovr": 83.0
+        },
+        {
           "name": "Josh Metellus",
           "pos": "SS",
           "ovr": 82.0
+        },
+        {
+          "name": "Blake Cashman",
+          "pos": "MIKE",
+          "ovr": 81.0
         },
         {
           "name": "Isaiah Rodgers Sr",
@@ -2565,6 +2580,16 @@
           "ovr": 79.0
         },
         {
+          "name": "Dallas Turner",
+          "pos": "LEDG",
+          "ovr": 77.0
+        },
+        {
+          "name": "Eric Wilson",
+          "pos": "WILL",
+          "ovr": 77.0
+        },
+        {
           "name": "James Pierre",
           "pos": "CB",
           "ovr": 77.0
@@ -2573,42 +2598,17 @@
           "name": "Caleb Banks",
           "pos": "DT",
           "ovr": 76.0
-        },
-        {
-          "name": "Domonique Orange",
-          "pos": "DT",
-          "ovr": 73.0
-        },
-        {
-          "name": "Jakobe Thomas",
-          "pos": "SS",
-          "ovr": 73.0
-        },
-        {
-          "name": "Jay Ward",
-          "pos": "FS",
-          "ovr": 71.0
-        },
-        {
-          "name": "Theo Jackson",
-          "pos": "FS",
-          "ovr": 70.0
-        },
-        {
-          "name": "Charles Demmings",
-          "pos": "CB",
-          "ovr": 69.0
         }
       ],
-      "net": -0.18
+      "net": -0.03
     },
     "NE": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "ovr": 81.91,
-      "off_ovr": 83.91,
-      "def_ovr": 79.91,
+      "ovr": 83.68,
+      "off_ovr": 83.82,
+      "def_ovr": 83.55,
       "off": [
         {
           "name": "Drake Maye",
@@ -2656,13 +2656,13 @@
           "ovr": 81.0
         },
         {
-          "name": "Kayshon Boutte",
-          "pos": "WR",
-          "ovr": 80.0
-        },
-        {
           "name": "Rhamondre Stevenson",
           "pos": "HB",
+          "ovr": 79.0
+        },
+        {
+          "name": "Romeo Doubs",
+          "pos": "WR",
           "ovr": 79.0
         }
       ],
@@ -2688,9 +2688,19 @@
           "ovr": 85.0
         },
         {
+          "name": "Robert Spillane",
+          "pos": "MIKE",
+          "ovr": 85.0
+        },
+        {
           "name": "Craig Woodson",
           "pos": "SS",
           "ovr": 83.0
+        },
+        {
+          "name": "Harold Landry III",
+          "pos": "REDG",
+          "ovr": 82.0
         },
         {
           "name": "Marcus Jones",
@@ -2703,35 +2713,25 @@
           "ovr": 79.0
         },
         {
-          "name": "Joshua Farmer",
-          "pos": "DT",
-          "ovr": 71.0
+          "name": "Dre'Mont Jones",
+          "pos": "LEDG",
+          "ovr": 77.0
         },
         {
-          "name": "Kindle Vildor",
-          "pos": "CB",
-          "ovr": 71.0
-        },
-        {
-          "name": "Dell Pettus",
-          "pos": "SS",
-          "ovr": 69.0
-        },
-        {
-          "name": "Jeremiah Pharms Jr",
-          "pos": "DT",
-          "ovr": 69.0
+          "name": "Gabe Jacas",
+          "pos": "LEDG",
+          "ovr": 76.0
         }
       ],
-      "net": 0.49
+      "net": 0.54
     },
     "NO": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "ovr": 78.18,
+      "ovr": 79.45,
       "off_ovr": 80.09,
-      "def_ovr": 76.27,
+      "def_ovr": 78.82,
       "off": [
         {
           "name": "Chris Olave",
@@ -2796,6 +2796,26 @@
           "ovr": 84.0
         },
         {
+          "name": "Kaden Elliss",
+          "pos": "WILL",
+          "ovr": 83.0
+        },
+        {
+          "name": "Chase Young",
+          "pos": "LEDG",
+          "ovr": 81.0
+        },
+        {
+          "name": "Cameron Jordan",
+          "pos": "REDG",
+          "ovr": 79.0
+        },
+        {
+          "name": "Carl Granderson",
+          "pos": "REDG",
+          "ovr": 79.0
+        },
+        {
           "name": "Davon Godchaux",
           "pos": "DT",
           "ovr": 78.0
@@ -2804,6 +2824,11 @@
           "name": "Julian Blackmon",
           "pos": "SS",
           "ovr": 78.0
+        },
+        {
+          "name": "Anfernee Jennings",
+          "pos": "LEDG",
+          "ovr": 77.0
         },
         {
           "name": "Jonas Sanker",
@@ -2819,42 +2844,17 @@
           "name": "Bryan Bresee",
           "pos": "DT",
           "ovr": 75.0
-        },
-        {
-          "name": "Christen Miller",
-          "pos": "DT",
-          "ovr": 75.0
-        },
-        {
-          "name": "Martin Emerson Jr",
-          "pos": "CB",
-          "ovr": 75.0
-        },
-        {
-          "name": "Jordan Howden",
-          "pos": "FS",
-          "ovr": 74.0
-        },
-        {
-          "name": "Nathan Shepherd",
-          "pos": "DT",
-          "ovr": 74.0
-        },
-        {
-          "name": "Quincy Riley",
-          "pos": "CB",
-          "ovr": 73.0
         }
       ],
-      "net": -0.44
+      "net": -0.52
     },
     "NYG": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "ovr": 79.18,
-      "off_ovr": 80.82,
-      "def_ovr": 77.55,
+      "ovr": 80.82,
+      "off_ovr": 80.64,
+      "def_ovr": 81.0,
       "off": [
         {
           "name": "Andrew Thomas",
@@ -2887,11 +2887,6 @@
           "ovr": 79.0
         },
         {
-          "name": "Darius Slayton",
-          "pos": "WR",
-          "ovr": 78.0
-        },
-        {
           "name": "Francis Mauigoa",
           "pos": "RG",
           "ovr": 78.0
@@ -2910,9 +2905,19 @@
           "name": "Theo Johnson",
           "pos": "TE",
           "ovr": 77.0
+        },
+        {
+          "name": "Calvin Austin",
+          "pos": "WR",
+          "ovr": 76.0
         }
       ],
       "def": [
+        {
+          "name": "Brian Burns",
+          "pos": "REDG",
+          "ovr": 89.0
+        },
         {
           "name": "D.J. Reader",
           "pos": "DT",
@@ -2922,6 +2927,21 @@
           "name": "Jevon Holland",
           "pos": "FS",
           "ovr": 83.0
+        },
+        {
+          "name": "Tremaine Edmunds",
+          "pos": "MIKE",
+          "ovr": 83.0
+        },
+        {
+          "name": "Abdul Carter",
+          "pos": "LEDG",
+          "ovr": 81.0
+        },
+        {
+          "name": "Arvell Reese",
+          "pos": "WILL",
+          "ovr": 79.0
         },
         {
           "name": "Greg Newsome II",
@@ -2934,50 +2954,30 @@
           "ovr": 79.0
         },
         {
+          "name": "Ar'Darius Washington",
+          "pos": "FS",
+          "ovr": 78.0
+        },
+        {
           "name": "Dru Phillips",
           "pos": "CB",
           "ovr": 78.0
         },
         {
-          "name": "Shelby Harris",
-          "pos": "DT",
-          "ovr": 77.0
-        },
-        {
-          "name": "Ar'Darius Washington",
-          "pos": "CB",
-          "ovr": 75.0
-        },
-        {
-          "name": "Colton Hood",
-          "pos": "CB",
-          "ovr": 75.0
-        },
-        {
-          "name": "Deonte Banks",
-          "pos": "CB",
-          "ovr": 75.0
-        },
-        {
-          "name": "Tyler Nubin",
-          "pos": "SS",
-          "ovr": 75.0
-        },
-        {
-          "name": "Jason Pinnock",
-          "pos": "SS",
-          "ovr": 73.0
+          "name": "Kayvon Thibodeaux",
+          "pos": "LEDG",
+          "ovr": 78.0
         }
       ],
-      "net": -0.19
+      "net": -0.18
     },
     "NYJ": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "ovr": 77.82,
+      "ovr": 79.0,
       "off_ovr": 78.18,
-      "def_ovr": 77.45,
+      "def_ovr": 79.82,
       "off": [
         {
           "name": "Breece Hall",
@@ -3000,14 +3000,9 @@
           "ovr": 80.0
         },
         {
-          "name": "Tim Patrick",
-          "pos": "WR",
-          "ovr": 76.0
-        },
-        {
           "name": "Adonai Mitchell",
           "pos": "WR",
-          "ovr": 75.0
+          "ovr": 76.0
         },
         {
           "name": "Dylan Parham",
@@ -3025,6 +3020,11 @@
           "ovr": 75.0
         },
         {
+          "name": "Tim Patrick",
+          "pos": "WR",
+          "ovr": 75.0
+        },
+        {
           "name": "Kenyon Sadiq",
           "pos": "TE",
           "ovr": 74.0
@@ -3037,9 +3037,19 @@
       ],
       "def": [
         {
+          "name": "Demario Davis",
+          "pos": "MIKE",
+          "ovr": 90.0
+        },
+        {
           "name": "Minkah Fitzpatrick",
           "pos": "SS",
           "ovr": 89.0
+        },
+        {
+          "name": "David Bailey",
+          "pos": "REDG",
+          "ovr": 81.0
         },
         {
           "name": "T'Vondre Sweat",
@@ -3054,6 +3064,11 @@
         {
           "name": "Harrison Phillips",
           "pos": "DT",
+          "ovr": 78.0
+        },
+        {
+          "name": "Will McDonald IV",
+          "pos": "LEDG",
           "ovr": 78.0
         },
         {
@@ -3072,35 +3087,20 @@
           "ovr": 76.0
         },
         {
-          "name": "D'Angelo Ponds",
-          "pos": "CB",
-          "ovr": 75.0
-        },
-        {
-          "name": "Jarvis Brownlee Jr",
-          "pos": "CB",
-          "ovr": 75.0
-        },
-        {
-          "name": "Nahshon Wright",
-          "pos": "CB",
-          "ovr": 75.0
-        },
-        {
-          "name": "Azareye'h Thomas",
-          "pos": "CB",
-          "ovr": 74.0
+          "name": "Jamien Sherwood",
+          "pos": "WILL",
+          "ovr": 76.0
         }
       ],
-      "net": -0.53
+      "net": -0.63
     },
     "PHI": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "ovr": 82.32,
+      "ovr": 84.45,
       "off_ovr": 85.09,
-      "def_ovr": 79.55,
+      "def_ovr": 83.82,
       "off": [
         {
           "name": "Lane Johnson",
@@ -3160,6 +3160,11 @@
       ],
       "def": [
         {
+          "name": "Zack Baun",
+          "pos": "WILL",
+          "ovr": 92.0
+        },
+        {
           "name": "Cooper DeJean",
           "pos": "CB",
           "ovr": 89.0
@@ -3175,6 +3180,16 @@
           "ovr": 89.0
         },
         {
+          "name": "Jonathan Greenard",
+          "pos": "REDG",
+          "ovr": 85.0
+        },
+        {
+          "name": "Nolan Smith Jr",
+          "pos": "LEDG",
+          "ovr": 83.0
+        },
+        {
           "name": "Jordan Davis",
           "pos": "DT",
           "ovr": 82.0
@@ -3185,45 +3200,30 @@
           "ovr": 82.0
         },
         {
-          "name": "Marcus Epps",
-          "pos": "SS",
+          "name": "Jihaad Campbell",
+          "pos": "MIKE",
+          "ovr": 79.0
+        },
+        {
+          "name": "Arnold Ebiketie",
+          "pos": "LEDG",
+          "ovr": 77.0
+        },
+        {
+          "name": "A.J. Epenesa",
+          "pos": "REDG",
           "ovr": 75.0
-        },
-        {
-          "name": "Moro Ojomo",
-          "pos": "DT",
-          "ovr": 75.0
-        },
-        {
-          "name": "Andrew Mukuba",
-          "pos": "FS",
-          "ovr": 74.0
-        },
-        {
-          "name": "Michael Carter II",
-          "pos": "SS",
-          "ovr": 74.0
-        },
-        {
-          "name": "Jakorian Bennett",
-          "pos": "CB",
-          "ovr": 73.0
-        },
-        {
-          "name": "Kelee Ringo",
-          "pos": "CB",
-          "ovr": 73.0
         }
       ],
-      "net": 0.6
+      "net": 0.73
     },
     "PIT": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "ovr": 81.09,
+      "ovr": 82.55,
       "off_ovr": 80.27,
-      "def_ovr": 81.91,
+      "def_ovr": 84.82,
       "off": [
         {
           "name": "DK Metcalf",
@@ -3288,9 +3288,19 @@
           "ovr": 95.0
         },
         {
+          "name": "T.J. Watt",
+          "pos": "LEDG",
+          "ovr": 93.0
+        },
+        {
           "name": "Jalen Ramsey",
           "pos": "FS",
           "ovr": 90.0
+        },
+        {
+          "name": "Alex Highsmith",
+          "pos": "REDG",
+          "ovr": 87.0
         },
         {
           "name": "Jamel Dean",
@@ -3313,40 +3323,30 @@
           "ovr": 80.0
         },
         {
-          "name": "Sebastian Joseph-Day",
-          "pos": "DT",
+          "name": "Patrick Queen",
+          "pos": "MIKE",
+          "ovr": 80.0
+        },
+        {
+          "name": "Nick Herbig",
+          "pos": "REDG",
           "ovr": 78.0
         },
         {
-          "name": "Derrick Harmon",
+          "name": "Sebastian Joseph-Day",
           "pos": "DT",
-          "ovr": 77.0
-        },
-        {
-          "name": "Rayshawn Jenkins",
-          "pos": "FS",
-          "ovr": 77.0
-        },
-        {
-          "name": "Asante Samuel Jr",
-          "pos": "CB",
-          "ovr": 76.0
-        },
-        {
-          "name": "Keeanu Benton",
-          "pos": "DT",
-          "ovr": 76.0
+          "ovr": 78.0
         }
       ],
-      "net": 0.29
+      "net": 0.26
     },
     "SEA": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "ovr": 81.0,
-      "off_ovr": 81.55,
-      "def_ovr": 80.45,
+      "ovr": 82.36,
+      "off_ovr": 81.64,
+      "def_ovr": 83.09,
       "off": [
         {
           "name": "Jaxon Smith-Njigba",
@@ -3384,6 +3384,11 @@
           "ovr": 79.0
         },
         {
+          "name": "Jadarian Price",
+          "pos": "HB",
+          "ovr": 76.0
+        },
+        {
           "name": "A.J. Barner",
           "pos": "TE",
           "ovr": 75.0
@@ -3391,11 +3396,6 @@
         {
           "name": "Grey Zabel",
           "pos": "LG",
-          "ovr": 75.0
-        },
-        {
-          "name": "Jadarian Price",
-          "pos": "HB",
           "ovr": 75.0
         },
         {
@@ -3416,6 +3416,11 @@
           "ovr": 88.0
         },
         {
+          "name": "DeMarcus Lawrence",
+          "pos": "LEDG",
+          "ovr": 87.0
+        },
+        {
           "name": "Nick Emmanwori",
           "pos": "SS",
           "ovr": 86.0
@@ -3431,9 +3436,19 @@
           "ovr": 85.0
         },
         {
+          "name": "Ernest Jones IV",
+          "pos": "MIKE",
+          "ovr": 84.0
+        },
+        {
           "name": "Jarran Reed",
           "pos": "DT",
           "ovr": 78.0
+        },
+        {
+          "name": "Derick Hall",
+          "pos": "LEDG",
+          "ovr": 77.0
         },
         {
           "name": "Josh Jobe",
@@ -3441,35 +3456,20 @@
           "ovr": 77.0
         },
         {
-          "name": "Bud Clark",
-          "pos": "FS",
-          "ovr": 75.0
-        },
-        {
-          "name": "Ty Okada",
-          "pos": "FS",
-          "ovr": 75.0
-        },
-        {
-          "name": "Trevon Diggs",
+          "name": "Terrion Arnold",
           "pos": "CB",
-          "ovr": 74.0
-        },
-        {
-          "name": "Julian Neal",
-          "pos": "CB",
-          "ovr": 71.0
+          "ovr": 76.0
         }
       ],
-      "net": 0.27
+      "net": 0.21
     },
     "SF": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "ovr": 80.86,
+      "ovr": 83.77,
       "off_ovr": 86.45,
-      "def_ovr": 75.27,
+      "def_ovr": 81.09,
       "off": [
         {
           "name": "Christian McCaffrey",
@@ -3529,9 +3529,29 @@
       ],
       "def": [
         {
+          "name": "Fred Warner",
+          "pos": "MIKE",
+          "ovr": 97.0
+        },
+        {
+          "name": "Nick Bosa",
+          "pos": "LEDG",
+          "ovr": 94.0
+        },
+        {
+          "name": "Dre Greenlaw",
+          "pos": "WILL",
+          "ovr": 87.0
+        },
+        {
           "name": "Deommodore Lenoir",
           "pos": "CB",
           "ovr": 81.0
+        },
+        {
+          "name": "Mykel Williams",
+          "pos": "REDG",
+          "ovr": 77.0
         },
         {
           "name": "Osa Odighizuwa",
@@ -3554,45 +3574,25 @@
           "ovr": 76.0
         },
         {
-          "name": "Upton Stout",
-          "pos": "CB",
+          "name": "Romello Height",
+          "pos": "LEDG",
           "ovr": 75.0
         },
         {
-          "name": "Ji'Ayir Brown",
-          "pos": "SS",
-          "ovr": 74.0
-        },
-        {
-          "name": "Malik Mustapha",
-          "pos": "FS",
-          "ovr": 74.0
-        },
-        {
-          "name": "Ashtyn Davis",
-          "pos": "FS",
-          "ovr": 73.0
-        },
-        {
-          "name": "Marques Sigle",
-          "pos": "SS",
-          "ovr": 73.0
-        },
-        {
-          "name": "Alfred Collins",
-          "pos": "DT",
-          "ovr": 72.0
+          "name": "Upton Stout",
+          "pos": "CB",
+          "ovr": 75.0
         }
       ],
-      "net": 0.23
+      "net": 0.56
     },
     "TB": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "ovr": 80.18,
+      "ovr": 81.27,
       "off_ovr": 81.18,
-      "def_ovr": 79.18,
+      "def_ovr": 81.36,
       "off": [
         {
           "name": "Tristan Wirfs",
@@ -3662,9 +3662,19 @@
           "ovr": 93.0
         },
         {
+          "name": "Alex Anzalone",
+          "pos": "WILL",
+          "ovr": 81.0
+        },
+        {
           "name": "Zyon McCollum",
           "pos": "CB",
           "ovr": 81.0
+        },
+        {
+          "name": "Rueben Bain Jr.",
+          "pos": "LEDG",
+          "ovr": 80.0
         },
         {
           "name": "Jacob Parrish",
@@ -3677,45 +3687,35 @@
           "ovr": 79.0
         },
         {
+          "name": "Yaya Diaby",
+          "pos": "REDG",
+          "ovr": 79.0
+        },
+        {
           "name": "A'Shawn Robinson",
           "pos": "DT",
           "ovr": 77.0
         },
         {
-          "name": "Calijah Kancey",
-          "pos": "DT",
+          "name": "Al-Quadin Muhammad",
+          "pos": "LEDG",
           "ovr": 76.0
         },
         {
-          "name": "Benjamin Morrison",
-          "pos": "CB",
-          "ovr": 75.0
-        },
-        {
-          "name": "Ifeatu Melifonwu",
-          "pos": "SS",
-          "ovr": 74.0
-        },
-        {
-          "name": "Keionte Scott",
-          "pos": "CB",
-          "ovr": 73.0
-        },
-        {
-          "name": "Demonte Capehart",
+          "name": "Calijah Kancey",
           "pos": "DT",
-          "ovr": 70.0
+          "ovr": 76.0
         }
       ],
-      "net": 0.06
+      "net": -0.06
     },
     "TEN": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "ovr": 77.82,
+      "ovr": 78.91,
       "off_ovr": 78.27,
-      "def_ovr": 77.36,
+      "def_ovr": 79.55,
       "off": [
         {
           "name": "Peter Skoronski",
@@ -3800,45 +3800,45 @@
           "ovr": 78.0
         },
         {
+          "name": "Cedric Gray",
+          "pos": "WILL",
+          "ovr": 78.0
+        },
+        {
+          "name": "Cody Barton",
+          "pos": "MIKE",
+          "ovr": 78.0
+        },
+        {
+          "name": "Keldric Faulk",
+          "pos": "LEDG",
+          "ovr": 78.0
+        },
+        {
+          "name": "Jermaine Johnson II",
+          "pos": "REDG",
+          "ovr": 77.0
+        },
+        {
+          "name": "Jacob Martin",
+          "pos": "LEDG",
+          "ovr": 76.0
+        },
+        {
           "name": "Joshua Williams",
           "pos": "CB",
           "ovr": 75.0
-        },
-        {
-          "name": "Tony Adams",
-          "pos": "SS",
-          "ovr": 75.0
-        },
-        {
-          "name": "Kevin Winston Jr",
-          "pos": "FS",
-          "ovr": 73.0
-        },
-        {
-          "name": "Nazeeh Johnson",
-          "pos": "CB",
-          "ovr": 72.0
-        },
-        {
-          "name": "Solomon Thomas",
-          "pos": "DT",
-          "ovr": 72.0
-        },
-        {
-          "name": "Marcus Harris",
-          "pos": "CB",
-          "ovr": 71.0
         }
       ],
-      "net": -0.53
+      "net": -0.65
     },
     "WSH": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "ovr": 79.41,
+      "ovr": 80.32,
       "off_ovr": 81.36,
-      "def_ovr": 77.45,
+      "def_ovr": 79.27,
       "off": [
         {
           "name": "Laremy Tunsil",
@@ -3903,9 +3903,34 @@
           "ovr": 84.0
         },
         {
+          "name": "Leo Chenal",
+          "pos": "MIKE",
+          "ovr": 83.0
+        },
+        {
           "name": "Nick Cross",
           "pos": "SS",
           "ovr": 81.0
+        },
+        {
+          "name": "Odafe Oweh",
+          "pos": "LEDG",
+          "ovr": 80.0
+        },
+        {
+          "name": "Dorance Armstrong",
+          "pos": "LEDG",
+          "ovr": 79.0
+        },
+        {
+          "name": "Frankie Luvu",
+          "pos": "WILL",
+          "ovr": 79.0
+        },
+        {
+          "name": "Sonny Styles",
+          "pos": "MIKE",
+          "ovr": 78.0
         },
         {
           "name": "Amik Robertson",
@@ -3926,34 +3951,9 @@
           "name": "Rasul Douglas",
           "pos": "CB",
           "ovr": 77.0
-        },
-        {
-          "name": "Trey Amos",
-          "pos": "CB",
-          "ovr": 77.0
-        },
-        {
-          "name": "Charles Omenihu",
-          "pos": "DT",
-          "ovr": 76.0
-        },
-        {
-          "name": "Deatrich Wise Jr",
-          "pos": "DT",
-          "ovr": 76.0
-        },
-        {
-          "name": "Jer'Zhan Newton",
-          "pos": "DT",
-          "ovr": 76.0
-        },
-        {
-          "name": "Maurice Hurst",
-          "pos": "DT",
-          "ovr": 74.0
         }
       ],
-      "net": -0.13
+      "net": -0.3
     }
   },
   "missing": []
