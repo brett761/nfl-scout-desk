@@ -1,11 +1,13 @@
-# 2026 NFL injuries — Scout desk WORKING Wed AM (DET@BUF TNF)
+# 2026 NFL injuries — Scout desk FINAL TNF (DET@BUF)
 
-Pulled Wednesday 16 September 2026 ~9:00 AM ET (America/New_York). Official TNF game status ~4:00 p.m. ET — this is a **WORKING** final-ish sheet for the morning lock. Stamp `injury_pulled=2026-09-16a`.
+Pulled Wednesday 16 September 2026 ~5:44 PM ET (America/New_York). Official TNF Game Status Report (due 4:00 p.m. ET Wed) is in — stamp `injury_pulled=2026-09-16b` **FINAL**.
 
-**DET@BUF focus:** Lions safeties Brian Branch (Achilles) and Kerby Joseph (knee) remain Reserve/PUP — out through first four games including TNF (verified Aug 30 PUP + ESPN roster Out). OL bangs: Mahogany / Blake Miller / Juice Scruggs QUESTIONABLE. D.J. Reed CB1 QUESTIONABLE (foot, limited Tue). Pacheco IR (back surgery); Cade Mays IR (wrist). Rakestraw cleared (active, removed).
+**DET@BUF official designations (nfl.com/injuries):**
+- Lions: Christian Mahogany OUT (hip), Blake Miller OUT (knee), D.J. Reed QUESTIONABLE (foot, limited). Juice Scruggs Full / blank game status → Probable (cleared). Christian Izien Full / cleared.
+- Reserve (not on weekly sheet, still Out): Brian Branch PUP (Achilles), Kerby Joseph PUP (knee), Cade Mays IR (wrist), Isiah Pacheco IR (back).
+- Bills: Cole Bishop QUESTIONABLE (knee/groin), T.J. Sanders QUESTIONABLE (knee/illness), Ty Johnson QUESTIONABLE (hamstring). Terrel Bernard Limited / blank game status → Probable (off number). Bradley Chubb / Jordan Hancock Full / cleared.
+- Reserve: Tyrell Shavers OUT (ACL), Dorian Strong NFI (neck).
 
-**Bills:** healthier. Shavers OUT (ACL). Bernard / Bishop / T.J. Sanders / Ty Johnson QUESTIONABLE from Tue practice (calf/groin/knee/hamstring). No star Out.
+**Desk scoring:** DET raw ≈ −7.89 (Miller manual 0.7 Out) still capped **−6**. BUF term ≈ **−0.82** (Bernard off; Strong NFI added). Injury stamp FINAL.
 
-Desk scoring: Madden-first auto impact (`league_ovr` from madden-2026.json = 81.53); Q rows on=true for working estimate. DET team injury raw -7.12 capped to -6 (cap_team 6). BUF injury term -0.84.
-
-Sources: ESPN injuries API timestamp 2026-09-16T13:00:40Z; event summary 401872932; Lions PUP reporting Aug 30.
+Sources: https://www.nfl.com/injuries/ (Week 2 Thursday block); ESPN summary event 401872932; ESPN roster PUP/IR confirm; ESPN injuries API timestamp 2026-09-16T21:44:46Z.
