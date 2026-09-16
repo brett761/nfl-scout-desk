@@ -1,6 +1,6 @@
 {
   "season": 2026,
-  "updated": "2026-09-14T13:11:24Z",
+  "updated": "2026-09-15T14:11:27Z",
   "primary_metric": "abs_error_projected_vs_actual_margin",
   "secondary": [
     "ats",
@@ -10,73 +10,73 @@
   "weeks_graded": [
     "2026-W01"
   ],
-  "notes": "W01 partial (SNF FINAL; MNF pending). Model n=1 only. Market MAE refreshed on 15 finals.",
+  "notes": "W01 complete (16/16). Model n=2. Market beat model on both locked games. No weight edits.",
   "features": {
     "fa": {
-      "games_with_model": 1,
+      "games_with_model": 2,
       "label": "Insufficient evidence",
       "trend": "Monitor",
-      "notes": "NE@SEA FA \u22125.7 (SEA\u2212NE) drove model dog lean; market closer to actual. Do not cut weight yet."
+      "notes": "NE@SEA FA \u22125.7 and DEN@KC FA \u22123.5 both leaned model opposite market; market closer both. Emerging thin signal to watch, not a cut yet."
     },
     "injury": {
-      "games_with_model": 1,
+      "games_with_model": 2,
       "label": "Insufficient evidence",
       "trend": "Monitor",
-      "notes": "Near wash on NE@SEA. Separate process issue: late QB news (ATL) moved PIT 4 pts \u2014 capture before lock."
+      "notes": "NE@SEA wash. DEN@KC injury \u22121.24 toward DEN with stale Q seed; Simmons was OUT, Thomas/Mims mispriced. Process > weight."
     },
     "hfa": {
-      "games_with_model": 1,
+      "games_with_model": 2,
       "label": "Insufficient evidence",
       "trend": "Unchanged",
-      "notes": "HFA=2 on SEA. Melbourne neutral catastrophe is market-only."
+      "notes": "HFA=2 both locks. DEN@KC HFA insufficient vs blowout; do not raise. Melbourne still market-only."
     },
     "prior": {
-      "games_with_model": 1,
+      "games_with_model": 2,
       "label": "Insufficient evidence",
       "trend": "Unchanged"
     },
     "madden": {
-      "games_with_model": 1,
+      "games_with_model": 2,
       "label": "Insufficient evidence",
       "trend": "Unchanged"
     },
     "pff": {
-      "games_with_model": 1,
+      "games_with_model": 2,
       "label": "Insufficient evidence",
       "trend": "Unchanged"
     },
     "sos": {
-      "games_with_model": 1,
+      "games_with_model": 2,
       "label": "Insufficient evidence",
       "trend": "Unchanged"
     },
     "prep": {
-      "games_with_model": 1,
+      "games_with_model": 2,
       "label": "Insufficient evidence",
       "trend": "Unchanged"
     },
     "ats_coach": {
-      "games_with_model": 1,
+      "games_with_model": 2,
       "label": "Insufficient evidence",
       "trend": "Unchanged"
     },
     "travel_sched": {
-      "games_with_model": 1,
+      "games_with_model": 2,
       "label": "Insufficient evidence",
       "trend": "Unchanged"
     },
     "matchup_chips": {
-      "games_with_model": 1,
+      "games_with_model": 2,
       "label": "Insufficient evidence",
       "trend": "Unchanged"
     },
     "draft": {
-      "games_with_model": 1,
+      "games_with_model": 2,
       "label": "Insufficient evidence",
       "trend": "Unchanged"
     },
     "return": {
-      "games_with_model": 1,
+      "games_with_model": 2,
       "label": "Insufficient evidence",
       "trend": "Unchanged"
     },
@@ -84,13 +84,28 @@
       "games_with_model": 0,
       "label": "Emerging signal",
       "trend": "Monitor",
-      "notes": "Process feature: same-day starter flips (ATL Tua/Rush \u2192 PIT \u22122.5 to \u22126.5)."
+      "notes": "ATL@PIT QB flip + DEN@KC stale injury pull (09-09d for 09-14 kick). Emerging process signal."
+    },
+    "injury_freshness": {
+      "games_with_model": 1,
+      "label": "Emerging signal",
+      "trend": "Monitor",
+      "notes": "Process: refresh injury JSON same-day before freeze; Q\u2192OUT and cleared-Q must match inactives."
     }
   },
   "aggregate": {
-    "model_mae_w01": 2.8,
-    "market_mae_w01": 10.833,
-    "model_n": 1,
-    "market_n": 15
+    "model_mae_w01": 13.335,
+    "market_mae_w01": 11.312,
+    "model_n": 2,
+    "market_n": 16,
+    "model_games": [
+      "NE@SEA",
+      "DEN@KC"
+    ],
+    "model_abs_errors": {
+      "NE@SEA": 2.8,
+      "DEN@KC": 23.87
+    },
+    "market_beat_model_on_locked": 2
   }
 }

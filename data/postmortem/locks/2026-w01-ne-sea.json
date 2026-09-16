@@ -1,0 +1,216 @@
+{
+  "week": 1,
+  "season": 2026,
+  "game_id": "NE@SEA",
+  "kick": "2026-09-09T20:20:00-04:00",
+  "away": "NE",
+  "home": "SEA",
+  "espn_id": "401872656",
+  "venue": "Lumen Field",
+  "model_home_spread": -0.2,
+  "model_home_spread_source": "reconstructed",
+  "street_home_spread": -3.5,
+  "close_at_lock": -3.5,
+  "street_note": "Games street SEA \u22123.5 (nfl-2026.json odds); Mon opener log stuck \u22123.5 juice war; recent TNF status ~SEA \u22123 to \u22123.5",
+  "ou_street": 44.5,
+  "edge_home": -3.3,
+  "edge_note": "edgeHome = street \u2212 model = -3.3 \u2192 away value (NE); aligns with held NE +3.5",
+  "feature_stack": {
+    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W1 n=0 so fa/return at full prior weight, draft_fade=1",
+    "injury_pulled": "2026-09-09d",
+    "away_NE": {
+      "prior": 7.55,
+      "fa": 2.6,
+      "draft": 0,
+      "madden": 0.49,
+      "pff": 0.4,
+      "sos": -2.31,
+      "return": 0,
+      "injury": -2.53,
+      "adjust": 0,
+      "context": 0,
+      "eff": 6.2
+    },
+    "home_SEA": {
+      "prior": 7.85,
+      "fa": -3.1,
+      "draft": 0,
+      "madden": 0.27,
+      "pff": 1.04,
+      "sos": -0.04,
+      "return": 0,
+      "injury": -2.35,
+      "adjust": 0,
+      "context": 0,
+      "eff": 3.67
+    },
+    "layers_home_minus_away": {
+      "prior": 0.3,
+      "fa": -5.7,
+      "draft": 0,
+      "madden": -0.22,
+      "pff": 0.64,
+      "sos": 2.27,
+      "return": 0,
+      "injury": 0.18,
+      "adjust": 0,
+      "context": 0
+    },
+    "rating_diff_home_minus_away": -2.53,
+    "hfa": 2,
+    "coach": 0,
+    "coach_note": "Macdonald vs Vrabel SU H2H n=1 < min_n 4 \u2192 0",
+    "prep": 0.38,
+    "prep_note": "week1 SEA 0 \u2212 NE (\u22120.38) = +0.38; no bye",
+    "ats": 0.1,
+    "ats_note": "Macdonald +0.10 \u2212 Vrabel 0 (dead) = +0.10",
+    "travel": 0.35,
+    "travel_note": "NE road 3-zone \u22120.35; SEA home 0; sched_net = home\u2212away = +0.35; no short week / early-PT (NE not PT) / trap (W1)",
+    "matchup": -0.1,
+    "matchup_note": "J. Smith-Njigba WR GREAT; C. Kupp WR POOR; net \u22120.10",
+    "context_notes": {
+      "SEA": "FA corner volume after Woolen walked (desk note; no pts assigned)"
+    },
+    "gap": 0.2,
+    "component_sum": [
+      {
+        "label": "rating_diff (SEA\u2212NE)",
+        "val": -2.53
+      },
+      {
+        "label": "HFA",
+        "val": 2
+      },
+      {
+        "label": "coach",
+        "val": 0
+      },
+      {
+        "label": "prep (W1)",
+        "val": 0.38
+      },
+      {
+        "label": "ats",
+        "val": 0.1
+      },
+      {
+        "label": "travel/sched",
+        "val": 0.35
+      },
+      {
+        "label": "matchup",
+        "val": -0.1
+      },
+      {
+        "label": "gap",
+        "val": 0.2
+      },
+      {
+        "label": "model_home_spread (\u2212gap)",
+        "val": -0.2
+      }
+    ],
+    "injuries": {
+      "NE": [
+        {
+          "name": "Harold Landry",
+          "pos": "EDGE1",
+          "status": "PUP",
+          "on": true,
+          "impact": 1.41,
+          "impact_source": "pff",
+          "pts": -1.41,
+          "note": "knee surgery after 2025; reserve/PUP at cutdown, miss first four"
+        },
+        {
+          "name": "TreVeyon Henderson",
+          "pos": "RB1",
+          "status": "OUT",
+          "on": true,
+          "impact": 1.12,
+          "impact_source": "madden",
+          "pts": -1.12,
+          "note": "FINAL Week 1 game status OUT (ankle). Official nfl.com designation for Wednesday opener."
+        }
+      ],
+      "SEA": [
+        {
+          "name": "Zach Charbonnet",
+          "pos": "RB1",
+          "status": "PUP",
+          "on": true,
+          "impact": 1.37,
+          "impact_source": "madden",
+          "pts": -1.37,
+          "note": "moved to reserve/PUP (knee)"
+        },
+        {
+          "name": "Ty Okada",
+          "pos": "S",
+          "status": "OUT",
+          "on": true,
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "note": "FINAL Week 1 OUT (hamstring)"
+        },
+        {
+          "name": "Nick Emmanwori",
+          "pos": "S",
+          "status": "QUESTIONABLE",
+          "on": true,
+          "impact": 2.02,
+          "impact_source": "madden",
+          "pts": -0.71,
+          "note": "FINAL Week 1 QUESTIONABLE (ankle); on=true so 0.35\u00d7impact (imp3 Madden-first)"
+        },
+        {
+          "name": "Tory Horton",
+          "pos": "WR2",
+          "status": "QUESTIONABLE",
+          "on": true,
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "note": "FINAL Week 1 QUESTIONABLE (hamstring); on=true so 0.35\u00d7impact (imp3 Madden-first)"
+        }
+      ]
+    }
+  },
+  "tickets": [
+    {
+      "id": "w1-ne-plus35",
+      "season": 2026,
+      "week": 1,
+      "bet_date": "2026-08-28",
+      "window": "TNF",
+      "ticket_type": "Straight",
+      "game": "NE @ SEA",
+      "market": "Spread",
+      "pick": "NE +3.5",
+      "bet_line": 3.5,
+      "juice": -110,
+      "units": 3,
+      "stake": 165,
+      "open_line": 5.5,
+      "close_line": 3.5,
+      "result": "PENDING",
+      "timing_thesis": "PRICE_CLV",
+      "notes": "Book ticket 7:00am ET Aug 28. Risk $165 to win $150. Open SEA \u22125.5. Working close Sep 2\u20133."
+    }
+  ],
+  "notes": "Finals: Henderson OUT, Okada OUT, Emmanwori/Horton Q. Desk held NE +3.5; pass new money. Injury layer injury-2026.json pulled 2026-09-09d. Reconstructed from app.js ourHomeSpread (eff layers + HFA 2 + coach/prep/ats/sched/matchup) without live localStorage profiles. Injury pts aligned to app.js?v=imp3 injuryAutoImpact Madden-first (pos_base+(ovr\u221279.93)/4 floored 0.2; else PFF; no max). injury_source_policy: madden_first.",
+  "locked_at": "2026-09-09T17:20:25-04:00",
+  "injury_aligned_to_imp2": false,
+  "injury_aligned_to_imp3": true,
+  "injury_source_policy": "madden_first",
+  "actual_home_score": 13,
+  "actual_away_score": 10,
+  "actual_home_margin": 3,
+  "projected_home_margin": 0.2,
+  "model_abs_error": 2.8,
+  "close_home_spread": -3.5,
+  "market_projected_home_margin": 3.5,
+  "market_abs_error": 0.5,
+  "ats_ne_plus35": "WIN"
+}

@@ -9,39 +9,287 @@
   "venue": "Highmark Stadium",
   "neutral": false,
   "window": "TNF",
-  "model_home_spread": null,
-  "model_home_spread_source": "null_reason",
-  "null_reason": "Cannot honestly desk_compute model_home_spread for W2 TNF: injury-2026.json is cutdown-era (BUF missing; DET list pre-W1); no live desk profile / post-W1 injury pull; return layer missing DET/BUF; prep/ats/sched/matchup need app.js runtime state. Prefer null over reconstructed guess. Re-freeze after injury refresh if model becomes computable before kick.",
-  "street_home_spread": -3.5,
-  "close_at_lock": -3.5,
-  "ou_street": 53.5,
-  "street_note": "ESPN DraftKings Mon AM Sep 14: BUF \u22123.5 / 53.5 (unchanged vs Sun night). AN multi-book: book15 \u22124 / 53.5, book68 \u22123.5 / 53.5, book30 open \u22123 / 52.5 \u2014 street consensus near BUF \u22123.5 to \u22124.",
-  "edge_home": null,
-  "edge_note": "edge undefined while model null",
+  "model_home_spread": -9.26,
+  "model_home_spread_source": "desk_compute",
+  "street_home_spread": -5.5,
+  "close_at_lock": -5.5,
+  "ou_street": 54.5,
+  "street_note": "ESPN DraftKings pickcenter Wed AM Sep 16: BUF \u22125.5 / 54.5 (event 401872932). Circa Mon was \u22123.5 / 53.5; line has moved ~2 pts toward BUF and total +1. Consensus street used: BUF \u22125.5 / 54.5 (ESPN/DK).",
+  "edge_home": 3.76,
+  "edge_note": "edgeHome = street \u2212 model = -5.5 \u2212 (-9.26) = 3.76 \u2192 home value (BUF); |edge|\u22651.5 and crosses key 7 (model \u22129.26 vs street \u22125.5)",
   "feature_stack": {
-    "gap_note": "No feature stack frozen \u2014 injury/runtime layers unclean for honest W2 compute.",
-    "layer_snapshot_static_only": {
-      "note": "Static file nets only (NOT a model line). prior/fa/madden/pff/sos from desk JSONs; injury/return/prep/ats/sched/matchup omitted.",
-      "away_DET": {
-        "prior": 3.27,
-        "fa": -1.8,
-        "draft": 0,
-        "madden": 0.44,
-        "pff": 0.96,
-        "sos": -0.26
+    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W2 n=1 so fa/return at w_prior=16/17, draft_fade=(4-1)/4=0.75",
+    "injury_pulled": "2026-09-16a",
+    "away_DET": {
+      "prior": 3.08,
+      "fa": -1.69,
+      "draft": 0,
+      "madden": 0.49,
+      "pff": 0.96,
+      "sos": -0.26,
+      "return": 0,
+      "injury": -6,
+      "adjust": 0,
+      "context": 0,
+      "eff": -3.42
+    },
+    "home_BUF": {
+      "prior": 4.78,
+      "fa": 0.09,
+      "draft": 0,
+      "madden": 0.05,
+      "pff": 0.28,
+      "sos": -0.56,
+      "return": 0,
+      "injury": -0.84,
+      "adjust": 0,
+      "context": 0,
+      "eff": 3.8
+    },
+    "layers_home_minus_away": {
+      "prior": 1.7,
+      "fa": 1.78,
+      "draft": 0,
+      "madden": -0.44,
+      "pff": -0.68,
+      "sos": -0.3,
+      "return": 0,
+      "injury": 5.16,
+      "adjust": 0,
+      "context": 0
+    },
+    "rating_diff_home_minus_away": 7.22,
+    "hfa": 2,
+    "coach": 0,
+    "coach_note": "Joe Brady (first-year BUF HC) vs Dan Campbell \u2014 no SU H2H pair / n<4 \u2192 0",
+    "prep": 0,
+    "prep_note": "week!==1 so week1_term=0; neither club off bye \u2192 prep_net=0",
+    "ats": -0.21,
+    "ats_note": "Brady 0 (first-year n=0) \u2212 Campbell +0.21 = \u22120.21",
+    "travel": 0.25,
+    "travel_note": "DET road short week after Sun 1pm (days\u22484.3<6) \u2192 \u22120.25; TZ hop DET\u2192BUF = 0 (both ET). BUF also short after Sun but home travel block does not apply short-week to home. sched_net = home\u2212away = +0.25. No trap (BUF next LAC not division; DET next NYJ not division). No extra rest.",
+    "matchup": 0,
+    "matchup_note": "pff-matchups-2026.json is Week 1 grid only \u2014 no W2 DET@BUF row \u2192 matchup_net=0 (layer missing, not invented)",
+    "return_note": "return-2026.json has no DET/BUF team rows \u2192 return_term=0",
+    "context_notes": {},
+    "gap": 9.26,
+    "component_sum": [
+      {
+        "label": "rating_diff (BUF\u2212DET)",
+        "val": 7.22
       },
-      "home_BUF": {
-        "prior": 5.08,
-        "fa": 0.1,
-        "draft": 0,
-        "madden": 0.12,
-        "pff": 0.28,
-        "sos": -0.56
+      {
+        "label": "HFA",
+        "val": 2
+      },
+      {
+        "label": "coach",
+        "val": 0
+      },
+      {
+        "label": "prep (W2)",
+        "val": 0
+      },
+      {
+        "label": "ats",
+        "val": -0.21
+      },
+      {
+        "label": "travel/sched",
+        "val": 0.25
+      },
+      {
+        "label": "matchup",
+        "val": 0
+      },
+      {
+        "label": "gap",
+        "val": 9.26
+      },
+      {
+        "label": "model_home_spread (\u2212gap)",
+        "val": -9.26
+      }
+    ],
+    "injuries": {
+      "DET": [
+        {
+          "name": "Brian Branch",
+          "pos": "S",
+          "status": "PUP",
+          "on": true,
+          "impact": 2.87,
+          "impact_source": "madden",
+          "pts": -2.87,
+          "note": "Reserve/PUP (Achilles). Miss first four incl TNF. Verified ESPN roster Out + Aug 30 PUP."
+        },
+        {
+          "name": "Kerby Joseph",
+          "pos": "S",
+          "status": "PUP",
+          "on": true,
+          "impact": 2.87,
+          "impact_source": "madden",
+          "pts": -2.87,
+          "note": "Reserve/PUP (knee). Miss first four incl TNF. Verified ESPN roster Out + Aug 30 PUP."
+        },
+        {
+          "name": "Cade Mays",
+          "pos": "C",
+          "status": "IR",
+          "on": true,
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "note": "IR designate-to-return (wrist)."
+        },
+        {
+          "name": "Isiah Pacheco",
+          "pos": "RB1",
+          "status": "IR",
+          "on": true,
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "note": "IR after Mon surgery (back); significant time."
+        },
+        {
+          "name": "D.J. Reed",
+          "pos": "CB1",
+          "status": "QUESTIONABLE",
+          "on": true,
+          "impact": 1.57,
+          "impact_source": "madden",
+          "pts": -0.55,
+          "note": "Foot; limited Tue practice. WORKING on=true pre Wed ~4pm ET official game status."
+        },
+        {
+          "name": "Christian Mahogany",
+          "pos": "OG",
+          "status": "QUESTIONABLE",
+          "on": true,
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.18,
+          "note": "Hip/knee; imaging negative post-W1. WORKING Q."
+        },
+        {
+          "name": "Blake Miller",
+          "pos": "RT",
+          "status": "QUESTIONABLE",
+          "on": true,
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "note": "Knee. WORKING Q."
+        },
+        {
+          "name": "Juice Scruggs",
+          "pos": "OG",
+          "status": "QUESTIONABLE",
+          "on": true,
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.18,
+          "note": "Knee. WORKING Q."
+        }
+      ],
+      "BUF": [
+        {
+          "name": "Tyrell Shavers",
+          "pos": "DEPTH",
+          "status": "OUT",
+          "on": true,
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.2,
+          "note": "Knee ACL \u2014 Out."
+        },
+        {
+          "name": "Terrel Bernard",
+          "pos": "LB",
+          "status": "QUESTIONABLE",
+          "on": true,
+          "impact": 0.62,
+          "impact_source": "madden",
+          "pts": -0.22,
+          "note": "Calf; limited Tue. WORKING Q."
+        },
+        {
+          "name": "Cole Bishop",
+          "pos": "S",
+          "status": "QUESTIONABLE",
+          "on": true,
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "note": "Groin; limited Tue. WORKING Q."
+        },
+        {
+          "name": "T.J. Sanders",
+          "pos": "IDL",
+          "status": "QUESTIONABLE",
+          "on": true,
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.28,
+          "note": "Knee/illness; DNP Tue. WORKING Q."
+        },
+        {
+          "name": "Ty Johnson",
+          "pos": "DEPTH",
+          "status": "QUESTIONABLE",
+          "on": true,
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.07,
+          "note": "Hamstring; limited Tue. WORKING Q."
+        }
+      ]
+    },
+    "injury_team_terms": {
+      "DET": {
+        "raw": -7.12,
+        "term": -6,
+        "capped": true,
+        "cap_team": 6
+      },
+      "BUF": {
+        "raw": -0.84,
+        "term": -0.84,
+        "capped": false,
+        "cap_team": 6
+      }
+    },
+    "taper": {
+      "DET": {
+        "N": 17,
+        "n": 1,
+        "wPrior": 0.9411764705882353,
+        "wCurr": 0.058823529411764705
+      },
+      "BUF": {
+        "N": 17,
+        "n": 1,
+        "wPrior": 0.9411764705882353,
+        "wCurr": 0.058823529411764705
       }
     }
   },
-  "frozen_at": "2026-09-14 9:11 AM ET (America/New_York)",
-  "frozen_at_utc": "2026-09-14T13:11:24Z",
   "tickets": [],
-  "note": "Pre-kick TNF street freeze Mon AM board lock. Model null by design until injury layer refreshed."
+  "notes": "Wed AM TNF working lock. Model desk_compute from app.js ourHomeSpread (eff layers + HFA 2 + coach/prep/ats/sched/matchup). Injury layer injury-2026.json pulled 2026-09-16a (WORKING pre Wed 4pm ET official). DET injury dominated by Branch+Joseph PUP (\u22122.87 each Madden-first); team raw -7.12 capped \u22126. Street ESPN DK BUF \u22125.5 / 54.5 (was Circa Mon \u22123.5 / 53.5). Edge +3.76 home \u2192 FIRE BUF only with \u22651.5 rule (also crosses key 7). No DET@BUF tickets in tickets-2026.json. injury_source_policy: madden_first. league_ovr=81.53.",
+  "recommendation": {
+    "action": "FIRE",
+    "side": "BUF",
+    "market": "BUF -5.5",
+    "edge_home": 3.76,
+    "reason": "Our BUF \u22129.26 vs street \u22125.5 \u2192 +3.76 home edge (\u22651.5) and crosses key 7. Primary driver: DET secondary PUP (Branch/Joseph) maxing injury cap.",
+    "pass_valid_if": "Official Wed 4pm clears Reed + OL and/or street moves to \u22127.5+ without model refresh"
+  },
+  "frozen_at": "2026-09-16 9:04 AM ET (America/New_York)",
+  "frozen_at_utc": "2026-09-16T13:04:09Z",
+  "locked_at": "2026-09-16T09:04:09-04:00",
+  "injury_aligned_to_imp2": false,
+  "injury_aligned_to_imp3": true,
+  "injury_source_policy": "madden_first"
 }

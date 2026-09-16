@@ -1,0 +1,143 @@
+{
+  "season": 2026,
+  "week": 2,
+  "window": "TNF",
+  "game": "DET@BUF",
+  "pulled": "2026-09-16T13:04:09Z",
+  "pulled_et": "2026-09-16 9:04 AM ET (America/New_York)",
+  "injury_pulled": "2026-09-16a",
+  "note": "Working Wed AM valuation cards for material DET/BUF names. Desk auto Madden-first used; no manual override (valuation midpoints agree within noise; DET already at cap_team \u22126).",
+  "players": [
+    {
+      "team": "DET",
+      "name": "Brian Branch",
+      "pos": "S",
+      "injury": "Achilles",
+      "game_status": "PUP/OUT",
+      "p_play": 0.0,
+      "baseline_pos": 0.5,
+      "player_quality": "elite (Madden 91, All-Pro caliber)",
+      "role": "every-down SS",
+      "replacement": "depth S / Chuck Clark tier",
+      "drop_off": "large",
+      "scheme_sig": "high \u2014 Lions disguise/coverage identity",
+      "opponent_sig": "BUF WR/TE explosives",
+      "estimated_spread_impact_range": [
+        2.5,
+        3.3
+      ],
+      "desk_impact": 2.87,
+      "impact_source": "madden",
+      "confidence": "High",
+      "desk_pts": -2.87
+    },
+    {
+      "team": "DET",
+      "name": "Kerby Joseph",
+      "pos": "S",
+      "injury": "knee",
+      "game_status": "PUP/OUT",
+      "p_play": 0.0,
+      "baseline_pos": 0.5,
+      "player_quality": "elite (Madden 91)",
+      "role": "every-down FS / INT threat",
+      "replacement": "depth S",
+      "drop_off": "large",
+      "scheme_sig": "high \u2014 tandem with Branch",
+      "opponent_sig": "Allen downfield",
+      "estimated_spread_impact_range": [
+        2.5,
+        3.3
+      ],
+      "desk_impact": 2.87,
+      "impact_source": "madden",
+      "confidence": "High",
+      "desk_pts": -2.87,
+      "unit_note": "Branch+Joseph compound; desk sums then cap_team \u22126 (raw DET \u22127.12)"
+    },
+    {
+      "team": "DET",
+      "name": "D.J. Reed",
+      "pos": "CB1",
+      "injury": "foot",
+      "game_status": "QUESTIONABLE (working)",
+      "p_play": 0.65,
+      "baseline_pos": 1.2,
+      "player_quality": "above-avg starter (Madden 83)",
+      "role": "outside CB1",
+      "replacement": "Rakestraw/depth",
+      "drop_off": "moderate",
+      "estimated_spread_impact_range": [
+        0.4,
+        0.7
+      ],
+      "desk_impact": 1.57,
+      "status_mult": 0.35,
+      "desk_pts": -0.55,
+      "confidence": "Moderate",
+      "note": "Does not move team term further \u2014 already at \u22126 cap"
+    },
+    {
+      "team": "DET",
+      "name": "OL cluster",
+      "pos": "OG/RT",
+      "injury": "hip/knee",
+      "game_status": "QUESTIONABLE (working)",
+      "names": [
+        "Christian Mahogany",
+        "Blake Miller",
+        "Juice Scruggs"
+      ],
+      "estimated_spread_impact_range": [
+        0.2,
+        0.6
+      ],
+      "desk_pts_sum": -0.43,
+      "confidence": "Low-Moderate",
+      "note": "Imaging negative on Mahogany; pre-official. Soft until Wed 4pm."
+    },
+    {
+      "team": "BUF",
+      "name": "Terrel Bernard",
+      "pos": "LB",
+      "injury": "calf",
+      "game_status": "QUESTIONABLE (working)",
+      "p_play": 0.7,
+      "estimated_spread_impact_range": [
+        0.15,
+        0.35
+      ],
+      "desk_impact": 0.62,
+      "desk_pts": -0.22,
+      "confidence": "Moderate"
+    },
+    {
+      "team": "BUF",
+      "name": "Cole Bishop",
+      "pos": "S",
+      "injury": "groin",
+      "game_status": "QUESTIONABLE (working)",
+      "p_play": 0.7,
+      "estimated_spread_impact_range": [
+        0.05,
+        0.15
+      ],
+      "desk_impact": 0.2,
+      "desk_pts": -0.07,
+      "confidence": "Moderate"
+    }
+  ],
+  "team_rollups": {
+    "DET": {
+      "gross_sum": -7.12,
+      "interaction_note": "elite S tandem; not double-count beyond sum",
+      "final_injury_adjustment": -6.0,
+      "confidence": "High (PUP confirmed); Q portion Moderate"
+    },
+    "BUF": {
+      "gross_sum": -0.84,
+      "final_injury_adjustment": -0.84,
+      "confidence": "Moderate (all but Shavers are Q)"
+    }
+  }
+}

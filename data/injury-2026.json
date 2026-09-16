@@ -1,10 +1,10 @@
 {
-  "pulled": "2026-09-09d",
+  "pulled": "2026-09-16a",
   "sources": [
-    "https://www.nfl.com/injuries",
-    "https://www.seahawks.com/news/ty-okada-out-nick-emmanwori-questionable-for-seahawks-season-opener-vs-patriots",
-    "https://sicscore.com/news/49ers-vs-rams-injury-report-key-injuries-and-player-statuses-for-week-1",
-    "https://www.espn.com/nfl/injuries"
+    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872932",
+    "https://www.espn.com/nfl/injuries",
+    "https://lionswire.usatoday.com/story/sports/nfl/lions/2026/08/30/detroit-lions-kerby-joseph-reserve-pup-list/91540482007/"
   ],
   "teams": {
     "ARI": [
@@ -130,40 +130,76 @@
         "name": "Brian Branch",
         "pos": "S",
         "status": "PUP",
-        "note": "The Lions placed Branch (Achilles) on the reserve/PUP list Sunday, Tom Pelissero of Netflix reports.",
-        "source": "https://www.espn.com/nfl/injuries",
-        "on": true
-      },
-      {
-        "name": "Cade Mays",
-        "pos": "C",
-        "status": "IR",
-        "note": "Mays (wrist) was placed on injured reserve by the Lions on Sunday with a designation to return, Tom Pelissero of Netflix reports.",
-        "source": "https://www.espn.com/nfl/injuries",
-        "on": true
-      },
-      {
-        "name": "Ennis Rakestraw Jr.",
-        "pos": "CB1",
-        "status": "QUESTIONABLE",
-        "note": "Rakestraw didn't finish practice Thursday due to an apparent leg injury, Colton Pouncy of The Athletic reports.",
-        "source": "https://www.espn.com/nfl/injuries",
-        "on": true
-      },
-      {
-        "name": "Isiah Pacheco",
-        "pos": "RB1",
-        "status": "IR",
-        "note": "Lions GM Brad Holmes said Wednesday that Pacheco (back) doesn't have a clear timetable for return, Colton Pouncy of The Athletic reports.",
-        "source": "https://www.espn.com/nfl/injuries",
-        "on": true
+        "note": "Reserve/PUP (Achilles). Miss first four incl TNF. Verified ESPN roster Out + Aug 30 PUP.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 2.87,
+        "impact_source": "madden"
       },
       {
         "name": "Kerby Joseph",
         "pos": "S",
         "status": "PUP",
-        "note": "The Lions placed Joseph (knee) on the reserve/PUP list Sunday, Tom Pelissero of Netflix reports.",
-        "source": "https://www.espn.com/nfl/injuries",
+        "note": "Reserve/PUP (knee). Miss first four incl TNF. Verified ESPN roster Out + Aug 30 PUP.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 2.87,
+        "impact_source": "madden"
+      },
+      {
+        "name": "Cade Mays",
+        "pos": "C",
+        "status": "IR",
+        "note": "IR designate-to-return (wrist).",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.2,
+        "impact_source": "madden"
+      },
+      {
+        "name": "Isiah Pacheco",
+        "pos": "RB1",
+        "status": "IR",
+        "note": "IR after Mon surgery (back); significant time.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.2,
+        "impact_source": "madden"
+      },
+      {
+        "name": "D.J. Reed",
+        "pos": "CB1",
+        "status": "QUESTIONABLE",
+        "note": "Foot; limited Tue practice. WORKING on=true pre Wed ~4pm ET official game status.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 1.57,
+        "impact_source": "madden"
+      },
+      {
+        "name": "Christian Mahogany",
+        "pos": "OG",
+        "status": "QUESTIONABLE",
+        "note": "Hip/knee; imaging negative post-W1. WORKING Q.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true
+      },
+      {
+        "name": "Blake Miller",
+        "pos": "RT",
+        "status": "QUESTIONABLE",
+        "note": "Knee. WORKING Q.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.2,
+        "impact_source": "madden"
+      },
+      {
+        "name": "Juice Scruggs",
+        "pos": "OG",
+        "status": "QUESTIONABLE",
+        "note": "Knee. WORKING Q.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
       }
     ],
@@ -451,6 +487,52 @@
         "status": "IR",
         "note": "Amos (ankle) was placed on injured reserve Sunday with a designation to return.",
         "source": "https://www.espn.com/nfl/injuries",
+        "on": true
+      }
+    ],
+    "BUF": [
+      {
+        "name": "Tyrell Shavers",
+        "pos": "DEPTH",
+        "status": "OUT",
+        "note": "Knee ACL \u2014 Out.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true
+      },
+      {
+        "name": "Terrel Bernard",
+        "pos": "LB",
+        "status": "QUESTIONABLE",
+        "note": "Calf; limited Tue. WORKING Q.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.62,
+        "impact_source": "madden"
+      },
+      {
+        "name": "Cole Bishop",
+        "pos": "S",
+        "status": "QUESTIONABLE",
+        "note": "Groin; limited Tue. WORKING Q.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.2,
+        "impact_source": "madden"
+      },
+      {
+        "name": "T.J. Sanders",
+        "pos": "IDL",
+        "status": "QUESTIONABLE",
+        "note": "Knee/illness; DNP Tue. WORKING Q.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true
+      },
+      {
+        "name": "Ty Johnson",
+        "pos": "DEPTH",
+        "status": "QUESTIONABLE",
+        "note": "Hamstring; limited Tue. WORKING Q.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
       }
     ]

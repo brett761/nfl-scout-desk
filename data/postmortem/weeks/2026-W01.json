@@ -1,18 +1,28 @@
 {
   "season": 2026,
   "week": 1,
-  "label": "2026-W01",
-  "pulled": "2026-09-14T13:11:24Z",
-  "status": "PARTIAL \u2014 SNF DAL@NYG FINAL; MNF DEN@KC scheduled Mon 8:15pm ET. Full close after MNF.",
+  "label": "2026 Week 1 \u2014 full (MNF settled)",
+  "pulled": "2026-09-15T14:11:27Z",
+  "status": "complete",
   "sign_convention": "home-centric spreads (neg=home fav); projected_home_margin=-spread; actual=home-away",
   "primary_metric": "abs_error_projected_vs_actual_margin",
   "summary": {
-    "games_final": 15,
-    "games_pending": 1,
-    "model_games_n": 1,
-    "model_mae": 2.8,
-    "market_mae": 10.833,
-    "model_vs_market": "Only NE@SEA has model line. Model MAE 2.8 vs market MAE 0.5 on that game (market beat model). Week market MAE 10.833 on 15 finals (SNF in; MNF pending)."
+    "games_final": 16,
+    "games_pending": 0,
+    "model_games_n": 2,
+    "model_mae": 13.335,
+    "market_mae": 11.312,
+    "model_vs_market": "Model n=2 MAE 13.335; market n=16 MAE 11.312. Both locked games: market beat model (NE@SEA 0.5 vs 2.8; DEN@KC 18.5 vs 23.87). DEN@KC catastrophe: desk liked DEN by ~5.4 vs street; KC +21.",
+    "mnf": {
+      "game": "DEN@KC",
+      "score": "DEN 10 \u2013 KC 31",
+      "actual_home_margin": 21,
+      "model_home_spread": 2.87,
+      "model_abs_error": 23.87,
+      "close_spread": -2.5,
+      "market_abs_error": 18.5,
+      "pass_tickets": true
+    }
   },
   "rows": [
     {
@@ -697,122 +707,151 @@
       "game": "DEN@KC",
       "away": "DEN",
       "home": "KC",
-      "status": "STATUS_SCHEDULED",
-      "away_score": 0,
-      "home_score": 0,
-      "actual_home_margin": null,
-      "model_home_spread": null,
-      "model_projected_home_margin": null,
-      "model_abs_error": null,
-      "model_signed_error": null,
+      "status": "STATUS_FINAL",
+      "away_score": 10,
+      "home_score": 31,
+      "actual_home_margin": 21,
+      "model_home_spread": 2.87,
+      "model_projected_home_margin": -2.87,
+      "model_abs_error": 23.87,
+      "model_signed_error": -23.87,
       "close_spread": -2.5,
-      "close_total": 43.5,
+      "close_total": 42.5,
       "open_spread": -2.5,
       "open_total": 43.5,
-      "market_projected_home_margin": null,
-      "market_abs_error": null,
-      "market_signed_error": null,
-      "feature_stack": null,
-      "classification": "pending",
-      "tickets": []
+      "market_projected_home_margin": 2.5,
+      "market_abs_error": 18.5,
+      "market_signed_error": -18.5,
+      "feature_stack": {
+        "source": "lock:2026-w01-den-kc.json",
+        "layers_home_minus_away": {
+          "prior": -1.95,
+          "fa": -3.5,
+          "draft": 0,
+          "madden": -0.3,
+          "pff": -0.22,
+          "sos": 1.88,
+          "return": 1,
+          "injury": -1.24,
+          "adjust": 0,
+          "context": 0
+        },
+        "rating_diff": -4.33,
+        "hfa": 2,
+        "coach": 0,
+        "prep": 0,
+        "ats": -0.08,
+        "travel": 0,
+        "matchup": -0.46,
+        "gap": -2.87,
+        "injury_pulled": "2026-09-09d",
+        "injuries_note": "Stale seed 2026-09-09d. Kick reality: Simmons OUT (priced Q 0.35\u00d7); Thomas active (priced Q); Mims no designation (priced Q); Conner OUT missing from layer."
+      },
+      "classification": "catastrophe",
+      "tickets": [],
+      "model_home_spread_source": "reconstructed",
+      "classification_note": "Desk model DEN +2.87 home dog (reconstructed); street KC \u22122.5; KC won by 21. Model wrong side vs market; abs error 23.87. FA (\u22123.5) + prior (\u22121.95) + injury (\u22121.24) drove DEN lean.",
+      "window": "MNF",
+      "vs_market": "market_better",
+      "disagreement_home": -5.37
     }
   ],
   "best_market_abs_error": [
     {
       "game": "NE@SEA",
-      "mae": 0.5,
-      "margin": 3,
-      "close": -3.5
+      "market_abs_error": 0.5,
+      "close_spread": -3.5,
+      "actual_home_margin": 3
     },
     {
       "game": "ATL@PIT",
-      "mae": 0.5,
-      "margin": 7,
-      "close": -6.5
+      "market_abs_error": 0.5,
+      "close_spread": -6.5,
+      "actual_home_margin": 7
     },
     {
       "game": "TB@CIN",
-      "mae": 2.5,
-      "margin": 6,
-      "close": -3.5
+      "market_abs_error": 2.5,
+      "close_spread": -3.5,
+      "actual_home_margin": 6
     },
     {
       "game": "BUF@HOU",
-      "mae": 3.5,
-      "margin": -5,
-      "close": 1.5
+      "market_abs_error": 3.5,
+      "close_spread": 1.5,
+      "actual_home_margin": -5
     },
     {
       "game": "WSH@PHI",
-      "mae": 4,
-      "margin": 2,
-      "close": -6
+      "market_abs_error": 4,
+      "close_spread": -6,
+      "actual_home_margin": 2
     }
   ],
   "worst_market_abs_error": [
     {
       "game": "SF@LAR",
-      "mae": 23.5,
-      "margin": -20,
-      "close": -3.5
+      "market_abs_error": 23.5,
+      "close_spread": -3.5,
+      "actual_home_margin": -20
     },
     {
       "game": "ARI@LAC",
-      "mae": 21.5,
-      "margin": -12,
-      "close": -9.5
+      "market_abs_error": 21.5,
+      "close_spread": -9.5,
+      "actual_home_margin": -12
     },
     {
       "game": "CHI@CAR",
-      "mae": 19,
-      "margin": -22,
-      "close": 3
+      "market_abs_error": 19,
+      "close_spread": 3,
+      "actual_home_margin": -22
+    },
+    {
+      "game": "DEN@KC",
+      "market_abs_error": 18.5,
+      "close_spread": -2.5,
+      "actual_home_margin": 21
     },
     {
       "game": "CLE@JAX",
-      "mae": 15.5,
-      "margin": 24,
-      "close": -8.5
-    },
-    {
-      "game": "BAL@IND",
-      "mae": 15,
-      "margin": -18,
-      "close": 3
+      "market_abs_error": 15.5,
+      "close_spread": -8.5,
+      "actual_home_margin": 24
     }
   ],
   "candidate_changes": [
     {
       "feature": "FA layer (Week 1 full weight)",
       "bucket": "Monitor",
-      "confidence": "Insufficient evidence",
-      "evidence": "NE@SEA lock: FA home-minus-away \u22125.7 was largest driver of model liking NE; market SEA \u22123.5 closer to actual +3. n=1.",
-      "n": 1,
-      "confirm_if": "FA-driven disagreements beat market over 6+ weeks",
-      "falsify_if": "FA-driven gaps keep losing to close MAE"
+      "confidence": "Insufficient evidence \u2192 Emerging signal (thin)",
+      "evidence": "NE@SEA FA \u22125.7 and DEN@KC FA \u22123.5 both drove model toward away/dog side; market closer both times. n=2 model games, same direction miss.",
+      "n": 2,
+      "confirm_if": "FA-driven |model\u2212close|\u22652 disagreements lose to market MAE through Week 6",
+      "falsify_if": "FA-driven gaps start beating close MAE on 4+ games"
     },
     {
-      "feature": "Injury late-news / QB status path",
+      "feature": "Injury layer freshness / Q\u2192OUT path",
       "bucket": "Monitor",
-      "confidence": "Emerging signal (process, not weight)",
-      "evidence": "ATL@PIT: street opened ~PIT \u22122.5, closed \u22126.5 after Tagovailoa back / Rush start. Desk ticket PIT \u22123 still covered (won by 7) but close moved 4 pts. Need explicit late-injury refresh before AM locks.",
+      "confidence": "Emerging signal (process)",
+      "evidence": "DEN@KC lock used injury-2026.json pulled 2026-09-09d. Kick: Simmons OUT (layer still Q 0.35\u00d7), Thomas active (layer Q), Mims undesignated (layer Q), Conner OUT missing. Stale seed + Q mispricing.",
       "n": 1,
-      "confirm_if": "Games with >2pt late injury moves show desk stale vs close",
-      "falsify_if": "Desk injury layer already capturing same moves by lock"
+      "confirm_if": "\u22653 locks with stale injury pull >48h before kick or Q that was OUT/active wrong",
+      "falsify_if": "Same-day injury refresh matches inactives by freeze"
     },
     {
-      "feature": "Neutral-site HFA (Melbourne)",
+      "feature": "Late injury/QB status path",
       "bucket": "Monitor",
-      "confidence": "Insufficient evidence",
-      "evidence": "SF@LAR: LAR \u22123.5 close, SF won by 20. No model lock. Catastrophe for market; do not overfit one Melbourne blowout.",
+      "confidence": "Emerging signal (process)",
+      "evidence": "ATL@PIT: street \u22122.5\u2192\u22126.5 after QB news. Unchanged belief from Mon AM.",
       "n": 1
     },
     {
       "feature": "Aggressive weight edits",
       "bucket": "Unchanged",
       "confidence": "Strong (process rule)",
-      "evidence": "Week 1 n small; skill forbids aggressive weight changes on 1 week. No weight edits proposed.",
-      "n": 14
+      "evidence": "Model n=2 only; skill forbids aggressive weight changes. No numeric weight edits.",
+      "n": 2
     }
   ],
   "tickets_process_check": {
@@ -883,6 +922,27 @@
         "ok": true,
         "profit": -165
       }
-    ]
-  }
+    ],
+    "mnf": "PASS \u2014 no DEN/KC tickets"
+  },
+  "best_model_abs_error": [
+    {
+      "game": "NE@SEA",
+      "model_abs_error": 2.8
+    },
+    {
+      "game": "DEN@KC",
+      "model_abs_error": 23.87
+    }
+  ],
+  "worst_model_abs_error": [
+    {
+      "game": "DEN@KC",
+      "model_abs_error": 23.87
+    },
+    {
+      "game": "NE@SEA",
+      "model_abs_error": 2.8
+    }
+  ]
 }

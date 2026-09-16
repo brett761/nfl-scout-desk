@@ -1,9 +1,9 @@
 {
   "season": 2026,
   "week": 1,
-  "pulled": "2026-09-14T13:11:24Z",
-  "pulled_et": "2026-09-14 9:11 AM ET",
-  "note": "Closes = Action Network multi-book modal near-kick home spread/total (book 30 early = open). ESPN pickcenter alone not trusted. PIT closed -6.5 after late ATL QB news (open ~-2.5). SNF DAL@NYG FINAL Mon AM. MNF DEN@KC still scheduled Mon 8:15pm ET \u2014 not graded yet. Ticket close_line fields may reflect bet-time working closes, not kick.",
+  "pulled": "2026-09-15T14:11:27Z",
+  "pulled_et": "2026-09-15 10:15 AM ET",
+  "note": "Closes = Action Network multi-book modal near-kick (book 30 early = open) for Sun/SNF; MNF DEN@KC close from pre-kick lock freeze (ESPN DK KC \u22122.5 / 42.5). FINAL DEN 10\u2013KC 31. Ticket close_line fields may reflect bet-time working closes, not kick.",
   "sign_convention": "Spreads home-centric (neg = home fav). actual_margin = home_score - away_score. projected_home_margin = -home_spread.",
   "games": [
     {
@@ -527,16 +527,16 @@
       "espn_id": "401872931",
       "away": "DEN",
       "home": "KC",
-      "away_score": 0,
-      "home_score": 0,
-      "status": "STATUS_SCHEDULED",
+      "away_score": 10,
+      "home_score": 31,
+      "status": "STATUS_FINAL",
       "status_detail": "Mon, September 14th at 8:15 PM EDT",
       "kick": "2026-09-15T00:15Z",
       "actual_margin_home_minus_away": null,
       "open_spread": -2.5,
       "close_spread": -2.5,
       "open_total": 43.5,
-      "close_total": 43.5,
+      "close_total": 42.5,
       "close_spread_book_range": [
         -2.5
       ],
@@ -551,7 +551,8 @@
         "Action Network api.actionnetwork.com/web/v1/scoreboard/nfl (book mode near-kick; book 30 as open)",
         "TeamRankings matchup Odds cross-check"
       ],
-      "pulled": "2026-09-14T13:11:24Z"
+      "pulled": "2026-09-14T13:11:24Z",
+      "actual_home_margin": 21
     }
   ]
 }

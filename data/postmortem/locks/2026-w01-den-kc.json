@@ -1,0 +1,157 @@
+{
+  "week": 1,
+  "season": 2026,
+  "game_id": "DEN@KC",
+  "kick": "2026-09-14T20:15:00-04:00",
+  "away": "DEN",
+  "home": "KC",
+  "espn_id": "401872931",
+  "venue": "Arrowhead Stadium",
+  "window": "MNF",
+  "model_home_spread": 2.87,
+  "model_home_spread_source": "reconstructed",
+  "street_home_spread": -2.5,
+  "close_at_lock": -2.5,
+  "street_note": "ESPN DraftKings at freeze Mon ~7:30pm ET Sep 14: KC −2.5 / O/U 42.5 (status SCHEDULED). nfl-2026.json board had KC −2.5 / 43; live DK O/U 42.5 used for ou_street.",
+  "ou_street": 42.5,
+  "edge_home": -5.37,
+  "edge_note": "edgeHome = street − model = −2.5 − 2.87 = −5.37 → away value (DEN); desk has DEN ~2.9 pts better than street after HFA",
+  "feature_stack": {
+    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W1 n=0 so fa/return at full prior weight, draft_fade=1",
+    "injury_pulled": "2026-09-09d",
+    "away_DEN": {
+      "prior": 4.67,
+      "fa": 0.5,
+      "draft": 0,
+      "madden": 0.61,
+      "pff": 0.42,
+      "sos": -1.72,
+      "return": 0,
+      "injury": -0.07,
+      "adjust": 0,
+      "context": 0,
+      "eff": 4.41
+    },
+    "home_KC": {
+      "prior": 2.72,
+      "fa": -3,
+      "draft": 0,
+      "madden": 0.31,
+      "pff": 0.2,
+      "sos": 0.16,
+      "return": 1,
+      "injury": -1.31,
+      "adjust": 0,
+      "context": 0,
+      "eff": 0.08
+    },
+    "layers_home_minus_away": {
+      "prior": -1.95,
+      "fa": -3.5,
+      "draft": 0,
+      "madden": -0.3,
+      "pff": -0.22,
+      "sos": 1.88,
+      "return": 1,
+      "injury": -1.24,
+      "adjust": 0,
+      "context": 0
+    },
+    "rating_diff_home_minus_away": -4.33,
+    "hfa": 2,
+    "coach": 0,
+    "coach_note": "Payton vs Reid SU H2H 7-5 n=12 pts_for_a=0 (dead zone) → 0",
+    "prep": 0,
+    "prep_note": "week1 KC 0 − DEN (0) = 0; both dead ATS W1 books; no bye",
+    "ats": -0.08,
+    "ats_note": "Reid 0 (dead) − Payton +0.08 = −0.08",
+    "travel": 0,
+    "travel_note": "DEN road 1-zone hop (MT→CT) → 0; KC home 0; sched_net = 0; no short week / early-PT / trap (W1)",
+    "matchup": -0.46,
+    "matchup_note": "P. Mahomes QB POOR; T. Thornton WR POOR; J. Waddle WR GREAT; net −0.46",
+    "context_notes": {},
+    "gap": -2.87,
+    "component_sum": [
+      {
+        "label": "rating_diff (KC−DEN)",
+        "val": -4.33
+      },
+      {
+        "label": "HFA",
+        "val": 2
+      },
+      {
+        "label": "coach",
+        "val": 0
+      },
+      {
+        "label": "prep (W1)",
+        "val": 0
+      },
+      {
+        "label": "ats",
+        "val": -0.08
+      },
+      {
+        "label": "travel/sched",
+        "val": 0
+      },
+      {
+        "label": "matchup",
+        "val": -0.46
+      },
+      {
+        "label": "gap",
+        "val": -2.87
+      },
+      {
+        "label": "model_home_spread (−gap)",
+        "val": 2.87
+      }
+    ],
+    "injuries": {
+      "DEN": [
+        {
+          "name": "Marvin Mims Jr.",
+          "pos": "WR2",
+          "status": "QUESTIONABLE",
+          "on": true,
+          "impact": 0.2,
+          "impact_source": "pff",
+          "pts": -0.07,
+          "note": "Seed QUESTIONABLE (foot) on=true → 0.35×impact (imp3 Madden-first; PFF grade 63.5 floored to 0.2). injury-2026.json pulled 2026-09-09d."
+        }
+      ],
+      "KC": [
+        {
+          "name": "Josh Simmons",
+          "pos": "LT",
+          "status": "QUESTIONABLE",
+          "on": true,
+          "impact": 2.27,
+          "impact_source": "madden",
+          "pts": -0.79,
+          "note": "Seed QUESTIONABLE (back) on=true → 0.35×impact (imp3 Madden-first; Madden OVR 81 → 2+(81−79.93)/4)."
+        },
+        {
+          "name": "R Mason Thomas",
+          "pos": "EDGE1",
+          "status": "QUESTIONABLE",
+          "on": true,
+          "impact": 1.5,
+          "impact_source": null,
+          "pts": -0.52,
+          "note": "Seed QUESTIONABLE (hamstring) on=true; no Madden/PFF name match → seed impact 1.5; pts=−round2(1.5×0.35) float −0.52. injury-2026.json pulled 2026-09-09d."
+        }
+      ]
+    }
+  },
+  "tickets": [],
+  "notes": "Pre-kick MNF freeze. No DEN/KC tickets in tickets-2026.json — do not invent. Injury layer injury-2026.json pulled 2026-09-09d (seed Q rows with on=true). Reconstructed from app.js ourHomeSpread (eff layers + HFA 2 + coach/prep/ats/sched/matchup) without live localStorage profiles. Injury pts aligned to app.js?v=imp3 injuryAutoImpact Madden-first (pos_base+(ovr−79.93)/4 floored 0.2; else PFF; else seed impact). injury_source_policy: madden_first. Street ESPN DK KC −2.5 / 42.5.",
+  "frozen_at": "2026-09-14 7:30 PM ET (America/New_York)",
+  "frozen_at_utc": "2026-09-14T23:30:00Z",
+  "locked_at": "2026-09-14T19:30:00-04:00",
+  "injury_aligned_to_imp2": false,
+  "injury_aligned_to_imp3": true,
+  "injury_source_policy": "madden_first"
+}

@@ -1,0 +1,71 @@
+{
+  "season": 2026,
+  "week": 1,
+  "pulled": "2026-09-15T14:11:27Z",
+  "pulled_et": "2026-09-15 10:15 AM ET",
+  "note": "Compare projected injury pts at lock vs realized (who played) and margin error. No positional_values historical_adjustments yet (need multi-game).",
+  "games": [
+    {
+      "game": "NE@SEA",
+      "lock": "2026-w01-ne-sea.json",
+      "injury_net_home_minus_away": 0.18,
+      "model_abs_error": 2.8,
+      "market_abs_error": 0.5,
+      "notes": "Near wash; Henderson OUT priced; Emmanwori Q half-weight. Insufficient evidence."
+    },
+    {
+      "game": "DEN@KC",
+      "lock": "2026-w01-den-kc.json",
+      "injury_pulled": "2026-09-09d",
+      "injury_net_home_minus_away": -1.24,
+      "model_abs_error": 23.87,
+      "market_abs_error": 18.5,
+      "projected": [
+        {
+          "team": "DEN",
+          "name": "Marvin Mims Jr.",
+          "pos": "WR2",
+          "status_at_lock": "QUESTIONABLE",
+          "pts": -0.07,
+          "realized": "No game designation / active pool \u2014 overweighted Q"
+        },
+        {
+          "team": "KC",
+          "name": "Josh Simmons",
+          "pos": "LT",
+          "status_at_lock": "QUESTIONABLE",
+          "pts": -0.79,
+          "realized": "OUT inactive \u2014 underweighted (should have been 1.0\u00d7 OUT, not 0.35\u00d7 Q)"
+        },
+        {
+          "team": "KC",
+          "name": "R Mason Thomas",
+          "pos": "EDGE1",
+          "status_at_lock": "QUESTIONABLE",
+          "pts": -0.52,
+          "realized": "Active \u2014 overweighted Q"
+        }
+      ],
+      "missing_at_lock": [
+        {
+          "team": "KC",
+          "name": "Chamarri Conner",
+          "pos": "S",
+          "realized": "OUT inactive \u2014 not in injury layer"
+        }
+      ],
+      "outcome_note": "Net injury layer favored DEN (\u22121.24 home\u2212away). KC won by 21 without Simmons. Direction wrong vs margin; stale seed dominant process miss. Do not retune LT baseline from one game.",
+      "labels": {
+        "Q_overweight_when_active": "Emerging signal (process, n=2 within game)",
+        "Q_underweight_when_OUT": "Emerging signal (process, n=1 Simmons)",
+        "LT_baseline": "Insufficient evidence \u2014 no historical_adjustment",
+        "EDGE_baseline": "Insufficient evidence"
+      }
+    }
+  ],
+  "systematic": {
+    "Q_designation": "Over/under vs realized status is the story this week \u2014 not positional baselines.",
+    "clusters": "Insufficient evidence",
+    "replacements": "Simmons OUT \u2192 Benson; KC still dominated. Replacement cliff not observed; Insufficient evidence to cut LT baseline."
+  }
+}
