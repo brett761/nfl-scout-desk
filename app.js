@@ -1885,7 +1885,7 @@ function marketFor(game) {
 }
 
 async function loadNfl() {
-  const nflReq = fetch("./data/nfl-2026.json");
+  const nflReq = fetch("./data/nfl-2026.json?v=tnf3");
   const priorReq = fetch("./data/prior-2025.json?v=st1");
   const faReq = fetch("./data/fa-2026.json");
   const draftReq = fetch("./data/draft-2026.json");
@@ -1898,7 +1898,7 @@ async function loadNfl() {
   const staffReq = fetch("./data/staff-2026.json");
   const staffAtsReq = fetch("./data/staff-ats-2026.json");
   const scaleReq = fetch("./data/injury-scale.json");
-  const injReq = fetch("./data/injury-2026.json?v=tnf2");
+  const injReq = fetch("./data/injury-2026.json?v=tnf3");
   const wxReq = fetch("./data/weather-scale.json");
   const coachReq = fetch("./data/coaches-2026.json");
   const prepReq = fetch("./data/coach-prep-2026.json");
