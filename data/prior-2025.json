@@ -48,12 +48,14 @@
     "give": 0.125
   },
   "taper": {
-    "N": 17,
-    "formula": "w_prior = (17 - n) / 17; w_curr = n / 17; blended = w_prior * prior + w_curr * current",
-    "week1": "n = 0 \u2192 100% 2025 prior",
-    "after_17": "n = 17 \u2192 0% prior, 100% 2026",
-    "current_update": "90/10: current := 0.9 * current + 0.1 * game_observation (Walters W20)",
-    "note": "Offense and defense sit on the same \u00b112 min-max scale and the same 38.75% weight. Special teams 2.5% (cut 75% from 10% on 2026-08-30). Takeaways 7.5% (cut from 12.5% on 2026-08-24 after 2016\u20132025 win/TO research). Giveaways stay 12.5%. Combined prior is the weighted sum so it can sit on a spread. Context stack still adds on top. Raw 2025 PPG unchanged. Pillar scales unchanged."
+    "N": 3,
+    "formula": "w_prior = (3 - n) / 3; w_curr = n / 3; blended = w_prior * prior + w_curr * current",
+    "week1": "n = 0 → 100% 2025 prior",
+    "after_3": "n = 3 → 0% prior, 100% 2026 current",
+    "n_source": "n = scored 2026 regular-season finals (home_score/away_score). Fade tied to results, not kickoff date alone.",
+    "current_v1": "currentRating from scoredGames2026 off_ppg/def_ppg mapped to ±12 via 2025 league raw min/max; current = (0.3875*off + 0.3875*def) / 0.775; |current| capped at 12. TO/ST current deferred.",
+    "current_update": "Optional EMA later (was 90/10 Walters W20). For small n use straight mean of scored games.",
+    "note": "Brett 2026-09-17: prior phased out by Week 3 (N=3), not 17. Offense and defense sit on the same ±12 min-max scale and the same 38.75% weight. Special teams 2.5% (cut 75% from 10% on 2026-08-30). Takeaways 7.5% (cut from 12.5% on 2026-08-24 after 2016–2025 win/TO research). Giveaways stay 12.5%. Combined prior is the weighted sum so it can sit on a spread. Context stack still adds on top. Raw 2025 PPG unchanged. Pillar scales unchanged. Weights unchanged."
   },
   "teams": {
     "ARI": {
@@ -708,6 +710,6 @@
       "take": 0.075,
       "give": 0.125
     },
-    "why": "2016\u20132025 regular-season wins correlate more with TO margin and giveaways than with takeaways alone (r take +0.52, give \u22120.50, TO diff +0.66). Cut take, leave give, push 5 points onto off/def."
+    "why": "2016–2025 regular-season wins correlate more with TO margin and giveaways than with takeaways alone (r take +0.52, give −0.50, TO diff +0.66). Cut take, leave give, push 5 points onto off/def."
   }
 }

@@ -14,7 +14,7 @@ const TICKETS_SEED_PULLED_KEY = "nflScout.ticketsSeedPulled.v1";
 const SHARP_BOOK_DEFAULT = "Pinnacle";
 const SEASON = 2026;
 const HFA_DEFAULT = 2;
-const TAPER_N = 17;
+const TAPER_N = 3;
 const WEEKLY_BUDGET = 1000;
 const UNIT = 50;
 const WEEKLY_UNITS = 20;
@@ -483,24 +483,24 @@ function normAbbr(abbr) {
 
 /* Walters power ratings
    0.0 = league average. Plus is better than average. Minus is worse.
-   algorithm_base = blended 2025 prior (tapers off over 17 games).
+   algorithm_base = blended 2025 prior (tapers off over N=3 scored games).
    fa_raw(abbr) = fa-2026.json team net (0 if missing / failed load).
      net is already team-capped ±4. If net is missing, sum in/out pts and clamp ±4.
    fa_term(abbr) = fa_raw(abbr) * w_prior
-     FA is a Week-1 correction to last year's roster. It fades with the 17-game
-     taper: at n=0, fa_term = net; at n=17, fa_term = 0. Do not fold FA into
+     FA is a Week-1 correction to last year's roster. It fades with the prior
+     taper (N=3): at n=0, fa_term = net; at n=3, fa_term = 0. Do not fold FA into
      algorithm_base — keep the prior number honest / visible.
    draft_raw(abbr) = draft-2026.json team net (0 if missing / failed load).
      net is already team-capped ±4. If net is missing, sum starters[].pts and clamp ±4.
    draft_term(abbr) = draft_raw(abbr) * draft_fade
      draft_fade = max(0, (window − n) / window) where window = window_games or 4
      and n = gamesPlayed2026(abbr). Week 1 (n=0) is 100%. Gone after 4 games.
-     Do not use the 17-game FA taper. Incoming rookies only. Starters only.
+     Do not use the prior FA taper for draft. Incoming rookies only. Starters only.
      Year-1 fade is baked into pts. Does not rewrite the 2025 prior.
    return_raw(abbr) = return-2026.json team net (0 if missing).
      Starters hurt in 2025, healthy for 2026. Surplus vs the injured year.
      Still-PUP names stay on the injury layer. Cap 1.5 / player, 2.5 / team.
-   return_term(abbr) = return_raw(abbr) * w_prior (same taper as FA).
+   return_term(abbr) = return_raw(abbr) * w_prior (same N=3 prior taper as FA).
      Does not rewrite the 2025 prior.
    madden_term(abbr) = madden-2026.json team net (0 if missing).
      Same 22 per club: top 11 OFF + top 11 DEF by OVR. K/P/LS out.
@@ -513,7 +513,7 @@ function normAbbr(abbr) {
    pff_pre_term is display only. Not in eff() or ourHomeLine.
      2026 preseason team OVER stays on the club sheet so you can see it.
    user_adjust = optional override on top of the algorithm (old "base").
-   Injuries are a weekly point value. They do NOT taper with the 17-game prior.
+   Injuries are a weekly point value. They do NOT taper with the prior (N=3).
    They stay until the row is off or deleted.
      row_pts = −round2((impact ?? pos_base) * status_mult), clamp [−cap_player, 0]
      impact = full-Out surplus vs replacement (spread pts). Prefer auto from
@@ -527,13 +527,14 @@ function normAbbr(abbr) {
    = algorithm_base + fa_term + draft_term + madden_term + pff_term + injury_term + user_adjust + sum of active (on) context. Preseason OVER is not in this sum.
 
    Taper (do not invent another formula):
-     N = 17
-     n = 2026 regular-season games already played (kickoff in the past)
+     N = 3  (prior phased out by Week 3)
+     n = scored 2026 regular-season finals (home_score/away_score on nfl-2026.json)
      w_prior = (N − n) / N
      w_curr  = n / N
      blended = w_prior * prior + w_curr * current
-     current starts at 0 until 2026 results exist.
-     When n = 0, blended = prior.
+     currentRating from scored pts for/against → ±12 off/def pillars (2025 raw min/max),
+     then (0.3875*off + 0.3875*def)/0.775; |current| capped at 12. TO/ST deferred.
+     When n = 0, blended = prior. When n ≥ 3, blended = current.
 
    ourHomeLine = −(homeEff − awayEff + hfa + coach_term + prep_net + ats_net + sched_net)
      negative = home favored. Example: SEA +4, NE +1, HFA 2, SEA home
@@ -581,13 +582,59 @@ function contextSum(p) {
   return (p.context || []).reduce((s, c) => s + (c.on ? (num(c.pts) || 0) : 0), 0);
 }
 
-function currentRating(/* abbr */) {
-  // In-season 2026 current. Starts at 0 until real 2026 results exist. Do not seed.
-  return 0;
+function leagueRawPpgRange(kind) {
+  // 2025 prior-season raw PPG min/max for pillar mapping (off / def).
+  let lo = Infinity;
+  let hi = -Infinity;
+  if (!priorData || !priorData.teams) return kind === "def" ? { lo: 17.2, hi: 30.1 } : { lo: 14.2, hi: 30.5 };
+  const key = kind === "def" ? "def_ppg" : "off_ppg";
+  for (const t of Object.values(priorData.teams)) {
+    const v = t && t.raw ? num(t.raw[key]) : null;
+    if (v === null) continue;
+    if (v < lo) lo = v;
+    if (v > hi) hi = v;
+  }
+  if (!Number.isFinite(lo) || !Number.isFinite(hi) || hi <= lo) {
+    return kind === "def" ? { lo: 17.2, hi: 30.1 } : { lo: 14.2, hi: 30.5 };
+  }
+  return { lo, hi };
+}
+
+function mapPpgToPillar(ppg, kind) {
+  // Map raw PPG onto ±12. Off: higher better. Def: lower better (invert). Clamp outside range.
+  const x = num(ppg);
+  if (x === null) return 0;
+  const { lo, hi } = leagueRawPpgRange(kind);
+  const span = hi - lo || 1;
+  const t = Math.max(0, Math.min(1, (x - lo) / span));
+  const pillar = kind === "def" ? (12 - t * 24) : (-12 + t * 24);
+  return Math.max(-12, Math.min(12, pillar));
+}
+
+function currentRating(abbr) {
+  // In-season 2026 current from scored finals (pts for / against → off/def pillars).
+  // TO/ST current deferred. Optional EMA later; for small n use straight mean.
+  const rows = scoredGames2026(abbr);
+  if (!rows.length) return 0;
+  const offPpg = rows.reduce((s, r) => s + r.ptsFor, 0) / rows.length;
+  const defPpg = rows.reduce((s, r) => s + r.ptsAgainst, 0) / rows.length;
+  const off = mapPpgToPillar(offPpg, "off");
+  const def = mapPpgToPillar(defPpg, "def");
+  const w = (priorData && priorData.weights) || {};
+  const wOff = num(w.off) ?? 0.3875;
+  const wDef = num(w.def) ?? 0.3875;
+  const denom = wOff + wDef || 0.775;
+  let cur = (wOff * off + wDef * def) / denom;
+  if (Math.abs(cur) > 12) cur = Math.sign(cur) * 12;
+  return cur;
 }
 
 function gamesPlayed2026(abbr) {
+  // Prefer scored finals for taper n (fade tied to results). Date-only fallback if none scored yet.
   if (!nflData || !Array.isArray(nflData.games)) return 0;
+  const N = taperN();
+  const scored = scoredGames2026(abbr).length;
+  if (scored > 0) return Math.min(scored, N);
   const a = normAbbr(abbr);
   const now = new Date();
   let n = 0;
@@ -600,7 +647,6 @@ function gamesPlayed2026(abbr) {
     if (Number.isNaN(d.getTime())) continue;
     if (d < now) n += 1;
   }
-  const N = taperN();
   return Math.min(n, N);
 }
 
@@ -1885,8 +1931,8 @@ function marketFor(game) {
 }
 
 async function loadNfl() {
-  const nflReq = fetch("./data/nfl-2026.json?v=tnf3");
-  const priorReq = fetch("./data/prior-2025.json?v=st1");
+  const nflReq = fetch("./data/nfl-2026.json?v=prior3");
+  const priorReq = fetch("./data/prior-2025.json?v=prior3");
   const faReq = fetch("./data/fa-2026.json");
   const draftReq = fetch("./data/draft-2026.json");
   const maddenReq = fetch("./data/madden-2026.json");
@@ -1898,7 +1944,7 @@ async function loadNfl() {
   const staffReq = fetch("./data/staff-2026.json");
   const staffAtsReq = fetch("./data/staff-ats-2026.json");
   const scaleReq = fetch("./data/injury-scale.json");
-  const injReq = fetch("./data/injury-2026.json?v=tnf3");
+  const injReq = fetch("./data/injury-2026.json?v=prior3");
   const wxReq = fetch("./data/weather-scale.json");
   const coachReq = fetch("./data/coaches-2026.json");
   const prepReq = fetch("./data/coach-prep-2026.json");
