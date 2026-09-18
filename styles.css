@@ -2385,6 +2385,11 @@ span.sked-tip { display: inline-block; }
 .game-stack-val.minus { color: var(--lose); }
 .game-stack-val.zero { color: var(--slate); }
 .game-compare { margin: 8px 0 16px; }
+.game-stack-when {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
 .game-sheet-keys,
 .game-sheet-total,
 .game-sheet-none {
