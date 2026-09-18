@@ -1701,6 +1701,7 @@ function enrich(t) {
 
 let tickets = [];
 let currentWeek = 1;
+let weekPicked = false; // user or game-hash chose a week; do not overwrite
 let playbookFilter = "ALL";
 let lastFocus = null;
 
@@ -2137,13 +2138,13 @@ function streetLinesFor(game) {
 async function loadOpenerSnaps() {
   openerSnaps = [];
   try {
-    const idxRes = await fetch("./data/openers/index.json?v=bline1");
+    const idxRes = await fetch("./data/openers/index.json?v=wdef1");
     if (!idxRes.ok) throw new Error(String(idxRes.status));
     const idx = await idxRes.json();
     const files = idx && Array.isArray(idx.files) ? idx.files : [];
     const snaps = await Promise.all(files.map(async (name) => {
       try {
-        const res = await fetch("./data/openers/" + encodeURIComponent(name) + "?v=bline1");
+        const res = await fetch("./data/openers/" + encodeURIComponent(name) + "?v=wdef1");
         if (!res.ok) throw new Error(String(res.status));
         const data = await res.json();
         if (!data || !Array.isArray(data.games)) throw new Error("bad opener");
@@ -4043,8 +4044,8 @@ function openGameSheet(id, opts = {}) {
   if (profileAbbr) closeTeamSheet({ silent: true });
   if (Number(game.week) !== Number(currentWeek)) {
     currentWeek = Number(game.week);
-    const weekEl = document.getElementById("week-select");
-    if (weekEl) weekEl.value = currentWeek;
+    weekPicked = true;
+    syncWeekSelect();
     renderSchedule();
   }
   renderGameSheet();
@@ -5366,6 +5367,70 @@ function seasonPhaseLine() {
   return "Preseason";
 }
 
+function gameStatusText(g) {
+  return String((g && g.status) || "").toUpperCase().replace(/^STATUS_/, "");
+}
+
+function gameIsFinal(g) {
+  const st = gameStatusText(g);
+  return st === "FINAL" || st.startsWith("FINAL");
+}
+
+function gameIsInProgress(g) {
+  if (gameIsFinal(g)) return false;
+  return /IN_PROGRESS|HALFTIME|END OF|DELAY|SUSPEND|LIVE|^Q[1-4]|\bOT\b/.test(gameStatusText(g));
+}
+
+function weekGames(week) {
+  return regGames().filter((g) => Number(g.week) === Number(week));
+}
+
+function weekLastKickMs(games) {
+  let last = NaN;
+  for (const g of games) {
+    const t = Date.parse(g && g.date);
+    if (Number.isFinite(t) && (!Number.isFinite(last) || t > last)) last = t;
+  }
+  return last;
+}
+
+function weekIsClosed(week, now) {
+  const games = weekGames(week);
+  if (!games.length) return false;
+  if (games.every(gameIsFinal)) return true;
+  const when = Number.isFinite(now) ? now : Date.now();
+  const lastKick = weekLastKickMs(games);
+  const allScored = games.every((g) => gameScores(g));
+  if (allScored && Number.isFinite(lastKick) && lastKick < when && !games.some(gameIsInProgress)) return true;
+  return false;
+}
+
+function currentNflWeek(now) {
+  const phase = seasonPhaseLine();
+  if (phase === "Preseason" || phase === "Week 1 card open") return 1;
+  const weeks = [...new Set(regGames().map((g) => Number(g.week)))]
+    .filter((w) => Number.isFinite(w) && w >= 1 && w <= 18)
+    .sort((a, b) => a - b);
+  if (!weeks.length) return 1;
+  const when = Number.isFinite(now) ? now : Date.now();
+  for (const w of weeks) {
+    if (!weekIsClosed(w, when)) return w;
+  }
+  return weeks[weeks.length - 1];
+}
+
+function syncWeekSelect() {
+  const weekEl = document.getElementById("week-select");
+  if (weekEl) weekEl.value = currentWeek;
+}
+
+function applyDefaultCurrentWeek() {
+  if (weekPicked) return;
+  if (!nflData || !Array.isArray(nflData.games) || !nflData.games.length) return;
+  currentWeek = Math.min(18, Math.max(1, Number(currentNflWeek()) || 1));
+  syncWeekSelect();
+}
+
 function heroWindowLine(et) {
   if (!et) return "";
   const wd = et.weekday;
@@ -5385,7 +5450,7 @@ function renderHero() {
   const year = new Intl.DateTimeFormat("en-US", { timeZone: "America/New_York", year: "numeric" }).format(new Date());
   const date = et ? (et.label + " " + year) : "";
   const phase = seasonPhaseLine();
-  const weekLine = phase === "Preseason" ? "Week 1 not open" : (phase === "Week 1 card open" ? "Week 1" : ("Week " + currentWeek));
+  const weekLine = phase === "Preseason" ? "Week 1 not open" : (phase === "Week 1 card open" ? "Week 1" : ("Week " + lookWeek()));
   const win = heroWindowLine(et);
   el.innerHTML = [date, phase, weekLine, win].filter(Boolean).map((s) => `<li>${esc(s)}</li>`).join("");
 }
@@ -5435,9 +5500,7 @@ function clubNick(abbr) {
 }
 
 function lookWeek() {
-  const phase = seasonPhaseLine();
-  if (phase === "Preseason" || phase === "Week 1 card open") return 1;
-  return currentWeek;
+  return currentNflWeek();
 }
 
 function featuredLookGame() {
@@ -5673,7 +5736,8 @@ function parseHash() {
 function fromHash() {
   const { view, team, game } = parseHash();
   const known = ["desk", "card", "teams", "staff", "schedule", "residuals", "keys", "vibe", "clock", "playbook", "tickets"];
-  showView(known.includes(view) ? view : "desk");
+  const name = known.includes(view) ? view : "desk";
+  showView(name);
   if (game) {
     if (nflData && nflData.games && nflData.games.length) openGameSheet(game, { silent: true });
     else pendingGame = game;
@@ -5682,6 +5746,7 @@ function fromHash() {
     if (nflData && nflData.teams && nflData.teams.length) openTeamProfile(team);
     else pendingTeam = team;
   } else {
+    if (name === "schedule") applyDefaultCurrentWeek();
     if (profileAbbr && view !== "teams" && view !== "schedule") {
       closeTeamSheet({ silent: true });
     }
@@ -5759,16 +5824,19 @@ function bind() {
   fromHash();
 
   document.getElementById("week-select").addEventListener("change", (e) => {
+    weekPicked = true;
     currentWeek = Math.min(18, Math.max(1, Number(e.target.value) || 1));
     e.target.value = currentWeek;
     render();
   });
   document.getElementById("week-prev").addEventListener("click", () => {
+    weekPicked = true;
     currentWeek = Math.max(1, currentWeek - 1);
     document.getElementById("week-select").value = currentWeek;
     render();
   });
   document.getElementById("week-next").addEventListener("click", () => {
+    weekPicked = true;
     currentWeek = Math.min(18, currentWeek + 1);
     document.getElementById("week-select").value = currentWeek;
     render();
@@ -6300,6 +6368,7 @@ async function loadModelAts() {
 async function bootNfl() {
   await loadNfl();
   await loadModelAts();
+  applyDefaultCurrentWeek();
   if (pendingTeam) openTeamProfile(pendingTeam);
   if (pendingGame) openGameSheet(pendingGame, { silent: true });
   fromHash();
