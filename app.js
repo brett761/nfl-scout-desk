@@ -508,9 +508,13 @@ function normAbbr(abbr) {
      Launch snapshot. Does not fade. Does not rewrite the 2025 prior.
    pff_term(abbr) = pff-2026.json team net (0 if missing).
      Same 22 per club: top 11 OFF + top 11 DEF by 2025 PFF grade, min 200 snaps.
-     pff-2026-ytd.json is display-only REG YTD grades (not in eff).
      Surplus vs league mean of those 22. 5 grade ≈ 1 point. Cap ±1.5.
      Official PFF+ CSV export. Does not fade. Does not rewrite the 2025 prior.
+   pff_ytd_term(abbr) = pff-2026-ytd.json team net (0 if missing).
+     2026 REG YTD team OFF/DEF/ST grades (Pro API overview, REG weeks only).
+     net = clamp((off−μo)/5 + (def−μd)/5 + 0.15*(st−μs)/5, −1.5, +1.5).
+     League means from all 32 clubs. Early-season n can be 1 — cap keeps it modest.
+     IN the line (eff / ourHomeLine). Does not replace pff_term.
    pff_pre_term is display only. Not in eff() or ourHomeLine.
      2026 preseason team OVER stays on the club sheet so you can see it.
    user_adjust = optional override on top of the algorithm (old "base").
@@ -524,8 +528,8 @@ function normAbbr(abbr) {
      impact_source: madden|pff|manual (not madden+pff max).
      Precedence: manual → auto match → seed impact → pos_base.
      injury_term = clamp(sum of ON rows, −cap_team, 0)
-   Effective = algorithm + FA + draft + madden + pff + injury + adjust + context
-   = algorithm_base + fa_term + draft_term + madden_term + pff_term + injury_term + user_adjust + sum of active (on) context. Preseason OVER is not in this sum.
+   Effective = algorithm + FA + draft + madden + pff + pff_ytd + SOS + return + injury + adjust + context
+   = algorithm_base + fa_term + draft_term + madden_term + pff_term + pff_ytd_term + sos_term + return_term + injury_term + user_adjust + sum of active (on) context. Preseason OVER is not in this sum.
 
    Taper (do not invent another formula):
      N = 3  (prior phased out by Week 3)
@@ -848,6 +852,42 @@ function pffYtdTeam(abbr) {
   const a = normAbbr(abbr);
   if (!pffYtdData || !pffYtdData.teams) return null;
   return pffYtdData.teams[a] || null;
+}
+
+/** Compute YTD net from OFF/DEF/ST grades if JSON lacks team.net (rebuild writes it). */
+function pffYtdComputeNet(t) {
+  if (!t) return 0;
+  const sc = (pffYtdData && pffYtdData.scoring) || {};
+  const gpp = num(sc.grade_per_point) ?? 5;
+  const cap = num(sc.cap) ?? 1.5;
+  const stW = num(sc.st_weight) ?? 0.15;
+  let muO = num(sc.league_offense);
+  let muD = num(sc.league_defense);
+  let muS = num(sc.league_st);
+  if (muO === null || muD === null || muS === null) {
+    const rows = Object.values(pffYtdData.teams || {});
+    const offs = rows.map((r) => num(r.grades_offense)).filter((x) => x !== null);
+    const defs = rows.map((r) => num(r.grades_defense)).filter((x) => x !== null);
+    const sts = rows.map((r) => num(r.grades_st)).filter((x) => x !== null);
+    if (!offs.length || !defs.length || !sts.length) return 0;
+    muO = offs.reduce((a, b) => a + b, 0) / offs.length;
+    muD = defs.reduce((a, b) => a + b, 0) / defs.length;
+    muS = sts.reduce((a, b) => a + b, 0) / sts.length;
+  }
+  const off = num(t.grades_offense);
+  const deff = num(t.grades_defense);
+  const st = num(t.grades_st);
+  if (off === null || deff === null || st === null) return 0;
+  const raw = (off - muO) / gpp + (deff - muD) / gpp + stW * (st - muS) / gpp;
+  return Math.max(-cap, Math.min(cap, raw));
+}
+
+function pffYtdTerm(abbr) {
+  const t = pffYtdTeam(abbr);
+  if (!t) return 0;
+  const stored = num(t.net);
+  if (stored !== null) return stored;
+  return pffYtdComputeNet(t) || 0;
 }
 
 function matchupRec(game) {
@@ -1177,7 +1217,7 @@ function seedInjuriesIfNeeded() {
 function eff(abbr) {
   const a = normAbbr(abbr);
   const p = getProfile(a);
-  return algorithmBase(a) + faTerm(a) + draftTerm(a) + maddenTerm(a) + pffTerm(a) + sosTerm(a) + returnTerm(a) + injuryTerm(a) + (num(p.user_adjust) || 0) + contextSum(p);
+  return algorithmBase(a) + faTerm(a) + draftTerm(a) + maddenTerm(a) + pffTerm(a) + pffYtdTerm(a) + sosTerm(a) + returnTerm(a) + injuryTerm(a) + (num(p.user_adjust) || 0) + contextSum(p);
 }
 
 function coachOf(abbr) {
@@ -1672,7 +1712,7 @@ let draftData = null; // { teams, scoring, season, window_games } from ./data/dr
 let maddenData = null; // { teams, scoring } from ./data/madden-2026.json; null if missing
 let pffData = null; // { teams, scoring } from ./data/pff-2026.json; null if missing
 let pffPreData = null; // 2026 PRE team OVER chip
-let pffYtdData = null; // 2026 REG YTD team grades (display only)
+let pffYtdData = null; // 2026 REG YTD team grades → pffYtdTerm in eff()
 let pffMatchData = null; // Week 1 matchup game chip
 let sosData = null; // { teams } from ./data/sos-2025.json; realized SOS + record; null if missing
 let returnData = null; // { teams } from ./data/return-2026.json; last-year-hurt, this-year-healthy; null if missing
@@ -2009,7 +2049,7 @@ async function loadNfl() {
   const maddenReq = fetch("./data/madden-2026.json");
   const pffReq = fetch("./data/pff-2026.json?v=pff1");
   const pffPreReq = fetch("./data/pff-pre-2026.json?v=pff2");
-  const pffYtdReq = fetch("./data/pff-2026-ytd.json?v=pff3");
+  const pffYtdReq = fetch("./data/pff-2026-ytd.json?v=pff4");
   const pffMatchReq = fetch("./data/pff-matchups-2026.json?v=pff2");
   const sosReq = fetch("./data/sos-2025.json");
   const returnReq = fetch("./data/return-2026.json");
@@ -2917,6 +2957,7 @@ function renderTeams() {
       Math.abs(draftN) >= 0.3 ? `<span class="club-draft ${rtgClass(draftN)}">DRFT ${esc(fmtRtg(draftN))}</span>` : "",
       Math.abs(maddenTerm(t.abbr)) >= 0.3 ? `<span class="club-madden ${rtgClass(maddenTerm(t.abbr))}">MAD ${esc(fmtRtg(maddenTerm(t.abbr)))}</span>` : "",
       Math.abs(pffTerm(t.abbr)) >= 0.3 ? `<span class="club-pff ${rtgClass(pffTerm(t.abbr))}">PFF ${esc(fmtRtg(pffTerm(t.abbr)))}</span>` : "",
+      Math.abs(pffYtdTerm(t.abbr)) >= 0.3 ? `<span class="club-pff ${rtgClass(pffYtdTerm(t.abbr))}">YTD ${esc(fmtRtg(pffYtdTerm(t.abbr)))}</span>` : "",
       Math.abs(sosTerm(t.abbr)) >= 0.3 ? `<span class="club-sos ${rtgClass(sosTerm(t.abbr))}">SOS ${esc(fmtRtg(sosTerm(t.abbr)))}</span>` : "",
       Math.abs(returnTerm(t.abbr)) >= 0.3 ? `<span class="club-return ${rtgClass(returnTerm(t.abbr))}">BACK ${esc(fmtRtg(returnTerm(t.abbr)))}</span>` : "",
       injN <= -0.3 ? `<span class="club-inj minus">INJ ${esc(fmtRtg(injN))}</span>` : "",
@@ -3291,6 +3332,7 @@ function pffYtdBlockHtml(abbr) {
   const t = pffYtdTeam(abbr);
   if (!t) return "";
   const weeks = pffYtdData && Array.isArray(pffYtdData.weeks) ? pffYtdData.weeks.join(",") : "";
+  const net = pffYtdTerm(abbr);
   const off = t.grades_offense != null ? t.grades_offense : "—";
   const deff = t.grades_defense != null ? t.grades_defense : "—";
   const st = t.grades_st != null ? t.grades_st : "—";
@@ -3299,16 +3341,16 @@ function pffYtdBlockHtml(abbr) {
   return `<div class="fa-block pff-block">
     <p class="prior-kicker">PFF 2026 REG YTD · W${esc(weeks || "?")}</p>
     <div class="fa-net">
-      <small>OVR</small>
-      <em>${esc(String(ovr))}</em>
-      <span class="fa-net-note">${esc(rk(t.rank_overall))} · ${esc(t.record || "")}</span>
+      <small>NET</small>
+      <em class="${rtgClass(net)}">${esc(fmtRtg(net))}</em>
+      <span class="fa-net-note">OVR ${esc(String(ovr))} ${esc(rk(t.rank_overall))} · ${esc(t.record || "")}</span>
     </div>
     <div class="fa-lists">
       <div class="fa-unit"><span class="fa-unit-h">OFF ${esc(String(off))} ${esc(rk(t.rank_offense))}</span></div>
       <div class="fa-unit"><span class="fa-unit-h">DEF ${esc(String(deff))} ${esc(rk(t.rank_defense))}</span></div>
       <div class="fa-unit"><span class="fa-unit-h">ST ${esc(String(st))} ${esc(rk(t.rank_st))}</span></div>
     </div>
-    <p class="prior-note">Official Pro API team-overview. Sheet only — not in pff_term or eff(). Rebuild: data/build_pff_ytd_2026.py</p>
+    <p class="prior-note">Official Pro API team-overview. IN the line (pff_ytd_term). 5 grade ≈ 1 pt vs league mean, ST×0.15, cap ±1.5. Does not replace pff_term. Rebuild: data/build_pff_ytd_2026.py</p>
   </div>`;
 }
 
@@ -3410,7 +3452,7 @@ function renderTeamSheet() {
       <input id="tp-adjust-why" type="text" placeholder="Say why. It gets a timestamp." autocomplete="off">
     </label>
     <div id="tp-adjust-log" class="adjust-log-wrap">${adjustLogHtml(team.abbr)}</div>
-    <p class="tp-eff-break" id="tp-eff-break">Effective = algorithm ${esc(fmtRtg(algo))} + FA ${esc(fmtRtg(fa))} + back ${esc(fmtRtg(returnTerm(team.abbr)))} + draft ${esc(fmtRtg(draft))} + madden ${esc(fmtRtg(maddenTerm(team.abbr)))} + PFF ${esc(fmtRtg(pffTerm(team.abbr)))} + SOS ${esc(fmtRtg(sosTerm(team.abbr)))} + injury ${esc(fmtRtg(injuryTerm(team.abbr)))} + adjust ${esc(fmtRtg(adj))} + context ${esc(fmtRtg(ctx))}</p>
+    <p class="tp-eff-break" id="tp-eff-break">Effective = algorithm ${esc(fmtRtg(algo))} + FA ${esc(fmtRtg(fa))} + back ${esc(fmtRtg(returnTerm(team.abbr)))} + draft ${esc(fmtRtg(draft))} + madden ${esc(fmtRtg(maddenTerm(team.abbr)))} + PFF ${esc(fmtRtg(pffTerm(team.abbr)))} + YTD ${esc(fmtRtg(pffYtdTerm(team.abbr)))} + SOS ${esc(fmtRtg(sosTerm(team.abbr)))} + injury ${esc(fmtRtg(injuryTerm(team.abbr)))} + adjust ${esc(fmtRtg(adj))} + context ${esc(fmtRtg(ctx))}</p>
     <label class="field">
       <span>Context stack</span>
     </label>
@@ -3443,6 +3485,7 @@ function refreshTeamDerived() {
       + " + draft " + fmtRtg(draftTerm(profileAbbr))
       + " + madden " + fmtRtg(maddenTerm(profileAbbr))
       + " + PFF " + fmtRtg(pffTerm(profileAbbr))
+      + " + YTD " + fmtRtg(pffYtdTerm(profileAbbr))
       + " + SOS " + fmtRtg(sosTerm(profileAbbr))
       + " + injury " + fmtRtg(injuryTerm(profileAbbr))
       + " + adjust " + fmtRtg(num(p.user_adjust) || 0)
@@ -3652,6 +3695,7 @@ function renderGameSheet() {
     ["Rookies", draftTerm(away), draftTerm(home)],
     ["Madden 22", maddenTerm(away), maddenTerm(home)],
     ["PFF 22", pffTerm(away), pffTerm(home)],
+    ["PFF YTD", pffYtdTerm(away), pffYtdTerm(home)],
     ["Last year SOS", sosTerm(away), sosTerm(home)],
     ["Injuries", injuryTerm(away), injuryTerm(home)],
     ["Manual", num(pA.user_adjust) || 0, num(pH.user_adjust) || 0],

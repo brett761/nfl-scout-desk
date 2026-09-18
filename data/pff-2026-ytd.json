@@ -9,7 +9,7 @@
   "pulled": "2026-09-18 11:40 ET",
   "source": "PFF Pro API GET /v1/teams/overview",
   "endpoint": "/v1/teams/overview?league=nfl&season=2026&week=1,2",
-  "note": "2026 REG YTD team grades. Not wired into pff_term/eff(). Use for current-form display. Unfiltered overview includes PRE \u2014 always pass REG weeks.",
+  "note": "2026 REG YTD team grades. Wired into eff() as pff_ytd_term (team.net). Does not replace pff-2026.json / pff_term (2025 same-22 prior). Unfiltered overview includes PRE \u2014 always pass REG weeks.",
   "n_teams": 32,
   "teams": {
     "ARI": {
@@ -39,7 +39,12 @@
       "rank_offense": 9,
       "rank_defense": 11,
       "rank_st": 3,
-      "rank_overall": 5
+      "rank_overall": 5,
+      "off_pts": 1.45,
+      "def_pts": 0.98,
+      "st_pts": 0.49,
+      "raw": 2.92,
+      "net": 1.5
     },
     "ATL": {
       "abbr": "ATL",
@@ -68,7 +73,12 @@
       "rank_offense": 30,
       "rank_defense": 7,
       "rank_st": 19,
-      "rank_overall": 21
+      "rank_overall": 21,
+      "off_pts": -2.41,
+      "def_pts": 1.84,
+      "st_pts": -0.06,
+      "raw": -0.63,
+      "net": -0.63
     },
     "BAL": {
       "abbr": "BAL",
@@ -97,7 +107,12 @@
       "rank_offense": 3,
       "rank_defense": 5,
       "rank_st": 28,
-      "rank_overall": 2
+      "rank_overall": 2,
+      "off_pts": 2.49,
+      "def_pts": 2.32,
+      "st_pts": -0.38,
+      "raw": 4.43,
+      "net": 1.5
     },
     "BUF": {
       "abbr": "BUF",
@@ -126,7 +141,12 @@
       "rank_offense": 4,
       "rank_defense": 22,
       "rank_st": 1,
-      "rank_overall": 8
+      "rank_overall": 8,
+      "off_pts": 2.43,
+      "def_pts": -1.0,
+      "st_pts": 0.67,
+      "raw": 2.1,
+      "net": 1.5
     },
     "CAR": {
       "abbr": "CAR",
@@ -155,7 +175,12 @@
       "rank_offense": 2,
       "rank_defense": 27,
       "rank_st": 29,
-      "rank_overall": 14
+      "rank_overall": 14,
+      "off_pts": 2.79,
+      "def_pts": -1.94,
+      "st_pts": -0.39,
+      "raw": 0.46,
+      "net": 0.46
     },
     "CHI": {
       "abbr": "CHI",
@@ -184,7 +209,12 @@
       "rank_offense": 5,
       "rank_defense": 31,
       "rank_st": 2,
-      "rank_overall": 18
+      "rank_overall": 18,
+      "off_pts": 2.27,
+      "def_pts": -3.88,
+      "st_pts": 0.63,
+      "raw": -0.98,
+      "net": -0.98
     },
     "CIN": {
       "abbr": "CIN",
@@ -213,7 +243,12 @@
       "rank_offense": 13,
       "rank_defense": 17,
       "rank_st": 21,
-      "rank_overall": 15
+      "rank_overall": 15,
+      "off_pts": 0.41,
+      "def_pts": 0.32,
+      "st_pts": -0.16,
+      "raw": 0.57,
+      "net": 0.57
     },
     "CLE": {
       "abbr": "CLE",
@@ -242,7 +277,12 @@
       "rank_offense": 29,
       "rank_defense": 29,
       "rank_st": 17,
-      "rank_overall": 30
+      "rank_overall": 30,
+      "off_pts": -2.01,
+      "def_pts": -3.22,
+      "st_pts": -0.01,
+      "raw": -5.23,
+      "net": -1.5
     },
     "DAL": {
       "abbr": "DAL",
@@ -271,7 +311,12 @@
       "rank_offense": 19,
       "rank_defense": 25,
       "rank_st": 31,
-      "rank_overall": 27
+      "rank_overall": 27,
+      "off_pts": -0.45,
+      "def_pts": -1.58,
+      "st_pts": -0.61,
+      "raw": -2.63,
+      "net": -1.5
     },
     "DEN": {
       "abbr": "DEN",
@@ -300,7 +345,12 @@
       "rank_offense": 32,
       "rank_defense": 28,
       "rank_st": 16,
-      "rank_overall": 32
+      "rank_overall": 32,
+      "off_pts": -4.15,
+      "def_pts": -2.44,
+      "st_pts": 0.01,
+      "raw": -6.58,
+      "net": -1.5
     },
     "DET": {
       "abbr": "DET",
@@ -329,7 +379,12 @@
       "rank_offense": 12,
       "rank_defense": 18,
       "rank_st": 10,
-      "rank_overall": 12
+      "rank_overall": 12,
+      "off_pts": 0.93,
+      "def_pts": 0.28,
+      "st_pts": 0.22,
+      "raw": 1.43,
+      "net": 1.43
     },
     "GB": {
       "abbr": "GB",
@@ -358,7 +413,12 @@
       "rank_offense": 21,
       "rank_defense": 24,
       "rank_st": 23,
-      "rank_overall": 25
+      "rank_overall": 25,
+      "off_pts": -0.87,
+      "def_pts": -1.34,
+      "st_pts": -0.2,
+      "raw": -2.41,
+      "net": -1.5
     },
     "HOU": {
       "abbr": "HOU",
@@ -387,7 +447,12 @@
       "rank_offense": 10,
       "rank_defense": 14,
       "rank_st": 30,
-      "rank_overall": 11
+      "rank_overall": 11,
+      "off_pts": 1.01,
+      "def_pts": 0.6,
+      "st_pts": -0.46,
+      "raw": 1.15,
+      "net": 1.15
     },
     "IND": {
       "abbr": "IND",
@@ -416,7 +481,12 @@
       "rank_offense": 16,
       "rank_defense": 32,
       "rank_st": 24,
-      "rank_overall": 28
+      "rank_overall": 28,
+      "off_pts": -0.09,
+      "def_pts": -3.98,
+      "st_pts": -0.2,
+      "raw": -4.27,
+      "net": -1.5
     },
     "JAX": {
       "abbr": "JAX",
@@ -445,7 +515,12 @@
       "rank_offense": 1,
       "rank_defense": 13,
       "rank_st": 22,
-      "rank_overall": 1
+      "rank_overall": 1,
+      "off_pts": 4.13,
+      "def_pts": 0.76,
+      "st_pts": -0.19,
+      "raw": 4.71,
+      "net": 1.5
     },
     "KC": {
       "abbr": "KC",
@@ -474,7 +549,12 @@
       "rank_offense": 15,
       "rank_defense": 1,
       "rank_st": 32,
-      "rank_overall": 7
+      "rank_overall": 7,
+      "off_pts": 0.03,
+      "def_pts": 3.82,
+      "st_pts": -0.72,
+      "raw": 3.13,
+      "net": 1.5
     },
     "MIA": {
       "abbr": "MIA",
@@ -503,7 +583,12 @@
       "rank_offense": 31,
       "rank_defense": 8,
       "rank_st": 12,
-      "rank_overall": 23
+      "rank_overall": 23,
+      "off_pts": -2.41,
+      "def_pts": 1.62,
+      "st_pts": 0.2,
+      "raw": -0.59,
+      "net": -0.59
     },
     "MIN": {
       "abbr": "MIN",
@@ -532,7 +617,12 @@
       "rank_offense": 20,
       "rank_defense": 20,
       "rank_st": 11,
-      "rank_overall": 17
+      "rank_overall": 17,
+      "off_pts": -0.53,
+      "def_pts": 0.12,
+      "st_pts": 0.22,
+      "raw": -0.19,
+      "net": -0.19
     },
     "NE": {
       "abbr": "NE",
@@ -561,7 +651,12 @@
       "rank_offense": 22,
       "rank_defense": 21,
       "rank_st": 13,
-      "rank_overall": 20
+      "rank_overall": 20,
+      "off_pts": -0.95,
+      "def_pts": -0.2,
+      "st_pts": 0.16,
+      "raw": -0.99,
+      "net": -0.99
     },
     "NO": {
       "abbr": "NO",
@@ -590,7 +685,12 @@
       "rank_offense": 11,
       "rank_defense": 15,
       "rank_st": 7,
-      "rank_overall": 9
+      "rank_overall": 9,
+      "off_pts": 0.95,
+      "def_pts": 0.58,
+      "st_pts": 0.28,
+      "raw": 1.81,
+      "net": 1.5
     },
     "NYG": {
       "abbr": "NYG",
@@ -619,7 +719,12 @@
       "rank_offense": 14,
       "rank_defense": 23,
       "rank_st": 4,
-      "rank_overall": 19
+      "rank_overall": 19,
+      "off_pts": 0.35,
+      "def_pts": -1.2,
+      "st_pts": 0.42,
+      "raw": -0.43,
+      "net": -0.43
     },
     "NYJ": {
       "abbr": "NYJ",
@@ -648,7 +753,12 @@
       "rank_offense": 6,
       "rank_defense": 2,
       "rank_st": 6,
-      "rank_overall": 3
+      "rank_overall": 3,
+      "off_pts": 1.63,
+      "def_pts": 2.5,
+      "st_pts": 0.29,
+      "raw": 4.42,
+      "net": 1.5
     },
     "LV": {
       "abbr": "LV",
@@ -677,7 +787,12 @@
       "rank_offense": 18,
       "rank_defense": 4,
       "rank_st": 20,
-      "rank_overall": 10
+      "rank_overall": 10,
+      "off_pts": -0.27,
+      "def_pts": 2.36,
+      "st_pts": -0.15,
+      "raw": 1.94,
+      "net": 1.5
     },
     "PHI": {
       "abbr": "PHI",
@@ -706,7 +821,12 @@
       "rank_offense": 7,
       "rank_defense": 12,
       "rank_st": 8,
-      "rank_overall": 6
+      "rank_overall": 6,
+      "off_pts": 1.47,
+      "def_pts": 0.96,
+      "st_pts": 0.23,
+      "raw": 2.66,
+      "net": 1.5
     },
     "PIT": {
       "abbr": "PIT",
@@ -735,7 +855,12 @@
       "rank_offense": 24,
       "rank_defense": 3,
       "rank_st": 5,
-      "rank_overall": 16
+      "rank_overall": 16,
+      "off_pts": -1.39,
+      "def_pts": 2.5,
+      "st_pts": 0.38,
+      "raw": 1.5,
+      "net": 1.5
     },
     "LAR": {
       "abbr": "LAR",
@@ -764,7 +889,12 @@
       "rank_offense": 23,
       "rank_defense": 16,
       "rank_st": 18,
-      "rank_overall": 22
+      "rank_overall": 22,
+      "off_pts": -1.03,
+      "def_pts": 0.56,
+      "st_pts": -0.04,
+      "raw": -0.51,
+      "net": -0.51
     },
     "LAC": {
       "abbr": "LAC",
@@ -793,7 +923,12 @@
       "rank_offense": 27,
       "rank_defense": 19,
       "rank_st": 26,
-      "rank_overall": 26
+      "rank_overall": 26,
+      "off_pts": -1.87,
+      "def_pts": 0.16,
+      "st_pts": -0.32,
+      "raw": -2.03,
+      "net": -1.5
     },
     "SF": {
       "abbr": "SF",
@@ -822,7 +957,12 @@
       "rank_offense": 17,
       "rank_defense": 10,
       "rank_st": 9,
-      "rank_overall": 13
+      "rank_overall": 13,
+      "off_pts": -0.15,
+      "def_pts": 1.02,
+      "st_pts": 0.22,
+      "raw": 1.09,
+      "net": 1.09
     },
     "SEA": {
       "abbr": "SEA",
@@ -851,7 +991,12 @@
       "rank_offense": 8,
       "rank_defense": 6,
       "rank_st": 27,
-      "rank_overall": 4
+      "rank_overall": 4,
+      "off_pts": 1.47,
+      "def_pts": 1.86,
+      "st_pts": -0.36,
+      "raw": 2.97,
+      "net": 1.5
     },
     "TB": {
       "abbr": "TB",
@@ -880,7 +1025,12 @@
       "rank_offense": 26,
       "rank_defense": 9,
       "rank_st": 25,
-      "rank_overall": 24
+      "rank_overall": 24,
+      "off_pts": -1.81,
+      "def_pts": 1.08,
+      "st_pts": -0.26,
+      "raw": -0.99,
+      "net": -0.99
     },
     "TEN": {
       "abbr": "TEN",
@@ -909,7 +1059,12 @@
       "rank_offense": 25,
       "rank_defense": 26,
       "rank_st": 14,
-      "rank_overall": 29
+      "rank_overall": 29,
+      "off_pts": -1.69,
+      "def_pts": -1.84,
+      "st_pts": 0.06,
+      "raw": -3.47,
+      "net": -1.5
     },
     "WSH": {
       "abbr": "WSH",
@@ -938,7 +1093,22 @@
       "rank_offense": 28,
       "rank_defense": 30,
       "rank_st": 15,
-      "rank_overall": 31
+      "rank_overall": 31,
+      "off_pts": -1.87,
+      "def_pts": -3.5,
+      "st_pts": 0.02,
+      "raw": -5.35,
+      "net": -1.5
     }
+  },
+  "scoring": {
+    "grade_per_point": 5.0,
+    "cap": 1.5,
+    "st_weight": 0.15,
+    "league_offense": 68.63,
+    "league_defense": 60.32,
+    "league_st": 65.18,
+    "n_teams": 32,
+    "note": "pff_ytd_term = team.net. net = clamp((off\u2212\u03bco)/5 + (def\u2212\u03bcd)/5 + 0.15*(st\u2212\u03bcs)/5, \u22121.5, +1.5). Means from all 32 clubs. Does not replace pff_term (2025 same-22)."
   }
 }

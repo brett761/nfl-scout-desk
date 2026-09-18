@@ -6,13 +6,18 @@ Writes:
   data/pff-2026-ytd.md
 
 Uses GET /v1/teams/overview?league=nfl&season=2026&week=<played REG weeks>.
-Does NOT rewrite pff-2026.json (2025 prior / pff_term). Display/current-form only.
+Does NOT rewrite pff-2026.json (2025 prior / pff_term).
+
+Scoring (pff_ytd_term → eff / ourHomeLine):
+  league means μo/μd/μs from the 32 YTD grades
+  grade_per_point = 5, st_weight = 0.15, cap = ±1.5
+  net = clamp( (off−μo)/5 + (def−μd)/5 + 0.15*(st−μs)/5 , −1.5, +1.5 )
 """
 from __future__ import annotations
 
 import json
 import sys
-from datetime import datetime, timezone
+from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -25,11 +30,57 @@ OUT_MD = DATA / "pff-2026-ytd.md"
 SEASON = 2026
 ET = ZoneInfo("America/New_York")
 
+# Mirror 2025 pff-2026.json grade_per_point / cap; ST lightly weighted.
+GRADE_PER_POINT = 5.0
+CAP = 1.5
+ST_WEIGHT = 0.15
+
 
 def rank_map(rows: list[dict], key: str, *, higher_better: bool = True) -> dict[str, int]:
     scored = [(r["abbr"], r.get(key)) for r in rows if r.get(key) is not None]
     scored.sort(key=lambda x: (-x[1] if higher_better else x[1], x[0]))
     return {abbr: i + 1 for i, (abbr, _) in enumerate(scored)}
+
+
+def round2(x: float) -> float:
+    return round(float(x) + 0.0, 2)
+
+
+def apply_scoring(teams: dict[str, dict]) -> dict:
+    """Attach scoring + per-team net / off_pts / def_pts / st_pts. Mutates teams."""
+    offs = [t["grades_offense"] for t in teams.values() if t.get("grades_offense") is not None]
+    defs = [t["grades_defense"] for t in teams.values() if t.get("grades_defense") is not None]
+    sts = [t["grades_st"] for t in teams.values() if t.get("grades_st") is not None]
+    if len(offs) != 32 or len(defs) != 32 or len(sts) != 32:
+        raise SystemExit(f"scoring needs 32 grades, got off={len(offs)} def={len(defs)} st={len(sts)}")
+    mu_o = sum(offs) / 32
+    mu_d = sum(defs) / 32
+    mu_s = sum(sts) / 32
+    for t in teams.values():
+        off_pts = (float(t["grades_offense"]) - mu_o) / GRADE_PER_POINT
+        def_pts = (float(t["grades_defense"]) - mu_d) / GRADE_PER_POINT
+        st_pts = ST_WEIGHT * (float(t["grades_st"]) - mu_s) / GRADE_PER_POINT
+        raw = off_pts + def_pts + st_pts
+        net = max(-CAP, min(CAP, raw))
+        t["off_pts"] = round2(off_pts)
+        t["def_pts"] = round2(def_pts)
+        t["st_pts"] = round2(st_pts)
+        t["raw"] = round2(raw)
+        t["net"] = round2(net)
+    return {
+        "grade_per_point": GRADE_PER_POINT,
+        "cap": CAP,
+        "st_weight": ST_WEIGHT,
+        "league_offense": round2(mu_o),
+        "league_defense": round2(mu_d),
+        "league_st": round2(mu_s),
+        "n_teams": 32,
+        "note": (
+            "pff_ytd_term = team.net. "
+            "net = clamp((off−μo)/5 + (def−μd)/5 + 0.15*(st−μs)/5, −1.5, +1.5). "
+            "Means from all 32 clubs. Does not replace pff_term (2025 same-22)."
+        ),
+    }
 
 
 def main() -> None:
@@ -97,6 +148,8 @@ def main() -> None:
         for abbr, rk in ranks.items():
             teams[abbr][out_key] = rk
 
+    scoring = apply_scoring(teams)
+
     pulled = datetime.now(ET).strftime("%Y-%m-%d %H:%M ET")
     payload = {
         "season": SEASON,
@@ -107,10 +160,12 @@ def main() -> None:
         "source": "PFF Pro API GET /v1/teams/overview",
         "endpoint": f"/v1/teams/overview?league=nfl&season={SEASON}&week={wp}",
         "note": (
-            "2026 REG YTD team grades. Not wired into pff_term/eff(). "
-            "Use for current-form display. Unfiltered overview includes PRE — always pass REG weeks."
+            "2026 REG YTD team grades. Wired into eff() as pff_ytd_term (team.net). "
+            "Does not replace pff-2026.json / pff_term (2025 same-22 prior). "
+            "Unfiltered overview includes PRE — always pass REG weeks."
         ),
         "n_teams": len(teams),
+        "scoring": scoring,
         "teams": teams,
     }
     OUT_JSON.write_text(json.dumps(payload, indent=2) + "\n")
@@ -119,6 +174,7 @@ def main() -> None:
     by_def = sorted(row_list, key=lambda t: (-(t.get("grades_defense") or 0), t["abbr"]))
     by_st = sorted(row_list, key=lambda t: (-(t.get("grades_st") or 0), t["abbr"]))
     by_ovr = sorted(row_list, key=lambda t: (-(t.get("grades_overall") or 0), t["abbr"]))
+    by_net = sorted(row_list, key=lambda t: (-(t.get("net") or 0), t["abbr"]))
 
     lines = [
         f"# PFF 2026 REG YTD team grades",
@@ -126,8 +182,31 @@ def main() -> None:
         f"Pulled: **{pulled}**. Weeks: **{wp}** (REG games with `has_stats`).",
         f"Source: `GET /v1/teams/overview?league=nfl&season={SEASON}&week={wp}`.",
         "",
-        "Desk hook: `data/pff-2026-ytd.json` (display / current form). "
+        "Desk hook: `data/pff-2026-ytd.json` → **`pff_ytd_term` in `eff()` / `ourHomeLine`**. "
         "Does **not** replace `pff-2026.json` / `pff_term` (2025 same-22 prior).",
+        "",
+        f"Scoring: μo={scoring['league_offense']}, μd={scoring['league_defense']}, "
+        f"μs={scoring['league_st']}; grade_per_point={GRADE_PER_POINT}; "
+        f"st_weight={ST_WEIGHT}; cap ±{CAP}.",
+        "",
+        "## Top / bottom net (in the line)",
+        "",
+        "| Rank | Team | NET | OFF | DEF | ST | Record |",
+        "|-----:|:-----|----:|----:|----:|---:|:-------|",
+    ]
+    for i, t in enumerate(by_net[:5], 1):
+        lines.append(
+            f"| {i} | {t['abbr']} | {t['net']:+.2f} | {t['grades_offense']} | "
+            f"{t['grades_defense']} | {t['grades_st']} | {t['record']} |"
+        )
+    lines.append("| … | | | | | | |")
+    for t in by_net[-5:]:
+        lines.append(
+            f"| {t.get('rank_overall', '')} | {t['abbr']} | {t['net']:+.2f} | {t['grades_offense']} | "
+            f"{t['grades_defense']} | {t['grades_st']} | {t['record']} |"
+        )
+
+    lines += [
         "",
         "## Top / bottom offense",
         "",
@@ -140,7 +219,7 @@ def main() -> None:
             f"{t['grades_st']} | {t['grades_overall']} | {t['record']} |"
         )
     lines.append("| … | | | | | | |")
-    for i, t in enumerate(by_off[-5:], 28):
+    for t in by_off[-5:]:
         lines.append(
             f"| {t['rank_offense']} | {t['abbr']} | {t['grades_offense']} | {t['grades_defense']} | "
             f"{t['grades_st']} | {t['grades_overall']} | {t['record']} |"
@@ -174,15 +253,15 @@ def main() -> None:
         "",
         "## Full table (by overall)",
         "",
-        "| OVR rk | Team | OVR | OFF | OFF rk | DEF | DEF rk | ST | ST rk | Record |",
-        "|-------:|:-----|----:|----:|-------:|----:|-------:|---:|------:|:-------|",
+        "| OVR rk | Team | OVR | OFF | OFF rk | DEF | DEF rk | ST | ST rk | NET | Record |",
+        "|-------:|:-----|----:|----:|-------:|----:|-------:|---:|------:|----:|:-------|",
     ]
     for t in by_ovr:
         lines.append(
             f"| {t['rank_overall']} | {t['abbr']} | {t['grades_overall']} | "
             f"{t['grades_offense']} | {t['rank_offense']} | "
             f"{t['grades_defense']} | {t['rank_defense']} | "
-            f"{t['grades_st']} | {t['rank_st']} | {t['record']} |"
+            f"{t['grades_st']} | {t['rank_st']} | {t['net']:+.2f} | {t['record']} |"
         )
     lines += [
         "",
@@ -199,6 +278,9 @@ def main() -> None:
     print("weeks", weeks)
     print("wrote", OUT_JSON, "teams", len(teams))
     print("wrote", OUT_MD)
+    print("scoring", scoring)
+    print("top NET", [(t["abbr"], t["net"]) for t in by_net[:5]])
+    print("bot NET", [(t["abbr"], t["net"]) for t in by_net[-5:]])
     print("top OFF", [(t["abbr"], t["grades_offense"]) for t in by_off[:5]])
     print("bot OFF", [(t["abbr"], t["grades_offense"]) for t in by_off[-5:]])
     print("top DEF", [(t["abbr"], t["grades_defense"]) for t in by_def[:5]])
