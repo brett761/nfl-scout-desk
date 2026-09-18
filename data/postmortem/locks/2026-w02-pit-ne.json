@@ -1,0 +1,258 @@
+{
+  "week": 2,
+  "season": 2026,
+  "game_id": "PIT@NE",
+  "kick": "2026-09-20T17:00+00:00",
+  "away": "PIT",
+  "home": "NE",
+  "espn_id": "401872946",
+  "venue": "Gillette Stadium",
+  "neutral": false,
+  "window": "SUN_PM",
+  "model_home_spread": 2.57,
+  "model_home_spread_source": "desk_compute",
+  "street_home_spread": -5.5,
+  "close_at_lock": -5.5,
+  "ou_street": 41.5,
+  "street_note": "FINAL freeze 2026-09-18 4:39 PM ET (America/New_York). ESPN DraftKings: NE -5.5 / ou 41.5.",
+  "edge_home": -8.07,
+  "edge_note": "edgeHome = street \u2212 model = -5.5 \u2212 (2.57) = -8.07 \u2192 away value (PIT); |edge|\u22651.5",
+  "feature_stack": {
+    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W2 n=1 taper; pff_ytd IN line; injury 2026-09-18b FINAL",
+    "injury_pulled": "2026-09-18b",
+    "away_PIT": {
+      "prior": 2.58,
+      "fa": 0.87,
+      "draft": 0,
+      "madden": 0.26,
+      "pff": 0.5,
+      "pff_ytd": 1.5,
+      "sos": 0.03,
+      "return": 0,
+      "injury": -2.87,
+      "adjust": 0,
+      "context": 0,
+      "eff": 2.86
+    },
+    "home_NE": {
+      "prior": 5.03,
+      "fa": 1.73,
+      "draft": 0,
+      "madden": 0.54,
+      "pff": 0.4,
+      "pff_ytd": -0.99,
+      "sos": -2.31,
+      "return": 0,
+      "injury": -6,
+      "adjust": 0,
+      "context": 0,
+      "eff": -1.6
+    },
+    "layers_home_minus_away": {
+      "prior": 2.45,
+      "fa": 0.86,
+      "draft": 0,
+      "madden": 0.28,
+      "pff": -0.1,
+      "pff_ytd": -2.49,
+      "sos": -2.34,
+      "return": 0,
+      "injury": -3.13,
+      "adjust": 0,
+      "context": 0
+    },
+    "rating_diff_home_minus_away": -4.46,
+    "hfa": 2,
+    "coach": 0,
+    "coach_note": "coachTerm desk",
+    "prep": 0,
+    "prep_note": "week!==1 so week1_term=0; bye check via prepNet",
+    "ats": -0.11,
+    "ats_note": "atsNet desk",
+    "travel": 0,
+    "travel_note": "schedNet desk",
+    "matchup": 0,
+    "matchup_note": "pff-matchups W1 grid only / missing \u2192 0",
+    "gap": -2.57,
+    "component_sum": [
+      {
+        "label": "rating_diff (NE\u2212PIT)",
+        "val": -4.46
+      },
+      {
+        "label": "HFA",
+        "val": 2
+      },
+      {
+        "label": "coach",
+        "val": 0
+      },
+      {
+        "label": "prep (W2)",
+        "val": 0
+      },
+      {
+        "label": "ats",
+        "val": -0.11
+      },
+      {
+        "label": "travel/sched",
+        "val": 0
+      },
+      {
+        "label": "matchup",
+        "val": 0
+      },
+      {
+        "label": "gap",
+        "val": -2.57
+      },
+      {
+        "label": "model_home_spread (\u2212gap)",
+        "val": 2.57
+      }
+    ],
+    "injuries": {
+      "PIT": [
+        {
+          "name": "Michael Pittman Jr.",
+          "pos": "WR2",
+          "status": "QUESTIONABLE",
+          "impact": 0.87,
+          "impact_source": "madden",
+          "pts": -0.3,
+          "on": true
+        },
+        {
+          "name": "Joey Porter Jr.",
+          "pos": "CB1",
+          "status": "OUT",
+          "impact": 2.07,
+          "impact_source": "madden",
+          "pts": -2.07,
+          "on": true
+        },
+        {
+          "name": "Troy Fautanu",
+          "pos": "LT",
+          "status": "QUESTIONABLE",
+          "impact": 0.87,
+          "impact_source": "madden",
+          "pts": -0.3,
+          "on": true
+        },
+        {
+          "name": "DeShon Elliott",
+          "pos": "S",
+          "status": "IR",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        }
+      ],
+      "NE": [
+        {
+          "name": "Carlton Davis III",
+          "pos": "CB1",
+          "status": "QUESTIONABLE",
+          "impact": 2.07,
+          "impact_source": "madden",
+          "pts": -0.72,
+          "on": true
+        },
+        {
+          "name": "Dre'Mont Jones",
+          "pos": "EDGE1",
+          "status": "QUESTIONABLE",
+          "impact": 0.37,
+          "impact_source": "madden",
+          "pts": -0.13,
+          "on": true
+        },
+        {
+          "name": "Dametrious Crownover",
+          "pos": "RT",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.35,
+          "on": true
+        },
+        {
+          "name": "Ben Brown",
+          "pos": "C",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.28,
+          "on": true
+        },
+        {
+          "name": "A.J. Brown",
+          "pos": "WR1",
+          "status": "IR",
+          "impact": 3.07,
+          "impact_source": "madden",
+          "pts": -3.07,
+          "on": true
+        },
+        {
+          "name": "Harold Landry",
+          "pos": "EDGE1",
+          "status": "PUP",
+          "impact": 1.62,
+          "impact_source": "madden",
+          "pts": -1.62,
+          "on": true
+        }
+      ]
+    },
+    "injury_team_terms": {
+      "PIT": {
+        "raw": -2.87,
+        "term": -2.87,
+        "capped": false,
+        "cap_team": 6
+      },
+      "NE": {
+        "raw": -6.17,
+        "term": -6,
+        "capped": true,
+        "cap_team": 6
+      }
+    },
+    "taper": {
+      "PIT": {
+        "N": 3,
+        "n": 1,
+        "wPrior": 0.6666666666666666,
+        "wCurr": 0.3333333333333333
+      },
+      "NE": {
+        "N": 3,
+        "n": 1,
+        "wPrior": 0.6666666666666666,
+        "wCurr": 0.3333333333333333
+      }
+    }
+  },
+  "tickets": [],
+  "notes": "FINAL pre-kick SUN_PM lock after Fri 4pm ET status. Injury 2026-09-18b. Model desk_compute. Street NE -5.5. Edge home -8.07.",
+  "recommendation": {
+    "action": "LOCK",
+    "side": "PIT",
+    "market": "PIT +5.5",
+    "units": 3,
+    "stake_class": "3u @ $50/u",
+    "edge_home": -8.07,
+    "timing_thesis": "PRICE_CLV",
+    "reason": "B$ card. Model NE only \u22122.6 vs street \u22125.5 \u2192 +8.1 away edge. Porter Out already in number."
+  },
+  "frozen_at": "2026-09-18 4:39 PM ET (America/New_York)",
+  "frozen_at_utc": "2026-09-18T20:39:38.293Z",
+  "locked_at": "2026-09-18T20:39:38.293-04:00",
+  "injury_aligned_to_imp3": true,
+  "injury_source_policy": "madden_first",
+  "lock_phase": "FINAL_PRE_KICK"
+}

@@ -1,0 +1,213 @@
+{
+  "week": 2,
+  "season": 2026,
+  "game_id": "MIN@CHI",
+  "kick": "2026-09-20T17:00+00:00",
+  "away": "MIN",
+  "home": "CHI",
+  "espn_id": "401872937",
+  "venue": "Soldier Field",
+  "neutral": false,
+  "window": "SUN_PM",
+  "model_home_spread": -3.93,
+  "model_home_spread_source": "desk_compute",
+  "street_home_spread": -4.5,
+  "close_at_lock": -4.5,
+  "ou_street": 47.5,
+  "street_note": "FINAL freeze 2026-09-18 4:39 PM ET (America/New_York). ESPN DraftKings: CHI -4.5 / ou 47.5.",
+  "edge_home": -0.57,
+  "edge_note": "edgeHome = street \u2212 model = -4.5 \u2212 (-3.93) = -0.57 \u2192 away value (MIN)",
+  "feature_stack": {
+    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W2 n=1 taper; pff_ytd IN line; injury 2026-09-18b FINAL",
+    "injury_pulled": "2026-09-18b",
+    "away_MIN": {
+      "prior": 3.24,
+      "fa": -1.33,
+      "draft": 0,
+      "madden": -0.03,
+      "pff": -0.32,
+      "pff_ytd": -0.19,
+      "sos": 0.15,
+      "return": 0,
+      "injury": -4.92,
+      "adjust": 0,
+      "context": 0,
+      "eff": -3.41
+    },
+    "home_CHI": {
+      "prior": 1.61,
+      "fa": -0.27,
+      "draft": 0.45,
+      "madden": 0.06,
+      "pff": -0.01,
+      "pff_ytd": -0.98,
+      "sos": -0.86,
+      "return": 0,
+      "injury": -1.57,
+      "adjust": 0,
+      "context": 0,
+      "eff": -1.56
+    },
+    "layers_home_minus_away": {
+      "prior": -1.63,
+      "fa": 1.06,
+      "draft": 0.45,
+      "madden": 0.09,
+      "pff": 0.31,
+      "pff_ytd": -0.79,
+      "sos": -1.01,
+      "return": 0,
+      "injury": 3.35,
+      "adjust": 0,
+      "context": 0
+    },
+    "rating_diff_home_minus_away": 1.85,
+    "hfa": 2,
+    "coach": 0,
+    "coach_note": "coachTerm desk",
+    "prep": 0,
+    "prep_note": "week!==1 so week1_term=0; bye check via prepNet",
+    "ats": 0.08,
+    "ats_note": "atsNet desk",
+    "travel": 0,
+    "travel_note": "schedNet desk",
+    "matchup": 0,
+    "matchup_note": "pff-matchups W1 grid only / missing \u2192 0",
+    "gap": 3.93,
+    "component_sum": [
+      {
+        "label": "rating_diff (CHI\u2212MIN)",
+        "val": 1.85
+      },
+      {
+        "label": "HFA",
+        "val": 2
+      },
+      {
+        "label": "coach",
+        "val": 0
+      },
+      {
+        "label": "prep (W2)",
+        "val": 0
+      },
+      {
+        "label": "ats",
+        "val": 0.08
+      },
+      {
+        "label": "travel/sched",
+        "val": 0
+      },
+      {
+        "label": "matchup",
+        "val": 0
+      },
+      {
+        "label": "gap",
+        "val": 3.93
+      },
+      {
+        "label": "model_home_spread (\u2212gap)",
+        "val": -3.93
+      }
+    ],
+    "injuries": {
+      "MIN": [
+        {
+          "name": "Jauan Jennings",
+          "pos": "WR2",
+          "status": "OUT",
+          "impact": 0.37,
+          "impact_source": "madden",
+          "pts": -0.37,
+          "on": true
+        },
+        {
+          "name": "Kyler Murray",
+          "pos": "QB1",
+          "status": "OUT",
+          "impact": 3.5,
+          "impact_source": "manual",
+          "pts": -3.5,
+          "on": true
+        },
+        {
+          "name": "Brian O'Neill",
+          "pos": "RT",
+          "status": "QUESTIONABLE",
+          "impact": 2.37,
+          "impact_source": "madden",
+          "pts": -0.83,
+          "on": true
+        },
+        {
+          "name": "Jordan Mason",
+          "pos": "RB1",
+          "status": "IR",
+          "impact": 0.22,
+          "impact_source": "madden",
+          "pts": -0.22,
+          "on": true
+        }
+      ],
+      "CHI": [
+        {
+          "name": "Kyler Gordon",
+          "pos": "CB1",
+          "status": "PUP",
+          "impact": 1.57,
+          "impact_source": "madden",
+          "pts": -1.57,
+          "on": true
+        }
+      ]
+    },
+    "injury_team_terms": {
+      "MIN": {
+        "raw": -4.92,
+        "term": -4.92,
+        "capped": false,
+        "cap_team": 6
+      },
+      "CHI": {
+        "raw": -1.57,
+        "term": -1.57,
+        "capped": false,
+        "cap_team": 6
+      }
+    },
+    "taper": {
+      "MIN": {
+        "N": 3,
+        "n": 1,
+        "wPrior": 0.6666666666666666,
+        "wCurr": 0.3333333333333333
+      },
+      "CHI": {
+        "N": 3,
+        "n": 1,
+        "wPrior": 0.6666666666666666,
+        "wCurr": 0.3333333333333333
+      }
+    }
+  },
+  "tickets": [],
+  "notes": "FINAL pre-kick SUN_PM lock after Fri 4pm ET status. Injury 2026-09-18b. Model desk_compute. Street CHI -4.5. Edge home -0.57.",
+  "recommendation": {
+    "action": "PASS",
+    "side": null,
+    "market": null,
+    "units": 0,
+    "stake_class": "0u",
+    "edge_home": -0.57,
+    "timing_thesis": "PASS",
+    "reason": "Prior B$ MIN +5.5; street now CHI \u22124.5. Model \u22123.93 vs \u22124.5 \u2192 |edge| 0.57 only. Murray Out already in. PASS."
+  },
+  "frozen_at": "2026-09-18 4:39 PM ET (America/New_York)",
+  "frozen_at_utc": "2026-09-18T20:39:38.293Z",
+  "locked_at": "2026-09-18T20:39:38.293-04:00",
+  "injury_aligned_to_imp3": true,
+  "injury_source_policy": "madden_first",
+  "lock_phase": "FINAL_PRE_KICK"
+}

@@ -1,0 +1,276 @@
+{
+  "week": 2,
+  "season": 2026,
+  "game_id": "CIN@HOU",
+  "kick": "2026-09-20T17:00+00:00",
+  "away": "CIN",
+  "home": "HOU",
+  "espn_id": "401872934",
+  "venue": "Reliant Stadium",
+  "neutral": false,
+  "window": "SUN_PM",
+  "model_home_spread": -5.4,
+  "model_home_spread_source": "desk_compute",
+  "street_home_spread": -2.5,
+  "close_at_lock": -2.5,
+  "ou_street": 45.5,
+  "street_note": "FINAL freeze 2026-09-18 4:39 PM ET (America/New_York). ESPN DraftKings: HOU -2.5 / ou 45.5.",
+  "edge_home": 2.9,
+  "edge_note": "edgeHome = street \u2212 model = -2.5 \u2212 (-5.4) = 2.9 \u2192 home value (HOU); |edge|\u22651.5",
+  "feature_stack": {
+    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W2 n=1 taper; pff_ytd IN line; injury 2026-09-18b FINAL",
+    "injury_pulled": "2026-09-18b",
+    "away_CIN": {
+      "prior": -0.9,
+      "fa": 1.13,
+      "draft": 0,
+      "madden": -0.24,
+      "pff": -0.49,
+      "pff_ytd": 0.57,
+      "sos": 0.26,
+      "return": 0.67,
+      "injury": -2.69,
+      "adjust": 0,
+      "context": 0,
+      "eff": -1.69
+    },
+    "home_HOU": {
+      "prior": 4.08,
+      "fa": 0.8,
+      "draft": 0.52,
+      "madden": 0.36,
+      "pff": 0.49,
+      "pff_ytd": 1.15,
+      "sos": 0.42,
+      "return": 0,
+      "injury": -6,
+      "adjust": 0,
+      "context": 0,
+      "eff": 1.83
+    },
+    "layers_home_minus_away": {
+      "prior": 4.98,
+      "fa": -0.33,
+      "draft": 0.52,
+      "madden": 0.6,
+      "pff": 0.98,
+      "pff_ytd": 0.58,
+      "sos": 0.16,
+      "return": -0.67,
+      "injury": -3.31,
+      "adjust": 0,
+      "context": 0
+    },
+    "rating_diff_home_minus_away": 3.52,
+    "hfa": 2,
+    "coach": 0,
+    "coach_note": "coachTerm desk",
+    "prep": 0,
+    "prep_note": "week!==1 so week1_term=0; bye check via prepNet",
+    "ats": -0.12,
+    "ats_note": "atsNet desk",
+    "travel": 0,
+    "travel_note": "schedNet desk",
+    "matchup": 0,
+    "matchup_note": "pff-matchups W1 grid only / missing \u2192 0",
+    "gap": 5.4,
+    "component_sum": [
+      {
+        "label": "rating_diff (HOU\u2212CIN)",
+        "val": 3.52
+      },
+      {
+        "label": "HFA",
+        "val": 2
+      },
+      {
+        "label": "coach",
+        "val": 0
+      },
+      {
+        "label": "prep (W2)",
+        "val": 0
+      },
+      {
+        "label": "ats",
+        "val": -0.12
+      },
+      {
+        "label": "travel/sched",
+        "val": 0
+      },
+      {
+        "label": "matchup",
+        "val": 0
+      },
+      {
+        "label": "gap",
+        "val": 5.4
+      },
+      {
+        "label": "model_home_spread (\u2212gap)",
+        "val": -5.4
+      }
+    ],
+    "injuries": {
+      "CIN": [
+        {
+          "name": "B.J. Hill",
+          "pos": "IDL",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Joe Burrow",
+          "pos": "QB1",
+          "status": "QUESTIONABLE",
+          "impact": 1.2,
+          "impact_source": "manual",
+          "pts": -0.42,
+          "on": true
+        },
+        {
+          "name": "Brian Parker II",
+          "pos": "RT",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -1,
+          "on": true
+        },
+        {
+          "name": "Ja'Sir Taylor",
+          "pos": "CB1",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -1.2,
+          "on": true
+        }
+      ],
+      "HOU": [
+        {
+          "name": "Nico Collins",
+          "pos": "WR1",
+          "status": "OUT",
+          "impact": 3.32,
+          "impact_source": "madden",
+          "pts": -3.32,
+          "on": true
+        },
+        {
+          "name": "Ed Ingram",
+          "pos": "OG",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Jadeveon Clowney",
+          "pos": "EDGE1",
+          "status": "OUT",
+          "impact": 1.12,
+          "impact_source": "madden",
+          "pts": -1.12,
+          "on": true
+        },
+        {
+          "name": "Henry To'oTo'o",
+          "pos": "LB",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.5,
+          "on": true
+        },
+        {
+          "name": "Jake Hummel",
+          "pos": "LB",
+          "status": "DOUBTFUL",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.38,
+          "on": true
+        },
+        {
+          "name": "Kayden McDonald",
+          "pos": "IDL",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.8,
+          "on": true
+        },
+        {
+          "name": "Jayden Higgins",
+          "pos": "WR2",
+          "status": "IR",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Tank Dell",
+          "pos": "WR2",
+          "status": "IR",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        }
+      ]
+    },
+    "injury_team_terms": {
+      "CIN": {
+        "raw": -2.69,
+        "term": -2.69,
+        "capped": false,
+        "cap_team": 6
+      },
+      "HOU": {
+        "raw": -6.59,
+        "term": -6,
+        "capped": true,
+        "cap_team": 6
+      }
+    },
+    "taper": {
+      "CIN": {
+        "N": 3,
+        "n": 1,
+        "wPrior": 0.6666666666666666,
+        "wCurr": 0.3333333333333333
+      },
+      "HOU": {
+        "N": 3,
+        "n": 1,
+        "wPrior": 0.6666666666666666,
+        "wCurr": 0.3333333333333333
+      }
+    }
+  },
+  "tickets": [],
+  "notes": "FINAL pre-kick SUN_PM lock after Fri 4pm ET status. Injury 2026-09-18b. Model desk_compute. Street HOU -2.5. Edge home 2.9.",
+  "recommendation": {
+    "action": "LOCK",
+    "side": "HOU",
+    "market": "HOU \u22122.5",
+    "units": 2,
+    "stake_class": "2u @ $50/u",
+    "edge_home": 2.9,
+    "timing_thesis": "PRICE_CLV",
+    "reason": "Model HOU \u22125.4 vs street \u22122.5 \u2192 +2.9 home. Burrow Q but likely plays (manual expected). Collins/Clowney Out on HOU already in model."
+  },
+  "frozen_at": "2026-09-18 4:39 PM ET (America/New_York)",
+  "frozen_at_utc": "2026-09-18T20:39:38.293Z",
+  "locked_at": "2026-09-18T20:39:38.293-04:00",
+  "injury_aligned_to_imp3": true,
+  "injury_source_policy": "madden_first",
+  "lock_phase": "FINAL_PRE_KICK"
+}

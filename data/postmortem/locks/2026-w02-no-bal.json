@@ -1,0 +1,312 @@
+{
+  "week": 2,
+  "season": 2026,
+  "game_id": "NO@BAL",
+  "kick": "2026-09-20T17:00+00:00",
+  "away": "NO",
+  "home": "BAL",
+  "espn_id": "401872938",
+  "venue": "M&T Bank Stadium",
+  "neutral": false,
+  "window": "SUN_PM",
+  "model_home_spread": -5.73,
+  "model_home_spread_source": "desk_compute",
+  "street_home_spread": -8.5,
+  "close_at_lock": -8.5,
+  "ou_street": 46.5,
+  "street_note": "FINAL freeze 2026-09-18 4:39 PM ET (America/New_York). ESPN DraftKings: BAL -8.5 / ou 46.5.",
+  "edge_home": -2.77,
+  "edge_note": "edgeHome = street \u2212 model = -8.5 \u2212 (-5.73) = -2.77 \u2192 away value (NO); |edge|\u22651.5",
+  "feature_stack": {
+    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W2 n=1 taper; pff_ytd IN line; injury 2026-09-18b FINAL",
+    "injury_pulled": "2026-09-18b",
+    "away_NO": {
+      "prior": -1.42,
+      "fa": 0.27,
+      "draft": 0,
+      "madden": -0.52,
+      "pff": -0.46,
+      "pff_ytd": 1.81,
+      "sos": -0.07,
+      "return": 0,
+      "injury": -3.24,
+      "adjust": 0,
+      "context": 0,
+      "eff": -3.63
+    },
+    "home_BAL": {
+      "prior": 3.17,
+      "fa": -1.13,
+      "draft": 0.52,
+      "madden": 0.57,
+      "pff": 0.22,
+      "pff_ytd": 2,
+      "sos": 0.08,
+      "return": 0.67,
+      "injury": -6,
+      "adjust": 0,
+      "context": 0,
+      "eff": 0.1
+    },
+    "layers_home_minus_away": {
+      "prior": 4.59,
+      "fa": -1.4,
+      "draft": 0.52,
+      "madden": 1.09,
+      "pff": 0.68,
+      "pff_ytd": 0.19,
+      "sos": 0.15,
+      "return": 0.67,
+      "injury": -2.76,
+      "adjust": 0,
+      "context": 0
+    },
+    "rating_diff_home_minus_away": 3.73,
+    "hfa": 2,
+    "coach": 0,
+    "coach_note": "coachTerm desk",
+    "prep": 0,
+    "prep_note": "week!==1 so week1_term=0; bye check via prepNet",
+    "ats": 0,
+    "ats_note": "atsNet desk",
+    "travel": 0,
+    "travel_note": "schedNet desk",
+    "matchup": 0,
+    "matchup_note": "pff-matchups W1 grid only / missing \u2192 0",
+    "gap": 5.73,
+    "component_sum": [
+      {
+        "label": "rating_diff (BAL\u2212NO)",
+        "val": 3.73
+      },
+      {
+        "label": "HFA",
+        "val": 2
+      },
+      {
+        "label": "coach",
+        "val": 0
+      },
+      {
+        "label": "prep (W2)",
+        "val": 0
+      },
+      {
+        "label": "ats",
+        "val": 0
+      },
+      {
+        "label": "travel/sched",
+        "val": 0
+      },
+      {
+        "label": "matchup",
+        "val": 0
+      },
+      {
+        "label": "gap",
+        "val": 5.73
+      },
+      {
+        "label": "model_home_spread (\u2212gap)",
+        "val": -5.73
+      }
+    ],
+    "injuries": {
+      "NO": [
+        {
+          "name": "Isaiah Stalbird",
+          "pos": "LB",
+          "status": "DOUBTFUL",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.38,
+          "on": true
+        },
+        {
+          "name": "Christen Miller",
+          "pos": "IDL",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.28,
+          "on": true
+        },
+        {
+          "name": "Chris Olave",
+          "pos": "WR1",
+          "status": "QUESTIONABLE",
+          "impact": 2.57,
+          "impact_source": "madden",
+          "pts": -0.9,
+          "on": true
+        },
+        {
+          "name": "Zach Wood",
+          "pos": "DEPTH",
+          "status": "OUT",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Chase Young",
+          "pos": "EDGE1",
+          "status": "QUESTIONABLE",
+          "impact": 1.37,
+          "impact_source": "madden",
+          "pts": -0.48,
+          "on": true
+        },
+        {
+          "name": "Audric Estime",
+          "pos": "RB1",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.6,
+          "on": true
+        },
+        {
+          "name": "Bryan Bresee",
+          "pos": "IDL",
+          "status": "IR",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Jordyn Tyson",
+          "pos": "WR2",
+          "status": "IR",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        }
+      ],
+      "BAL": [
+        {
+          "name": "Nnamdi Madubuike",
+          "pos": "IDL",
+          "status": "OUT",
+          "impact": 2.92,
+          "impact_source": "madden",
+          "pts": -2.92,
+          "on": true
+        },
+        {
+          "name": "Teddye Buchanan",
+          "pos": "LB",
+          "status": "OUT",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.5,
+          "on": true
+        },
+        {
+          "name": "Zay Flowers",
+          "pos": "WR1",
+          "status": "DOUBTFUL",
+          "impact": 2.82,
+          "impact_source": "madden",
+          "pts": -2.11,
+          "on": true
+        },
+        {
+          "name": "T.J. Tampa",
+          "pos": "CB1",
+          "status": "OUT",
+          "impact": null,
+          "impact_source": null,
+          "pts": -1.2,
+          "on": true
+        },
+        {
+          "name": "John Simpson",
+          "pos": "OG",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Ronnie Stanley",
+          "pos": "LT",
+          "status": "QUESTIONABLE",
+          "impact": 3.12,
+          "impact_source": "madden",
+          "pts": -1.09,
+          "on": true
+        },
+        {
+          "name": "Trey Hendrickson",
+          "pos": "EDGE1",
+          "status": "QUESTIONABLE",
+          "impact": 3.62,
+          "impact_source": "madden",
+          "pts": -1.27,
+          "on": true
+        },
+        {
+          "name": "Ja'Kobi Lane",
+          "pos": "WR2",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.5,
+          "on": true
+        }
+      ]
+    },
+    "injury_team_terms": {
+      "NO": {
+        "raw": -3.24,
+        "term": -3.24,
+        "capped": false,
+        "cap_team": 6
+      },
+      "BAL": {
+        "raw": -9.66,
+        "term": -6,
+        "capped": true,
+        "cap_team": 6
+      }
+    },
+    "taper": {
+      "NO": {
+        "N": 3,
+        "n": 1,
+        "wPrior": 0.6666666666666666,
+        "wCurr": 0.3333333333333333
+      },
+      "BAL": {
+        "N": 3,
+        "n": 1,
+        "wPrior": 0.6666666666666666,
+        "wCurr": 0.3333333333333333
+      }
+    }
+  },
+  "tickets": [],
+  "notes": "FINAL pre-kick SUN_PM lock after Fri 4pm ET status. Injury 2026-09-18b. Model desk_compute. Street BAL -8.5. Edge home -2.77.",
+  "recommendation": {
+    "action": "PASS",
+    "side": null,
+    "market": null,
+    "units": 0,
+    "stake_class": "0u",
+    "edge_home": -2.77,
+    "timing_thesis": "PASS",
+    "reason": "NO +8.5 edge 2.8 from BAL injury cluster but dog on big number \u2014 wait public. PASS."
+  },
+  "frozen_at": "2026-09-18 4:39 PM ET (America/New_York)",
+  "frozen_at_utc": "2026-09-18T20:39:38.293Z",
+  "locked_at": "2026-09-18T20:39:38.293-04:00",
+  "injury_aligned_to_imp3": true,
+  "injury_source_policy": "madden_first",
+  "lock_phase": "FINAL_PRE_KICK"
+}

@@ -1,0 +1,294 @@
+{
+  "week": 2,
+  "season": 2026,
+  "game_id": "CAR@ATL",
+  "kick": "2026-09-20T17:00+00:00",
+  "away": "CAR",
+  "home": "ATL",
+  "espn_id": "401872933",
+  "venue": "Mercedes-Benz Stadium",
+  "neutral": false,
+  "window": "SUN_PM",
+  "model_home_spread": 2.88,
+  "model_home_spread_source": "desk_compute",
+  "street_home_spread": 2.5,
+  "close_at_lock": 2.5,
+  "ou_street": 43.5,
+  "street_note": "FINAL freeze 2026-09-18 4:39 PM ET (America/New_York). ESPN DraftKings: CAR -2.5 / ou 43.5.",
+  "edge_home": -0.38,
+  "edge_note": "edgeHome = street − model = 2.5 − (2.88) = -0.38 → away value (CAR)",
+  "feature_stack": {
+    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W2 n=1 taper; pff_ytd IN line; injury 2026-09-18b FINAL",
+    "injury_pulled": "2026-09-18b",
+    "away_CAR": {
+      "prior": -1.05,
+      "fa": 1.4,
+      "draft": 0.52,
+      "madden": -0.21,
+      "pff": -0.57,
+      "pff_ytd": 0.46,
+      "sos": 0.3,
+      "return": 0,
+      "injury": -4.62,
+      "adjust": 0,
+      "context": 0,
+      "eff": -3.77
+    },
+    "home_ATL": {
+      "prior": -1.29,
+      "fa": -0.6,
+      "draft": 0,
+      "madden": -0.05,
+      "pff": 0.2,
+      "pff_ytd": -0.63,
+      "sos": -0.08,
+      "return": 0,
+      "injury": -6,
+      "adjust": 0,
+      "context": 0,
+      "eff": -8.45
+    },
+    "layers_home_minus_away": {
+      "prior": -0.24,
+      "fa": -2,
+      "draft": -0.52,
+      "madden": 0.16,
+      "pff": 0.77,
+      "pff_ytd": -1.09,
+      "sos": -0.38,
+      "return": 0,
+      "injury": -1.38,
+      "adjust": 0,
+      "context": 0
+    },
+    "rating_diff_home_minus_away": -4.68,
+    "hfa": 2,
+    "coach": 0,
+    "coach_note": "coachTerm desk",
+    "prep": 0,
+    "prep_note": "week!==1 so week1_term=0; bye check via prepNet",
+    "ats": -0.2,
+    "ats_note": "atsNet desk",
+    "travel": 0,
+    "travel_note": "schedNet desk",
+    "matchup": 0,
+    "matchup_note": "pff-matchups W1 grid only / missing → 0",
+    "gap": -2.88,
+    "component_sum": [
+      {
+        "label": "rating_diff (ATL−CAR)",
+        "val": -4.68
+      },
+      {
+        "label": "HFA",
+        "val": 2
+      },
+      {
+        "label": "coach",
+        "val": 0
+      },
+      {
+        "label": "prep (W2)",
+        "val": 0
+      },
+      {
+        "label": "ats",
+        "val": -0.2
+      },
+      {
+        "label": "travel/sched",
+        "val": 0
+      },
+      {
+        "label": "matchup",
+        "val": 0
+      },
+      {
+        "label": "gap",
+        "val": -2.88
+      },
+      {
+        "label": "model_home_spread (−gap)",
+        "val": 2.88
+      }
+    ],
+    "injuries": {
+      "CAR": [
+        {
+          "name": "Bobby Brown III",
+          "pos": "IDL",
+          "status": "OUT",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Patrick Jones II",
+          "pos": "LB",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.18,
+          "on": true
+        },
+        {
+          "name": "Brady Christensen",
+          "pos": "OG",
+          "status": "IR",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Ikem Ekwonu",
+          "pos": "LT",
+          "status": "PUP",
+          "impact": 1.62,
+          "impact_source": "madden",
+          "pts": -1.62,
+          "on": true
+        },
+        {
+          "name": "Taylor Moton",
+          "pos": "RT",
+          "status": "NFI",
+          "impact": 1.62,
+          "impact_source": "madden",
+          "pts": -1.62,
+          "on": true
+        },
+        {
+          "name": "Tershawn Wharton",
+          "pos": "IDL",
+          "status": "PUP",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.8,
+          "on": true
+        }
+      ],
+      "ATL": [
+        {
+          "name": "A.J. Terrell Jr.",
+          "pos": "CB1",
+          "status": "QUESTIONABLE",
+          "impact": 2.82,
+          "impact_source": "madden",
+          "pts": -0.99,
+          "on": true
+        },
+        {
+          "name": "Tua Tagovailoa",
+          "pos": "QB1",
+          "status": "DOUBTFUL",
+          "impact": 1.62,
+          "impact_source": "madden",
+          "pts": -1.22,
+          "on": true
+        },
+        {
+          "name": "Michael Penix Jr.",
+          "pos": "DEPTH",
+          "status": "OUT",
+          "impact": 0.2,
+          "impact_source": null,
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Chris Lindstrom",
+          "pos": "OG",
+          "status": "QUESTIONABLE",
+          "impact": 3.37,
+          "impact_source": "madden",
+          "pts": -1.18,
+          "on": true
+        },
+        {
+          "name": "Billy Bowman Jr.",
+          "pos": "CB1",
+          "status": "OUT",
+          "impact": null,
+          "impact_source": null,
+          "pts": -1.2,
+          "on": true
+        },
+        {
+          "name": "Da'Shawn Hand",
+          "pos": "IDL",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.8,
+          "on": true
+        },
+        {
+          "name": "Cameron Williams",
+          "pos": "OG",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.5,
+          "on": true
+        },
+        {
+          "name": "Jalon Walker",
+          "pos": "EDGE1",
+          "status": "IR",
+          "impact": 0.87,
+          "impact_source": "madden",
+          "pts": -0.87,
+          "on": true
+        }
+      ]
+    },
+    "injury_team_terms": {
+      "CAR": {
+        "raw": -4.62,
+        "term": -4.62,
+        "capped": false,
+        "cap_team": 6
+      },
+      "ATL": {
+        "raw": -6.96,
+        "term": -6,
+        "capped": true,
+        "cap_team": 6
+      }
+    },
+    "taper": {
+      "CAR": {
+        "N": 3,
+        "n": 1,
+        "wPrior": 0.6666666666666666,
+        "wCurr": 0.3333333333333333
+      },
+      "ATL": {
+        "N": 3,
+        "n": 1,
+        "wPrior": 0.6666666666666666,
+        "wCurr": 0.3333333333333333
+      }
+    }
+  },
+  "tickets": [],
+  "notes": "FINAL pre-kick SUN_PM lock after Fri 4pm ET status. Injury 2026-09-18b. Model desk_compute. Street CAR -2.5. Edge home -0.38.",
+  "recommendation": {
+    "action": "PASS",
+    "side": null,
+    "market": null,
+    "units": 0,
+    "stake_class": "0u",
+    "edge_home": -0.38,
+    "timing_thesis": "PASS",
+    "reason": "No ≥1.5-pt edge vs street at freeze."
+  },
+  "frozen_at": "2026-09-18 4:39 PM ET (America/New_York)",
+  "frozen_at_utc": "2026-09-18T20:39:38.293Z",
+  "locked_at": "2026-09-18T20:39:38.293-04:00",
+  "injury_aligned_to_imp3": true,
+  "injury_source_policy": "madden_first",
+  "lock_phase": "FINAL_PRE_KICK"
+}

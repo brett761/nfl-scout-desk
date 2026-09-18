@@ -1,0 +1,294 @@
+{
+  "week": 2,
+  "season": 2026,
+  "game_id": "WSH@DAL",
+  "kick": "2026-09-20T20:25+00:00",
+  "away": "WSH",
+  "home": "DAL",
+  "espn_id": "401872944",
+  "venue": "AT&T Stadium",
+  "neutral": false,
+  "window": "SUN_PM",
+  "model_home_spread": -5.8,
+  "model_home_spread_source": "desk_compute",
+  "street_home_spread": -4.5,
+  "close_at_lock": -4.5,
+  "ou_street": 50.5,
+  "street_note": "FINAL freeze 2026-09-18 4:39 PM ET (America/New_York). ESPN DraftKings: DAL -4.5 / ou 50.5.",
+  "edge_home": 1.3,
+  "edge_note": "edgeHome = street − model = -4.5 − (-5.8) = 1.3 → home value (DAL)",
+  "feature_stack": {
+    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W2 n=1 taper; pff_ytd IN line; injury 2026-09-18b FINAL",
+    "injury_pulled": "2026-09-18b",
+    "away_WSH": {
+      "prior": -2.37,
+      "fa": 1.33,
+      "draft": 0,
+      "madden": -0.3,
+      "pff": -0.61,
+      "pff_ytd": -2,
+      "sos": 0.03,
+      "return": 0.8,
+      "injury": -6,
+      "adjust": 0,
+      "context": 0,
+      "eff": -9.12
+    },
+    "home_DAL": {
+      "prior": -3.17,
+      "fa": 0.8,
+      "draft": 0.45,
+      "madden": 0.2,
+      "pff": 0.24,
+      "pff_ytd": -2,
+      "sos": -0.96,
+      "return": 0,
+      "injury": -0.82,
+      "adjust": 0,
+      "context": 0,
+      "eff": -5.26
+    },
+    "layers_home_minus_away": {
+      "prior": -0.8,
+      "fa": -0.53,
+      "draft": 0.45,
+      "madden": 0.5,
+      "pff": 0.85,
+      "pff_ytd": 0,
+      "sos": -0.99,
+      "return": -0.8,
+      "injury": 5.18,
+      "adjust": 0,
+      "context": 0
+    },
+    "rating_diff_home_minus_away": 3.86,
+    "hfa": 2,
+    "coach": 0,
+    "coach_note": "coachTerm desk",
+    "prep": 0,
+    "prep_note": "week!==1 so week1_term=0; bye check via prepNet",
+    "ats": -0.06,
+    "ats_note": "atsNet desk",
+    "travel": 0,
+    "travel_note": "schedNet desk",
+    "matchup": 0,
+    "matchup_note": "pff-matchups W1 grid only / missing → 0",
+    "gap": 5.8,
+    "component_sum": [
+      {
+        "label": "rating_diff (DAL−WSH)",
+        "val": 3.86
+      },
+      {
+        "label": "HFA",
+        "val": 2
+      },
+      {
+        "label": "coach",
+        "val": 0
+      },
+      {
+        "label": "prep (W2)",
+        "val": 0
+      },
+      {
+        "label": "ats",
+        "val": -0.06
+      },
+      {
+        "label": "travel/sched",
+        "val": 0
+      },
+      {
+        "label": "matchup",
+        "val": 0
+      },
+      {
+        "label": "gap",
+        "val": 5.8
+      },
+      {
+        "label": "model_home_spread (−gap)",
+        "val": -5.8
+      }
+    ],
+    "injuries": {
+      "WSH": [
+        {
+          "name": "Javon Kinlaw",
+          "pos": "IDL",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.28,
+          "on": true
+        },
+        {
+          "name": "Chig Okonkwo",
+          "pos": "TE1",
+          "status": "OUT",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.5,
+          "on": true
+        },
+        {
+          "name": "Frankie Luvu",
+          "pos": "LB",
+          "status": "OUT",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Jordan Magee",
+          "pos": "LB",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.5,
+          "on": true
+        },
+        {
+          "name": "Dorance Armstrong",
+          "pos": "EDGE1",
+          "status": "QUESTIONABLE",
+          "impact": 0.87,
+          "impact_source": "madden",
+          "pts": -0.3,
+          "on": true
+        },
+        {
+          "name": "Odafe Oweh",
+          "pos": "LB",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Charles Omenihu",
+          "pos": "EDGE1",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "pff",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "K'Lavon Chaisson",
+          "pos": "LB",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.18,
+          "on": true
+        },
+        {
+          "name": "Deatrich Wise Jr.",
+          "pos": "EDGE1",
+          "status": "PUP",
+          "impact": null,
+          "impact_source": null,
+          "pts": -1.5,
+          "on": true
+        },
+        {
+          "name": "Laremy Tunsil",
+          "pos": "LT",
+          "status": "IR",
+          "impact": 4.5,
+          "impact_source": "madden",
+          "pts": -4.5,
+          "on": true
+        },
+        {
+          "name": "Trey Amos",
+          "pos": "CB1",
+          "status": "IR",
+          "impact": 0.2,
+          "impact_source": "pff",
+          "pts": -0.2,
+          "on": true
+        }
+      ],
+      "DAL": [
+        {
+          "name": "DeMarvion Overshown",
+          "pos": "LB",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "pff",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Malik Hooker",
+          "pos": "S",
+          "status": "DOUBTFUL",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.15,
+          "on": true
+        },
+        {
+          "name": "Malik Davis",
+          "pos": "RB1",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.6,
+          "on": true
+        }
+      ]
+    },
+    "injury_team_terms": {
+      "WSH": {
+        "raw": -8.3,
+        "term": -6,
+        "capped": true,
+        "cap_team": 6
+      },
+      "DAL": {
+        "raw": -0.82,
+        "term": -0.82,
+        "capped": false,
+        "cap_team": 6
+      }
+    },
+    "taper": {
+      "WSH": {
+        "N": 3,
+        "n": 1,
+        "wPrior": 0.6666666666666666,
+        "wCurr": 0.3333333333333333
+      },
+      "DAL": {
+        "N": 3,
+        "n": 1,
+        "wPrior": 0.6666666666666666,
+        "wCurr": 0.3333333333333333
+      }
+    }
+  },
+  "tickets": [],
+  "notes": "FINAL pre-kick SUN_PM lock after Fri 4pm ET status. Injury 2026-09-18b. Model desk_compute. Street DAL -4.5. Edge home 1.3.",
+  "recommendation": {
+    "action": "PASS",
+    "side": null,
+    "market": null,
+    "units": 0,
+    "stake_class": "0u",
+    "edge_home": 1.3,
+    "timing_thesis": "PASS",
+    "reason": "No ≥1.5-pt edge vs street at freeze."
+  },
+  "frozen_at": "2026-09-18 4:39 PM ET (America/New_York)",
+  "frozen_at_utc": "2026-09-18T20:39:38.293Z",
+  "locked_at": "2026-09-18T20:39:38.293-04:00",
+  "injury_aligned_to_imp3": true,
+  "injury_source_policy": "madden_first",
+  "lock_phase": "FINAL_PRE_KICK"
+}

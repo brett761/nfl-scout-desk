@@ -1,0 +1,276 @@
+{
+  "week": 2,
+  "season": 2026,
+  "game_id": "NYG@LAR",
+  "kick": "2026-09-22T00:15+00:00",
+  "away": "NYG",
+  "home": "LAR",
+  "espn_id": "401872947",
+  "venue": "SoFi Stadium",
+  "neutral": false,
+  "window": "MNF",
+  "model_home_spread": -5.44,
+  "model_home_spread_source": "desk_compute",
+  "street_home_spread": -7,
+  "close_at_lock": -7,
+  "ou_street": 48.5,
+  "street_note": "FINAL freeze 2026-09-18 4:39 PM ET (America/New_York). ESPN DraftKings: LAR -7 / ou 48.5.",
+  "edge_home": -1.56,
+  "edge_note": "edgeHome = street \u2212 model = -7 \u2212 (-5.44) = -1.56 \u2192 away value (NYG); |edge|\u22651.5",
+  "feature_stack": {
+    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W2 n=1 taper; pff_ytd IN line; injury 2026-09-18b FINAL",
+    "injury_pulled": "2026-09-18b",
+    "away_NYG": {
+      "prior": 1.59,
+      "fa": -0.93,
+      "draft": 1.05,
+      "madden": -0.18,
+      "pff": -0.55,
+      "pff_ytd": -0.43,
+      "sos": 0.22,
+      "return": 0.67,
+      "injury": -3.49,
+      "adjust": 0,
+      "context": 0,
+      "eff": -2.06
+    },
+    "home_LAR": {
+      "prior": 1.94,
+      "fa": 2,
+      "draft": 0,
+      "madden": 1.06,
+      "pff": 1.5,
+      "pff_ytd": -0.51,
+      "sos": 0.5,
+      "return": 0,
+      "injury": -5.57,
+      "adjust": 0,
+      "context": 0,
+      "eff": 0.92
+    },
+    "layers_home_minus_away": {
+      "prior": 0.35,
+      "fa": 2.93,
+      "draft": -1.05,
+      "madden": 1.24,
+      "pff": 2.05,
+      "pff_ytd": -0.08,
+      "sos": 0.28,
+      "return": -0.67,
+      "injury": -2.08,
+      "adjust": 0,
+      "context": 0
+    },
+    "rating_diff_home_minus_away": 2.98,
+    "hfa": 2,
+    "coach": 0,
+    "coach_note": "coachTerm desk",
+    "prep": 0,
+    "prep_note": "week!==1 so week1_term=0; bye check via prepNet",
+    "ats": 0.11,
+    "ats_note": "atsNet desk",
+    "travel": 0.35,
+    "travel_note": "schedNet desk",
+    "matchup": 0,
+    "matchup_note": "pff-matchups W1 grid only / missing \u2192 0",
+    "gap": 5.44,
+    "component_sum": [
+      {
+        "label": "rating_diff (LAR\u2212NYG)",
+        "val": 2.98
+      },
+      {
+        "label": "HFA",
+        "val": 2
+      },
+      {
+        "label": "coach",
+        "val": 0
+      },
+      {
+        "label": "prep (W2)",
+        "val": 0
+      },
+      {
+        "label": "ats",
+        "val": 0.11
+      },
+      {
+        "label": "travel/sched",
+        "val": 0.35
+      },
+      {
+        "label": "matchup",
+        "val": 0
+      },
+      {
+        "label": "gap",
+        "val": 5.44
+      },
+      {
+        "label": "model_home_spread (\u2212gap)",
+        "val": -5.44
+      }
+    ],
+    "injuries": {
+      "NYG": [
+        {
+          "name": "Greg Newsome II",
+          "pos": "CB1",
+          "status": "QUESTIONABLE",
+          "impact": 0.57,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Deonte Banks",
+          "pos": "CB1",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.42,
+          "on": true
+        },
+        {
+          "name": "Andrew Thomas",
+          "pos": "LT",
+          "status": "QUESTIONABLE",
+          "impact": 4.5,
+          "impact_source": "madden",
+          "pts": -1.58,
+          "on": true
+        },
+        {
+          "name": "Micah McFadden",
+          "pos": "LB",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.18,
+          "on": true
+        },
+        {
+          "name": "Chauncey Golston",
+          "pos": "EDGE1",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.52,
+          "on": true
+        },
+        {
+          "name": "Francis Mauigoa",
+          "pos": "LT",
+          "status": "QUESTIONABLE",
+          "impact": 1.12,
+          "impact_source": "madden",
+          "pts": -0.39,
+          "on": true
+        },
+        {
+          "name": "Paulson Adebo",
+          "pos": "CB1",
+          "status": "QUESTIONABLE",
+          "impact": 0.57,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        }
+      ],
+      "LAR": [
+        {
+          "name": "Omar Speights",
+          "pos": "LB",
+          "status": "QUESTIONABLE",
+          "impact": 0.21,
+          "impact_source": "pff",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Nate Landman",
+          "pos": "LB",
+          "status": "QUESTIONABLE",
+          "impact": 1.62,
+          "impact_source": "madden",
+          "pts": -0.57,
+          "on": true
+        },
+        {
+          "name": "Kamren Kinchens",
+          "pos": "S",
+          "status": "QUESTIONABLE",
+          "impact": 0.37,
+          "impact_source": "madden",
+          "pts": -0.13,
+          "on": true
+        },
+        {
+          "name": "Kam Curl",
+          "pos": "S",
+          "status": "QUESTIONABLE",
+          "impact": 0.87,
+          "impact_source": "madden",
+          "pts": -0.3,
+          "on": true
+        },
+        {
+          "name": "Myles Garrett",
+          "pos": "EDGE1",
+          "status": "IR",
+          "impact": 4.5,
+          "impact_source": "madden",
+          "pts": -4.5,
+          "on": true
+        }
+      ]
+    },
+    "injury_team_terms": {
+      "NYG": {
+        "raw": -3.49,
+        "term": -3.49,
+        "capped": false,
+        "cap_team": 6
+      },
+      "LAR": {
+        "raw": -5.57,
+        "term": -5.57,
+        "capped": false,
+        "cap_team": 6
+      }
+    },
+    "taper": {
+      "NYG": {
+        "N": 3,
+        "n": 1,
+        "wPrior": 0.6666666666666666,
+        "wCurr": 0.3333333333333333
+      },
+      "LAR": {
+        "N": 3,
+        "n": 1,
+        "wPrior": 0.6666666666666666,
+        "wCurr": 0.3333333333333333
+      }
+    }
+  },
+  "tickets": [],
+  "notes": "FINAL pre-kick MNF lock after Fri 4pm ET status. Injury 2026-09-18b. Model desk_compute. Street LAR -7. Edge home -1.56.",
+  "recommendation": {
+    "action": "PASS",
+    "side": null,
+    "market": null,
+    "units": 0,
+    "stake_class": "0u",
+    "edge_home": -1.56,
+    "timing_thesis": "PASS",
+    "reason": "MNF. Model LAR \u22125.4 vs street \u22127 \u2192 NYG +7 edge 1.56 thin on key 7. PASS / wait public."
+  },
+  "frozen_at": "2026-09-18 4:39 PM ET (America/New_York)",
+  "frozen_at_utc": "2026-09-18T20:39:38.293Z",
+  "locked_at": "2026-09-18T20:39:38.293-04:00",
+  "injury_aligned_to_imp3": true,
+  "injury_source_policy": "madden_first",
+  "lock_phase": "FINAL_PRE_KICK"
+}

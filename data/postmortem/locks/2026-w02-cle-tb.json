@@ -1,0 +1,276 @@
+{
+  "week": 2,
+  "season": 2026,
+  "game_id": "CLE@TB",
+  "kick": "2026-09-20T17:00+00:00",
+  "away": "CLE",
+  "home": "TB",
+  "espn_id": "401872935",
+  "venue": "Raymond James Stadium",
+  "neutral": false,
+  "window": "SUN_PM",
+  "model_home_spread": -8.47,
+  "model_home_spread_source": "desk_compute",
+  "street_home_spread": -8.5,
+  "close_at_lock": -8.5,
+  "ou_street": 41.5,
+  "street_note": "FINAL freeze 2026-09-18 4:39 PM ET (America/New_York). ESPN DraftKings: TB -8.5 / ou 41.5.",
+  "edge_home": -0.03,
+  "edge_note": "edgeHome = street − model = -8.5 − (-8.47) = -0.03 → away value (CLE)",
+  "feature_stack": {
+    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W2 n=1 taper; pff_ytd IN line; injury 2026-09-18b FINAL",
+    "injury_pulled": "2026-09-18b",
+    "away_CLE": {
+      "prior": -5.85,
+      "fa": 0.8,
+      "draft": 1.5,
+      "madden": -0.37,
+      "pff": -0.35,
+      "pff_ytd": -2,
+      "sos": -0.2,
+      "return": 0,
+      "injury": -5.47,
+      "adjust": 0,
+      "context": 0,
+      "eff": -11.94
+    },
+    "home_TB": {
+      "prior": -0.87,
+      "fa": -1.4,
+      "draft": 0.6,
+      "madden": -0.06,
+      "pff": -0.44,
+      "pff_ytd": -0.99,
+      "sos": 0.45,
+      "return": 0,
+      "injury": -2.76,
+      "adjust": 0,
+      "context": 0,
+      "eff": -5.47
+    },
+    "layers_home_minus_away": {
+      "prior": 4.98,
+      "fa": -2.2,
+      "draft": -0.9,
+      "madden": 0.31,
+      "pff": -0.09,
+      "pff_ytd": 1.01,
+      "sos": 0.65,
+      "return": 0,
+      "injury": 2.71,
+      "adjust": 0,
+      "context": 0
+    },
+    "rating_diff_home_minus_away": 6.47,
+    "hfa": 2,
+    "coach": 0,
+    "coach_note": "coachTerm desk",
+    "prep": 0,
+    "prep_note": "week!==1 so week1_term=0; bye check via prepNet",
+    "ats": 0,
+    "ats_note": "atsNet desk",
+    "travel": 0,
+    "travel_note": "schedNet desk",
+    "matchup": 0,
+    "matchup_note": "pff-matchups W1 grid only / missing → 0",
+    "gap": 8.47,
+    "component_sum": [
+      {
+        "label": "rating_diff (TB−CLE)",
+        "val": 6.47
+      },
+      {
+        "label": "HFA",
+        "val": 2
+      },
+      {
+        "label": "coach",
+        "val": 0
+      },
+      {
+        "label": "prep (W2)",
+        "val": 0
+      },
+      {
+        "label": "ats",
+        "val": 0
+      },
+      {
+        "label": "travel/sched",
+        "val": 0
+      },
+      {
+        "label": "matchup",
+        "val": 0
+      },
+      {
+        "label": "gap",
+        "val": 8.47
+      },
+      {
+        "label": "model_home_spread (−gap)",
+        "val": -8.47
+      }
+    ],
+    "injuries": {
+      "CLE": [
+        {
+          "name": "Teven Jenkins",
+          "pos": "OG",
+          "status": "OUT",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Tyson Campbell",
+          "pos": "CB1",
+          "status": "QUESTIONABLE",
+          "impact": 0.57,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Dylan Sampson",
+          "pos": "RB1",
+          "status": "IR",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Jeremiah Owusu-Koramoah",
+          "pos": "LB",
+          "status": "OUT",
+          "impact": 0.87,
+          "impact_source": "madden",
+          "pts": -0.87,
+          "on": true
+        },
+        {
+          "name": "Dillon Gabriel",
+          "pos": "QB1",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -3.5,
+          "on": true
+        },
+        {
+          "name": "Kendrick Green",
+          "pos": "OG",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.5,
+          "on": true
+        }
+      ],
+      "TB": [
+        {
+          "name": "Jalen McMillan",
+          "pos": "WR2",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.18,
+          "on": true
+        },
+        {
+          "name": "Miles Killebrew",
+          "pos": "S",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.18,
+          "on": true
+        },
+        {
+          "name": "Jacob Parrish",
+          "pos": "CB1",
+          "status": "QUESTIONABLE",
+          "impact": 0.57,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Josh Hayes",
+          "pos": "CB1",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -1.2,
+          "on": true
+        },
+        {
+          "name": "Mohamed Kamara",
+          "pos": "LB",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.5,
+          "on": true
+        },
+        {
+          "name": "David Sills V",
+          "pos": "WR2",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.5,
+          "on": true
+        }
+      ]
+    },
+    "injury_team_terms": {
+      "CLE": {
+        "raw": -5.47,
+        "term": -5.47,
+        "capped": false,
+        "cap_team": 6
+      },
+      "TB": {
+        "raw": -2.76,
+        "term": -2.76,
+        "capped": false,
+        "cap_team": 6
+      }
+    },
+    "taper": {
+      "CLE": {
+        "N": 3,
+        "n": 1,
+        "wPrior": 0.6666666666666666,
+        "wCurr": 0.3333333333333333
+      },
+      "TB": {
+        "N": 3,
+        "n": 1,
+        "wPrior": 0.6666666666666666,
+        "wCurr": 0.3333333333333333
+      }
+    }
+  },
+  "tickets": [],
+  "notes": "FINAL pre-kick SUN_PM lock after Fri 4pm ET status. Injury 2026-09-18b. Model desk_compute. Street TB -8.5. Edge home -0.03.",
+  "recommendation": {
+    "action": "PASS",
+    "side": null,
+    "market": null,
+    "units": 0,
+    "stake_class": "0u",
+    "edge_home": -0.03,
+    "timing_thesis": "PASS",
+    "reason": "No ≥1.5-pt edge vs street at freeze."
+  },
+  "frozen_at": "2026-09-18 4:39 PM ET (America/New_York)",
+  "frozen_at_utc": "2026-09-18T20:39:38.293Z",
+  "locked_at": "2026-09-18T20:39:38.293-04:00",
+  "injury_aligned_to_imp3": true,
+  "injury_source_policy": "madden_first",
+  "lock_phase": "FINAL_PRE_KICK"
+}

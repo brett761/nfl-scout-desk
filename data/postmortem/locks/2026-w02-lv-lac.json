@@ -1,0 +1,258 @@
+{
+  "week": 2,
+  "season": 2026,
+  "game_id": "LV@LAC",
+  "kick": "2026-09-20T20:05+00:00",
+  "away": "LV",
+  "home": "LAC",
+  "espn_id": "401872941",
+  "venue": "SoFi Stadium",
+  "neutral": false,
+  "window": "SUN_PM",
+  "model_home_spread": 3.81,
+  "model_home_spread_source": "desk_compute",
+  "street_home_spread": -6.5,
+  "close_at_lock": -6.5,
+  "ou_street": 43.5,
+  "street_note": "FINAL freeze 2026-09-18 4:39 PM ET (America/New_York). ESPN DraftKings: LAC -6.5 / ou 43.5.",
+  "edge_home": -10.31,
+  "edge_note": "edgeHome = street \u2212 model = -6.5 \u2212 (3.81) = -10.31 \u2192 away value (LV); |edge|\u22651.5",
+  "feature_stack": {
+    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W2 n=1 taper; pff_ytd IN line; injury 2026-09-18b FINAL",
+    "injury_pulled": "2026-09-18b",
+    "away_LV": {
+      "prior": -1.01,
+      "fa": 2.67,
+      "draft": 0,
+      "madden": -0.44,
+      "pff": -1.24,
+      "pff_ytd": 1.94,
+      "sos": 0.39,
+      "return": 0,
+      "injury": -2.73,
+      "adjust": 0,
+      "context": 0,
+      "eff": -0.42
+    },
+    "home_LAC": {
+      "prior": -1.23,
+      "fa": -0.07,
+      "draft": 0,
+      "madden": -0.04,
+      "pff": 0.04,
+      "pff_ytd": -2,
+      "sos": -0.61,
+      "return": 0,
+      "injury": -2.54,
+      "adjust": 0,
+      "context": 0,
+      "eff": -6.45
+    },
+    "layers_home_minus_away": {
+      "prior": -0.22,
+      "fa": -2.74,
+      "draft": 0,
+      "madden": 0.4,
+      "pff": 1.28,
+      "pff_ytd": -3.94,
+      "sos": -1,
+      "return": 0,
+      "injury": 0.19,
+      "adjust": 0,
+      "context": 0
+    },
+    "rating_diff_home_minus_away": -6.03,
+    "hfa": 2,
+    "coach": 0,
+    "coach_note": "coachTerm desk",
+    "prep": 0,
+    "prep_note": "week!==1 so week1_term=0; bye check via prepNet",
+    "ats": 0.22,
+    "ats_note": "atsNet desk",
+    "travel": 0,
+    "travel_note": "schedNet desk",
+    "matchup": 0,
+    "matchup_note": "pff-matchups W1 grid only / missing \u2192 0",
+    "gap": -3.81,
+    "component_sum": [
+      {
+        "label": "rating_diff (LAC\u2212LV)",
+        "val": -6.03
+      },
+      {
+        "label": "HFA",
+        "val": 2
+      },
+      {
+        "label": "coach",
+        "val": 0
+      },
+      {
+        "label": "prep (W2)",
+        "val": 0
+      },
+      {
+        "label": "ats",
+        "val": 0.22
+      },
+      {
+        "label": "travel/sched",
+        "val": 0
+      },
+      {
+        "label": "matchup",
+        "val": 0
+      },
+      {
+        "label": "gap",
+        "val": -3.81
+      },
+      {
+        "label": "model_home_spread (\u2212gap)",
+        "val": 3.81
+      }
+    ],
+    "injuries": {
+      "LV": [
+        {
+          "name": "Brock Bowers",
+          "pos": "TE1",
+          "status": "DOUBTFUL",
+          "impact": 3.37,
+          "impact_source": "madden",
+          "pts": -2.53,
+          "on": true
+        },
+        {
+          "name": "Darien Porter",
+          "pos": "CB1",
+          "status": "OUT",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        }
+      ],
+      "LAC": [
+        {
+          "name": "Ladd McConkey",
+          "pos": "WR2",
+          "status": "QUESTIONABLE",
+          "impact": 0.87,
+          "impact_source": "madden",
+          "pts": -0.3,
+          "on": true
+        },
+        {
+          "name": "Elijah Molden",
+          "pos": "CB1",
+          "status": "QUESTIONABLE",
+          "impact": 0.57,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Teair Tart",
+          "pos": "IDL",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Dalvin Tomlinson",
+          "pos": "IDL",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.28,
+          "on": true
+        },
+        {
+          "name": "Trey Pipkins III",
+          "pos": "RT",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.35,
+          "on": true
+        },
+        {
+          "name": "KeAndre Lambert-Smith",
+          "pos": "WR2",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.5,
+          "on": true
+        },
+        {
+          "name": "Deane Leonard",
+          "pos": "CB1",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.42,
+          "on": true
+        },
+        {
+          "name": "Tyler Biadasz",
+          "pos": "C",
+          "status": "IR",
+          "impact": 0.42,
+          "impact_source": "madden",
+          "pts": -0.42,
+          "on": true
+        }
+      ]
+    },
+    "injury_team_terms": {
+      "LV": {
+        "raw": -2.73,
+        "term": -2.73,
+        "capped": false,
+        "cap_team": 6
+      },
+      "LAC": {
+        "raw": -2.54,
+        "term": -2.54,
+        "capped": false,
+        "cap_team": 6
+      }
+    },
+    "taper": {
+      "LV": {
+        "N": 3,
+        "n": 1,
+        "wPrior": 0.6666666666666666,
+        "wCurr": 0.3333333333333333
+      },
+      "LAC": {
+        "N": 3,
+        "n": 1,
+        "wPrior": 0.6666666666666666,
+        "wCurr": 0.3333333333333333
+      }
+    }
+  },
+  "tickets": [],
+  "notes": "FINAL pre-kick SUN_PM lock after Fri 4pm ET status. Injury 2026-09-18b. Model desk_compute. Street LAC -6.5. Edge home -10.31.",
+  "recommendation": {
+    "action": "LOCK",
+    "side": "LV",
+    "market": "LV +6.5",
+    "units": 3,
+    "stake_class": "3u @ $50/u",
+    "edge_home": -10.31,
+    "timing_thesis": "PRICE_CLV",
+    "reason": "B$ card. Model LAC only \u22123.8 vs street \u22126.5 \u2192 +10.3 away edge. Bowers Doubtful in LV term."
+  },
+  "frozen_at": "2026-09-18 4:39 PM ET (America/New_York)",
+  "frozen_at_utc": "2026-09-18T20:39:38.293Z",
+  "locked_at": "2026-09-18T20:39:38.293-04:00",
+  "injury_aligned_to_imp3": true,
+  "injury_source_policy": "madden_first",
+  "lock_phase": "FINAL_PRE_KICK"
+}
