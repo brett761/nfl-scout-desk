@@ -1705,6 +1705,7 @@ let playbookFilter = "ALL";
 let lastFocus = null;
 
 let nflData = null; // { teams, games, pulled, ... } from ./data/nfl-2026.json
+let openerSnaps = []; // data/openers/*.json board snapshots (earliest per week = open street)
 let priorData = null; // { teams, ranges, weights, taper } from ./data/prior-2025.json
 let ytdStData = null; // { teams } from ./data/ytd-st-2026.json; YTD ST raw for currentRating
 let faData = null; // { teams, scoring, season } from ./data/fa-2026.json; null if missing
@@ -2041,7 +2042,126 @@ function marketFor(game) {
   return { odds: odds || "", ou: ou ?? null, parsed: parseMarket(odds, game.home, game.away) };
 }
 
+/* Optional per-game street stamps on nfl-2026.json games:
+   open_spread / open_odds, open_pulled, odds_updated_at.
+   Missing fields fall back to the earliest opener snapshot for that week/game,
+   and nfl-2026.json `pulled` for the current street. Unknown times stay blank. */
+function parseOpenerSpread(spread, homeAbbr, awayAbbr) {
+  const raw = String(spread || "").trim();
+  if (!raw) return { fav: null, pts: null, homeLine: null };
+  const direct = parseMarket(raw, homeAbbr, awayAbbr);
+  if (direct.homeLine != null) return direct;
+  const first = raw.match(/^([A-Z]{2,3})\s*(PK|EVEN|[+-]?\d+(?:\.\d+)?)/i);
+  if (first) return parseMarket(first[1] + " " + first[2], homeAbbr, awayAbbr);
+  return { fav: null, pts: null, homeLine: null };
+}
+
+function openerRowMatchesGame(row, game) {
+  if (!row || !game) return false;
+  if (row.espn_id != null && String(row.espn_id) === String(game.id)) return true;
+  const raw = String(row.game || "").toUpperCase().replace(/\s+/g, " ").trim();
+  const home = normAbbr(game.home);
+  const away = normAbbr(game.away);
+  if (!raw || !home || !away) return false;
+  const at = raw.match(/^([A-Z]{2,3})\s*@\s*([A-Z]{2,3})/);
+  if (at && normAbbr(at[1]) === away && normAbbr(at[2]) === home) return true;
+  const glued = raw.match(/^([A-Z]{2,3})@([A-Z]{2,3})/);
+  if (glued && normAbbr(glued[1]) === away && normAbbr(glued[2]) === home) return true;
+  const vs = raw.match(/^([A-Z]{2,3})\s+VS\.?\s+([A-Z]{2,3})/);
+  if (vs) {
+    const a = normAbbr(vs[1]);
+    const b = normAbbr(vs[2]);
+    if ((a === away && b === home) || (a === home && b === away)) return true;
+  }
+  return false;
+}
+
+function homeLineFromGameField(value, game) {
+  if (value == null || value === "") return null;
+  if (typeof value === "number" && Number.isFinite(value)) return value;
+  const asNum = num(value);
+  if (asNum != null && /^\s*[+-]?\d+(?:\.\d+)?\s*$/.test(String(value))) return asNum;
+  return parseOpenerSpread(value, game.home, game.away).homeLine;
+}
+
+function firstParseableIso(...cands) {
+  for (const c of cands) {
+    if (c && toET(c)) return c;
+  }
+  return null;
+}
+
+function fmtLineStamp(iso) {
+  const et = iso ? toET(iso) : null;
+  if (!et) return "—";
+  return et.label + " · " + et.clock + " ET";
+}
+
+function streetLinesFor(game) {
+  const mkt = marketFor(game);
+  const currentLine = mkt.parsed && mkt.parsed.homeLine != null ? mkt.parsed.homeLine : null;
+  const ov = (game && lineOverrides[game.id]) || {};
+  const oddsOverridden = ov.odds != null && String(ov.odds) !== "" && String(ov.odds) !== String(game.odds || "");
+  const currentAt = firstParseableIso(
+    game.odds_updated_at,
+    game.street_pulled,
+    oddsOverridden ? null : (nflData && nflData.pulled)
+  );
+
+  let openLine = homeLineFromGameField(
+    game.open_spread != null && game.open_spread !== "" ? game.open_spread : game.open_odds,
+    game
+  );
+  let openAt = firstParseableIso(game.open_pulled, game.open_odds_at, game.open_spread_at);
+
+  if (openLine == null && openerSnaps.length) {
+    const week = Number(game.week);
+    const snaps = openerSnaps
+      .filter((s) => Number(s.week) === week && Array.isArray(s.games))
+      .slice()
+      .sort((a, b) => String(a.pulled || "").localeCompare(String(b.pulled || "")));
+    for (const snap of snaps) {
+      const row = snap.games.find((r) => openerRowMatchesGame(r, game));
+      if (!row) continue;
+      const parsed = parseOpenerSpread(row.spread, game.home, game.away);
+      if (parsed.homeLine == null) continue;
+      openLine = parsed.homeLine;
+      openAt = firstParseableIso(row.pulled, row.pulled_at, snap.pulled);
+      break;
+    }
+  }
+
+  return { openLine, openAt, currentLine, currentAt };
+}
+
+async function loadOpenerSnaps() {
+  openerSnaps = [];
+  try {
+    const idxRes = await fetch("./data/openers/index.json?v=bline1");
+    if (!idxRes.ok) throw new Error(String(idxRes.status));
+    const idx = await idxRes.json();
+    const files = idx && Array.isArray(idx.files) ? idx.files : [];
+    const snaps = await Promise.all(files.map(async (name) => {
+      try {
+        const res = await fetch("./data/openers/" + encodeURIComponent(name) + "?v=bline1");
+        if (!res.ok) throw new Error(String(res.status));
+        const data = await res.json();
+        if (!data || !Array.isArray(data.games)) throw new Error("bad opener");
+        return data;
+      } catch (err) {
+        console.warn("openers/" + name, err);
+        return null;
+      }
+    }));
+    openerSnaps = snaps.filter(Boolean);
+  } catch (err) {
+    openerSnaps = [];
+    console.warn("openers/index.json", err);
+  }
+}
+
 async function loadNfl() {
+  const openersReq = loadOpenerSnaps();
   const nflReq = fetch("./data/nfl-2026.json?v=ytd1");
   const priorReq = fetch("./data/prior-2025.json?v=ytd1");
   const ytdStReq = fetch("./data/ytd-st-2026.json?v=ytd1");
@@ -2329,6 +2449,12 @@ async function loadNfl() {
   } catch (err) {
     totalsModel = null;
     console.warn("totals-model.json", err);
+  }
+  try {
+    await openersReq;
+  } catch (err) {
+    openerSnaps = [];
+    console.warn("openers", err);
   }
   try {
     const res = await fetch("./data/vibe-check/index.json");
@@ -3825,7 +3951,7 @@ function renderGameSheet() {
     { label: "+ travel / trap / rest", val: sched, note: schedSheetNote(game) },
     { label: "+ PFF matchup", val: matchup, note: matchupSheetNote(game) },
     { label: "Combined gap", val: gap, note: "add those up", sum: true },
-    { label: "Our line (flip the sign)", val: hasOurNumber(game) ? ourLine : 0, note: hasOurNumber(game) ? "" : "ratings even · no number", hideVal: !hasOurNumber(game) },
+    { label: "B$ Line (flip the sign)", val: hasOurNumber(game) ? ourLine : 0, note: hasOurNumber(game) ? "" : "ratings even · no number", hideVal: !hasOurNumber(game) },
   ];
   const stackHtml = stack.map((s) => `
     <div class="game-stack-row${s.sum ? " is-sum" : ""}">
@@ -3833,18 +3959,26 @@ function renderGameSheet() {
       <span class="game-stack-val mono ${s.hideVal ? "zero" : rtgClass(s.val)}">${esc(s.hideVal ? "—" : fmtLayer(s.val))}</span>
     </div>`).join("");
 
-  let compare = "";
+  const street = streetLinesFor(game);
+  const openVal = street.openLine == null ? "—" : fmtSpreadNum(street.openLine);
+  const curVal = street.currentLine == null ? "—" : fmtSpreadNum(street.currentLine);
+  const bLineVal = hasOurNumber(game) ? fmtSpreadNum(ourLine) : "—";
+  let compare = `<div class="game-compare">
+      <div class="game-stack-row">
+        <span class="game-stack-label">Open street<small class="game-stack-when">${esc(fmtLineStamp(street.openAt))}</small></span>
+        <span class="game-stack-val mono">${esc(openVal)}</span>
+      </div>
+      <div class="game-stack-row">
+        <span class="game-stack-label">Current street<small class="game-stack-when">${esc(fmtLineStamp(street.currentAt))}</small></span>
+        <span class="game-stack-val mono">${esc(curVal)}</span>
+      </div>
+      <div class="game-stack-row">
+        <span class="game-stack-label">B$ Line</span>
+        <span class="game-stack-val mono">${esc(bLineVal)}</span>
+      </div>`;
   if (hasOurNumber(game)) {
     const side = edge != null && edge < 0 ? " · away" : edge != null && edge > 0 ? " · home" : "";
-    compare = `<div class="game-compare">
-      <div class="game-stack-row">
-        <span class="game-stack-label">Sportsbook</span>
-        <span class="game-stack-val mono">${esc(marketHome == null ? "—" : fmtSpreadNum(marketHome))}</span>
-      </div>
-      <div class="game-stack-row">
-        <span class="game-stack-label">Our line</span>
-        <span class="game-stack-val mono">${esc(fmtSpreadNum(ourLine))}</span>
-      </div>
+    compare += `
       <div class="game-stack-row">
         <span class="game-stack-label">In English</span>
         <span class="game-stack-val mono">${esc(formatOurLine(ourLine, home, away))}</span>
@@ -3853,11 +3987,11 @@ function renderGameSheet() {
         <span class="game-stack-label">We disagree${side}</span>
         <span class="game-stack-val mono">${esc(fmtEdgeNum(edge))}</span>
       </div>
-      <p class="game-sheet-keys">${keys.length ? "This sits on opposite sides of " + keys.join(" / ") + "." : "This does not sit on opposite sides of 3 or 7."} Copper is a look, not a ticket.</p>
-    </div>`;
+      <p class="game-sheet-keys">${keys.length ? "This sits on opposite sides of " + keys.join(" / ") + "." : "This does not sit on opposite sides of 3 or 7."} Copper is a look, not a ticket.</p>`;
   } else {
-    compare = `<p class="game-sheet-none">Ratings are even. We do not post a number yet.</p>`;
+    compare += `<p class="game-sheet-none">Ratings are even. We do not post a number yet.</p>`;
   }
+  compare += `</div>`;
 
   const tot = ourTotal(game);
   const totE = totalEdge(game, mkt);
@@ -4627,7 +4761,7 @@ function renderSchedule() {
     hfaCtrl.removeAttribute("tabindex");
   }
   if (sub) {
-    sub.textContent = "Week " + currentWeek + ". Tap a game. Our line is the gap we expect. Street is the sportsbook. Copper means we disagree enough to look — not an automatic bet. Weather only changes the combined score." 
+    sub.textContent = "Week " + currentWeek + ". Tap a game. B$ Line is the gap we expect. Street is the sportsbook. Copper means we disagree enough to look — not an automatic bet. Weather only changes the combined score." 
   }
   if (!board) return;
   if (!nflData || !nflData.games.length) {
@@ -4692,7 +4826,7 @@ function renderSchedule() {
           <label>Street <input class="mono" data-odds="${esc(g.id)}" value="${esc(mkt.odds)}" placeholder="SEA -3.5" spellcheck="false"></label>
           <label>O/U <input class="mono" type="number" step="0.5" data-ou="${esc(g.id)}" value="${esc(ouVal)}"></label>
         </div>
-        <div class="sked-our"><span class="lbl">Our line</span><span class="val">${esc(ourHtml)}</span></div>
+        <div class="sked-our"><span class="lbl">B$ Line</span><span class="val">${esc(ourHtml)}</span></div>
         <div class="sked-edge"><span class="lbl">Gap</span>${edgeHtml === "—" ? '<span class="val">—</span>' : edgeHtml}${coachChipHtml(g)}${prepChipHtml(g)}${atsChipHtml(g)}${matchupChipHtml(g)}</div>
         ${wxStripHtml(g, mkt)}
         ${hasOurNumber(g) ? coverHelperHtml(ourHomeSpread(g, hfa), mkt.parsed.homeLine) : ""}
