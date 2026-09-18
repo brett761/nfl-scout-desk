@@ -508,6 +508,7 @@ function normAbbr(abbr) {
      Launch snapshot. Does not fade. Does not rewrite the 2025 prior.
    pff_term(abbr) = pff-2026.json team net (0 if missing).
      Same 22 per club: top 11 OFF + top 11 DEF by 2025 PFF grade, min 200 snaps.
+     pff-2026-ytd.json is display-only REG YTD grades (not in eff).
      Surplus vs league mean of those 22. 5 grade ≈ 1 point. Cap ±1.5.
      Official PFF+ CSV export. Does not fade. Does not rewrite the 2025 prior.
    pff_pre_term is display only. Not in eff() or ourHomeLine.
@@ -841,6 +842,12 @@ function pffPreTerm(abbr) {
   const t = pffPreTeam(abbr);
   if (!t) return 0;
   return num(t.net) || 0;
+}
+
+function pffYtdTeam(abbr) {
+  const a = normAbbr(abbr);
+  if (!pffYtdData || !pffYtdData.teams) return null;
+  return pffYtdData.teams[a] || null;
 }
 
 function matchupRec(game) {
@@ -1665,6 +1672,7 @@ let draftData = null; // { teams, scoring, season, window_games } from ./data/dr
 let maddenData = null; // { teams, scoring } from ./data/madden-2026.json; null if missing
 let pffData = null; // { teams, scoring } from ./data/pff-2026.json; null if missing
 let pffPreData = null; // 2026 PRE team OVER chip
+let pffYtdData = null; // 2026 REG YTD team grades (display only)
 let pffMatchData = null; // Week 1 matchup game chip
 let sosData = null; // { teams } from ./data/sos-2025.json; realized SOS + record; null if missing
 let returnData = null; // { teams } from ./data/return-2026.json; last-year-hurt, this-year-healthy; null if missing
@@ -2001,6 +2009,7 @@ async function loadNfl() {
   const maddenReq = fetch("./data/madden-2026.json");
   const pffReq = fetch("./data/pff-2026.json?v=pff1");
   const pffPreReq = fetch("./data/pff-pre-2026.json?v=pff2");
+  const pffYtdReq = fetch("./data/pff-2026-ytd.json?v=pff3");
   const pffMatchReq = fetch("./data/pff-matchups-2026.json?v=pff2");
   const sosReq = fetch("./data/sos-2025.json");
   const returnReq = fetch("./data/return-2026.json");
@@ -2096,6 +2105,16 @@ async function loadNfl() {
   } catch (err) {
     pffPreData = null;
     console.warn("pff-pre-2026.json", err);
+  }
+  try {
+    const res = await pffYtdReq;
+    if (!res.ok) throw new Error(String(res.status));
+    const data = await res.json();
+    if (!data || !data.teams || typeof data.teams !== "object") throw new Error("bad pff ytd");
+    pffYtdData = data;
+  } catch (err) {
+    pffYtdData = null;
+    console.warn("pff-2026-ytd.json", err);
   }
   try {
     const res = await pffMatchReq;
@@ -3268,6 +3287,31 @@ function pffPreBlockHtml(abbr) {
   </div>`;
 }
 
+function pffYtdBlockHtml(abbr) {
+  const t = pffYtdTeam(abbr);
+  if (!t) return "";
+  const weeks = pffYtdData && Array.isArray(pffYtdData.weeks) ? pffYtdData.weeks.join(",") : "";
+  const off = t.grades_offense != null ? t.grades_offense : "—";
+  const deff = t.grades_defense != null ? t.grades_defense : "—";
+  const st = t.grades_st != null ? t.grades_st : "—";
+  const ovr = t.grades_overall != null ? t.grades_overall : "—";
+  const rk = (v) => (v != null ? "#" + v : "—");
+  return `<div class="fa-block pff-block">
+    <p class="prior-kicker">PFF 2026 REG YTD · W${esc(weeks || "?")}</p>
+    <div class="fa-net">
+      <small>OVR</small>
+      <em>${esc(String(ovr))}</em>
+      <span class="fa-net-note">${esc(rk(t.rank_overall))} · ${esc(t.record || "")}</span>
+    </div>
+    <div class="fa-lists">
+      <div class="fa-unit"><span class="fa-unit-h">OFF ${esc(String(off))} ${esc(rk(t.rank_offense))}</span></div>
+      <div class="fa-unit"><span class="fa-unit-h">DEF ${esc(String(deff))} ${esc(rk(t.rank_defense))}</span></div>
+      <div class="fa-unit"><span class="fa-unit-h">ST ${esc(String(st))} ${esc(rk(t.rank_st))}</span></div>
+    </div>
+    <p class="prior-note">Official Pro API team-overview. Sheet only — not in pff_term or eff(). Rebuild: data/build_pff_ytd_2026.py</p>
+  </div>`;
+}
+
 function injurySelectOptions(keys, selected) {
   const list = keys.slice();
   if (selected && !list.includes(selected)) list.push(selected);
@@ -3343,6 +3387,7 @@ function renderTeamSheet() {
     ${maddenBlockHtml(team.abbr)}
     ${pffBlockHtml(team.abbr)}
     ${pffPreBlockHtml(team.abbr)}
+    ${pffYtdBlockHtml(team.abbr)}
     ${injBlockHtml(team.abbr)}
     ${schemeBlockHtml(team.abbr)}
     ${staffBlockHtml(team.abbr)}
