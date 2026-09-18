@@ -2138,13 +2138,13 @@ function streetLinesFor(game) {
 async function loadOpenerSnaps() {
   openerSnaps = [];
   try {
-    const idxRes = await fetch("./data/openers/index.json?v=wdef1");
+    const idxRes = await fetch("./data/openers/index.json?v=skline1");
     if (!idxRes.ok) throw new Error(String(idxRes.status));
     const idx = await idxRes.json();
     const files = idx && Array.isArray(idx.files) ? idx.files : [];
     const snaps = await Promise.all(files.map(async (name) => {
       try {
-        const res = await fetch("./data/openers/" + encodeURIComponent(name) + "?v=wdef1");
+        const res = await fetch("./data/openers/" + encodeURIComponent(name) + "?v=skline1");
         if (!res.ok) throw new Error(String(res.status));
         const data = await res.json();
         if (!data || !Array.isArray(data.games)) throw new Error("bad opener");
@@ -2541,7 +2541,9 @@ const SKED_TIPS = {
   crosses: "We sit on one side of 3 or 7 and the sportsbook sits on the other. NFL games land on field goals and touchdowns a lot, so that half-point is the bet. Still not automatic.",
   fire: "Copper when we disagree with the sportsbook by about a field goal, or we landed on opposite sides of 3 or 7. We show the disagreement. We do not auto-bet.",
   our: "The gap we expect, from the home team’s view. Minus means we think the home team is better. Built from last year, roster changes, rookies, Madden, injuries, and home field.",
-  mkt: "The sportsbook number. Compare it to our line. The difference is the edge.",
+  mkt: "The sportsbook number right now (Current). Open is the first number we logged. Compare Current to B$ Line. The difference is the edge.",
+  open: "The first sportsbook number we logged for this game, with the time we recorded it. Em dash means we do not have an opener snapshot.",
+  current: "Today’s sportsbook number. Type here to override. The time is when that street was last pulled — not a guessed clock.",
   hcGold: "Coach vs coach, SU, home view. Moves the line (cap 1). n≥4 and outside the dead zone. Not ATS.",
   hcDead: "Enough games (n≥4) but the win rate is too close to .500. Number is 0.",
   hcN: "Under 4 H2H games. We will not put a number on it.",
@@ -4762,7 +4764,7 @@ function renderSchedule() {
     hfaCtrl.removeAttribute("tabindex");
   }
   if (sub) {
-    sub.textContent = "Week " + currentWeek + ". Tap a game. B$ Line is the gap we expect. Street is the sportsbook. Copper means we disagree enough to look — not an automatic bet. Weather only changes the combined score." 
+    sub.textContent = "Week " + currentWeek + ". Tap a game. Open is the first street we logged. Current is today’s sportsbook. B$ Line is the gap we expect. Copper means we disagree enough to look — not an automatic bet. Weather only changes the combined score." 
   }
   if (!board) return;
   if (!nflData || !nflData.games.length) {
@@ -4813,6 +4815,8 @@ function renderSchedule() {
         }
       }
       const ouVal = mkt.ou == null ? "" : mkt.ou;
+      const street = streetLinesFor(g);
+      const openVal = street.openLine == null ? "—" : formatOurLine(street.openLine, g.home, g.away);
       return `<article class="sked-row${fire ? " is-fire" : ""}" data-game="${esc(g.id)}">
         <button type="button" class="sked-kick sked-open-game" data-open-game="${esc(g.id)}" aria-haspopup="dialog" aria-controls="game-sheet">${et ? esc(et.clock) + " ET" : "—"}</button>
         <div class="sked-match sked-open-game" data-open-game="${esc(g.id)}" tabindex="0" aria-haspopup="dialog" aria-controls="game-sheet">
@@ -4823,11 +4827,23 @@ function renderSchedule() {
           <button type="button" class="sked-venue sked-open-game" data-open-game="${esc(g.id)}" aria-haspopup="dialog" aria-controls="game-sheet">${esc(g.venue || "")}${g.city ? " · " + esc(g.city) : ""}</button>
           ${g.broadcast ? `<span class="sked-bc">${esc(g.broadcast)}</span>` : ""}
         </div>
-        <div class="sked-mkt">
-          <label>Street <input class="mono" data-odds="${esc(g.id)}" value="${esc(mkt.odds)}" placeholder="SEA -3.5" spellcheck="false"></label>
-          <label>O/U <input class="mono" type="number" step="0.5" data-ou="${esc(g.id)}" value="${esc(ouVal)}"></label>
+        <div class="sked-lines">
+          <div class="sked-line">
+            <span class="lbl">Open</span>
+            <span class="val">${esc(openVal)}</span>
+            <span class="when">${esc(fmtLineStamp(street.openAt))}</span>
+          </div>
+          <div class="sked-line sked-mkt">
+            <span class="lbl">Current</span>
+            <input class="mono" data-odds="${esc(g.id)}" value="${esc(mkt.odds)}" placeholder="SEA -3.5" spellcheck="false" aria-label="Current street">
+            <span class="when">${esc(fmtLineStamp(street.currentAt))}</span>
+            <label>O/U <input class="mono" type="number" step="0.5" data-ou="${esc(g.id)}" value="${esc(ouVal)}"></label>
+          </div>
+          <div class="sked-line sked-our">
+            <span class="lbl">B$ Line</span>
+            <span class="val">${esc(ourHtml)}</span>
+          </div>
         </div>
-        <div class="sked-our"><span class="lbl">B$ Line</span><span class="val">${esc(ourHtml)}</span></div>
         <div class="sked-edge"><span class="lbl">Gap</span>${edgeHtml === "—" ? '<span class="val">—</span>' : edgeHtml}${coachChipHtml(g)}${prepChipHtml(g)}${atsChipHtml(g)}${matchupChipHtml(g)}</div>
         ${wxStripHtml(g, mkt)}
         ${hasOurNumber(g) ? coverHelperHtml(ourHomeSpread(g, hfa), mkt.parsed.homeLine) : ""}
@@ -6027,7 +6043,7 @@ function bind() {
   document.getElementById("hfa-plus").addEventListener("click", () => setHfa(hfa + 0.5));
 
   document.getElementById("sked-board").addEventListener("click", (e) => {
-    if (e.target.closest("input, select, textarea, .sked-mkt, .wx-strip, .hc-chip, .wx-chip, .sked-cover, .sked-our, .sked-edge")) {
+    if (e.target.closest("input, select, textarea, .sked-mkt, .sked-lines, .sked-line, .wx-strip, .hc-chip, .wx-chip, .sked-cover, .sked-our, .sked-edge")) {
       return;
     }
     const team = e.target.closest(".abbr-link[data-team]");

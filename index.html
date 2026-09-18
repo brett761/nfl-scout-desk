@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Geist+Mono:wght@400;500;600&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=wdef1">
+  <link rel="stylesheet" href="styles.css?v=skline1">
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
@@ -83,7 +83,7 @@
         <p class="section-label">How to read this</p>
         <ol>
           <li><a href="#teams">Teams</a> — plus is better than average. Minus is worse. Tap a club to see why.</li>
-          <li><a href="#schedule">Games</a> — tap a matchup. <strong>B$ Line</strong> is the gap we expect. <strong>Street</strong> is the sportsbook.</li>
+          <li><a href="#schedule">Games</a> — tap a matchup. <strong>Open</strong> is the first street we logged. <strong>Current</strong> is today’s sportsbook. <strong>B$ Line</strong> is the gap we expect.</li>
           <li>Copper means we disagree by about a field goal, or we landed on opposite sides of 3 or 7. That is a look, not an automatic bet.</li>
           <li>Skip is normal. Most games we do not bet.</li>
         </ol>
@@ -141,8 +141,10 @@
           <summary>Words a friend might not know</summary>
           <dl>
             <div><dt>Line</dt><dd>The point handicap. Chiefs −3 means Kansas City must win by more than 3.</dd></div>
+            <div><dt>Open</dt><dd>The first sportsbook number we logged for the game, with the time we recorded it.</dd></div>
+            <div><dt>Current</dt><dd>What the sportsbook is offering right now, with the time that number was last pulled.</dd></div>
             <div><dt>B$ Line</dt><dd>The gap we expect, from the home team’s view.</dd></div>
-            <div><dt>Street</dt><dd>What the sportsbook is offering right now.</dd></div>
+            <div><dt>Street</dt><dd>Same as Current — the live sportsbook number.</dd></div>
             <div><dt>Edge</dt><dd>How far those two numbers are apart.</dd></div>
             <div><dt>Skip</dt><dd>We looked and did not bet. That counts as a decision.</dd></div>
             <div><dt>Unit</dt><dd>$50. The week is 20 units ($1,000). 1u look, 2u standard, 3u full, 4u max.</dd></div>
@@ -214,7 +216,7 @@
         <div class="view-head">
           <p class="eyebrow">Our guess vs the sportsbook · copper is a look, not a ticket</p>
           <h1 id="schedule-title">Games</h1>
-          <p class="lede" id="sked-sub">Tap a game. B$ Line is the gap we expect. Street is the sportsbook. Copper means we disagree enough to look.</p>
+          <p class="lede" id="sked-sub">Tap a game. Open is the first street we logged. Current is today’s sportsbook. B$ Line is the gap we expect. Copper means we disagree enough to look.</p>
         </div>
         <div class="hfa-ctrl">
           <label for="hfa-input">Home-field points</label>
@@ -575,6 +577,6 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
-  <script src="app.js?v=wdef1"></script>
+  <script src="app.js?v=skline1"></script>
 </body>
 </html>
