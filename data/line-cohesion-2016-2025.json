@@ -1,0 +1,506 @@
+{
+  "title": "NFL offensive- and defensive-line cohesion vs regular-season wins, 2016-2025",
+  "pulled_date": "2026-08-24",
+  "methodology": {
+    "scope": "Regular season only (game_type=REG). Playoffs excluded. Continuity windows 2015->2016 through 2024->2025 (10 YoY pairs). 2015 snap counts used only to score 2016 returning starters.",
+    "unit": "team-season (32 clubs x 10 seasons = 320). Includes the 2017 Browns (0-16); zero-win seasons are valid observations.",
+    "starter_definition": "Snap-based, not depth-chart. OL unit = 5 players with the most regular-season offensive snaps at that club that year among positions C/G/T/OT/OG/OL and listed hybrids C/G, G/C, G/OT, G/T, T/G. TE excluded. DL unit = 4 players with the most regular-season defensive snaps among DE/DT/NT/DL/EDGE and DE/DT/NT/DL-leading hybrids (DE/D, DE/L, DT/D). ILB/MLB/OLB/LB excluded even if they rush. Unit size is always 5 OL and 4 DL so 3-4 fronts still contribute a top-4 DL-snap group.",
+    "returning_starter": "pfr_player_id present in both year Y-1's top-N unit and year Y's top-N unit on the same remapped club. ol_return in 0..5, dl_return in 0..4.",
+    "player_key": "pfr_player_id from nflverse snap_counts (PFR IDs). One consistent key; gsis_id is not in the snap file.",
+    "wins": "Regular-season wins from nflverse schedules (Lee Sharpe games.csv), game_type=REG. Ties count as 0 wins. Cancelled/unplayed games (empty scores) excluded. d_wins = wins_Y - wins_Y-1. Wins match desk file to-wins-2016-2025.csv (0 mismatches).",
+    "team_codes": "Historical codes remapped: SD->LAC, OAK/RAI->LV, STL->LA. Continuity follows the franchise, not the city code.",
+    "games": "2016-2020: 16-game season. 2021 and 2023-2025: 17-game season. 2022: 17 games except BUF and CIN (16) after the Week 17 BUF-CIN game was cancelled.",
+    "correlations": "Pearson r of ol_return / dl_return / (ol_return+dl_return) vs wins_Y and vs d_wins. Two-sided p-values from a Student-t approximation on n-2 df via the regularized incomplete beta.",
+    "intact_line": "ol_return >= 4 AND dl_return >= 3 versus everyone else.",
+    "churned_line": "ol_return <= 1 OR dl_return <= 1.",
+    "optional_tenure": "Mean years on club among the current unit was not computed (roster entry-year join skipped).",
+    "caveats": [
+      "Good teams re-sign their lines (selection). A wins_Y association can just mean good clubs keep starters.",
+      "d_wins is the more honest test; it differences out the stable-quality effect.",
+      "Injuries create churn that also costs wins, so low return is not only roster-construction choice.",
+      "4-3 vs 3-4 makes the DL unit noisier; 3-4 edge rushers tagged OLB/LB are excluded by design.",
+      "Snap-based season-long top-N is not the same as official Week 1 starters or a single depth chart.",
+      "PFR snap position tags include occasional hybrids; 2020 has more hybrid labels than other years."
+    ]
+  },
+  "source": {
+    "primary": "nflverse snap_counts (PFR game-level snaps) and schedules/games.csv via GitHub releases",
+    "urls": [
+      "https://github.com/nflverse/nflverse-data/releases/tag/snap_counts",
+      "https://github.com/nflverse/nflverse-data/releases/download/snap_counts/snap_counts_2015.csv",
+      "https://github.com/nflverse/nflverse-data/releases/download/snap_counts/snap_counts_2016.csv",
+      "https://github.com/nflverse/nflverse-data/releases/download/snap_counts/snap_counts_2017.csv",
+      "https://github.com/nflverse/nflverse-data/releases/download/snap_counts/snap_counts_2018.csv",
+      "https://github.com/nflverse/nflverse-data/releases/download/snap_counts/snap_counts_2019.csv",
+      "https://github.com/nflverse/nflverse-data/releases/download/snap_counts/snap_counts_2020.csv",
+      "https://github.com/nflverse/nflverse-data/releases/download/snap_counts/snap_counts_2021.csv",
+      "https://github.com/nflverse/nflverse-data/releases/download/snap_counts/snap_counts_2022.csv",
+      "https://github.com/nflverse/nflverse-data/releases/download/snap_counts/snap_counts_2023.csv",
+      "https://github.com/nflverse/nflverse-data/releases/download/snap_counts/snap_counts_2024.csv",
+      "https://github.com/nflverse/nflverse-data/releases/download/snap_counts/snap_counts_2025.csv",
+      "https://github.com/nflverse/nflverse-data/releases/tag/schedules",
+      "https://github.com/nflverse/nflverse-data/releases/download/schedules/games.csv",
+      "https://nflreadr.nflverse.com/articles/dictionary_snap_counts.html"
+    ],
+    "dictionary": "https://nflreadr.nflverse.com/articles/dictionary_snap_counts.html"
+  },
+  "years_loaded_snaps": [
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "years_failed_snaps": [],
+  "windows": [
+    "2015->2016",
+    "2016->2017",
+    "2017->2018",
+    "2018->2019",
+    "2019->2020",
+    "2020->2021",
+    "2021->2022",
+    "2022->2023",
+    "2023->2024",
+    "2024->2025"
+  ],
+  "n_team_seasons": 320,
+  "n_seasons": 10,
+  "win_mismatches_vs_to_wins_csv": 0,
+  "ol_positions_used_rowcounts": {
+    "T": 16708,
+    "G": 14737,
+    "C": 8140,
+    "OL": 2295,
+    "C/G": 147,
+    "G/T": 142,
+    "G/C": 92,
+    "OT": 62,
+    "T/G": 12,
+    "G/OT": 5,
+    "OG": 2
+  },
+  "dl_positions_used_rowcounts": {
+    "DE": 18416,
+    "DT": 14612,
+    "NT": 4366,
+    "DL": 2229,
+    "DT/D": 30,
+    "DE/L": 29,
+    "DE/D": 1
+  },
+  "bin_tables": {
+    "ol_return_vs_wins_Y": {
+      "0": {
+        "mean": 5.6667,
+        "n": 3
+      },
+      "1": {
+        "mean": 7.6579,
+        "n": 38
+      },
+      "2": {
+        "mean": 7.4605,
+        "n": 76
+      },
+      "3": {
+        "mean": 8.0263,
+        "n": 114
+      },
+      "4": {
+        "mean": 9.4416,
+        "n": 77
+      },
+      "5": {
+        "mean": 9.3333,
+        "n": 12
+      }
+    },
+    "ol_return_vs_d_wins": {
+      "0": {
+        "mean": -0.3333,
+        "n": 3
+      },
+      "1": {
+        "mean": 0.7368,
+        "n": 38
+      },
+      "2": {
+        "mean": -0.3947,
+        "n": 76
+      },
+      "3": {
+        "mean": 0.1316,
+        "n": 114
+      },
+      "4": {
+        "mean": 0.1299,
+        "n": 77
+      },
+      "5": {
+        "mean": -0.5833,
+        "n": 12
+      }
+    },
+    "dl_return_vs_wins_Y": {
+      "0": {
+        "mean": 6.4,
+        "n": 15
+      },
+      "1": {
+        "mean": 7.6234,
+        "n": 77
+      },
+      "2": {
+        "mean": 8.4706,
+        "n": 136
+      },
+      "3": {
+        "mean": 8.4321,
+        "n": 81
+      },
+      "4": {
+        "mean": 10.0909,
+        "n": 11
+      }
+    },
+    "dl_return_vs_d_wins": {
+      "0": {
+        "mean": -0.2,
+        "n": 15
+      },
+      "1": {
+        "mean": 0.1429,
+        "n": 77
+      },
+      "2": {
+        "mean": 0.2279,
+        "n": 136
+      },
+      "3": {
+        "mean": -0.4198,
+        "n": 81
+      },
+      "4": {
+        "mean": 0.9091,
+        "n": 11
+      }
+    }
+  },
+  "correlations": {
+    "ol_return_vs_wins_Y": {
+      "n": 320,
+      "pearson_r": 0.2243,
+      "pearson_p": "5.14e-05"
+    },
+    "ol_return_vs_d_wins": {
+      "n": 320,
+      "pearson_r": -0.0198,
+      "pearson_p": 0.7245
+    },
+    "dl_return_vs_wins_Y": {
+      "n": 320,
+      "pearson_r": 0.1733,
+      "pearson_p": 0.0019
+    },
+    "dl_return_vs_d_wins": {
+      "n": 320,
+      "pearson_r": -0.0183,
+      "pearson_p": 0.745
+    },
+    "ol_plus_dl_return_vs_wins_Y": {
+      "n": 320,
+      "pearson_r": 0.2722,
+      "pearson_p": "7.69e-07"
+    },
+    "ol_plus_dl_return_vs_d_wins": {
+      "n": 320,
+      "pearson_r": -0.0258,
+      "pearson_p": 0.6453
+    }
+  },
+  "intact_line": {
+    "definition": "ol_return >= 4 AND dl_return >= 3",
+    "intact": {
+      "n": 29,
+      "mean_wins": 10.2759,
+      "mean_d_wins": 0.1724
+    },
+    "everyone_else": {
+      "n": 291,
+      "mean_wins": 8.0103,
+      "mean_d_wins": 0.0344
+    }
+  },
+  "churned_line": {
+    "definition": "ol_return <= 1 OR dl_return <= 1",
+    "churned": {
+      "n": 120,
+      "mean_wins": 7.425,
+      "mean_d_wins": 0.1083
+    },
+    "everyone_else": {
+      "n": 200,
+      "mean_wins": 8.69,
+      "mean_d_wins": 0.01
+    }
+  },
+  "spot_checks": {
+    "DAL_2016_ol": {
+      "label": "2010s Cowboys OL (2016)",
+      "starters": [
+        {
+          "name": "Travis Frederick",
+          "pfr_id": "FredTr00",
+          "snaps": 1058
+        },
+        {
+          "name": "Zack Martin",
+          "pfr_id": "MartZa00",
+          "snaps": 1058
+        },
+        {
+          "name": "Doug Free",
+          "pfr_id": "FreeDo20",
+          "snaps": 1054
+        },
+        {
+          "name": "Tyron Smith",
+          "pfr_id": "SmitTy00",
+          "snaps": 835
+        },
+        {
+          "name": "Ronald Leary",
+          "pfr_id": "LearRo00",
+          "snaps": 803
+        }
+      ],
+      "return_from_prev": 4,
+      "wins": 13,
+      "d_wins": 9
+    },
+    "DAL_2017_ol": {
+      "label": "Cowboys OL 2017 (continuity from 2016)",
+      "starters": [
+        {
+          "name": "La'el Collins",
+          "pfr_id": "CollLa01",
+          "snaps": 1065
+        },
+        {
+          "name": "Travis Frederick",
+          "pfr_id": "FredTr00",
+          "snaps": 1065
+        },
+        {
+          "name": "Zack Martin",
+          "pfr_id": "MartZa00",
+          "snaps": 1018
+        },
+        {
+          "name": "Jonathan Cooper",
+          "pfr_id": "CoopJo01",
+          "snaps": 835
+        },
+        {
+          "name": "Tyron Smith",
+          "pfr_id": "SmitTy00",
+          "snaps": 758
+        }
+      ],
+      "return_from_prev": 3,
+      "wins": 9,
+      "d_wins": -4
+    },
+    "PHI_2022_ol": {
+      "label": "Eagles OL 2022",
+      "starters": [
+        {
+          "name": "Jason Kelce",
+          "pfr_id": "KelcJa00",
+          "snaps": 1151
+        },
+        {
+          "name": "Isaac Seumalo",
+          "pfr_id": "SeumIs00",
+          "snaps": 1137
+        },
+        {
+          "name": "Landon Dickerson",
+          "pfr_id": "DickLa00",
+          "snaps": 1096
+        },
+        {
+          "name": "Jordan Mailata",
+          "pfr_id": "MailJo00",
+          "snaps": 1026
+        },
+        {
+          "name": "Lane Johnson",
+          "pfr_id": "JohnLa01",
+          "snaps": 974
+        }
+      ],
+      "return_from_prev": 4,
+      "wins": 14,
+      "d_wins": 5
+    },
+    "PHI_2023_ol": {
+      "label": "Eagles OL 2023",
+      "starters": [
+        {
+          "name": "Jordan Mailata",
+          "pfr_id": "MailJo00",
+          "snaps": 1147
+        },
+        {
+          "name": "Jason Kelce",
+          "pfr_id": "KelcJa00",
+          "snaps": 1108
+        },
+        {
+          "name": "Landon Dickerson",
+          "pfr_id": "DickLa00",
+          "snaps": 1046
+        },
+        {
+          "name": "Lane Johnson",
+          "pfr_id": "JohnLa01",
+          "snaps": 981
+        },
+        {
+          "name": "Cam Jurgens",
+          "pfr_id": "JurgCa01",
+          "snaps": 654
+        }
+      ],
+      "return_from_prev": 4,
+      "wins": 11,
+      "d_wins": -3
+    },
+    "PHI_2024_ol": {
+      "label": "Eagles OL 2024",
+      "starters": [
+        {
+          "name": "Cam Jurgens",
+          "pfr_id": "JurgCa01",
+          "snaps": 1068
+        },
+        {
+          "name": "Landon Dickerson",
+          "pfr_id": "DickLa00",
+          "snaps": 996
+        },
+        {
+          "name": "Lane Johnson",
+          "pfr_id": "JohnLa01",
+          "snaps": 937
+        },
+        {
+          "name": "Mekhi Becton",
+          "pfr_id": "BectMe00",
+          "snaps": 903
+        },
+        {
+          "name": "Jordan Mailata",
+          "pfr_id": "MailJo00",
+          "snaps": 802
+        }
+      ],
+      "return_from_prev": 4,
+      "wins": 14,
+      "d_wins": 3
+    },
+    "SF_2019_dl": {
+      "label": "49ers DL 2019",
+      "starters": [
+        {
+          "name": "DeForest Buckner",
+          "pfr_id": "BuckDe00",
+          "snaps": 810
+        },
+        {
+          "name": "Nick Bosa",
+          "pfr_id": "BosaNi00",
+          "snaps": 777
+        },
+        {
+          "name": "Arik Armstead",
+          "pfr_id": "ArmsAr01",
+          "snaps": 776
+        },
+        {
+          "name": "Solomon Thomas",
+          "pfr_id": "ThomSo00",
+          "snaps": 424
+        }
+      ],
+      "return_from_prev": 3,
+      "wins": 13,
+      "d_wins": 9
+    },
+    "SF_2022_dl": {
+      "label": "49ers DL 2022",
+      "starters": [
+        {
+          "name": "Nick Bosa",
+          "pfr_id": "BosaNi00",
+          "snaps": 746
+        },
+        {
+          "name": "Charles Omenihu",
+          "pfr_id": "OmenCh00",
+          "snaps": 573
+        },
+        {
+          "name": "Samson Ebukam",
+          "pfr_id": "EbukSa00",
+          "snaps": 559
+        },
+        {
+          "name": "Kerry Hyder",
+          "pfr_id": "HydeKe01",
+          "snaps": 356
+        }
+      ],
+      "return_from_prev": 2,
+      "wins": 13,
+      "d_wins": 3
+    },
+    "SF_2023_dl": {
+      "label": "49ers DL 2023",
+      "starters": [
+        {
+          "name": "Nick Bosa",
+          "pfr_id": "BosaNi00",
+          "snaps": 821
+        },
+        {
+          "name": "Javon Hargrave",
+          "pfr_id": "HargJa00",
+          "snaps": 632
+        },
+        {
+          "name": "Arik Armstead",
+          "pfr_id": "ArmsAr01",
+          "snaps": 509
+        },
+        {
+          "name": "Javon Kinlaw",
+          "pfr_id": "KinlJa00",
+          "snaps": 476
+        }
+      ],
+      "return_from_prev": 1,
+      "wins": 12,
+      "d_wins": -1
+    }
+  },
+  "finding": "Returning starters associate with more wins_Y (OL r=0.2243, DL r=0.1733, OL+DL r=0.2722) but year-over-year change in wins is a null (OL r=-0.0198, DL r=-0.0183, OL+DL r=-0.0258). Intact lines (OL>=4 and DL>=3) average 10.28 wins vs 8.01 for everyone else, but mean d_wins is 0.17 vs 0.03. The level effect is selection (good teams keep their lines); continuity does not predict improvement."
+}

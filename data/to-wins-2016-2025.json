@@ -1,0 +1,451 @@
+{
+  "title": "NFL regular-season wins vs takeaways / turnovers, 2016-2025",
+  "pulled_date": "2026-08-24",
+  "methodology": {
+    "scope": "Regular season only (game_type=REG). Playoffs excluded. Seasons 2016-2025 inclusive.",
+    "unit": "team-season (32 clubs x 10 seasons)",
+    "games": "2016-2020: 16-game season. 2021 and 2023-2025: 17-game season. 2022: 17 games except BUF and CIN (16) after the Week 17 BUF-CIN game was cancelled.",
+    "wins": "Wins from completed regular-season games in nflverse schedules (Lee Sharpe games.csv). Ties count as 0 wins. Cancelled/unplayed games (empty scores) excluded.",
+    "takeaways": "def_interceptions + fumble_recovery_opp (defensive INTs + opponent fumbles recovered). Matches official takeaways.",
+    "giveaways": "passing_interceptions + fumbles_lost_total (INTs thrown + fumbles lost). Matches official giveaways/turnovers.",
+    "to_diff": "takeaways minus giveaways",
+    "ranks": "Within each season, 1 = best. Takeaway rank: most takeaways. Giveaway rank: fewest giveaways. TO-diff rank: most positive differential. Ties use average ranks (e.g. two teams tied for 1st both get 1.5).",
+    "rank_bands": "Bands use the average rank value: 1-8 if rank<=8; 9-16 if 8<rank<=16; 17-24 if 16<rank<=24; 25-32 if rank>24.",
+    "correlations": "Pearson r and Spearman rho of regular-season wins vs each metric across all team-seasons. Two-sided p-values from a Student-t approximation on n-2 df.",
+    "leaders": "Each season, all teams tied for the league-best raw total (most takeaways, or fewest giveaways) are counted as #1.",
+    "team_codes": "Schedule historical codes remapped to stats codes: SD->LAC, OAK->LV. LA used for Rams.",
+    "spot_checks": "2016 KC: 33 takeaways, 17 giveaways, +16 (matches Football Database / published league TO table). 2024 PHI: 26 takeaways, 15 giveaways, +11 (matches Football Database).",
+    "caveat": "Takeaways and turnovers are partly luck (especially fumble recovery luck). Good teams run more and play with leads, so giveaways can be confounded by game script and play-call mix. Correlations are descriptive, not causal."
+  },
+  "source": {
+    "primary": "nflverse official CSVs via GitHub releases",
+    "urls": [
+      "https://github.com/nflverse/nflverse-data/releases/tag/stats_team",
+      "https://github.com/nflverse/nflverse-data/releases/download/stats_team/stats_team_reg_2016.csv",
+      "https://github.com/nflverse/nflverse-data/releases/download/stats_team/stats_team_reg_2017.csv",
+      "https://github.com/nflverse/nflverse-data/releases/download/stats_team/stats_team_reg_2018.csv",
+      "https://github.com/nflverse/nflverse-data/releases/download/stats_team/stats_team_reg_2019.csv",
+      "https://github.com/nflverse/nflverse-data/releases/download/stats_team/stats_team_reg_2020.csv",
+      "https://github.com/nflverse/nflverse-data/releases/download/stats_team/stats_team_reg_2021.csv",
+      "https://github.com/nflverse/nflverse-data/releases/download/stats_team/stats_team_reg_2022.csv",
+      "https://github.com/nflverse/nflverse-data/releases/download/stats_team/stats_team_reg_2023.csv",
+      "https://github.com/nflverse/nflverse-data/releases/download/stats_team/stats_team_reg_2024.csv",
+      "https://github.com/nflverse/nflverse-data/releases/download/stats_team/stats_team_reg_2025.csv",
+      "https://github.com/nflverse/nflverse-data/releases/tag/schedules",
+      "https://github.com/nflverse/nflverse-data/releases/download/schedules/games.csv"
+    ],
+    "dictionary": "https://nflreadr.nflverse.com/articles/dictionary_team_stats.html",
+    "secondary_spot_check": "https://www.footballdb.com/statistics/turnovers.html"
+  },
+  "years_loaded": [
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "years_failed": [],
+  "n_team_seasons": 320,
+  "n_seasons": 10,
+  "correlations": {
+    "wins_vs_takeaways": {
+      "n": 320,
+      "pearson_r": 0.516,
+      "pearson_p": "<1e-20",
+      "spearman_rho": 0.5197,
+      "spearman_p": "<1e-20",
+      "note": "two-sided Student-t p on n-2=318 df; all |r|~0.50-0.66 so p is vanishingly small"
+    },
+    "wins_vs_giveaways": {
+      "n": 320,
+      "pearson_r": -0.5002,
+      "pearson_p": "<1e-20",
+      "spearman_rho": -0.4963,
+      "spearman_p": "<1e-20",
+      "note": "two-sided Student-t p on n-2=318 df; all |r|~0.50-0.66 so p is vanishingly small"
+    },
+    "wins_vs_to_diff": {
+      "n": 320,
+      "pearson_r": 0.6595,
+      "pearson_p": "<1e-20",
+      "spearman_rho": 0.664,
+      "spearman_p": "<1e-20",
+      "note": "two-sided Student-t p on n-2=318 df; all |r|~0.50-0.66 so p is vanishingly small"
+    },
+    "wins_vs_takeaway_rank": {
+      "n": 320,
+      "pearson_r": -0.5359,
+      "pearson_p": "<1e-20",
+      "spearman_rho": -0.5384,
+      "spearman_p": "<1e-20",
+      "note": "two-sided Student-t p on n-2=318 df; all |r|~0.50-0.66 so p is vanishingly small"
+    },
+    "wins_vs_giveaway_rank": {
+      "n": 320,
+      "pearson_r": -0.5098,
+      "pearson_p": "<1e-20",
+      "spearman_rho": -0.5158,
+      "spearman_p": "<1e-20",
+      "note": "two-sided Student-t p on n-2=318 df; all |r|~0.50-0.66 so p is vanishingly small"
+    },
+    "wins_vs_to_diff_rank": {
+      "n": 320,
+      "pearson_r": -0.65,
+      "pearson_p": "<1e-20",
+      "spearman_rho": -0.6598,
+      "spearman_p": "<1e-20",
+      "note": "two-sided Student-t p on n-2=318 df; all |r|~0.50-0.66 so p is vanishingly small"
+    }
+  },
+  "band_averages": {
+    "takeaway_rank": [
+      {
+        "band": "1-8",
+        "n": 79,
+        "mean_wins": 10.203
+      },
+      {
+        "band": "9-16",
+        "n": 79,
+        "mean_wins": 9.19
+      },
+      {
+        "band": "17-24",
+        "n": 82,
+        "mean_wins": 7.317
+      },
+      {
+        "band": "25-32",
+        "n": 80,
+        "mean_wins": 6.213
+      }
+    ],
+    "giveaway_rank": [
+      {
+        "band": "1-8",
+        "n": 71,
+        "mean_wins": 10.465
+      },
+      {
+        "band": "9-16",
+        "n": 89,
+        "mean_wins": 8.663
+      },
+      {
+        "band": "17-24",
+        "n": 81,
+        "mean_wins": 7.864
+      },
+      {
+        "band": "25-32",
+        "n": 79,
+        "mean_wins": 6.051
+      }
+    ],
+    "to_diff_rank": [
+      {
+        "band": "1-8",
+        "n": 77,
+        "mean_wins": 11.0
+      },
+      {
+        "band": "9-16",
+        "n": 78,
+        "mean_wins": 9.192
+      },
+      {
+        "band": "17-24",
+        "n": 84,
+        "mean_wins": 7.488
+      },
+      {
+        "band": "25-32",
+        "n": 81,
+        "mean_wins": 5.383
+      }
+    ]
+  },
+  "win_12_plus": {
+    "n": 57,
+    "mean_wins": 12.807,
+    "mean_takeaways": 25.193,
+    "mean_giveaways": 17.684,
+    "mean_to_diff": 7.509,
+    "mean_takeaway_rank": 10.175,
+    "mean_giveaway_rank": 10.395,
+    "mean_to_diff_rank": 8.333,
+    "share_takeaway_rank_top8": 0.4912,
+    "share_takeaway_rank_bottom8": 0.0526,
+    "share_giveaway_rank_top8": 0.4561,
+    "share_giveaway_rank_bottom8": 0.0351,
+    "share_to_diff_rank_top8": 0.5965,
+    "share_to_diff_rank_bottom8": 0.0175
+  },
+  "win_5_or_fewer": {
+    "n": 73,
+    "mean_wins": 3.877,
+    "mean_takeaways": 17.11,
+    "mean_giveaways": 25.685,
+    "mean_to_diff": -8.575,
+    "mean_takeaway_rank": 23.616,
+    "mean_giveaway_rank": 23.281,
+    "mean_to_diff_rank": 24.781,
+    "share_takeaway_rank_top8": 0.0411,
+    "share_takeaway_rank_bottom8": 0.4521,
+    "share_giveaway_rank_top8": 0.0137,
+    "share_giveaway_rank_bottom8": 0.5205,
+    "share_to_diff_rank_top8": 0.0,
+    "share_to_diff_rank_bottom8": 0.6301
+  },
+  "number_one_takeaway_team": {
+    "n_seasons": 10,
+    "n_leader_team_seasons": 12,
+    "n_won_12_plus": 6,
+    "share_leader_team_seasons_won_12_plus": 0.5,
+    "n_seasons_any_leader_won_12_plus": 6,
+    "share_seasons_any_leader_won_12_plus": 0.6,
+    "leaders": [
+      {
+        "year": 2016,
+        "team": "KC",
+        "value": 33,
+        "wins": 12,
+        "games": 16,
+        "won_12_plus": true,
+        "tied": false
+      },
+      {
+        "year": 2017,
+        "team": "BAL",
+        "value": 34,
+        "wins": 9,
+        "games": 16,
+        "won_12_plus": false,
+        "tied": false
+      },
+      {
+        "year": 2018,
+        "team": "CHI",
+        "value": 36,
+        "wins": 12,
+        "games": 16,
+        "won_12_plus": true,
+        "tied": false
+      },
+      {
+        "year": 2019,
+        "team": "PIT",
+        "value": 38,
+        "wins": 8,
+        "games": 16,
+        "won_12_plus": false,
+        "tied": false
+      },
+      {
+        "year": 2020,
+        "team": "MIA",
+        "value": 28,
+        "wins": 10,
+        "games": 16,
+        "won_12_plus": false,
+        "tied": false
+      },
+      {
+        "year": 2021,
+        "team": "DAL",
+        "value": 34,
+        "wins": 12,
+        "games": 17,
+        "won_12_plus": true,
+        "tied": false
+      },
+      {
+        "year": 2022,
+        "team": "DAL",
+        "value": 33,
+        "wins": 12,
+        "games": 17,
+        "won_12_plus": true,
+        "tied": false
+      },
+      {
+        "year": 2023,
+        "team": "BAL",
+        "value": 31,
+        "wins": 13,
+        "games": 17,
+        "won_12_plus": true,
+        "tied": true
+      },
+      {
+        "year": 2023,
+        "team": "NYG",
+        "value": 31,
+        "wins": 6,
+        "games": 17,
+        "won_12_plus": false,
+        "tied": true
+      },
+      {
+        "year": 2024,
+        "team": "MIN",
+        "value": 33,
+        "wins": 14,
+        "games": 17,
+        "won_12_plus": true,
+        "tied": true
+      },
+      {
+        "year": 2024,
+        "team": "PIT",
+        "value": 33,
+        "wins": 10,
+        "games": 17,
+        "won_12_plus": false,
+        "tied": true
+      },
+      {
+        "year": 2025,
+        "team": "CHI",
+        "value": 33,
+        "wins": 11,
+        "games": 17,
+        "won_12_plus": false,
+        "tied": false
+      }
+    ]
+  },
+  "fewest_giveaway_team": {
+    "n_seasons": 10,
+    "n_leader_team_seasons": 13,
+    "n_won_12_plus": 5,
+    "share_leader_team_seasons_won_12_plus": 0.3846,
+    "n_seasons_any_leader_won_12_plus": 5,
+    "share_seasons_any_leader_won_12_plus": 0.5,
+    "leaders": [
+      {
+        "year": 2016,
+        "team": "ATL",
+        "value": 11,
+        "wins": 11,
+        "games": 16,
+        "won_12_plus": false,
+        "tied": true
+      },
+      {
+        "year": 2016,
+        "team": "NE",
+        "value": 11,
+        "wins": 14,
+        "games": 16,
+        "won_12_plus": true,
+        "tied": true
+      },
+      {
+        "year": 2017,
+        "team": "KC",
+        "value": 11,
+        "wins": 10,
+        "games": 16,
+        "won_12_plus": false,
+        "tied": false
+      },
+      {
+        "year": 2018,
+        "team": "SEA",
+        "value": 11,
+        "wins": 10,
+        "games": 16,
+        "won_12_plus": false,
+        "tied": false
+      },
+      {
+        "year": 2019,
+        "team": "NO",
+        "value": 8,
+        "wins": 13,
+        "games": 16,
+        "won_12_plus": true,
+        "tied": false
+      },
+      {
+        "year": 2020,
+        "team": "GB",
+        "value": 11,
+        "wins": 13,
+        "games": 16,
+        "won_12_plus": true,
+        "tied": false
+      },
+      {
+        "year": 2021,
+        "team": "GB",
+        "value": 13,
+        "wins": 13,
+        "games": 17,
+        "won_12_plus": true,
+        "tied": true
+      },
+      {
+        "year": 2021,
+        "team": "MIN",
+        "value": 13,
+        "wins": 8,
+        "games": 17,
+        "won_12_plus": false,
+        "tied": true
+      },
+      {
+        "year": 2021,
+        "team": "SEA",
+        "value": 13,
+        "wins": 7,
+        "games": 17,
+        "won_12_plus": false,
+        "tied": true
+      },
+      {
+        "year": 2022,
+        "team": "DET",
+        "value": 15,
+        "wins": 9,
+        "games": 17,
+        "won_12_plus": false,
+        "tied": false
+      },
+      {
+        "year": 2023,
+        "team": "HOU",
+        "value": 14,
+        "wins": 10,
+        "games": 17,
+        "won_12_plus": false,
+        "tied": false
+      },
+      {
+        "year": 2024,
+        "team": "BUF",
+        "value": 8,
+        "wins": 13,
+        "games": 17,
+        "won_12_plus": true,
+        "tied": false
+      },
+      {
+        "year": 2025,
+        "team": "CHI",
+        "value": 11,
+        "wins": 11,
+        "games": 17,
+        "won_12_plus": false,
+        "tied": false
+      }
+    ]
+  },
+  "csv_path": "/workspace/nfl-scout/desk/data/to-wins-2016-2025.csv"
+}

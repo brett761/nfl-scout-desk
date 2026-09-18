@@ -1,0 +1,1977 @@
+{
+  "date": "2026-09-12",
+  "status": "filtered-candidate",
+  "source_files": [
+    "2026-09-12-batch1.json",
+    "2026-09-12-batch2.json",
+    "2026-09-12-batch3.json",
+    "2026-09-12-batch4.json"
+  ],
+  "missing_files": [
+    "2026-09-12-afc-east-north.json",
+    "2026-09-12-afc-south-west.json",
+    "2026-09-12-nfc-east-north.json",
+    "2026-09-12-nfc-south-west.json"
+  ],
+  "filters": "/workspace/nfl-scout/desk/data/vibe-check/filters.json",
+  "rules": {
+    "news_per_club": 10,
+    "keep": 3,
+    "must_be_about_this_club": true,
+    "no_backfill": true,
+    "quiet_ok": true
+  },
+  "filter_note": {
+    "pulled": 320,
+    "kept": 86,
+    "dropped": 234,
+    "quiet_clubs": [
+      "TB"
+    ]
+  },
+  "clubs": [
+    {
+      "abbr": "ARI",
+      "volume": 527,
+      "items": [
+        {
+          "title": "Meidroth's Two Homers Not Enough as White Sox Lose Lead to Half-Game",
+          "one_line": "The Chicago White Sox lost 7-3 to the St.",
+          "url": "https://x.com/i/trending/2098596609978171837",
+          "id": "2098596609978171837"
+        },
+        {
+          "title": "White Sox Shake Up Lineup for Key Cardinals Clash",
+          "one_line": "Chicago enters at 75-72, clinging to a half-game AL Central lead over Cleveland, and faces the 73-75 Cardinals at Busch Stadium.",
+          "url": "https://x.com/i/trending/2098881338250010695",
+          "id": "2098881338250010695"
+        },
+        {
+          "title": "Cardinals Rookie Jeremiyah Love Questionable for Season Opener",
+          "one_line": "The Arizona Cardinals list third overall pick Jeremiyah Love as questionable for Sunday's game at SoFi Stadium against the Los Angeles Chargers due to his…",
+          "url": "https://x.com/i/trending/2098531472244355433",
+          "id": "2098531472244355433"
+        }
+      ],
+      "pulled_n": 10,
+      "kept_n": 3
+    },
+    {
+      "abbr": "ATL",
+      "volume": 1001,
+      "items": [
+        {
+          "title": "Steelers Fans Gear Up for McCarthy Era Opener vs. Falcons",
+          "one_line": "The Steelers host the Atlanta Falcons Sunday at 1 p.m.",
+          "url": "https://x.com/i/trending/2098892589344665947",
+          "id": "2098892589344665947"
+        },
+        {
+          "title": "Falcons Turn to Cooper Rush as Starting QB with Tagovailoa Out",
+          "one_line": "The Atlanta Falcons named Cooper Rush their starting quarterback for Sunday's game against the Pittsburgh Steelers after ruling out Tua Tagovailoa with an…",
+          "url": "https://x.com/i/trending/2098112461379694859",
+          "id": "2098112461379694859"
+        },
+        {
+          "title": "Falcons' Cooper Rush Powers Through Back Spasms to Start Opener",
+          "one_line": "Rush steps in after Tua Tagovailoa's oblique injury sidelined him, with Michael Penix Jr.",
+          "url": "https://x.com/i/trending/2098554474998694037",
+          "id": "2098554474998694037"
+        }
+      ],
+      "pulled_n": 10,
+      "kept_n": 3
+    },
+    {
+      "abbr": "BAL",
+      "volume": 1817,
+      "items": [
+        {
+          "title": "Ravens Fans Eager for Lamar Jackson's 2026 Season Opener vs. Colts",
+          "one_line": "The Baltimore Ravens kick off the NFL season Sunday at 1 p.m.",
+          "url": "https://x.com/i/trending/2098774133354172434",
+          "id": "2098774133354172434"
+        },
+        {
+          "title": "Lamar Jackson Debate Heats Up Ahead of Ravens Season Opener",
+          "one_line": "As the Ravens prepare to face the Colts on September 13, fans clash online over Jackson's elite status.",
+          "url": "https://x.com/i/trending/2098748190929416678",
+          "id": "2098748190929416678"
+        },
+        {
+          "title": "Ravens' Madubuike Sits Out Season Opener with Neck Injury",
+          "one_line": "Baltimore Ravens defensive tackle Nnamdi Madubuike, a two-time Pro Bowl player, will sit out the season opener against the Indianapolis Colts as the team…",
+          "url": "https://x.com/i/trending/2098519606075797577",
+          "id": "2098519606075797577"
+        }
+      ],
+      "pulled_n": 10,
+      "kept_n": 3
+    },
+    {
+      "abbr": "BUF",
+      "volume": 2577,
+      "items": [
+        {
+          "title": "Bills-Texans AFC Clash Kicks Off 2026 Season in Houston",
+          "one_line": "The Buffalo Bills open their 2026 campaign on the road against the Houston Texans on Sunday at 1 p.m.",
+          "url": "https://x.com/i/trending/2098503361750569278",
+          "id": "2098503361750569278"
+        },
+        {
+          "title": "Bills Elevate Gore Jr. and Dortch for Texans Opener",
+          "one_line": "The Buffalo Bills elevated running back Frank Gore Jr.",
+          "url": "https://x.com/i/trending/2098881336542912666",
+          "id": "2098881336542912666"
+        },
+        {
+          "title": "Buffaloes Fans Demand DB Makari Vickers Be Bench During Win",
+          "one_line": "In Saturday's home opener at Folsom Field, the Colorado Buffaloes built a commanding 52-21 lead against FCS opponent Weber State, but fans zeroed in on senior…",
+          "url": "https://x.com/i/trending/2098910314397945864",
+          "id": "2098910314397945864"
+        }
+      ],
+      "pulled_n": 10,
+      "kept_n": 3
+    },
+    {
+      "abbr": "CAR",
+      "volume": 2871,
+      "items": [
+        {
+          "title": "Panthers Unleash Hype Trailer with R-Truth for 2026 Home Opener",
+          "one_line": "The Carolina Panthers released their official 2026 season trailer on Thursday night, featuring longtime supporter and local hero R-Truth in dramatic visuals…",
+          "url": "https://x.com/i/trending/2098602809214321087",
+          "id": "2098602809214321087"
+        },
+        {
+          "title": "Bears Face Panthers in 2026 NFL Season Opener Amid Fan Hype",
+          "one_line": "The Chicago Bears visit the Carolina Panthers at Bank of America Stadium for a noon CT kickoff on FOX, pitting 2025 division champs against each other—Bears…",
+          "url": "https://x.com/i/trending/2098168277318975908",
+          "id": "2098168277318975908"
+        },
+        {
+          "title": "Bears' Rome Odunze Confident Despite Calf Injury for Panthers Opener",
+          "one_line": "The Chicago Bears face the Carolina Panthers in Week 1 with four players questionable: QB Tyson Bagent (back), WR Rome Odunze (calf), OL Ozzy Trapilo (knee)…",
+          "url": "https://x.com/i/trending/2098503358734848135",
+          "id": "2098503358734848135"
+        }
+      ],
+      "pulled_n": 10,
+      "kept_n": 3
+    },
+    {
+      "abbr": "CHI",
+      "volume": 2850,
+      "items": [
+        {
+          "title": "Bears Face Panthers in 2026 NFL Season Opener Amid Fan Hype",
+          "one_line": "The Chicago Bears visit the Carolina Panthers at Bank of America Stadium for a noon CT kickoff on FOX, pitting 2025 division champs against each other—Bears…",
+          "url": "https://x.com/i/trending/2098168277318975908",
+          "id": "2098168277318975908"
+        },
+        {
+          "title": "Bears Fans Hype Up Season Opener Clash with Panthers",
+          "one_line": "Chicago Bears supporters highlight their edges at quarterback with Caleb Williams, running backs who rushed for over 2,000 yards last season, tight end, and…",
+          "url": "https://x.com/i/trending/2098881342184308878",
+          "id": "2098881342184308878"
+        },
+        {
+          "title": "Vikings Claim Greater Packers Rivalry Than Bears Sparks Fan Clash",
+          "one_line": "The claim surfaced as the 2026 NFL season nears, right before the Packers visit the Vikings on Sunday at U.S.",
+          "url": "https://x.com/i/trending/2098599628879102115",
+          "id": "2098599628879102115"
+        }
+      ],
+      "pulled_n": 10,
+      "kept_n": 3
+    },
+    {
+      "abbr": "CIN",
+      "volume": 876,
+      "items": [
+        {
+          "title": "Buccaneers Cornerback Zyon McCollum Predicts Multiple Interceptions Against Bengals",
+          "one_line": "During a Tampa Bay Buccaneers media session, cornerback Zyon McCollum said his secondary would dominate Cincinnati's passing attack led by Joe Burrow, Ja'Marr…",
+          "url": "https://x.com/i/trending/2098599624705806791",
+          "id": "2098599624705806791"
+        },
+        {
+          "title": "Turang's Two-Run Homer Gives Brewers Early Lead Over Reds",
+          "one_line": "In the bottom of the first inning Friday at American Family Field, Milwaukee second baseman Brice Turang smashed his 19th home run of the season off Reds…",
+          "url": "https://x.com/i/trending/2098917234781417913",
+          "id": "2098917234781417913"
+        }
+      ],
+      "pulled_n": 10,
+      "kept_n": 2
+    },
+    {
+      "abbr": "CLE",
+      "volume": 1416,
+      "items": [
+        {
+          "title": "Deshaun Watson Returns for Browns-Jaguars 2026 Opener",
+          "one_line": "The Cleveland Browns kick off the 2026 season at 1 p.m.",
+          "url": "https://x.com/i/trending/2098531473834099103",
+          "id": "2098531473834099103"
+        },
+        {
+          "title": "Jon Gruden Unboxes Browns Gear, Fires Up Fans for Week 1",
+          "one_line": "The Barstool Sports personality and lifelong Cleveland fan opened a package of team merchandise sent by the Browns, highlighting his favorite player Leroy…",
+          "url": "https://x.com/i/trending/2098531473020309782",
+          "id": "2098531473020309782"
+        },
+        {
+          "title": "Browns Start 2026 with Rookie-Led Offensive Line Overhaul vs. Jaguars",
+          "one_line": "The Cleveland Browns face the Jacksonville Jaguars at EverBank Stadium on Sunday at 1 p.m.",
+          "url": "https://x.com/i/trending/2098531473829892552",
+          "id": "2098531473829892552"
+        }
+      ],
+      "pulled_n": 10,
+      "kept_n": 3
+    },
+    {
+      "abbr": "DAL",
+      "volume": 3469,
+      "items": [
+        {
+          "title": "Trump Signs Bill for National Medal of Honor Monument on Mall",
+          "one_line": "At the National Medal of Honor Museum in Arlington, Texas, Trump signed the Hershel “Woody” Williams National Medal of Honor Monument Location Act…",
+          "url": "https://x.com/i/trending/2098117269050282208",
+          "id": "2098117269050282208"
+        },
+        {
+          "title": "Giants-Cowboys Rivalry Kicks Off 2026 NFL Season on Sunday Night",
+          "one_line": "The New York Giants host the Dallas Cowboys at 8:20 p.m.",
+          "url": "https://x.com/i/trending/2098939752208572795",
+          "id": "2098939752208572795"
+        },
+        {
+          "title": "Cowboys Face Giants in 2026 NFL Season Opener at MetLife",
+          "one_line": "The Dallas Cowboys visit the New York Giants at MetLife Stadium on Sunday at 7 p.m.",
+          "url": "https://x.com/i/trending/2098587000031109564",
+          "id": "2098587000031109564"
+        }
+      ],
+      "pulled_n": 10,
+      "kept_n": 3
+    },
+    {
+      "abbr": "DEN",
+      "volume": 827,
+      "items": [
+        {
+          "title": "Chiefs Rule Out Simmons and Conner for Season Opener vs. Broncos",
+          "one_line": "The Kansas City Chiefs will miss left tackle Josh Simmons (back injury) and safety Chamarri Conner (knee) when they host the Denver Broncos on Monday Night…",
+          "url": "https://x.com/i/trending/2098881337021046805",
+          "id": "2098881337021046805"
+        },
+        {
+          "title": "Chiefs Rule Out Simmons and Conner for Broncos Clash",
+          "one_line": "Kansas City officially ruled left tackle Josh Simmons out with a back injury and safety Chamarri Conner sidelined by a preseason knee issue, both missing all…",
+          "url": "https://x.com/i/trending/2098155048870314245",
+          "id": "2098155048870314245"
+        }
+      ],
+      "pulled_n": 10,
+      "kept_n": 2
+    },
+    {
+      "abbr": "DET",
+      "volume": 2196,
+      "items": [
+        {
+          "title": "Lions Kick Off 2026 NFL Season Against Saints Tomorrow",
+          "one_line": "The Lions host the New Orleans Saints on Sunday, September 13 at 1 p.m.",
+          "url": "https://x.com/i/trending/2098777007538540697",
+          "id": "2098777007538540697"
+        },
+        {
+          "title": "Lions Release Onwuzurike Before Opener, Re-Sign to Practice Squad",
+          "one_line": "The Detroit Lions cut defensive end Levi Onwuzurike, a former second-round pick, and waived rookie Tyre West to avoid guaranteeing Onwuzurike's $1.2 million…",
+          "url": "https://x.com/i/trending/2098511695178350825",
+          "id": "2098511695178350825"
+        },
+        {
+          "title": "Lions Nearly Full Strength as Saints Face Key Absences in Season Opener",
+          "one_line": "The Saints and Lions kick off the 2026 NFL season Sunday at 1 p.m.",
+          "url": "https://x.com/i/trending/2098503356079841492",
+          "id": "2098503356079841492"
+        }
+      ],
+      "pulled_n": 10,
+      "kept_n": 3
+    },
+    {
+      "abbr": "GB",
+      "volume": 3547,
+      "items": [
+        {
+          "title": "Healthy Vikings Face Injured Packers in NFC North Opener",
+          "one_line": "Minnesota enters Sunday's season opener at U.S.",
+          "url": "https://x.com/i/trending/2098519607699030218",
+          "id": "2098519607699030218"
+        },
+        {
+          "title": "Vikings Claim Greater Packers Rivalry Than Bears Sparks Fan Clash",
+          "one_line": "The claim surfaced as the 2026 NFL season nears, right before the Packers visit the Vikings on Sunday at U.S.",
+          "url": "https://x.com/i/trending/2098599628879102115",
+          "id": "2098599628879102115"
+        },
+        {
+          "title": "NFL Fans Debate Packers' Top Rival: Bears or Vikings?",
+          "one_line": "A Vikings fan kicked off the argument by claiming recent intense games and interstate tension top the historic Bears-Packers matchup, drawing quick pushback…",
+          "url": "https://x.com/i/trending/2098527520639586475",
+          "id": "2098527520639586475"
+        }
+      ],
+      "pulled_n": 10,
+      "kept_n": 3
+    },
+    {
+      "abbr": "HOU",
+      "volume": 1447,
+      "items": [
+        {
+          "title": "Bills-Texans AFC Clash Kicks Off 2026 Season in Houston",
+          "one_line": "The Buffalo Bills open their 2026 campaign on the road against the Houston Texans on Sunday at 1 p.m.",
+          "url": "https://x.com/i/trending/2098503361750569278",
+          "id": "2098503361750569278"
+        },
+        {
+          "title": "Ohio State Jumps Ahead of Texas in Scorching 163-Degree Showdown",
+          "one_line": "No.",
+          "url": "https://x.com/i/trending/2098942716289974370",
+          "id": "2098942716289974370"
+        }
+      ],
+      "pulled_n": 10,
+      "kept_n": 2
+    },
+    {
+      "abbr": "IND",
+      "volume": 362,
+      "items": [
+        {
+          "title": "Colts Honor Andrew Luck on 37th Birthday, Fans Share Mixed Memories",
+          "one_line": "Andrew Luck, the No.",
+          "url": "https://x.com/i/trending/2098802444130214039",
+          "id": "2098802444130214039"
+        },
+        {
+          "title": "Texas Freshman Wins $1.2 Million Kicking Contest on College GameDay",
+          "one_line": "University of Texas freshman Connor Kacena-Merrell, a computer engineering major from Indiana with no high school football experience, nailed the kick after…",
+          "url": "https://x.com/i/trending/2098792036933480664",
+          "id": "2098792036933480664"
+        }
+      ],
+      "pulled_n": 10,
+      "kept_n": 2
+    },
+    {
+      "abbr": "JAX",
+      "volume": 758,
+      "items": [
+        {
+          "title": "Deshaun Watson Returns for Browns-Jaguars 2026 Opener",
+          "one_line": "The Cleveland Browns kick off the 2026 season at 1 p.m.",
+          "url": "https://x.com/i/trending/2098531473834099103",
+          "id": "2098531473834099103"
+        },
+        {
+          "title": "Browns Start 2026 with Rookie-Led Offensive Line Overhaul vs. Jaguars",
+          "one_line": "The Cleveland Browns face the Jacksonville Jaguars at EverBank Stadium on Sunday at 1 p.m.",
+          "url": "https://x.com/i/trending/2098531473829892552",
+          "id": "2098531473829892552"
+        },
+        {
+          "title": "Jaguars and Parker Washington Stall on Contract Extension",
+          "one_line": "The Jacksonville Jaguars and wide receiver Parker Washington are unlikely to agree on a contract extension before the season starts, after exploring a…",
+          "url": "https://x.com/i/trending/2098923888357126396",
+          "id": "2098923888357126396"
+        }
+      ],
+      "pulled_n": 10,
+      "kept_n": 3
+    },
+    {
+      "abbr": "KC",
+      "volume": 554,
+      "items": [
+        {
+          "title": "Chiefs Rule Out Simmons and Conner for Season Opener vs. Broncos",
+          "one_line": "The Kansas City Chiefs will miss left tackle Josh Simmons (back injury) and safety Chamarri Conner (knee) when they host the Denver Broncos on Monday Night…",
+          "url": "https://x.com/i/trending/2098881337021046805",
+          "id": "2098881337021046805"
+        },
+        {
+          "title": "Chiefs Rule Out Simmons and Conner for Broncos Clash",
+          "one_line": "Kansas City officially ruled left tackle Josh Simmons out with a back injury and safety Chamarri Conner sidelined by a preseason knee issue, both missing all…",
+          "url": "https://x.com/i/trending/2098155048870314245",
+          "id": "2098155048870314245"
+        },
+        {
+          "title": "Mahomes Drops Slick Training Video Before Chiefs Opener",
+          "one_line": "The quarterback shared an Instagram clip of his effortless throws ahead of the Chiefs' 2026 home opener against the Denver Broncos on Monday Night Football.",
+          "url": "https://x.com/i/trending/2098942709881061653",
+          "id": "2098942709881061653"
+        }
+      ],
+      "pulled_n": 10,
+      "kept_n": 3
+    },
+    {
+      "abbr": "LV",
+      "volume": 1798,
+      "items": [
+        {
+          "title": "Ryan Fitzpatrick Predicts Dolphins Could Go 0-17 After Raiders Loss",
+          "one_line": "Speaking on the Fitz and Whit podcast with Andrew Whitworth, Fitzpatrick highlighted Miami's tough schedule, massive $182 million dead-cap hit from past stars…",
+          "url": "https://x.com/i/trending/2098487276019859876",
+          "id": "2098487276019859876"
+        },
+        {
+          "title": "Raiders Lock in Michael Mayer with $45 Million Extension",
+          "one_line": "The Las Vegas Raiders agreed to a three-year, $45 million extension with tight end Michael Mayer, including $30 million guaranteed and a $15 million average…",
+          "url": "https://x.com/i/trending/2098788954099392791",
+          "id": "2098788954099392791"
+        },
+        {
+          "title": "Raiders Get Jeanty Back, Rule Out Bowers for Dolphins Opener",
+          "one_line": "Running back Ashton Jeanty is cleared to play after a full week's practice with no injury designation, bringing a spark to the Raiders' backfield against the…",
+          "url": "https://x.com/i/trending/2098495177694581141",
+          "id": "2098495177694581141"
+        }
+      ],
+      "pulled_n": 10,
+      "kept_n": 3
+    },
+    {
+      "abbr": "LAC",
+      "volume": 467,
+      "items": [
+        {
+          "title": "Cardinals Rookie Jeremiyah Love Questionable for Season Opener",
+          "one_line": "The Arizona Cardinals list third overall pick Jeremiyah Love as questionable for Sunday's game at SoFi Stadium against the Los Angeles Chargers due to his…",
+          "url": "https://x.com/i/trending/2098531472244355433",
+          "id": "2098531472244355433"
+        },
+        {
+          "title": "Harbaugh Predicts Justin Herbert as Greatest QB Ever",
+          "one_line": "On 'The White House with Michael Irvin,' Chargers coach Jim Harbaugh boldly forecasted that Herbert, the 28-year-old star with elite arm talent and mobility…",
+          "url": "https://x.com/i/trending/2098910317468098891",
+          "id": "2098910317468098891"
+        },
+        {
+          "title": "Harbaugh Predicts Justin Herbert as NFL's Greatest Quarterback Ever",
+          "one_line": "Los Angeles Chargers head coach Jim Harbaugh declared on Netflix’s “The White House with Michael Irvin” that 28-year-old Justin Herbert will be remembered as…",
+          "url": "https://x.com/i/trending/2098190038060396806",
+          "id": "2098190038060396806"
+        }
+      ],
+      "pulled_n": 10,
+      "kept_n": 3
+    },
+    {
+      "abbr": "LAR",
+      "volume": 964,
+      "items": [
+        {
+          "title": "Myles Garrett Struggles in Rams Debut Against 49ers",
+          "one_line": "The star edge rusher recorded zero tackles, sacks, or QB hits as the Rams lost 27-7 to the San Francisco 49ers in Australia.",
+          "url": "https://x.com/i/trending/2098644812572631487",
+          "id": "2098644812572631487"
+        },
+        {
+          "title": "49ers Dominate Rams in NFL's Australia Debut Amid Jet Lag Battle",
+          "one_line": "The San Francisco 49ers beat the Los Angeles Rams 27-7 in the NFL's first regular-season game at Melbourne Cricket Ground, drawing over 100,000 fans.",
+          "url": "https://x.com/i/trending/2098221616526409937",
+          "id": "2098221616526409937"
+        },
+        {
+          "title": "Brock Purdy Rises to Fifth in Early NFL MVP Odds on Kalshi",
+          "one_line": "Josh Allen and Joe Burrow lead at 11% each to win NFL MVP, with Lamar Jackson at 10% and Justin Herbert at 9%, but 49ers QB Brock Purdy climbed to 7% in fifth…",
+          "url": "https://x.com/i/trending/2098888985196310775",
+          "id": "2098888985196310775"
+        }
+      ],
+      "pulled_n": 10,
+      "kept_n": 3
+    },
+    {
+      "abbr": "MIA",
+      "volume": 1001,
+      "items": [
+        {
+          "title": "Dolphins Elevate Clelin Ferrell for Raiders Opener Amid Rebuild",
+          "one_line": "The Miami Dolphins called up edge rusher Clelin Ferrell from the practice squad to face the Las Vegas Raiders in their season opener at Allegiant Stadium.",
+          "url": "https://x.com/i/trending/2098833620899443026",
+          "id": "2098833620899443026"
+        },
+        {
+          "title": "Ryan Fitzpatrick Predicts Dolphins Could Go 0-17 After Raiders Loss",
+          "one_line": "Speaking on the Fitz and Whit podcast with Andrew Whitworth, Fitzpatrick highlighted Miami's tough schedule, massive $182 million dead-cap hit from past stars…",
+          "url": "https://x.com/i/trending/2098487276019859876",
+          "id": "2098487276019859876"
+        },
+        {
+          "title": "Dolphins Stun Warriors 26-16 in Historic Qualifying Final Win",
+          "one_line": "The Dolphins beat the New Zealand Warriors 26-16 in Saturday's qualifying final at Go Media Stadium, securing their first preliminary final spot after just…",
+          "url": "https://x.com/i/trending/2098660161271284100",
+          "id": "2098660161271284100"
+        }
+      ],
+      "pulled_n": 10,
+      "kept_n": 3
+    },
+    {
+      "abbr": "MIN",
+      "volume": 1092,
+      "items": [
+        {
+          "title": "Healthy Vikings Face Injured Packers in NFC North Opener",
+          "one_line": "Minnesota enters Sunday's season opener at U.S.",
+          "url": "https://x.com/i/trending/2098519607699030218",
+          "id": "2098519607699030218"
+        },
+        {
+          "title": "NFL Fans Debate Packers' Top Rival: Bears or Vikings?",
+          "one_line": "A Vikings fan kicked off the argument by claiming recent intense games and interstate tension top the historic Bears-Packers matchup, drawing quick pushback…",
+          "url": "https://x.com/i/trending/2098527520639586475",
+          "id": "2098527520639586475"
+        },
+        {
+          "title": "Gophers Host Mississippi State in Rare Big Ten-SEC Clash",
+          "one_line": "The undefeated Golden Gophers welcome the Mississippi State Bulldogs to Huntington Bank Stadium for a 2:30 p.m.",
+          "url": "https://x.com/i/trending/2098829377920528615",
+          "id": "2098829377920528615"
+        }
+      ],
+      "pulled_n": 10,
+      "kept_n": 3
+    },
+    {
+      "abbr": "NE",
+      "volume": 1646,
+      "items": [
+        {
+          "title": "Drake Maye's Tough Start Fuels Debate on 2025 Breakout",
+          "one_line": "After leading New England to the Super Bowl with 4,394 yards, 31 touchdowns, and second-place MVP finish in 2025, Maye's 2026 opener exposed turnover issues…",
+          "url": "https://x.com/i/trending/2098942711177117776",
+          "id": "2098942711177117776"
+        }
+      ],
+      "pulled_n": 10,
+      "kept_n": 1
+    },
+    {
+      "abbr": "NO",
+      "volume": 3644,
+      "items": [
+        {
+          "title": "Saints Shuffle Roster with Estime on IR Before Lions Opener",
+          "one_line": "New Orleans placed 23-year-old Audric Estime on injured reserve, sidelining him for at least four games, while signing tight end Treyton Welch to the active…",
+          "url": "https://x.com/i/trending/2098841686692749610",
+          "id": "2098841686692749610"
+        },
+        {
+          "title": "Lions Kick Off 2026 NFL Season Against Saints Tomorrow",
+          "one_line": "The Lions host the New Orleans Saints on Sunday, September 13 at 1 p.m.",
+          "url": "https://x.com/i/trending/2098777007538540697",
+          "id": "2098777007538540697"
+        },
+        {
+          "title": "Lions Nearly Full Strength as Saints Face Key Absences in Season Opener",
+          "one_line": "The Saints and Lions kick off the 2026 NFL season Sunday at 1 p.m.",
+          "url": "https://x.com/i/trending/2098503356079841492",
+          "id": "2098503356079841492"
+        }
+      ],
+      "pulled_n": 10,
+      "kept_n": 3
+    },
+    {
+      "abbr": "NYG",
+      "volume": 1202,
+      "items": [
+        {
+          "title": "Cowboys Face Giants in 2026 NFL Season Opener at MetLife",
+          "one_line": "The Dallas Cowboys visit the New York Giants at MetLife Stadium on Sunday at 7 p.m.",
+          "url": "https://x.com/i/trending/2098587000031109564",
+          "id": "2098587000031109564"
+        },
+        {
+          "title": "Giants-Cowboys Rivalry Kicks Off 2026 NFL Season on Sunday Night",
+          "one_line": "The New York Giants host the Dallas Cowboys at 8:20 p.m.",
+          "url": "https://x.com/i/trending/2098939752208572795",
+          "id": "2098939752208572795"
+        },
+        {
+          "title": "Giants Prepare for Possible Nabers Absence in Cowboys Opener",
+          "one_line": "The New York Giants signed practice-squad receiver Dalen Cambre to the roster and elevated Braxton Berrios ahead of their season opener against the Dallas…",
+          "url": "https://x.com/i/trending/2098849857771626822",
+          "id": "2098849857771626822"
+        }
+      ],
+      "pulled_n": 10,
+      "kept_n": 3
+    },
+    {
+      "abbr": "NYJ",
+      "volume": 1116,
+      "items": [
+        {
+          "title": "Jets Fans Turn Nashville Green Ahead of Titans Opener",
+          "one_line": "Ahead of Sunday's season opener at Nissan Stadium, New York Jets fans have transformed Nashville into a hub of green energy, with ticket data showing nearly…",
+          "url": "https://x.com/i/trending/2098809918170202353",
+          "id": "2098809918170202353"
+        },
+        {
+          "title": "Jets Place Tim Patrick on IR, Elevate Jason Sanders for Opener",
+          "one_line": "The New York Jets placed wide receiver Tim Patrick on injured reserve due to a groin injury, meaning he'll miss at least the first four games of the season.",
+          "url": "https://x.com/i/trending/2098873627428979100",
+          "id": "2098873627428979100"
+        },
+        {
+          "title": "Victor Victor Nike Air Force 1 Red Drop Shifts Online After Lineup Cancellation",
+          "one_line": "The limited-edition red leather Air Force 1 Low, inspired by Steven Victor’s Testarossa Ferrari, drew crowds to a branded gas station at 89 Saint Nicholas…",
+          "url": "https://x.com/i/trending/2098782900850401557",
+          "id": "2098782900850401557"
+        }
+      ],
+      "pulled_n": 10,
+      "kept_n": 3
+    },
+    {
+      "abbr": "PHI",
+      "volume": 2401,
+      "items": [
+        {
+          "title": "Commanders Forge Epic Spear Hype Video Before Eagles Opener",
+          "one_line": "The 123-second video, captioned 'Iron’s hot, time to strike 🔥,' ties into the team's new spear motif, including a 'Spike the Spear' pregame tradition at…",
+          "url": "https://x.com/i/trending/2098217281650397559",
+          "id": "2098217281650397559"
+        },
+        {
+          "title": "Jalen Hurts Drops 'Smooth Criminal' Hype Video Before Eagles Opener",
+          "one_line": "Philadelphia Eagles quarterback Jalen Hurts shared a black-and-white hype video set to Michael Jackson’s “Smooth Criminal” on Instagram late Friday, showing…",
+          "url": "https://x.com/i/trending/2098939750593736728",
+          "id": "2098939750593736728"
+        },
+        {
+          "title": "Temple Fans Rally for Penn State Clash Amid Field Paint Dispute",
+          "one_line": "Temple supporters are buzzing over a slick hype video narrated by Meek Mill and ex-quarterback P.J.",
+          "url": "https://x.com/i/trending/2098495180097913289",
+          "id": "2098495180097913289"
+        }
+      ],
+      "pulled_n": 10,
+      "kept_n": 3
+    },
+    {
+      "abbr": "PIT",
+      "volume": 1467,
+      "items": [
+        {
+          "title": "Steelers Fans Gear Up for McCarthy Era Opener vs. Falcons",
+          "one_line": "The Steelers host the Atlanta Falcons Sunday at 1 p.m.",
+          "url": "https://x.com/i/trending/2098892589344665947",
+          "id": "2098892589344665947"
+        },
+        {
+          "title": "Steelers Elevate Doneiko Slaughter with Joey Porter Jr. Questionable",
+          "one_line": "The Pittsburgh Steelers promoted undrafted free agent Doneiko Slaughter from the practice squad to the active roster before Sunday's Week 1 game against the…",
+          "url": "https://x.com/i/trending/2098923893637669196",
+          "id": "2098923893637669196"
+        },
+        {
+          "title": "Falcons Turn to Cooper Rush as Starting QB with Tagovailoa Out",
+          "one_line": "The Atlanta Falcons named Cooper Rush their starting quarterback for Sunday's game against the Pittsburgh Steelers after ruling out Tua Tagovailoa with an…",
+          "url": "https://x.com/i/trending/2098112461379694859",
+          "id": "2098112461379694859"
+        }
+      ],
+      "pulled_n": 10,
+      "kept_n": 3
+    },
+    {
+      "abbr": "SEA",
+      "volume": 1107,
+      "items": [
+        {
+          "title": "Commanders Launch 'Spike the Spear' Pregame Ritual at Home Games",
+          "one_line": "The Washington Commanders are adding 'Spike the Spear' to close out their 18-minute pregame show, where a guest like a team legend spikes a historic spear…",
+          "url": "https://x.com/i/trending/2098771392288166193",
+          "id": "2098771392288166193"
+        },
+        {
+          "title": "Patriots Fan Brawls with Seahawks Crowd Before Handcuff Removal",
+          "one_line": "The altercation started over a seating dispute in section 314 at Lumen Field, where the fan allegedly refused to move from others' seats and shoved a staff…",
+          "url": "https://x.com/i/trending/2098298317000343891",
+          "id": "2098298317000343891"
+        },
+        {
+          "title": "Patriots Fans Compare Maye's Turnovers to Hurts' Past Pick in Seahawks Debate",
+          "one_line": "In a tight Super Bowl rematch season opener, New England fell to Seattle when rookie QB Drake Maye threw three fourth-quarter interceptions, including a…",
+          "url": "https://x.com/i/trending/2098602811609288725",
+          "id": "2098602811609288725"
+        }
+      ],
+      "pulled_n": 10,
+      "kept_n": 3
+    },
+    {
+      "abbr": "SF",
+      "volume": 4056,
+      "items": [
+        {
+          "title": "49ers Extend Kyle Shanahan's Contract After Offseason Deal",
+          "one_line": "The San Francisco 49ers signed head coach Kyle Shanahan to a contract extension during the offseason, extending beyond his previous deal through 2027.",
+          "url": "https://x.com/i/trending/2098483166847574393",
+          "id": "2098483166847574393"
+        },
+        {
+          "title": "Myles Garrett Struggles in Rams Debut Against 49ers",
+          "one_line": "The star edge rusher recorded zero tackles, sacks, or QB hits as the Rams lost 27-7 to the San Francisco 49ers in Australia.",
+          "url": "https://x.com/i/trending/2098644812572631487",
+          "id": "2098644812572631487"
+        },
+        {
+          "title": "Warner Sets 49ers Tackle Record in Australia Blowout Win Over Rams",
+          "one_line": "The San Francisco 49ers kicked off the 2026 NFL season with a 27-7 rout of the Los Angeles Rams in the league's first regular-season game at Melbourne Cricket…",
+          "url": "https://x.com/i/trending/2098561932642984313",
+          "id": "2098561932642984313"
+        }
+      ],
+      "pulled_n": 10,
+      "kept_n": 3
+    },
+    {
+      "abbr": "TB",
+      "volume": 441,
+      "items": [],
+      "pulled_n": 10,
+      "kept_n": 0
+    },
+    {
+      "abbr": "TEN",
+      "volume": 2360,
+      "items": [
+        {
+          "title": "Jets Fans Turn Nashville Green Ahead of Titans Opener",
+          "one_line": "Ahead of Sunday's season opener at Nissan Stadium, New York Jets fans have transformed Nashville into a hub of green energy, with ticket data showing nearly…",
+          "url": "https://x.com/i/trending/2098809918170202353",
+          "id": "2098809918170202353"
+        },
+        {
+          "title": "Liberty Edges Gardner-Webb 24-23 in Nail-Biter Against Winless Foe",
+          "one_line": "The Flames improved to 1-1 with a tense 24-23 victory over 0-3 Gardner-Webb, an FCS team playing without a head coach, at Williams Stadium on Saturday.",
+          "url": "https://x.com/i/trending/2098841689893089327",
+          "id": "2098841689893089327"
+        }
+      ],
+      "pulled_n": 10,
+      "kept_n": 2
+    },
+    {
+      "abbr": "WSH",
+      "volume": 478,
+      "items": [
+        {
+          "title": "Commanders Fans Debate Bold 'W' Logo Redesign Before Eagles Game",
+          "one_line": "Emily Morgan, a TikTok designer known for refreshing sports logos, proposed a minimalist 'W' for the Washington Commanders, stripping down to bold maroon and…",
+          "url": "https://x.com/i/trending/2098917235892822372",
+          "id": "2098917235892822372"
+        },
+        {
+          "title": "Commanders Launch 'Spike the Spear' Pregame Ritual at Home Games",
+          "one_line": "The Washington Commanders are adding 'Spike the Spear' to close out their 18-minute pregame show, where a guest like a team legend spikes a historic spear…",
+          "url": "https://x.com/i/trending/2098771392288166193",
+          "id": "2098771392288166193"
+        },
+        {
+          "title": "Commanders Release D.J. Humphries, Elevate Good-Jones Before Opener",
+          "one_line": "The Commanders released 32-year-old Humphries, a former Pro Bowl pick with the Cardinals, ahead of Sunday's game against the Philadelphia Eagles.",
+          "url": "https://x.com/i/trending/2098433242265493879",
+          "id": "2098433242265493879"
+        }
+      ],
+      "pulled_n": 10,
+      "kept_n": 3
+    }
+  ],
+  "dropped": [
+    {
+      "abbr": "ARI",
+      "title": "Diamondbacks Bring Back Pavin Smith from Triple-A Reno",
+      "reason": "exclude_terms:Diamondbacks"
+    },
+    {
+      "abbr": "ARI",
+      "title": "Bears Face Panthers in 2026 NFL Season Opener Amid Fan Hype",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "ARI",
+      "title": "Cardinals Honor Molina and Pujols with Hall of Fame Red Jackets",
+      "reason": "other_sport:world series"
+    },
+    {
+      "abbr": "ARI",
+      "title": "Martinez's Immaculate Inning Powers D-Backs Past Rangers",
+      "reason": "exclude_terms:Diamondbacks"
+    },
+    {
+      "abbr": "ARI",
+      "title": "BYU Edits Arizona Coach's Quote to Hype Rivalry Game",
+      "reason": "over_keep_cap"
+    },
+    {
+      "abbr": "ARI",
+      "title": "College Football Week 2 Delivers Packed Saturday Slate of Matchups",
+      "reason": "college:ncaa"
+    },
+    {
+      "abbr": "ARI",
+      "title": "Vikings Claim Greater Packers Rivalry Than Bears Sparks Fan Clash",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "ATL",
+      "title": "Radio Host Calls Michael Penix Jr. NFL's Worst Draft Pick Ever",
+      "reason": "over_keep_cap"
+    },
+    {
+      "abbr": "ATL",
+      "title": "Bears Face Panthers in 2026 NFL Season Opener Amid Fan Hype",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "ATL",
+      "title": "Steelers Elevate Doneiko Slaughter with Joey Porter Jr. Questionable",
+      "reason": "over_keep_cap"
+    },
+    {
+      "abbr": "ATL",
+      "title": "Bills-Texans AFC Clash Kicks Off 2026 Season in Houston",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "ATL",
+      "title": "Giants-Cowboys Rivalry Kicks Off 2026 NFL Season on Sunday Night",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "ATL",
+      "title": "Commanders Forge Epic Spear Hype Video Before Eagles Opener",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "ATL",
+      "title": "IGN's Trails in the Sky Headline Draws Fan Corrections Ahead of Remake",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "BAL",
+      "title": "Lamar Jackson Enters 2026 Season Without New Contract Extension",
+      "reason": "over_keep_cap"
+    },
+    {
+      "abbr": "BAL",
+      "title": "Panthers Unleash Hype Trailer with R-Truth for 2026 Home Opener",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "BAL",
+      "title": "Jon Gruden Unboxes Browns Gear, Fires Up Fans for Week 1",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "BAL",
+      "title": "Ravens Fans Gear Up for Lamar Jackson's Season Opener vs. Colts",
+      "reason": "near_duplicate"
+    },
+    {
+      "abbr": "BAL",
+      "title": "Commanders Fans Debate Bold 'W' Logo Redesign Before Eagles Game",
+      "reason": "wrong_club"
+    },
+    {
+      "abbr": "BAL",
+      "title": "Deshaun Watson Returns for Browns-Jaguars 2026 Opener",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "BAL",
+      "title": "Falcons' Cooper Rush Powers Through Back Spasms to Start Opener",
+      "reason": "wrong_club"
+    },
+    {
+      "abbr": "BUF",
+      "title": "Commanders Forge Epic Spear Hype Video Before Eagles Opener",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "BUF",
+      "title": "Bills Elevate Gore Jr. and Dortch Ahead of Texans Opener",
+      "reason": "near_duplicate"
+    },
+    {
+      "abbr": "BUF",
+      "title": "Jalen Hurts Drops 'Smooth Criminal' Hype Video Before Eagles Opener",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "BUF",
+      "title": "Panthers Unleash Hype Trailer with R-Truth for 2026 Home Opener",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "BUF",
+      "title": "Julian Lewis Sets Records in Colorado's 52-21 Home Opener Win",
+      "reason": "over_keep_cap"
+    },
+    {
+      "abbr": "BUF",
+      "title": "Chiefs Rule Out Simmons and Conner for Season Opener vs. Broncos",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "BUF",
+      "title": "Chiefs Rule Out Simmons and Conner for Broncos Clash",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "CAR",
+      "title": "Falcons' Cooper Rush Powers Through Back Spasms to Start Opener",
+      "reason": "wrong_club"
+    },
+    {
+      "abbr": "CAR",
+      "title": "Falcons Turn to Cooper Rush as Starting QB with Tagovailoa Out",
+      "reason": "wrong_club"
+    },
+    {
+      "abbr": "CAR",
+      "title": "Lions Nearly Full Strength as Saints Face Key Absences in Season Opener",
+      "reason": "wrong_club"
+    },
+    {
+      "abbr": "CAR",
+      "title": "Timberwolves Coach Hands Reins to Young Core This Season",
+      "reason": "other_sport:nba"
+    },
+    {
+      "abbr": "CAR",
+      "title": "Jets Place Tim Patrick on IR, Elevate Jason Sanders for Opener",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "CAR",
+      "title": "Commanders Forge Epic Spear Hype Video Before Eagles Opener",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "CAR",
+      "title": "Texans and C.J. Stroud Pause Extension Talks Until After 2026 Season",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "CHI",
+      "title": "Bears' Rome Odunze Confident Despite Calf Injury for Panthers Opener",
+      "reason": "over_keep_cap"
+    },
+    {
+      "abbr": "CHI",
+      "title": "Baylor QB DJ Lagway Out with Ankle Sprain for Home Opener",
+      "reason": "exclude_terms:Baylor"
+    },
+    {
+      "abbr": "CHI",
+      "title": "David Georges Rushes for 316 Yards and 5 TDs in Baylor's Rally Past Trinity",
+      "reason": "exclude_terms:Baylor"
+    },
+    {
+      "abbr": "CHI",
+      "title": "Bears Coach Ben Johnson Sees Championship Practice Habits Taking Hold",
+      "reason": "over_keep_cap"
+    },
+    {
+      "abbr": "CHI",
+      "title": "Bulls' Norman Powell Calls Lakers NBA's Most Overrated Team",
+      "reason": "exclude_terms:Bulls"
+    },
+    {
+      "abbr": "CHI",
+      "title": "Fake 49ers Player Daejon Love Becomes NFL Meme Sensation",
+      "reason": "other_sport:nba"
+    },
+    {
+      "abbr": "CHI",
+      "title": "Oklahoma Fans Flood Michigan Stadium for Big Showdown",
+      "reason": "over_keep_cap"
+    },
+    {
+      "abbr": "CIN",
+      "title": "Panthers Unleash Hype Trailer with R-Truth for 2026 Home Opener",
+      "reason": "wrong_club"
+    },
+    {
+      "abbr": "CIN",
+      "title": "Commanders Forge Epic Spear Hype Video Before Eagles Opener",
+      "reason": "wrong_club"
+    },
+    {
+      "abbr": "CIN",
+      "title": "Bears Face Panthers in 2026 NFL Season Opener Amid Fan Hype",
+      "reason": "wrong_club"
+    },
+    {
+      "abbr": "CIN",
+      "title": "Lane Kiffin Walks with Lil Wayne and Boosie Before LSU Game",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "CIN",
+      "title": "No. 1 Ohio State Faces No. 4 Texas in Austin Tonight",
+      "reason": "college:ncaa"
+    },
+    {
+      "abbr": "CIN",
+      "title": "Julian Lewis Sets Records in Colorado's 52-21 Home Opener Win",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "CIN",
+      "title": "Auburn Tigers Host Southern Miss in Electric Home Opener",
+      "reason": "college:ncaa"
+    },
+    {
+      "abbr": "CIN",
+      "title": "Falcons Turn to Cooper Rush as Starting QB with Tagovailoa Out",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "CLE",
+      "title": "Odell Beckham Jr. Revives Blonde Hair for Giants Return",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "CLE",
+      "title": "No. 1 Ohio State Faces No. 4 Texas in Austin Tonight",
+      "reason": "college:ncaa"
+    },
+    {
+      "abbr": "CLE",
+      "title": "Bears Face Panthers in 2026 NFL Season Opener Amid Fan Hype",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "CLE",
+      "title": "Panthers Unleash Hype Trailer with R-Truth for 2026 Home Opener",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "CLE",
+      "title": "Ravens' Madubuike Sits Out Season Opener with Neck Injury",
+      "reason": "wrong_club"
+    },
+    {
+      "abbr": "CLE",
+      "title": "Falcons Turn to Cooper Rush as Starting QB with Tagovailoa Out",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "CLE",
+      "title": "Bills-Texans AFC Clash Kicks Off 2026 Season in Houston",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "DAL",
+      "title": "Lions Kick Off 2026 NFL Season Against Saints Tomorrow",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "DAL",
+      "title": "Bills-Texans AFC Clash Kicks Off 2026 Season in Houston",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "DAL",
+      "title": "Odell Beckham Jr. Revives Blonde Hair for Giants Return",
+      "reason": "over_keep_cap"
+    },
+    {
+      "abbr": "DAL",
+      "title": "Cowboys Lose Backup RB Malik Davis to Season-Ending Hip Injury",
+      "reason": "over_keep_cap"
+    },
+    {
+      "abbr": "DAL",
+      "title": "Commanders Fans Debate Bold 'W' Logo Redesign Before Eagles Game",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "DAL",
+      "title": "Giants Prepare for Possible Nabers Absence in Cowboys Opener",
+      "reason": "over_keep_cap"
+    },
+    {
+      "abbr": "DAL",
+      "title": "Bears Face Panthers in 2026 NFL Season Opener Amid Fan Hype",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "DEN",
+      "title": "Buffs Gear Up for Home Opener at Folsom Field Against Weber State",
+      "reason": "college:ncaa"
+    },
+    {
+      "abbr": "DEN",
+      "title": "Boise State Rallies Past Memphis Amid Late Officiating Firestorm",
+      "reason": "exclude_terms:Boise State"
+    },
+    {
+      "abbr": "DEN",
+      "title": "Julian Lewis Sets Records in Colorado's 52-21 Home Opener Win",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "DEN",
+      "title": "Lions Kick Off 2026 NFL Season Against Saints Tomorrow",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "DEN",
+      "title": "BYU Edits Arizona Coach's Quote to Hype Rivalry Game",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "DEN",
+      "title": "Fans Joke Oregon's Flashy Jerseys Sway Recruits Over Ohio State",
+      "reason": "college:ncaa"
+    },
+    {
+      "abbr": "DEN",
+      "title": "Iowa Unveils Blackout Uniforms for Cy-Hawk Clash at Kinnick",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "DEN",
+      "title": "Buffaloes Fans Demand DB Makari Vickers Be Bench During Win",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "DET",
+      "title": "Panthers Unleash Hype Trailer with R-Truth for 2026 Home Opener",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "DET",
+      "title": "Commanders Forge Epic Spear Hype Video Before Eagles Opener",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "DET",
+      "title": "Jon Gruden Unboxes Browns Gear, Fires Up Fans for Week 1",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "DET",
+      "title": "El-Sayed's Tailgate Outfit Draws Fan Authenticity Debate",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "DET",
+      "title": "Lane Kiffin Walks with Lil Wayne and Boosie Before LSU Game",
+      "reason": "exclude_terms:Tigers"
+    },
+    {
+      "abbr": "DET",
+      "title": "Auburn Tigers Host Southern Miss in Electric Home Opener",
+      "reason": "exclude_terms:Tigers"
+    },
+    {
+      "abbr": "DET",
+      "title": "Jalen Hurts Drops 'Smooth Criminal' Hype Video Before Eagles Opener",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "GB",
+      "title": "Packers Release Bo Melton in Routine Roster Shuffle",
+      "reason": "over_keep_cap"
+    },
+    {
+      "abbr": "GB",
+      "title": "Lions Kick Off 2026 NFL Season Against Saints Tomorrow",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "GB",
+      "title": "Fake 49ers Player Daejon Love Becomes NFL Meme Sensation",
+      "reason": "other_sport:nba"
+    },
+    {
+      "abbr": "GB",
+      "title": "Jon Gruden Unboxes Browns Gear, Fires Up Fans for Week 1",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "GB",
+      "title": "Bears Fans Hype Up Season Opener Clash with Panthers",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "GB",
+      "title": "Packers' Josh Jacobs Pleads No Contest to Misdemeanor Charges",
+      "reason": "over_keep_cap"
+    },
+    {
+      "abbr": "GB",
+      "title": "Jalen Hurts Drops 'Smooth Criminal' Hype Video Before Eagles Opener",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "HOU",
+      "title": "Lions Kick Off 2026 NFL Season Against Saints Tomorrow",
+      "reason": "wrong_club"
+    },
+    {
+      "abbr": "HOU",
+      "title": "James Talarico Cheers Longhorns, Draws Conservative Skepticism",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "HOU",
+      "title": "UTSA Roadrunners Rally for 100th Win, Reclaim I-35 Rivalry Over Texas State",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "HOU",
+      "title": "Jaylen McClain's Fluky Interception Stuns Texas in Ohio State Clash",
+      "reason": "college:ncaa"
+    },
+    {
+      "abbr": "HOU",
+      "title": "No. 1 Ohio State Faces No. 4 Texas in Scorching Austin Showdown",
+      "reason": "college:ncaa"
+    },
+    {
+      "abbr": "HOU",
+      "title": "Fake 49ers Player Daejon Love Becomes NFL Meme Sensation",
+      "reason": "other_sport:nba"
+    },
+    {
+      "abbr": "HOU",
+      "title": "No. 1 Ohio State Faces No. 4 Texas in Austin Tonight",
+      "reason": "college:ncaa"
+    },
+    {
+      "abbr": "HOU",
+      "title": "Texas Fans Mock Ryan Day with Ketchup-on-Brisket Signs at GameDay",
+      "reason": "college:ncaa"
+    },
+    {
+      "abbr": "IND",
+      "title": "Fans Joke Oregon's Flashy Jerseys Sway Recruits Over Ohio State",
+      "reason": "college:ncaa"
+    },
+    {
+      "abbr": "IND",
+      "title": "Jalen Hurts Drops 'Smooth Criminal' Hype Video Before Eagles Opener",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "IND",
+      "title": "Commanders Forge Epic Spear Hype Video Before Eagles Opener",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "IND",
+      "title": "Fake 49ers Player Daejon Love Becomes NFL Meme Sensation",
+      "reason": "other_sport:nba"
+    },
+    {
+      "abbr": "IND",
+      "title": "Jon Gruden Unboxes Browns Gear, Fires Up Fans for Week 1",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "IND",
+      "title": "Falcons Turn to Cooper Rush as Starting QB with Tagovailoa Out",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "IND",
+      "title": "Lions Kick Off 2026 NFL Season Against Saints Tomorrow",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "IND",
+      "title": "Falcons' Cooper Rush Powers Through Back Spasms to Start Opener",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "JAX",
+      "title": "Lions Kick Off 2026 NFL Season Against Saints Tomorrow",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "JAX",
+      "title": "Falcons' Cooper Rush Powers Through Back Spasms to Start Opener",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "JAX",
+      "title": "Alabama Rules Out Carroll and Dear for Kentucky Road Game",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "JAX",
+      "title": "Raiders Get Jeanty Back, Rule Out Bowers for Dolphins Opener",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "JAX",
+      "title": "Freshman QB Curtis Powers Vanderbilt Past Delaware 35-26",
+      "reason": "college:ncaa"
+    },
+    {
+      "abbr": "JAX",
+      "title": "Bears Face Panthers in 2026 NFL Season Opener Amid Fan Hype",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "JAX",
+      "title": "Jets Fans Turn Nashville Green Ahead of Titans Opener",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "KC",
+      "title": "No. 1 Ohio State Faces No. 4 Texas in Austin Tonight",
+      "reason": "college:ncaa"
+    },
+    {
+      "abbr": "KC",
+      "title": "Jaylen McClain's Fluky Interception Stuns Texas in Ohio State Clash",
+      "reason": "college:ncaa"
+    },
+    {
+      "abbr": "KC",
+      "title": "No. 1 Ohio State Faces No. 4 Texas in Scorching Austin Showdown",
+      "reason": "college:ncaa"
+    },
+    {
+      "abbr": "KC",
+      "title": "Ohio State Jumps Ahead of Texas in Scorching 163-Degree Showdown",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "KC",
+      "title": "Texans Place Rookie DT McDonald on IR, Sign Crumedy",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "KC",
+      "title": "Missouri Coach Blasts Kansas Hype Video After 38-21 Border War Win",
+      "reason": "over_keep_cap"
+    },
+    {
+      "abbr": "KC",
+      "title": "Lane Kiffin Walks with Lil Wayne and Boosie Before LSU Game",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "LV",
+      "title": "Panthers Unleash Hype Trailer with R-Truth for 2026 Home Opener",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "LV",
+      "title": "Jon Gruden Unboxes Browns Gear, Fires Up Fans for Week 1",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "LV",
+      "title": "Lions Kick Off 2026 NFL Season Against Saints Tomorrow",
+      "reason": "wrong_club"
+    },
+    {
+      "abbr": "LV",
+      "title": "Commanders Forge Epic Spear Hype Video Before Eagles Opener",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "LV",
+      "title": "Vikings Claim Greater Packers Rivalry Than Bears Sparks Fan Clash",
+      "reason": "wrong_club"
+    },
+    {
+      "abbr": "LV",
+      "title": "Fake 49ers Player Daejon Love Becomes NFL Meme Sensation",
+      "reason": "other_sport:nba"
+    },
+    {
+      "abbr": "LV",
+      "title": "Bears Face Panthers in 2026 NFL Season Opener Amid Fan Hype",
+      "reason": "wrong_club"
+    },
+    {
+      "abbr": "LAC",
+      "title": "Raiders Get Jeanty Back, Rule Out Bowers for Dolphins Opener",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "LAC",
+      "title": "Dolphins Elevate Clelin Ferrell for Raiders Opener Amid Rebuild",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "LAC",
+      "title": "Browns Start 2026 with Rookie-Led Offensive Line Overhaul vs. Jaguars",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "LAC",
+      "title": "Bills Elevate Gore Jr. and Dortch for Texans Opener",
+      "reason": "wrong_club"
+    },
+    {
+      "abbr": "LAC",
+      "title": "Falcons Turn to Cooper Rush as Starting QB with Tagovailoa Out",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "LAC",
+      "title": "Falcons' Cooper Rush Powers Through Back Spasms to Start Opener",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "LAC",
+      "title": "Panthers Unleash Hype Trailer with R-Truth for 2026 Home Opener",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "LAR",
+      "title": "Lions Kick Off 2026 NFL Season Against Saints Tomorrow",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "LAR",
+      "title": "Panthers Unleash Hype Trailer with R-Truth for 2026 Home Opener",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "LAR",
+      "title": "Deshaun Watson Returns for Browns-Jaguars 2026 Opener",
+      "reason": "wrong_club"
+    },
+    {
+      "abbr": "LAR",
+      "title": "Saints Shuffle Roster with Estime on IR Before Lions Opener",
+      "reason": "wrong_club"
+    },
+    {
+      "abbr": "LAR",
+      "title": "Cardinals Rookie Jeremiyah Love Questionable for Season Opener",
+      "reason": "wrong_club"
+    },
+    {
+      "abbr": "LAR",
+      "title": "Chiefs Rule Out Simmons and Conner for Broncos Clash",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "LAR",
+      "title": "Jon Gruden Unboxes Browns Gear, Fires Up Fans for Week 1",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "MIA",
+      "title": "Raiders Get Jeanty Back, Rule Out Bowers for Dolphins Opener",
+      "reason": "over_keep_cap"
+    },
+    {
+      "abbr": "MIA",
+      "title": "Brutus Buckeye Dominates Push-Up Contest on College GameDay",
+      "reason": "college:ncaa"
+    },
+    {
+      "abbr": "MIA",
+      "title": "Tua Tagovailoa Sidelined by Oblique Injury Before Falcons Opener",
+      "reason": "over_keep_cap"
+    },
+    {
+      "abbr": "MIA",
+      "title": "Miami's 77-7 Rout of FAMU Draws Schedule Scrutiny",
+      "reason": "over_keep_cap"
+    },
+    {
+      "abbr": "MIA",
+      "title": "Old Tua Tagovailoa Quote on Coaching Resurfaces with Fan Jokes",
+      "reason": "over_keep_cap"
+    },
+    {
+      "abbr": "MIA",
+      "title": "Radio Host Calls Michael Penix Jr. NFL's Worst Draft Pick Ever",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "MIA",
+      "title": "No. 1 Ohio State Faces No. 4 Texas in Austin Tonight",
+      "reason": "college:ncaa"
+    },
+    {
+      "abbr": "MIN",
+      "title": "Bears Face Panthers in 2026 NFL Season Opener Amid Fan Hype",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "MIN",
+      "title": "Lions Kick Off 2026 NFL Season Against Saints Tomorrow",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "MIN",
+      "title": "Commanders Launch 'Spike the Spear' Pregame Ritual at Home Games",
+      "reason": "wrong_club"
+    },
+    {
+      "abbr": "MIN",
+      "title": "Kuminga Picks Timberwolves Over Lakers for Winning Culture",
+      "reason": "exclude_terms:Timberwolves"
+    },
+    {
+      "abbr": "MIN",
+      "title": "Fans Joke Oregon's Flashy Jerseys Sway Recruits Over Ohio State",
+      "reason": "college:ncaa"
+    },
+    {
+      "abbr": "MIN",
+      "title": "Bills-Texans AFC Clash Kicks Off 2026 Season in Houston",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "MIN",
+      "title": "No. 1 Ohio State Faces No. 4 Texas in Austin Tonight",
+      "reason": "college:ncaa"
+    },
+    {
+      "abbr": "NE",
+      "title": "Bulls' Norman Powell Calls Lakers NBA's Most Overrated Team",
+      "reason": "exclude_terms:NBA"
+    },
+    {
+      "abbr": "NE",
+      "title": "Bears Face Panthers in 2026 NFL Season Opener Amid Fan Hype",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "NE",
+      "title": "Lions Kick Off 2026 NFL Season Against Saints Tomorrow",
+      "reason": "wrong_club"
+    },
+    {
+      "abbr": "NE",
+      "title": "Bills-Texans AFC Clash Kicks Off 2026 Season in Houston",
+      "reason": "wrong_club"
+    },
+    {
+      "abbr": "NE",
+      "title": "Bears Fans Hype Up Season Opener Clash with Panthers",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "NE",
+      "title": "Fans Debate LeBron James' NBA Legacy and Future",
+      "reason": "exclude_terms:NBA"
+    },
+    {
+      "abbr": "NE",
+      "title": "Radio Host Calls Michael Penix Jr. NFL's Worst Draft Pick Ever",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "NE",
+      "title": "Vikings Claim Greater Packers Rivalry Than Bears Sparks Fan Clash",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "NE",
+      "title": "Chiefs Rule Out Simmons and Conner for Season Opener vs. Broncos",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "NO",
+      "title": "Notre Dame Hosts Rice in 2026 Home Opener Amid High Hopes",
+      "reason": "over_keep_cap"
+    },
+    {
+      "abbr": "NO",
+      "title": "Lions Release Onwuzurike Before Opener, Re-Sign to Practice Squad",
+      "reason": "over_keep_cap"
+    },
+    {
+      "abbr": "NO",
+      "title": "Healthy Vikings Face Injured Packers in NFC North Opener",
+      "reason": "over_keep_cap"
+    },
+    {
+      "abbr": "NO",
+      "title": "Bears Face Panthers in 2026 NFL Season Opener Amid Fan Hype",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "NO",
+      "title": "Jalen Hurts Drops 'Smooth Criminal' Hype Video Before Eagles Opener",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "NO",
+      "title": "Edwards and Ball Show Early Chemistry in Timberwolves Workouts",
+      "reason": "other_sport:nba"
+    },
+    {
+      "abbr": "NO",
+      "title": "Cowboys Face Giants in 2026 NFL Season Opener at MetLife",
+      "reason": "wrong_club"
+    },
+    {
+      "abbr": "NYG",
+      "title": "Lions Kick Off 2026 NFL Season Against Saints Tomorrow",
+      "reason": "wrong_club"
+    },
+    {
+      "abbr": "NYG",
+      "title": "Malik Nabers Questionable for Giants-Cowboys Opener After Knee Injury",
+      "reason": "over_keep_cap"
+    },
+    {
+      "abbr": "NYG",
+      "title": "Odell Beckham Jr. Revives Blonde Hair for Giants Return",
+      "reason": "over_keep_cap"
+    },
+    {
+      "abbr": "NYG",
+      "title": "Panthers Unleash Hype Trailer with R-Truth for 2026 Home Opener",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "NYG",
+      "title": "Commanders Fans Debate Bold 'W' Logo Redesign Before Eagles Game",
+      "reason": "wrong_club"
+    },
+    {
+      "abbr": "NYG",
+      "title": "Bears Face Panthers in 2026 NFL Season Opener Amid Fan Hype",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "NYG",
+      "title": "Sharks Players Enjoy Giants Game Bonding at Oracle Park",
+      "reason": "other_sport:nhl"
+    },
+    {
+      "abbr": "NYJ",
+      "title": "FIA's Ben Sulayem Vows to Keep Alonso in F1 Beyond Struggles",
+      "reason": "exclude_terms:Aston Martin"
+    },
+    {
+      "abbr": "NYJ",
+      "title": "Lions Kick Off 2026 NFL Season Against Saints Tomorrow",
+      "reason": "wrong_club"
+    },
+    {
+      "abbr": "NYJ",
+      "title": "Viggo Björck Scores in Jets Prospect Debut, Secures 3-1 Win",
+      "reason": "other_sport:nhl"
+    },
+    {
+      "abbr": "NYJ",
+      "title": "Cowboys Face Giants in 2026 NFL Season Opener at MetLife",
+      "reason": "wrong_club"
+    },
+    {
+      "abbr": "NYJ",
+      "title": "Man Runs onto Yankee Stadium Field with Palestinian Flag on 9/11 Anniversary",
+      "reason": "exclude_terms:Yankees"
+    },
+    {
+      "abbr": "NYJ",
+      "title": "Miedecke Ford Snags Suzuka 1000km Pole After Mercedes Penalty",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "NYJ",
+      "title": "Fans Relive Agüero’s Iconic 93:20 Goal from 2012 Title Win",
+      "reason": "nostalgia:fans relive"
+    },
+    {
+      "abbr": "PHI",
+      "title": "Lions Kick Off 2026 NFL Season Against Saints Tomorrow",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "PHI",
+      "title": "Falcons Turn to Cooper Rush as Starting QB with Tagovailoa Out",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "PHI",
+      "title": "Patriots Fans Compare Maye's Turnovers to Hurts' Past Pick in Seahawks Debate",
+      "reason": "over_keep_cap"
+    },
+    {
+      "abbr": "PHI",
+      "title": "Fred Warner Dominates in 49ers' Win Over Rams, Drops Hilarious Instagram Post",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "PHI",
+      "title": "Steelers Fans Gear Up for McCarthy Era Opener vs. Falcons",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "PHI",
+      "title": "Eagles Place Rookie TE Eli Stowers on IR with Quad and Hamstring Injuries",
+      "reason": "over_keep_cap"
+    },
+    {
+      "abbr": "PHI",
+      "title": "Commanders Release D.J. Humphries, Elevate Good-Jones Before Opener",
+      "reason": "over_keep_cap"
+    },
+    {
+      "abbr": "PIT",
+      "title": "Joey Porter Jr. Questionable for Steelers Opener Amid Contract Standoff and Back Injury",
+      "reason": "over_keep_cap"
+    },
+    {
+      "abbr": "PIT",
+      "title": "Commanders Forge Epic Spear Hype Video Before Eagles Opener",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "PIT",
+      "title": "Lions Kick Off 2026 NFL Season Against Saints Tomorrow",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "PIT",
+      "title": "Jalen Hurts Drops 'Smooth Criminal' Hype Video Before Eagles Opener",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "PIT",
+      "title": "Panthers Unleash Hype Trailer with R-Truth for 2026 Home Opener",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "PIT",
+      "title": "Commanders Launch 'Spike the Spear' Pregame Ritual at Home Games",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "PIT",
+      "title": "Jon Gruden Unboxes Browns Gear, Fires Up Fans for Week 1",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "SEA",
+      "title": "49ers Dominate Rams in NFL's Australia Debut Amid Jet Lag Battle",
+      "reason": "wrong_club"
+    },
+    {
+      "abbr": "SEA",
+      "title": "Lions Kick Off 2026 NFL Season Against Saints Tomorrow",
+      "reason": "wrong_club"
+    },
+    {
+      "abbr": "SEA",
+      "title": "Gamecocks Unveil Cocky Heisman Helmets in Towson Win",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "SEA",
+      "title": "Patriots Sign Veteran DT DaQuan Jones, Place A.J. Brown on IR After Opener",
+      "reason": "over_keep_cap"
+    },
+    {
+      "abbr": "SEA",
+      "title": "Commanders Fans Debate Bold 'W' Logo Redesign Before Eagles Game",
+      "reason": "wrong_club"
+    },
+    {
+      "abbr": "SEA",
+      "title": "Jalen Hurts Drops 'Smooth Criminal' Hype Video Before Eagles Opener",
+      "reason": "wrong_club"
+    },
+    {
+      "abbr": "SEA",
+      "title": "Gonzalez Shuts Down Smith-Njigba in Seahawks-Patriots Clash",
+      "reason": "over_keep_cap"
+    },
+    {
+      "abbr": "SF",
+      "title": "49ers Dominate Rams in NFL's Australia Debut Amid Jet Lag Battle",
+      "reason": "over_keep_cap"
+    },
+    {
+      "abbr": "SF",
+      "title": "Fred Warner Dominates in 49ers' Win Over Rams, Drops Hilarious Instagram Post",
+      "reason": "over_keep_cap"
+    },
+    {
+      "abbr": "SF",
+      "title": "Brock Purdy Rises to Fifth in Early NFL MVP Odds on Kalshi",
+      "reason": "over_keep_cap"
+    },
+    {
+      "abbr": "SF",
+      "title": "Fans Debate Baun vs. Warner as NFC's Top Linebacker",
+      "reason": "over_keep_cap"
+    },
+    {
+      "abbr": "SF",
+      "title": "Fake 49ers Player Daejon Love Becomes NFL Meme Sensation",
+      "reason": "other_sport:nba"
+    },
+    {
+      "abbr": "SF",
+      "title": "Dolphins Elevate Clelin Ferrell for Raiders Opener Amid Rebuild",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "SF",
+      "title": "Healthy Vikings Face Injured Packers in NFC North Opener",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "TB",
+      "title": "Lions Kick Off 2026 NFL Season Against Saints Tomorrow",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "TB",
+      "title": "Bears Fans Hype Up Season Opener Clash with Panthers",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "TB",
+      "title": "Bears Face Panthers in 2026 NFL Season Opener Amid Fan Hype",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "TB",
+      "title": "Falcons Turn to Cooper Rush as Starting QB with Tagovailoa Out",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "TB",
+      "title": "College Football Week 2 Delivers Packed Saturday Slate of Matchups",
+      "reason": "college:ncaa"
+    },
+    {
+      "abbr": "TB",
+      "title": "No. 1 Ohio State Faces No. 4 Texas in Austin Tonight",
+      "reason": "college:ncaa"
+    },
+    {
+      "abbr": "TB",
+      "title": "Bills-Texans AFC Clash Kicks Off 2026 Season in Houston",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "TB",
+      "title": "Baylor QB DJ Lagway Out with Ankle Sprain for Home Opener",
+      "reason": "exclude_terms:Baylor"
+    },
+    {
+      "abbr": "TB",
+      "title": "Giants-Cowboys Rivalry Kicks Off 2026 NFL Season on Sunday Night",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "TB",
+      "title": "Panthers Unleash Hype Trailer with R-Truth for 2026 Home Opener",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "TEN",
+      "title": "Tennessee Overcomes Blocked Punt to Lead Georgia Tech 24-10 at Halftime",
+      "reason": "exclude_terms:Vols"
+    },
+    {
+      "abbr": "TEN",
+      "title": "No. 1 Ohio State Faces No. 4 Texas in Austin Tonight",
+      "reason": "college:ncaa"
+    },
+    {
+      "abbr": "TEN",
+      "title": "North Texas Crushes UNLV 41-6, Ends Playoff Hopes",
+      "reason": "college:college football"
+    },
+    {
+      "abbr": "TEN",
+      "title": "Alabama Rallies from 17-13 Deficit to Crush Kentucky 45-17",
+      "reason": "exclude_terms:Alabama"
+    },
+    {
+      "abbr": "TEN",
+      "title": "Kentucky Coach Will Stein Urges Fans to Make Kroger Field Hostile for Alabama",
+      "reason": "exclude_terms:Alabama"
+    },
+    {
+      "abbr": "TEN",
+      "title": "Jaylen McClain's Fluky Interception Stuns Texas in Ohio State Clash",
+      "reason": "college:ncaa"
+    },
+    {
+      "abbr": "TEN",
+      "title": "College Football Week 2 Delivers Packed Saturday Slate of Matchups",
+      "reason": "exclude_terms:Alabama"
+    },
+    {
+      "abbr": "TEN",
+      "title": "Deshaun Watson Returns for Browns-Jaguars 2026 Opener",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "WSH",
+      "title": "Harbaugh Predicts Justin Herbert as Greatest QB Ever",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "WSH",
+      "title": "Harbaugh Predicts Justin Herbert as NFL's Greatest Quarterback Ever",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "WSH",
+      "title": "Chiefs Rule Out Simmons and Conner for Season Opener vs. Broncos",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "WSH",
+      "title": "Blue Jackets Fans Frustrated as Fantilli Contract Talks Stall Before Camp",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "WSH",
+      "title": "Steelers Elevate Doneiko Slaughter with Joey Porter Jr. Questionable",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "WSH",
+      "title": "Bears Face Panthers in 2026 NFL Season Opener Amid Fan Hype",
+      "reason": "not_about_this_club"
+    },
+    {
+      "abbr": "WSH",
+      "title": "Jets Place Tim Patrick on IR, Elevate Jason Sanders for Opener",
+      "reason": "not_about_this_club"
+    }
+  ]
+}

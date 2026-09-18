@@ -1,0 +1,428 @@
+{
+  "season": 2026,
+  "pulled": "2026-08-20",
+  "source": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
+  "scoring": {
+    "min_n": 16,
+    "dead_zone": 0.04,
+    "max_pts": 0.35,
+    "n_full": 48,
+    "note": "pts = clamp((win_rate-0.5)*2*min(1,n/48), \u00b10.35) if n>=16 and |rate-0.5|>=0.04 else 0. Pushes excluded from n and rate. Career as head coach, any franchise. Regular + playoff. No preseason. Slight."
+  },
+  "coaches": {
+    "ARI": {
+      "name": "Mike LaFleur",
+      "wins": 0,
+      "losses": 0,
+      "pushes": 0,
+      "n": 0,
+      "rate": 0.0,
+      "pts": 0.0,
+      "seasons": [],
+      "note": "first-year HC. no prior HC games in nflverse."
+    },
+    "ATL": {
+      "name": "Kevin Stefanski",
+      "wins": 44,
+      "losses": 58,
+      "pushes": 2,
+      "n": 102,
+      "rate": 0.4314,
+      "pts": -0.14,
+      "seasons": [
+        "CLE 2020-2025"
+      ],
+      "note": ""
+    },
+    "BAL": {
+      "name": "Jesse Minter",
+      "wins": 0,
+      "losses": 0,
+      "pushes": 0,
+      "n": 0,
+      "rate": 0.0,
+      "pts": 0.0,
+      "seasons": [],
+      "note": "first-year HC. no prior HC games in nflverse."
+    },
+    "BUF": {
+      "name": "Joe Brady",
+      "wins": 0,
+      "losses": 0,
+      "pushes": 0,
+      "n": 0,
+      "rate": 0.0,
+      "pts": 0.0,
+      "seasons": [],
+      "note": "first-year HC. no prior HC games in nflverse."
+    },
+    "CAR": {
+      "name": "Dave Canales",
+      "wins": 19,
+      "losses": 16,
+      "pushes": 0,
+      "n": 35,
+      "rate": 0.5429,
+      "pts": 0.06,
+      "seasons": [
+        "CAR 2024-2025"
+      ],
+      "note": ""
+    },
+    "CHI": {
+      "name": "Ben Johnson",
+      "wins": 11,
+      "losses": 7,
+      "pushes": 1,
+      "n": 18,
+      "rate": 0.6111,
+      "pts": 0.08,
+      "seasons": [
+        "CHI 2025"
+      ],
+      "note": ""
+    },
+    "CIN": {
+      "name": "Zac Taylor",
+      "wins": 67,
+      "losses": 53,
+      "pushes": 3,
+      "n": 120,
+      "rate": 0.5583,
+      "pts": 0.12,
+      "seasons": [
+        "CIN 2019-2025"
+      ],
+      "note": ""
+    },
+    "CLE": {
+      "name": "Todd Monken",
+      "wins": 0,
+      "losses": 0,
+      "pushes": 0,
+      "n": 0,
+      "rate": 0.0,
+      "pts": 0.0,
+      "seasons": [],
+      "note": "first-year HC. no prior HC games in nflverse."
+    },
+    "DAL": {
+      "name": "Brian Schottenheimer",
+      "wins": 7,
+      "losses": 10,
+      "pushes": 0,
+      "n": 17,
+      "rate": 0.4118,
+      "pts": -0.06,
+      "seasons": [
+        "DAL 2025"
+      ],
+      "note": ""
+    },
+    "DEN": {
+      "name": "Sean Payton",
+      "wins": 167,
+      "losses": 141,
+      "pushes": 4,
+      "n": 308,
+      "rate": 0.5422,
+      "pts": 0.08,
+      "seasons": [
+        "NO 2006-2011",
+        "NO 2013-2021",
+        "DEN 2023-2025"
+      ],
+      "note": ""
+    },
+    "DET": {
+      "name": "Dan Campbell",
+      "wins": 60,
+      "losses": 39,
+      "pushes": 2,
+      "n": 99,
+      "rate": 0.6061,
+      "pts": 0.21,
+      "seasons": [
+        "MIA 2015",
+        "DET 2021-2025"
+      ],
+      "note": "includes 2015 MIA interim weeks 6-17 (4-8). nflverse left Philbin on those rows."
+    },
+    "GB": {
+      "name": "Matt LaFleur",
+      "wins": 67,
+      "losses": 58,
+      "pushes": 1,
+      "n": 125,
+      "rate": 0.536,
+      "pts": 0.0,
+      "seasons": [
+        "GB 2019-2025"
+      ],
+      "note": "dead zone. |rate-0.5| < 0.04."
+    },
+    "HOU": {
+      "name": "DeMeco Ryans",
+      "wins": 29,
+      "losses": 27,
+      "pushes": 1,
+      "n": 56,
+      "rate": 0.5179,
+      "pts": 0.0,
+      "seasons": [
+        "HOU 2023-2025"
+      ],
+      "note": "dead zone. |rate-0.5| < 0.04."
+    },
+    "IND": {
+      "name": "Shane Steichen",
+      "wins": 27,
+      "losses": 24,
+      "pushes": 0,
+      "n": 51,
+      "rate": 0.5294,
+      "pts": 0.0,
+      "seasons": [
+        "IND 2023-2025"
+      ],
+      "note": "dead zone. |rate-0.5| < 0.04."
+    },
+    "JAX": {
+      "name": "Liam Coen",
+      "wins": 12,
+      "losses": 6,
+      "pushes": 0,
+      "n": 18,
+      "rate": 0.6667,
+      "pts": 0.12,
+      "seasons": [
+        "JAX 2025"
+      ],
+      "note": ""
+    },
+    "KC": {
+      "name": "Andy Reid",
+      "wins": 252,
+      "losses": 220,
+      "pushes": 10,
+      "n": 472,
+      "rate": 0.5339,
+      "pts": 0.0,
+      "seasons": [
+        "PHI 1999-2012",
+        "KC 2013-2025"
+      ],
+      "note": "dead zone. |rate-0.5| < 0.04."
+    },
+    "LV": {
+      "name": "Klint Kubiak",
+      "wins": 0,
+      "losses": 0,
+      "pushes": 0,
+      "n": 0,
+      "rate": 0.0,
+      "pts": 0.0,
+      "seasons": [],
+      "note": "first-year HC. no prior HC games in nflverse."
+    },
+    "LAC": {
+      "name": "Jim Harbaugh",
+      "wins": 64,
+      "losses": 41,
+      "pushes": 3,
+      "n": 105,
+      "rate": 0.6095,
+      "pts": 0.22,
+      "seasons": [
+        "SF 2011-2014",
+        "LAC 2024-2025"
+      ],
+      "note": ""
+    },
+    "LAR": {
+      "name": "Sean McVay",
+      "wins": 89,
+      "losses": 72,
+      "pushes": 4,
+      "n": 161,
+      "rate": 0.5528,
+      "pts": 0.11,
+      "seasons": [
+        "LAR 2017-2025"
+      ],
+      "note": ""
+    },
+    "MIA": {
+      "name": "Jeff Hafley",
+      "wins": 0,
+      "losses": 0,
+      "pushes": 0,
+      "n": 0,
+      "rate": 0.0,
+      "pts": 0.0,
+      "seasons": [],
+      "note": "first-year HC. no prior HC games in nflverse."
+    },
+    "MIN": {
+      "name": "Kevin O'Connell",
+      "wins": 34,
+      "losses": 31,
+      "pushes": 5,
+      "n": 65,
+      "rate": 0.5231,
+      "pts": 0.0,
+      "seasons": [
+        "MIN 2022-2025"
+      ],
+      "note": "dead zone. |rate-0.5| < 0.04."
+    },
+    "NE": {
+      "name": "Mike Vrabel",
+      "wins": 65,
+      "losses": 56,
+      "pushes": 4,
+      "n": 121,
+      "rate": 0.5372,
+      "pts": 0.0,
+      "seasons": [
+        "TEN 2018-2023",
+        "NE 2025"
+      ],
+      "note": "dead zone. |rate-0.5| < 0.04."
+    },
+    "NO": {
+      "name": "Kellen Moore",
+      "wins": 9,
+      "losses": 8,
+      "pushes": 0,
+      "n": 17,
+      "rate": 0.5294,
+      "pts": 0.0,
+      "seasons": [
+        "NO 2025"
+      ],
+      "note": "dead zone. |rate-0.5| < 0.04."
+    },
+    "NYG": {
+      "name": "John Harbaugh",
+      "wins": 161,
+      "losses": 146,
+      "pushes": 10,
+      "n": 307,
+      "rate": 0.5244,
+      "pts": 0.0,
+      "seasons": [
+        "BAL 2008-2025"
+      ],
+      "note": "dead zone. |rate-0.5| < 0.04."
+    },
+    "NYJ": {
+      "name": "Aaron Glenn",
+      "wins": 7,
+      "losses": 10,
+      "pushes": 0,
+      "n": 17,
+      "rate": 0.4118,
+      "pts": -0.06,
+      "seasons": [
+        "NYJ 2025"
+      ],
+      "note": ""
+    },
+    "PHI": {
+      "name": "Nick Sirianni",
+      "wins": 49,
+      "losses": 43,
+      "pushes": 3,
+      "n": 92,
+      "rate": 0.5326,
+      "pts": 0.0,
+      "seasons": [
+        "PHI 2021-2025"
+      ],
+      "note": "dead zone. |rate-0.5| < 0.04."
+    },
+    "PIT": {
+      "name": "Mike McCarthy",
+      "wins": 168,
+      "losses": 134,
+      "pushes": 8,
+      "n": 302,
+      "rate": 0.5563,
+      "pts": 0.11,
+      "seasons": [
+        "GB 2006-2018",
+        "DAL 2020-2024"
+      ],
+      "note": ""
+    },
+    "SF": {
+      "name": "Kyle Shanahan",
+      "wins": 83,
+      "losses": 79,
+      "pushes": 1,
+      "n": 162,
+      "rate": 0.5123,
+      "pts": 0.0,
+      "seasons": [
+        "SF 2017-2025"
+      ],
+      "note": "dead zone. |rate-0.5| < 0.04."
+    },
+    "SEA": {
+      "name": "Mike Macdonald",
+      "wins": 21,
+      "losses": 16,
+      "pushes": 0,
+      "n": 37,
+      "rate": 0.5676,
+      "pts": 0.1,
+      "seasons": [
+        "SEA 2024-2025"
+      ],
+      "note": ""
+    },
+    "TB": {
+      "name": "Todd Bowles",
+      "wins": 62,
+      "losses": 72,
+      "pushes": 5,
+      "n": 134,
+      "rate": 0.4627,
+      "pts": 0.0,
+      "seasons": [
+        "MIA 2011",
+        "NYJ 2015-2018",
+        "TB 2022-2025"
+      ],
+      "note": "includes 2011 MIA interim HC (already tagged in nflverse)."
+    },
+    "TEN": {
+      "name": "Robert Saleh",
+      "wins": 22,
+      "losses": 33,
+      "pushes": 1,
+      "n": 55,
+      "rate": 0.4,
+      "pts": -0.2,
+      "seasons": [
+        "NYJ 2021-2024"
+      ],
+      "note": "2024 NYJ weeks 6-18 removed (12 games, 4-8 not counted). fired after week 5. nflverse left Saleh."
+    },
+    "WSH": {
+      "name": "Dan Quinn",
+      "wins": 59,
+      "losses": 68,
+      "pushes": 0,
+      "n": 127,
+      "rate": 0.4646,
+      "pts": 0.0,
+      "seasons": [
+        "ATL 2015-2020",
+        "WSH 2024-2025"
+      ],
+      "note": "dead zone. |rate-0.5| < 0.04."
+    }
+  }
+}
