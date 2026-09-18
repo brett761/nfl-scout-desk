@@ -10,8 +10,8 @@ Does NOT rewrite pff-2026.json (2025 prior / pff_term).
 
 Scoring (pff_ytd_term → eff / ourHomeLine):
   league means μo/μd/μs from the 32 YTD grades
-  grade_per_point = 5, st_weight = 0.15, cap = ±1.5
-  net = clamp( (off−μo)/5 + (def−μd)/5 + 0.15*(st−μs)/5 , −1.5, +1.5 )
+  grade_per_point = 5, st_weight = 0.15, cap = ±2.0
+  net = clamp( (off−μo)/5 + (def−μd)/5 + 0.15*(st−μs)/5 , −2.0, +2.0 )
 """
 from __future__ import annotations
 
@@ -32,7 +32,7 @@ ET = ZoneInfo("America/New_York")
 
 # Mirror 2025 pff-2026.json grade_per_point / cap; ST lightly weighted.
 GRADE_PER_POINT = 5.0
-CAP = 1.5
+CAP = 2.0
 ST_WEIGHT = 0.15
 
 
@@ -77,7 +77,7 @@ def apply_scoring(teams: dict[str, dict]) -> dict:
         "n_teams": 32,
         "note": (
             "pff_ytd_term = team.net. "
-            "net = clamp((off−μo)/5 + (def−μd)/5 + 0.15*(st−μs)/5, −1.5, +1.5). "
+            "net = clamp((off−μo)/5 + (def−μd)/5 + 0.15*(st−μs)/5, −2.0, +2.0). "
             "Means from all 32 clubs. Does not replace pff_term (2025 same-22)."
         ),
     }

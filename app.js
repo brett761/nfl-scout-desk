@@ -512,7 +512,7 @@ function normAbbr(abbr) {
      Official PFF+ CSV export. Does not fade. Does not rewrite the 2025 prior.
    pff_ytd_term(abbr) = pff-2026-ytd.json team net (0 if missing).
      2026 REG YTD team OFF/DEF/ST grades (Pro API overview, REG weeks only).
-     net = clamp((off−μo)/5 + (def−μd)/5 + 0.15*(st−μs)/5, −1.5, +1.5).
+     net = clamp((off−μo)/5 + (def−μd)/5 + 0.15*(st−μs)/5, −2.0, +2.0).
      League means from all 32 clubs. Early-season n can be 1 — cap keeps it modest.
      IN the line (eff / ourHomeLine). Does not replace pff_term.
    pff_pre_term is display only. Not in eff() or ourHomeLine.
@@ -859,7 +859,7 @@ function pffYtdComputeNet(t) {
   if (!t) return 0;
   const sc = (pffYtdData && pffYtdData.scoring) || {};
   const gpp = num(sc.grade_per_point) ?? 5;
-  const cap = num(sc.cap) ?? 1.5;
+  const cap = num(sc.cap) ?? 2.0;
   const stW = num(sc.st_weight) ?? 0.15;
   let muO = num(sc.league_offense);
   let muD = num(sc.league_defense);
@@ -2049,7 +2049,7 @@ async function loadNfl() {
   const maddenReq = fetch("./data/madden-2026.json");
   const pffReq = fetch("./data/pff-2026.json?v=pff1");
   const pffPreReq = fetch("./data/pff-pre-2026.json?v=pff2");
-  const pffYtdReq = fetch("./data/pff-2026-ytd.json?v=pff4");
+  const pffYtdReq = fetch("./data/pff-2026-ytd.json?v=pff5");
   const pffMatchReq = fetch("./data/pff-matchups-2026.json?v=pff2");
   const sosReq = fetch("./data/sos-2025.json");
   const returnReq = fetch("./data/return-2026.json");
@@ -3350,7 +3350,7 @@ function pffYtdBlockHtml(abbr) {
       <div class="fa-unit"><span class="fa-unit-h">DEF ${esc(String(deff))} ${esc(rk(t.rank_defense))}</span></div>
       <div class="fa-unit"><span class="fa-unit-h">ST ${esc(String(st))} ${esc(rk(t.rank_st))}</span></div>
     </div>
-    <p class="prior-note">Official Pro API team-overview. IN the line (pff_ytd_term). 5 grade ≈ 1 pt vs league mean, ST×0.15, cap ±1.5. Does not replace pff_term. Rebuild: data/build_pff_ytd_2026.py</p>
+    <p class="prior-note">Official Pro API team-overview. IN the line (pff_ytd_term). 5 grade ≈ 1 pt vs league mean, ST×0.15, cap ±2.0. Does not replace pff_term. Rebuild: data/build_pff_ytd_2026.py</p>
   </div>`;
 }
 
