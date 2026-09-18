@@ -1,13 +1,20 @@
-# 2026 NFL injuries — Scout desk FINAL TNF (DET@BUF)
+# 2026 NFL injuries — Scout desk Week 2 WORKING (Sunday card)
 
-Pulled Wednesday 16 September 2026 ~5:44 PM ET (America/New_York). Official TNF Game Status Report (due 4:00 p.m. ET Wed) is in — stamp `injury_pulled=2026-09-16b` **FINAL**.
+Pulled Friday 18 September 2026 ~12:03 PM ET (America/New_York). Stamp `injury_pulled=2026-09-18a` **WORKING** (Fri official Game Status due 4:00 p.m. ET not yet locked).
 
-**DET@BUF official designations (nfl.com/injuries):**
-- Lions: Christian Mahogany OUT (hip), Blake Miller OUT (knee), D.J. Reed QUESTIONABLE (foot, limited). Juice Scruggs Full / blank game status → Probable (cleared). Christian Izien Full / cleared.
-- Reserve (not on weekly sheet, still Out): Brian Branch PUP (Achilles), Kerby Joseph PUP (knee), Cade Mays IR (wrist), Isiah Pacheco IR (back).
-- Bills: Cole Bishop QUESTIONABLE (knee/groin), T.J. Sanders QUESTIONABLE (knee/illness), Ty Johnson QUESTIONABLE (hamstring). Terrel Bernard Limited / blank game status → Probable (off number). Bradley Chubb / Jordan Hancock Full / cleared.
-- Reserve: Tyrell Shavers OUT (ACL), Dorian Strong NFI (neck).
+**Root cause of missing Darnold:** seed was frozen at `2026-09-16b` FINAL TNF (DET@BUF only). Sunday-card clubs were not refreshed after Macdonald confirmed Darnold OUT; SEA still carried Week 1 designations (Okada OUT, Horton Q) with **no Darnold row**.
 
-**Desk scoring:** DET raw ≈ −7.89 (Miller manual 0.7 Out) still capped **−6**. BUF term ≈ **−0.82** (Bernard off; Strong NFI added). Injury stamp FINAL.
+**SEA @ ARI (event 401872943) — ESPN + coach:**
+- **Sam Darnold QB1 OUT** (glute / soft-tissue) — coach confirmed won't play; Lock starts; ~3–4 weeks. **Added.**
+- Zach Charbonnet RB1 PUP (knee) — reserve, carried.
+- Anthony Bradford OG QUESTIONABLE (knee/hip) — Limited Wed/Thu. **Added.**
+- Josh Jones OG QUESTIONABLE (knee). **Added.**
+- Ty Okada S QUESTIONABLE (hamstring) — was OUT on W1 seed; ESPN now Q (still DNP streak).
+- Nick Emmanwori S QUESTIONABLE (ankle) — Limited Wed/Thu.
+- **Cleared off number:** Tory Horton (full practice), Cooper Kupp (full Thu), Josh Jobe (active).
 
-Sources: https://www.nfl.com/injuries/ (Week 2 Thursday block); ESPN summary event 401872932; ESPN roster PUP/IR confirm; ESPN injuries API timestamp 2026-09-16T21:44:46Z.
+**Desk scoring (auto Madden-first):** SEA injury term ≈ **-6.0** (raw -6.55; Darnold OUT drives QB1 auto toward player cap). Fri 4pm sheet may still flip Q→OUT/Probable.
+
+**League:** Full 32-team refresh from ESPN injuries API (timestamp 2026-09-18T16:01:29Z); coach's-decision inactives dropped; prior IR/PUP/NFI reserves merged when off weekly sheet. Manual impacts preserved (e.g. Blake Miller 0.7).
+
+Sources: ESPN injuries API; ESPN summary SEA@ARI 401872943; nfl.com/injuries; SEA roster for reserve/PUP confirm.
