@@ -532,8 +532,9 @@ function normAbbr(abbr) {
      w_prior = (N − n) / N
      w_curr  = n / N
      blended = w_prior * prior + w_curr * current
-     currentRating from scored pts for/against → ±12 off/def pillars (2025 raw min/max),
-     then (0.3875*off + 0.3875*def)/0.775; |current| capped at 12. TO/ST deferred.
+     currentRating from YTD O/D/ST on 2025 prior scale: ±12 off/def (2025 PPG min/max),
+     ±4 ST (2*ret+(FG%-mean)/8 → 2025 comp endpoints); composite
+     (0.3875*off+0.3875*def+0.025*st)/0.8; |current| capped at 12. TO deferred.
      When n = 0, blended = prior. When n ≥ 3, blended = current.
 
    ourHomeLine = −(homeEff − awayEff + hfa + coach_term + prep_net + ats_net + sched_net)
@@ -611,20 +612,80 @@ function mapPpgToPillar(ppg, kind) {
   return Math.max(-12, Math.min(12, pillar));
 }
 
-function currentRating(abbr) {
-  // In-season 2026 current from scored finals (pts for / against → off/def pillars).
-  // TO/ST current deferred. Optional EMA later; for small n use straight mean.
+function leagueStScale() {
+  // 2025 ST composite anchors: comp = 2*ret + (fg - mean_fg)/8; min/max → ±4.
+  // Mirrors prior-2025.json pillars.st exactly when fed 2025 raw.
+  let meanFg = 0;
+  let nFg = 0;
+  const comps = [];
+  if (priorData && priorData.teams) {
+    for (const t of Object.values(priorData.teams)) {
+      const fg = t && t.raw ? num(t.raw.st_fg_pct) : null;
+      if (fg !== null) { meanFg += fg; nFg += 1; }
+    }
+    meanFg = nFg ? meanFg / nFg : 85.53125;
+    for (const t of Object.values(priorData.teams)) {
+      const ret = (t && t.raw ? num(t.raw.st_ret_td) : null) ?? 0;
+      const fg = t && t.raw ? num(t.raw.st_fg_pct) : null;
+      if (fg === null) continue;
+      comps.push(2 * ret + (fg - meanFg) / 8);
+    }
+  }
+  let lo = Infinity, hi = -Infinity;
+  for (const c of comps) {
+    if (c < lo) lo = c;
+    if (c > hi) hi = c;
+  }
+  if (!Number.isFinite(lo) || !Number.isFinite(hi) || hi <= lo) {
+    return { meanFg: 85.53125, lo: -1.76640625, hi: 7.38359375 };
+  }
+  return { meanFg, lo, hi };
+}
+
+function mapStToPillar(retTd, fgPct, fga) {
+  const { meanFg, lo, hi } = leagueStScale();
+  const ret = num(retTd) ?? 0;
+  const attempts = num(fga) ?? 0;
+  let fg = num(fgPct);
+  if (attempts <= 0 || fg === null) fg = meanFg; // neutral FG term when no attempts
+  const comp = 2 * ret + (fg - meanFg) / 8;
+  const span = hi - lo || 1;
+  const t = Math.max(0, Math.min(1, (comp - lo) / span));
+  return Math.max(-4, Math.min(4, -4 + t * 8));
+}
+
+function currentStPillar(abbr) {
+  const a = normAbbr(abbr);
+  const row = ytdStData && ytdStData.teams ? ytdStData.teams[a] : null;
+  if (!row) return 0;
+  return mapStToPillar(row.st_ret_td, row.st_fg_pct, row.st_fga);
+}
+
+function currentPillars(abbr) {
+  // YTD pillars on 2025 prior scale. TO deferred.
   const rows = scoredGames2026(abbr);
-  if (!rows.length) return 0;
-  const offPpg = rows.reduce((s, r) => s + r.ptsFor, 0) / rows.length;
-  const defPpg = rows.reduce((s, r) => s + r.ptsAgainst, 0) / rows.length;
-  const off = mapPpgToPillar(offPpg, "off");
-  const def = mapPpgToPillar(defPpg, "def");
+  let off = 0, def = 0;
+  if (rows.length) {
+    const offPpg = rows.reduce((s, r) => s + r.ptsFor, 0) / rows.length;
+    const defPpg = rows.reduce((s, r) => s + r.ptsAgainst, 0) / rows.length;
+    off = mapPpgToPillar(offPpg, "off");
+    def = mapPpgToPillar(defPpg, "def");
+  }
+  const st = currentStPillar(abbr);
+  return { off, def, st, n: rows.length };
+}
+
+function currentRating(abbr) {
+  // In-season 2026 current: O/D/ST on 2025 prior scale (same units as prior pillars).
+  // Take/give deferred. Optional EMA later; for small n use straight mean of scored games.
+  const { off, def, st, n } = currentPillars(abbr);
+  if (!n && !(ytdStData && ytdStData.teams && ytdStData.teams[normAbbr(abbr)])) return 0;
   const w = (priorData && priorData.weights) || {};
   const wOff = num(w.off) ?? 0.3875;
   const wDef = num(w.def) ?? 0.3875;
-  const denom = wOff + wDef || 0.775;
-  let cur = (wOff * off + wDef * def) / denom;
+  const wSt = num(w.st) ?? 0.025;
+  const denom = (wOff + wDef + wSt) || 0.8;
+  let cur = (wOff * off + wDef * def + wSt * st) / denom;
   if (Math.abs(cur) > 12) cur = Math.sign(cur) * 12;
   return cur;
 }
@@ -1598,6 +1659,7 @@ let lastFocus = null;
 
 let nflData = null; // { teams, games, pulled, ... } from ./data/nfl-2026.json
 let priorData = null; // { teams, ranges, weights, taper } from ./data/prior-2025.json
+let ytdStData = null; // { teams } from ./data/ytd-st-2026.json; YTD ST raw for currentRating
 let faData = null; // { teams, scoring, season } from ./data/fa-2026.json; null if missing
 let draftData = null; // { teams, scoring, season, window_games } from ./data/draft-2026.json; null if missing
 let maddenData = null; // { teams, scoring } from ./data/madden-2026.json; null if missing
@@ -1931,8 +1993,9 @@ function marketFor(game) {
 }
 
 async function loadNfl() {
-  const nflReq = fetch("./data/nfl-2026.json?v=prior3b");
-  const priorReq = fetch("./data/prior-2025.json?v=prior3b");
+  const nflReq = fetch("./data/nfl-2026.json?v=ytd1");
+  const priorReq = fetch("./data/prior-2025.json?v=ytd1");
+  const ytdStReq = fetch("./data/ytd-st-2026.json?v=ytd1");
   const faReq = fetch("./data/fa-2026.json");
   const draftReq = fetch("./data/draft-2026.json");
   const maddenReq = fetch("./data/madden-2026.json");
@@ -1973,6 +2036,16 @@ async function loadNfl() {
   } catch (err) {
     priorData = null;
     console.warn("prior-2025.json", err);
+  }
+  try {
+    const res = await ytdStReq;
+    if (!res.ok) throw new Error(String(res.status));
+    const data = await res.json();
+    if (!data || !data.teams || typeof data.teams !== "object") throw new Error("bad ytd st");
+    ytdStData = data;
+  } catch (err) {
+    ytdStData = null;
+    console.warn("ytd-st-2026.json", err);
   }
   try {
     const res = await faReq;

@@ -1,0 +1,1175 @@
+{
+  "season": 2026,
+  "as_of": "YTD through completed regular-season games (W1 all 16 + W2 TNF DET@BUF)",
+  "pulled": "2026-09-18T09:00:51.337899-04:00",
+  "pulled_et": "Sep 18, 2026, 9:00 AM ET",
+  "scored_games": 17,
+  "scale": {
+    "note": "Same units as 2025 prior pillars in prior-2025.json \u2014 lock 2025 raw endpoints.",
+    "offense": {
+      "stat": "points scored per game (YTD mean of scored finals)",
+      "range": [
+        -12,
+        12
+      ],
+      "better": "higher",
+      "raw_lo_2025": 14.2,
+      "raw_hi_2025": 30.5,
+      "map": "t=(ppg-lo)/(hi-lo) clamped 0..1; pillar=-12+t*24",
+      "file_anchors": "prior-2025.json teams[*].raw.off_ppg min/max (LV 14.2 / LAR 30.5)"
+    },
+    "defense": {
+      "stat": "points allowed per game (YTD mean)",
+      "range": [
+        -12,
+        12
+      ],
+      "better": "lower",
+      "raw_lo_2025": 17.2,
+      "raw_hi_2025": 30.1,
+      "map": "t=(ppg-lo)/(hi-lo) clamped 0..1; pillar=12-t*24",
+      "file_anchors": "prior-2025.json teams[*].raw.def_ppg min/max (SEA 17.2 / DAL 30.1)"
+    },
+    "special_teams": {
+      "stat": "return TDs + FG% vs 2025 league mean",
+      "range": [
+        -4,
+        4
+      ],
+      "better": "higher",
+      "formula": "comp = 2*st_ret_td + (st_fg_pct - mean_fg_2025)/8; pillar = -4 + 8*clamp((comp-comp_lo)/(comp_hi-comp_lo),0,1)",
+      "mean_fg_2025": 85.53125,
+      "comp_lo_2025": -1.76640625,
+      "comp_hi_2025": 7.38359375,
+      "zero_fga_policy": "substitute mean_fg_2025 (neutral FG term)",
+      "verified": "Reproduces all 32 prior-2025.json pillars.st exactly (round2)",
+      "file": "prior-2025.json raw st_ret_td / st_fg_pct"
+    },
+    "composite": {
+      "formula": "(0.3875*off + 0.3875*def + 0.025*st) / 0.8",
+      "weights_among_rating_pillars": {
+        "off": 0.3875,
+        "def": 0.3875,
+        "st": 0.025
+      },
+      "deferred": "takeaways 7.5% and giveaways 12.5% not in YTD current yet",
+      "cap": "composite clamped to \u00b112"
+    },
+    "prior_full_weights": {
+      "off": 0.3875,
+      "def": 0.3875,
+      "st": 0.025,
+      "take": 0.075,
+      "give": 0.125
+    }
+  },
+  "sources": {
+    "offense_defense_ppg": "nfl-2026.json scored finals (home_score/away_score)",
+    "special_teams": "ytd-st-2026.json from ESPN core team statistics",
+    "scale_file": "prior-2025.json"
+  },
+  "teams": [
+    {
+      "abbr": "JAX",
+      "n": 1,
+      "raw": {
+        "off_ppg": 34.0,
+        "def_ppg": 10.0,
+        "st_ret_td": 0,
+        "st_fg_pct": 100.0,
+        "st_fgm": 2,
+        "st_fga": 2,
+        "st_fg_pct_used": 100.0,
+        "st_comp": 1.81
+      },
+      "pillars": {
+        "off": 12.0,
+        "def": 12.0,
+        "st": -0.87
+      },
+      "composite": 11.6,
+      "composite_od_only": 12.0,
+      "games": [
+        {
+          "ptsFor": 34.0,
+          "ptsAgainst": 10.0,
+          "week": 1,
+          "opp": "CLE",
+          "ha": "H"
+        }
+      ],
+      "rank": 1,
+      "rank_off": 8,
+      "rank_def": 2,
+      "rank_st": 12
+    },
+    {
+      "abbr": "KC",
+      "n": 1,
+      "raw": {
+        "off_ppg": 31.0,
+        "def_ppg": 10.0,
+        "st_ret_td": 0,
+        "st_fg_pct": 100.0,
+        "st_fgm": 1,
+        "st_fga": 1,
+        "st_fg_pct_used": 100.0,
+        "st_comp": 1.81
+      },
+      "pillars": {
+        "off": 12.0,
+        "def": 12.0,
+        "st": -0.87
+      },
+      "composite": 11.6,
+      "composite_od_only": 12.0,
+      "games": [
+        {
+          "ptsFor": 31.0,
+          "ptsAgainst": 10.0,
+          "week": 1,
+          "opp": "DEN",
+          "ha": "H"
+        }
+      ],
+      "rank": 2,
+      "rank_off": 9,
+      "rank_def": 3,
+      "rank_st": 13
+    },
+    {
+      "abbr": "LV",
+      "n": 1,
+      "raw": {
+        "off_ppg": 27.0,
+        "def_ppg": 13.0,
+        "st_ret_td": 0,
+        "st_fg_pct": 100.0,
+        "st_fgm": 2,
+        "st_fga": 2,
+        "st_fg_pct_used": 100.0,
+        "st_comp": 1.81
+      },
+      "pillars": {
+        "off": 6.85,
+        "def": 12.0,
+        "st": -0.87
+      },
+      "composite": 9.1,
+      "composite_od_only": 9.42,
+      "games": [
+        {
+          "ptsFor": 27.0,
+          "ptsAgainst": 13.0,
+          "week": 1,
+          "opp": "MIA",
+          "ha": "H"
+        }
+      ],
+      "rank": 3,
+      "rank_off": 13,
+      "rank_def": 4,
+      "rank_st": 14
+    },
+    {
+      "abbr": "SF",
+      "n": 1,
+      "raw": {
+        "off_ppg": 27.0,
+        "def_ppg": 7.0,
+        "st_ret_td": 0,
+        "st_fg_pct": 66.67,
+        "st_fgm": 2,
+        "st_fga": 3,
+        "st_fg_pct_used": 66.67,
+        "st_comp": -2.36
+      },
+      "pillars": {
+        "off": 6.85,
+        "def": 12.0,
+        "st": -4.0
+      },
+      "composite": 9.0,
+      "composite_od_only": 9.42,
+      "games": [
+        {
+          "ptsFor": 27.0,
+          "ptsAgainst": 7.0,
+          "week": 1,
+          "opp": "LAR",
+          "ha": "A"
+        }
+      ],
+      "rank": 4,
+      "rank_off": 14,
+      "rank_def": 9,
+      "rank_st": 31
+    },
+    {
+      "abbr": "ARI",
+      "n": 1,
+      "raw": {
+        "off_ppg": 26.0,
+        "def_ppg": 14.0,
+        "st_ret_td": 0,
+        "st_fg_pct": 80.0,
+        "st_fgm": 4,
+        "st_fga": 5,
+        "st_fg_pct_used": 80.0,
+        "st_comp": -0.69
+      },
+      "pillars": {
+        "off": 5.37,
+        "def": 12.0,
+        "st": -3.06
+      },
+      "composite": 8.32,
+      "composite_od_only": 8.69,
+      "games": [
+        {
+          "ptsFor": 26.0,
+          "ptsAgainst": 14.0,
+          "week": 1,
+          "opp": "LAC",
+          "ha": "A"
+        }
+      ],
+      "rank": 5,
+      "rank_off": 16,
+      "rank_def": 1,
+      "rank_st": 25
+    },
+    {
+      "abbr": "MIN",
+      "n": 1,
+      "raw": {
+        "off_ppg": 39.0,
+        "def_ppg": 22.0,
+        "st_ret_td": 0,
+        "st_fg_pct": 100.0,
+        "st_fgm": 1,
+        "st_fga": 1,
+        "st_fg_pct_used": 100.0,
+        "st_comp": 1.81
+      },
+      "pillars": {
+        "off": 12.0,
+        "def": 3.07,
+        "st": -0.87
+      },
+      "composite": 7.27,
+      "composite_od_only": 7.53,
+      "games": [
+        {
+          "ptsFor": 39.0,
+          "ptsAgainst": 22.0,
+          "week": 1,
+          "opp": "GB",
+          "ha": "H"
+        }
+      ],
+      "rank": 6,
+      "rank_off": 10,
+      "rank_def": 12,
+      "rank_st": 15
+    },
+    {
+      "abbr": "NYG",
+      "n": 1,
+      "raw": {
+        "off_ppg": 28.0,
+        "def_ppg": 20.0,
+        "st_ret_td": 0,
+        "st_fg_pct": null,
+        "st_fgm": 0,
+        "st_fga": 0,
+        "st_fg_pct_used": 85.53,
+        "st_comp": 0.0
+      },
+      "pillars": {
+        "off": 8.32,
+        "def": 6.79,
+        "st": -2.46
+      },
+      "composite": 7.24,
+      "composite_od_only": 7.55,
+      "games": [
+        {
+          "ptsFor": 28.0,
+          "ptsAgainst": 20.0,
+          "week": 1,
+          "opp": "DAL",
+          "ha": "H"
+        }
+      ],
+      "rank": 7,
+      "rank_off": 12,
+      "rank_def": 11,
+      "rank_st": 24
+    },
+    {
+      "abbr": "BAL",
+      "n": 1,
+      "raw": {
+        "off_ppg": 41.0,
+        "def_ppg": 23.0,
+        "st_ret_td": 0,
+        "st_fg_pct": 100.0,
+        "st_fgm": 2,
+        "st_fga": 2,
+        "st_fg_pct_used": 100.0,
+        "st_comp": 1.81
+      },
+      "pillars": {
+        "off": 12.0,
+        "def": 1.21,
+        "st": -0.87
+      },
+      "composite": 6.37,
+      "composite_od_only": 6.6,
+      "games": [
+        {
+          "ptsFor": 41.0,
+          "ptsAgainst": 23.0,
+          "week": 1,
+          "opp": "IND",
+          "ha": "A"
+        }
+      ],
+      "rank": 8,
+      "rank_off": 1,
+      "rank_def": 14,
+      "rank_st": 1
+    },
+    {
+      "abbr": "NYJ",
+      "n": 1,
+      "raw": {
+        "off_ppg": 23.0,
+        "def_ppg": 10.0,
+        "st_ret_td": 0,
+        "st_fg_pct": 75.0,
+        "st_fgm": 3,
+        "st_fga": 4,
+        "st_fg_pct_used": 75.0,
+        "st_comp": -1.32
+      },
+      "pillars": {
+        "off": 0.96,
+        "def": 12.0,
+        "st": -3.61
+      },
+      "composite": 6.16,
+      "composite_od_only": 6.48,
+      "games": [
+        {
+          "ptsFor": 23.0,
+          "ptsAgainst": 10.0,
+          "week": 1,
+          "opp": "TEN",
+          "ha": "A"
+        }
+      ],
+      "rank": 9,
+      "rank_off": 19,
+      "rank_def": 6,
+      "rank_st": 26
+    },
+    {
+      "abbr": "PIT",
+      "n": 1,
+      "raw": {
+        "off_ppg": 20.0,
+        "def_ppg": 13.0,
+        "st_ret_td": 0,
+        "st_fg_pct": 66.67,
+        "st_fgm": 2,
+        "st_fga": 3,
+        "st_fg_pct_used": 66.67,
+        "st_comp": -2.36
+      },
+      "pillars": {
+        "off": -3.46,
+        "def": 12.0,
+        "st": -4.0
+      },
+      "composite": 4.01,
+      "composite_od_only": 4.27,
+      "games": [
+        {
+          "ptsFor": 20.0,
+          "ptsAgainst": 13.0,
+          "week": 1,
+          "opp": "ATL",
+          "ha": "H"
+        }
+      ],
+      "rank": 10,
+      "rank_off": 23,
+      "rank_def": 7,
+      "rank_st": 30
+    },
+    {
+      "abbr": "CIN",
+      "n": 1,
+      "raw": {
+        "off_ppg": 33.0,
+        "def_ppg": 27.0,
+        "st_ret_td": 0,
+        "st_fg_pct": 100.0,
+        "st_fgm": 4,
+        "st_fga": 4,
+        "st_fg_pct_used": 100.0,
+        "st_comp": 1.81
+      },
+      "pillars": {
+        "off": 12.0,
+        "def": -6.23,
+        "st": -0.87
+      },
+      "composite": 2.77,
+      "composite_od_only": 2.88,
+      "games": [
+        {
+          "ptsFor": 33.0,
+          "ptsAgainst": 27.0,
+          "week": 1,
+          "opp": "TB",
+          "ha": "H"
+        }
+      ],
+      "rank": 11,
+      "rank_off": 5,
+      "rank_def": 18,
+      "rank_st": 5
+    },
+    {
+      "abbr": "PHI",
+      "n": 1,
+      "raw": {
+        "off_ppg": 24.0,
+        "def_ppg": 22.0,
+        "st_ret_td": 0,
+        "st_fg_pct": 100.0,
+        "st_fgm": 1,
+        "st_fga": 1,
+        "st_fg_pct_used": 100.0,
+        "st_comp": 1.81
+      },
+      "pillars": {
+        "off": 2.43,
+        "def": 3.07,
+        "st": -0.87
+      },
+      "composite": 2.64,
+      "composite_od_only": 2.75,
+      "games": [
+        {
+          "ptsFor": 24.0,
+          "ptsAgainst": 22.0,
+          "week": 1,
+          "opp": "WSH",
+          "ha": "H"
+        }
+      ],
+      "rank": 12,
+      "rank_off": 17,
+      "rank_def": 13,
+      "rank_st": 17
+    },
+    {
+      "abbr": "BUF",
+      "n": 2,
+      "raw": {
+        "off_ppg": 38.5,
+        "def_ppg": 31.0,
+        "st_ret_td": 0,
+        "st_fg_pct": 100.0,
+        "st_fgm": 3,
+        "st_fga": 3,
+        "st_fg_pct_used": 100.0,
+        "st_comp": 1.81
+      },
+      "pillars": {
+        "off": 12.0,
+        "def": -12.0,
+        "st": -0.87
+      },
+      "composite": -0.03,
+      "composite_od_only": 0.0,
+      "games": [
+        {
+          "ptsFor": 36.0,
+          "ptsAgainst": 31.0,
+          "week": 1,
+          "opp": "HOU",
+          "ha": "A"
+        },
+        {
+          "ptsFor": 41.0,
+          "ptsAgainst": 31.0,
+          "week": 2,
+          "opp": "DET",
+          "ha": "H"
+        }
+      ],
+      "rank": 13,
+      "rank_off": 2,
+      "rank_def": 22,
+      "rank_st": 2
+    },
+    {
+      "abbr": "CAR",
+      "n": 1,
+      "raw": {
+        "off_ppg": 37.0,
+        "def_ppg": 59.0,
+        "st_ret_td": 0,
+        "st_fg_pct": 100.0,
+        "st_fgm": 1,
+        "st_fga": 1,
+        "st_fg_pct_used": 100.0,
+        "st_comp": 1.81
+      },
+      "pillars": {
+        "off": 12.0,
+        "def": -12.0,
+        "st": -0.87
+      },
+      "composite": -0.03,
+      "composite_od_only": 0.0,
+      "games": [
+        {
+          "ptsFor": 37.0,
+          "ptsAgainst": 59.0,
+          "week": 1,
+          "opp": "CHI",
+          "ha": "H"
+        }
+      ],
+      "rank": 14,
+      "rank_off": 3,
+      "rank_def": 23,
+      "rank_st": 3
+    },
+    {
+      "abbr": "CHI",
+      "n": 1,
+      "raw": {
+        "off_ppg": 59.0,
+        "def_ppg": 37.0,
+        "st_ret_td": 0,
+        "st_fg_pct": 100.0,
+        "st_fgm": 1,
+        "st_fga": 1,
+        "st_fg_pct_used": 100.0,
+        "st_comp": 1.81
+      },
+      "pillars": {
+        "off": 12.0,
+        "def": -12.0,
+        "st": -0.87
+      },
+      "composite": -0.03,
+      "composite_od_only": 0.0,
+      "games": [
+        {
+          "ptsFor": 59.0,
+          "ptsAgainst": 37.0,
+          "week": 1,
+          "opp": "CAR",
+          "ha": "A"
+        }
+      ],
+      "rank": 15,
+      "rank_off": 4,
+      "rank_def": 24,
+      "rank_st": 4
+    },
+    {
+      "abbr": "DET",
+      "n": 2,
+      "raw": {
+        "off_ppg": 31.0,
+        "def_ppg": 35.5,
+        "st_ret_td": 0,
+        "st_fg_pct": 100.0,
+        "st_fgm": 2,
+        "st_fga": 2,
+        "st_fg_pct_used": 100.0,
+        "st_comp": 1.81
+      },
+      "pillars": {
+        "off": 12.0,
+        "def": -12.0,
+        "st": -0.87
+      },
+      "composite": -0.03,
+      "composite_od_only": 0.0,
+      "games": [
+        {
+          "ptsFor": 31.0,
+          "ptsAgainst": 30.0,
+          "week": 1,
+          "opp": "NO",
+          "ha": "H"
+        },
+        {
+          "ptsFor": 31.0,
+          "ptsAgainst": 41.0,
+          "week": 2,
+          "opp": "BUF",
+          "ha": "A"
+        }
+      ],
+      "rank": 16,
+      "rank_off": 6,
+      "rank_def": 27,
+      "rank_st": 8
+    },
+    {
+      "abbr": "HOU",
+      "n": 1,
+      "raw": {
+        "off_ppg": 31.0,
+        "def_ppg": 36.0,
+        "st_ret_td": 0,
+        "st_fg_pct": 100.0,
+        "st_fgm": 1,
+        "st_fga": 1,
+        "st_fg_pct_used": 100.0,
+        "st_comp": 1.81
+      },
+      "pillars": {
+        "off": 12.0,
+        "def": -12.0,
+        "st": -0.87
+      },
+      "composite": -0.03,
+      "composite_od_only": 0.0,
+      "games": [
+        {
+          "ptsFor": 31.0,
+          "ptsAgainst": 36.0,
+          "week": 1,
+          "opp": "BUF",
+          "ha": "H"
+        }
+      ],
+      "rank": 17,
+      "rank_off": 7,
+      "rank_def": 29,
+      "rank_st": 10
+    },
+    {
+      "abbr": "NE",
+      "n": 1,
+      "raw": {
+        "off_ppg": 10.0,
+        "def_ppg": 13.0,
+        "st_ret_td": 0,
+        "st_fg_pct": 100.0,
+        "st_fgm": 1,
+        "st_fga": 1,
+        "st_fg_pct_used": 100.0,
+        "st_comp": 1.81
+      },
+      "pillars": {
+        "off": -12.0,
+        "def": 12.0,
+        "st": -0.87
+      },
+      "composite": -0.03,
+      "composite_od_only": 0.0,
+      "games": [
+        {
+          "ptsFor": 10.0,
+          "ptsAgainst": 13.0,
+          "week": 1,
+          "opp": "SEA",
+          "ha": "A"
+        }
+      ],
+      "rank": 18,
+      "rank_off": 30,
+      "rank_def": 5,
+      "rank_st": 16
+    },
+    {
+      "abbr": "SEA",
+      "n": 1,
+      "raw": {
+        "off_ppg": 13.0,
+        "def_ppg": 10.0,
+        "st_ret_td": 0,
+        "st_fg_pct": 100.0,
+        "st_fgm": 2,
+        "st_fga": 2,
+        "st_fg_pct_used": 100.0,
+        "st_comp": 1.81
+      },
+      "pillars": {
+        "off": -12.0,
+        "def": 12.0,
+        "st": -0.87
+      },
+      "composite": -0.03,
+      "composite_od_only": 0.0,
+      "games": [
+        {
+          "ptsFor": 13.0,
+          "ptsAgainst": 10.0,
+          "week": 1,
+          "opp": "NE",
+          "ha": "H"
+        }
+      ],
+      "rank": 19,
+      "rank_off": 31,
+      "rank_def": 8,
+      "rank_st": 18
+    },
+    {
+      "abbr": "NO",
+      "n": 1,
+      "raw": {
+        "off_ppg": 30.0,
+        "def_ppg": 31.0,
+        "st_ret_td": 0,
+        "st_fg_pct": 50.0,
+        "st_fgm": 1,
+        "st_fga": 2,
+        "st_fg_pct_used": 50.0,
+        "st_comp": -4.44
+      },
+      "pillars": {
+        "off": 11.26,
+        "def": -12.0,
+        "st": -4.0
+      },
+      "composite": -0.48,
+      "composite_od_only": -0.37,
+      "games": [
+        {
+          "ptsFor": 30.0,
+          "ptsAgainst": 31.0,
+          "week": 1,
+          "opp": "DET",
+          "ha": "A"
+        }
+      ],
+      "rank": 20,
+      "rank_off": 11,
+      "rank_def": 31,
+      "rank_st": 29
+    },
+    {
+      "abbr": "WSH",
+      "n": 1,
+      "raw": {
+        "off_ppg": 22.0,
+        "def_ppg": 24.0,
+        "st_ret_td": 0,
+        "st_fg_pct": 50.0,
+        "st_fgm": 1,
+        "st_fga": 2,
+        "st_fg_pct_used": 50.0,
+        "st_comp": -4.44
+      },
+      "pillars": {
+        "off": -0.52,
+        "def": -0.65,
+        "st": -4.0
+      },
+      "composite": -0.69,
+      "composite_od_only": -0.58,
+      "games": [
+        {
+          "ptsFor": 22.0,
+          "ptsAgainst": 24.0,
+          "week": 1,
+          "opp": "PHI",
+          "ha": "A"
+        }
+      ],
+      "rank": 21,
+      "rank_off": 21,
+      "rank_def": 16,
+      "rank_st": 32
+    },
+    {
+      "abbr": "TB",
+      "n": 1,
+      "raw": {
+        "off_ppg": 27.0,
+        "def_ppg": 33.0,
+        "st_ret_td": 0,
+        "st_fg_pct": 100.0,
+        "st_fgm": 2,
+        "st_fga": 2,
+        "st_fg_pct_used": 100.0,
+        "st_comp": 1.81
+      },
+      "pillars": {
+        "off": 6.85,
+        "def": -12.0,
+        "st": -0.87
+      },
+      "composite": -2.52,
+      "composite_od_only": -2.58,
+      "games": [
+        {
+          "ptsFor": 27.0,
+          "ptsAgainst": 33.0,
+          "week": 1,
+          "opp": "CIN",
+          "ha": "A"
+        }
+      ],
+      "rank": 22,
+      "rank_off": 15,
+      "rank_def": 32,
+      "rank_st": 19
+    },
+    {
+      "abbr": "ATL",
+      "n": 1,
+      "raw": {
+        "off_ppg": 13.0,
+        "def_ppg": 20.0,
+        "st_ret_td": 0,
+        "st_fg_pct": 50.0,
+        "st_fgm": 2,
+        "st_fga": 4,
+        "st_fg_pct_used": 50.0,
+        "st_comp": -4.44
+      },
+      "pillars": {
+        "off": -12.0,
+        "def": 6.79,
+        "st": -4.0
+      },
+      "composite": -2.65,
+      "composite_od_only": -2.6,
+      "games": [
+        {
+          "ptsFor": 13.0,
+          "ptsAgainst": 20.0,
+          "week": 1,
+          "opp": "PIT",
+          "ha": "A"
+        }
+      ],
+      "rank": 23,
+      "rank_off": 24,
+      "rank_def": 10,
+      "rank_st": 27
+    },
+    {
+      "abbr": "TEN",
+      "n": 1,
+      "raw": {
+        "off_ppg": 10.0,
+        "def_ppg": 23.0,
+        "st_ret_td": 0,
+        "st_fg_pct": 100.0,
+        "st_fgm": 1,
+        "st_fga": 1,
+        "st_fg_pct_used": 100.0,
+        "st_comp": 1.81
+      },
+      "pillars": {
+        "off": -12.0,
+        "def": 1.21,
+        "st": -0.87
+      },
+      "composite": -5.25,
+      "composite_od_only": -5.4,
+      "games": [
+        {
+          "ptsFor": 10.0,
+          "ptsAgainst": 23.0,
+          "week": 1,
+          "opp": "NYJ",
+          "ha": "H"
+        }
+      ],
+      "rank": 24,
+      "rank_off": 32,
+      "rank_def": 15,
+      "rank_st": 20
+    },
+    {
+      "abbr": "IND",
+      "n": 1,
+      "raw": {
+        "off_ppg": 23.0,
+        "def_ppg": 41.0,
+        "st_ret_td": 0,
+        "st_fg_pct": 100.0,
+        "st_fgm": 1,
+        "st_fga": 1,
+        "st_fg_pct_used": 100.0,
+        "st_comp": 1.81
+      },
+      "pillars": {
+        "off": 0.96,
+        "def": -12.0,
+        "st": -0.87
+      },
+      "composite": -5.38,
+      "composite_od_only": -5.52,
+      "games": [
+        {
+          "ptsFor": 23.0,
+          "ptsAgainst": 41.0,
+          "week": 1,
+          "opp": "BAL",
+          "ha": "H"
+        }
+      ],
+      "rank": 25,
+      "rank_off": 18,
+      "rank_def": 30,
+      "rank_st": 11
+    },
+    {
+      "abbr": "DAL",
+      "n": 1,
+      "raw": {
+        "off_ppg": 20.0,
+        "def_ppg": 28.0,
+        "st_ret_td": 0,
+        "st_fg_pct": null,
+        "st_fgm": 0,
+        "st_fga": 0,
+        "st_fg_pct_used": 85.53,
+        "st_comp": 0.0
+      },
+      "pillars": {
+        "off": -3.46,
+        "def": -8.09,
+        "st": -2.46
+      },
+      "composite": -5.67,
+      "composite_od_only": -5.78,
+      "games": [
+        {
+          "ptsFor": 20.0,
+          "ptsAgainst": 28.0,
+          "week": 1,
+          "opp": "NYG",
+          "ha": "A"
+        }
+      ],
+      "rank": 26,
+      "rank_off": 22,
+      "rank_def": 21,
+      "rank_st": 21
+    },
+    {
+      "abbr": "GB",
+      "n": 1,
+      "raw": {
+        "off_ppg": 22.0,
+        "def_ppg": 39.0,
+        "st_ret_td": 0,
+        "st_fg_pct": 100.0,
+        "st_fgm": 3,
+        "st_fga": 3,
+        "st_fg_pct_used": 100.0,
+        "st_comp": 1.81
+      },
+      "pillars": {
+        "off": -0.52,
+        "def": -12.0,
+        "st": -0.87
+      },
+      "composite": -6.09,
+      "composite_od_only": -6.26,
+      "games": [
+        {
+          "ptsFor": 22.0,
+          "ptsAgainst": 39.0,
+          "week": 1,
+          "opp": "MIN",
+          "ha": "A"
+        }
+      ],
+      "rank": 27,
+      "rank_off": 20,
+      "rank_def": 28,
+      "rank_st": 9
+    },
+    {
+      "abbr": "LAC",
+      "n": 1,
+      "raw": {
+        "off_ppg": 14.0,
+        "def_ppg": 26.0,
+        "st_ret_td": 0,
+        "st_fg_pct": null,
+        "st_fgm": 0,
+        "st_fga": 0,
+        "st_fg_pct_used": 85.53,
+        "st_comp": 0.0
+      },
+      "pillars": {
+        "off": -12.0,
+        "def": -4.37,
+        "st": -2.46
+      },
+      "composite": -8.01,
+      "composite_od_only": -8.19,
+      "games": [
+        {
+          "ptsFor": 14.0,
+          "ptsAgainst": 26.0,
+          "week": 1,
+          "opp": "ARI",
+          "ha": "H"
+        }
+      ],
+      "rank": 28,
+      "rank_off": 27,
+      "rank_def": 17,
+      "rank_st": 22
+    },
+    {
+      "abbr": "LAR",
+      "n": 1,
+      "raw": {
+        "off_ppg": 7.0,
+        "def_ppg": 27.0,
+        "st_ret_td": 0,
+        "st_fg_pct": null,
+        "st_fgm": 0,
+        "st_fga": 0,
+        "st_fg_pct_used": 85.53,
+        "st_comp": 0.0
+      },
+      "pillars": {
+        "off": -12.0,
+        "def": -6.23,
+        "st": -2.46
+      },
+      "composite": -8.91,
+      "composite_od_only": -9.12,
+      "games": [
+        {
+          "ptsFor": 7.0,
+          "ptsAgainst": 27.0,
+          "week": 1,
+          "opp": "SF",
+          "ha": "H"
+        }
+      ],
+      "rank": 29,
+      "rank_off": 28,
+      "rank_def": 19,
+      "rank_st": 23
+    },
+    {
+      "abbr": "MIA",
+      "n": 1,
+      "raw": {
+        "off_ppg": 13.0,
+        "def_ppg": 27.0,
+        "st_ret_td": 0,
+        "st_fg_pct": 66.67,
+        "st_fgm": 2,
+        "st_fga": 3,
+        "st_fg_pct_used": 66.67,
+        "st_comp": -2.36
+      },
+      "pillars": {
+        "off": -12.0,
+        "def": -6.23,
+        "st": -4.0
+      },
+      "composite": -8.96,
+      "composite_od_only": -9.12,
+      "games": [
+        {
+          "ptsFor": 13.0,
+          "ptsAgainst": 27.0,
+          "week": 1,
+          "opp": "LV",
+          "ha": "A"
+        }
+      ],
+      "rank": 30,
+      "rank_off": 29,
+      "rank_def": 20,
+      "rank_st": 28
+    },
+    {
+      "abbr": "CLE",
+      "n": 1,
+      "raw": {
+        "off_ppg": 10.0,
+        "def_ppg": 34.0,
+        "st_ret_td": 0,
+        "st_fg_pct": 100.0,
+        "st_fgm": 1,
+        "st_fga": 1,
+        "st_fg_pct_used": 100.0,
+        "st_comp": 1.81
+      },
+      "pillars": {
+        "off": -12.0,
+        "def": -12.0,
+        "st": -0.87
+      },
+      "composite": -11.65,
+      "composite_od_only": -12.0,
+      "games": [
+        {
+          "ptsFor": 10.0,
+          "ptsAgainst": 34.0,
+          "week": 1,
+          "opp": "JAX",
+          "ha": "A"
+        }
+      ],
+      "rank": 31,
+      "rank_off": 25,
+      "rank_def": 25,
+      "rank_st": 6
+    },
+    {
+      "abbr": "DEN",
+      "n": 1,
+      "raw": {
+        "off_ppg": 10.0,
+        "def_ppg": 31.0,
+        "st_ret_td": 0,
+        "st_fg_pct": 100.0,
+        "st_fgm": 1,
+        "st_fga": 1,
+        "st_fg_pct_used": 100.0,
+        "st_comp": 1.81
+      },
+      "pillars": {
+        "off": -12.0,
+        "def": -12.0,
+        "st": -0.87
+      },
+      "composite": -11.65,
+      "composite_od_only": -12.0,
+      "games": [
+        {
+          "ptsFor": 10.0,
+          "ptsAgainst": 31.0,
+          "week": 1,
+          "opp": "KC",
+          "ha": "A"
+        }
+      ],
+      "rank": 32,
+      "rank_off": 26,
+      "rank_def": 26,
+      "rank_st": 7
+    }
+  ]
+}
