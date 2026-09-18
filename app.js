@@ -1725,6 +1725,7 @@ let injuryPlayerByTeam = null; // abbr → Map(normName → {ovr?, grade?, snaps
 let injuryPlayerGlobal = null; // Map(normName → {ovr?, grade?, snaps?, sources[]})
 let notesSeed = null;  // optional ./data/profile-notes.json; null if missing
 let ticketsSeed = null; // optional ./data/tickets-2026.json; null if missing
+let modelAtsData = null; // ./data/model-ats-2026.json — model ATS at close (not tickets)
 let weatherScale = null; // from ./data/weather-scale.json
 let coachData = null; // from ./data/coaches-2026.json; null if missing → coach_term 0
 let prepData = null; // from ./data/coach-prep-2026.json; null if missing → prep_net 0
@@ -2706,6 +2707,91 @@ function renderPlaybook() {
       </dl>
     </article>
   `).join("");
+}
+
+
+/* ---------- model ATS at close (not tickets) ---------- */
+
+function fmtModelAtsSpread(n) {
+  if (n === null || n === undefined || Number.isNaN(Number(n))) return "—";
+  const v = Number(n);
+  if (Math.abs(v) < 1e-9) return "PK";
+  const sign = v < 0 ? "−" : "+";
+  const body = String(Math.round(Math.abs(v) * 100) / 100).replace(/\.0$/, "");
+  return sign + body;
+}
+
+function modelAtsRecordClass(rec) {
+  if (!rec || !rec.n) return "";
+  if (rec.w > rec.l) return "up";
+  if (rec.w < rec.l) return "down";
+  return "";
+}
+
+function renderModelAts() {
+  const seasonEl = document.getElementById("model-ats-season");
+  const weekEl = document.getElementById("model-ats-week");
+  const gapEl = document.getElementById("model-ats-gap");
+  const body = document.getElementById("model-ats-body");
+  const empty = document.getElementById("model-ats-empty");
+  const table = document.getElementById("model-ats-table");
+  if (!seasonEl || !body) return;
+
+  if (!modelAtsData || !Array.isArray(modelAtsData.games) || !modelAtsData.games.length) {
+    seasonEl.textContent = "—";
+    seasonEl.className = "";
+    if (weekEl) { weekEl.textContent = "—"; weekEl.className = ""; }
+    if (gapEl) gapEl.textContent = "";
+    body.innerHTML = "";
+    if (empty) empty.hidden = false;
+    if (table) table.hidden = true;
+    return;
+  }
+
+  const seasonRec = modelAtsData.season_record || { text: "—", w: 0, l: 0, p: 0, n: 0 };
+  seasonEl.textContent = seasonRec.text || "—";
+  seasonEl.className = modelAtsRecordClass(seasonRec);
+
+  const weekBlock = (modelAtsData.weeks || []).find((w) => Number(w.week) === Number(currentWeek));
+  const weekRec = weekBlock && weekBlock.record ? weekBlock.record : null;
+  if (weekEl) {
+    weekEl.textContent = weekRec && weekRec.n ? weekRec.text : "—";
+    weekEl.className = modelAtsRecordClass(weekRec);
+  }
+
+  const cov = modelAtsData.coverage || {};
+  const ungraded = Array.isArray(cov.ungraded_final_no_model) ? cov.ungraded_final_no_model.length : 0;
+  if (gapEl) {
+    const bits = [];
+    bits.push(modelAtsData.games.length + " graded");
+    if (ungraded) bits.push(ungraded + " finals missing model line (not invented)");
+    gapEl.textContent = bits.join(" · ");
+  }
+
+  const games = [...modelAtsData.games].sort((a, b) => {
+    const aw = Number(a.week) === Number(currentWeek) ? 0 : 1;
+    const bw = Number(b.week) === Number(currentWeek) ? 0 : 1;
+    if (aw !== bw) return aw - bw;
+    return (Number(a.week) - Number(b.week)) || String(a.game).localeCompare(String(b.game));
+  });
+
+  body.innerHTML = games.map((g) => {
+    const res = String(g.result || "").toUpperCase();
+    const resClass = res === "W" ? "result-w" : res === "L" ? "result-l" : "result-p";
+    const side = g.side_team || (g.side === "push" ? "—" : (g.side || "—"));
+    const isWeek = Number(g.week) === Number(currentWeek);
+    return `<tr class="${isWeek ? "is-week" : ""}">
+      <td class="num">${esc(String(g.week))}</td>
+      <td>${esc(g.game || ((g.away || "") + "@" + (g.home || "")))}</td>
+      <td class="num mono">${esc(fmtModelAtsSpread(g.model_home_spread))}</td>
+      <td class="num mono">${esc(fmtModelAtsSpread(g.close_spread))}</td>
+      <td>${esc(String(side))}</td>
+      <td class="${resClass}">${esc(res || "—")}</td>
+    </tr>`;
+  }).join("");
+
+  if (empty) empty.hidden = true;
+  if (table) table.hidden = false;
 }
 
 /* ---------- ledger ---------- */
@@ -5296,6 +5382,7 @@ function render() {
   renderKPIs();
   renderCard();
   renderLedger();
+  renderModelAts();
   renderTeams();
   renderSchedule();
   renderResiduals();
@@ -6062,8 +6149,23 @@ function bind() {
   }
 }
 
+
+async function loadModelAts() {
+  try {
+    const res = await fetch("./data/model-ats-2026.json?v=mats1");
+    if (!res.ok) throw new Error(String(res.status));
+    const data = await res.json();
+    if (!data || !Array.isArray(data.games)) throw new Error("bad model-ats");
+    modelAtsData = data;
+  } catch (err) {
+    modelAtsData = null;
+    console.warn("model-ats-2026.json", err);
+  }
+}
+
 async function bootNfl() {
   await loadNfl();
+  await loadModelAts();
   if (pendingTeam) openTeamProfile(pendingTeam);
   if (pendingGame) openGameSheet(pendingGame, { silent: true });
   fromHash();

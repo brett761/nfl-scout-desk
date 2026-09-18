@@ -1,0 +1,297 @@
+{
+  "season": 2026,
+  "pulled": "2026-09-18T16:33:28Z",
+  "label": "Model ATS at the closing spread (not tickets)",
+  "sign_convention": "home-centric spreads (neg = home favorite); actual_home_margin = home_score \u2212 away_score",
+  "formula": {
+    "edge": "close_spread \u2212 model_home_spread",
+    "side": "edge > 0 \u2192 home at close; edge < 0 \u2192 away at close; edge == 0 \u2192 push / no play",
+    "home_grade": "WIN if actual_home_margin + close_spread > 0; LOSS if < 0; PUSH if == 0",
+    "away_grade": "WIN if actual_home_margin + close_spread < 0; LOSS if > 0; PUSH if == 0"
+  },
+  "ticket_required": false,
+  "season_record": {
+    "w": 2,
+    "l": 1,
+    "p": 0,
+    "text": "2\u20131\u20130",
+    "n": 3
+  },
+  "weeks": [
+    {
+      "week": 1,
+      "record": {
+        "w": 1,
+        "l": 1,
+        "p": 0,
+        "text": "1\u20131\u20130",
+        "n": 2
+      },
+      "games": [
+        {
+          "season": 2026,
+          "week": 1,
+          "game": "DEN@KC",
+          "away": "DEN",
+          "home": "KC",
+          "espn_id": "401872931",
+          "status": "FINAL",
+          "model_home_spread": 2.87,
+          "model_source": "postmortem_week",
+          "close_spread": -2.5,
+          "close_source": "postmortem_week",
+          "actual_home_margin": 21.0,
+          "away_score": 10,
+          "home_score": 31,
+          "edge": -5.37,
+          "side": "away",
+          "side_team": "DEN",
+          "result": "L",
+          "ticket_required": false
+        },
+        {
+          "season": 2026,
+          "week": 1,
+          "game": "NE@SEA",
+          "away": "NE",
+          "home": "SEA",
+          "espn_id": "401872656",
+          "status": "FINAL",
+          "model_home_spread": -0.2,
+          "model_source": "postmortem_week",
+          "close_spread": -3.5,
+          "close_source": "postmortem_week",
+          "actual_home_margin": 3.0,
+          "away_score": 10,
+          "home_score": 13,
+          "edge": -3.3,
+          "side": "away",
+          "side_team": "NE",
+          "result": "W",
+          "ticket_required": false
+        }
+      ]
+    },
+    {
+      "week": 2,
+      "record": {
+        "w": 1,
+        "l": 0,
+        "p": 0,
+        "text": "1\u20130\u20130",
+        "n": 1
+      },
+      "games": [
+        {
+          "season": 2026,
+          "week": 2,
+          "game": "DET@BUF",
+          "away": "DET",
+          "home": "BUF",
+          "espn_id": "401872932",
+          "status": "FINAL",
+          "model_home_spread": -9.28,
+          "model_source": "lock:2026-w02-det-buf.json",
+          "close_spread": -4.5,
+          "close_source": "lock.close_at_lock:2026-w02-det-buf.json",
+          "actual_home_margin": 10.0,
+          "away_score": 31,
+          "home_score": 41,
+          "edge": 4.78,
+          "side": "home",
+          "side_team": "BUF",
+          "result": "W",
+          "ticket_required": false
+        }
+      ]
+    }
+  ],
+  "games": [
+    {
+      "season": 2026,
+      "week": 1,
+      "game": "DEN@KC",
+      "away": "DEN",
+      "home": "KC",
+      "espn_id": "401872931",
+      "status": "FINAL",
+      "model_home_spread": 2.87,
+      "model_source": "postmortem_week",
+      "close_spread": -2.5,
+      "close_source": "postmortem_week",
+      "actual_home_margin": 21.0,
+      "away_score": 10,
+      "home_score": 31,
+      "edge": -5.37,
+      "side": "away",
+      "side_team": "DEN",
+      "result": "L",
+      "ticket_required": false
+    },
+    {
+      "season": 2026,
+      "week": 1,
+      "game": "NE@SEA",
+      "away": "NE",
+      "home": "SEA",
+      "espn_id": "401872656",
+      "status": "FINAL",
+      "model_home_spread": -0.2,
+      "model_source": "postmortem_week",
+      "close_spread": -3.5,
+      "close_source": "postmortem_week",
+      "actual_home_margin": 3.0,
+      "away_score": 10,
+      "home_score": 13,
+      "edge": -3.3,
+      "side": "away",
+      "side_team": "NE",
+      "result": "W",
+      "ticket_required": false
+    },
+    {
+      "season": 2026,
+      "week": 2,
+      "game": "DET@BUF",
+      "away": "DET",
+      "home": "BUF",
+      "espn_id": "401872932",
+      "status": "FINAL",
+      "model_home_spread": -9.28,
+      "model_source": "lock:2026-w02-det-buf.json",
+      "close_spread": -4.5,
+      "close_source": "lock.close_at_lock:2026-w02-det-buf.json",
+      "actual_home_margin": 10.0,
+      "away_score": 31,
+      "home_score": 41,
+      "edge": 4.78,
+      "side": "home",
+      "side_team": "BUF",
+      "result": "W",
+      "ticket_required": false
+    }
+  ],
+  "coverage": {
+    "weeks_scanned": [
+      "2026-W01.json"
+    ],
+    "ungraded_final_no_model": [
+      {
+        "week": 1,
+        "game": "SF@LAR",
+        "espn_id": "401872657",
+        "reason": "missing_model_home_spread",
+        "had_lock": true,
+        "lock_model": null
+      },
+      {
+        "week": 1,
+        "game": "TB@CIN",
+        "espn_id": "401872925",
+        "reason": "missing_model_home_spread",
+        "had_lock": false,
+        "lock_model": null
+      },
+      {
+        "week": 1,
+        "game": "NO@DET",
+        "espn_id": "401872923",
+        "reason": "missing_model_home_spread",
+        "had_lock": false,
+        "lock_model": null
+      },
+      {
+        "week": 1,
+        "game": "NYJ@TEN",
+        "espn_id": "401872924",
+        "reason": "missing_model_home_spread",
+        "had_lock": false,
+        "lock_model": null
+      },
+      {
+        "week": 1,
+        "game": "BAL@IND",
+        "espn_id": "401872659",
+        "reason": "missing_model_home_spread",
+        "had_lock": false,
+        "lock_model": null
+      },
+      {
+        "week": 1,
+        "game": "ATL@PIT",
+        "espn_id": "401872658",
+        "reason": "missing_model_home_spread",
+        "had_lock": false,
+        "lock_model": null
+      },
+      {
+        "week": 1,
+        "game": "CHI@CAR",
+        "espn_id": "401872661",
+        "reason": "missing_model_home_spread",
+        "had_lock": false,
+        "lock_model": null
+      },
+      {
+        "week": 1,
+        "game": "CLE@JAX",
+        "espn_id": "401872922",
+        "reason": "missing_model_home_spread",
+        "had_lock": false,
+        "lock_model": null
+      },
+      {
+        "week": 1,
+        "game": "BUF@HOU",
+        "espn_id": "401872660",
+        "reason": "missing_model_home_spread",
+        "had_lock": false,
+        "lock_model": null
+      },
+      {
+        "week": 1,
+        "game": "MIA@LV",
+        "espn_id": "401872928",
+        "reason": "missing_model_home_spread",
+        "had_lock": false,
+        "lock_model": null
+      },
+      {
+        "week": 1,
+        "game": "GB@MIN",
+        "espn_id": "401872927",
+        "reason": "missing_model_home_spread",
+        "had_lock": false,
+        "lock_model": null
+      },
+      {
+        "week": 1,
+        "game": "WSH@PHI",
+        "espn_id": "401872929",
+        "reason": "missing_model_home_spread",
+        "had_lock": false,
+        "lock_model": null
+      },
+      {
+        "week": 1,
+        "game": "ARI@LAC",
+        "espn_id": "401872926",
+        "reason": "missing_model_home_spread",
+        "had_lock": false,
+        "lock_model": null
+      },
+      {
+        "week": 1,
+        "game": "DAL@NYG",
+        "espn_id": "401872930",
+        "reason": "missing_model_home_spread",
+        "had_lock": false,
+        "lock_model": null
+      }
+    ],
+    "notes": [
+      "W1 postmortem rows: only games with model_home_spread are graded (3 graded season-wide; 14 final games left ungraded \u2014 do not invent lines).",
+      "W2 TNF DET@BUF included from lock + nfl-2026 FINAL score when week postmortem file is not yet written."
+    ]
+  }
+}

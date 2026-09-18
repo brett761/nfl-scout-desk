@@ -2735,3 +2735,61 @@ button.sked-venue {
   margin-left: 4px;
 }
 .bets-tally { margin: 0 0 18px; }
+
+
+/* Model ATS at close (Bets) — separate from ticket P/L */
+.model-ats {
+  margin: 0 0 28px;
+  padding: 18px 18px 8px;
+  background: var(--charcoal);
+  border: 1px solid var(--slate-dim);
+  border-left: 3px solid var(--copper);
+}
+.model-ats-head { margin: 0 0 12px; }
+.model-ats-head h2 {
+  font-family: "Barlow Condensed", "Oswald", sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  font-size: clamp(22px, 3vw, 28px);
+  margin: 4px 0 8px;
+  color: var(--ink, #EBEEF0);
+}
+.model-ats-lede {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+  max-width: 62ch;
+}
+.model-ats-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  align-items: baseline;
+  margin: 0 0 14px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.model-ats-strip em {
+  font-style: normal;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 11px;
+  color: var(--muted);
+  margin-right: 6px;
+}
+.model-ats-strip strong {
+  font-weight: 700;
+  color: var(--ink, #EBEEF0);
+  font-variant-numeric: tabular-nums;
+}
+.model-ats-strip strong.up { color: var(--process); }
+.model-ats-strip strong.down { color: var(--lose); }
+.model-ats-gap {
+  font-size: 12px;
+  color: var(--slate);
+}
+.model-ats-table-wrap { margin: 0 0 8px; }
+.model-ats-table td.result-w { color: var(--process); font-weight: 700; }
+.model-ats-table td.result-l { color: var(--lose); font-weight: 700; }
+.model-ats-table td.result-p { color: var(--muted); }
+.model-ats-table tr.is-week { background: rgba(212, 160, 90, 0.06); }

@@ -4,6 +4,7 @@ Primary DV: absolute error |desk projected margin − actual margin|.
 ATS and CLV are secondary. Ablation starts after multiweek sample (~W6–8).
 
 - `locks/` — freeze model line + feature stack at each lock window (before kick)
+- `../model-ats-2026.json` — model ATS at the closing spread for every final with a model line (rebuild: `python3 data/build_model_ats_2026.py`). Not tickets.
 - `weeks/YYYY-Wnn.json` + `.md` — weekly grade + full report
 - `cumulative/features.json` — running feature evidence
 - `cumulative/learning-log.md` — belief history

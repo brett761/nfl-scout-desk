@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Geist+Mono:wght@400;500;600&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=tix1">
+  <link rel="stylesheet" href="styles.css?v=mats1">
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
@@ -340,6 +340,36 @@
         <p class="lede">The grade is whether our one-game bets beat the sportsbook’s last number. Size them in units. Parlays stay visible and tagged as fun. Sample rows are examples and do not count.</p>
       </div>
       <div class="bets-tally" id="bets-tally" hidden></div>
+
+      <section class="model-ats" id="model-ats" aria-labelledby="model-ats-title">
+        <div class="model-ats-head">
+          <p class="eyebrow">Model ATS at the close · not tickets</p>
+          <h2 id="model-ats-title">Model vs close</h2>
+          <p class="lede model-ats-lede">Every final game with a locked model line, graded against the closing home spread — whether or not we bet it. Separate from ticket / process P/L.</p>
+        </div>
+        <div class="model-ats-strip" id="model-ats-strip" role="status">
+          <span><em>Season</em> <strong id="model-ats-season">—</strong></span>
+          <span><em>This week</em> <strong id="model-ats-week">—</strong></span>
+          <span class="model-ats-gap" id="model-ats-gap"></span>
+        </div>
+        <div class="table-wrap model-ats-table-wrap">
+          <table class="ledger model-ats-table" id="model-ats-table">
+            <thead>
+              <tr>
+                <th>wk</th>
+                <th>game</th>
+                <th>our line</th>
+                <th>close</th>
+                <th>side</th>
+                <th>result</th>
+              </tr>
+            </thead>
+            <tbody id="model-ats-body"></tbody>
+          </table>
+        </div>
+        <p class="table-empty" id="model-ats-empty" hidden>No graded model-vs-close games yet.</p>
+      </section>
+
       <div class="ticket-toolbar">
         <button type="button" class="btn btn-fill" id="btn-add">Log ticket</button>
         <button type="button" class="btn" id="btn-pass">Record pass</button>
@@ -545,6 +575,6 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
-  <script src="app.js?v=w2sun1"></script>
+  <script src="app.js?v=mats1"></script>
 </body>
 </html>
