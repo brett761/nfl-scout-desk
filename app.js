@@ -529,7 +529,7 @@ function normAbbr(abbr) {
      QB tier wins over All-Pro. Floor 0.2 cannot exceed the tier cap.
      impact_source: madden|pff|manual (not madden+pff max).
      Precedence: manual → auto match → seed impact → pos_base.
-     Manual overrides are NOT clamped (Darnold 3.9 / Murray 3.5 / Burrow 1.2).
+     Manual overrides are NOT clamped (standing: Darnold 1.5 / Murray 0.5 / Burrow 0.5).
      injury_term = clamp(sum of ON rows, −cap_team, 0)
    Effective = algorithm + FA + draft + madden + pff + pff_ytd + SOS + return + injury + adjust + context
    = algorithm_base + fa_term + draft_term + madden_term + pff_term + pff_ytd_term + sos_term + return_term + injury_term + user_adjust + sum of active (on) context. Preseason OVER is not in this sum.
@@ -1003,7 +1003,7 @@ function injuryRowPts(pos, status, impact, opts) {
   const base = (imp != null) ? imp : injuryPosBase(pos);
   const raw = -round2(base * mult);
   // Manual overrides still win and are NOT clamped to the auto tier caps
-  // (Darnold 3.9 / Murray 3.5 / Burrow 1.2 stay as stored).
+  // (standing seed manuals: Darnold 1.5 / Murray 0.5 / Burrow 0.5 stay as stored).
   if (opts && opts.manual) return Math.min(0, raw);
   const cap = injuryCapForPlayer(opts && opts.name, pos);
   return Math.max(-cap, Math.min(0, raw));
@@ -1165,10 +1165,10 @@ function seedInjuryRow(raw, abbr, prior) {
   const priorManual = !!(prior && prior.impact_source === "manual");
   let impact = null;
   let impact_source = null;
-  if (priorManual) {
-    impact = prior.impact != null && prior.impact !== "" ? num(prior.impact) : seedImpact;
-    impact_source = "manual";
-  } else if (seedManual) {
+  // Seed is source of truth on a newer pull: standing manuals in injury-2026.json
+  // win over a stale localStorage manual (Darnold 1.5 / Murray 0.5 / Burrow 0.5).
+  // Clearing impact_source on the seed (Blake Miller) lets Madden/PFF auto run.
+  if (seedManual) {
     impact = seedImpact;
     impact_source = "manual";
   } else {
@@ -1178,6 +1178,9 @@ function seedInjuryRow(raw, abbr, prior) {
       impact_source = auto.source;
     } else if (seedImpact != null) {
       impact = seedImpact;
+    } else if (priorManual) {
+      impact = prior.impact != null && prior.impact !== "" ? num(prior.impact) : null;
+      impact_source = "manual";
     }
   }
   return {
@@ -2259,7 +2262,7 @@ async function loadNfl() {
   const staffAtsReq = fetch("./data/staff-ats-2026.json");
   const scaleReq = fetch("./data/injury-scale.json?v=injcap1");
   const allProReq = fetch("./data/allpro-last3.json?v=injcap1");
-  const injReq = fetch("./data/injury-2026.json?v=w2sat19");
+  const injReq = fetch("./data/injury-2026.json?v=injcap1");
   const wxReq = fetch("./data/weather-scale.json");
   const coachReq = fetch("./data/coaches-2026.json");
   const prepReq = fetch("./data/coach-prep-2026.json");

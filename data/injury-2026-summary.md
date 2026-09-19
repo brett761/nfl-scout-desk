@@ -64,7 +64,7 @@ Pulled 2026-09-19 10:06 AM ET (America/New_York). Stamp `injury_pulled=2026-09-1
 - **BAL**: Madubuike/Buchanan/Tampa OUT; Flowers Doubtful.
 - **WSH**: Okonkwo + Luvu OUT at DAL.
 - **LV Brock Bowers Doubtful**; Darien Porter OUT.
-- Manual impacts preserved: CIN Joe Burrow 1.2, DET Blake Miller 0.7, MIN Kyler Murray 3.5, SEA Sam Darnold 3.9.
+- Standing manuals: SEA Sam Darnold 1.5 (QB cap), MIN Kyler Murray 0.5, CIN Joe Burrow 0.5. DET Blake Miller cleared to Madden/PFF auto under tier caps.
 - Saturday working refresh; ESPN API timestamp 2026-09-19T14:05:13Z.
 
 - **Sat deltas**: SEA Charbonnet OUT; LAR Puka Q; starter flips/clears vs Fri FINAL.
