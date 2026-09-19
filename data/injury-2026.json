@@ -1,13 +1,13 @@
 {
   "pulled": "2026-09-19a",
-  "pulled_et": "2026-09-19 10:06 AM ET (America/New_York)",
-  "phase": "WORKING-SAT",
+  "pulled_et": "2026-09-19 5:50 PM ET",
+  "phase": "WORKING-SAT manuals",
   "sources": [
     "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
     "https://www.nfl.com/injuries/",
     "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?seasontype=2&week=2&year=2026"
   ],
-  "note": "Saturday working refresh after Friday FINAL Sunday-card stamp. ESPN designations for upcoming Week 2 clubs (Sun AM/PM, SNF, MNF). Coach's-decision TNF inactives dropped. Season-long IR/PUP/NFI merged. Madden-first auto impacts; manual overrides preserved (Darnold 3.9 / Murray 3.5 / Burrow 1.2). Cap player 4.5 / team 6.0. DET@BUF finished \u2014 weekly leftovers less critical.",
+  "note": "Saturday working refresh after Friday FINAL Sunday-card stamp. ESPN designations for upcoming Week 2 clubs (Sun AM/PM, SNF, MNF). Coach's-decision TNF inactives dropped. Season-long IR/PUP/NFI merged. Madden-first auto impacts; manual overrides preserved (Darnold 3.9 / Murray 3.5 / Burrow 1.2). Cap player 4.5 / team 6.0. DET@BUF finished \u2014 weekly leftovers less critical. | Manuals 2026-09-19: Darnold 1.5, Murray 0.5, Burrow 0.5; Blake Miller cleared to auto.",
   "espn_timestamp": "2026-09-19T14:05:13Z",
   "teams": {
     "ARI": [
@@ -398,7 +398,7 @@
         "note": "Burrow (back) is listed as questionable for Sunday's game at Houston, but Bengals coach Zac Taylor said Friday that the quarterback is good to go, Paul Dehner Jr. of The Athletic reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
-        "impact": 1.2,
+        "impact": 0.5,
         "impact_source": "manual"
       },
       {
@@ -627,9 +627,7 @@
         "status": "OUT",
         "note": "Miller (knee) has been ruled out for Thursday night's contest in Buffalo.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.7,
-        "impact_source": "manual"
+        "on": true
       },
       {
         "name": "Christian Mahogany",
@@ -1154,7 +1152,7 @@
         "note": "Murray (concussion) won't play in Sunday's contest at Chicago.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
-        "impact": 3.5,
+        "impact": 0.5,
         "impact_source": "manual"
       },
       {
@@ -1550,7 +1548,7 @@
         "note": "Coach Mike Macdonald said Darnold (glute) won't play in Sunday's game at Arizona, Curtis Crabtree of Fox 13 Seattle reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
-        "impact": 3.9,
+        "impact": 1.5,
         "impact_source": "manual"
       }
     ],

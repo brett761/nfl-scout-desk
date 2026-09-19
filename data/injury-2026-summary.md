@@ -70,3 +70,9 @@ Pulled 2026-09-19 10:06 AM ET (America/New_York). Stamp `injury_pulled=2026-09-1
 - **Sat deltas**: SEA Charbonnet OUT; LAR Puka Q; starter flips/clears vs Fri FINAL.
 
 Sources: ESPN injuries API; nfl.com/injuries practice report; Week 2 scoreboard.
+
+## Manual overrides (2026-09-19)
+- Sam Darnold: 1.5 (QB cap)
+- Kyler Murray: 0.5
+- Joe Burrow: 0.5
+- Blake Miller: cleared → auto
