@@ -1193,14 +1193,15 @@ function seedInjuryRow(raw, abbr, prior) {
   };
 }
 
-/** Re-apply Madden/PFF auto caps on existing profiles so a scale change lands without a new ESPN pull. Manuals stay as stored. */
+/** Re-apply Madden/PFF auto caps on existing profiles so a scale change lands without a new ESPN pull. Walk raw stored rows (not getProfile) so impact_source survives. Manuals stay as stored. */
 function recomputeAutoInjuryImpacts() {
   if (!profiles || typeof profiles !== "object") return;
   let changed = false;
   for (const key of Object.keys(profiles)) {
     const a = normAbbr(key);
-    const p = getProfile(a);
-    const rows = Array.isArray(p.injuries) ? p.injuries : [];
+    const stored = profiles[a];
+    if (!stored || typeof stored !== "object") continue;
+    const rows = Array.isArray(stored.injuries) ? stored.injuries : [];
     if (!rows.length) continue;
     let rowChanged = false;
     for (const row of rows) {
@@ -1212,7 +1213,7 @@ function recomputeAutoInjuryImpacts() {
       if (row.impact !== prevImp || row.impact_source !== prevSrc || row.pts !== prevPts) rowChanged = true;
     }
     if (rowChanged) {
-      profiles[a] = { ...p, injuries: rows };
+      stored.injuries = rows;
       changed = true;
     }
   }
@@ -1897,6 +1898,8 @@ function normalizeProfile(p) {
       name: typeof r.name === "string" ? r.name : "",
       pos: r.pos || "DEPTH",
       status: r.status || "QUESTIONABLE",
+      impact: r.impact != null && r.impact !== "" ? num(r.impact) : null,
+      impact_source: typeof r.impact_source === "string" && r.impact_source ? r.impact_source : null,
       pts: num(r.pts) ?? 0,
       on: r.on !== false,
       custom: r.custom === true,
