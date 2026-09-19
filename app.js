@@ -520,13 +520,16 @@ function normAbbr(abbr) {
    user_adjust = optional override on top of the algorithm (old "base").
    Injuries are a weekly point value. They do NOT taper with the prior (N=3).
    They stay until the row is off or deleted.
-     row_pts = −round2((impact ?? pos_base) * status_mult), clamp [−cap_player, 0]
+     row_pts = −round2((impact ?? pos_base) * status_mult); auto clamp [−cap_tier, 0]
      impact = full-Out surplus vs replacement (spread pts). Prefer auto from
      Madden/PFF name match (Madden-first): if Madden ovr matched use
      pos_base + (ovr−league_ovr)/ovr_per_point; else if PFF grade matched use
-     pos_base + (grade−league_grade)/grade_per_point. auto = clamp(max(0.2, raw), 0.2, cap_player).
+     pos_base + (grade−league_grade)/grade_per_point. auto = clamp(max(0.2, raw)
+     to the player tier cap): QB1/QB 1.5, AP All-Pro 2023–25 0.5, other 0.25.
+     QB tier wins over All-Pro. Floor 0.2 cannot exceed the tier cap.
      impact_source: madden|pff|manual (not madden+pff max).
      Precedence: manual → auto match → seed impact → pos_base.
+     Manual overrides are NOT clamped (Darnold 3.9 / Murray 3.5 / Burrow 1.2).
      injury_term = clamp(sum of ON rows, −cap_team, 0)
    Effective = algorithm + FA + draft + madden + pff + pff_ytd + SOS + return + injury + adjust + context
    = algorithm_base + fa_term + draft_term + madden_term + pff_term + pff_ytd_term + sos_term + return_term + injury_term + user_adjust + sum of active (on) context. Preseason OVER is not in this sum.
@@ -957,8 +960,23 @@ function round2(n) {
   return Math.round(Number(n) * 100) / 100;
 }
 
-function injuryCapPlayer() {
-  return (injuryScale && num(injuryScale.cap_player)) ?? 4.5;
+function isStartingQbPos(pos) {
+  const p = String(pos || "").toUpperCase();
+  return p === "QB1" || p === "QB";
+}
+
+function isAllProName(name) {
+  if (!allProNameSet || !allProNameSet.size) return false;
+  const key = normInjuryName(name);
+  return !!(key && allProNameSet.has(key));
+}
+
+/** Full-Out auto-impact ceiling. QB tier wins over All-Pro, then All-Pro, then other. */
+function injuryCapForPlayer(name, pos) {
+  const scale = injuryScale || {};
+  if (isStartingQbPos(pos)) return num(scale.cap_player_qb) ?? 1.5;
+  if (isAllProName(name)) return num(scale.cap_player_allpro) ?? 0.5;
+  return num(scale.cap_player_other) ?? 0.25;
 }
 
 function injuryCapTeam() {
@@ -979,14 +997,15 @@ function injuryStatusKeys() {
   return ["IR", "OUT", "PUP", "NFI", "DOUBTFUL", "QUESTIONABLE", "PROBABLE"];
 }
 
-function injuryRowPts(pos, status, impact) {
+function injuryRowPts(pos, status, impact, opts) {
   const mult = (injuryScale && injuryScale.status && num(injuryScale.status[status])) || 0;
   const imp = num(impact);
-  const base = (imp != null)
-    ? imp
-    : ((injuryScale && injuryScale.positions && num(injuryScale.positions[pos])) || 0);
+  const base = (imp != null) ? imp : injuryPosBase(pos);
   const raw = -round2(base * mult);
-  const cap = injuryCapPlayer();
+  // Manual overrides still win and are NOT clamped to the auto tier caps
+  // (Darnold 3.9 / Murray 3.5 / Burrow 1.2 stay as stored).
+  if (opts && opts.manual) return Math.min(0, raw);
+  const cap = injuryCapForPlayer(opts && opts.name, pos);
   return Math.max(-cap, Math.min(0, raw));
 }
 
@@ -1064,7 +1083,36 @@ function lookupInjuryPlayer(abbr, name) {
 }
 
 function injuryPosBase(pos) {
-  return (injuryScale && injuryScale.positions && num(injuryScale.positions[pos])) || 0;
+  const positions = injuryScale && injuryScale.positions;
+  if (!positions) return 0;
+  const key = String(pos || "");
+  const direct = num(positions[key]);
+  if (direct != null) return direct;
+  if (isStartingQbPos(key)) {
+    const qb1 = num(positions.QB1);
+    if (qb1 != null) return qb1;
+  }
+  return 0;
+}
+
+function buildAllProNameSet(data) {
+  const set = new Set();
+  const players = data && Array.isArray(data.players) ? data.players : [];
+  for (const p of players) {
+    if (!p) continue;
+    const names = [];
+    if (typeof p.name === "string") names.push(p.name);
+    if (Array.isArray(p.names)) {
+      for (const n of p.names) {
+        if (typeof n === "string") names.push(n);
+      }
+    }
+    for (const n of names) {
+      const key = normInjuryName(n);
+      if (key) set.add(key);
+    }
+  }
+  return set;
 }
 
 /** Auto full-Out impact from Madden/PFF name match (Madden-first), or null if neither matches. */
@@ -1088,15 +1136,16 @@ function injuryAutoImpact(abbr, name, pos) {
     source = "pff";
   }
   if (raw == null || !source) return null;
-  const cap = injuryCapPlayer();
-  const impact = Math.max(0.2, Math.min(cap, Math.max(0.2, raw)));
+  const cap = injuryCapForPlayer(name, pos);
+  const floor = Math.min(0.2, cap);
+  const impact = Math.max(floor, Math.min(cap, raw));
   return { impact: round2(impact), source, best: round2(raw), hit };
 }
 
 function applyInjuryImpactFields(row, abbr) {
   if (!row) return row;
   if (row.impact_source === "manual") {
-    row.pts = injuryRowPts(row.pos, row.status, row.impact);
+    row.pts = injuryRowPts(row.pos, row.status, row.impact, { name: row.name, manual: true });
     return row;
   }
   const auto = injuryAutoImpact(abbr, row.name, row.pos);
@@ -1104,7 +1153,7 @@ function applyInjuryImpactFields(row, abbr) {
     row.impact = auto.impact;
     row.impact_source = auto.source;
   }
-  row.pts = injuryRowPts(row.pos, row.status, row.impact);
+  row.pts = injuryRowPts(row.pos, row.status, row.impact, { name: row.name, manual: false });
   return row;
 }
 
@@ -1138,10 +1187,36 @@ function seedInjuryRow(raw, abbr, prior) {
     status,
     impact,
     impact_source,
-    pts: injuryRowPts(pos, status, impact),
+    pts: injuryRowPts(pos, status, impact, { name: raw && raw.name, manual: impact_source === "manual" }),
     on: seedOnFlag(status, raw),
     custom: false,
   };
+}
+
+/** Re-apply Madden/PFF auto caps on existing profiles so a scale change lands without a new ESPN pull. Manuals stay as stored. */
+function recomputeAutoInjuryImpacts() {
+  if (!profiles || typeof profiles !== "object") return;
+  let changed = false;
+  for (const key of Object.keys(profiles)) {
+    const a = normAbbr(key);
+    const p = getProfile(a);
+    const rows = Array.isArray(p.injuries) ? p.injuries : [];
+    if (!rows.length) continue;
+    let rowChanged = false;
+    for (const row of rows) {
+      if (!row || row.custom === true) continue;
+      const prevImp = row.impact;
+      const prevSrc = row.impact_source;
+      const prevPts = row.pts;
+      applyInjuryImpactFields(row, a);
+      if (row.impact !== prevImp || row.impact_source !== prevSrc || row.pts !== prevPts) rowChanged = true;
+    }
+    if (rowChanged) {
+      profiles[a] = { ...p, injuries: rows };
+      changed = true;
+    }
+  }
+  if (changed) saveProfiles();
 }
 
 
@@ -1722,6 +1797,8 @@ let staffData = null; // { clubs } from ./data/staff-2026.json; OC/DC/ST researc
 let staffAtsData = null; // { clubs } last3 + 2026 ATS; not a line
 let staffOpenAbbr = null;
 let injuryScale = null; // from ./data/injury-scale.json
+let allProLast3 = null; // from ./data/allpro-last3.json; AP 1st+2nd 2023–2025
+let allProNameSet = null; // Set of normInjuryName keys from name + names[]
 let injurySeed = null;  // optional ./data/injury-2026.json; null if missing
 let injuryPlayerByTeam = null; // abbr → Map(normName → {ovr?, grade?, snaps?, sources[]})
 let injuryPlayerGlobal = null; // Map(normName → {ovr?, grade?, snaps?, sources[]})
@@ -2177,7 +2254,8 @@ async function loadNfl() {
   const returnReq = fetch("./data/return-2026.json");
   const staffReq = fetch("./data/staff-2026.json");
   const staffAtsReq = fetch("./data/staff-ats-2026.json");
-  const scaleReq = fetch("./data/injury-scale.json");
+  const scaleReq = fetch("./data/injury-scale.json?v=injcap1");
+  const allProReq = fetch("./data/allpro-last3.json?v=injcap1");
   const injReq = fetch("./data/injury-2026.json?v=w2sat19");
   const wxReq = fetch("./data/weather-scale.json");
   const coachReq = fetch("./data/coaches-2026.json");
@@ -2336,16 +2414,30 @@ async function loadNfl() {
     injuryScale = data;
   } catch (err) {
     injuryScale = {
-      pulled: "2026-08-19",
-      cap_player: 4.5,
+      pulled: "2026-09-19",
+      cap_player_qb: 1.5,
+      cap_player_allpro: 0.5,
+      cap_player_other: 0.25,
       cap_team: 6.0,
       status: { IR: 1.0, OUT: 1.0, PUP: 1.0, NFI: 1.0, DOUBTFUL: 0.75, QUESTIONABLE: 0.35, PROBABLE: 0.0 },
       positions: {
-        QB1: 3.5, LT: 2.0, RT: 1.0, EDGE1: 1.5, WR1: 1.2, CB1: 1.2, IDL: 0.8, C: 0.8,
-        RB1: 0.6, TE1: 0.5, WR2: 0.5, S: 0.5, LB: 0.5, OG: 0.5, K: 0.2, DEPTH: 0.2,
+        QB1: 1.5, LT: 0.25, RT: 0.25, EDGE1: 0.25, WR1: 0.25, CB1: 0.25, IDL: 0.25, C: 0.25,
+        RB1: 0.25, TE1: 0.25, WR2: 0.25, S: 0.25, LB: 0.25, OG: 0.25, K: 0.2, DEPTH: 0.2,
       },
     };
     console.warn("injury-scale.json", err);
+  }
+  try {
+    const res = await allProReq;
+    if (!res.ok) throw new Error(String(res.status));
+    const data = await res.json();
+    if (!data || !Array.isArray(data.players)) throw new Error("bad allpro");
+    allProLast3 = data;
+    allProNameSet = buildAllProNameSet(data);
+  } catch (err) {
+    allProLast3 = null;
+    allProNameSet = new Set();
+    console.warn("allpro-last3.json", err);
   }
   try {
     const res = await injReq;
@@ -2359,6 +2451,7 @@ async function loadNfl() {
   }
   buildInjuryPlayerIndex();
   seedInjuriesIfNeeded();
+  recomputeAutoInjuryImpacts();
   try {
     const res = await fetch("./data/profile-notes.json");
     if (!res.ok) throw new Error(String(res.status));
@@ -6140,7 +6233,7 @@ function bind() {
         status,
         impact: null,
         impact_source: null,
-        pts: injuryRowPts(pos, status, null),
+        pts: injuryRowPts(pos, status, null, { name: "", manual: false }),
         on: false,
         custom: false,
       });
@@ -6214,7 +6307,7 @@ function bind() {
         row.impact_source = null;
         applyInjuryImpactFields(row, profileAbbr);
         if (row.impact == null && prevImp != null && !prevSrc) row.impact = prevImp;
-        row.pts = injuryRowPts(row.pos, row.status, row.impact);
+        row.pts = injuryRowPts(row.pos, row.status, row.impact, { name: row.name, manual: false });
         const rowEl = e.target.closest(".inj-row");
         const impInp = rowEl && rowEl.querySelector("[data-inj-impact]");
         const ptsInp = rowEl && rowEl.querySelector("[data-inj-pts]");
@@ -6241,7 +6334,7 @@ function bind() {
       row.impact = v;
       row.impact_source = "manual";
       row.custom = false;
-      row.pts = injuryRowPts(row.pos, row.status, row.impact);
+      row.pts = injuryRowPts(row.pos, row.status, row.impact, { name: row.name, manual: true });
       const rowEl = e.target.closest(".inj-row");
       const ptsInp = rowEl && rowEl.querySelector("[data-inj-pts]");
       if (ptsInp) ptsInp.value = row.pts;
@@ -6294,7 +6387,10 @@ function bind() {
           row.impact_source = null;
           applyInjuryImpactFields(row, profileAbbr);
         } else {
-          row.pts = injuryRowPts(row.pos, row.status, row.impact);
+          row.pts = injuryRowPts(row.pos, row.status, row.impact, {
+            name: row.name,
+            manual: row.impact_source === "manual",
+          });
         }
         const rowEl = e.target.closest(".inj-row");
         const ptsInp = rowEl && rowEl.querySelector("[data-inj-pts]");
