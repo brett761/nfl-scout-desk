@@ -1,57 +1,57 @@
-# 2026 NFL injuries — Scout desk Week 2 WORKING-SAT
+# 2026 NFL injuries — Scout desk Week 2 WORKING-SUN-AM
 
-Pulled 2026-09-19 10:06 AM ET (America/New_York). Stamp `injury_pulled=2026-09-19a` **WORKING-SAT** Saturday refresh (Fri FINAL base; ESPN live).
+Pulled 2026-09-20 10:18 AM ET. Stamp `injury_pulled=2026-09-20a` **WORKING-SUN-AM** Sunday AM daily refresh (Sat WORKING base; ESPN live).
 
-## Material designation flips vs Friday FINAL 2026-09-18b
+## Material designation flips vs Saturday WORKING 2026-09-19a
 
-- ARI Garrett Williams: QUESTIONABLE → OUT
-- DAL DeMarvion Overshown: QUESTIONABLE → OUT
-- DAL Malik Hooker: DOUBTFUL → OUT
-- DEN Marvin Mims Jr.: QUESTIONABLE → OUT
-- HOU Ed Ingram: QUESTIONABLE → OUT
-- HOU Jake Hummel: DOUBTFUL → OUT
-- LAC Trey Pipkins III: QUESTIONABLE → OUT
-- LAC Elijah Molden: QUESTIONABLE → OUT
-- NE Dametrious Crownover: QUESTIONABLE → OUT
-- NO Zach Wood: OUT → IR
-- SEA Ty Okada: QUESTIONABLE → OUT
-- SEA Zach Charbonnet: PUP → OUT
+- BAL T.J. Tampa: OUT → IR
+- BAL Zay Flowers: DOUBTFUL → OUT
+- GB Javon Hargrave: DOUBTFUL → OUT
+- LAR Kamren Kinchens: QUESTIONABLE → OUT
+- LAR Jordan Whittington: QUESTIONABLE → DOUBTFUL
+- LV Aidan O'Connell: QUESTIONABLE → OUT
+- MIA Ronnie Harrison Jr.: OUT → IR
+- NE Carlton Davis III: QUESTIONABLE → OUT
+- NYJ Omar Cooper Jr.: OUT → IR
+- PIT Michael Pittman Jr.: QUESTIONABLE → OUT
+- SEA Anthony Bradford: QUESTIONABLE → OUT
+- SF De'Zhaun Stribling: OUT → IR
 
 ## Team injury terms (auto Madden-first, capped −6)
 
 | Team | Term | Raw | Headliners |
 |------|-----:|----:|------------|
-| ATL | -6.00 | -10.26 | Billy Bowman Jr. OUT, Tua Tagovailoa DOUBTFUL, Michael Penix Jr. OUT |
-| BAL | -6.00 | -9.66 | T.J. Tampa OUT, Teddye Buchanan OUT, Nnamdi Madubuike OUT, Zay Flowers DOUBTFUL |
-| DET | -6.00 | -13.50 | Mekhi Wingo OUT, Ennis Rakestraw Jr. OUT, Jimmy Rolder OUT, Ahmed Hassanein OUT, Keith Abney II OUT, Blake Miller OUT |
-| GB | -6.00 | -7.76 | Warren Brinson OUT, Javon Hargrave DOUBTFUL |
-| HOU | -6.00 | -6.84 | Ed Ingram OUT, Jadeveon Clowney OUT, Jake Hummel OUT, Nico Collins OUT |
-| LAR | -6.00 | -7.31 |  |
-| NE | -6.00 | -6.70 | Dametrious Crownover OUT |
-| SEA | -6.00 | -6.18 | Ty Okada OUT, Zach Charbonnet OUT, Sam Darnold OUT |
+| ATL | -6.00 | -10.39 | Michael Penix Jr. OUT, Billy Bowman Jr. OUT, Tua Tagovailoa DOUBTFUL |
+| BAL | -6.00 | -10.37 | Zay Flowers OUT, Teddye Buchanan OUT, Nnamdi Madubuike OUT |
+| DET | -6.00 | -13.00 | Mekhi Wingo OUT, Ennis Rakestraw Jr. OUT, Jimmy Rolder OUT, Ahmed Hassanein OUT, Keith Abney II OUT, Blake Miller OUT |
+| GB | -6.00 | -7.05 | Javon Hargrave OUT, Warren Brinson OUT |
+| HOU | -6.00 | -6.84 | Ed Ingram OUT, Nico Collins OUT, Jadeveon Clowney OUT, Jake Hummel OUT |
+| LAR | -6.00 | -6.82 | Kamren Kinchens OUT, Jordan Whittington DOUBTFUL |
+| LV | -6.00 | -6.23 | Brock Bowers DOUBTFUL, Aidan O'Connell OUT, Darien Porter OUT |
+| NE | -6.00 | -8.05 | Carlton Davis III OUT, Dametrious Crownover OUT |
 | WSH | -6.00 | -7.68 | Frankie Luvu OUT, Chig Okonkwo OUT |
-| CLE | -5.47 | -5.47 | Teven Jenkins OUT, Jeremiah Owusu-Koramoah OUT |
-| MIN | -4.92 | -4.92 | Jauan Jennings OUT, Kyler Murray OUT |
+| CLE | -5.54 | -5.54 | Teven Jenkins OUT, Jeremiah Owusu-Koramoah OUT |
 | CAR | -4.61 | -4.61 | Bobby Brown III OUT |
 | PHI | -4.41 | -4.41 | Jonathan Greenard OUT |
-| LV | -3.95 | -3.95 | Aidan O'Connell QUESTIONABLE, Darien Porter OUT, Brock Bowers DOUBTFUL |
+| SEA | -4.11 | -4.11 | Sam Darnold OUT, Anthony Bradford OUT, Ty Okada OUT, Zach Charbonnet OUT |
 | DEN | -3.90 | -3.90 | Marvin Mims Jr. OUT, Jonathon Cooper OUT, Nick Gargiulo OUT |
-| NYG | -3.84 | -3.84 |  |
-| NYJ | -3.79 | -3.79 | Joseph Ossai OUT, Kene Nwangwu OUT, Minkah Fitzpatrick OUT, Omar Cooper Jr. OUT |
+| NYJ | -3.79 | -3.79 | Joseph Ossai OUT, Kene Nwangwu OUT, Minkah Fitzpatrick OUT |
 | KC | -3.37 | -3.37 | Omarr Norman-Lott OUT |
 | NO | -3.24 | -3.24 | Isaiah Stalbird DOUBTFUL |
 | LAC | -3.21 | -3.21 | Trey Pipkins III OUT, Elijah Molden OUT |
-| SF | -2.90 | -2.90 | De'Zhaun Stribling OUT |
+| SF | -2.90 | -2.90 |  |
 | TB | -2.74 | -2.74 |  |
-| CIN | -2.69 | -2.69 | Joe Burrow QUESTIONABLE |
 | ARI | -2.64 | -2.64 | Garrett Williams OUT |
 | BUF | -2.59 | -2.59 | Ar'maj Reed-Adams OUT, Jalon Kilgore OUT, Jude Bowry OUT |
-| TEN | -2.41 | -2.41 |  |
+| CIN | -2.44 | -2.44 | Joe Burrow QUESTIONABLE |
+| TEN | -2.34 | -2.34 |  |
 | IND | -2.08 | -2.08 | Ashton Dulin OUT |
-| CHI | -1.57 | -1.57 |  |
+| CHI | -2.07 | -2.07 |  |
+| MIN | -1.92 | -1.92 | Jauan Jennings OUT, Kyler Murray OUT |
 | JAX | -1.50 | -1.50 |  |
-| MIA | -1.27 | -1.27 | Ronnie Harrison Jr. OUT, Chop Robinson OUT |
-| PIT | -1.03 | -1.03 | Joey Porter Jr. OUT |
+| MIA | -1.27 | -1.27 | Chop Robinson OUT |
+| PIT | -1.22 | -1.22 | Joey Porter Jr. OUT, Michael Pittman Jr. OUT |
+| NYG | -1.16 | -1.16 |  |
 | DAL | -1.00 | -1.00 | DeMarvion Overshown OUT, Malik Hooker OUT |
 
 ## Notes
@@ -61,18 +61,13 @@ Pulled 2026-09-19 10:06 AM ET (America/New_York). Stamp `injury_pulled=2026-09-1
 - **ATL**: Tua Doubtful (oblique); Penix OUT (knee); Bowman OUT.
 - **CIN Burrow** remains QUESTIONABLE on sheet; full Friday practice + Taylor says good to go — kept Q (0.35×) not Probable.
 - **HOU**: Nico Collins OUT; Clowney OUT.
-- **BAL**: Madubuike/Buchanan/Tampa OUT; Flowers Doubtful.
+- **BAL**: Flowers upgraded OUT (hamstring); Madubuike/Buchanan OUT; Tampa → IR.
 - **WSH**: Okonkwo + Luvu OUT at DAL.
-- **LV Brock Bowers Doubtful**; Darien Porter OUT.
-- Manual impacts preserved: CIN Joe Burrow 1.2, DET Blake Miller 0.7, MIN Kyler Murray 3.5, SEA Sam Darnold 3.9.
-- Saturday working refresh; ESPN API timestamp 2026-09-19T14:05:13Z.
+- **LV Brock Bowers Doubtful**; Aidan O'Connell OUT (personal); Darien Porter OUT.
+- Manual impacts preserved: CIN Joe Burrow 0.5, MIN Kyler Murray 0.5, SEA Sam Darnold 1.5.
+- Sunday AM daily refresh; ESPN API timestamp 2026-09-20T14:16:30Z.
 
-- **Sat deltas**: SEA Charbonnet OUT; LAR Puka Q; starter flips/clears vs Fri FINAL.
+- **Sun AM gameday**: Flowers OUT (BAL); Carlton Davis OUT (NE); Pittman OUT (PIT); Hargrave OUT (GB); Bradford OUT (SEA); Kinchens OUT (LAR MNF). NYG OL/DB Qs cleared for MNF (Thomas/Mauigoa/Newsome).
+- **Sun AM deltas**: see flips list; gameday OUT upgrades + clears vs Sat WORKING.
 
 Sources: ESPN injuries API; nfl.com/injuries practice report; Week 2 scoreboard.
-
-## Manual overrides (2026-09-19)
-- Sam Darnold: 1.5 (QB cap)
-- Kyler Murray: 0.5
-- Joe Burrow: 0.5
-- Blake Miller: cleared → auto

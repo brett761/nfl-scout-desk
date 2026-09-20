@@ -2178,7 +2178,7 @@ async function loadNfl() {
   const staffReq = fetch("./data/staff-2026.json");
   const staffAtsReq = fetch("./data/staff-ats-2026.json");
   const scaleReq = fetch("./data/injury-scale.json");
-  const injReq = fetch("./data/injury-2026.json?v=w2sat19");
+  const injReq = fetch("./data/injury-2026.json?v=w2sun20");
   const wxReq = fetch("./data/weather-scale.json");
   const coachReq = fetch("./data/coaches-2026.json");
   const prepReq = fetch("./data/coach-prep-2026.json");
