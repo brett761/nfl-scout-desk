@@ -1,14 +1,14 @@
 {
-  "pulled": "2026-09-20a",
-  "pulled_et": "2026-09-20 10:18 AM ET",
-  "phase": "WORKING-SUN-AM",
+  "pulled": "2026-09-20b",
+  "pulled_et": "2026-09-20 7:11 PM ET",
+  "phase": "WORKING-SNF-PREKICK",
   "sources": [
     "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
     "https://www.nfl.com/injuries/",
     "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?seasontype=2&week=2&year=2026"
   ],
-  "note": "Sunday AM daily injury refresh. ESPN designations for remaining Week 2 (Sun AM/PM, SNF, MNF). Coach's-decision / TNF inactives dropped. Season-long IR/PUP/NFI merged. Madden-first auto; manuals preserved (Darnold 1.5 / Murray 0.5 / Burrow 0.5). Cap player 4.5 / team 6.0. DET@BUF finished.",
-  "espn_timestamp": "2026-09-20T14:16:30Z",
+  "note": "SNF pre-kick injury refresh for IND@KC only. Material: DJ Giddens Q\u2192OUT inactive; Sean McKeon Q on\u2192false (not inactive); Chris Jones Q on\u2192false (expected to play). Other clubs unchanged from 2026-09-20a WORKING-SUN-AM. Madden-first; manuals preserved. Coach's-decision depth inactives not added.",
+  "espn_timestamp": "2026-09-20T23:11:03Z",
   "teams": {
     "ARI": [
       {
@@ -848,8 +848,8 @@
       {
         "name": "DJ Giddens",
         "pos": "RB1",
-        "status": "QUESTIONABLE",
-        "note": "Giddens (knee) is listed as questionable for Sunday's game against the Chiefs.",
+        "status": "OUT",
+        "note": "Giddens (knee) inactive / OUT for Sunday night at Kansas City (ESPN gameday inactive).",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
       },
@@ -875,9 +875,9 @@
         "name": "Sean McKeon",
         "pos": "TE1",
         "status": "QUESTIONABLE",
-        "note": "questionable",
+        "note": "questionable SNF: not on IND inactives \u2192 treating as available (on=false).",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "on": false
       },
       {
         "name": "D.J. Montgomery",
@@ -911,9 +911,9 @@
         "name": "Chris Jones",
         "pos": "IDL",
         "status": "QUESTIONABLE",
-        "note": "Jones (calf) is officially listed as questionable for Sunday's game versus the Colts, Matt McMullen of the Chiefs' official site reports.",
+        "note": "Jones (calf) questionable but expected to play vs Colts (Ian Rapoport). SNF pre-kick: on=false.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
+        "on": false,
         "impact": 3.92,
         "impact_source": "madden"
       },
