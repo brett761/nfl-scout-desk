@@ -1707,6 +1707,10 @@ let lastFocus = null;
 
 let nflData = null; // { teams, games, pulled, ... } from ./data/nfl-2026.json
 let openerSnaps = []; // data/openers/*.json board snapshots (earliest per week = open street)
+let lineLogIndex = null; // data/line-log/index.json
+let lineLogCache = {}; // "2026-W02" → week payload or null
+let lineLogInflight = {};
+let lineLogChange = null; // { id, fromDay, toDay }
 let priorData = null; // { teams, ranges, weights, taper } from ./data/prior-2025.json
 let ytdStData = null; // { teams } from ./data/ytd-st-2026.json; YTD ST raw for currentRating
 let faData = null; // { teams, scoring, season } from ./data/fa-2026.json; null if missing
@@ -2486,6 +2490,16 @@ async function loadNfl() {
     vibeTeams = data;
   } catch (err) {
     vibeTeams = null;
+  }
+  try {
+    const res = await fetch("./data/line-log/index.json?v=linelog1");
+    if (!res.ok) throw new Error(String(res.status));
+    const data = await res.json();
+    if (!data || typeof data !== "object") throw new Error("bad line-log index");
+    lineLogIndex = data;
+  } catch (err) {
+    lineLogIndex = null;
+    console.warn("line-log/index.json", err);
   }
 }
 
@@ -3786,7 +3800,8 @@ function hideOverlayIfIdle() {
   const ticket = document.getElementById("sheet");
   const team = document.getElementById("team-sheet");
   const game = document.getElementById("game-sheet");
-  if ((!ticket || ticket.hidden) && (!team || team.hidden) && (!game || game.hidden)) {
+  const linelog = document.getElementById("linelog-sheet");
+  if ((!ticket || ticket.hidden) && (!team || team.hidden) && (!game || game.hidden) && (!linelog || linelog.hidden)) {
     const overlay = document.getElementById("overlay");
     if (overlay) overlay.hidden = true;
   }
@@ -4043,6 +4058,7 @@ function openGameSheet(id, opts = {}) {
   pendingGame = null;
   const ticketSheet = document.getElementById("sheet");
   if (ticketSheet && !ticketSheet.hidden) ticketSheet.hidden = true;
+  if (lineLogChange) closeLineLogSheet();
   if (profileAbbr) closeTeamSheet({ silent: true });
   if (Number(game.week) !== Number(currentWeek)) {
     currentWeek = Number(game.week);
@@ -5602,8 +5618,10 @@ function render() {
   renderKeys();
   renderVibe();
   renderStaff();
+  renderLineLog();
   syncSharpBookInputs();
   if (gameSheetId) renderGameSheet();
+  if (lineLogChange) renderLineLogSheet();
 }
 
 /* ---------- sheet ---------- */
@@ -5710,6 +5728,266 @@ function readForm() {
   });
 }
 
+/* ---------- line log ---------- */
+
+const LINELOG_DAYS = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+const LINELOG_DAY_LABEL = {
+  mon: "Mon", tue: "Tue", wed: "Wed", thu: "Thu", fri: "Fri", sat: "Sat", sun: "Sun",
+};
+
+function lineLogWeekKey(week) {
+  return "2026-W" + String(week).padStart(2, "0");
+}
+
+function lineLogWeekMeta(week) {
+  const weeks = lineLogIndex && Array.isArray(lineLogIndex.weeks) ? lineLogIndex.weeks : [];
+  return weeks.find((w) => Number(w.week) === Number(week)) || null;
+}
+
+function ensureLineLogWeek(week) {
+  const key = lineLogWeekKey(week);
+  if (key in lineLogCache || lineLogInflight[key]) return;
+  const meta = lineLogWeekMeta(week);
+  if (!meta || !meta.file) {
+    lineLogCache[key] = null;
+    return;
+  }
+  lineLogInflight[key] = true;
+  fetch("./data/line-log/" + encodeURIComponent(meta.file) + "?v=linelog1")
+    .then((res) => {
+      if (!res.ok) throw new Error(String(res.status));
+      return res.json();
+    })
+    .then((data) => {
+      if (!data || !Array.isArray(data.games)) throw new Error("bad line-log week");
+      lineLogCache[key] = data;
+    })
+    .catch((err) => {
+      lineLogCache[key] = null;
+      console.warn("line-log/" + meta.file, err);
+    })
+    .finally(() => {
+      delete lineLogInflight[key];
+      renderLineLog();
+    });
+}
+
+function lineLogSnap(game, day) {
+  const lines = game && game.lines ? game.lines : null;
+  const snap = lines ? lines[day] : null;
+  return snap && typeof snap === "object" ? snap : null;
+}
+
+function lineLogHasB(snap) {
+  return snap != null && snap.b_money != null && Number.isFinite(Number(snap.b_money));
+}
+
+function lineLogPrevFilled(game, day) {
+  const idx = LINELOG_DAYS.indexOf(day);
+  for (let i = idx - 1; i >= 0; i--) {
+    const prev = LINELOG_DAYS[i];
+    if (lineLogHasB(lineLogSnap(game, prev))) return prev;
+  }
+  return null;
+}
+
+function lineLogChangeFor(game, toDay) {
+  const list = game && Array.isArray(game.changes) ? game.changes : [];
+  return list.find((c) => c && c.to_day === toDay) || null;
+}
+
+function fmtLineLogDelta(n) {
+  const x = Number(n);
+  if (!Number.isFinite(x) || x === 0) return "0.0";
+  const sign = x > 0 ? "+" : "−";
+  return sign + Math.abs(x).toFixed(1);
+}
+
+function lineLogToward(delta, home, away) {
+  const x = Number(delta);
+  if (!Number.isFinite(x) || x === 0) return "held";
+  return x > 0 ? "toward " + away : "toward " + home;
+}
+
+function lineLogDayEt(data, day) {
+  const meta = data && data.days && data.days[day];
+  if (!meta) return LINELOG_DAY_LABEL[day] || day;
+  if (meta.et) return meta.et;
+  return (LINELOG_DAY_LABEL[day] || day) + (meta.date ? " · " + meta.date : "");
+}
+
+function renderLineLog() {
+  const board = document.getElementById("linelog-board");
+  const sel = document.getElementById("linelog-week-select");
+  const stamp = document.getElementById("linelog-stamp");
+  if (!board) return;
+
+  if (sel) {
+    const opts = [];
+    for (let w = 1; w <= 18; w++) {
+      const meta = lineLogWeekMeta(w);
+      const mark = meta ? "" : " · no log";
+      opts.push(`<option value="${w}">Week ${w}${mark}</option>`);
+    }
+    sel.innerHTML = opts.join("");
+    sel.value = String(currentWeek);
+  }
+
+  const key = lineLogWeekKey(currentWeek);
+  if (!(key in lineLogCache)) {
+    if (lineLogIndex) ensureLineLogWeek(currentWeek);
+    board.innerHTML = `<p class="table-empty">${lineLogIndex ? "Loading the week’s line log…" : "Serve the desk over http so the line log can load (python3 -m http.server from this folder)."}</p>`;
+    if (stamp) stamp.textContent = "";
+    return;
+  }
+
+  const data = lineLogCache[key];
+  if (!data) {
+    board.innerHTML = `<p class="table-empty">No line log for week ${esc(String(currentWeek))} yet. Empty days stay blank — we do not invent a B$ Line.</p>`;
+    if (stamp) stamp.textContent = "Week " + currentWeek + " · no file";
+    return;
+  }
+
+  if (stamp) {
+    const n = (data.games || []).length;
+    const moves = (data.games || []).reduce((acc, g) => acc + ((g.changes || []).length), 0);
+    stamp.textContent = "Week " + data.week + " · " + n + " game" + (n === 1 ? "" : "s") + " · " + moves + " logged move" + (moves === 1 ? "" : "s");
+  }
+
+  const heads = LINELOG_DAYS.map((d) => {
+    const meta = data.days && data.days[d];
+    const date = meta && meta.date ? meta.date.slice(8) : "";
+    return `<th class="linelog-dayhead" scope="col">${esc(LINELOG_DAY_LABEL[d])}${date ? `<span class="linelog-kick">${esc(date)}</span>` : ""}</th>`;
+  }).join("");
+
+  const rows = (data.games || []).map((g) => {
+    const et = toET(g.kick);
+    const kick = et ? et.clock + " ET" : "—";
+    const cells = LINELOG_DAYS.map((day) => {
+      const snap = lineLogSnap(g, day);
+      if (!lineLogHasB(snap)) {
+        return `<td class="linelog-day"><span class="linelog-num linelog-empty">—</span></td>`;
+      }
+      const label = formatOurLine(Number(snap.b_money), g.home, g.away);
+      const ch = lineLogChangeFor(g, day);
+      const prev = lineLogPrevFilled(g, day);
+      const prevSnap = prev ? lineLogSnap(g, prev) : null;
+      const moved = ch && Number.isFinite(Number(ch.delta)) && Math.abs(Number(ch.delta)) >= 0.05;
+      const looksDiff = prevSnap && lineLogHasB(prevSnap) && formatOurLine(Number(prevSnap.b_money), g.home, g.away) !== label;
+      const copper = moved || looksDiff;
+      const deltaBtn = moved
+        ? `<button type="button" class="linelog-delta" data-linelog-change="${esc(g.id)}|${esc(ch.from_day)}|${esc(ch.to_day)}" aria-haspopup="dialog" aria-controls="linelog-sheet">${esc("Δ " + fmtLineLogDelta(ch.delta))}</button>`
+        : "";
+      return `<td class="linelog-day${copper ? " is-change" : ""}">
+        <span class="linelog-num">${esc(label)}</span>
+        ${deltaBtn}
+      </td>`;
+    }).join("");
+    return `<tr>
+      <td class="linelog-game">
+        <button type="button" class="linelog-open-game" data-open-game="${esc(g.id)}" aria-haspopup="dialog" aria-controls="game-sheet">
+          ${esc(g.away)} @ ${esc(g.home)}
+          <span class="linelog-kick">${esc(kick)}</span>
+        </button>
+      </td>
+      ${cells}
+    </tr>`;
+  }).join("");
+
+  board.innerHTML = `<table class="linelog-table">
+    <thead>
+      <tr>
+        <th scope="col">Game</th>
+        ${heads}
+      </tr>
+    </thead>
+    <tbody>${rows || `<tr><td colspan="8"><p class="table-empty">No games in the week file.</p></td></tr>`}</tbody>
+  </table>`;
+}
+
+function findLineLogGame(id) {
+  const data = lineLogCache[lineLogWeekKey(currentWeek)];
+  if (!data || !Array.isArray(data.games)) return null;
+  return data.games.find((g) => String(g.id) === String(id)) || null;
+}
+
+function whyLineHtml(item) {
+  if (!item || typeof item !== "object") return "";
+  const type = String(item.type || "note").toUpperCase();
+  let body = "";
+  if (item.player) {
+    const bits = [item.team, item.player, item.status].filter(Boolean).join(" · ");
+    body = `<strong>${esc(bits)}</strong>${item.detail ? `<br>${esc(item.detail)}` : ""}`;
+  } else {
+    body = esc(item.detail || item.note || "");
+  }
+  if (!body) return "";
+  return `<li><span class="linelog-why-type">${esc(type)}</span>${body}</li>`;
+}
+
+function renderLineLogSheet() {
+  const title = document.getElementById("linelog-sheet-title");
+  const body = document.getElementById("linelog-sheet-body");
+  const gameBtn = document.getElementById("linelog-sheet-game");
+  if (!title || !body || !lineLogChange) return;
+  const data = lineLogCache[lineLogWeekKey(currentWeek)];
+  const game = findLineLogGame(lineLogChange.id);
+  const ch = game ? (game.changes || []).find((c) => c.from_day === lineLogChange.fromDay && c.to_day === lineLogChange.toDay) : null;
+  if (!game || !ch) {
+    title.textContent = "Line move";
+    body.innerHTML = `<p class="table-empty">No change on file for that cell.</p>`;
+    if (gameBtn) gameBtn.hidden = true;
+    return;
+  }
+  title.textContent = game.away + " @ " + game.home;
+  if (gameBtn) {
+    gameBtn.hidden = false;
+    gameBtn.dataset.openGame = game.id;
+  }
+  const fromSnap = lineLogSnap(game, ch.from_day);
+  const toSnap = lineLogSnap(game, ch.to_day);
+  const fromLine = formatOurLine(Number(ch.from), game.home, game.away);
+  const toLine = formatOurLine(Number(ch.to), game.home, game.away);
+  const toward = lineLogToward(ch.delta, game.home, game.away);
+  const why = (ch.why || []).map(whyLineHtml).filter(Boolean).join("");
+  const streetBits = [];
+  if (fromSnap && fromSnap.street != null) streetBits.push((LINELOG_DAY_LABEL[ch.from_day] || ch.from_day) + " street " + formatOurLine(Number(fromSnap.street), game.home, game.away));
+  if (toSnap && toSnap.street != null) streetBits.push((LINELOG_DAY_LABEL[ch.to_day] || ch.to_day) + " street " + formatOurLine(Number(toSnap.street), game.home, game.away));
+  body.innerHTML = `
+    <p class="linelog-sheet-delta">${esc(fmtLineLogDelta(ch.delta))}</p>
+    <p class="linelog-sheet-move">${esc(fromLine)} → ${esc(toLine)} · ${esc(Math.abs(Number(ch.delta)).toFixed(1))} points ${esc(toward)}.</p>
+    <p class="linelog-sheet-lead">${esc(lineLogDayEt(data, ch.from_day))} → ${esc(lineLogDayEt(data, ch.to_day))}${toSnap && toSnap.note ? " · " + esc(toSnap.note) : ""}</p>
+    <p class="section-label">What happened</p>
+    ${why ? `<ul class="linelog-why">${why}</ul>` : `<p class="table-empty">No sourced why on this move.</p>`}
+    ${streetBits.length ? `<p class="linelog-street">${esc(streetBits.join(" · "))}</p>` : ""}`;
+}
+
+function openLineLogChange(id, fromDay, toDay) {
+  lastFocus = document.activeElement;
+  lineLogChange = { id: String(id), fromDay, toDay };
+  const ticketSheet = document.getElementById("sheet");
+  if (ticketSheet && !ticketSheet.hidden) ticketSheet.hidden = true;
+  if (profileAbbr) closeTeamSheet({ silent: true });
+  if (gameSheetId) closeGameSheet({ silent: true });
+  renderLineLogSheet();
+  const sheet = document.getElementById("linelog-sheet");
+  const overlay = document.getElementById("overlay");
+  if (sheet) sheet.hidden = false;
+  if (overlay) overlay.hidden = false;
+  const closer = document.getElementById("linelog-sheet-close");
+  if (closer) closer.focus();
+}
+
+function closeLineLogSheet() {
+  const sheet = document.getElementById("linelog-sheet");
+  if (sheet) sheet.hidden = true;
+  lineLogChange = null;
+  hideOverlayIfIdle();
+  if (lastFocus && lastFocus.focus) {
+    try { lastFocus.focus(); } catch { /* ignore */ }
+  }
+}
+
 /* ---------- nav ---------- */
 
 function showView(name) {
@@ -5751,7 +6029,7 @@ function parseHash() {
 
 function fromHash() {
   const { view, team, game } = parseHash();
-  const known = ["desk", "card", "teams", "staff", "schedule", "residuals", "keys", "vibe", "clock", "playbook", "tickets"];
+  const known = ["desk", "card", "teams", "staff", "schedule", "linelog", "residuals", "keys", "vibe", "clock", "playbook", "tickets"];
   const name = known.includes(view) ? view : "desk";
   showView(name);
   if (game) {
@@ -5768,6 +6046,9 @@ function fromHash() {
     }
     if (gameSheetId && view !== "schedule") {
       closeGameSheet({ silent: true });
+    }
+    if (lineLogChange && view !== "linelog") {
+      closeLineLogSheet();
     }
   }
 }
@@ -5857,6 +6138,40 @@ function bind() {
     document.getElementById("week-select").value = currentWeek;
     render();
   });
+  const linelogWeek = document.getElementById("linelog-week-select");
+  if (linelogWeek) {
+    linelogWeek.addEventListener("change", (e) => {
+      weekPicked = true;
+      currentWeek = Math.min(18, Math.max(1, Number(e.target.value) || 1));
+      syncWeekSelect();
+      render();
+    });
+  }
+  const linelogBoard = document.getElementById("linelog-board");
+  if (linelogBoard) {
+    linelogBoard.addEventListener("click", (e) => {
+      const delta = e.target.closest("[data-linelog-change]");
+      if (delta) {
+        const parts = String(delta.dataset.linelogChange || "").split("|");
+        if (parts.length === 3) openLineLogChange(parts[0], parts[1], parts[2]);
+        return;
+      }
+      const opener = e.target.closest("[data-open-game]");
+      if (opener) openGameSheet(opener.dataset.openGame);
+    });
+  }
+  const linelogClose = document.getElementById("linelog-sheet-close");
+  if (linelogClose) linelogClose.addEventListener("click", closeLineLogSheet);
+  const linelogGameBtn = document.getElementById("linelog-sheet-game");
+  if (linelogGameBtn) {
+    linelogGameBtn.addEventListener("click", () => {
+      const id = linelogGameBtn.dataset.openGame;
+      if (!id) return;
+      closeLineLogSheet();
+      if (location.hash !== "#game-" + id) history.replaceState(null, "", "#game-" + id);
+      openGameSheet(id);
+    });
+  }
 
   const vibeSel = document.getElementById("vibe-week-select");
   if (vibeSel) {
@@ -5952,14 +6267,18 @@ function bind() {
   document.getElementById("f-cancel").addEventListener("click", closeSheet);
   document.getElementById("sheet-close").addEventListener("click", closeSheet);
   document.getElementById("overlay").addEventListener("click", () => {
-    if (document.getElementById("game-sheet") && !document.getElementById("game-sheet").hidden) closeGameSheet();
+    if (document.getElementById("linelog-sheet") && !document.getElementById("linelog-sheet").hidden) closeLineLogSheet();
+    else if (document.getElementById("game-sheet") && !document.getElementById("game-sheet").hidden) closeGameSheet();
     else if (!document.getElementById("team-sheet").hidden) closeTeamSheet();
     else closeSheet();
   });
 
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Escape") return;
-    if (document.getElementById("game-sheet") && !document.getElementById("game-sheet").hidden) {
+    if (document.getElementById("linelog-sheet") && !document.getElementById("linelog-sheet").hidden) {
+      e.preventDefault();
+      closeLineLogSheet();
+    } else if (document.getElementById("game-sheet") && !document.getElementById("game-sheet").hidden) {
       e.preventDefault();
       closeGameSheet();
     } else if (!document.getElementById("team-sheet").hidden) {

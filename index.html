@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Geist+Mono:wght@400;500;600&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=skline1">
+  <link rel="stylesheet" href="styles.css?v=linelog1">
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
@@ -38,6 +38,7 @@
       <a href="#teams" data-nav="teams">Teams</a>
       <a href="#staff" data-nav="staff">Staff</a>
       <a href="#schedule" data-nav="schedule">Games</a>
+      <a href="#linelog" data-nav="linelog">Line log</a>
       <a href="#residuals" data-nav="residuals">After</a>
       <a href="#keys" data-nav="keys">3 &amp; 7</a>
       <a href="#vibe" data-nav="vibe">Buzz</a>
@@ -231,6 +232,23 @@
         <p>Zero is average. Plus is better. Home teams get a couple of extra points for playing at home, except neutral sites. We show the number. We do not auto-bet.</p>
       </div>
       <div id="sked-board"></div>
+    </section>
+
+    <!-- ========== LINE LOG ========== -->
+    <section id="linelog" class="view" data-view="linelog" hidden aria-labelledby="linelog-title">
+      <div class="view-head">
+        <p class="eyebrow">Our B$ Line · Mon → Sun · empty days stay blank</p>
+        <h1 id="linelog-title">Line log</h1>
+        <p class="lede">One row per game. Each day is the desk B$ Line we actually froze — not a live recompute. A dash means we have no snapshot. Copper means the number moved from the last filled day. Tap the delta for what happened.</p>
+      </div>
+      <div class="linelog-tools">
+        <label class="sort-field">
+          <span>Week</span>
+          <select id="linelog-week-select" aria-label="Line log week"></select>
+        </label>
+        <p class="linelog-stamp" id="linelog-stamp"></p>
+      </div>
+      <div class="table-wrap linelog-wrap" id="linelog-board"></div>
     </section>
 
     <!-- ========== RESIDUALS ========== -->
@@ -575,8 +593,21 @@
     <div id="game-sheet-body"></div>
   </aside>
 
+  <aside class="sheet sheet-linelog" id="linelog-sheet" role="dialog" aria-modal="true" aria-labelledby="linelog-sheet-title" hidden>
+    <header class="sheet-head">
+      <div class="linelog-sheet-ident">
+        <h2 id="linelog-sheet-title">Line move</h2>
+      </div>
+      <div class="sheet-head-actions">
+        <button type="button" class="text-btn" id="linelog-sheet-game" hidden>Game sheet</button>
+        <button type="button" class="icon-btn" id="linelog-sheet-close" aria-label="Close">×</button>
+      </div>
+    </header>
+    <div id="linelog-sheet-body"></div>
+  </aside>
+
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
-  <script src="app.js?v=skline1"></script>
+  <script src="app.js?v=linelog1"></script>
 </body>
 </html>
