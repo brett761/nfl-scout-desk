@@ -5836,6 +5836,8 @@ function renderLineLog() {
   const key = lineLogWeekKey(currentWeek);
   if (!(key in lineLogCache)) {
     if (lineLogIndex) ensureLineLogWeek(currentWeek);
+  }
+  if (!(key in lineLogCache)) {
     board.innerHTML = `<p class="table-empty">${lineLogIndex ? "Loading the week’s line log…" : "Serve the desk over http so the line log can load (python3 -m http.server from this folder)."}</p>`;
     if (stamp) stamp.textContent = "";
     return;
