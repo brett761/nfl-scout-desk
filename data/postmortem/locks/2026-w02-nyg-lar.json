@@ -9,17 +9,17 @@
   "venue": "SoFi Stadium",
   "neutral": false,
   "window": "MNF",
-  "model_home_spread": -5.44,
+  "model_home_spread": -5.38,
   "model_home_spread_source": "desk_compute",
   "street_home_spread": -7,
   "close_at_lock": -7,
-  "ou_street": 48.5,
-  "street_note": "FINAL freeze 2026-09-18 4:39 PM ET (America/New_York). ESPN DraftKings: LAR -7 / ou 48.5.",
-  "edge_home": -1.56,
-  "edge_note": "edgeHome = street \u2212 model = -7 \u2212 (-5.44) = -1.56 \u2192 away value (NYG); |edge|\u22651.5",
+  "ou_street": 47.5,
+  "street_note": "FINAL freeze 2026-09-20 8:11 AM ET (America/New_York). ESPN DraftKings: LAR -7 / ou 47.5.",
+  "edge_home": -1.62,
+  "edge_note": "edgeHome = street − model = -7 − (-5.38) = -1.62 → away value (NYG); |edge|≥1.5",
   "feature_stack": {
     "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W2 n=1 taper; pff_ytd IN line; injury 2026-09-18b FINAL",
-    "injury_pulled": "2026-09-18b",
+    "injury_pulled": "2026-09-19a",
     "away_NYG": {
       "prior": 1.59,
       "fa": -0.93,
@@ -29,10 +29,10 @@
       "pff_ytd": -0.43,
       "sos": 0.22,
       "return": 0.67,
-      "injury": -3.49,
+      "injury": -3.86,
       "adjust": 0,
       "context": 0,
-      "eff": -2.06
+      "eff": -2.43
     },
     "home_LAR": {
       "prior": 1.94,
@@ -43,10 +43,10 @@
       "pff_ytd": -0.51,
       "sos": 0.5,
       "return": 0,
-      "injury": -5.57,
+      "injury": -6,
       "adjust": 0,
       "context": 0,
-      "eff": 0.92
+      "eff": 0.49
     },
     "layers_home_minus_away": {
       "prior": 0.35,
@@ -57,11 +57,11 @@
       "pff_ytd": -0.08,
       "sos": 0.28,
       "return": -0.67,
-      "injury": -2.08,
+      "injury": -2.14,
       "adjust": 0,
       "context": 0
     },
-    "rating_diff_home_minus_away": 2.98,
+    "rating_diff_home_minus_away": 2.92,
     "hfa": 2,
     "coach": 0,
     "coach_note": "coachTerm desk",
@@ -72,12 +72,12 @@
     "travel": 0.35,
     "travel_note": "schedNet desk",
     "matchup": 0,
-    "matchup_note": "pff-matchups W1 grid only / missing \u2192 0",
-    "gap": 5.44,
+    "matchup_note": "pff-matchups W1 grid only / missing → 0",
+    "gap": 5.38,
     "component_sum": [
       {
-        "label": "rating_diff (LAR\u2212NYG)",
-        "val": 2.98
+        "label": "rating_diff (LAR−NYG)",
+        "val": 2.92
       },
       {
         "label": "HFA",
@@ -105,15 +105,42 @@
       },
       {
         "label": "gap",
-        "val": 5.44
+        "val": 5.38
       },
       {
-        "label": "model_home_spread (\u2212gap)",
-        "val": -5.44
+        "label": "model_home_spread (−gap)",
+        "val": -5.38
       }
     ],
     "injuries": {
       "NYG": [
+        {
+          "name": "Francis Mauigoa",
+          "pos": "LT",
+          "status": "QUESTIONABLE",
+          "impact": 1.12,
+          "impact_source": "madden",
+          "pts": -0.39,
+          "on": true
+        },
+        {
+          "name": "Andrew Thomas",
+          "pos": "LT",
+          "status": "QUESTIONABLE",
+          "impact": 4.5,
+          "impact_source": "madden",
+          "pts": -1.58,
+          "on": true
+        },
+        {
+          "name": "Paulson Adebo",
+          "pos": "CB1",
+          "status": "IR",
+          "impact": 0.57,
+          "impact_source": "madden",
+          "pts": -0.57,
+          "on": true
+        },
         {
           "name": "Greg Newsome II",
           "pos": "CB1",
@@ -133,15 +160,6 @@
           "on": true
         },
         {
-          "name": "Andrew Thomas",
-          "pos": "LT",
-          "status": "QUESTIONABLE",
-          "impact": 4.5,
-          "impact_source": "madden",
-          "pts": -1.58,
-          "on": true
-        },
-        {
           "name": "Micah McFadden",
           "pos": "LB",
           "status": "QUESTIONABLE",
@@ -158,27 +176,27 @@
           "impact_source": null,
           "pts": -0.52,
           "on": true
-        },
-        {
-          "name": "Francis Mauigoa",
-          "pos": "LT",
-          "status": "QUESTIONABLE",
-          "impact": 1.12,
-          "impact_source": "madden",
-          "pts": -0.39,
-          "on": true
-        },
-        {
-          "name": "Paulson Adebo",
-          "pos": "CB1",
-          "status": "QUESTIONABLE",
-          "impact": 0.57,
-          "impact_source": "madden",
-          "pts": -0.2,
-          "on": true
         }
       ],
       "LAR": [
+        {
+          "name": "Jordan Whittington",
+          "pos": "WR2",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.18,
+          "on": true
+        },
+        {
+          "name": "Puka Nacua",
+          "pos": "WR2",
+          "status": "QUESTIONABLE",
+          "impact": 4.5,
+          "impact_source": "madden",
+          "pts": -1.58,
+          "on": true
+        },
         {
           "name": "Omar Speights",
           "pos": "LB",
@@ -228,15 +246,15 @@
     },
     "injury_team_terms": {
       "NYG": {
-        "raw": -3.49,
-        "term": -3.49,
+        "raw": -3.86,
+        "term": -3.86,
         "capped": false,
         "cap_team": 6
       },
       "LAR": {
-        "raw": -5.57,
-        "term": -5.57,
-        "capped": false,
+        "raw": -7.33,
+        "term": -6,
+        "capped": true,
         "cap_team": 6
       }
     },
@@ -256,21 +274,31 @@
     }
   },
   "tickets": [],
-  "notes": "FINAL pre-kick MNF lock after Fri 4pm ET status. Injury 2026-09-18b. Model desk_compute. Street LAR -7. Edge home -1.56.",
+  "notes": "FINAL pre-kick MNF lock after Fri 4pm ET status. Injury 2026-09-19a. Model desk_compute. Street LAR -7. Edge home -1.62. | Sun AM 2026-09-20 8:11 ET refresh vs Fri freeze: Δm=0.06 Δs=0 Δou=-1 (REFRESH). Injury stamp 2026-09-19a. Friday card action PASS retained for public-dogs window (no full re-card).",
   "recommendation": {
     "action": "PASS",
     "side": null,
     "market": null,
     "units": 0,
     "stake_class": "0u",
-    "edge_home": -1.56,
+    "edge_home": -1.62,
     "timing_thesis": "PASS",
-    "reason": "MNF. Model LAR \u22125.4 vs street \u22127 \u2192 NYG +7 edge 1.56 thin on key 7. PASS / wait public."
+    "reason": "Friday PASS retained (Sun AM public-dogs). Model -5.38 / street -7.",
+    "sunday_am_note": null
   },
-  "frozen_at": "2026-09-18 4:39 PM ET (America/New_York)",
-  "frozen_at_utc": "2026-09-18T20:39:38.293Z",
-  "locked_at": "2026-09-18T20:39:38.293-04:00",
+  "frozen_at": "2026-09-20 8:11 AM ET (America/New_York)",
+  "frozen_at_utc": "2026-09-20T12:11:50.434Z",
+  "locked_at": "2026-09-20T12:11:50.434-04:00",
   "injury_aligned_to_imp3": true,
   "injury_source_policy": "madden_first",
-  "lock_phase": "FINAL_PRE_KICK"
+  "lock_phase": "SUN_AM_REFRESH",
+  "sunday_am_vs_friday": {
+    "model_delta": 0.06,
+    "street_delta": 0,
+    "ou_delta": -1,
+    "material": true,
+    "fri_model": -5.44,
+    "fri_street": -7,
+    "fri_ou": 48.5
+  }
 }

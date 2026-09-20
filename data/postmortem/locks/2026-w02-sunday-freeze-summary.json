@@ -1,6 +1,33 @@
 {
-  "injury_pulled": "2026-09-18b",
+  "pulled_et": "2026-09-20 8:11 AM ET",
+  "phase": "SUN_AM_PUBLIC_DOGS",
+  "injury_pulled": "2026-09-19a",
+  "street_source": "ESPN DraftKings scoreboard site.api.espn.com week=2",
+  "open_sources": [
+    "desk/data/openers/2026-09-14-week2-circa.json",
+    "desk/data/openers/2026-09-11-week2-friday.json"
+  ],
+  "note": "Sunday AM refresh of pre-kick locks. Friday betting card actions retained (no full re-card). SEA@ARI downgraded PASS (edge <1.5 after Sat injury). DET@BUF untouched. Action Network public % null/paywalled — public-push inferred from Circa/ESPN open→live line moves only.",
   "n": 15,
+  "refreshed": [
+    "CLE@TB",
+    "IND@KC",
+    "JAX@DEN",
+    "LV@LAC",
+    "MIA@SF",
+    "MIN@CHI",
+    "NO@BAL",
+    "NYG@LAR",
+    "SEA@ARI",
+    "WSH@DAL"
+  ],
+  "confirmed": [
+    "CAR@ATL",
+    "CIN@HOU",
+    "GB@NYJ",
+    "PHI@TEN",
+    "PIT@NE"
+  ],
   "games": [
     {
       "game": "CAR@ATL",
@@ -13,33 +40,54 @@
       "action": "PASS",
       "side": null,
       "market": null,
-      "units": 0
+      "units": 0,
+      "lock_phase": "SUN_AM_CONFIRMED",
+      "vs_friday": {
+        "dm": 0,
+        "ds": 0,
+        "dou": 0,
+        "material": false
+      }
     },
     {
       "game": "CIN@HOU",
       "espn_id": "401872934",
       "window": "SUN_PM",
-      "model": -5.4,
+      "model": -5.16,
       "street": -2.5,
-      "edge": 2.9,
+      "edge": 2.66,
       "ou": 45.5,
       "action": "LOCK",
       "side": "HOU",
-      "market": "HOU \u22122.5",
-      "units": 2
+      "market": "HOU -2.5",
+      "units": 2,
+      "lock_phase": "SUN_AM_CONFIRMED",
+      "vs_friday": {
+        "dm": 0.24,
+        "ds": 0,
+        "dou": 0,
+        "material": false
+      }
     },
     {
       "game": "CLE@TB",
       "espn_id": "401872935",
       "window": "SUN_PM",
       "model": -8.47,
-      "street": -8.5,
-      "edge": -0.03,
+      "street": -7.5,
+      "edge": 0.97,
       "ou": 41.5,
       "action": "PASS",
       "side": null,
       "market": null,
-      "units": 0
+      "units": 0,
+      "lock_phase": "SUN_AM_REFRESH",
+      "vs_friday": {
+        "dm": 0,
+        "ds": 1,
+        "dou": 0,
+        "material": true
+      }
     },
     {
       "game": "GB@NYJ",
@@ -52,72 +100,114 @@
       "action": "LOCK",
       "side": "NYJ",
       "market": "NYJ +3.5",
-      "units": 3
+      "units": 3,
+      "lock_phase": "SUN_AM_CONFIRMED",
+      "vs_friday": {
+        "dm": 0,
+        "ds": 0,
+        "dou": 0,
+        "material": false
+      }
     },
     {
       "game": "IND@KC",
       "espn_id": "401872945",
       "window": "SNF",
-      "model": -10.12,
-      "street": -6.5,
-      "edge": 3.62,
+      "model": -9.92,
+      "street": -5.5,
+      "edge": 4.42,
       "ou": 46.5,
       "action": "LOCK",
       "side": "KC",
-      "market": "KC \u22126.5",
-      "units": 2
+      "market": "KC -6.5",
+      "units": 2,
+      "lock_phase": "SUN_AM_REFRESH",
+      "vs_friday": {
+        "dm": 0.2,
+        "ds": 1,
+        "dou": 0,
+        "material": true
+      }
     },
     {
       "game": "JAX@DEN",
       "espn_id": "401872940",
       "window": "SUN_PM",
-      "model": 10.4,
-      "street": -2.5,
-      "edge": -12.9,
+      "model": 12.52,
+      "street": -3,
+      "edge": -15.52,
       "ou": 45.5,
       "action": "LOCK",
       "side": "JAX",
-      "market": "JAX +2.5",
-      "units": 3
+      "market": "JAX +3",
+      "units": 3,
+      "lock_phase": "SUN_AM_REFRESH",
+      "vs_friday": {
+        "dm": 2.12,
+        "ds": -0.5,
+        "dou": 0,
+        "material": true
+      }
     },
     {
       "game": "LV@LAC",
       "espn_id": "401872941",
       "window": "SUN_PM",
-      "model": 3.81,
-      "street": -6.5,
-      "edge": -10.31,
+      "model": 3.26,
+      "street": -7,
+      "edge": -10.26,
       "ou": 43.5,
       "action": "LOCK",
       "side": "LV",
-      "market": "LV +6.5",
-      "units": 3
+      "market": "LV +7",
+      "units": 3,
+      "lock_phase": "SUN_AM_REFRESH",
+      "vs_friday": {
+        "dm": -0.55,
+        "ds": -0.5,
+        "dou": 0,
+        "material": true
+      }
     },
     {
       "game": "MIA@SF",
       "espn_id": "401872942",
       "window": "SUN_PM",
-      "model": -16.08,
+      "model": -18.05,
       "street": -13.5,
-      "edge": 2.58,
+      "edge": 4.55,
       "ou": 44.5,
       "action": "PASS",
       "side": null,
       "market": null,
-      "units": 0
+      "units": 0,
+      "lock_phase": "SUN_AM_REFRESH",
+      "vs_friday": {
+        "dm": -1.97,
+        "ds": 0,
+        "dou": 0,
+        "material": true
+      }
     },
     {
       "game": "MIN@CHI",
       "espn_id": "401872937",
       "window": "SUN_PM",
-      "model": -3.93,
+      "model": -0.93,
       "street": -4.5,
-      "edge": -0.57,
+      "edge": -3.57,
       "ou": 47.5,
       "action": "PASS",
       "side": null,
       "market": null,
-      "units": 0
+      "units": 0,
+      "lock_phase": "SUN_AM_REFRESH",
+      "vs_friday": {
+        "dm": 3,
+        "ds": 0,
+        "dou": 0,
+        "material": true
+      }
     },
     {
       "game": "NO@BAL",
@@ -126,37 +216,58 @@
       "model": -5.73,
       "street": -8.5,
       "edge": -2.77,
-      "ou": 46.5,
+      "ou": 45.5,
       "action": "PASS",
       "side": null,
       "market": null,
-      "units": 0
+      "units": 0,
+      "lock_phase": "SUN_AM_REFRESH",
+      "vs_friday": {
+        "dm": 0,
+        "ds": 0,
+        "dou": -1,
+        "material": true
+      }
     },
     {
       "game": "NYG@LAR",
       "espn_id": "401872947",
       "window": "MNF",
-      "model": -5.44,
+      "model": -5.38,
       "street": -7,
-      "edge": -1.56,
-      "ou": 48.5,
+      "edge": -1.62,
+      "ou": 47.5,
       "action": "PASS",
       "side": null,
       "market": null,
-      "units": 0
+      "units": 0,
+      "lock_phase": "SUN_AM_REFRESH",
+      "vs_friday": {
+        "dm": 0.06,
+        "ds": 0,
+        "dou": -1,
+        "material": true
+      }
     },
     {
       "game": "PHI@TEN",
       "espn_id": "401872939",
       "window": "SUN_PM",
-      "model": 5.48,
+      "model": 5.85,
       "street": 7,
-      "edge": 1.52,
+      "edge": 1.15,
       "ou": 39.5,
       "action": "PASS",
       "side": null,
       "market": null,
-      "units": 0
+      "units": 0,
+      "lock_phase": "SUN_AM_CONFIRMED",
+      "vs_friday": {
+        "dm": 0.37,
+        "ds": 0,
+        "dou": 0,
+        "material": false
+      }
     },
     {
       "game": "PIT@NE",
@@ -169,33 +280,316 @@
       "action": "LOCK",
       "side": "PIT",
       "market": "PIT +5.5",
-      "units": 3
+      "units": 3,
+      "lock_phase": "SUN_AM_CONFIRMED",
+      "vs_friday": {
+        "dm": 0,
+        "ds": 0,
+        "dou": 0,
+        "material": false
+      }
     },
     {
       "game": "SEA@ARI",
       "espn_id": "401872943",
       "window": "SUN_PM",
-      "model": -0.19,
+      "model": 2.09,
       "street": 3.5,
-      "edge": 3.69,
-      "ou": 40.5,
-      "action": "LOCK",
-      "side": "ARI",
-      "market": "ARI +3.5",
-      "units": 2
+      "edge": 1.41,
+      "ou": 41.5,
+      "action": "PASS",
+      "side": null,
+      "market": null,
+      "units": 0,
+      "lock_phase": "SUN_AM_REFRESH",
+      "vs_friday": {
+        "dm": 2.28,
+        "ds": 0,
+        "dou": 1,
+        "material": true
+      }
     },
     {
       "game": "WSH@DAL",
       "espn_id": "401872944",
       "window": "SUN_PM",
-      "model": -5.8,
-      "street": -4.5,
-      "edge": 1.3,
+      "model": -5.62,
+      "street": -3.5,
+      "edge": 2.12,
       "ou": 50.5,
       "action": "PASS",
       "side": null,
       "market": null,
-      "units": 0
+      "units": 0,
+      "lock_phase": "SUN_AM_REFRESH",
+      "vs_friday": {
+        "dm": 0.18,
+        "ds": 1,
+        "dou": 0,
+        "material": true
+      }
+    }
+  ],
+  "public_pushed_moves": [
+    {
+      "game": "CAR@ATL",
+      "window": "SUN_PM",
+      "circa_open": "ATL -1.5",
+      "circa_ou": 43.5,
+      "espn_week_open_home": -1.5,
+      "espn_week_ou": 43.5,
+      "live_home": 2.5,
+      "live_ou": 43.5,
+      "live_source": "ESPN DraftKings scoreboard 2026-09-20 ~8:11 AM ET",
+      "fav_pricier_vs_circa": {
+        "pushed": true,
+        "side": "away",
+        "delta": 4,
+        "fav": "away"
+      },
+      "fav_pricier_vs_espn_week_open": {
+        "pushed": true,
+        "side": "away",
+        "delta": 4,
+        "fav": "away"
+      },
+      "total_up_vs_circa": false,
+      "total_up_vs_espn_week": false,
+      "public_pushed": true
+    },
+    {
+      "game": "CLE@TB",
+      "window": "SUN_PM",
+      "circa_open": "TB -8.5",
+      "circa_ou": 41,
+      "espn_week_open_home": -6.5,
+      "espn_week_ou": 42.5,
+      "live_home": -7.5,
+      "live_ou": 41.5,
+      "live_source": "ESPN DraftKings scoreboard 2026-09-20 ~8:11 AM ET",
+      "fav_pricier_vs_circa": {
+        "pushed": false,
+        "side": "home",
+        "delta": -1,
+        "fav": "home"
+      },
+      "fav_pricier_vs_espn_week_open": {
+        "pushed": true,
+        "side": "home",
+        "delta": 1,
+        "fav": "home"
+      },
+      "total_up_vs_circa": true,
+      "total_up_vs_espn_week": false,
+      "public_pushed": true
+    },
+    {
+      "game": "GB@NYJ",
+      "window": "SUN_PM",
+      "circa_open": "GB -4",
+      "circa_ou": 45,
+      "espn_week_open_home": 5.5,
+      "espn_week_ou": 42.5,
+      "live_home": 3.5,
+      "live_ou": 44.5,
+      "live_source": "ESPN DraftKings scoreboard 2026-09-20 ~8:11 AM ET",
+      "fav_pricier_vs_circa": {
+        "pushed": false,
+        "side": "away",
+        "delta": -0.5,
+        "fav": "away"
+      },
+      "fav_pricier_vs_espn_week_open": {
+        "pushed": false,
+        "side": "away",
+        "delta": -2,
+        "fav": "away"
+      },
+      "total_up_vs_circa": false,
+      "total_up_vs_espn_week": true,
+      "public_pushed": false
+    },
+    {
+      "game": "JAX@DEN",
+      "window": "SUN_PM",
+      "circa_open": "DEN -3",
+      "circa_ou": 44.5,
+      "espn_week_open_home": -3,
+      "espn_week_ou": 43.5,
+      "live_home": -3,
+      "live_ou": 45.5,
+      "live_source": "ESPN DraftKings scoreboard 2026-09-20 ~8:11 AM ET",
+      "fav_pricier_vs_circa": {
+        "pushed": false,
+        "side": "home",
+        "delta": 0,
+        "fav": "home"
+      },
+      "fav_pricier_vs_espn_week_open": {
+        "pushed": false,
+        "side": "home",
+        "delta": 0,
+        "fav": "home"
+      },
+      "total_up_vs_circa": true,
+      "total_up_vs_espn_week": true,
+      "public_pushed": true
+    },
+    {
+      "game": "LV@LAC",
+      "window": "SUN_PM",
+      "circa_open": "LAC -7",
+      "circa_ou": 44,
+      "espn_week_open_home": -9.5,
+      "espn_week_ou": 42.5,
+      "live_home": -7,
+      "live_ou": 43.5,
+      "live_source": "ESPN DraftKings scoreboard 2026-09-20 ~8:11 AM ET",
+      "fav_pricier_vs_circa": {
+        "pushed": false,
+        "side": "home",
+        "delta": 0,
+        "fav": "home"
+      },
+      "fav_pricier_vs_espn_week_open": {
+        "pushed": false,
+        "side": "home",
+        "delta": -2.5,
+        "fav": "home"
+      },
+      "total_up_vs_circa": false,
+      "total_up_vs_espn_week": true,
+      "public_pushed": false
+    },
+    {
+      "game": "MIA@SF",
+      "window": "SUN_PM",
+      "circa_open": "SF -13",
+      "circa_ou": 45.5,
+      "espn_week_open_home": -10.5,
+      "espn_week_ou": 46.5,
+      "live_home": -13.5,
+      "live_ou": 44.5,
+      "live_source": "ESPN DraftKings scoreboard 2026-09-20 ~8:11 AM ET",
+      "fav_pricier_vs_circa": {
+        "pushed": true,
+        "side": "home",
+        "delta": 0.5,
+        "fav": "home"
+      },
+      "fav_pricier_vs_espn_week_open": {
+        "pushed": true,
+        "side": "home",
+        "delta": 3,
+        "fav": "home"
+      },
+      "total_up_vs_circa": false,
+      "total_up_vs_espn_week": false,
+      "public_pushed": true
+    },
+    {
+      "game": "MIN@CHI",
+      "window": "SUN_PM",
+      "circa_open": "CHI -5.5",
+      "circa_ou": 48.5,
+      "espn_week_open_home": -3,
+      "espn_week_ou": 45.5,
+      "live_home": -4.5,
+      "live_ou": 47.5,
+      "live_source": "ESPN DraftKings scoreboard 2026-09-20 ~8:11 AM ET",
+      "fav_pricier_vs_circa": {
+        "pushed": false,
+        "side": "home",
+        "delta": -1,
+        "fav": "home"
+      },
+      "fav_pricier_vs_espn_week_open": {
+        "pushed": true,
+        "side": "home",
+        "delta": 1.5,
+        "fav": "home"
+      },
+      "total_up_vs_circa": false,
+      "total_up_vs_espn_week": true,
+      "public_pushed": false
+    },
+    {
+      "game": "NO@BAL",
+      "window": "SUN_PM",
+      "circa_open": "BAL -8.5",
+      "circa_ou": 47.5,
+      "espn_week_open_home": -7.5,
+      "espn_week_ou": 46.5,
+      "live_home": -8.5,
+      "live_ou": 45.5,
+      "live_source": "ESPN DraftKings scoreboard 2026-09-20 ~8:11 AM ET",
+      "fav_pricier_vs_circa": {
+        "pushed": false,
+        "side": "home",
+        "delta": 0,
+        "fav": "home"
+      },
+      "fav_pricier_vs_espn_week_open": {
+        "pushed": true,
+        "side": "home",
+        "delta": 1,
+        "fav": "home"
+      },
+      "total_up_vs_circa": false,
+      "total_up_vs_espn_week": false,
+      "public_pushed": false
+    },
+    {
+      "game": "PHI@TEN",
+      "window": "SUN_PM",
+      "circa_open": "PHI -7",
+      "circa_ou": 39,
+      "espn_week_open_home": 5.5,
+      "espn_week_ou": 42.5,
+      "live_home": 7,
+      "live_ou": 39.5,
+      "live_source": "ESPN DraftKings scoreboard 2026-09-20 ~8:11 AM ET",
+      "fav_pricier_vs_circa": {
+        "pushed": false,
+        "side": "away",
+        "delta": 0,
+        "fav": "away"
+      },
+      "fav_pricier_vs_espn_week_open": {
+        "pushed": true,
+        "side": "away",
+        "delta": 1.5,
+        "fav": "away"
+      },
+      "total_up_vs_circa": true,
+      "total_up_vs_espn_week": false,
+      "public_pushed": true
+    },
+    {
+      "game": "PIT@NE",
+      "window": "SUN_PM",
+      "circa_open": "NE -4.5",
+      "circa_ou": 42,
+      "espn_week_open_home": -4.5,
+      "espn_week_ou": 43.5,
+      "live_home": -5.5,
+      "live_ou": 41.5,
+      "live_source": "ESPN DraftKings scoreboard 2026-09-20 ~8:11 AM ET",
+      "fav_pricier_vs_circa": {
+        "pushed": true,
+        "side": "home",
+        "delta": 1,
+        "fav": "home"
+      },
+      "fav_pricier_vs_espn_week_open": {
+        "pushed": true,
+        "side": "home",
+        "delta": 1,
+        "fav": "home"
+      },
+      "total_up_vs_circa": false,
+      "total_up_vs_espn_week": false,
+      "public_pushed": true
     }
   ]
 }

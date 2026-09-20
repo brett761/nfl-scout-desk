@@ -9,17 +9,17 @@
   "venue": "State Farm Stadium",
   "neutral": false,
   "window": "SUN_PM",
-  "model_home_spread": -0.19,
+  "model_home_spread": 2.09,
   "model_home_spread_source": "desk_compute",
   "street_home_spread": 3.5,
   "close_at_lock": 3.5,
-  "ou_street": 40.5,
-  "street_note": "FINAL freeze 2026-09-18 4:39 PM ET (America/New_York). ESPN DraftKings: SEA -3.5 / ou 40.5.",
-  "edge_home": 3.69,
-  "edge_note": "edgeHome = street \u2212 model = 3.5 \u2212 (-0.19) = 3.69 \u2192 home value (ARI); |edge|\u22651.5",
+  "ou_street": 41.5,
+  "street_note": "FINAL freeze 2026-09-20 8:11 AM ET (America/New_York). ESPN DraftKings: SEA -3.5 / ou 41.5.",
+  "edge_home": 1.41,
+  "edge_note": "edgeHome = street − model = 3.5 − (2.09) = 1.41 → home value (ARI)",
   "feature_stack": {
     "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W2 n=1 taper; pff_ytd IN line; injury 2026-09-18b FINAL",
-    "injury_pulled": "2026-09-18b",
+    "injury_pulled": "2026-09-19a",
     "away_SEA": {
       "prior": 5.23,
       "fa": -2.07,
@@ -29,10 +29,10 @@
       "pff_ytd": 2,
       "sos": -0.04,
       "return": 0,
-      "injury": -6,
+      "injury": -3.79,
       "adjust": 0,
       "context": 0,
-      "eff": 0.37
+      "eff": 2.58
     },
     "home_ARI": {
       "prior": -0.16,
@@ -43,10 +43,10 @@
       "pff_ytd": 2,
       "sos": 0.72,
       "return": 0,
-      "injury": -2.58,
+      "injury": -2.65,
       "adjust": 0,
       "context": 0,
-      "eff": -1.34
+      "eff": -1.41
     },
     "layers_home_minus_away": {
       "prior": -5.39,
@@ -57,11 +57,11 @@
       "pff_ytd": 0,
       "sos": 0.76,
       "return": 0,
-      "injury": 3.42,
+      "injury": 1.14,
       "adjust": 0,
       "context": 0
     },
-    "rating_diff_home_minus_away": -1.71,
+    "rating_diff_home_minus_away": -3.99,
     "hfa": 2,
     "coach": 0,
     "coach_note": "coachTerm desk",
@@ -72,12 +72,12 @@
     "travel": 0,
     "travel_note": "schedNet desk",
     "matchup": 0,
-    "matchup_note": "pff-matchups W1 grid only / missing \u2192 0",
-    "gap": 0.19,
+    "matchup_note": "pff-matchups W1 grid only / missing → 0",
+    "gap": -2.09,
     "component_sum": [
       {
-        "label": "rating_diff (ARI\u2212SEA)",
-        "val": -1.71
+        "label": "rating_diff (ARI−SEA)",
+        "val": -3.99
       },
       {
         "label": "HFA",
@@ -105,11 +105,11 @@
       },
       {
         "label": "gap",
-        "val": 0.19
+        "val": -2.09
       },
       {
-        "label": "model_home_spread (\u2212gap)",
-        "val": -0.19
+        "label": "model_home_spread (−gap)",
+        "val": 2.09
       }
     ],
     "injuries": {
@@ -124,6 +124,15 @@
           "on": true
         },
         {
+          "name": "Ty Okada",
+          "pos": "S",
+          "status": "OUT",
+          "impact": 0.57,
+          "impact_source": "pff",
+          "pts": -0.57,
+          "on": true
+        },
+        {
           "name": "Nick Emmanwori",
           "pos": "S",
           "status": "QUESTIONABLE",
@@ -133,52 +142,25 @@
           "on": true
         },
         {
-          "name": "Ty Okada",
-          "pos": "S",
-          "status": "QUESTIONABLE",
-          "impact": 0.57,
-          "impact_source": "pff",
-          "pts": -0.2,
-          "on": true
-        },
-        {
-          "name": "Josh Jones",
-          "pos": "OG",
-          "status": "QUESTIONABLE",
-          "impact": 1.07,
-          "impact_source": "pff",
-          "pts": -0.37,
+          "name": "Zach Charbonnet",
+          "pos": "RB1",
+          "status": "OUT",
+          "impact": 0.97,
+          "impact_source": "madden",
+          "pts": -0.97,
           "on": true
         },
         {
           "name": "Sam Darnold",
           "pos": "QB1",
           "status": "OUT",
-          "impact": 3.9,
+          "impact": 1.5,
           "impact_source": "manual",
-          "pts": -3.9,
-          "on": true
-        },
-        {
-          "name": "Zach Charbonnet",
-          "pos": "RB1",
-          "status": "PUP",
-          "impact": 0.97,
-          "impact_source": "madden",
-          "pts": -0.97,
+          "pts": -1.5,
           "on": true
         }
       ],
       "ARI": [
-        {
-          "name": "Isaiah Adams",
-          "pos": "OG",
-          "status": "QUESTIONABLE",
-          "impact": null,
-          "impact_source": null,
-          "pts": -0.18,
-          "on": true
-        },
         {
           "name": "Isaac Seumalo",
           "pos": "OG",
@@ -189,57 +171,21 @@
           "on": true
         },
         {
+          "name": "Isaiah Adams",
+          "pos": "OG",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.18,
+          "on": true
+        },
+        {
           "name": "Andrew Billings",
           "pos": "IDL",
           "status": "QUESTIONABLE",
           "impact": 0.2,
           "impact_source": "madden",
           "pts": -0.07,
-          "on": true
-        },
-        {
-          "name": "Garrett Williams",
-          "pos": "CB1",
-          "status": "QUESTIONABLE",
-          "impact": 0.32,
-          "impact_source": "madden",
-          "pts": -0.11,
-          "on": true
-        },
-        {
-          "name": "Dadrion Taylor-Demerson",
-          "pos": "S",
-          "status": "QUESTIONABLE",
-          "impact": 0.2,
-          "impact_source": "pff",
-          "pts": -0.07,
-          "on": true
-        },
-        {
-          "name": "Jack Gibbens",
-          "pos": "LB",
-          "status": "QUESTIONABLE",
-          "impact": 0.2,
-          "impact_source": "pff",
-          "pts": -0.07,
-          "on": true
-        },
-        {
-          "name": "Cody Simon",
-          "pos": "LB",
-          "status": "QUESTIONABLE",
-          "impact": 0.2,
-          "impact_source": "pff",
-          "pts": -0.07,
-          "on": true
-        },
-        {
-          "name": "Kitan Crawford",
-          "pos": "S",
-          "status": "IR",
-          "impact": null,
-          "impact_source": null,
-          "pts": -0.5,
           "on": true
         },
         {
@@ -258,6 +204,33 @@
           "impact": 0.2,
           "impact_source": "madden",
           "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Dadrion Taylor-Demerson",
+          "pos": "S",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "pff",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Garrett Williams",
+          "pos": "CB1",
+          "status": "OUT",
+          "impact": 0.32,
+          "impact_source": "madden",
+          "pts": -0.32,
+          "on": true
+        },
+        {
+          "name": "Kitan Crawford",
+          "pos": "S",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.5,
           "on": true
         },
         {
@@ -291,14 +264,14 @@
     },
     "injury_team_terms": {
       "SEA": {
-        "raw": -6.19,
-        "term": -6,
-        "capped": true,
+        "raw": -3.79,
+        "term": -3.79,
+        "capped": false,
         "cap_team": 6
       },
       "ARI": {
-        "raw": -2.58,
-        "term": -2.58,
+        "raw": -2.65,
+        "term": -2.65,
         "capped": false,
         "cap_team": 6
       }
@@ -319,21 +292,31 @@
     }
   },
   "tickets": [],
-  "notes": "FINAL pre-kick SUN_PM lock after Fri 4pm ET status. Injury 2026-09-18b. Model desk_compute. Street SEA -3.5. Edge home 3.69.",
+  "notes": "FINAL pre-kick SUN_PM lock after Fri 4pm ET status. Injury 2026-09-19a. Model desk_compute. Street SEA -3.5. Edge home 1.41. | Sun AM 2026-09-20 8:11 ET refresh vs Fri freeze: Δm=2.28 Δs=0 Δou=1 (REFRESH). Injury stamp 2026-09-19a. Friday card action PASS retained for public-dogs window (no full re-card).",
   "recommendation": {
-    "action": "LOCK",
-    "side": "ARI",
-    "market": "ARI +3.5",
-    "units": 2,
-    "stake_class": "2u @ $50/u",
-    "edge_home": 3.69,
-    "timing_thesis": "PRICE_CLV",
-    "reason": "Darnold OUT; model ~PK (\u22120.2) vs street SEA \u22123.5 \u2192 ARI +3.5. Market slow to full QB hit."
+    "action": "PASS",
+    "side": null,
+    "market": null,
+    "units": 0,
+    "stake_class": "0u",
+    "edge_home": 1.41,
+    "timing_thesis": "PASS",
+    "reason": "Fri LOCK ARI +3.5; Sun AM model moved to +2.09 (edge 1.41 <1.5) after Sat injury — PASS",
+    "sunday_am_note": "Fri LOCK ARI +3.5; Sun AM model moved to +2.09 (edge 1.41 <1.5) after Sat injury — PASS"
   },
-  "frozen_at": "2026-09-18 4:39 PM ET (America/New_York)",
-  "frozen_at_utc": "2026-09-18T20:39:38.293Z",
-  "locked_at": "2026-09-18T20:39:38.293-04:00",
+  "frozen_at": "2026-09-20 8:11 AM ET (America/New_York)",
+  "frozen_at_utc": "2026-09-20T12:11:50.434Z",
+  "locked_at": "2026-09-20T12:11:50.434-04:00",
   "injury_aligned_to_imp3": true,
   "injury_source_policy": "madden_first",
-  "lock_phase": "FINAL_PRE_KICK"
+  "lock_phase": "SUN_AM_REFRESH",
+  "sunday_am_vs_friday": {
+    "model_delta": 2.28,
+    "street_delta": 0,
+    "ou_delta": 1,
+    "material": true,
+    "fri_model": -0.19,
+    "fri_street": 3.5,
+    "fri_ou": 40.5
+  }
 }

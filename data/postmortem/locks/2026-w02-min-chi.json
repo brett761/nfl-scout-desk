@@ -9,17 +9,17 @@
   "venue": "Soldier Field",
   "neutral": false,
   "window": "SUN_PM",
-  "model_home_spread": -3.93,
+  "model_home_spread": -0.93,
   "model_home_spread_source": "desk_compute",
   "street_home_spread": -4.5,
   "close_at_lock": -4.5,
   "ou_street": 47.5,
-  "street_note": "FINAL freeze 2026-09-18 4:39 PM ET (America/New_York). ESPN DraftKings: CHI -4.5 / ou 47.5.",
-  "edge_home": -0.57,
-  "edge_note": "edgeHome = street \u2212 model = -4.5 \u2212 (-3.93) = -0.57 \u2192 away value (MIN)",
+  "street_note": "FINAL freeze 2026-09-20 8:11 AM ET (America/New_York). ESPN DraftKings: CHI -4.5 / ou 47.5.",
+  "edge_home": -3.57,
+  "edge_note": "edgeHome = street − model = -4.5 − (-0.93) = -3.57 → away value (MIN); |edge|≥1.5",
   "feature_stack": {
     "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W2 n=1 taper; pff_ytd IN line; injury 2026-09-18b FINAL",
-    "injury_pulled": "2026-09-18b",
+    "injury_pulled": "2026-09-19a",
     "away_MIN": {
       "prior": 3.24,
       "fa": -1.33,
@@ -29,10 +29,10 @@
       "pff_ytd": -0.19,
       "sos": 0.15,
       "return": 0,
-      "injury": -4.92,
+      "injury": -1.92,
       "adjust": 0,
       "context": 0,
-      "eff": -3.41
+      "eff": -0.41
     },
     "home_CHI": {
       "prior": 1.61,
@@ -57,11 +57,11 @@
       "pff_ytd": -0.79,
       "sos": -1.01,
       "return": 0,
-      "injury": 3.35,
+      "injury": 0.35,
       "adjust": 0,
       "context": 0
     },
-    "rating_diff_home_minus_away": 1.85,
+    "rating_diff_home_minus_away": -1.15,
     "hfa": 2,
     "coach": 0,
     "coach_note": "coachTerm desk",
@@ -72,12 +72,12 @@
     "travel": 0,
     "travel_note": "schedNet desk",
     "matchup": 0,
-    "matchup_note": "pff-matchups W1 grid only / missing \u2192 0",
-    "gap": 3.93,
+    "matchup_note": "pff-matchups W1 grid only / missing → 0",
+    "gap": 0.93,
     "component_sum": [
       {
-        "label": "rating_diff (CHI\u2212MIN)",
-        "val": 1.85
+        "label": "rating_diff (CHI−MIN)",
+        "val": -1.15
       },
       {
         "label": "HFA",
@@ -105,15 +105,24 @@
       },
       {
         "label": "gap",
-        "val": 3.93
+        "val": 0.93
       },
       {
-        "label": "model_home_spread (\u2212gap)",
-        "val": -3.93
+        "label": "model_home_spread (−gap)",
+        "val": -0.93
       }
     ],
     "injuries": {
       "MIN": [
+        {
+          "name": "Brian O'Neill",
+          "pos": "RT",
+          "status": "QUESTIONABLE",
+          "impact": 2.37,
+          "impact_source": "madden",
+          "pts": -0.83,
+          "on": true
+        },
         {
           "name": "Jauan Jennings",
           "pos": "WR2",
@@ -127,18 +136,9 @@
           "name": "Kyler Murray",
           "pos": "QB1",
           "status": "OUT",
-          "impact": 3.5,
+          "impact": 0.5,
           "impact_source": "manual",
-          "pts": -3.5,
-          "on": true
-        },
-        {
-          "name": "Brian O'Neill",
-          "pos": "RT",
-          "status": "QUESTIONABLE",
-          "impact": 2.37,
-          "impact_source": "madden",
-          "pts": -0.83,
+          "pts": -0.5,
           "on": true
         },
         {
@@ -165,8 +165,8 @@
     },
     "injury_team_terms": {
       "MIN": {
-        "raw": -4.92,
-        "term": -4.92,
+        "raw": -1.92,
+        "term": -1.92,
         "capped": false,
         "cap_team": 6
       },
@@ -193,21 +193,31 @@
     }
   },
   "tickets": [],
-  "notes": "FINAL pre-kick SUN_PM lock after Fri 4pm ET status. Injury 2026-09-18b. Model desk_compute. Street CHI -4.5. Edge home -0.57.",
+  "notes": "FINAL pre-kick SUN_PM lock after Fri 4pm ET status. Injury 2026-09-19a. Model desk_compute. Street CHI -4.5. Edge home -3.57. | Sun AM 2026-09-20 8:11 ET refresh vs Fri freeze: Δm=3 Δs=0 Δou=0 (REFRESH). Injury stamp 2026-09-19a. Friday card action PASS retained for public-dogs window (no full re-card).",
   "recommendation": {
     "action": "PASS",
     "side": null,
     "market": null,
     "units": 0,
     "stake_class": "0u",
-    "edge_home": -0.57,
+    "edge_home": -3.57,
     "timing_thesis": "PASS",
-    "reason": "Prior B$ MIN +5.5; street now CHI \u22124.5. Model \u22123.93 vs \u22124.5 \u2192 |edge| 0.57 only. Murray Out already in. PASS."
+    "reason": "Friday PASS retained (Sun AM public-dogs). Model -0.93 / street -4.5.",
+    "sunday_am_note": null
   },
-  "frozen_at": "2026-09-18 4:39 PM ET (America/New_York)",
-  "frozen_at_utc": "2026-09-18T20:39:38.293Z",
-  "locked_at": "2026-09-18T20:39:38.293-04:00",
+  "frozen_at": "2026-09-20 8:11 AM ET (America/New_York)",
+  "frozen_at_utc": "2026-09-20T12:11:50.434Z",
+  "locked_at": "2026-09-20T12:11:50.434-04:00",
   "injury_aligned_to_imp3": true,
   "injury_source_policy": "madden_first",
-  "lock_phase": "FINAL_PRE_KICK"
+  "lock_phase": "SUN_AM_REFRESH",
+  "sunday_am_vs_friday": {
+    "model_delta": 3,
+    "street_delta": 0,
+    "ou_delta": 0,
+    "material": true,
+    "fri_model": -3.93,
+    "fri_street": -4.5,
+    "fri_ou": 47.5
+  }
 }

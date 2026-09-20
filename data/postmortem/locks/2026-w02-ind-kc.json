@@ -9,17 +9,17 @@
   "venue": "Arrowhead Stadium",
   "neutral": false,
   "window": "SNF",
-  "model_home_spread": -10.12,
+  "model_home_spread": -9.92,
   "model_home_spread_source": "desk_compute",
-  "street_home_spread": -6.5,
-  "close_at_lock": -6.5,
+  "street_home_spread": -5.5,
+  "close_at_lock": -5.5,
   "ou_street": 46.5,
-  "street_note": "FINAL freeze 2026-09-18 4:39 PM ET (America/New_York). ESPN DraftKings: KC -6.5 / ou 46.5.",
-  "edge_home": 3.62,
-  "edge_note": "edgeHome = street \u2212 model = -6.5 \u2212 (-10.12) = 3.62 \u2192 home value (KC); |edge|\u22651.5",
+  "street_note": "FINAL freeze 2026-09-20 8:11 AM ET (America/New_York). ESPN DraftKings: KC -5.5 / ou 46.5.",
+  "edge_home": 4.42,
+  "edge_note": "edgeHome = street − model = -5.5 − (-9.92) = 4.42 → home value (KC); |edge|≥1.5",
   "feature_stack": {
     "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W2 n=1 taper; pff_ytd IN line; injury 2026-09-18b FINAL",
-    "injury_pulled": "2026-09-18b",
+    "injury_pulled": "2026-09-19a",
     "away_IND": {
       "prior": -0.27,
       "fa": -1.87,
@@ -43,10 +43,10 @@
       "pff_ytd": 2,
       "sos": 0.16,
       "return": 0.67,
-      "injury": -3.17,
+      "injury": -3.37,
       "adjust": 0,
       "context": 0,
-      "eff": 3.95
+      "eff": 3.75
     },
     "layers_home_minus_away": {
       "prior": 6.08,
@@ -57,11 +57,11 @@
       "pff_ytd": 4,
       "sos": -0.46,
       "return": 0.2,
-      "injury": -1.08,
+      "injury": -1.28,
       "adjust": 0,
       "context": 0
     },
-    "rating_diff_home_minus_away": 8.12,
+    "rating_diff_home_minus_away": 7.92,
     "hfa": 2,
     "coach": 0,
     "coach_note": "coachTerm desk",
@@ -72,12 +72,12 @@
     "travel": 0,
     "travel_note": "schedNet desk",
     "matchup": 0,
-    "matchup_note": "pff-matchups W1 grid only / missing \u2192 0",
-    "gap": 10.12,
+    "matchup_note": "pff-matchups W1 grid only / missing → 0",
+    "gap": 9.92,
     "component_sum": [
       {
-        "label": "rating_diff (KC\u2212IND)",
-        "val": 8.12
+        "label": "rating_diff (KC−IND)",
+        "val": 7.92
       },
       {
         "label": "HFA",
@@ -105,11 +105,11 @@
       },
       {
         "label": "gap",
-        "val": 10.12
+        "val": 9.92
       },
       {
-        "label": "model_home_spread (\u2212gap)",
-        "val": -10.12
+        "label": "model_home_spread (−gap)",
+        "val": -9.92
       }
     ],
     "injuries": {
@@ -171,21 +171,30 @@
       ],
       "KC": [
         {
-          "name": "Cooper McDonald",
-          "pos": "LB",
-          "status": "IR",
-          "impact": null,
-          "impact_source": null,
-          "pts": -0.5,
-          "on": true
-        },
-        {
           "name": "Chris Jones",
           "pos": "IDL",
           "status": "QUESTIONABLE",
           "impact": 3.92,
           "impact_source": "madden",
           "pts": -1.37,
+          "on": true
+        },
+        {
+          "name": "Mansoor Delane",
+          "pos": "CB1",
+          "status": "QUESTIONABLE",
+          "impact": 0.57,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Cooper McDonald",
+          "pos": "LB",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.5,
           "on": true
         },
         {
@@ -216,8 +225,8 @@
         "cap_team": 6
       },
       "KC": {
-        "raw": -3.17,
-        "term": -3.17,
+        "raw": -3.37,
+        "term": -3.37,
         "capped": false,
         "cap_team": 6
       }
@@ -238,21 +247,31 @@
     }
   },
   "tickets": [],
-  "notes": "FINAL pre-kick SNF lock after Fri 4pm ET status. Injury 2026-09-18b. Model desk_compute. Street KC -6.5. Edge home 3.62.",
+  "notes": "FINAL pre-kick SNF lock after Fri 4pm ET status. Injury 2026-09-19a. Model desk_compute. Street KC -5.5. Edge home 4.42. | Sun AM 2026-09-20 8:11 ET refresh vs Fri freeze: Δm=0.2 Δs=1 Δou=0 (REFRESH). Injury stamp 2026-09-19a. Friday card action LOCK retained for public-dogs window (no full re-card).",
   "recommendation": {
     "action": "LOCK",
     "side": "KC",
-    "market": "KC \u22126.5",
+    "market": "KC -6.5",
     "units": 2,
     "stake_class": "2u @ $50/u",
-    "edge_home": 3.62,
-    "timing_thesis": "PRICE_CLV",
-    "reason": "SNF favorite. Model KC \u221210.1 vs street \u22126.5 \u2192 +3.6 home. Lock now per favorites timing."
+    "edge_home": 4.42,
+    "timing_thesis": "FRIDAY_CARD",
+    "reason": "Friday written number KC -6.5; live street eased to -5.5 — shop -6.5, no chase",
+    "sunday_am_note": "Friday written number KC -6.5; live street eased to -5.5 — shop -6.5, no chase"
   },
-  "frozen_at": "2026-09-18 4:39 PM ET (America/New_York)",
-  "frozen_at_utc": "2026-09-18T20:39:38.293Z",
-  "locked_at": "2026-09-18T20:39:38.293-04:00",
+  "frozen_at": "2026-09-20 8:11 AM ET (America/New_York)",
+  "frozen_at_utc": "2026-09-20T12:11:50.434Z",
+  "locked_at": "2026-09-20T12:11:50.434-04:00",
   "injury_aligned_to_imp3": true,
   "injury_source_policy": "madden_first",
-  "lock_phase": "FINAL_PRE_KICK"
+  "lock_phase": "SUN_AM_REFRESH",
+  "sunday_am_vs_friday": {
+    "model_delta": 0.2,
+    "street_delta": 1,
+    "ou_delta": 0,
+    "material": true,
+    "fri_model": -10.12,
+    "fri_street": -6.5,
+    "fri_ou": 46.5
+  }
 }

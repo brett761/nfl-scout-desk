@@ -11,15 +11,15 @@
   "window": "SUN_PM",
   "model_home_spread": -8.47,
   "model_home_spread_source": "desk_compute",
-  "street_home_spread": -8.5,
-  "close_at_lock": -8.5,
+  "street_home_spread": -7.5,
+  "close_at_lock": -7.5,
   "ou_street": 41.5,
-  "street_note": "FINAL freeze 2026-09-18 4:39 PM ET (America/New_York). ESPN DraftKings: TB -8.5 / ou 41.5.",
-  "edge_home": -0.03,
-  "edge_note": "edgeHome = street − model = -8.5 − (-8.47) = -0.03 → away value (CLE)",
+  "street_note": "FINAL freeze 2026-09-20 8:11 AM ET (America/New_York). ESPN DraftKings: TB -7.5 / ou 41.5.",
+  "edge_home": 0.97,
+  "edge_note": "edgeHome = street − model = -7.5 − (-8.47) = 0.97 → home value (TB)",
   "feature_stack": {
     "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W2 n=1 taper; pff_ytd IN line; injury 2026-09-18b FINAL",
-    "injury_pulled": "2026-09-18b",
+    "injury_pulled": "2026-09-19a",
     "away_CLE": {
       "prior": -5.85,
       "fa": 0.8,
@@ -171,15 +171,6 @@
       ],
       "TB": [
         {
-          "name": "Jalen McMillan",
-          "pos": "WR2",
-          "status": "QUESTIONABLE",
-          "impact": null,
-          "impact_source": null,
-          "pts": -0.18,
-          "on": true
-        },
-        {
           "name": "Miles Killebrew",
           "pos": "S",
           "status": "QUESTIONABLE",
@@ -195,6 +186,15 @@
           "impact": 0.57,
           "impact_source": "madden",
           "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Jalen McMillan",
+          "pos": "WR2",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.18,
           "on": true
         },
         {
@@ -256,21 +256,31 @@
     }
   },
   "tickets": [],
-  "notes": "FINAL pre-kick SUN_PM lock after Fri 4pm ET status. Injury 2026-09-18b. Model desk_compute. Street TB -8.5. Edge home -0.03.",
+  "notes": "FINAL pre-kick SUN_PM lock after Fri 4pm ET status. Injury 2026-09-19a. Model desk_compute. Street TB -7.5. Edge home 0.97. | Sun AM 2026-09-20 8:11 ET refresh vs Fri freeze: Δm=0 Δs=1 Δou=0 (REFRESH). Injury stamp 2026-09-19a. Friday card action PASS retained for public-dogs window (no full re-card).",
   "recommendation": {
     "action": "PASS",
     "side": null,
     "market": null,
     "units": 0,
     "stake_class": "0u",
-    "edge_home": -0.03,
+    "edge_home": 0.97,
     "timing_thesis": "PASS",
-    "reason": "No ≥1.5-pt edge vs street at freeze."
+    "reason": "Friday PASS retained (Sun AM public-dogs). Model -8.47 / street -7.5.",
+    "sunday_am_note": null
   },
-  "frozen_at": "2026-09-18 4:39 PM ET (America/New_York)",
-  "frozen_at_utc": "2026-09-18T20:39:38.293Z",
-  "locked_at": "2026-09-18T20:39:38.293-04:00",
+  "frozen_at": "2026-09-20 8:11 AM ET (America/New_York)",
+  "frozen_at_utc": "2026-09-20T12:11:50.434Z",
+  "locked_at": "2026-09-20T12:11:50.434-04:00",
   "injury_aligned_to_imp3": true,
   "injury_source_policy": "madden_first",
-  "lock_phase": "FINAL_PRE_KICK"
+  "lock_phase": "SUN_AM_REFRESH",
+  "sunday_am_vs_friday": {
+    "model_delta": 0,
+    "street_delta": 1,
+    "ou_delta": 0,
+    "material": true,
+    "fri_model": -8.47,
+    "fri_street": -8.5,
+    "fri_ou": 41.5
+  }
 }

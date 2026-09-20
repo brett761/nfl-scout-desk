@@ -14,12 +14,12 @@
   "street_home_spread": 3.5,
   "close_at_lock": 3.5,
   "ou_street": 44.5,
-  "street_note": "FINAL freeze 2026-09-18 4:39 PM ET (America/New_York). ESPN DraftKings: GB -3.5 / ou 44.5.",
+  "street_note": "FINAL freeze 2026-09-20 8:11 AM ET (America/New_York). ESPN DraftKings: GB -3.5 / ou 44.5.",
   "edge_home": 12.22,
-  "edge_note": "edgeHome = street \u2212 model = 3.5 \u2212 (-8.72) = 12.22 \u2192 home value (NYJ); |edge|\u22651.5",
+  "edge_note": "edgeHome = street − model = 3.5 − (-8.72) = 12.22 → home value (NYJ); |edge|≥1.5",
   "feature_stack": {
     "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W2 n=1 taper; pff_ytd IN line; injury 2026-09-18b FINAL",
-    "injury_pulled": "2026-09-18b",
+    "injury_pulled": "2026-09-19a",
     "away_GB": {
       "prior": -0.45,
       "fa": -2.47,
@@ -72,11 +72,11 @@
     "travel": 0,
     "travel_note": "schedNet desk",
     "matchup": 0,
-    "matchup_note": "pff-matchups W1 grid only / missing \u2192 0",
+    "matchup_note": "pff-matchups W1 grid only / missing → 0",
     "gap": 8.72,
     "component_sum": [
       {
-        "label": "rating_diff (NYJ\u2212GB)",
+        "label": "rating_diff (NYJ−GB)",
         "val": 6.78
       },
       {
@@ -108,30 +108,12 @@
         "val": 8.72
       },
       {
-        "label": "model_home_spread (\u2212gap)",
+        "label": "model_home_spread (−gap)",
         "val": -8.72
       }
     ],
     "injuries": {
       "GB": [
-        {
-          "name": "Benjamin St-Juste",
-          "pos": "CB1",
-          "status": "QUESTIONABLE",
-          "impact": 0.2,
-          "impact_source": "madden",
-          "pts": -0.07,
-          "on": true
-        },
-        {
-          "name": "Warren Brinson",
-          "pos": "IDL",
-          "status": "OUT",
-          "impact": null,
-          "impact_source": null,
-          "pts": -0.8,
-          "on": true
-        },
         {
           "name": "Aaron Banks",
           "pos": "OG",
@@ -151,12 +133,12 @@
           "on": true
         },
         {
-          "name": "Javon Hargrave",
+          "name": "Warren Brinson",
           "pos": "IDL",
-          "status": "DOUBTFUL",
-          "impact": 0.42,
-          "impact_source": "madden",
-          "pts": -0.32,
+          "status": "OUT",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.8,
           "on": true
         },
         {
@@ -166,6 +148,24 @@
           "impact": 2.31,
           "impact_source": "pff",
           "pts": -0.81,
+          "on": true
+        },
+        {
+          "name": "Javon Hargrave",
+          "pos": "IDL",
+          "status": "DOUBTFUL",
+          "impact": 0.42,
+          "impact_source": "madden",
+          "pts": -0.32,
+          "on": true
+        },
+        {
+          "name": "Benjamin St-Juste",
+          "pos": "CB1",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
           "on": true
         },
         {
@@ -180,12 +180,21 @@
       ],
       "NYJ": [
         {
-          "name": "Omar Cooper Jr.",
-          "pos": "WR2",
+          "name": "Joseph Ossai",
+          "pos": "EDGE1",
           "status": "OUT",
           "impact": 0.2,
-          "impact_source": "madden",
+          "impact_source": "pff",
           "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Will McDonald IV",
+          "pos": "EDGE1",
+          "status": "QUESTIONABLE",
+          "impact": 0.62,
+          "impact_source": "madden",
+          "pts": -0.22,
           "on": true
         },
         {
@@ -207,21 +216,12 @@
           "on": true
         },
         {
-          "name": "Joseph Ossai",
-          "pos": "EDGE1",
+          "name": "Omar Cooper Jr.",
+          "pos": "WR2",
           "status": "OUT",
           "impact": 0.2,
-          "impact_source": "pff",
-          "pts": -0.2,
-          "on": true
-        },
-        {
-          "name": "Will McDonald IV",
-          "pos": "EDGE1",
-          "status": "QUESTIONABLE",
-          "impact": 0.62,
           "impact_source": "madden",
-          "pts": -0.22,
+          "pts": -0.2,
           "on": true
         },
         {
@@ -265,7 +265,7 @@
     }
   },
   "tickets": [],
-  "notes": "FINAL pre-kick SUN_PM lock after Fri 4pm ET status. Injury 2026-09-18b. Model desk_compute. Street GB -3.5. Edge home 12.22.",
+  "notes": "FINAL pre-kick SUN_PM lock after Fri 4pm ET status. Injury 2026-09-19a. Model desk_compute. Street GB -3.5. Edge home 12.22. | Sun AM 2026-09-20 8:11 ET refresh vs Fri freeze: Δm=0 Δs=0 Δou=0 (confirm). Injury stamp 2026-09-19a. Friday card action LOCK retained for public-dogs window (no full re-card).",
   "recommendation": {
     "action": "LOCK",
     "side": "NYJ",
@@ -273,13 +273,23 @@
     "units": 3,
     "stake_class": "3u @ $50/u",
     "edge_home": 12.22,
-    "timing_thesis": "PRICE_CLV",
-    "reason": "B$ card + model NYJ \u22128.7 vs street GB \u22123.5 \u2192 +12 home edge. GB injury-capped (Parsons PUP + Hargrave Doubtful)."
+    "timing_thesis": "FRIDAY_CARD",
+    "reason": "Friday LOCK retained. Model -8.72 vs street 3.5 → edge_home 12.22.",
+    "sunday_am_note": null
   },
-  "frozen_at": "2026-09-18 4:39 PM ET (America/New_York)",
-  "frozen_at_utc": "2026-09-18T20:39:38.293Z",
-  "locked_at": "2026-09-18T20:39:38.293-04:00",
+  "frozen_at": "2026-09-20 8:11 AM ET (America/New_York)",
+  "frozen_at_utc": "2026-09-20T12:11:50.434Z",
+  "locked_at": "2026-09-20T12:11:50.434-04:00",
   "injury_aligned_to_imp3": true,
   "injury_source_policy": "madden_first",
-  "lock_phase": "FINAL_PRE_KICK"
+  "lock_phase": "SUN_AM_CONFIRMED",
+  "sunday_am_vs_friday": {
+    "model_delta": 0,
+    "street_delta": 0,
+    "ou_delta": 0,
+    "material": false,
+    "fri_model": -8.72,
+    "fri_street": 3.5,
+    "fri_ou": 44.5
+  }
 }
