@@ -1,0 +1,822 @@
+{
+  "season": 2026,
+  "week": 2,
+  "pulled": "2026-09-20T14:45:49Z",
+  "note": "Sparse real history. Mon = street openers only. Wed = TNF lock. Fri/Sun = Sunday-card locks (Fri from sunday_am_vs_friday). Tue/Thu/Sat empty. No invented B$ numbers.",
+  "sources": [
+    "data/openers/2026-09-14-week2-monday.json",
+    "data/postmortem/locks/2026-w02-*.json",
+    "data/injury-2026-summary.md",
+    "data/injury-valuation/weeks/2026-W02-sunday.json"
+  ],
+  "days": {
+    "mon": {
+      "date": "2026-09-14",
+      "et": "Mon 14 Sep \u00b7 openers"
+    },
+    "tue": {
+      "date": "2026-09-15",
+      "et": "Tue 15 Sep"
+    },
+    "wed": {
+      "date": "2026-09-16",
+      "et": "Wed 16 Sep \u00b7 TNF lock"
+    },
+    "thu": {
+      "date": "2026-09-17",
+      "et": "Thu 17 Sep"
+    },
+    "fri": {
+      "date": "2026-09-18",
+      "et": "Fri 18 Sep \u00b7 Game Status"
+    },
+    "sat": {
+      "date": "2026-09-19",
+      "et": "Sat 19 Sep"
+    },
+    "sun": {
+      "date": "2026-09-20",
+      "et": "Sun 20 Sep \u00b7 AM lock"
+    }
+  },
+  "games": [
+    {
+      "id": "401872932",
+      "away": "DET",
+      "home": "BUF",
+      "kick": "2026-09-18T00:15Z",
+      "window": "TNF",
+      "lines": {
+        "mon": {
+          "b_money": null,
+          "street": -3.5,
+          "as_of": "2026-09-14 9:11 AM ET",
+          "note": "Mon openers \u00b7 ESPN DraftKings \u00b7 street only"
+        },
+        "tue": null,
+        "wed": {
+          "b_money": -9.28,
+          "street": -4.5,
+          "as_of": "2026-09-16 5:44 PM ET",
+          "note": "TNF lock 2026-09-16b"
+        },
+        "thu": null,
+        "fri": null,
+        "sat": null,
+        "sun": null
+      },
+      "changes": []
+    },
+    {
+      "id": "401872933",
+      "away": "CAR",
+      "home": "ATL",
+      "kick": "2026-09-20T17:00Z",
+      "window": "SUN_PM",
+      "lines": {
+        "mon": {
+          "b_money": null,
+          "street": 1.5,
+          "as_of": "2026-09-14 9:11 AM ET",
+          "note": "Mon openers \u00b7 ESPN DraftKings \u00b7 street only"
+        },
+        "tue": null,
+        "wed": null,
+        "thu": null,
+        "fri": {
+          "b_money": 2.88,
+          "street": 2.5,
+          "as_of": "2026-09-18 4:38 PM ET",
+          "note": "Fri Game Status"
+        },
+        "sat": null,
+        "sun": {
+          "b_money": 2.89,
+          "street": 2.5,
+          "as_of": "2026-09-20 10:45 AM ET",
+          "note": "AM lock 2026-09-20a"
+        }
+      },
+      "changes": []
+    },
+    {
+      "id": "401872934",
+      "away": "CIN",
+      "home": "HOU",
+      "kick": "2026-09-20T17:00Z",
+      "window": "SUN_PM",
+      "lines": {
+        "mon": {
+          "b_money": null,
+          "street": -3.0,
+          "as_of": "2026-09-14 9:11 AM ET",
+          "note": "Mon openers \u00b7 ESPN DraftKings \u00b7 street only"
+        },
+        "tue": null,
+        "wed": null,
+        "thu": null,
+        "fri": {
+          "b_money": -5.4,
+          "street": -2.5,
+          "as_of": "2026-09-18 4:38 PM ET",
+          "note": "Fri Game Status"
+        },
+        "sat": null,
+        "sun": {
+          "b_money": -5.14,
+          "street": -3.0,
+          "as_of": "2026-09-20 10:45 AM ET",
+          "note": "AM lock 2026-09-20a"
+        }
+      },
+      "changes": [
+        {
+          "from_day": "fri",
+          "to_day": "sun",
+          "from": -5.4,
+          "to": -5.14,
+          "delta": 0.26,
+          "why": [
+            {
+              "type": "street",
+              "detail": "HOU \u22122.5 Friday \u2192 \u22123.0 Sunday AM"
+            },
+            {
+              "type": "lock",
+              "detail": "Sun AM 2026-09-20a. Small model refresh; Ingram / Hummel already OUT on the Saturday card."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401872935",
+      "away": "CLE",
+      "home": "TB",
+      "kick": "2026-09-20T17:00Z",
+      "window": "SUN_PM",
+      "lines": {
+        "mon": {
+          "b_money": null,
+          "street": -8.5,
+          "as_of": "2026-09-14 9:11 AM ET",
+          "note": "Mon openers \u00b7 ESPN DraftKings \u00b7 street only"
+        },
+        "tue": null,
+        "wed": null,
+        "thu": null,
+        "fri": {
+          "b_money": -8.47,
+          "street": -8.5,
+          "as_of": "2026-09-18 4:38 PM ET",
+          "note": "Fri Game Status"
+        },
+        "sat": null,
+        "sun": {
+          "b_money": -8.56,
+          "street": -8.5,
+          "as_of": "2026-09-20 10:45 AM ET",
+          "note": "AM lock 2026-09-20a"
+        }
+      },
+      "changes": [
+        {
+          "from_day": "fri",
+          "to_day": "sun",
+          "from": -8.47,
+          "to": -8.56,
+          "delta": -0.09,
+          "why": [
+            {
+              "type": "lock",
+              "detail": "Sun AM 2026-09-20a. Tiny model refresh. Street TB \u22128.5 held."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401872936",
+      "away": "GB",
+      "home": "NYJ",
+      "kick": "2026-09-20T17:00Z",
+      "window": "SUN_PM",
+      "lines": {
+        "mon": {
+          "b_money": null,
+          "street": 4.5,
+          "as_of": "2026-09-14 9:11 AM ET",
+          "note": "Mon openers \u00b7 ESPN DraftKings \u00b7 street only"
+        },
+        "tue": null,
+        "wed": null,
+        "thu": null,
+        "fri": {
+          "b_money": -8.72,
+          "street": 3.5,
+          "as_of": "2026-09-18 4:38 PM ET",
+          "note": "Fri Game Status"
+        },
+        "sat": null,
+        "sun": {
+          "b_money": -8.72,
+          "street": 3.5,
+          "as_of": "2026-09-20 10:45 AM ET",
+          "note": "AM lock 2026-09-20a"
+        }
+      },
+      "changes": []
+    },
+    {
+      "id": "401872937",
+      "away": "MIN",
+      "home": "CHI",
+      "kick": "2026-09-20T17:00Z",
+      "window": "SUN_PM",
+      "lines": {
+        "mon": {
+          "b_money": null,
+          "street": -5.5,
+          "as_of": "2026-09-14 9:11 AM ET",
+          "note": "Mon openers \u00b7 ESPN DraftKings \u00b7 street only"
+        },
+        "tue": null,
+        "wed": null,
+        "thu": null,
+        "fri": {
+          "b_money": -3.93,
+          "street": -4.5,
+          "as_of": "2026-09-18 4:38 PM ET",
+          "note": "Fri Game Status"
+        },
+        "sat": null,
+        "sun": {
+          "b_money": -0.41,
+          "street": -4.5,
+          "as_of": "2026-09-20 10:45 AM ET",
+          "note": "AM lock 2026-09-20a"
+        }
+      },
+      "changes": [
+        {
+          "from_day": "fri",
+          "to_day": "sun",
+          "from": -3.93,
+          "to": -0.41,
+          "delta": 3.52,
+          "why": [
+            {
+              "type": "lock",
+              "detail": "Murray already OUT on the Friday card. Sun AM manual impact cut 3.5 \u2192 0.5 (Wentz starts). MIN injury term \u22124.92 \u2192 \u22121.92."
+            },
+            {
+              "type": "injury",
+              "team": "MIN",
+              "player": "Kyler Murray",
+              "status": "OUT",
+              "detail": "concussion \u2014 designation unchanged; Sun AM valuation reset, not a new out"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401872938",
+      "away": "NO",
+      "home": "BAL",
+      "kick": "2026-09-20T17:00Z",
+      "window": "SUN_PM",
+      "lines": {
+        "mon": {
+          "b_money": null,
+          "street": -8.5,
+          "as_of": "2026-09-14 9:11 AM ET",
+          "note": "Mon openers \u00b7 ESPN DraftKings \u00b7 street only"
+        },
+        "tue": null,
+        "wed": null,
+        "thu": null,
+        "fri": {
+          "b_money": -5.73,
+          "street": -8.5,
+          "as_of": "2026-09-18 4:38 PM ET",
+          "note": "Fri Game Status"
+        },
+        "sat": null,
+        "sun": {
+          "b_money": -5.73,
+          "street": -8.5,
+          "as_of": "2026-09-20 10:45 AM ET",
+          "note": "AM lock 2026-09-20a"
+        }
+      },
+      "changes": []
+    },
+    {
+      "id": "401872939",
+      "away": "PHI",
+      "home": "TEN",
+      "kick": "2026-09-20T17:00Z",
+      "window": "SUN_PM",
+      "lines": {
+        "mon": {
+          "b_money": null,
+          "street": 7.0,
+          "as_of": "2026-09-14 9:11 AM ET",
+          "note": "Mon openers \u00b7 ESPN DraftKings \u00b7 street only"
+        },
+        "tue": null,
+        "wed": null,
+        "thu": null,
+        "fri": {
+          "b_money": 5.48,
+          "street": 7.0,
+          "as_of": "2026-09-18 4:38 PM ET",
+          "note": "Fri Game Status"
+        },
+        "sat": null,
+        "sun": {
+          "b_money": 5.78,
+          "street": 7.0,
+          "as_of": "2026-09-20 10:45 AM ET",
+          "note": "AM lock 2026-09-20a"
+        }
+      },
+      "changes": [
+        {
+          "from_day": "fri",
+          "to_day": "sun",
+          "from": 5.48,
+          "to": 5.78,
+          "delta": 0.3,
+          "why": [
+            {
+              "type": "lock",
+              "detail": "Sun AM 2026-09-20a refresh vs Fri Game Status. Street PHI \u22127 held."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401872946",
+      "away": "PIT",
+      "home": "NE",
+      "kick": "2026-09-20T17:00Z",
+      "window": "SUN_PM",
+      "lines": {
+        "mon": {
+          "b_money": null,
+          "street": -5.5,
+          "as_of": "2026-09-14 9:11 AM ET",
+          "note": "Mon openers \u00b7 ESPN DraftKings \u00b7 street only"
+        },
+        "tue": null,
+        "wed": null,
+        "thu": null,
+        "fri": {
+          "b_money": 2.57,
+          "street": -5.5,
+          "as_of": "2026-09-18 4:38 PM ET",
+          "note": "Fri Game Status"
+        },
+        "sat": null,
+        "sun": {
+          "b_money": 4.23,
+          "street": -5.5,
+          "as_of": "2026-09-20 10:45 AM ET",
+          "note": "AM lock 2026-09-20a"
+        }
+      },
+      "changes": [
+        {
+          "from_day": "fri",
+          "to_day": "sun",
+          "from": 2.57,
+          "to": 4.23,
+          "delta": 1.66,
+          "why": [
+            {
+              "type": "injury",
+              "team": "NE",
+              "player": "Carlton Davis III",
+              "status": "OUT",
+              "detail": "neck \u2014 QUESTIONABLE \u2192 OUT on Sun AM 2026-09-20a"
+            },
+            {
+              "type": "injury",
+              "team": "PIT",
+              "player": "Michael Pittman Jr.",
+              "status": "OUT",
+              "detail": "foot \u2014 QUESTIONABLE \u2192 OUT on Sun AM 2026-09-20a"
+            },
+            {
+              "type": "lock",
+              "detail": "Sun AM 2026-09-20a re-freeze vs Fri Game Status. Street NE \u22125.5 held."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401872940",
+      "away": "JAX",
+      "home": "DEN",
+      "kick": "2026-09-20T20:05Z",
+      "window": "SUN_PM",
+      "lines": {
+        "mon": {
+          "b_money": null,
+          "street": -2.5,
+          "as_of": "2026-09-14 9:11 AM ET",
+          "note": "Mon openers \u00b7 ESPN DraftKings \u00b7 street only"
+        },
+        "tue": null,
+        "wed": null,
+        "thu": null,
+        "fri": {
+          "b_money": 10.4,
+          "street": -2.5,
+          "as_of": "2026-09-18 4:38 PM ET",
+          "note": "Fri Game Status"
+        },
+        "sat": null,
+        "sun": {
+          "b_money": 12.52,
+          "street": -2.5,
+          "as_of": "2026-09-20 10:45 AM ET",
+          "note": "AM lock 2026-09-20a"
+        }
+      },
+      "changes": [
+        {
+          "from_day": "fri",
+          "to_day": "sun",
+          "from": 10.4,
+          "to": 12.52,
+          "delta": 2.12,
+          "why": [
+            {
+              "type": "injury",
+              "team": "DEN",
+              "player": "Marvin Mims Jr.",
+              "status": "OUT",
+              "detail": "Sat WORKING flip QUESTIONABLE \u2192 OUT"
+            },
+            {
+              "type": "lock",
+              "detail": "Sun AM 2026-09-20a re-freeze. Street DEN \u22122.5 held vs Friday freeze."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401872941",
+      "away": "LV",
+      "home": "LAC",
+      "kick": "2026-09-20T20:05Z",
+      "window": "SUN_PM",
+      "lines": {
+        "mon": {
+          "b_money": null,
+          "street": -7.0,
+          "as_of": "2026-09-14 9:11 AM ET",
+          "note": "Mon openers \u00b7 ESPN DraftKings \u00b7 street only"
+        },
+        "tue": null,
+        "wed": null,
+        "thu": null,
+        "fri": {
+          "b_money": 3.81,
+          "street": -6.5,
+          "as_of": "2026-09-18 4:38 PM ET",
+          "note": "Fri Game Status"
+        },
+        "sat": null,
+        "sun": {
+          "b_money": 1.21,
+          "street": -6.5,
+          "as_of": "2026-09-20 10:45 AM ET",
+          "note": "AM lock 2026-09-20a"
+        }
+      },
+      "changes": [
+        {
+          "from_day": "fri",
+          "to_day": "sun",
+          "from": 3.81,
+          "to": 1.21,
+          "delta": -2.6,
+          "why": [
+            {
+              "type": "injury",
+              "team": "LV",
+              "player": "Aidan O'Connell",
+              "status": "OUT",
+              "detail": "personal \u2014 QUESTIONABLE \u2192 OUT on Sun AM 2026-09-20a"
+            },
+            {
+              "type": "injury",
+              "team": "LV",
+              "player": "Brock Bowers",
+              "status": "DOUBTFUL",
+              "detail": "held Doubtful through the Sun AM stamp"
+            },
+            {
+              "type": "lock",
+              "detail": "Sun AM 2026-09-20a re-freeze. Street LAC \u22126.5 held vs Friday."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401872942",
+      "away": "MIA",
+      "home": "SF",
+      "kick": "2026-09-20T20:25Z",
+      "window": "SUN_PM",
+      "lines": {
+        "mon": {
+          "b_money": null,
+          "street": -12.5,
+          "as_of": "2026-09-14 9:11 AM ET",
+          "note": "Mon openers \u00b7 ESPN DraftKings \u00b7 street only"
+        },
+        "tue": null,
+        "wed": null,
+        "thu": null,
+        "fri": {
+          "b_money": -16.08,
+          "street": -13.5,
+          "as_of": "2026-09-18 4:38 PM ET",
+          "note": "Fri Game Status"
+        },
+        "sat": null,
+        "sun": {
+          "b_money": -18.35,
+          "street": -13.5,
+          "as_of": "2026-09-20 10:45 AM ET",
+          "note": "AM lock 2026-09-20a"
+        }
+      },
+      "changes": [
+        {
+          "from_day": "fri",
+          "to_day": "sun",
+          "from": -16.08,
+          "to": -18.35,
+          "delta": -2.27,
+          "why": [
+            {
+              "type": "lock",
+              "detail": "Sun AM 2026-09-20a re-freeze. No new starter designation vs Saturday WORKING (Harrison / Stribling already OUT \u2192 IR). Street SF \u221213.5 held."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401872943",
+      "away": "SEA",
+      "home": "ARI",
+      "kick": "2026-09-20T20:25Z",
+      "window": "SUN_PM",
+      "lines": {
+        "mon": {
+          "b_money": null,
+          "street": 4.5,
+          "as_of": "2026-09-14 9:11 AM ET",
+          "note": "Mon openers \u00b7 ESPN DraftKings \u00b7 street only"
+        },
+        "tue": null,
+        "wed": null,
+        "thu": null,
+        "fri": {
+          "b_money": -0.19,
+          "street": 3.5,
+          "as_of": "2026-09-18 4:38 PM ET",
+          "note": "Fri Game Status"
+        },
+        "sat": null,
+        "sun": {
+          "b_money": 1.76,
+          "street": 3.5,
+          "as_of": "2026-09-20 10:45 AM ET",
+          "note": "AM lock 2026-09-20a"
+        }
+      },
+      "changes": [
+        {
+          "from_day": "fri",
+          "to_day": "sun",
+          "from": -0.19,
+          "to": 1.76,
+          "delta": 1.95,
+          "why": [
+            {
+              "type": "injury",
+              "team": "SEA",
+              "player": "Anthony Bradford",
+              "status": "OUT",
+              "detail": "knee/hip \u2014 QUESTIONABLE \u2192 OUT on Sun AM 2026-09-20a"
+            },
+            {
+              "type": "injury",
+              "team": "SEA",
+              "player": "Ty Okada",
+              "status": "OUT",
+              "detail": "Sat WORKING flip QUESTIONABLE \u2192 OUT"
+            },
+            {
+              "type": "injury",
+              "team": "SEA",
+              "player": "Zach Charbonnet",
+              "status": "OUT",
+              "detail": "Sat WORKING flip PUP \u2192 OUT"
+            },
+            {
+              "type": "lock",
+              "detail": "Fri card LOCK ARI +3.5; after Sat/Sun injury the model moved (Fri \u22120.19 \u2192 Sun +1.76). Darnold already OUT on the Friday card."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401872944",
+      "away": "WSH",
+      "home": "DAL",
+      "kick": "2026-09-20T20:25Z",
+      "window": "SUN_PM",
+      "lines": {
+        "mon": {
+          "b_money": null,
+          "street": -3.5,
+          "as_of": "2026-09-14 9:11 AM ET",
+          "note": "Mon openers \u00b7 ESPN DraftKings \u00b7 street only"
+        },
+        "tue": null,
+        "wed": null,
+        "thu": null,
+        "fri": {
+          "b_money": -5.8,
+          "street": -4.5,
+          "as_of": "2026-09-18 4:38 PM ET",
+          "note": "Fri Game Status"
+        },
+        "sat": null,
+        "sun": {
+          "b_money": -5.62,
+          "street": -3.5,
+          "as_of": "2026-09-20 10:45 AM ET",
+          "note": "AM lock 2026-09-20a"
+        }
+      },
+      "changes": [
+        {
+          "from_day": "fri",
+          "to_day": "sun",
+          "from": -5.8,
+          "to": -5.62,
+          "delta": 0.18,
+          "why": [
+            {
+              "type": "injury",
+              "team": "DAL",
+              "player": "DeMarvion Overshown",
+              "status": "OUT",
+              "detail": "Sat WORKING flip QUESTIONABLE \u2192 OUT"
+            },
+            {
+              "type": "injury",
+              "team": "DAL",
+              "player": "Malik Hooker",
+              "status": "OUT",
+              "detail": "Sat WORKING flip DOUBTFUL \u2192 OUT"
+            },
+            {
+              "type": "street",
+              "detail": "DAL \u22124.5 Friday \u2192 \u22123.5 Sunday AM"
+            },
+            {
+              "type": "lock",
+              "detail": "Sun AM 2026-09-20a re-freeze."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401872945",
+      "away": "IND",
+      "home": "KC",
+      "kick": "2026-09-21T00:20Z",
+      "window": "SNF",
+      "lines": {
+        "mon": {
+          "b_money": null,
+          "street": -6.5,
+          "as_of": "2026-09-14 9:11 AM ET",
+          "note": "Mon openers \u00b7 ESPN DraftKings \u00b7 street only"
+        },
+        "tue": null,
+        "wed": null,
+        "thu": null,
+        "fri": {
+          "b_money": -10.12,
+          "street": -6.5,
+          "as_of": "2026-09-18 4:38 PM ET",
+          "note": "Fri Game Status"
+        },
+        "sat": null,
+        "sun": {
+          "b_money": -9.91,
+          "street": -6.0,
+          "as_of": "2026-09-20 10:45 AM ET",
+          "note": "AM lock 2026-09-20a"
+        }
+      },
+      "changes": [
+        {
+          "from_day": "fri",
+          "to_day": "sun",
+          "from": -10.12,
+          "to": -9.91,
+          "delta": 0.21,
+          "why": [
+            {
+              "type": "street",
+              "detail": "KC \u22126.5 Friday \u2192 \u22126.0 Sunday AM (eased \u2014 shop the written \u22126.5, no chase)"
+            },
+            {
+              "type": "lock",
+              "detail": "Sun AM 2026-09-20a. Small model refresh."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401872947",
+      "away": "NYG",
+      "home": "LAR",
+      "kick": "2026-09-22T00:15Z",
+      "window": "MNF",
+      "lines": {
+        "mon": {
+          "b_money": null,
+          "street": -7.0,
+          "as_of": "2026-09-14 9:11 AM ET",
+          "note": "Mon openers \u00b7 ESPN DraftKings \u00b7 street only"
+        },
+        "tue": null,
+        "wed": null,
+        "thu": null,
+        "fri": {
+          "b_money": -5.44,
+          "street": -7.0,
+          "as_of": "2026-09-18 4:38 PM ET",
+          "note": "Fri Game Status"
+        },
+        "sat": null,
+        "sun": {
+          "b_money": -2.67,
+          "street": -7.0,
+          "as_of": "2026-09-20 10:45 AM ET",
+          "note": "AM lock 2026-09-20a"
+        }
+      },
+      "changes": [
+        {
+          "from_day": "fri",
+          "to_day": "sun",
+          "from": -5.44,
+          "to": -2.67,
+          "delta": 2.77,
+          "why": [
+            {
+              "type": "injury",
+              "team": "LAR",
+              "player": "Kamren Kinchens",
+              "status": "OUT",
+              "detail": "QUESTIONABLE \u2192 OUT on Sun AM 2026-09-20a"
+            },
+            {
+              "type": "injury",
+              "team": "LAR",
+              "player": "Jordan Whittington",
+              "status": "DOUBTFUL",
+              "detail": "QUESTIONABLE \u2192 DOUBTFUL on Sun AM 2026-09-20a"
+            },
+            {
+              "type": "lock",
+              "detail": "Sun AM 2026-09-20a re-freeze. Street LAR \u22127 held. Total 48.5 \u2192 47.5."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
