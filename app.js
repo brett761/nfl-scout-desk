@@ -2492,7 +2492,7 @@ async function loadNfl() {
     vibeTeams = null;
   }
   try {
-    const res = await fetch("./data/line-log/index.json?v=linelog1");
+    const res = await fetch("./data/line-log/index.json?v=linelog2");
     if (!res.ok) throw new Error(String(res.status));
     const data = await res.json();
     if (!data || typeof data !== "object") throw new Error("bad line-log index");
@@ -5753,7 +5753,7 @@ function ensureLineLogWeek(week) {
     return;
   }
   lineLogInflight[key] = true;
-  fetch("./data/line-log/" + encodeURIComponent(meta.file) + "?v=linelog1")
+  fetch("./data/line-log/" + encodeURIComponent(meta.file) + "?v=linelog2")
     .then((res) => {
       if (!res.ok) throw new Error(String(res.status));
       return res.json();
