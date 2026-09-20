@@ -1,16 +1,19 @@
 {
-  "pulled_et": "2026-09-20 8:11 AM ET",
-  "phase": "SUN_AM_PUBLIC_DOGS",
-  "injury_pulled": "2026-09-19a",
+  "pulled_et": "2026-09-20 10:45 AM ET",
+  "phase": "SUN_AM_LATEST_INJURY_FREEZE",
+  "injury_pulled": "2026-09-20a",
   "street_source": "ESPN DraftKings scoreboard site.api.espn.com week=2",
   "open_sources": [
     "desk/data/openers/2026-09-14-week2-circa.json",
     "desk/data/openers/2026-09-11-week2-friday.json"
   ],
-  "note": "Sunday AM refresh of pre-kick locks. Friday betting card actions retained (no full re-card). SEA@ARI downgraded PASS (edge <1.5 after Sat injury). DET@BUF untouched. Action Network public % null/paywalled — public-push inferred from Circa/ESPN open→live line moves only.",
+  "note": "Latest pre-kick freeze at 2026-09-20 10:45 AM ET after injury seed 2026-09-20a WORKING-SUN-AM. DET@BUF untouched. Street from ESPN DraftKings scoreboard pulled 2026-09-20 10:16 AM ET; Friday card actions retained for comparison.",
   "n": 15,
   "refreshed": [
+    "CAR@ATL",
+    "CIN@HOU",
     "CLE@TB",
+    "GB@NYJ",
     "IND@KC",
     "JAX@DEN",
     "LV@LAC",
@@ -18,24 +21,20 @@
     "MIN@CHI",
     "NO@BAL",
     "NYG@LAR",
+    "PHI@TEN",
+    "PIT@NE",
     "SEA@ARI",
     "WSH@DAL"
   ],
-  "confirmed": [
-    "CAR@ATL",
-    "CIN@HOU",
-    "GB@NYJ",
-    "PHI@TEN",
-    "PIT@NE"
-  ],
+  "confirmed": [],
   "games": [
     {
       "game": "CAR@ATL",
       "espn_id": "401872933",
       "window": "SUN_PM",
-      "model": 2.88,
+      "model": 2.89,
       "street": 2.5,
-      "edge": -0.38,
+      "edge": -0.39,
       "ou": 43.5,
       "action": "PASS",
       "side": null,
@@ -43,9 +42,9 @@
       "units": 0,
       "lock_phase": "SUN_AM_CONFIRMED",
       "vs_friday": {
-        "dm": 0,
-        "ds": 0,
-        "dou": 0,
+        "dm": 0.01,
+        "ds": 0.0,
+        "dou": 0.0,
         "material": false
       }
     },
@@ -53,40 +52,40 @@
       "game": "CIN@HOU",
       "espn_id": "401872934",
       "window": "SUN_PM",
-      "model": -5.16,
-      "street": -2.5,
-      "edge": 2.66,
+      "model": -5.14,
+      "street": -3.0,
+      "edge": 2.14,
       "ou": 45.5,
       "action": "LOCK",
       "side": "HOU",
-      "market": "HOU -2.5",
+      "market": "HOU -3",
       "units": 2,
-      "lock_phase": "SUN_AM_CONFIRMED",
+      "lock_phase": "SUN_AM_REFRESH",
       "vs_friday": {
-        "dm": 0.24,
-        "ds": 0,
-        "dou": 0,
-        "material": false
+        "dm": 0.26,
+        "ds": -0.5,
+        "dou": 0.0,
+        "material": true
       }
     },
     {
       "game": "CLE@TB",
       "espn_id": "401872935",
       "window": "SUN_PM",
-      "model": -8.47,
-      "street": -7.5,
-      "edge": 0.97,
+      "model": -8.56,
+      "street": -8.5,
+      "edge": 0.06,
       "ou": 41.5,
       "action": "PASS",
       "side": null,
       "market": null,
       "units": 0,
-      "lock_phase": "SUN_AM_REFRESH",
+      "lock_phase": "SUN_AM_CONFIRMED",
       "vs_friday": {
-        "dm": 0,
-        "ds": 1,
-        "dou": 0,
-        "material": true
+        "dm": -0.09,
+        "ds": 0.0,
+        "dou": 0.0,
+        "material": false
       }
     },
     {
@@ -103,9 +102,9 @@
       "units": 3,
       "lock_phase": "SUN_AM_CONFIRMED",
       "vs_friday": {
-        "dm": 0,
-        "ds": 0,
-        "dou": 0,
+        "dm": 0.0,
+        "ds": 0.0,
+        "dou": 0.0,
         "material": false
       }
     },
@@ -113,19 +112,19 @@
       "game": "IND@KC",
       "espn_id": "401872945",
       "window": "SNF",
-      "model": -9.92,
-      "street": -5.5,
-      "edge": 4.42,
+      "model": -9.91,
+      "street": -6.0,
+      "edge": 3.91,
       "ou": 46.5,
       "action": "LOCK",
       "side": "KC",
-      "market": "KC -6.5",
+      "market": "KC -6",
       "units": 2,
       "lock_phase": "SUN_AM_REFRESH",
       "vs_friday": {
-        "dm": 0.2,
-        "ds": 1,
-        "dou": 0,
+        "dm": 0.21,
+        "ds": 0.5,
+        "dou": 0.0,
         "material": true
       }
     },
@@ -134,18 +133,18 @@
       "espn_id": "401872940",
       "window": "SUN_PM",
       "model": 12.52,
-      "street": -3,
-      "edge": -15.52,
+      "street": -2.5,
+      "edge": -15.02,
       "ou": 45.5,
       "action": "LOCK",
       "side": "JAX",
-      "market": "JAX +3",
+      "market": "JAX +2.5",
       "units": 3,
       "lock_phase": "SUN_AM_REFRESH",
       "vs_friday": {
         "dm": 2.12,
-        "ds": -0.5,
-        "dou": 0,
+        "ds": 0.0,
+        "dou": 0.0,
         "material": true
       }
     },
@@ -153,19 +152,19 @@
       "game": "LV@LAC",
       "espn_id": "401872941",
       "window": "SUN_PM",
-      "model": 3.26,
-      "street": -7,
-      "edge": -10.26,
+      "model": 1.21,
+      "street": -6.5,
+      "edge": -7.71,
       "ou": 43.5,
       "action": "LOCK",
       "side": "LV",
-      "market": "LV +7",
+      "market": "LV +6.5",
       "units": 3,
       "lock_phase": "SUN_AM_REFRESH",
       "vs_friday": {
-        "dm": -0.55,
-        "ds": -0.5,
-        "dou": 0,
+        "dm": -2.6,
+        "ds": 0.0,
+        "dou": 0.0,
         "material": true
       }
     },
@@ -173,9 +172,9 @@
       "game": "MIA@SF",
       "espn_id": "401872942",
       "window": "SUN_PM",
-      "model": -18.05,
+      "model": -18.35,
       "street": -13.5,
-      "edge": 4.55,
+      "edge": 4.85,
       "ou": 44.5,
       "action": "PASS",
       "side": null,
@@ -183,9 +182,9 @@
       "units": 0,
       "lock_phase": "SUN_AM_REFRESH",
       "vs_friday": {
-        "dm": -1.97,
-        "ds": 0,
-        "dou": 0,
+        "dm": -2.27,
+        "ds": 0.0,
+        "dou": 0.0,
         "material": true
       }
     },
@@ -193,19 +192,19 @@
       "game": "MIN@CHI",
       "espn_id": "401872937",
       "window": "SUN_PM",
-      "model": -0.93,
+      "model": -0.41,
       "street": -4.5,
-      "edge": -3.57,
-      "ou": 47.5,
+      "edge": -4.09,
+      "ou": 46.5,
       "action": "PASS",
       "side": null,
       "market": null,
       "units": 0,
       "lock_phase": "SUN_AM_REFRESH",
       "vs_friday": {
-        "dm": 3,
-        "ds": 0,
-        "dou": 0,
+        "dm": 3.52,
+        "ds": 0.0,
+        "dou": -1.0,
         "material": true
       }
     },
@@ -223,9 +222,9 @@
       "units": 0,
       "lock_phase": "SUN_AM_REFRESH",
       "vs_friday": {
-        "dm": 0,
-        "ds": 0,
-        "dou": -1,
+        "dm": 0.0,
+        "ds": 0.0,
+        "dou": -1.0,
         "material": true
       }
     },
@@ -233,9 +232,9 @@
       "game": "NYG@LAR",
       "espn_id": "401872947",
       "window": "MNF",
-      "model": -5.38,
-      "street": -7,
-      "edge": -1.62,
+      "model": -2.67,
+      "street": -7.0,
+      "edge": -4.33,
       "ou": 47.5,
       "action": "PASS",
       "side": null,
@@ -243,9 +242,9 @@
       "units": 0,
       "lock_phase": "SUN_AM_REFRESH",
       "vs_friday": {
-        "dm": 0.06,
-        "ds": 0,
-        "dou": -1,
+        "dm": 2.77,
+        "ds": 0.0,
+        "dou": -1.0,
         "material": true
       }
     },
@@ -253,59 +252,59 @@
       "game": "PHI@TEN",
       "espn_id": "401872939",
       "window": "SUN_PM",
-      "model": 5.85,
-      "street": 7,
-      "edge": 1.15,
+      "model": 5.78,
+      "street": 7.0,
+      "edge": 1.22,
       "ou": 39.5,
-      "action": "PASS",
-      "side": null,
-      "market": null,
-      "units": 0,
-      "lock_phase": "SUN_AM_CONFIRMED",
-      "vs_friday": {
-        "dm": 0.37,
-        "ds": 0,
-        "dou": 0,
-        "material": false
-      }
-    },
-    {
-      "game": "PIT@NE",
-      "espn_id": "401872946",
-      "window": "SUN_PM",
-      "model": 2.57,
-      "street": -5.5,
-      "edge": -8.07,
-      "ou": 41.5,
-      "action": "LOCK",
-      "side": "PIT",
-      "market": "PIT +5.5",
-      "units": 3,
-      "lock_phase": "SUN_AM_CONFIRMED",
-      "vs_friday": {
-        "dm": 0,
-        "ds": 0,
-        "dou": 0,
-        "material": false
-      }
-    },
-    {
-      "game": "SEA@ARI",
-      "espn_id": "401872943",
-      "window": "SUN_PM",
-      "model": 2.09,
-      "street": 3.5,
-      "edge": 1.41,
-      "ou": 41.5,
       "action": "PASS",
       "side": null,
       "market": null,
       "units": 0,
       "lock_phase": "SUN_AM_REFRESH",
       "vs_friday": {
-        "dm": 2.28,
-        "ds": 0,
-        "dou": 1,
+        "dm": 0.3,
+        "ds": 0.0,
+        "dou": 0.0,
+        "material": true
+      }
+    },
+    {
+      "game": "PIT@NE",
+      "espn_id": "401872946",
+      "window": "SUN_PM",
+      "model": 4.23,
+      "street": -5.5,
+      "edge": -9.73,
+      "ou": 41.5,
+      "action": "LOCK",
+      "side": "PIT",
+      "market": "PIT +5.5",
+      "units": 3,
+      "lock_phase": "SUN_AM_REFRESH",
+      "vs_friday": {
+        "dm": 1.66,
+        "ds": 0.0,
+        "dou": 0.0,
+        "material": true
+      }
+    },
+    {
+      "game": "SEA@ARI",
+      "espn_id": "401872943",
+      "window": "SUN_PM",
+      "model": 1.76,
+      "street": 3.5,
+      "edge": 1.74,
+      "ou": 40.5,
+      "action": "PASS",
+      "side": null,
+      "market": null,
+      "units": 0,
+      "lock_phase": "SUN_AM_REFRESH",
+      "vs_friday": {
+        "dm": 1.95,
+        "ds": 0.0,
+        "dou": 0.0,
         "material": true
       }
     },
@@ -324,8 +323,8 @@
       "lock_phase": "SUN_AM_REFRESH",
       "vs_friday": {
         "dm": 0.18,
-        "ds": 1,
-        "dou": 0,
+        "ds": 1.0,
+        "dou": 0.0,
         "material": true
       }
     }
@@ -340,7 +339,7 @@
       "espn_week_ou": 43.5,
       "live_home": 2.5,
       "live_ou": 43.5,
-      "live_source": "ESPN DraftKings scoreboard 2026-09-20 ~8:11 AM ET",
+      "live_source": "ESPN DraftKings scoreboard 2026-09-20 10:16 AM ET",
       "fav_pricier_vs_circa": {
         "pushed": true,
         "side": "away",
@@ -364,9 +363,9 @@
       "circa_ou": 41,
       "espn_week_open_home": -6.5,
       "espn_week_ou": 42.5,
-      "live_home": -7.5,
+      "live_home": -8.5,
       "live_ou": 41.5,
-      "live_source": "ESPN DraftKings scoreboard 2026-09-20 ~8:11 AM ET",
+      "live_source": "ESPN DraftKings scoreboard 2026-09-20 10:16 AM ET",
       "fav_pricier_vs_circa": {
         "pushed": false,
         "side": "home",
@@ -392,7 +391,7 @@
       "espn_week_ou": 42.5,
       "live_home": 3.5,
       "live_ou": 44.5,
-      "live_source": "ESPN DraftKings scoreboard 2026-09-20 ~8:11 AM ET",
+      "live_source": "ESPN DraftKings scoreboard 2026-09-20 10:16 AM ET",
       "fav_pricier_vs_circa": {
         "pushed": false,
         "side": "away",
@@ -416,9 +415,9 @@
       "circa_ou": 44.5,
       "espn_week_open_home": -3,
       "espn_week_ou": 43.5,
-      "live_home": -3,
+      "live_home": -2.5,
       "live_ou": 45.5,
-      "live_source": "ESPN DraftKings scoreboard 2026-09-20 ~8:11 AM ET",
+      "live_source": "ESPN DraftKings scoreboard 2026-09-20 10:16 AM ET",
       "fav_pricier_vs_circa": {
         "pushed": false,
         "side": "home",
@@ -442,9 +441,9 @@
       "circa_ou": 44,
       "espn_week_open_home": -9.5,
       "espn_week_ou": 42.5,
-      "live_home": -7,
+      "live_home": -6.5,
       "live_ou": 43.5,
-      "live_source": "ESPN DraftKings scoreboard 2026-09-20 ~8:11 AM ET",
+      "live_source": "ESPN DraftKings scoreboard 2026-09-20 10:16 AM ET",
       "fav_pricier_vs_circa": {
         "pushed": false,
         "side": "home",
@@ -470,7 +469,7 @@
       "espn_week_ou": 46.5,
       "live_home": -13.5,
       "live_ou": 44.5,
-      "live_source": "ESPN DraftKings scoreboard 2026-09-20 ~8:11 AM ET",
+      "live_source": "ESPN DraftKings scoreboard 2026-09-20 10:16 AM ET",
       "fav_pricier_vs_circa": {
         "pushed": true,
         "side": "home",
@@ -495,8 +494,8 @@
       "espn_week_open_home": -3,
       "espn_week_ou": 45.5,
       "live_home": -4.5,
-      "live_ou": 47.5,
-      "live_source": "ESPN DraftKings scoreboard 2026-09-20 ~8:11 AM ET",
+      "live_ou": 46.5,
+      "live_source": "ESPN DraftKings scoreboard 2026-09-20 10:16 AM ET",
       "fav_pricier_vs_circa": {
         "pushed": false,
         "side": "home",
@@ -522,7 +521,7 @@
       "espn_week_ou": 46.5,
       "live_home": -8.5,
       "live_ou": 45.5,
-      "live_source": "ESPN DraftKings scoreboard 2026-09-20 ~8:11 AM ET",
+      "live_source": "ESPN DraftKings scoreboard 2026-09-20 10:16 AM ET",
       "fav_pricier_vs_circa": {
         "pushed": false,
         "side": "home",
@@ -546,9 +545,9 @@
       "circa_ou": 39,
       "espn_week_open_home": 5.5,
       "espn_week_ou": 42.5,
-      "live_home": 7,
+      "live_home": 7.0,
       "live_ou": 39.5,
-      "live_source": "ESPN DraftKings scoreboard 2026-09-20 ~8:11 AM ET",
+      "live_source": "ESPN DraftKings scoreboard 2026-09-20 10:16 AM ET",
       "fav_pricier_vs_circa": {
         "pushed": false,
         "side": "away",
@@ -574,7 +573,7 @@
       "espn_week_ou": 43.5,
       "live_home": -5.5,
       "live_ou": 41.5,
-      "live_source": "ESPN DraftKings scoreboard 2026-09-20 ~8:11 AM ET",
+      "live_source": "ESPN DraftKings scoreboard 2026-09-20 10:16 AM ET",
       "fav_pricier_vs_circa": {
         "pushed": true,
         "side": "home",

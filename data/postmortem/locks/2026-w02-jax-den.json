@@ -11,15 +11,15 @@
   "window": "SUN_PM",
   "model_home_spread": 12.52,
   "model_home_spread_source": "desk_compute",
-  "street_home_spread": -3,
-  "close_at_lock": -3,
+  "street_home_spread": -2.5,
+  "close_at_lock": -2.5,
   "ou_street": 45.5,
-  "street_note": "FINAL freeze 2026-09-20 8:11 AM ET (America/New_York). ESPN DraftKings: DEN -3 / ou 45.5.",
-  "edge_home": -15.52,
-  "edge_note": "edgeHome = street − model = -3 − (12.52) = -15.52 → away value (JAX); |edge|≥1.5",
+  "street_note": "SUN AM latest-injury freeze 2026-09-20 10:45 AM ET (America/New_York). ESPN DraftKings scoreboard pulled 2026-09-20 10:16 AM ET: DEN -2.5 / ou 45.5.",
+  "edge_home": -15.02,
+  "edge_note": "edgeHome = street − model = -2.5 − (12.52) = -15.02 → away value; |edge|≥1.5",
   "feature_stack": {
-    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W2 n=1 taper; pff_ytd IN line; injury 2026-09-18b FINAL",
-    "injury_pulled": "2026-09-19a",
+    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W2 n=1 taper; pff_ytd IN line; injury 2026-09-20a WORKING-SUN-AM",
+    "injury_pulled": "2026-09-20a",
     "away_JAX": {
       "prior": 8.31,
       "fa": -0.67,
@@ -50,16 +50,16 @@
     },
     "layers_home_minus_away": {
       "prior": -9.2,
-      "fa": 1,
-      "draft": 0,
+      "fa": 1.0,
+      "draft": 0.0,
       "madden": 1.21,
       "pff": -0.07,
-      "pff_ytd": -4,
+      "pff_ytd": -4.0,
       "sos": -1.27,
-      "return": 0,
+      "return": 0.0,
       "injury": -2.4,
-      "adjust": 0,
-      "context": 0
+      "adjust": 0.0,
+      "context": 0.0
     },
     "rating_diff_home_minus_away": -14.73,
     "hfa": 2,
@@ -126,21 +126,21 @@
       ],
       "DEN": [
         {
-          "name": "Marvin Mims Jr.",
-          "pos": "WR2",
-          "status": "OUT",
-          "impact": 0.2,
-          "impact_source": "pff",
-          "pts": -0.2,
-          "on": true
-        },
-        {
           "name": "RJ Harvey",
           "pos": "RB1",
           "status": "QUESTIONABLE",
           "impact": 0.22,
           "impact_source": "madden",
           "pts": -0.08,
+          "on": true
+        },
+        {
+          "name": "Marvin Mims Jr.",
+          "pos": "WR2",
+          "status": "OUT",
+          "impact": 0.2,
+          "impact_source": "pff",
+          "pts": -0.2,
           "on": true
         },
         {
@@ -167,7 +167,7 @@
           "status": "IR",
           "impact": null,
           "impact_source": null,
-          "pts": -1,
+          "pts": -1.0,
           "on": true
         },
         {
@@ -195,13 +195,13 @@
         "raw": -1.5,
         "term": -1.5,
         "capped": false,
-        "cap_team": 6
+        "cap_team": 6.0
       },
       "DEN": {
         "raw": -3.9,
         "term": -3.9,
         "capped": false,
-        "cap_team": 6
+        "cap_team": 6.0
       }
     },
     "taper": {
@@ -220,28 +220,28 @@
     }
   },
   "tickets": [],
-  "notes": "FINAL pre-kick SUN_PM lock after Fri 4pm ET status. Injury 2026-09-19a. Model desk_compute. Street DEN -3. Edge home -15.52. | Sun AM 2026-09-20 8:11 ET refresh vs Fri freeze: Δm=2.12 Δs=-0.5 Δou=0 (REFRESH). Injury stamp 2026-09-19a. Friday card action LOCK retained for public-dogs window (no full re-card).",
+  "notes": "Pre-kick Sunday latest-injury re-freeze at 2026-09-20 10:45 AM ET (America/New_York). Injury 2026-09-20a WORKING-SUN-AM. Model desk_compute. Street DEN -2.5 / ou 45.5. edgeHome = street − model = -2.5 − (12.52) = -15.02 → away value; |edge|≥1.5. Friday comparison: Δm=2.12 Δs=0 Δou=0.",
   "recommendation": {
     "action": "LOCK",
     "side": "JAX",
-    "market": "JAX +3",
+    "market": "JAX +2.5",
     "units": 3,
     "stake_class": "3u @ $50/u",
-    "edge_home": -15.52,
+    "edge_home": -15.02,
     "timing_thesis": "FRIDAY_CARD",
-    "reason": "Street now DEN -3 / JAX +3 (was +2.5 Fri freeze)",
+    "reason": "Desk card action LOCK retained at latest injury re-freeze. Model 12.52 vs street -2.5 → edge_home -15.02.",
     "sunday_am_note": "Street now DEN -3 / JAX +3 (was +2.5 Fri freeze)"
   },
-  "frozen_at": "2026-09-20 8:11 AM ET (America/New_York)",
-  "frozen_at_utc": "2026-09-20T12:11:50.434Z",
-  "locked_at": "2026-09-20T12:11:50.434-04:00",
+  "frozen_at": "2026-09-20T10:45:49-04:00 (America/New_York)",
+  "frozen_at_utc": "2026-09-20T14:45:49Z",
+  "locked_at": "2026-09-20T10:45:49-04:00",
   "injury_aligned_to_imp3": true,
   "injury_source_policy": "madden_first",
   "lock_phase": "SUN_AM_REFRESH",
   "sunday_am_vs_friday": {
     "model_delta": 2.12,
-    "street_delta": -0.5,
-    "ou_delta": 0,
+    "street_delta": 0.0,
+    "ou_delta": 0.0,
     "material": true,
     "fri_model": 10.4,
     "fri_street": -2.5,

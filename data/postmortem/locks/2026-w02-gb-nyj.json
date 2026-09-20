@@ -14,12 +14,12 @@
   "street_home_spread": 3.5,
   "close_at_lock": 3.5,
   "ou_street": 44.5,
-  "street_note": "FINAL freeze 2026-09-20 8:11 AM ET (America/New_York). ESPN DraftKings: GB -3.5 / ou 44.5.",
+  "street_note": "SUN AM latest-injury freeze 2026-09-20 10:45 AM ET (America/New_York). ESPN DraftKings scoreboard pulled 2026-09-20 10:16 AM ET: GB -3.5 / ou 44.5.",
   "edge_home": 12.22,
-  "edge_note": "edgeHome = street − model = 3.5 − (-8.72) = 12.22 → home value (NYJ); |edge|≥1.5",
+  "edge_note": "edgeHome = street − model = 3.5 − (-8.72) = 12.22 → home value; |edge|≥1.5",
   "feature_stack": {
-    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W2 n=1 taper; pff_ytd IN line; injury 2026-09-18b FINAL",
-    "injury_pulled": "2026-09-19a",
+    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W2 n=1 taper; pff_ytd IN line; injury 2026-09-20a WORKING-SUN-AM",
+    "injury_pulled": "2026-09-20a",
     "away_GB": {
       "prior": -0.45,
       "fa": -2.47,
@@ -29,7 +29,7 @@
       "pff_ytd": -2,
       "sos": -0.32,
       "return": 0,
-      "injury": -6,
+      "injury": -6.0,
       "adjust": 0,
       "context": 0,
       "eff": -10.99
@@ -51,15 +51,15 @@
     "layers_home_minus_away": {
       "prior": -2.35,
       "fa": 3.94,
-      "draft": 0,
+      "draft": 0.0,
       "madden": -0.4,
       "pff": -1.48,
-      "pff_ytd": 4,
+      "pff_ytd": 4.0,
       "sos": 0.86,
-      "return": 0,
+      "return": 0.0,
       "injury": 2.21,
-      "adjust": 0,
-      "context": 0
+      "adjust": 0.0,
+      "context": 0.0
     },
     "rating_diff_home_minus_away": 6.78,
     "hfa": 2,
@@ -115,6 +115,15 @@
     "injuries": {
       "GB": [
         {
+          "name": "Javon Hargrave",
+          "pos": "IDL",
+          "status": "OUT",
+          "impact": 0.42,
+          "impact_source": "madden",
+          "pts": -0.42,
+          "on": true
+        },
+        {
           "name": "Aaron Banks",
           "pos": "OG",
           "status": "QUESTIONABLE",
@@ -142,24 +151,6 @@
           "on": true
         },
         {
-          "name": "Lukas Van Ness",
-          "pos": "EDGE1",
-          "status": "QUESTIONABLE",
-          "impact": 2.31,
-          "impact_source": "pff",
-          "pts": -0.81,
-          "on": true
-        },
-        {
-          "name": "Javon Hargrave",
-          "pos": "IDL",
-          "status": "DOUBTFUL",
-          "impact": 0.42,
-          "impact_source": "madden",
-          "pts": -0.32,
-          "on": true
-        },
-        {
           "name": "Benjamin St-Juste",
           "pos": "CB1",
           "status": "QUESTIONABLE",
@@ -179,6 +170,15 @@
         }
       ],
       "NYJ": [
+        {
+          "name": "Omar Cooper Jr.",
+          "pos": "WR2",
+          "status": "IR",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
         {
           "name": "Joseph Ossai",
           "pos": "EDGE1",
@@ -216,15 +216,6 @@
           "on": true
         },
         {
-          "name": "Omar Cooper Jr.",
-          "pos": "WR2",
-          "status": "OUT",
-          "impact": 0.2,
-          "impact_source": "madden",
-          "pts": -0.2,
-          "on": true
-        },
-        {
           "name": "Tim Patrick",
           "pos": "WR2",
           "status": "IR",
@@ -237,16 +228,16 @@
     },
     "injury_team_terms": {
       "GB": {
-        "raw": -7.76,
-        "term": -6,
+        "raw": -7.05,
+        "term": -6.0,
         "capped": true,
-        "cap_team": 6
+        "cap_team": 6.0
       },
       "NYJ": {
         "raw": -3.79,
         "term": -3.79,
         "capped": false,
-        "cap_team": 6
+        "cap_team": 6.0
       }
     },
     "taper": {
@@ -265,7 +256,7 @@
     }
   },
   "tickets": [],
-  "notes": "FINAL pre-kick SUN_PM lock after Fri 4pm ET status. Injury 2026-09-19a. Model desk_compute. Street GB -3.5. Edge home 12.22. | Sun AM 2026-09-20 8:11 ET refresh vs Fri freeze: Δm=0 Δs=0 Δou=0 (confirm). Injury stamp 2026-09-19a. Friday card action LOCK retained for public-dogs window (no full re-card).",
+  "notes": "Pre-kick Sunday latest-injury re-freeze at 2026-09-20 10:45 AM ET (America/New_York). Injury 2026-09-20a WORKING-SUN-AM. Model desk_compute. Street GB -3.5 / ou 44.5. edgeHome = street − model = 3.5 − (-8.72) = 12.22 → home value; |edge|≥1.5. Friday comparison: Δm=0 Δs=0 Δou=0.",
   "recommendation": {
     "action": "LOCK",
     "side": "NYJ",
@@ -274,19 +265,19 @@
     "stake_class": "3u @ $50/u",
     "edge_home": 12.22,
     "timing_thesis": "FRIDAY_CARD",
-    "reason": "Friday LOCK retained. Model -8.72 vs street 3.5 → edge_home 12.22.",
+    "reason": "Desk card action LOCK retained at latest injury re-freeze. Model -8.72 vs street 3.5 → edge_home 12.22.",
     "sunday_am_note": null
   },
-  "frozen_at": "2026-09-20 8:11 AM ET (America/New_York)",
-  "frozen_at_utc": "2026-09-20T12:11:50.434Z",
-  "locked_at": "2026-09-20T12:11:50.434-04:00",
+  "frozen_at": "2026-09-20T10:45:49-04:00 (America/New_York)",
+  "frozen_at_utc": "2026-09-20T14:45:49Z",
+  "locked_at": "2026-09-20T10:45:49-04:00",
   "injury_aligned_to_imp3": true,
   "injury_source_policy": "madden_first",
   "lock_phase": "SUN_AM_CONFIRMED",
   "sunday_am_vs_friday": {
-    "model_delta": 0,
-    "street_delta": 0,
-    "ou_delta": 0,
+    "model_delta": 0.0,
+    "street_delta": 0.0,
+    "ou_delta": 0.0,
     "material": false,
     "fri_model": -8.72,
     "fri_street": 3.5,

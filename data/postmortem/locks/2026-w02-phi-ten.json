@@ -9,17 +9,17 @@
   "venue": "Nissan Stadium",
   "neutral": false,
   "window": "SUN_PM",
-  "model_home_spread": 5.85,
+  "model_home_spread": 5.78,
   "model_home_spread_source": "desk_compute",
-  "street_home_spread": 7,
-  "close_at_lock": 7,
+  "street_home_spread": 7.0,
+  "close_at_lock": 7.0,
   "ou_street": 39.5,
-  "street_note": "FINAL freeze 2026-09-20 8:11 AM ET (America/New_York). ESPN DraftKings: PHI -7 / ou 39.5.",
-  "edge_home": 1.15,
-  "edge_note": "edgeHome = street − model = 7 − (5.85) = 1.15 → home value (TEN)",
+  "street_note": "SUN AM latest-injury freeze 2026-09-20 10:45 AM ET (America/New_York). ESPN DraftKings scoreboard pulled 2026-09-20 10:16 AM ET: PHI -7 / ou 39.5.",
+  "edge_home": 1.22,
+  "edge_note": "edgeHome = street − model = 7 − (5.78) = 1.22 → home value",
   "feature_stack": {
-    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W2 n=1 taper; pff_ytd IN line; injury 2026-09-18b FINAL",
-    "injury_pulled": "2026-09-19a",
+    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W2 n=1 taper; pff_ytd IN line; injury 2026-09-20a WORKING-SUN-AM",
+    "injury_pulled": "2026-09-20a",
     "away_PHI": {
       "prior": 3.31,
       "fa": -2.07,
@@ -29,10 +29,10 @@
       "pff_ytd": 2,
       "sos": -0.53,
       "return": 0,
-      "injury": -4.42,
+      "injury": -4.41,
       "adjust": 0,
       "context": 0,
-      "eff": -0.51
+      "eff": -0.5
     },
     "home_TEN": {
       "prior": -6.09,
@@ -43,10 +43,10 @@
       "pff_ytd": -2,
       "sos": 0.8,
       "return": 0,
-      "injury": -2.42,
+      "injury": -2.34,
       "adjust": 0,
       "context": 0,
-      "eff": -8.16
+      "eff": -8.08
     },
     "layers_home_minus_away": {
       "prior": -9.4,
@@ -54,14 +54,14 @@
       "draft": 0.6,
       "madden": -1.38,
       "pff": -1.2,
-      "pff_ytd": -4,
+      "pff_ytd": -4.0,
       "sos": 1.33,
-      "return": 0,
-      "injury": 2,
-      "adjust": 0,
-      "context": 0
+      "return": 0.0,
+      "injury": 2.07,
+      "adjust": 0.0,
+      "context": 0.0
     },
-    "rating_diff_home_minus_away": -7.65,
+    "rating_diff_home_minus_away": -7.58,
     "hfa": 2,
     "coach": 0,
     "coach_note": "coachTerm desk",
@@ -73,11 +73,11 @@
     "travel_note": "schedNet desk",
     "matchup": 0,
     "matchup_note": "pff-matchups W1 grid only / missing → 0",
-    "gap": -5.85,
+    "gap": -5.78,
     "component_sum": [
       {
         "label": "rating_diff (TEN−PHI)",
-        "val": -7.65
+        "val": -7.58
       },
       {
         "label": "HFA",
@@ -105,11 +105,11 @@
       },
       {
         "label": "gap",
-        "val": -5.85
+        "val": -5.78
       },
       {
         "label": "model_home_spread (−gap)",
-        "val": 5.85
+        "val": 5.78
       }
     ],
     "injuries": {
@@ -120,7 +120,7 @@
           "status": "QUESTIONABLE",
           "impact": null,
           "impact_source": null,
-          "pts": -0.18,
+          "pts": -0.17,
           "on": true
         },
         {
@@ -158,16 +158,7 @@
           "status": "QUESTIONABLE",
           "impact": null,
           "impact_source": null,
-          "pts": -0.18,
-          "on": true
-        },
-        {
-          "name": "Cedric Gray",
-          "pos": "LB",
-          "status": "QUESTIONABLE",
-          "impact": 0.2,
-          "impact_source": "madden",
-          "pts": -0.07,
+          "pts": -0.17,
           "on": true
         },
         {
@@ -210,16 +201,16 @@
     },
     "injury_team_terms": {
       "PHI": {
-        "raw": -4.42,
-        "term": -4.42,
+        "raw": -4.41,
+        "term": -4.41,
         "capped": false,
-        "cap_team": 6
+        "cap_team": 6.0
       },
       "TEN": {
-        "raw": -2.42,
-        "term": -2.42,
+        "raw": -2.34,
+        "term": -2.34,
         "capped": false,
-        "cap_team": 6
+        "cap_team": 6.0
       }
     },
     "taper": {
@@ -238,29 +229,29 @@
     }
   },
   "tickets": [],
-  "notes": "FINAL pre-kick SUN_PM lock after Fri 4pm ET status. Injury 2026-09-19a. Model desk_compute. Street PHI -7. Edge home 1.15. | Sun AM 2026-09-20 8:11 ET refresh vs Fri freeze: Δm=0.37 Δs=0 Δou=0 (confirm). Injury stamp 2026-09-19a. Friday card action PASS retained for public-dogs window (no full re-card).",
+  "notes": "Pre-kick Sunday latest-injury re-freeze at 2026-09-20 10:45 AM ET (America/New_York). Injury 2026-09-20a WORKING-SUN-AM. Model desk_compute. Street PHI -7 / ou 39.5. edgeHome = street − model = 7 − (5.78) = 1.22 → home value. Friday comparison: Δm=0.3 Δs=0 Δou=0.",
   "recommendation": {
     "action": "PASS",
     "side": null,
     "market": null,
     "units": 0,
     "stake_class": "0u",
-    "edge_home": 1.15,
+    "edge_home": 1.22,
     "timing_thesis": "PASS",
-    "reason": "Friday PASS retained (Sun AM public-dogs). Model 5.85 / street 7.",
+    "reason": "Desk PASS retained at latest injury re-freeze. Model 5.78 vs street 7; edge_home 1.22.",
     "sunday_am_note": null
   },
-  "frozen_at": "2026-09-20 8:11 AM ET (America/New_York)",
-  "frozen_at_utc": "2026-09-20T12:11:50.434Z",
-  "locked_at": "2026-09-20T12:11:50.434-04:00",
+  "frozen_at": "2026-09-20T10:45:49-04:00 (America/New_York)",
+  "frozen_at_utc": "2026-09-20T14:45:49Z",
+  "locked_at": "2026-09-20T10:45:49-04:00",
   "injury_aligned_to_imp3": true,
   "injury_source_policy": "madden_first",
-  "lock_phase": "SUN_AM_CONFIRMED",
+  "lock_phase": "SUN_AM_REFRESH",
   "sunday_am_vs_friday": {
-    "model_delta": 0.37,
-    "street_delta": 0,
-    "ou_delta": 0,
-    "material": false,
+    "model_delta": 0.3,
+    "street_delta": 0.0,
+    "ou_delta": 0.0,
+    "material": true,
     "fri_model": 5.48,
     "fri_street": 7,
     "fri_ou": 39.5

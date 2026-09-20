@@ -9,17 +9,17 @@
   "venue": "State Farm Stadium",
   "neutral": false,
   "window": "SUN_PM",
-  "model_home_spread": 2.09,
+  "model_home_spread": 1.76,
   "model_home_spread_source": "desk_compute",
   "street_home_spread": 3.5,
   "close_at_lock": 3.5,
-  "ou_street": 41.5,
-  "street_note": "FINAL freeze 2026-09-20 8:11 AM ET (America/New_York). ESPN DraftKings: SEA -3.5 / ou 41.5.",
-  "edge_home": 1.41,
-  "edge_note": "edgeHome = street − model = 3.5 − (2.09) = 1.41 → home value (ARI)",
+  "ou_street": 40.5,
+  "street_note": "SUN AM latest-injury freeze 2026-09-20 10:45 AM ET (America/New_York). ESPN DraftKings scoreboard pulled 2026-09-20 10:16 AM ET: SEA -3.5 / ou 40.5.",
+  "edge_home": 1.74,
+  "edge_note": "edgeHome = street − model = 3.5 − (1.76) = 1.74 → home value; |edge|≥1.5",
   "feature_stack": {
-    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W2 n=1 taper; pff_ytd IN line; injury 2026-09-18b FINAL",
-    "injury_pulled": "2026-09-19a",
+    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W2 n=1 taper; pff_ytd IN line; injury 2026-09-20a WORKING-SUN-AM",
+    "injury_pulled": "2026-09-20a",
     "away_SEA": {
       "prior": 5.23,
       "fa": -2.07,
@@ -29,10 +29,10 @@
       "pff_ytd": 2,
       "sos": -0.04,
       "return": 0,
-      "injury": -3.79,
+      "injury": -4.11,
       "adjust": 0,
       "context": 0,
-      "eff": 2.58
+      "eff": 2.26
     },
     "home_ARI": {
       "prior": -0.16,
@@ -43,25 +43,25 @@
       "pff_ytd": 2,
       "sos": 0.72,
       "return": 0,
-      "injury": -2.65,
+      "injury": -2.64,
       "adjust": 0,
       "context": 0,
-      "eff": -1.41
+      "eff": -1.4
     },
     "layers_home_minus_away": {
       "prior": -5.39,
       "fa": 1.87,
-      "draft": 0,
+      "draft": 0.0,
       "madden": -0.52,
       "pff": -1.85,
-      "pff_ytd": 0,
+      "pff_ytd": 0.0,
       "sos": 0.76,
-      "return": 0,
-      "injury": 1.14,
-      "adjust": 0,
-      "context": 0
+      "return": 0.0,
+      "injury": 1.47,
+      "adjust": 0.0,
+      "context": 0.0
     },
-    "rating_diff_home_minus_away": -3.99,
+    "rating_diff_home_minus_away": -3.66,
     "hfa": 2,
     "coach": 0,
     "coach_note": "coachTerm desk",
@@ -73,11 +73,11 @@
     "travel_note": "schedNet desk",
     "matchup": 0,
     "matchup_note": "pff-matchups W1 grid only / missing → 0",
-    "gap": -2.09,
+    "gap": -1.76,
     "component_sum": [
       {
         "label": "rating_diff (ARI−SEA)",
-        "val": -3.99
+        "val": -3.66
       },
       {
         "label": "HFA",
@@ -105,22 +105,31 @@
       },
       {
         "label": "gap",
-        "val": -2.09
+        "val": -1.76
       },
       {
         "label": "model_home_spread (−gap)",
-        "val": 2.09
+        "val": 1.76
       }
     ],
     "injuries": {
       "SEA": [
         {
+          "name": "Sam Darnold",
+          "pos": "QB1",
+          "status": "OUT",
+          "impact": 1.5,
+          "impact_source": "manual",
+          "pts": -1.5,
+          "on": true
+        },
+        {
           "name": "Anthony Bradford",
           "pos": "OG",
-          "status": "QUESTIONABLE",
+          "status": "OUT",
           "impact": null,
           "impact_source": null,
-          "pts": -0.18,
+          "pts": -0.5,
           "on": true
         },
         {
@@ -149,15 +158,6 @@
           "impact_source": "madden",
           "pts": -0.97,
           "on": true
-        },
-        {
-          "name": "Sam Darnold",
-          "pos": "QB1",
-          "status": "OUT",
-          "impact": 1.5,
-          "impact_source": "manual",
-          "pts": -1.5,
-          "on": true
         }
       ],
       "ARI": [
@@ -176,7 +176,7 @@
           "status": "QUESTIONABLE",
           "impact": null,
           "impact_source": null,
-          "pts": -0.18,
+          "pts": -0.17,
           "on": true
         },
         {
@@ -264,16 +264,16 @@
     },
     "injury_team_terms": {
       "SEA": {
-        "raw": -3.79,
-        "term": -3.79,
+        "raw": -4.11,
+        "term": -4.11,
         "capped": false,
-        "cap_team": 6
+        "cap_team": 6.0
       },
       "ARI": {
-        "raw": -2.65,
-        "term": -2.65,
+        "raw": -2.64,
+        "term": -2.64,
         "capped": false,
-        "cap_team": 6
+        "cap_team": 6.0
       }
     },
     "taper": {
@@ -292,28 +292,28 @@
     }
   },
   "tickets": [],
-  "notes": "FINAL pre-kick SUN_PM lock after Fri 4pm ET status. Injury 2026-09-19a. Model desk_compute. Street SEA -3.5. Edge home 1.41. | Sun AM 2026-09-20 8:11 ET refresh vs Fri freeze: Δm=2.28 Δs=0 Δou=1 (REFRESH). Injury stamp 2026-09-19a. Friday card action PASS retained for public-dogs window (no full re-card).",
+  "notes": "Pre-kick Sunday latest-injury re-freeze at 2026-09-20 10:45 AM ET (America/New_York). Injury 2026-09-20a WORKING-SUN-AM. Model desk_compute. Street SEA -3.5 / ou 40.5. edgeHome = street − model = 3.5 − (1.76) = 1.74 → home value; |edge|≥1.5. Friday comparison: Δm=1.95 Δs=0 Δou=0.",
   "recommendation": {
     "action": "PASS",
     "side": null,
     "market": null,
     "units": 0,
     "stake_class": "0u",
-    "edge_home": 1.41,
+    "edge_home": 1.74,
     "timing_thesis": "PASS",
-    "reason": "Fri LOCK ARI +3.5; Sun AM model moved to +2.09 (edge 1.41 <1.5) after Sat injury — PASS",
+    "reason": "Desk PASS retained at latest injury re-freeze. Model 1.76 vs street 3.5; edge_home 1.74.",
     "sunday_am_note": "Fri LOCK ARI +3.5; Sun AM model moved to +2.09 (edge 1.41 <1.5) after Sat injury — PASS"
   },
-  "frozen_at": "2026-09-20 8:11 AM ET (America/New_York)",
-  "frozen_at_utc": "2026-09-20T12:11:50.434Z",
-  "locked_at": "2026-09-20T12:11:50.434-04:00",
+  "frozen_at": "2026-09-20T10:45:49-04:00 (America/New_York)",
+  "frozen_at_utc": "2026-09-20T14:45:49Z",
+  "locked_at": "2026-09-20T10:45:49-04:00",
   "injury_aligned_to_imp3": true,
   "injury_source_policy": "madden_first",
   "lock_phase": "SUN_AM_REFRESH",
   "sunday_am_vs_friday": {
-    "model_delta": 2.28,
-    "street_delta": 0,
-    "ou_delta": 1,
+    "model_delta": 1.95,
+    "street_delta": 0.0,
+    "ou_delta": 0.0,
     "material": true,
     "fri_model": -0.19,
     "fri_street": 3.5,

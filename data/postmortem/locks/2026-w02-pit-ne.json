@@ -9,17 +9,17 @@
   "venue": "Gillette Stadium",
   "neutral": false,
   "window": "SUN_PM",
-  "model_home_spread": 2.57,
+  "model_home_spread": 4.23,
   "model_home_spread_source": "desk_compute",
   "street_home_spread": -5.5,
   "close_at_lock": -5.5,
   "ou_street": 41.5,
-  "street_note": "FINAL freeze 2026-09-20 8:11 AM ET (America/New_York). ESPN DraftKings: NE -5.5 / ou 41.5.",
-  "edge_home": -8.07,
-  "edge_note": "edgeHome = street − model = -5.5 − (2.57) = -8.07 → away value (PIT); |edge|≥1.5",
+  "street_note": "SUN AM latest-injury freeze 2026-09-20 10:45 AM ET (America/New_York). ESPN DraftKings scoreboard pulled 2026-09-20 10:16 AM ET: NE -5.5 / ou 41.5.",
+  "edge_home": -9.73,
+  "edge_note": "edgeHome = street − model = -5.5 − (4.23) = -9.73 → away value; |edge|≥1.5",
   "feature_stack": {
-    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W2 n=1 taper; pff_ytd IN line; injury 2026-09-18b FINAL",
-    "injury_pulled": "2026-09-19a",
+    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W2 n=1 taper; pff_ytd IN line; injury 2026-09-20a WORKING-SUN-AM",
+    "injury_pulled": "2026-09-20a",
     "away_PIT": {
       "prior": 2.58,
       "fa": 0.87,
@@ -29,10 +29,10 @@
       "pff_ytd": 1.5,
       "sos": 0.03,
       "return": 0,
-      "injury": -2.87,
+      "injury": -1.22,
       "adjust": 0,
       "context": 0,
-      "eff": 2.86
+      "eff": 4.52
     },
     "home_NE": {
       "prior": 5.03,
@@ -43,7 +43,7 @@
       "pff_ytd": -0.99,
       "sos": -2.31,
       "return": 0,
-      "injury": -6,
+      "injury": -6.0,
       "adjust": 0,
       "context": 0,
       "eff": -1.6
@@ -51,17 +51,17 @@
     "layers_home_minus_away": {
       "prior": 2.45,
       "fa": 0.86,
-      "draft": 0,
+      "draft": 0.0,
       "madden": 0.28,
       "pff": -0.1,
       "pff_ytd": -2.49,
       "sos": -2.34,
-      "return": 0,
-      "injury": -3.13,
-      "adjust": 0,
-      "context": 0
+      "return": 0.0,
+      "injury": -4.78,
+      "adjust": 0.0,
+      "context": 0.0
     },
-    "rating_diff_home_minus_away": -4.46,
+    "rating_diff_home_minus_away": -6.12,
     "hfa": 2,
     "coach": 0,
     "coach_note": "coachTerm desk",
@@ -73,11 +73,11 @@
     "travel_note": "schedNet desk",
     "matchup": 0,
     "matchup_note": "pff-matchups W1 grid only / missing → 0",
-    "gap": -2.57,
+    "gap": -4.23,
     "component_sum": [
       {
         "label": "rating_diff (NE−PIT)",
-        "val": -4.46
+        "val": -6.12
       },
       {
         "label": "HFA",
@@ -105,36 +105,36 @@
       },
       {
         "label": "gap",
-        "val": -2.57
+        "val": -4.23
       },
       {
         "label": "model_home_spread (−gap)",
-        "val": 2.57
+        "val": 4.23
       }
     ],
     "injuries": {
       "PIT": [
         {
-          "name": "Troy Fautanu",
-          "pos": "LT",
-          "status": "QUESTIONABLE",
-          "impact": 0.87,
-          "impact_source": "madden",
-          "pts": -0.3,
-          "on": true
-        },
-        {
           "name": "Joey Porter Jr.",
           "pos": "CB1",
           "status": "OUT",
-          "impact": 2.07,
-          "impact_source": "madden",
-          "pts": -2.07,
+          "impact": 0.43,
+          "impact_source": "pff",
+          "pts": -0.43,
           "on": true
         },
         {
           "name": "Michael Pittman Jr.",
           "pos": "WR2",
+          "status": "OUT",
+          "impact": 0.29,
+          "impact_source": "pff",
+          "pts": -0.29,
+          "on": true
+        },
+        {
+          "name": "Troy Fautanu",
+          "pos": "LT",
           "status": "QUESTIONABLE",
           "impact": 0.87,
           "impact_source": "madden",
@@ -153,12 +153,21 @@
       ],
       "NE": [
         {
+          "name": "Carlton Davis III",
+          "pos": "CB1",
+          "status": "OUT",
+          "impact": 2.07,
+          "impact_source": "madden",
+          "pts": -2.07,
+          "on": true
+        },
+        {
           "name": "Dametrious Crownover",
           "pos": "RT",
           "status": "OUT",
           "impact": null,
           "impact_source": null,
-          "pts": -1,
+          "pts": -1.0,
           "on": true
         },
         {
@@ -168,15 +177,6 @@
           "impact": 0.37,
           "impact_source": "madden",
           "pts": -0.13,
-          "on": true
-        },
-        {
-          "name": "Carlton Davis III",
-          "pos": "CB1",
-          "status": "QUESTIONABLE",
-          "impact": 2.07,
-          "impact_source": "madden",
-          "pts": -0.72,
           "on": true
         },
         {
@@ -201,25 +201,25 @@
           "name": "Harold Landry",
           "pos": "EDGE1",
           "status": "PUP",
-          "impact": 1.62,
-          "impact_source": "madden",
-          "pts": -1.62,
+          "impact": null,
+          "impact_source": null,
+          "pts": -1.5,
           "on": true
         }
       ]
     },
     "injury_team_terms": {
       "PIT": {
-        "raw": -2.87,
-        "term": -2.87,
+        "raw": -1.22,
+        "term": -1.22,
         "capped": false,
-        "cap_team": 6
+        "cap_team": 6.0
       },
       "NE": {
-        "raw": -6.82,
-        "term": -6,
+        "raw": -8.05,
+        "term": -6.0,
         "capped": true,
-        "cap_team": 6
+        "cap_team": 6.0
       }
     },
     "taper": {
@@ -238,29 +238,29 @@
     }
   },
   "tickets": [],
-  "notes": "FINAL pre-kick SUN_PM lock after Fri 4pm ET status. Injury 2026-09-19a. Model desk_compute. Street NE -5.5. Edge home -8.07. | Sun AM 2026-09-20 8:11 ET refresh vs Fri freeze: Δm=0 Δs=0 Δou=0 (confirm). Injury stamp 2026-09-19a. Friday card action LOCK retained for public-dogs window (no full re-card).",
+  "notes": "Pre-kick Sunday latest-injury re-freeze at 2026-09-20 10:45 AM ET (America/New_York). Injury 2026-09-20a WORKING-SUN-AM. Model desk_compute. Street NE -5.5 / ou 41.5. edgeHome = street − model = -5.5 − (4.23) = -9.73 → away value; |edge|≥1.5. Friday comparison: Δm=1.66 Δs=0 Δou=0.",
   "recommendation": {
     "action": "LOCK",
     "side": "PIT",
     "market": "PIT +5.5",
     "units": 3,
     "stake_class": "3u @ $50/u",
-    "edge_home": -8.07,
+    "edge_home": -9.73,
     "timing_thesis": "FRIDAY_CARD",
-    "reason": "Friday LOCK retained. Model 2.57 vs street -5.5 → edge_home -8.07.",
+    "reason": "Desk card action LOCK retained at latest injury re-freeze. Model 4.23 vs street -5.5 → edge_home -9.73.",
     "sunday_am_note": null
   },
-  "frozen_at": "2026-09-20 8:11 AM ET (America/New_York)",
-  "frozen_at_utc": "2026-09-20T12:11:50.434Z",
-  "locked_at": "2026-09-20T12:11:50.434-04:00",
+  "frozen_at": "2026-09-20T10:45:49-04:00 (America/New_York)",
+  "frozen_at_utc": "2026-09-20T14:45:49Z",
+  "locked_at": "2026-09-20T10:45:49-04:00",
   "injury_aligned_to_imp3": true,
   "injury_source_policy": "madden_first",
-  "lock_phase": "SUN_AM_CONFIRMED",
+  "lock_phase": "SUN_AM_REFRESH",
   "sunday_am_vs_friday": {
-    "model_delta": 0,
-    "street_delta": 0,
-    "ou_delta": 0,
-    "material": false,
+    "model_delta": 1.66,
+    "street_delta": 0.0,
+    "ou_delta": 0.0,
+    "material": true,
     "fri_model": 2.57,
     "fri_street": -5.5,
     "fri_ou": 41.5

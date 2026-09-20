@@ -14,12 +14,12 @@
   "street_home_spread": -3.5,
   "close_at_lock": -3.5,
   "ou_street": 50.5,
-  "street_note": "FINAL freeze 2026-09-20 8:11 AM ET (America/New_York). ESPN DraftKings: DAL -3.5 / ou 50.5.",
+  "street_note": "SUN AM latest-injury freeze 2026-09-20 10:45 AM ET (America/New_York). ESPN DraftKings scoreboard pulled 2026-09-20 10:16 AM ET: DAL -3.5 / ou 50.5.",
   "edge_home": 2.12,
-  "edge_note": "edgeHome = street − model = -3.5 − (-5.62) = 2.12 → home value (DAL); |edge|≥1.5",
+  "edge_note": "edgeHome = street − model = -3.5 − (-5.62) = 2.12 → home value; |edge|≥1.5",
   "feature_stack": {
-    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W2 n=1 taper; pff_ytd IN line; injury 2026-09-18b FINAL",
-    "injury_pulled": "2026-09-19a",
+    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W2 n=1 taper; pff_ytd IN line; injury 2026-09-20a WORKING-SUN-AM",
+    "injury_pulled": "2026-09-20a",
     "away_WSH": {
       "prior": -2.37,
       "fa": 1.33,
@@ -29,7 +29,7 @@
       "pff_ytd": -2,
       "sos": 0.03,
       "return": 0.8,
-      "injury": -6,
+      "injury": -6.0,
       "adjust": 0,
       "context": 0,
       "eff": -9.12
@@ -43,7 +43,7 @@
       "pff_ytd": -2,
       "sos": -0.96,
       "return": 0,
-      "injury": -1,
+      "injury": -1.0,
       "adjust": 0,
       "context": 0,
       "eff": -5.44
@@ -54,12 +54,12 @@
       "draft": 0.45,
       "madden": 0.5,
       "pff": 0.85,
-      "pff_ytd": 0,
+      "pff_ytd": 0.0,
       "sos": -0.99,
       "return": -0.8,
-      "injury": 5,
-      "adjust": 0,
-      "context": 0
+      "injury": 5.0,
+      "adjust": 0.0,
+      "context": 0.0
     },
     "rating_diff_home_minus_away": 3.68,
     "hfa": 2,
@@ -211,15 +211,15 @@
     "injury_team_terms": {
       "WSH": {
         "raw": -7.68,
-        "term": -6,
+        "term": -6.0,
         "capped": true,
-        "cap_team": 6
+        "cap_team": 6.0
       },
       "DAL": {
-        "raw": -1,
-        "term": -1,
+        "raw": -1.0,
+        "term": -1.0,
         "capped": false,
-        "cap_team": 6
+        "cap_team": 6.0
       }
     },
     "taper": {
@@ -238,7 +238,7 @@
     }
   },
   "tickets": [],
-  "notes": "FINAL pre-kick SUN_PM lock after Fri 4pm ET status. Injury 2026-09-19a. Model desk_compute. Street DAL -3.5. Edge home 2.12. | Sun AM 2026-09-20 8:11 ET refresh vs Fri freeze: Δm=0.18 Δs=1 Δou=0 (REFRESH). Injury stamp 2026-09-19a. Friday card action PASS retained for public-dogs window (no full re-card).",
+  "notes": "Pre-kick Sunday latest-injury re-freeze at 2026-09-20 10:45 AM ET (America/New_York). Injury 2026-09-20a WORKING-SUN-AM. Model desk_compute. Street DAL -3.5 / ou 50.5. edgeHome = street − model = -3.5 − (-5.62) = 2.12 → home value; |edge|≥1.5. Friday comparison: Δm=0.18 Δs=1 Δou=0.",
   "recommendation": {
     "action": "PASS",
     "side": null,
@@ -247,19 +247,19 @@
     "stake_class": "0u",
     "edge_home": 2.12,
     "timing_thesis": "PASS",
-    "reason": "Friday PASS retained (Sun AM public-dogs). Model -5.62 / street -3.5.",
+    "reason": "Desk PASS retained at latest injury re-freeze. Model -5.62 vs street -3.5; edge_home 2.12.",
     "sunday_am_note": null
   },
-  "frozen_at": "2026-09-20 8:11 AM ET (America/New_York)",
-  "frozen_at_utc": "2026-09-20T12:11:50.434Z",
-  "locked_at": "2026-09-20T12:11:50.434-04:00",
+  "frozen_at": "2026-09-20T10:45:49-04:00 (America/New_York)",
+  "frozen_at_utc": "2026-09-20T14:45:49Z",
+  "locked_at": "2026-09-20T10:45:49-04:00",
   "injury_aligned_to_imp3": true,
   "injury_source_policy": "madden_first",
   "lock_phase": "SUN_AM_REFRESH",
   "sunday_am_vs_friday": {
     "model_delta": 0.18,
-    "street_delta": 1,
-    "ou_delta": 0,
+    "street_delta": 1.0,
+    "ou_delta": 0.0,
     "material": true,
     "fri_model": -5.8,
     "fri_street": -4.5,
