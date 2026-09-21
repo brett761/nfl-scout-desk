@@ -1,6 +1,8 @@
 # 2026 NFL injuries — Scout desk Week 3 WORKING-MON
 
-Pulled 2026-09-21 11:06 AM ET. Stamp `injury_pulled=2026-09-21a` **WORKING-MON** Monday early-week refresh for Week 3 (prior seed 2026-09-20b WORKING-SNF-PREKICK).
+Pulled 2026-09-21 (WORKING-MON). Stamp `injury_pulled=2026-09-21b` after wiring live tier caps in `app.js` (QB 1.5 / All-Pro 0.5 / other 0.25). Madden-first auto; manuals Darnold 1.5 / Murray 0.5 unchanged.
+
+Prior: Monday early-week refresh for Week 3 (prior seed 2026-09-20b WORKING-SNF-PREKICK).
 
 ## Material designation flips vs 2026-09-20b
 

@@ -1,13 +1,13 @@
 {
-  "pulled": "2026-09-21a",
-  "pulled_et": "2026-09-21 11:06 AM ET",
+  "pulled": "2026-09-21b",
+  "pulled_et": "2026-09-21 11:18 AM ET",
   "phase": "WORKING-MON",
   "sources": [
     "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
     "https://www.nfl.com/injuries/",
     "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?seasontype=2&week=3&year=2026"
   ],
-  "note": "Monday early-week working injury refresh for Week 3, RESEED 2026-09-21b with tier caps (QB 1.5 / All-Pro 0.5 / other 0.25). ESPN Mon designations (official NFL.com sheet Wed ~4pm ET). Manuals preserved. Prior: Monday early-week working injury refresh for Week 3. ESPN Mon designations (official NFL.com sheet Wed ~4pm ET). Week 2 coach's-decision / mid-game leftovers / bare inactive depth ",
+  "note": "WORKING-MON refresh after wiring live tier caps in app.js. Stamp 2026-09-21b. Madden-first auto under QB 1.5 / All-Pro 0.5 / other 0.25. Manuals preserved: SEA Sam Darnold 1.5, MIN Kyler Murray 0.5. ESPN Mon designations; coach's-decision depth inactives dropped. Season-long IR/PUP/NFI kept. cap_team 6.0.",
   "espn_timestamp": "2026-09-21T15:02:53Z",
   "teams": {
     "ARI": [
@@ -28,7 +28,7 @@
         "note": "inactive",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
-        "impact": 0.25,
+        "impact": 0.2,
         "impact_source": "madden"
       },
       {
@@ -64,7 +64,7 @@
         "note": "The Cardinals are placing Conner (foot) on injured reserve with a designation to return, John Gambadoro of Arizona Sports 98.7 FM Phoenix reports.",
         "source": "https://www.espn.com/nfl/injuries",
         "on": true,
-        "impact": 0.22,
+        "impact": 0.2,
         "impact_source": "madden"
       }
     ],
@@ -84,7 +84,7 @@
         "note": "Tagovailoa (oblique) is inactive for Sunday's game against the Panthers, Marc Raimondi of ESPN.com reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
-        "impact": 1.5,
+        "impact": 0.2,
         "impact_source": "madden"
       },
       {
@@ -118,7 +118,7 @@
         "note": "torn ACL in camp; reserve/IR, out for 2026",
         "source": "https://www.espn.com/nfl/injuries",
         "on": true,
-        "impact": 0.25,
+        "impact": 0.2,
         "impact_source": "madden"
       }
     ],
@@ -292,7 +292,7 @@
         "note": "Ekwonu (knee) was moved to the Panthers' reserve/PUP list Sunday, Darin Gantt of the team's official site reports.",
         "source": "https://www.espn.com/nfl/injuries",
         "on": true,
-        "impact": 0.25,
+        "impact": 0.2,
         "impact_source": "madden"
       },
       {
@@ -331,7 +331,9 @@
         "status": "QUESTIONABLE",
         "note": "Stevenson suffered a hamstring injury during Sunday's 9-3 loss to the Vikings.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "on": true,
+        "impact": 0.2,
+        "impact_source": "madden"
       },
       {
         "name": "Anthony Johnson Jr.",
@@ -486,7 +488,7 @@
         "note": "Harvey (hamstring) is inactive for Sunday's game against the Jaguars, Susanna Weir of the Broncos' official site reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
-        "impact": 0.22,
+        "impact": 0.2,
         "impact_source": "madden"
       },
       {
@@ -660,7 +662,7 @@
         "note": "Coach Matt LaFleur said Reed has movement in all of his extremities after he suffered a neck injury during Sunday's 20-17 overtime win at the Jets, Rob Demovsky of ESPN.com reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
-        "impact": 0.25,
+        "impact": 0.2,
         "impact_source": "madden"
       },
       {
@@ -688,7 +690,7 @@
         "note": "Hargrave (concussion/knee) has been ruled out ahead of Sunday's game against the Jets.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
-        "impact": 0.25,
+        "impact": 0.2,
         "impact_source": "madden"
       },
       {
@@ -718,7 +720,7 @@
         "note": "inactive",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
-        "impact": 0.25,
+        "impact": 0.2,
         "impact_source": "madden"
       },
       {
@@ -900,7 +902,7 @@
         "note": "inactive",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
-        "impact": 0.25,
+        "impact": 0.2,
         "impact_source": "madden"
       },
       {
@@ -918,7 +920,7 @@
         "note": "The Chargers placed Biadasz (knee) on injured reserve Sunday.",
         "source": "https://www.espn.com/nfl/injuries",
         "on": true,
-        "impact": 0.25,
+        "impact": 0.2,
         "impact_source": "madden"
       }
     ],
@@ -940,7 +942,7 @@
         "note": "Kinchens (hamstring) has been ruled out ahead of Monday's game against the Giants, Benjamin Royer of The Orange County Register reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
-        "impact": 0.25,
+        "impact": 0.2,
         "impact_source": "madden"
       },
       {
@@ -1019,7 +1021,9 @@
         "status": "IR",
         "note": "The Dolphins placed Harrison (hamstring) on injured reserve Saturday.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "on": true,
+        "impact": 0.2,
+        "impact_source": "pff"
       },
       {
         "name": "Kyle Louis",
@@ -1038,7 +1042,7 @@
         "note": "inactive",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
-        "impact": 0.25,
+        "impact": 0.2,
         "impact_source": "madden"
       },
       {
@@ -1058,7 +1062,7 @@
         "note": "ir",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
-        "impact": 0.22,
+        "impact": 0.2,
         "impact_source": "madden"
       }
     ],
@@ -1117,7 +1121,9 @@
         "status": "PUP",
         "note": "knee surgery after 2025; reserve/PUP at cutdown, miss first four",
         "source": "https://www.espn.com/nfl/injuries",
-        "on": true
+        "on": true,
+        "impact": 0.25,
+        "impact_source": "madden"
       }
     ],
     "NO": [
@@ -1190,7 +1196,7 @@
         "note": "The Giants placed Adebo (knee) on injured reserve Friday, Dan Salomone of the team's official site reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
-        "impact": 0.25,
+        "impact": 0.2,
         "impact_source": "madden"
       },
       {
@@ -1317,7 +1323,7 @@
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.25,
-        "impact_source": "pff"
+        "impact_source": "madden"
       },
       {
         "name": "Michael Pittman Jr.",
@@ -1327,7 +1333,7 @@
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.25,
-        "impact_source": "pff"
+        "impact_source": "madden"
       },
       {
         "name": "DeShon Elliott",
@@ -1462,7 +1468,7 @@
         "note": "Williams (knee) was moved to the reserve/PUP list by the 49ers on Sunday.",
         "source": "https://www.espn.com/nfl/injuries",
         "on": true,
-        "impact": 0.25,
+        "impact": 0.2,
         "impact_source": "madden"
       }
     ],
@@ -1474,7 +1480,7 @@
         "note": "Parrish (back) is inactive for Sunday's game against the Browns, Brianna Dix of the Buccaneers' official site reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
-        "impact": 0.25,
+        "impact": 0.2,
         "impact_source": "madden"
       },
       {
@@ -1526,7 +1532,7 @@
         "note": "Flott (quadriceps) is inactive for Sunday's game versus Philadelphia.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
-        "impact": 0.25,
+        "impact": 0.2,
         "impact_source": "madden"
       },
       {
@@ -1572,7 +1578,7 @@
         "note": "Daniels was carted off the field at the conclusion of the first half of Sundays' game against Dallas due to a left arm injury, Tashan Reed of The Washington Post reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
-        "impact": 1.5,
+        "impact": 1.12,
         "impact_source": "madden"
       },
       {
