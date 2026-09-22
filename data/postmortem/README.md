@@ -13,3 +13,4 @@ Sign convention: model/close spreads as **home points** (negative = home favorit
 
 Skill: Weekly NFL model postmortem.
 First full week grade completed Tue Sep 15, 2026 (W01 including MNF DEN@KC).
+Week 2 grade: Tue Sep 22, 2026 (W02 including MNF NYG@LAR).

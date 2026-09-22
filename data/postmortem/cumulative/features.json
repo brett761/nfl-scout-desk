@@ -1,6 +1,6 @@
 {
   "season": 2026,
-  "updated": "2026-09-15T14:11:27Z",
+  "updated": "2026-09-22T13:56:44Z",
   "primary_metric": "abs_error_projected_vs_actual_margin",
   "secondary": [
     "ats",
@@ -8,75 +8,94 @@
     "vs_close_mae"
   ],
   "weeks_graded": [
-    "2026-W01"
+    "2026-W01",
+    "2026-W02"
   ],
-  "notes": "W01 complete (16/16). Model n=2. Market beat model on both locked games. No weight edits.",
+  "notes": "W02 complete (16/16). Model MAE 12.857 vs market 11.75; beat market 8/16. No weight edits. Extreme-gap + pff_ytd Monitoring.",
   "features": {
     "fa": {
-      "games_with_model": 2,
+      "games_with_model": 18,
       "label": "Insufficient evidence",
       "trend": "Monitor",
-      "notes": "NE@SEA FA \u22125.7 and DEN@KC FA \u22123.5 both leaned model opposite market; market closer both. Emerging thin signal to watch, not a cut yet."
+      "notes": "W1 two FA-driven misses; W2 mixed (DET/MIA/PHI hits nearby, GB catastrophe with FA +3.94). No cut."
     },
     "injury": {
-      "games_with_model": 2,
+      "games_with_model": 18,
       "label": "Insufficient evidence",
       "trend": "Monitor",
-      "notes": "NE@SEA wash. DEN@KC injury \u22121.24 toward DEN with stale Q seed; Simmons was OUT, Thomas/Mims mispriced. Process > weight."
+      "notes": "DET@BUF +5.18 validated (MAE 0.72); PIT@NE \u22124.78 falsified. Freshness process improved W2."
+    },
+    "injury_freshness": {
+      "games_with_model": 16,
+      "label": "Emerging signal",
+      "trend": "Monitor",
+      "notes": "W2 same-day injury pulls at Sun/SNF/MNF freezes. Process checklist holding; keep."
+    },
+    "pff_ytd": {
+      "games_with_model": 15,
+      "label": "Emerging signal",
+      "trend": "Monitor",
+      "notes": "New W2 layer with \u00b14 swings in GB@NYJ, JAX@DEN, IND@KC, PHI@TEN, LV@LAC. Thin; watch disagreement games."
+    },
+    "large_model_market_gap": {
+      "games_with_model": 8,
+      "label": "Emerging signal",
+      "trend": "Monitor",
+      "notes": "W2 |gap|\u22653 beat market 4/8; |gap|\u22658 went 0/3. Candidate unit/PASS filter \u2014 not a hard rule yet."
     },
     "hfa": {
-      "games_with_model": 2,
-      "label": "Insufficient evidence",
-      "trend": "Unchanged",
-      "notes": "HFA=2 both locks. DEN@KC HFA insufficient vs blowout; do not raise. Melbourne still market-only."
-    },
-    "prior": {
-      "games_with_model": 2,
+      "games_with_model": 18,
       "label": "Insufficient evidence",
       "trend": "Unchanged"
     },
+    "prior": {
+      "games_with_model": 18,
+      "label": "Insufficient evidence",
+      "trend": "Unchanged",
+      "notes": "JAX@DEN prior \u22129.2 in catastrophic disagreement \u2014 do not cut priors on one game."
+    },
     "madden": {
-      "games_with_model": 2,
+      "games_with_model": 18,
       "label": "Insufficient evidence",
       "trend": "Unchanged"
     },
     "pff": {
-      "games_with_model": 2,
+      "games_with_model": 18,
       "label": "Insufficient evidence",
       "trend": "Unchanged"
     },
     "sos": {
-      "games_with_model": 2,
+      "games_with_model": 18,
       "label": "Insufficient evidence",
       "trend": "Unchanged"
     },
     "prep": {
-      "games_with_model": 2,
+      "games_with_model": 18,
       "label": "Insufficient evidence",
       "trend": "Unchanged"
     },
     "ats_coach": {
-      "games_with_model": 2,
+      "games_with_model": 18,
       "label": "Insufficient evidence",
       "trend": "Unchanged"
     },
     "travel_sched": {
-      "games_with_model": 2,
+      "games_with_model": 18,
       "label": "Insufficient evidence",
       "trend": "Unchanged"
     },
     "matchup_chips": {
-      "games_with_model": 2,
+      "games_with_model": 18,
       "label": "Insufficient evidence",
       "trend": "Unchanged"
     },
     "draft": {
-      "games_with_model": 2,
+      "games_with_model": 18,
       "label": "Insufficient evidence",
       "trend": "Unchanged"
     },
     "return": {
-      "games_with_model": 2,
+      "games_with_model": 18,
       "label": "Insufficient evidence",
       "trend": "Unchanged"
     },
@@ -84,28 +103,55 @@
       "games_with_model": 0,
       "label": "Emerging signal",
       "trend": "Monitor",
-      "notes": "ATL@PIT QB flip + DEN@KC stale injury pull (09-09d for 09-14 kick). Emerging process signal."
-    },
-    "injury_freshness": {
-      "games_with_model": 1,
-      "label": "Emerging signal",
-      "trend": "Monitor",
-      "notes": "Process: refresh injury JSON same-day before freeze; Q\u2192OUT and cleared-Q must match inactives."
+      "notes": "No new W2 late-QB flip highlighted vs W1 ATL@PIT. Keep checklist."
     }
   },
   "aggregate": {
     "model_mae_w01": 13.335,
     "market_mae_w01": 11.312,
-    "model_n": 2,
-    "market_n": 16,
-    "model_games": [
-      "NE@SEA",
-      "DEN@KC"
+    "model_mae_w02": 12.857,
+    "market_mae_w02": 11.75,
+    "model_mae_cumulative": 12.91,
+    "market_mae_cumulative_approx": 11.531,
+    "model_n": 18,
+    "market_n": 32,
+    "model_games_w02": [
+      "DET@BUF",
+      "CAR@ATL",
+      "CIN@HOU",
+      "CLE@TB",
+      "GB@NYJ",
+      "MIN@CHI",
+      "NO@BAL",
+      "PHI@TEN",
+      "JAX@DEN",
+      "LV@LAC",
+      "MIA@SF",
+      "SEA@ARI",
+      "WSH@DAL",
+      "PIT@NE",
+      "IND@KC",
+      "NYG@LAR"
     ],
-    "model_abs_errors": {
-      "NE@SEA": 2.8,
-      "DEN@KC": 23.87
+    "model_abs_errors_w02": {
+      "DET@BUF": 0.72,
+      "CAR@ATL": 28.11,
+      "CIN@HOU": 19.14,
+      "CLE@TB": 12.56,
+      "GB@NYJ": 11.72,
+      "MIN@CHI": 6.41,
+      "NO@BAL": 12.73,
+      "PHI@TEN": 1.78,
+      "JAX@DEN": 19.52,
+      "LV@LAC": 10.79,
+      "MIA@SF": 3.65,
+      "SEA@ARI": 22.24,
+      "WSH@DAL": 11.38,
+      "PIT@NE": 21.23,
+      "IND@KC": 8.5,
+      "NYG@LAR": 15.23
     },
-    "market_beat_model_on_locked": 2
+    "model_beat_market_w02": 8,
+    "large_gap_beat_w02": "4/8"
   }
 }

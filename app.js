@@ -6791,7 +6791,7 @@ function bind() {
 
 async function loadModelAts() {
   try {
-    const res = await fetch("./data/model-ats-2026.json?v=mats1");
+    const res = await fetch("./data/model-ats-2026.json?v=mats2");
     if (!res.ok) throw new Error(String(res.status));
     const data = await res.json();
     if (!data || !Array.isArray(data.games)) throw new Error("bad model-ats");
