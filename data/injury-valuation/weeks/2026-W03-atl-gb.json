@@ -1,0 +1,343 @@
+{
+  "season": 2026,
+  "week": 3,
+  "window": "TNF",
+  "game": "ATL@GB",
+  "status": "FINAL",
+  "pulled": "2026-09-23T16:48:10Z",
+  "pulled_et": "2026-09-23 4:48 PM ET (America/New_York)",
+  "injury_pulled": "2026-09-23b",
+  "note": "FINAL after Wed 4pm ET official Game Status. GB: Reed/Banks/Bako-Bewele/Brinson OUT; Hargrave/Campbell Q; Belton/Cooper/Jennings/Cisse/Melton/St-Juste cleared. ATL: Ebukam OUT; Bowman Q; Terrell+Hand+Williams+Walker IR. Manuals Bako 0.75 / Reed 0.5 / Banks 0.4. ATL term -1.24; GB term -2.56. Model GB -2.33 vs street -5.5.",
+  "source_url": "https://www.packers.com/news/packers-rule-out-four-list-two-questionable-vs-falcons-week-3-injury-report-2026",
+  "players": [
+    {
+      "team": "GB",
+      "name": "Jayden Reed",
+      "pos": "WR1",
+      "injury": "neck",
+      "game_status": "OUT",
+      "p_play": 0.0,
+      "baseline_pos": 0.25,
+      "player_quality": "above-avg WR (Madden 80); not alpha",
+      "role": "WR1 / slot-perimeter hybrid",
+      "replacement": "Christian Watson / Matthew Golden / Doubs",
+      "drop_off": "moderate \u2014 Watson/Golden capable but target tree thins",
+      "scheme_sig": "moderate \u2014 LaFleur motion/YAC",
+      "opponent_sig": "ATL secondary thin (Terrell IR)",
+      "estimated_spread_impact_range": [
+        0.35,
+        0.65
+      ],
+      "desk_impact": 0.5,
+      "impact_source": "manual",
+      "status_mult": 1.0,
+      "desk_pts": -0.5,
+      "confidence": "Moderate-High",
+      "note": "Official Out. Madden auto tier 0.25 too light for WR1 Out; Midpoint 0.5 manual."
+    },
+    {
+      "team": "GB",
+      "name": "Aaron Banks",
+      "pos": "OG",
+      "injury": "knee/toe",
+      "game_status": "OUT",
+      "p_play": 0.0,
+      "baseline_pos": 0.25,
+      "player_quality": "below-avg starter (Madden 73)",
+      "role": "starting LG",
+      "replacement": "Donovan Jennings (available, no designation)",
+      "drop_off": "moderate \u2014 starter G miss with usable swing",
+      "estimated_spread_impact_range": [
+        0.3,
+        0.5
+      ],
+      "desk_impact": 0.4,
+      "impact_source": "manual",
+      "status_mult": 1.0,
+      "desk_pts": -0.4,
+      "confidence": "Moderate",
+      "note": "Official Out. Jennings cleared \u2014 still starter-G hit \u2192 manual 0.4 vs floor 0.2."
+    },
+    {
+      "team": "GB",
+      "name": "Zach Bako-Bewele",
+      "pos": "RT",
+      "injury": "knee (patellar tear)",
+      "game_status": "OUT",
+      "p_play": 0.0,
+      "baseline_pos": 0.25,
+      "player_quality": "high-end starter (Madden 87 / PFF 83.5)",
+      "role": "starting RT",
+      "replacement": "Anthony Belton (full Wed, will play)",
+      "drop_off": "large \u2014 franchise RT out; Belton stepped in W2",
+      "scheme_sig": "high \u2014 blindside/protection identity",
+      "opponent_sig": "ATL EDGE (Ebukam Out softens)",
+      "estimated_spread_impact_range": [
+        0.6,
+        0.9
+      ],
+      "desk_impact": 0.75,
+      "impact_source": "manual",
+      "status_mult": 1.0,
+      "desk_pts": -0.75,
+      "confidence": "High",
+      "note": "Official Out season-ending. Madden tier 0.25 way light \u2192 manual 0.75 (Miller W02 pattern)."
+    },
+    {
+      "team": "GB",
+      "name": "Warren Brinson",
+      "pos": "IDL",
+      "injury": "calf",
+      "game_status": "OUT",
+      "p_play": 0.0,
+      "baseline_pos": 0.25,
+      "player_quality": "depth / rotation (no Madden top-22)",
+      "role": "DT depth",
+      "replacement": "Wyatt / Campbell (Q) rotation",
+      "drop_off": "small",
+      "estimated_spread_impact_range": [
+        0.15,
+        0.25
+      ],
+      "desk_impact": null,
+      "impact_source": null,
+      "status_mult": 1.0,
+      "desk_pts": -0.2,
+      "confidence": "Moderate",
+      "note": "Official Out. Pos IDL base 0.2 used (no Madden match)."
+    },
+    {
+      "team": "GB",
+      "name": "Javon Hargrave",
+      "pos": "IDL",
+      "injury": "knee/concussion",
+      "game_status": "QUESTIONABLE",
+      "p_play": 0.6,
+      "baseline_pos": 0.25,
+      "player_quality": "starter DT (Madden 80); in concussion protocol since W1",
+      "role": "starting IDL",
+      "replacement": "Wyatt / Campbell",
+      "drop_off": "moderate if Out",
+      "estimated_spread_impact_range": [
+        0.05,
+        0.15
+      ],
+      "desk_impact": 0.2,
+      "impact_source": "madden",
+      "status_mult": 0.35,
+      "desk_pts": -0.07,
+      "confidence": "Moderate",
+      "note": "Official Q \u2014 limited all week. Expected-impact only (not Out)."
+    },
+    {
+      "team": "GB",
+      "name": "Anthony Campbell",
+      "pos": "IDL",
+      "injury": "ankle",
+      "game_status": "QUESTIONABLE",
+      "p_play": 0.55,
+      "baseline_pos": 0.2,
+      "player_quality": "reserve IDL",
+      "role": "depth DT",
+      "drop_off": "small",
+      "estimated_spread_impact_range": [
+        0.05,
+        0.1
+      ],
+      "desk_impact": null,
+      "impact_source": null,
+      "status_mult": 0.35,
+      "desk_pts": -0.07,
+      "confidence": "Low-Moderate",
+      "note": "Official Q. Soft expected impact."
+    },
+    {
+      "team": "GB",
+      "name": "Micah Parsons",
+      "pos": "EDGE1",
+      "injury": "knee",
+      "game_status": "PUP/OUT",
+      "p_play": 0.0,
+      "baseline_pos": 0.25,
+      "player_quality": "elite All-Pro (Madden 98)",
+      "role": "every-down EDGE",
+      "replacement": "Gary / Van Ness / Enagbare",
+      "drop_off": "large \u2014 already season-long in prior",
+      "estimated_spread_impact_range": [
+        0.5,
+        0.5
+      ],
+      "desk_impact": 0.5,
+      "impact_source": "madden",
+      "status_mult": 1.0,
+      "desk_pts": -0.5,
+      "confidence": "High",
+      "note": "PUP season-long \u2014 keep; All-Pro tier cap 0.5. Do not double-count rumor return."
+    },
+    {
+      "team": "GB",
+      "name": "Anthony Belton",
+      "pos": "RT",
+      "injury": "elbow (cleared)",
+      "game_status": "PROBABLE/CLEARED",
+      "p_play": 0.95,
+      "estimated_spread_impact_range": [
+        0.0,
+        0.0
+      ],
+      "desk_pts": 0.0,
+      "confidence": "High",
+      "note": "Full Wed \u2014 no game status \u2192 off number. Starts at RT."
+    },
+    {
+      "team": "GB",
+      "name": "Edgerrin Cooper",
+      "pos": "LB",
+      "injury": "shoulder (cleared)",
+      "game_status": "PROBABLE/CLEARED",
+      "p_play": 0.9,
+      "estimated_spread_impact_range": [
+        0.0,
+        0.0
+      ],
+      "desk_pts": 0.0,
+      "confidence": "High",
+      "note": "Limited Wed but no designation \u2192 available / off number."
+    },
+    {
+      "team": "ATL",
+      "name": "Samson Ebukam",
+      "pos": "EDGE1",
+      "injury": "hamstring",
+      "game_status": "OUT",
+      "p_play": 0.0,
+      "baseline_pos": 0.25,
+      "player_quality": "rotation EDGE (Madden 76)",
+      "role": "EDGE rotation",
+      "replacement": "Pearce / Za'Darius / Harrison",
+      "drop_off": "small-moderate",
+      "estimated_spread_impact_range": [
+        0.15,
+        0.3
+      ],
+      "desk_impact": 0.2,
+      "impact_source": "madden",
+      "status_mult": 1.0,
+      "desk_pts": -0.2,
+      "confidence": "Moderate-High",
+      "note": "Official Out. DNP all week."
+    },
+    {
+      "team": "ATL",
+      "name": "Billy Bowman Jr.",
+      "pos": "CB1",
+      "injury": "Achilles",
+      "game_status": "QUESTIONABLE",
+      "p_play": 0.8,
+      "baseline_pos": 0.25,
+      "player_quality": "young CB (no Madden top-22)",
+      "role": "CB (elevated with Terrell IR)",
+      "replacement": "Henderson / Hughes / Avieon Terrell",
+      "drop_off": "moderate if Out; likely plays (FP all week)",
+      "estimated_spread_impact_range": [
+        0.05,
+        0.15
+      ],
+      "desk_impact": null,
+      "impact_source": null,
+      "status_mult": 0.35,
+      "desk_pts": -0.09,
+      "confidence": "Moderate",
+      "note": "Official Q despite Full Mon\u2013Wed \u2014 soft expected-impact only."
+    },
+    {
+      "team": "ATL",
+      "name": "A.J. Terrell Jr.",
+      "pos": "CB1",
+      "injury": "groin",
+      "game_status": "IR",
+      "p_play": 0.0,
+      "baseline_pos": 0.25,
+      "player_quality": "high-end CB1 (Madden 88)",
+      "role": "outside CB1",
+      "replacement": "Henderson / depth",
+      "drop_off": "large \u2014 already IR this week",
+      "estimated_spread_impact_range": [
+        0.25,
+        0.25
+      ],
+      "desk_impact": 0.25,
+      "impact_source": "madden",
+      "status_mult": 1.0,
+      "desk_pts": -0.25,
+      "confidence": "High",
+      "note": "IR Tuesday \u2014 keep. Tier other 0.25."
+    },
+    {
+      "team": "ATL",
+      "name": "Jalon Walker",
+      "pos": "EDGE1",
+      "injury": "ACL (camp)",
+      "game_status": "IR",
+      "p_play": 0.0,
+      "desk_impact": 0.2,
+      "impact_source": "madden",
+      "status_mult": 1.0,
+      "desk_pts": -0.2,
+      "confidence": "High",
+      "note": "Season-long IR \u2014 keep; already in prior."
+    },
+    {
+      "team": "ATL",
+      "name": "Da'Shawn Hand",
+      "pos": "IDL",
+      "injury": "quad",
+      "game_status": "IR",
+      "p_play": 0.0,
+      "desk_pts": -0.2,
+      "confidence": "Moderate",
+      "note": "IR \u2014 keep; pos base."
+    },
+    {
+      "team": "ATL",
+      "name": "Cameron Williams",
+      "pos": "OG",
+      "injury": "ankle",
+      "game_status": "IR",
+      "p_play": 0.0,
+      "desk_pts": -0.2,
+      "confidence": "Moderate",
+      "note": "IR \u2014 keep; pos base."
+    }
+  ],
+  "team_rollup": {
+    "ATL": {
+      "individual_sum": -1.24,
+      "unit_interaction": 0.0,
+      "final_injury_adjustment": -1.24,
+      "confidence": "High",
+      "note": "Ebukam Out + Terrell IR headliners; Bowman soft Q."
+    },
+    "GB": {
+      "individual_sum": -2.56,
+      "unit_interaction": 0.0,
+      "final_injury_adjustment": -2.56,
+      "confidence": "Moderate-High",
+      "note": "OL cluster (Bako+Banks) + Reed Out + Parsons PUP; Hargrave Q soft."
+    }
+  },
+  "model_snapshot": {
+    "model_home_spread": -2.33,
+    "street_home_spread": -5.5,
+    "edge_home": -3.17,
+    "call": {
+      "action": "FIRE",
+      "side": "ATL",
+      "line": 5.5,
+      "units": 3,
+      "price": -110,
+      "class": "INFO",
+      "note": "Model favors ATL / less GB than street."
+    }
+  }
+}
