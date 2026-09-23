@@ -192,16 +192,30 @@ def main():
             t[rank_key] = i + 1
 
     teams_out.sort(key=lambda t: (t["rank"], t["abbr"]))
-    n_scored = sum(
-        1
-        for g in nfl["games"]
-        if game_scores(g) and isinstance(g.get("week"), (int, float)) and 1 <= g["week"] <= 18
-    )
+    week_scored = defaultdict(int)
+    week_total = defaultdict(int)
+    for g in nfl["games"]:
+        week = g.get("week")
+        if not isinstance(week, (int, float)) or week < 1 or week > 18:
+            continue
+        week_total[int(week)] += 1
+        if game_scores(g):
+            week_scored[int(week)] += 1
+    n_scored = sum(week_scored.values())
+    slate_parts = []
+    for w in sorted(week_scored):
+        sc, tot = week_scored[w], week_total[w]
+        if sc == tot:
+            slate_parts.append(f"W{w} all {sc}")
+        else:
+            slate_parts.append(f"W{w} {sc}/{tot}")
+    slate = " + ".join(slate_parts) if slate_parts else "no scored games"
+    as_of = f"YTD through completed regular-season games ({slate})"
     pulled_et = now.strftime("%b %d, %Y, %I:%M %p ET").replace(" 0", " ")
 
     out = {
         "season": 2026,
-        "as_of": "YTD through completed regular-season games (W1 all 16 + W2 TNF DET@BUF)",
+        "as_of": as_of,
         "pulled": now.isoformat(),
         "pulled_et": pulled_et,
         "scored_games": n_scored,
@@ -264,7 +278,7 @@ def main():
     md.append("# NFL Scout YTD rankings — 2026 (same scale as 2025 O/D/ST)\n")
     md.append(
         f"Pulled: **{pulled_et}** · Scored games: **{n_scored}** "
-        "(W1 16/16 + W2 TNF DET@BUF 31–41).\n"
+        f"({slate}).\n"
     )
     md.append("## Scale (mirrors 2025 prior)\n")
     md.append("| Pillar | Output | Inputs | 2025 raw anchors | Weight in composite |")

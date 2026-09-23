@@ -2248,9 +2248,9 @@ async function loadOpenerSnaps() {
 
 async function loadNfl() {
   const openersReq = loadOpenerSnaps();
-  const nflReq = fetch("./data/nfl-2026.json?v=ytd1");
-  const priorReq = fetch("./data/prior-2025.json?v=ytd1");
-  const ytdStReq = fetch("./data/ytd-st-2026.json?v=ytd1");
+  const nflReq = fetch("./data/nfl-2026.json?v=w2ytd0923");
+  const priorReq = fetch("./data/prior-2025.json?v=w2ytd0923");
+  const ytdStReq = fetch("./data/ytd-st-2026.json?v=w2ytd0923");
   const faReq = fetch("./data/fa-2026.json");
   const draftReq = fetch("./data/draft-2026.json");
   const maddenReq = fetch("./data/madden-2026.json");
@@ -3430,7 +3430,8 @@ function priorBlockHtml(abbr) {
       </div>
     </div>`;
   }).join("");
-  const prior = num(t.prior) || 0;
+  const prior = num(t.prior) || 0; // raw 2025 prior (pillars stay on this)
+  const combo = algorithmBase(abbr); // tapered blend shown on the board
   const copy = priorWeightCopy(abbr);
   const wLine = "OFF " + (wts.off * 100) + "% · DEF " + (wts.def * 100) + "% · ST " + (wts.st * 100)
     + "% · TAKE " + (wts.take * 100) + "% · GIVE " + (wts.give * 100) + "%";
@@ -3440,7 +3441,7 @@ function priorBlockHtml(abbr) {
     <div class="prior-combo">
       <div class="prior-combo-num">
         <small>Combined PRIOR</small>
-        <em class="${rtgClass(prior)}">${esc(fmtRtg(prior))}</em>
+        <em class="${rtgClass(combo)}">${esc(fmtRtg(combo))}</em>
       </div>
       <div class="prior-combo-w">
         <small>${esc(copy.games)}</small>
