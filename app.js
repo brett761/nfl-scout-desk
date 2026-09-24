@@ -15,6 +15,9 @@ const SHARP_BOOK_DEFAULT = "Pinnacle";
 const SEASON = 2026;
 const HFA_DEFAULT = 2;
 const TAPER_N = 3;
+/* 2026 FA stays on the sheet. It does not move the B$ line while this is false. */
+const INCLUDE_FA = false;
+const SHEET_BOX_KEY = "nflScout.sheetBoxes.v1";
 const WEEKLY_BUDGET = 1000;
 const UNIT = 50;
 const WEEKLY_UNITS = 20;
@@ -486,10 +489,13 @@ function normAbbr(abbr) {
    algorithm_base = blended 2025 prior (tapers off over N=3 scored games).
    fa_raw(abbr) = fa-2026.json team net (0 if missing / failed load).
      net is already team-capped ±4. If net is missing, sum in/out pts and clamp ±4.
-   fa_term(abbr) = fa_raw(abbr) * w_prior
-     FA is a Week-1 correction to last year's roster. It fades with the prior
-     taper (N=3): at n=0, fa_term = net; at n=3, fa_term = 0. Do not fold FA into
-     algorithm_base — keep the prior number honest / visible.
+   INCLUDE_FA = false. The 2026 FA box is display-only.
+   fa_term(abbr) = INCLUDE_FA ? fa_raw(abbr) * w_prior : 0
+     When the switch is on, FA is a Week-1 correction to last year's roster and
+     fades with the prior taper (N=3): at n=0, fa_term = net; at n=3, fa_term = 0.
+     Do not fold FA into algorithm_base. While the switch is off, fa_term is 0
+     for every club, so eff() and the B$ line ignore it. Back-from-2025 and the
+     2026 draft stay in the line.
    draft_raw(abbr) = draft-2026.json team net (0 if missing / failed load).
      net is already team-capped ±4. If net is missing, sum starters[].pts and clamp ±4.
    draft_term(abbr) = draft_raw(abbr) * draft_fade
@@ -533,6 +539,7 @@ function normAbbr(abbr) {
      injury_term = clamp(sum of ON rows, −cap_team, 0)
    Effective = algorithm + FA + draft + madden + pff + pff_ytd + SOS + return + injury + adjust + context
    = algorithm_base + fa_term + draft_term + madden_term + pff_term + pff_ytd_term + sos_term + return_term + injury_term + user_adjust + sum of active (on) context. Preseason OVER is not in this sum.
+   fa_term is 0 while INCLUDE_FA is false.
 
    Taper (do not invent another formula):
      N = 3  (prior phased out by Week 3)
@@ -574,7 +581,7 @@ function normAbbr(abbr) {
      GREAT +0.12, GOOD +0.05, FAIR 0, POOR −0.12. Best QB/RB/TE + top 2 WR
      per side. matchup_net = clamp(home − away, ±0.5). Week 1 only.
      Does not rewrite the prior.
-     eff() stays algorithm + FA + draft + madden + pff + injury + adjust + context. Preseason OVER is off the number.
+     eff() stays algorithm + FA + draft + madden + pff + injury + adjust + context. FA adds 0 while INCLUDE_FA is false. Preseason OVER is off the number.
 
    Neutral site (game.neutral, e.g. Melbourne LAR vs SF): hfa = 0.
 
@@ -780,6 +787,7 @@ function faRaw(abbr) {
 }
 
 function faTerm(abbr) {
+  if (!INCLUDE_FA) return 0;
   const a = normAbbr(abbr);
   return faRaw(a) * taperFor(a).wPrior;
 }
@@ -1790,6 +1798,7 @@ let lineLogInflight = {};
 let lineLogChange = null; // { id, fromDay, toDay }
 let priorData = null; // { teams, ranges, weights, taper } from ./data/prior-2025.json
 let ytdStData = null; // { teams } from ./data/ytd-st-2026.json; YTD ST raw for currentRating
+let ytdRankData = null; // ./data/ytd-rankings-2026.json; display pillars for the YTD panel
 let faData = null; // { teams, scoring, season } from ./data/fa-2026.json; null if missing
 let draftData = null; // { teams, scoring, season, window_games } from ./data/draft-2026.json; null if missing
 let maddenData = null; // { teams, scoring } from ./data/madden-2026.json; null if missing
@@ -2248,9 +2257,10 @@ async function loadOpenerSnaps() {
 
 async function loadNfl() {
   const openersReq = loadOpenerSnaps();
-  const nflReq = fetch("./data/nfl-2026.json?v=w2ytd0923");
-  const priorReq = fetch("./data/prior-2025.json?v=w2ytd0923");
-  const ytdStReq = fetch("./data/ytd-st-2026.json?v=w2ytd0923");
+  const nflReq = fetch("./data/nfl-2026.json?v=ytdfa0924");
+  const priorReq = fetch("./data/prior-2025.json?v=ytdfa0924");
+  const ytdStReq = fetch("./data/ytd-st-2026.json?v=ytdfa0924");
+  const ytdRankReq = fetch("./data/ytd-rankings-2026.json?v=ytdfa0924");
   const faReq = fetch("./data/fa-2026.json");
   const draftReq = fetch("./data/draft-2026.json");
   const maddenReq = fetch("./data/madden-2026.json");
@@ -2303,6 +2313,21 @@ async function loadNfl() {
   } catch (err) {
     ytdStData = null;
     console.warn("ytd-st-2026.json", err);
+  }
+  try {
+    const res = await ytdRankReq;
+    if (!res.ok) throw new Error(String(res.status));
+    const data = await res.json();
+    if (!data || !Array.isArray(data.teams)) throw new Error("bad ytd rankings");
+    const byAbbr = {};
+    for (const row of data.teams) {
+      if (row && row.abbr) byAbbr[normAbbr(row.abbr)] = row;
+    }
+    data.byAbbr = byAbbr;
+    ytdRankData = data;
+  } catch (err) {
+    ytdRankData = null;
+    console.warn("ytd-rankings-2026.json", err);
   }
   try {
     const res = await faReq;
@@ -3389,38 +3414,28 @@ function priorWeightCopy(abbr) {
   return { games: n + "/" + N + " games", line: n + "/" + N + " · " + pct + "% last year" };
 }
 
-function priorBlockHtml(abbr) {
-  const t = priorTeam(abbr);
-  if (!t) {
-    return `<div class="prior-block">
-      <p class="prior-kicker">2025 prior · tapers off</p>
-      <p class="prior-note">No 2025 prior loaded. Algorithm sits at 0. Serve this folder over http so prior-2025.json can load.</p>
-    </div>`;
-  }
-  const ranges = pillarRanges();
-  const wts = pillarWeights();
-  const pillars = [
+function pillarCols() {
+  return [
     { key: "off", label: "OFF" },
     { key: "def", label: "DEF" },
     { key: "st", label: "ST" },
     { key: "take", label: "TAKE" },
     { key: "give", label: "GIVE" },
   ];
-  const rows = pillars.map((col) => {
-    const val = num(t.pillars && t.pillars[col.key]) || 0;
-    const rng = ranges[col.key] || { lo: -5, hi: 5 };
-    const lo = rng.lo;
-    const hi = rng.hi;
-    const span = (hi - lo) || 1;
-    const zero = ((0 - lo) / span) * 100;
-    const at = Math.max(0, Math.min(100, ((val - lo) / span) * 100));
-    const left = Math.min(zero, at);
-    const width = Math.abs(at - zero);
-    const cls = val > 0 ? "plus" : val < 0 ? "minus" : "zero";
-    const raw = pillarRawLabel(col.key, t.raw);
-    return `<div class="pillar">
+}
+
+function pillarBarHtml(label, val, raw, rng) {
+  const lo = rng.lo;
+  const hi = rng.hi;
+  const span = (hi - lo) || 1;
+  const zero = ((0 - lo) / span) * 100;
+  const at = Math.max(0, Math.min(100, ((val - lo) / span) * 100));
+  const left = Math.min(zero, at);
+  const width = Math.abs(at - zero);
+  const cls = val > 0 ? "plus" : val < 0 ? "minus" : "zero";
+  return `<div class="pillar">
       <div class="pillar-head">
-        <span class="pillar-lab">${col.label}</span>
+        <span class="pillar-lab">${label}</span>
         <span class="pillar-val ${cls}">${esc(fmtRtg(val))}</span>
         <span class="pillar-raw">${esc(raw)}</span>
       </div>
@@ -3429,15 +3444,79 @@ function priorBlockHtml(abbr) {
         <span class="pillar-fill ${cls}" style="left:${left.toFixed(2)}%;width:${width.toFixed(2)}%"></span>
       </div>
     </div>`;
+}
+
+function pillarWeightLine() {
+  const wts = pillarWeights();
+  return "OFF " + (wts.off * 100) + "% · DEF " + (wts.def * 100) + "% · ST " + (wts.st * 100)
+    + "% · TAKE " + (wts.take * 100) + "% · GIVE " + (wts.give * 100) + "%";
+}
+
+function sheetBoxState() {
+  try {
+    const raw = localStorage.getItem(SHEET_BOX_KEY);
+    const parsed = raw ? JSON.parse(raw) : {};
+    return parsed && typeof parsed === "object" ? parsed : {};
+  } catch {
+    return {};
+  }
+}
+
+function sheetBoxOpen(id) {
+  const saved = sheetBoxState();
+  if (Object.prototype.hasOwnProperty.call(saved, id)) return !!saved[id];
+  if (id === "fa") return false;
+  return true;
+}
+
+function saveSheetBox(id, open) {
+  const state = sheetBoxState();
+  state[id] = !!open;
+  try { localStorage.setItem(SHEET_BOX_KEY, JSON.stringify(state)); } catch { /* ignore */ }
+}
+
+function sheetHeadNum(n, live) {
+  const liveAttr = live ? ` data-live="${esc(live)}"` : "";
+  return `<span class="sheet-box-headnum ${rtgClass(n)}"${liveAttr}>${esc(fmtRtg(n))}</span>`;
+}
+
+function sheetBoxHtml(id, className, kicker, headNumHtml, bodyHtml) {
+  const open = sheetBoxOpen(id);
+  const bodyId = "sheet-box-" + id;
+  return `<section class="sheet-box ${className}${open ? "" : " is-collapsed"}" data-sheet-box="${esc(id)}">
+    <button type="button" class="sheet-box-toggle" aria-expanded="${open ? "true" : "false"}" aria-controls="${bodyId}">
+      <span class="prior-kicker">${esc(kicker)}</span>
+      <span class="sheet-box-aside">
+        ${headNumHtml || ""}
+        <span class="sheet-box-chevron" aria-hidden="true"></span>
+      </span>
+    </button>
+    <div class="sheet-box-body" id="${bodyId}"${open ? "" : " hidden"}>
+      ${bodyHtml}
+    </div>
+  </section>`;
+}
+
+function priorBlockHtml(abbr) {
+  const t = priorTeam(abbr);
+  if (!t) {
+    return sheetBoxHtml(
+      "prior",
+      "prior-block",
+      "2025 prior · tapers off",
+      "",
+      `<p class="prior-note">No 2025 prior loaded. Algorithm sits at 0. Serve this folder over http so prior-2025.json can load.</p>`
+    );
+  }
+  const ranges = pillarRanges();
+  const rows = pillarCols().map((col) => {
+    const val = num(t.pillars && t.pillars[col.key]) || 0;
+    const rng = ranges[col.key] || { lo: -5, hi: 5 };
+    return pillarBarHtml(col.label, val, pillarRawLabel(col.key, t.raw), rng);
   }).join("");
-  const prior = num(t.prior) || 0; // raw 2025 prior (pillars stay on this)
   const combo = algorithmBase(abbr); // tapered blend shown on the board
   const copy = priorWeightCopy(abbr);
-  const wLine = "OFF " + (wts.off * 100) + "% · DEF " + (wts.def * 100) + "% · ST " + (wts.st * 100)
-    + "% · TAKE " + (wts.take * 100) + "% · GIVE " + (wts.give * 100) + "%";
-  return `<div class="prior-block">
-    <p class="prior-kicker">2025 prior · tapers off</p>
-    <div class="pillar-list">${rows}</div>
+  const body = `<div class="pillar-list">${rows}</div>
     <div class="prior-combo">
       <div class="prior-combo-num">
         <small>Combined PRIOR</small>
@@ -3449,8 +3528,79 @@ function priorBlockHtml(abbr) {
       </div>
     </div>
     <p class="prior-note">Offense and defense sit on the same ±12 scale and the same weight. Those stay visible. The number on the board is the blend.</p>
-    <p class="prior-wts">${esc(wLine)}</p>
-  </div>`;
+    <p class="prior-wts">${esc(pillarWeightLine())}</p>`;
+  return sheetBoxHtml("prior", "prior-block", "2025 prior · tapers off", sheetHeadNum(combo), body);
+}
+
+function ytdRankTeam(abbr) {
+  const a = normAbbr(abbr);
+  if (!ytdRankData) return null;
+  if (ytdRankData.byAbbr && ytdRankData.byAbbr[a]) return ytdRankData.byAbbr[a];
+  return null;
+}
+
+function ytdGamesPlayed(abbr) {
+  const live = scoredGames2026(abbr).length;
+  if (live) return live;
+  const row = ytdRankTeam(abbr);
+  const n = row ? num(row.n) : null;
+  return n === null ? 0 : n;
+}
+
+function ytdPillarValue(abbr, key) {
+  if (key === "take" || key === "give") return 0;
+  const row = ytdRankTeam(abbr);
+  const fromFile = row && row.pillars ? num(row.pillars[key]) : null;
+  if (fromFile !== null) return fromFile;
+  const live = currentPillars(abbr);
+  return num(live[key]) || 0;
+}
+
+function ytdRawFor(abbr) {
+  const row = ytdRankTeam(abbr);
+  if (row && row.raw) return row.raw;
+  const games = scoredGames2026(abbr);
+  const n = games.length;
+  const stRow = ytdStData && ytdStData.teams ? ytdStData.teams[normAbbr(abbr)] : null;
+  return {
+    off_ppg: n ? games.reduce((s, r) => s + r.ptsFor, 0) / n : null,
+    def_ppg: n ? games.reduce((s, r) => s + r.ptsAgainst, 0) / n : null,
+    st_ret_td: stRow ? stRow.st_ret_td : null,
+    st_fg_pct: stRow ? stRow.st_fg_pct : null,
+  };
+}
+
+function ytdWeightCopy(abbr) {
+  const { N, n, wCurr } = taperFor(abbr);
+  const pct = Math.round(wCurr * 100);
+  return "Weight in B$ line: " + pct + "% (" + n + "/" + N + " games)";
+}
+
+function ytdBlockHtml(abbr) {
+  const nGames = ytdGamesPlayed(abbr);
+  const title = "2026 YTD · " + nGames + (nGames === 1 ? " GAME" : " GAMES");
+  const ranges = pillarRanges();
+  const raw = ytdRawFor(abbr);
+  const rows = pillarCols().map((col) => {
+    const val = ytdPillarValue(abbr, col.key);
+    const rng = ranges[col.key] || { lo: -5, hi: 5 };
+    const label = (col.key === "take" || col.key === "give") ? "—" : pillarRawLabel(col.key, raw);
+    return pillarBarHtml(col.label, val, label, rng);
+  }).join("");
+  const combo = currentRating(abbr);
+  const body = `<div class="pillar-list">${rows}</div>
+    <div class="prior-combo">
+      <div class="prior-combo-num">
+        <small>Combined YTD</small>
+        <em class="${rtgClass(combo)}">${esc(fmtRtg(combo))}</em>
+      </div>
+      <div class="prior-combo-w">
+        <span class="ytd-weight">${esc(ytdWeightCopy(abbr))}</span>
+      </div>
+    </div>
+    <p class="prior-note">Offense and defense sit on the same ±12 scale as the prior. Combined YTD is the current side of the blend. Takeaways and giveaways are still 0.</p>
+    <p class="prior-wts">${esc(pillarWeightLine())}</p>`;
+  return sheetBoxHtml("ytd", "prior-block ytd-block", title, sheetHeadNum(combo), body);
 }
 
 function faRowHtml(row, dir) {
@@ -3468,27 +3618,40 @@ function faRowHtml(row, dir) {
     </div>`;
 }
 
+function faKicker() {
+  return INCLUDE_FA ? "2026 FA · fades with prior" : "2026 FA · not in B$ line";
+}
+
+function faBoardNote(abbr) {
+  if (!INCLUDE_FA) return "on the board 0.0";
+  const pct = Math.round(taperFor(abbr).wPrior * 100);
+  return "on the board " + fmtRtg(faTerm(abbr)) + " · " + pct + "%";
+}
+
 function faBlockHtml(abbr) {
   const t = faTeam(abbr);
   const ins = (t && Array.isArray(t.in)) ? t.in : [];
   const outs = (t && Array.isArray(t.out)) ? t.out : [];
+  const kicker = faKicker();
   if (!t || (!ins.length && !outs.length)) {
-    return `<div class="fa-block">
-      <p class="prior-kicker">2026 FA · fades with prior</p>
-      <p class="prior-note">No 2026 FA rows loaded for this club.</p>
-    </div>`;
+    return sheetBoxHtml(
+      "fa",
+      "fa-block",
+      kicker,
+      "",
+      `<p class="prior-note">No 2026 FA rows loaded for this club.</p>`
+    );
   }
   const net = faRaw(abbr);
-  const term = faTerm(abbr);
-  const pct = Math.round(taperFor(abbr).wPrior * 100);
   const off = num(t.off) || 0;
   const def = num(t.def) || 0;
   const st = num(t.st) || 0;
   const inRows = ins.map((r) => faRowHtml(r, "in")).join("");
   const outRows = outs.map((r) => faRowHtml(r, "out")).join("");
-  return `<div class="fa-block">
-    <p class="prior-kicker">2026 FA · fades with prior</p>
-    <div class="fa-units">
+  const note = INCLUDE_FA
+    ? "Surplus vs replacement. One player capped at 2. Team net capped at 4. Re-signs of 2025 players are 0. Draft is not FA."
+    : "Display only. Free agency does not move the B$ line. Surplus vs replacement. One player capped at 2. Team net capped at 4. Re-signs of 2025 players are 0. Draft is not FA.";
+  const body = `<div class="fa-units">
       <span class="fa-unit">OFF <em class="${rtgClass(off)}">${esc(fmtRtg(off))}</em></span>
       <span class="fa-unit">DEF <em class="${rtgClass(def)}">${esc(fmtRtg(def))}</em></span>
       <span class="fa-unit">ST <em class="${rtgClass(st)}">${esc(fmtRtg(st))}</em></span>
@@ -3496,7 +3659,7 @@ function faBlockHtml(abbr) {
     <div class="fa-net">
       <small>NET</small>
       <em class="${rtgClass(net)}">${esc(fmtRtg(net))}</em>
-      <span class="fa-net-note">on the board ${esc(fmtRtg(term))} · ${pct}%</span>
+      <span class="fa-net-note">${esc(faBoardNote(abbr))}</span>
     </div>
     <div class="fa-lists">
       <div class="fa-in">
@@ -3508,8 +3671,8 @@ function faBlockHtml(abbr) {
         ${outRows || '<p class="fa-empty">None.</p>'}
       </div>
     </div>
-    <p class="prior-note">Surplus vs replacement. One player capped at 2. Team net capped at 4. Re-signs of 2025 players are 0. Draft is not FA.</p>
-  </div>`;
+    <p class="prior-note">${esc(note)}</p>`;
+  return sheetBoxHtml("fa", "fa-block", kicker, sheetHeadNum(net), body);
 }
 
 
@@ -3528,26 +3691,28 @@ function returnRowHtml(row) {
 function returnBlockHtml(abbr) {
   const t = returnTeam(abbr);
   const players = (t && Array.isArray(t.players)) ? t.players : [];
+  const kicker = "Back from 2025 · fades with prior";
   if (!players.length) {
-    return `<div class="fa-block return-block">
-      <p class="prior-kicker">Back from 2025 · fades with prior</p>
-      <p class="prior-note">No returning-health starters scored for this club. Still-hurt names stay on the injury layer.</p>
-    </div>`;
+    return sheetBoxHtml(
+      "return",
+      "fa-block return-block",
+      kicker,
+      "",
+      `<p class="prior-note">No returning-health starters scored for this club. Still-hurt names stay on the injury layer.</p>`
+    );
   }
   const net = returnRaw(abbr);
   const term = returnTerm(abbr);
   const pct = Math.round(taperFor(abbr).wPrior * 100);
   const list = players.map(returnRowHtml).join("");
-  return `<div class="fa-block return-block">
-    <p class="prior-kicker">Back from 2025 · fades with prior</p>
-    <div class="fa-net">
+  const body = `<div class="fa-net">
       <small>NET</small>
       <em class="${rtgClass(net)}">${esc(fmtRtg(net))}</em>
       <span class="fa-net-note">on the board ${esc(fmtRtg(term))} · ${pct}%</span>
     </div>
     ${list}
-    <p class="prior-note">Hurt last year, healthy this year. Like a FA add. Anyone still on PUP/IR is not here.</p>
-  </div>`;
+    <p class="prior-note">Hurt last year, healthy this year. Like a FA add. Anyone still on PUP/IR is not here.</p>`;
+  return sheetBoxHtml("return", "fa-block return-block", kicker, sheetHeadNum(net), body);
 }
 
 function draftRowHtml(row) {
@@ -3574,16 +3739,14 @@ function draftBlockHtml(abbr) {
   const list = starters.length
     ? starters.map(draftRowHtml).join("")
     : '<p class="fa-empty">No Week 1 starter rookies scored for this club.</p>';
-  return `<div class="fa-block draft-block">
-    <p class="prior-kicker">2026 draft · Week 1 starters · fades over 4 games</p>
-    <div class="fa-net">
+  const body = `<div class="fa-net">
       <small>NET</small>
       <em class="${rtgClass(net)}">${esc(fmtRtg(net))}</em>
       <span class="fa-net-note">on the board ${esc(fmtRtg(term))} · ${pct}%</span>
     </div>
     ${list}
-    <p class="prior-note">Starters only. Surplus vs replacement. Year-1 fade already in the points. Depth is 0. Not FA.</p>
-  </div>`;
+    <p class="prior-note">Starters only. Surplus vs replacement. Year-1 fade already in the points. Depth is 0. Not FA.</p>`;
+  return sheetBoxHtml("draft", "fa-block draft-block", "2026 draft · Week 1 starters · fades over 4 games", sheetHeadNum(net), body);
 }
 
 function maddenUnitHtml(rows, label) {
@@ -3605,9 +3768,7 @@ function maddenBlockHtml(abbr) {
   const net = maddenTerm(abbr);
   const ovr = t && t.ovr != null ? t.ovr : "—";
   const n = t && t.n != null ? t.n : 0;
-  return `<div class="fa-block madden-block">
-    <p class="prior-kicker">Madden 27 · same 22 (11 OFF + 11 DEF)</p>
-    <div class="fa-net">
+  const body = `<div class="fa-net">
       <small>NET</small>
       <em class="${rtgClass(net)}">${esc(fmtRtg(net))}</em>
       <span class="fa-net-note">unit OVR ${esc(String(ovr))} · n=${esc(String(n))}</span>
@@ -3616,8 +3777,8 @@ function maddenBlockHtml(abbr) {
       ${maddenUnitHtml(t && t.off, "OFF")}
       ${maddenUnitHtml(t && t.def, "DEF")}
     </div>
-    <p class="prior-note">Equal count. Top 11 per side by OVR. Kickers out. 4 OVR ≈ 1 point vs league mean, cap ±2. Launch snapshot. Not FA.</p>
-  </div>`;
+    <p class="prior-note">Equal count. Top 11 per side by OVR. Kickers out. 4 OVR ≈ 1 point vs league mean, cap ±2. Launch snapshot. Not FA.</p>`;
+  return sheetBoxHtml("madden", "fa-block madden-block", "Madden 27 · same 22 (11 OFF + 11 DEF)", sheetHeadNum(net), body);
 }
 
 function pffBlockHtml(abbr) {
@@ -3625,9 +3786,7 @@ function pffBlockHtml(abbr) {
   const net = pffTerm(abbr);
   const grade = t && t.grade != null ? t.grade : "—";
   const n = t && t.n != null ? t.n : 0;
-  return `<div class="fa-block pff-block">
-    <p class="prior-kicker">PFF 2025 · same 22 (11 OFF + 11 DEF)</p>
-    <div class="fa-net">
+  const body = `<div class="fa-net">
       <small>NET</small>
       <em class="${rtgClass(net)}">${esc(fmtRtg(net))}</em>
       <span class="fa-net-note">unit ${esc(String(grade))} · n=${esc(String(n))}</span>
@@ -3636,23 +3795,21 @@ function pffBlockHtml(abbr) {
       ${maddenUnitHtml(t && t.off, "OFF")}
       ${maddenUnitHtml(t && t.def, "DEF")}
     </div>
-    <p class="prior-note">Equal count. Top 11 per side by 2025 PFF grade, 200-snap floor. 5 grade ≈ 1 point vs league mean, cap ±1.5. Official CSV. Not the prior.</p>
-  </div>`;
+    <p class="prior-note">Equal count. Top 11 per side by 2025 PFF grade, 200-snap floor. 5 grade ≈ 1 point vs league mean, cap ±1.5. Official CSV. Not the prior.</p>`;
+  return sheetBoxHtml("pff", "fa-block pff-block", "PFF 2025 · same 22 (11 OFF + 11 DEF)", sheetHeadNum(net), body);
 }
 
 function pffPreBlockHtml(abbr) {
   const t = pffPreTeam(abbr);
   const net = pffPreTerm(abbr);
   const over = t && t.over != null ? t.over : "—";
-  return `<div class="fa-block pff-block">
-    <p class="prior-kicker">PFF 2026 preseason · team OVER</p>
-    <div class="fa-net">
+  const body = `<div class="fa-net">
       <small>NET</small>
       <em class="${rtgClass(net)}">${esc(fmtRtg(net))}</em>
       <span class="fa-net-note">OVER ${esc(String(over))}${t && t.record ? " · " + esc(t.record) : ""}</span>
     </div>
-    <p class="prior-note">On the sheet only. Not in the rating or the line. Preseason is too noisy for the number.</p>
-  </div>`;
+    <p class="prior-note">On the sheet only. Not in the rating or the line. Preseason is too noisy for the number.</p>`;
+  return sheetBoxHtml("pffpre", "fa-block pff-block", "PFF 2026 preseason · team OVER", sheetHeadNum(net), body);
 }
 
 function pffYtdBlockHtml(abbr) {
@@ -3665,9 +3822,7 @@ function pffYtdBlockHtml(abbr) {
   const st = t.grades_st != null ? t.grades_st : "—";
   const ovr = t.grades_overall != null ? t.grades_overall : "—";
   const rk = (v) => (v != null ? "#" + v : "—");
-  return `<div class="fa-block pff-block">
-    <p class="prior-kicker">PFF 2026 REG YTD · W${esc(weeks || "?")}</p>
-    <div class="fa-net">
+  const body = `<div class="fa-net">
       <small>NET</small>
       <em class="${rtgClass(net)}">${esc(fmtRtg(net))}</em>
       <span class="fa-net-note">OVR ${esc(String(ovr))} ${esc(rk(t.rank_overall))} · ${esc(t.record || "")}</span>
@@ -3677,8 +3832,8 @@ function pffYtdBlockHtml(abbr) {
       <div class="fa-unit"><span class="fa-unit-h">DEF ${esc(String(deff))} ${esc(rk(t.rank_defense))}</span></div>
       <div class="fa-unit"><span class="fa-unit-h">ST ${esc(String(st))} ${esc(rk(t.rank_st))}</span></div>
     </div>
-    <p class="prior-note">Official Pro API team-overview. IN the line (pff_ytd_term). 5 grade ≈ 1 pt vs league mean, ST×0.15, cap ±2.0. Does not replace pff_term. Rebuild: data/build_pff_ytd_2026.py</p>
-  </div>`;
+    <p class="prior-note">Official Pro API team-overview. IN the line (pff_ytd_term). 5 grade ≈ 1 pt vs league mean, ST×0.15, cap ±2.0. Does not replace pff_term. Rebuild: data/build_pff_ytd_2026.py</p>`;
+  return sheetBoxHtml("pffytd", "fa-block pff-block", "PFF 2026 REG YTD · W" + (weeks || "?"), sheetHeadNum(net), body);
 }
 
 function injurySelectOptions(keys, selected) {
@@ -3710,16 +3865,14 @@ function injBlockHtml(abbr) {
   const p = getProfile(abbr);
   const term = injuryTerm(abbr);
   const rows = (p.injuries || []).map(injRowHtml).join("");
-  return `<div class="inj-block">
-    <p class="prior-kicker">Injury · weekly · official status</p>
-    <div class="inj-net">
+  const body = `<div class="inj-net">
       <small>NET</small>
-      <em id="tp-inj-net" class="${rtgClass(term)}">${esc(fmtRtg(term))}</em>
+      <em id="tp-inj-net" data-live="inj" class="${rtgClass(term)}">${esc(fmtRtg(term))}</em>
     </div>
     <div class="inj-list" id="tp-inj">${rows || '<p class="fa-empty">No official injury rows.</p>'}</div>
     <button type="button" class="btn inj-add" id="tp-inj-add">Add injury</button>
-    <p class="prior-note">A starter out is a number. Questionable is 35%. Wait for Wednesday/Friday status. Does not rewrite last year.</p>
-  </div>`;
+    <p class="prior-note">A starter out is a number. Questionable is 35%. Wait for Wednesday/Friday status. Does not rewrite last year.</p>`;
+  return sheetBoxHtml("injury", "inj-block", "Injury · weekly · official status", sheetHeadNum(term, "inj"), body);
 }
 
 function renderTeamSheet() {
@@ -3749,6 +3902,7 @@ function renderTeamSheet() {
   const fa = faTerm(team.abbr);
   const draft = draftTerm(team.abbr);
   body.innerHTML = `
+    ${ytdBlockHtml(team.abbr)}
     ${priorBlockHtml(team.abbr)}
     ${faBlockHtml(team.abbr)}
     ${returnBlockHtml(team.abbr)}
@@ -3818,12 +3972,12 @@ function refreshTeamDerived() {
       + " + adjust " + fmtRtg(num(p.user_adjust) || 0)
       + " + context " + fmtRtg(contextSum(p));
   }
-  const injChip = document.getElementById("tp-inj-net");
-  if (injChip) {
-    const term = injuryTerm(profileAbbr);
-    injChip.textContent = fmtRtg(term);
-    injChip.className = rtgClass(term);
-  }
+  const injTerm = injuryTerm(profileAbbr);
+  document.querySelectorAll("[data-live='inj']").forEach((el) => {
+    el.textContent = fmtRtg(injTerm);
+    const base = el.classList.contains("sheet-box-headnum") ? "sheet-box-headnum " : "";
+    el.className = base + rtgClass(injTerm);
+  });
   const sked = document.getElementById("tp-sked");
   if (sked) sked.innerHTML = teamSkedHtml(profileAbbr);
   renderTeams();
@@ -4674,9 +4828,7 @@ function schemeBlockHtml(abbr) {
   const gap = schemeVal(row, ["backup_gap", "backup_gap_pts", "backup"]);
   const airN = num(air);
   const airStr = airN === null ? (air == null ? "—" : String(air)) : airN.toFixed(1);
-  return `<div class="scheme-block">
-    <p class="prior-kicker">2025 scheme · play-by-play</p>
-    <div class="scheme-grid">
+  const body = `<div class="scheme-grid">
       <div class="scheme-item"><small>Shotgun</small><em>${esc(fmtSchemePct(shotgun))}</em></div>
       <div class="scheme-item"><small>Under center</small><em>${esc(fmtSchemePct(under))}</em></div>
       <div class="scheme-item"><small>Checkdown</small><em>${esc(fmtSchemePct(check))}</em></div>
@@ -4685,8 +4837,8 @@ function schemeBlockHtml(abbr) {
       <div class="scheme-item"><small>Starter QB</small><em>${esc(qb == null ? "—" : String(qb))}</em></div>
       <div class="scheme-item"><small>Backup gap</small><em>${esc(fmtBackupGap(gap))}</em></div>
     </div>
-    <p class="prior-note">free nflverse, not PFF motion.</p>
-  </div>`;
+    <p class="prior-note">free nflverse, not PFF motion.</p>`;
+  return sheetBoxHtml("scheme", "scheme-block", "2025 scheme · play-by-play", "", body);
 }
 
 /* ---------- residuals ---------- */
@@ -5428,22 +5580,24 @@ function staffRoleCard(label, role, ats) {
 
 function staffBlockHtml(abbr) {
   const c = staffClub(abbr);
+  const kicker = "2026 staff · not a line";
   if (!c) {
-    return `<div class="fa-block staff-block">
-      <p class="prior-kicker">2026 staff · not a line</p>
-      <p class="prior-note">No coordinator file loaded for this club.</p>
-    </div>`;
+    return sheetBoxHtml(
+      "staff",
+      "fa-block staff-block",
+      kicker,
+      "",
+      `<p class="prior-note">No coordinator file loaded for this club.</p>`
+    );
   }
-  return `<div class="fa-block staff-block">
-    <p class="prior-kicker">2026 staff · not a line</p>
-    <div class="staff-roles">
+  const body = `<div class="staff-roles">
       ${staffRoleCard("HC", { name: c.hc, bio: c.hc_bio, awards: c.hc_awards }, staffAtsOf(abbr) && staffAtsOf(abbr).hc)}
       ${staffRoleCard("OC", c.oc, staffAtsOf(abbr) && staffAtsOf(abbr).oc)}
       ${staffRoleCard("DC", c.dc, staffAtsOf(abbr) && staffAtsOf(abbr).dc)}
       ${staffRoleCard("ST", c.st)}
     </div>
-    <p class="prior-note">ATS is the job, last three years plus this year. Green over .500, red under. Does not move the number.</p>
-  </div>`;
+    <p class="prior-note">ATS is the job, last three years plus this year. Green over .500, red under. Does not move the number.</p>`;
+  return sheetBoxHtml("staff", "fa-block staff-block", kicker, "", body);
 }
 
 function renderStaff() {
@@ -6527,6 +6681,19 @@ function bind() {
     if (e.target && e.target.id === "tp-adjust-why") commitAdjustLog();
   });
   document.getElementById("team-sheet").addEventListener("click", (e) => {
+    const boxBtn = e.target.closest(".sheet-box-toggle");
+    if (boxBtn) {
+      const box = boxBtn.closest("[data-sheet-box]");
+      if (!box) return;
+      const id = box.dataset.sheetBox;
+      const open = boxBtn.getAttribute("aria-expanded") !== "true";
+      boxBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      box.classList.toggle("is-collapsed", !open);
+      const panel = document.getElementById(boxBtn.getAttribute("aria-controls"));
+      if (panel) panel.hidden = !open;
+      saveSheetBox(id, open);
+      return;
+    }
     if (e.target.id === "tp-adjust-minus") {
       const inp = document.getElementById("tp-adjust");
       applyAdjust((num(inp.value) || 0) - 0.5);
