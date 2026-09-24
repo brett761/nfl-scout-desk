@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
-"""Build 2026 YTD O/D/ST rankings on the same scale as prior-2025.json pillars."""
+"""Build 2026 YTD O/D/ST/TAKE/GIVE rankings on the same scale as prior-2025.json pillars."""
 from __future__ import annotations
 
 import json
 import math
+import urllib.error
+import urllib.request
 from collections import defaultdict
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -32,6 +35,170 @@ def game_scores(g):
     if home is None or away is None:
         return None
     return home, away
+
+
+UA = {
+    "User-Agent": (
+        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+        "(KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+    )
+}
+# site.api.espn.com is the documented summary host. Akamai 403s it from some
+# networks; site.web.api.espn.com serves the same summary payload.
+SUMMARY_HOSTS = (
+    "https://site.api.espn.com",
+    "https://site.web.api.espn.com",
+)
+
+
+def fetch_json(url):
+    req = urllib.request.Request(url, headers=UA)
+    with urllib.request.urlopen(req, timeout=40) as resp:
+        return json.load(resp)
+
+
+def stat_value(statistics, name):
+    """First numeric team stat with this name. ESPN repeats interceptions."""
+    for s in statistics or []:
+        if s.get("name") != name:
+            continue
+        v = num(s.get("value"))
+        if v is None:
+            v = num(s.get("displayValue"))
+        if v is not None:
+            return v
+    return None
+
+
+def defensive_ints(player_side):
+    """Sum of the player 'interceptions' box (defensive INTs)."""
+    for group in (player_side or {}).get("statistics") or []:
+        if group.get("name") != "interceptions":
+            continue
+        totals = group.get("totals") or []
+        if totals and num(totals[0]) is not None:
+            return int(num(totals[0]))
+        caught = 0
+        for athlete in group.get("athletes") or []:
+            stats = athlete.get("stats") or []
+            if stats and num(stats[0]) is not None:
+                caught += int(num(stats[0]))
+        return caught
+    return 0
+
+
+def parse_summary(game, data):
+    """Giveaways = INT thrown + fumbles lost. Takeaways = the opponent's giveaways.
+
+    That is defensive INTs + fumbles recovered by the defense. In a two-team
+    final those are the same counts. The player INT box is checked against
+    the opponent's interceptions thrown.
+    """
+    players_by_id = {}
+    for side in (data.get("boxscore") or {}).get("players") or []:
+        tid = str((side.get("team") or {}).get("id") or "")
+        if tid:
+            players_by_id[tid] = side
+    sides = {}
+    for team in (data.get("boxscore") or {}).get("teams") or []:
+        ha = team.get("homeAway")
+        if ha not in ("home", "away"):
+            continue
+        stats = team.get("statistics") or []
+        int_thrown = int(stat_value(stats, "interceptions") or 0)
+        fum_lost = int(stat_value(stats, "fumblesLost") or 0)
+        turnovers = stat_value(stats, "turnovers")
+        tid = str((team.get("team") or {}).get("id") or "")
+        def_int = defensive_ints(players_by_id.get(tid))
+        sides[ha] = {
+            "abbr": game["home"] if ha == "home" else game["away"],
+            "espn_abbr": (team.get("team") or {}).get("abbreviation"),
+            "int_thrown": int_thrown,
+            "fum_lost": fum_lost,
+            "turnovers": None if turnovers is None else int(turnovers),
+            "def_int": def_int,
+        }
+    if "home" not in sides or "away" not in sides:
+        raise ValueError(f"summary {game.get('id')} missing home/away team stats")
+    for ha, opp in (("home", "away"), ("away", "home")):
+        own = sides[ha]
+        other = sides[opp]
+        own["giveaways"] = own["int_thrown"] + own["fum_lost"]
+        own["takeaways"] = other["int_thrown"] + other["fum_lost"]
+        own["take_int"] = other["int_thrown"]
+        own["take_fum"] = other["fum_lost"]
+        if own["turnovers"] is not None and own["turnovers"] != own["giveaways"]:
+            raise ValueError(
+                f"{game.get('id')} {own['abbr']} turnovers {own['turnovers']} "
+                f"!= INT+fumblesLost {own['giveaways']}"
+            )
+        if own["def_int"] != other["int_thrown"]:
+            raise ValueError(
+                f"{game.get('id')} {own['abbr']} defensive INTs {own['def_int']} "
+                f"!= opponent INT thrown {other['int_thrown']}"
+            )
+    return sides
+
+
+def scored_finals(nfl):
+    games = []
+    for g in nfl["games"]:
+        week = g.get("week")
+        if not isinstance(week, (int, float)) or week < 1 or week > 18:
+            continue
+        if not game_scores(g):
+            continue
+        games.append(g)
+    return games
+
+
+def working_summary_host(sample_id):
+    last = None
+    for host in SUMMARY_HOSTS:
+        url = f"{host}/apis/site/v2/sports/football/nfl/summary?event={sample_id}"
+        try:
+            fetch_json(url)
+            return host
+        except urllib.error.HTTPError as err:
+            last = err
+            continue
+        except (urllib.error.URLError, TimeoutError, ValueError) as err:
+            last = err
+            continue
+    raise RuntimeError(f"no ESPN summary host for event {sample_id}: {last}")
+
+
+def pull_turnovers(games):
+    """One ESPN summary per scored final. Rerunnable as new finals land."""
+    if not games:
+        return [], None
+    host = working_summary_host(games[0]["id"])
+
+    def pull_one(game):
+        url = f"{host}/apis/site/v2/sports/football/nfl/summary?event={game['id']}"
+        data = fetch_json(url)
+        sides = parse_summary(game, data)
+        return {
+            "id": str(game["id"]),
+            "week": int(game["week"]),
+            "away": game["away"],
+            "home": game["home"],
+            "source": host,
+            "home_side": sides["home"],
+            "away_side": sides["away"],
+        }
+
+    pulled = []
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        futures = {pool.submit(pull_one, g): g for g in games}
+        for fut in as_completed(futures):
+            game = futures[fut]
+            try:
+                pulled.append(fut.result())
+            except Exception as err:
+                raise RuntimeError(f"event {game.get('id')}: {err}") from err
+    pulled.sort(key=lambda row: (row["week"], row["id"]))
+    return pulled, host
 
 
 def main():
@@ -62,6 +229,41 @@ def main():
         pred = round2(-4 + tt * 8)
         assert pred == round2(t["pillars"]["st"]), (abbr, pred, t["pillars"]["st"])
 
+    # 2025 take/give pillars are min-max of season totals onto ±5.
+    # Higher takeaways are better. Fewer giveaways are better.
+    # Per-game equivalent: divide those season anchors by games_in_prior (17)
+    # and map a YTD per-game rate onto the same line. Feeding a 17-game
+    # season total / 17 reproduces every prior pillar.
+    games_prior = num(prior.get("games_in_prior")) or 17
+    take_vals = [num(t["raw"]["takeaways"]) for t in prior["teams"].values()]
+    give_vals = [num(t["raw"]["giveaways"]) for t in prior["teams"].values()]
+    take_lo, take_hi = min(take_vals), max(take_vals)
+    give_lo, give_hi = min(give_vals), max(give_vals)
+
+    def map_turnover(total, n_games, kind):
+        n = num(n_games)
+        x = num(total)
+        if n is None or n <= 0 or x is None:
+            return 0.0
+        pg = x / n
+        if kind == "give":
+            lo, hi = give_lo / games_prior, give_hi / games_prior
+            span = hi - lo or 1.0
+            t = max(0.0, min(1.0, (pg - lo) / span))
+            pillar = 5 - t * 10
+        else:
+            lo, hi = take_lo / games_prior, take_hi / games_prior
+            span = hi - lo or 1.0
+            t = max(0.0, min(1.0, (pg - lo) / span))
+            pillar = -5 + t * 10
+        return max(-5.0, min(5.0, pillar))
+
+    for abbr, t in prior["teams"].items():
+        pred_take = round2(map_turnover(t["raw"]["takeaways"], games_prior, "take"))
+        pred_give = round2(map_turnover(t["raw"]["giveaways"], games_prior, "give"))
+        assert pred_take == round2(t["pillars"]["take"]), (abbr, pred_take, t["pillars"]["take"])
+        assert pred_give == round2(t["pillars"]["give"]), (abbr, pred_give, t["pillars"]["give"])
+
     w = prior["weights"]
 
     def map_ppg(ppg, kind):
@@ -88,20 +290,51 @@ def main():
         pillar = max(-4.0, min(4.0, -4 + t * 8))
         return pillar, round2(comp), round2(fg)
 
+    finals = scored_finals(nfl)
+    turnover_rows, turnover_host = pull_turnovers(finals)
+    by_event = {row["id"]: row for row in turnover_rows}
+    if len(by_event) != len(finals):
+        raise RuntimeError(f"turnover pull {len(by_event)} != scored finals {len(finals)}")
+
+    def side_counts(side):
+        return {
+            "takeaways": side["takeaways"],
+            "giveaways": side["giveaways"],
+            "take_int": side["take_int"],
+            "take_fum": side["take_fum"],
+            "int_thrown": side["int_thrown"],
+            "fum_lost": side["fum_lost"],
+        }
+
     scored = defaultdict(list)
-    for g in nfl["games"]:
-        week = g.get("week")
-        if not isinstance(week, (int, float)) or week < 1 or week > 18:
-            continue
+    for g in finals:
+        week = int(g["week"])
         sc = game_scores(g)
-        if not sc:
-            continue
         hs, aw = sc
+        row = by_event[str(g["id"])]
+        home_to = side_counts(row["home_side"])
+        away_to = side_counts(row["away_side"])
         scored[g["home"]].append(
-            {"ptsFor": hs, "ptsAgainst": aw, "week": int(week), "opp": g["away"], "ha": "H"}
+            {
+                "ptsFor": hs,
+                "ptsAgainst": aw,
+                "week": week,
+                "opp": g["away"],
+                "ha": "H",
+                "event": str(g["id"]),
+                **home_to,
+            }
         )
         scored[g["away"]].append(
-            {"ptsFor": aw, "ptsAgainst": hs, "week": int(week), "opp": g["home"], "ha": "A"}
+            {
+                "ptsFor": aw,
+                "ptsAgainst": hs,
+                "week": week,
+                "opp": g["home"],
+                "ha": "A",
+                "event": str(g["id"]),
+                **away_to,
+            }
         )
 
     et = ZoneInfo("America/New_York")
@@ -145,9 +378,20 @@ def main():
         st_pil, st_comp, fg_used = map_st(st_row["st_ret_td"], st_row["st_fg_pct"], st_row["st_fga"])
         off = map_ppg(off_ppg, "off") if n else 0.0
         deff = map_ppg(def_ppg, "def") if n else 0.0
+        take_n = sum(r["takeaways"] for r in rows) if n else 0
+        give_n = sum(r["giveaways"] for r in rows) if n else 0
+        take_int = sum(r["take_int"] for r in rows) if n else 0
+        take_fum = sum(r["take_fum"] for r in rows) if n else 0
+        int_thrown = sum(r["int_thrown"] for r in rows) if n else 0
+        fum_lost = sum(r["fum_lost"] for r in rows) if n else 0
+        take_pil = map_turnover(take_n, n, "take") if n else 0.0
+        give_pil = map_turnover(give_n, n, "give") if n else 0.0
         w_off, w_def, w_st = w["off"], w["def"], w["st"]
-        denom = w_off + w_def + w_st
-        composite = (w_off * off + w_def * deff + w_st * st_pil) / denom
+        w_take, w_give = w["take"], w["give"]
+        denom = w_off + w_def + w_st + w_take + w_give
+        composite = (
+            w_off * off + w_def * deff + w_st * st_pil + w_take * take_pil + w_give * give_pil
+        ) / denom
         if abs(composite) > 12:
             composite = math.copysign(12, composite)
         od_only = (w_off * off + w_def * deff) / (w_off + w_def) if n else 0.0
@@ -166,11 +410,21 @@ def main():
                     "st_fga": st_row["st_fga"],
                     "st_fg_pct_used": fg_used,
                     "st_comp": st_comp,
+                    "takeaways": take_n,
+                    "giveaways": give_n,
+                    "takeaways_pg": round2(take_n / n) if n else None,
+                    "giveaways_pg": round2(give_n / n) if n else None,
+                    "take_int": take_int,
+                    "take_fum": take_fum,
+                    "int_thrown": int_thrown,
+                    "fum_lost": fum_lost,
                 },
                 "pillars": {
                     "off": round2(off),
                     "def": round2(deff),
                     "st": round2(st_pil),
+                    "take": round2(take_pil),
+                    "give": round2(give_pil),
                 },
                 "composite": round2(composite),
                 "composite_od_only": round2(od_only),
@@ -183,6 +437,8 @@ def main():
         ("off", "rank_off"),
         ("def", "rank_def"),
         ("st", "rank_st"),
+        ("take", "rank_take"),
+        ("give", "rank_give"),
     ]:
         if key == "composite":
             ordered = sorted(teams_out, key=lambda t: (-t["composite"], t["abbr"]))
@@ -203,15 +459,34 @@ def main():
             week_scored[int(week)] += 1
     n_scored = sum(week_scored.values())
     slate_parts = []
-    for w in sorted(week_scored):
-        sc, tot = week_scored[w], week_total[w]
+    for week_n in sorted(week_scored):
+        sc, tot = week_scored[week_n], week_total[week_n]
         if sc == tot:
-            slate_parts.append(f"W{w} all {sc}")
+            slate_parts.append(f"W{week_n} all {sc}")
         else:
-            slate_parts.append(f"W{w} {sc}/{tot}")
+            slate_parts.append(f"W{week_n} {sc}/{tot}")
     slate = " + ".join(slate_parts) if slate_parts else "no scored games"
     as_of = f"YTD through completed regular-season games ({slate})"
     pulled_et = now.strftime("%b %d, %Y, %I:%M %p ET").replace(" 0", " ")
+
+    raw_to = {
+        "pulled": now.isoformat(),
+        "source": (
+            "ESPN game summary box score team stats "
+            "(interceptions thrown + fumblesLost). "
+            "Takeaways are the opponent's giveaways in that final "
+            "(defensive INTs + fumbles recovered by the defense)."
+        ),
+        "host": turnover_host,
+        "games": turnover_rows,
+    }
+    (DATA / "_ytd-to-raw-2026.json").write_text(json.dumps(raw_to, indent=2) + "\n")
+
+    w_sum = w["off"] + w["def"] + w["st"] + w["take"] + w["give"]
+    composite_formula = (
+        f"({w['off']}*off + {w['def']}*def + {w['st']}*st + "
+        f"{w['take']}*take + {w['give']}*give) / {w_sum}"
+    )
 
     out = {
         "season": 2026,
@@ -254,10 +529,43 @@ def main():
                 "verified": "Reproduces all 32 prior-2025.json pillars.st exactly (round2)",
                 "file": "prior-2025.json raw st_ret_td / st_fg_pct",
             },
+            "takeaways": {
+                "stat": "defensive interceptions + opponent fumbles recovered, per game",
+                "range": [-5, 5],
+                "better": "higher",
+                "raw_lo_2025": take_lo,
+                "raw_hi_2025": take_hi,
+                "games_in_prior": games_prior,
+                "map": (
+                    "pg = ytd_total / games; lo = raw_lo_2025 / 17; hi = raw_hi_2025 / 17; "
+                    "t=(pg-lo)/(hi-lo) clamped 0..1; pillar=-5+t*10 clamped ±5"
+                ),
+                "verified": "Reproduces all 32 prior-2025.json pillars.take when fed 2025 totals over 17 games",
+                "file_anchors": "prior-2025.json teams[*].raw.takeaways min/max (NYJ 4 / CHI 33)",
+            },
+            "giveaways": {
+                "stat": "interceptions thrown + fumbles lost, per game",
+                "range": [-5, 5],
+                "better": "lower",
+                "raw_lo_2025": give_lo,
+                "raw_hi_2025": give_hi,
+                "games_in_prior": games_prior,
+                "map": (
+                    "pg = ytd_total / games; lo = raw_lo_2025 / 17; hi = raw_hi_2025 / 17; "
+                    "t=(pg-lo)/(hi-lo) clamped 0..1; pillar=5-t*10 clamped ±5"
+                ),
+                "verified": "Reproduces all 32 prior-2025.json pillars.give when fed 2025 totals over 17 games",
+                "file_anchors": "prior-2025.json teams[*].raw.giveaways min/max (CHI 11 / MIN 30)",
+            },
             "composite": {
-                "formula": "(0.3875*off + 0.3875*def + 0.025*st) / 0.8",
-                "weights_among_rating_pillars": {"off": 0.3875, "def": 0.3875, "st": 0.025},
-                "deferred": "takeaways 7.5% and giveaways 12.5% not in YTD current yet",
+                "formula": composite_formula,
+                "weights": {
+                    "off": w["off"],
+                    "def": w["def"],
+                    "st": w["st"],
+                    "take": w["take"],
+                    "give": w["give"],
+                },
                 "cap": "composite clamped to ±12",
             },
             "prior_full_weights": w,
@@ -265,6 +573,13 @@ def main():
         "sources": {
             "offense_defense_ppg": "nfl-2026.json scored finals (home_score/away_score)",
             "special_teams": "ytd-st-2026.json from ESPN core team statistics",
+            "turnovers": (
+                "ESPN summary box score for each scored final in nfl-2026.json. "
+                "Giveaways = team interceptions + fumblesLost. "
+                "Takeaways = opponent giveaways."
+            ),
+            "turnover_host": turnover_host,
+            "turnover_raw": "_ytd-to-raw-2026.json",
             "scale_file": "prior-2025.json",
         },
         "teams": teams_out,
@@ -275,7 +590,7 @@ def main():
         return ("+" if n >= 0 else "") + f"{n:.2f}"
 
     md = []
-    md.append("# NFL Scout YTD rankings — 2026 (same scale as 2025 O/D/ST)\n")
+    md.append("# NFL Scout YTD rankings — 2026 (same scale as 2025 O/D/ST/TAKE/GIVE)\n")
     md.append(
         f"Pulled: **{pulled_et}** · Scored games: **{n_scored}** "
         f"({slate}).\n"
@@ -291,23 +606,30 @@ def main():
         f"| Special teams | −4…+4 | `2×ret TD + (FG%−{mean_fg_2025:.2f})/8` → 2025 comp endpoints "
         f"| comp {st_comp_lo:.3f}…{st_comp_hi:.3f} | 2.5% |"
     )
+    md.append(
+        f"| Takeaways | −5…+5 | YTD takeaways per game | {take_lo:g}…{take_hi:g} in {games_prior:g} games | 7.5% |"
+    )
+    md.append(
+        f"| Giveaways | −5…+5 | YTD giveaways per game (fewer is better) | {give_lo:g}…{give_hi:g} in {games_prior:g} games | 12.5% |"
+    )
     md.append("")
     md.append(
-        "Composite = `(0.3875·off + 0.3875·def + 0.025·st) / 0.8` (TO deferred). League even.\n"
+        "Composite = `(0.3875·off + 0.3875·def + 0.025·st + 0.075·take + 0.125·give) / 1`. "
+        "Same weights as the 2025 prior. Take/give rates use the 2025 season totals divided by 17 "
+        "as the per-game anchors. League even.\n"
     )
     md.append("## Overall (by composite)\n")
     md.append(
-        "| # | Team | n | Off | Def | ST | Comp | Off PPG | Def PPG | FG% | Ret TD |"
+        "| # | Team | n | Off | Def | ST | TAKE | GIVE | Comp | Takes | Gives |"
     )
-    md.append("|---|------|--:|----:|----:|---:|-----:|--------:|--------:|----:|-------:|")
+    md.append("|---|------|--:|----:|----:|---:|-----:|-----:|-----:|------:|------:|")
     for t in teams_out:
         r = t["raw"]
         p = t["pillars"]
-        fg = "—" if r["st_fg_pct"] is None else f"{r['st_fg_pct']:.1f}"
         md.append(
             f"| {t['rank']} | {t['abbr']} | {t['n']} | {fmt(p['off'])} | {fmt(p['def'])} | "
-            f"{fmt(p['st'])} | {fmt(t['composite'])} | {r['off_ppg']} | {r['def_ppg']} | "
-            f"{fg} | {r['st_ret_td']} |"
+            f"{fmt(p['st'])} | {fmt(p['take'])} | {fmt(p['give'])} | {fmt(t['composite'])} | "
+            f"{r['takeaways']} | {r['giveaways']} |"
         )
 
     def topbot(key, label):
@@ -333,15 +655,27 @@ def main():
             )
 
     topbot("composite", "Top / bottom overall")
-    for k, lab in [("off", "Offense"), ("def", "Defense"), ("st", "Special teams")]:
+    for k, lab in [
+        ("off", "Offense"),
+        ("def", "Defense"),
+        ("st", "Special teams"),
+        ("take", "Takeaways"),
+        ("give", "Giveaways"),
+    ]:
         topbot(k, lab)
 
     md.append("\n## Notes\n")
     md.append("- O/D PPG from `nfl-2026.json` scored finals. ST from `ytd-st-2026.json` (ESPN).")
-    md.append("- 0 FGA → FG% treated as 2025 league mean (neutral).")
-    md.append("- Desk `currentRating` uses these pillars (app.js). Take/give still deferred.")
     md.append(
-        "- Files: `data/ytd-rankings-2026.json`, `data/ytd-rankings-2026.md`, `data/ytd-st-2026.json`.\n"
+        "- Takeaways and giveaways from each scored final's ESPN summary. "
+        "Giveaways = interceptions thrown + fumbles lost. "
+        "Takeaways = the opponent's giveaways (defensive INTs + fumbles recovered)."
+    )
+    md.append("- 0 FGA → FG% treated as 2025 league mean (neutral).")
+    md.append("- Desk `currentRating` uses these five pillars (app.js), same weights as the 2025 prior.")
+    md.append(
+        "- Files: `data/ytd-rankings-2026.json`, `data/ytd-rankings-2026.md`, "
+        "`data/ytd-st-2026.json`, `data/_ytd-to-raw-2026.json`.\n"
     )
     (DATA / "ytd-rankings-2026.md").write_text("\n".join(md) + "\n")
 
@@ -360,6 +694,12 @@ def main():
             t["pillars"]["def"],
             "st",
             t["pillars"]["st"],
+            "take",
+            t["pillars"]["take"],
+            t["raw"]["takeaways"],
+            "give",
+            t["pillars"]["give"],
+            t["raw"]["giveaways"],
             "comp",
             t["composite"],
             "od_only",

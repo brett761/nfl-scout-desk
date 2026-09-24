@@ -1,8 +1,8 @@
 {
   "season": 2026,
   "as_of": "YTD through completed regular-season games (W1 all 16 + W2 all 16)",
-  "pulled": "2026-09-23T12:02:27.710730-04:00",
-  "pulled_et": "Sep 23, 2026, 12:02 PM ET",
+  "pulled": "2026-09-24T10:47:08.514338-04:00",
+  "pulled_et": "Sep 24, 2026, 10:47 AM ET",
   "scored_games": 32,
   "scale": {
     "note": "Same units as 2025 prior pillars in prior-2025.json \u2014 lock 2025 raw endpoints.",
@@ -45,21 +45,59 @@
       "verified": "Reproduces all 32 prior-2025.json pillars.st exactly (round2)",
       "file": "prior-2025.json raw st_ret_td / st_fg_pct"
     },
+    "takeaways": {
+      "stat": "defensive interceptions + opponent fumbles recovered, per game",
+      "range": [
+        -5,
+        5
+      ],
+      "better": "higher",
+      "raw_lo_2025": 4.0,
+      "raw_hi_2025": 33.0,
+      "games_in_prior": 17.0,
+      "map": "pg = ytd_total / games; lo = raw_lo_2025 / 17; hi = raw_hi_2025 / 17; t=(pg-lo)/(hi-lo) clamped 0..1; pillar=-5+t*10 clamped \u00b15",
+      "verified": "Reproduces all 32 prior-2025.json pillars.take when fed 2025 totals over 17 games",
+      "file_anchors": "prior-2025.json teams[*].raw.takeaways min/max (NYJ 4 / CHI 33)"
+    },
+    "giveaways": {
+      "stat": "interceptions thrown + fumbles lost, per game",
+      "range": [
+        -5,
+        5
+      ],
+      "better": "lower",
+      "raw_lo_2025": 11.0,
+      "raw_hi_2025": 30.0,
+      "games_in_prior": 17.0,
+      "map": "pg = ytd_total / games; lo = raw_lo_2025 / 17; hi = raw_hi_2025 / 17; t=(pg-lo)/(hi-lo) clamped 0..1; pillar=5-t*10 clamped \u00b15",
+      "verified": "Reproduces all 32 prior-2025.json pillars.give when fed 2025 totals over 17 games",
+      "file_anchors": "prior-2025.json teams[*].raw.giveaways min/max (CHI 11 / MIN 30)"
+    },
     "composite": {
-      "formula": "(0.3875*off + 0.3875*def + 0.025*st) / 0.8",
-      "weights_among_rating_pillars": {
+      "formula": "(0.3875*off + 0.3875*def + 0.025*st + 0.075*take + 0.125*give) / 1.0",
+      "weights": {
         "off": 0.3875,
         "def": 0.3875,
-        "st": 0.025
+        "st": 0.025,
+        "take": 0.075,
+        "give": 0.125
       },
-      "deferred": "takeaways 7.5% and giveaways 12.5% not in YTD current yet",
       "cap": "composite clamped to \u00b112"
     },
-    "prior_full_weights": 2
+    "prior_full_weights": {
+      "off": 0.3875,
+      "def": 0.3875,
+      "st": 0.025,
+      "take": 0.075,
+      "give": 0.125
+    }
   },
   "sources": {
     "offense_defense_ppg": "nfl-2026.json scored finals (home_score/away_score)",
     "special_teams": "ytd-st-2026.json from ESPN core team statistics",
+    "turnovers": "ESPN summary box score for each scored final in nfl-2026.json. Giveaways = team interceptions + fumblesLost. Takeaways = opponent giveaways.",
+    "turnover_host": "https://site.web.api.espn.com",
+    "turnover_raw": "_ytd-to-raw-2026.json",
     "scale_file": "prior-2025.json"
   },
   "teams": [
@@ -74,14 +112,24 @@
         "st_fgm": 2,
         "st_fga": 3,
         "st_fg_pct_used": 66.67,
-        "st_comp": -2.36
+        "st_comp": -2.36,
+        "takeaways": 2,
+        "giveaways": 1,
+        "takeaways_pg": 1.0,
+        "giveaways_pg": 0.5,
+        "take_int": 1,
+        "take_fum": 1,
+        "int_thrown": 1,
+        "fum_lost": 0
       },
       "pillars": {
         "off": 12.0,
         "def": 12.0,
-        "st": -4.0
+        "st": -4.0,
+        "take": -0.52,
+        "give": 5.0
       },
-      "composite": 11.5,
+      "composite": 9.79,
       "composite_od_only": 12.0,
       "games": [
         {
@@ -89,20 +137,36 @@
           "ptsAgainst": 7.0,
           "week": 1,
           "opp": "LAR",
-          "ha": "A"
+          "ha": "A",
+          "event": "401872657",
+          "takeaways": 2,
+          "giveaways": 1,
+          "take_int": 1,
+          "take_fum": 1,
+          "int_thrown": 1,
+          "fum_lost": 0
         },
         {
           "ptsFor": 35.0,
           "ptsAgainst": 13.0,
           "week": 2,
           "opp": "MIA",
-          "ha": "H"
+          "ha": "H",
+          "event": "401872942",
+          "takeaways": 0,
+          "giveaways": 0,
+          "take_int": 0,
+          "take_fum": 0,
+          "int_thrown": 0,
+          "fum_lost": 0
         }
       ],
       "rank": 1,
       "rank_off": 6,
       "rank_def": 10,
-      "rank_st": 31
+      "rank_st": 31,
+      "rank_take": 22,
+      "rank_give": 11
     },
     {
       "abbr": "KC",
@@ -115,14 +179,24 @@
         "st_fgm": 5,
         "st_fga": 6,
         "st_fg_pct_used": 83.33,
-        "st_comp": -0.28
+        "st_comp": -0.28,
+        "takeaways": 3,
+        "giveaways": 1,
+        "takeaways_pg": 1.5,
+        "giveaways_pg": 0.5,
+        "take_int": 2,
+        "take_fum": 1,
+        "int_thrown": 1,
+        "fum_lost": 0
       },
       "pillars": {
         "off": 12.0,
         "def": 6.79,
-        "st": -2.7
+        "st": -2.7,
+        "take": 2.41,
+        "give": 5.0
       },
-      "composite": 9.02,
+      "composite": 8.02,
       "composite_od_only": 9.4,
       "games": [
         {
@@ -130,20 +204,36 @@
           "ptsAgainst": 10.0,
           "week": 1,
           "opp": "DEN",
-          "ha": "H"
+          "ha": "H",
+          "event": "401872931",
+          "takeaways": 2,
+          "giveaways": 1,
+          "take_int": 1,
+          "take_fum": 1,
+          "int_thrown": 1,
+          "fum_lost": 0
         },
         {
           "ptsFor": 33.0,
           "ptsAgainst": 30.0,
           "week": 2,
           "opp": "IND",
-          "ha": "H"
+          "ha": "H",
+          "event": "401872945",
+          "takeaways": 1,
+          "giveaways": 0,
+          "take_int": 1,
+          "take_fum": 0,
+          "int_thrown": 0,
+          "fum_lost": 0
         }
       ],
       "rank": 2,
       "rank_off": 5,
       "rank_def": 11,
-      "rank_st": 17
+      "rank_st": 17,
+      "rank_take": 11,
+      "rank_give": 7
     },
     {
       "abbr": "CIN",
@@ -156,14 +246,24 @@
         "st_fgm": 6,
         "st_fga": 6,
         "st_fg_pct_used": 100.0,
-        "st_comp": 1.81
+        "st_comp": 1.81,
+        "takeaways": 4,
+        "giveaways": 1,
+        "takeaways_pg": 2.0,
+        "giveaways_pg": 0.5,
+        "take_int": 0,
+        "take_fum": 4,
+        "int_thrown": 1,
+        "fum_lost": 0
       },
       "pillars": {
         "off": 6.11,
         "def": 12.0,
-        "st": -0.87
+        "st": -0.87,
+        "take": 5.0,
+        "give": 5.0
       },
-      "composite": 8.74,
+      "composite": 8.0,
       "composite_od_only": 9.06,
       "games": [
         {
@@ -171,20 +271,36 @@
           "ptsAgainst": 27.0,
           "week": 1,
           "opp": "TB",
-          "ha": "H"
+          "ha": "H",
+          "event": "401872925",
+          "takeaways": 4,
+          "giveaways": 1,
+          "take_int": 0,
+          "take_fum": 4,
+          "int_thrown": 1,
+          "fum_lost": 0
         },
         {
           "ptsFor": 20.0,
           "ptsAgainst": 6.0,
           "week": 2,
           "opp": "HOU",
-          "ha": "A"
+          "ha": "A",
+          "event": "401872934",
+          "takeaways": 0,
+          "giveaways": 0,
+          "take_int": 0,
+          "take_fum": 0,
+          "int_thrown": 0,
+          "fum_lost": 0
         }
       ],
       "rank": 3,
       "rank_off": 10,
       "rank_def": 1,
-      "rank_st": 3
+      "rank_st": 3,
+      "rank_take": 2,
+      "rank_give": 3
     },
     {
       "abbr": "LV",
@@ -197,14 +313,24 @@
         "st_fgm": 3,
         "st_fga": 3,
         "st_fg_pct_used": 100.0,
-        "st_comp": 1.81
+        "st_comp": 1.81,
+        "takeaways": 5,
+        "giveaways": 3,
+        "takeaways_pg": 2.5,
+        "giveaways_pg": 1.5,
+        "take_int": 3,
+        "take_fum": 2,
+        "int_thrown": 3,
+        "fum_lost": 0
       },
       "pillars": {
         "off": 6.11,
         "def": 12.0,
-        "st": -0.87
+        "st": -0.87,
+        "take": 5.0,
+        "give": -2.63
       },
-      "composite": 8.74,
+      "composite": 7.04,
       "composite_od_only": 9.06,
       "games": [
         {
@@ -212,20 +338,36 @@
           "ptsAgainst": 13.0,
           "week": 1,
           "opp": "MIA",
-          "ha": "H"
+          "ha": "H",
+          "event": "401872928",
+          "takeaways": 2,
+          "giveaways": 2,
+          "take_int": 1,
+          "take_fum": 1,
+          "int_thrown": 2,
+          "fum_lost": 0
         },
         {
           "ptsFor": 26.0,
           "ptsAgainst": 14.0,
           "week": 2,
           "opp": "LAC",
-          "ha": "A"
+          "ha": "A",
+          "event": "401872941",
+          "takeaways": 3,
+          "giveaways": 1,
+          "take_int": 2,
+          "take_fum": 1,
+          "int_thrown": 1,
+          "fum_lost": 0
         }
       ],
       "rank": 4,
       "rank_off": 12,
       "rank_def": 4,
-      "rank_st": 10
+      "rank_st": 10,
+      "rank_take": 3,
+      "rank_give": 25
     },
     {
       "abbr": "MIN",
@@ -238,14 +380,24 @@
         "st_fgm": 4,
         "st_fga": 4,
         "st_fg_pct_used": 100.0,
-        "st_comp": 1.81
+        "st_comp": 1.81,
+        "takeaways": 4,
+        "giveaways": 1,
+        "takeaways_pg": 2.0,
+        "giveaways_pg": 0.5,
+        "take_int": 2,
+        "take_fum": 2,
+        "int_thrown": 1,
+        "fum_lost": 0
       },
       "pillars": {
         "off": 2.43,
         "def": 12.0,
-        "st": -0.87
+        "st": -0.87,
+        "take": 5.0,
+        "give": 5.0
       },
-      "composite": 6.96,
+      "composite": 6.57,
       "composite_od_only": 7.21,
       "games": [
         {
@@ -253,20 +405,36 @@
           "ptsAgainst": 22.0,
           "week": 1,
           "opp": "GB",
-          "ha": "H"
+          "ha": "H",
+          "event": "401872927",
+          "takeaways": 2,
+          "giveaways": 1,
+          "take_int": 1,
+          "take_fum": 1,
+          "int_thrown": 1,
+          "fum_lost": 0
         },
         {
           "ptsFor": 9.0,
           "ptsAgainst": 3.0,
           "week": 2,
           "opp": "CHI",
-          "ha": "A"
+          "ha": "A",
+          "event": "401872937",
+          "takeaways": 2,
+          "giveaways": 0,
+          "take_int": 1,
+          "take_fum": 1,
+          "int_thrown": 0,
+          "fum_lost": 0
         }
       ],
       "rank": 5,
       "rank_off": 13,
       "rank_def": 5,
-      "rank_st": 11
+      "rank_st": 11,
+      "rank_take": 4,
+      "rank_give": 8
     },
     {
       "abbr": "JAX",
@@ -279,14 +447,24 @@
         "st_fgm": 4,
         "st_fga": 5,
         "st_fg_pct_used": 80.0,
-        "st_comp": -0.69
+        "st_comp": -0.69,
+        "takeaways": 3,
+        "giveaways": 1,
+        "takeaways_pg": 1.5,
+        "giveaways_pg": 0.5,
+        "take_int": 2,
+        "take_fum": 1,
+        "int_thrown": 1,
+        "fum_lost": 0
       },
       "pillars": {
         "off": 1.69,
         "def": 12.0,
-        "st": -3.06
+        "st": -3.06,
+        "take": 2.41,
+        "give": 5.0
       },
-      "composite": 6.54,
+      "composite": 6.04,
       "composite_od_only": 6.85,
       "games": [
         {
@@ -294,61 +472,36 @@
           "ptsAgainst": 10.0,
           "week": 1,
           "opp": "CLE",
-          "ha": "H"
+          "ha": "H",
+          "event": "401872922",
+          "takeaways": 2,
+          "giveaways": 0,
+          "take_int": 1,
+          "take_fum": 1,
+          "int_thrown": 0,
+          "fum_lost": 0
         },
         {
           "ptsFor": 13.0,
           "ptsAgainst": 20.0,
           "week": 2,
           "opp": "DEN",
-          "ha": "A"
+          "ha": "A",
+          "event": "401872940",
+          "takeaways": 1,
+          "giveaways": 1,
+          "take_int": 1,
+          "take_fum": 0,
+          "int_thrown": 1,
+          "fum_lost": 0
         }
       ],
       "rank": 6,
       "rank_off": 15,
       "rank_def": 2,
-      "rank_st": 19
-    },
-    {
-      "abbr": "CHI",
-      "n": 2,
-      "raw": {
-        "off_ppg": 31.0,
-        "def_ppg": 23.0,
-        "st_ret_td": 0,
-        "st_fg_pct": 66.67,
-        "st_fgm": 2,
-        "st_fga": 3,
-        "st_fg_pct_used": 66.67,
-        "st_comp": -2.36
-      },
-      "pillars": {
-        "off": 12.0,
-        "def": 1.21,
-        "st": -4.0
-      },
-      "composite": 6.27,
-      "composite_od_only": 6.6,
-      "games": [
-        {
-          "ptsFor": 59.0,
-          "ptsAgainst": 37.0,
-          "week": 1,
-          "opp": "CAR",
-          "ha": "A"
-        },
-        {
-          "ptsFor": 3.0,
-          "ptsAgainst": 9.0,
-          "week": 2,
-          "opp": "MIN",
-          "ha": "H"
-        }
-      ],
-      "rank": 7,
-      "rank_off": 3,
-      "rank_def": 15,
-      "rank_st": 26
+      "rank_st": 19,
+      "rank_take": 10,
+      "rank_give": 6
     },
     {
       "abbr": "SEA",
@@ -361,14 +514,24 @@
         "st_fgm": 3,
         "st_fga": 3,
         "st_fg_pct_used": 100.0,
-        "st_comp": 1.81
+        "st_comp": 1.81,
+        "takeaways": 4,
+        "giveaways": 1,
+        "takeaways_pg": 2.0,
+        "giveaways_pg": 0.5,
+        "take_int": 4,
+        "take_fum": 0,
+        "int_thrown": 0,
+        "fum_lost": 1
       },
       "pillars": {
         "off": -0.52,
         "def": 12.0,
-        "st": -0.87
+        "st": -0.87,
+        "take": 5.0,
+        "give": 5.0
       },
-      "composite": 5.54,
+      "composite": 5.43,
       "composite_od_only": 5.74,
       "games": [
         {
@@ -376,20 +539,103 @@
           "ptsAgainst": 10.0,
           "week": 1,
           "opp": "NE",
-          "ha": "H"
+          "ha": "H",
+          "event": "401872656",
+          "takeaways": 3,
+          "giveaways": 0,
+          "take_int": 3,
+          "take_fum": 0,
+          "int_thrown": 0,
+          "fum_lost": 0
         },
         {
           "ptsFor": 31.0,
           "ptsAgainst": 7.0,
           "week": 2,
           "opp": "ARI",
-          "ha": "A"
+          "ha": "A",
+          "event": "401872943",
+          "takeaways": 1,
+          "giveaways": 1,
+          "take_int": 1,
+          "take_fum": 0,
+          "int_thrown": 0,
+          "fum_lost": 1
+        }
+      ],
+      "rank": 7,
+      "rank_off": 17,
+      "rank_def": 9,
+      "rank_st": 14,
+      "rank_take": 6,
+      "rank_give": 10
+    },
+    {
+      "abbr": "CHI",
+      "n": 2,
+      "raw": {
+        "off_ppg": 31.0,
+        "def_ppg": 23.0,
+        "st_ret_td": 0,
+        "st_fg_pct": 66.67,
+        "st_fgm": 2,
+        "st_fga": 3,
+        "st_fg_pct_used": 66.67,
+        "st_comp": -2.36,
+        "takeaways": 3,
+        "giveaways": 3,
+        "takeaways_pg": 1.5,
+        "giveaways_pg": 1.5,
+        "take_int": 1,
+        "take_fum": 2,
+        "int_thrown": 1,
+        "fum_lost": 2
+      },
+      "pillars": {
+        "off": 12.0,
+        "def": 1.21,
+        "st": -4.0,
+        "take": 2.41,
+        "give": -2.63
+      },
+      "composite": 4.87,
+      "composite_od_only": 6.6,
+      "games": [
+        {
+          "ptsFor": 59.0,
+          "ptsAgainst": 37.0,
+          "week": 1,
+          "opp": "CAR",
+          "ha": "A",
+          "event": "401872661",
+          "takeaways": 3,
+          "giveaways": 1,
+          "take_int": 1,
+          "take_fum": 2,
+          "int_thrown": 0,
+          "fum_lost": 1
+        },
+        {
+          "ptsFor": 3.0,
+          "ptsAgainst": 9.0,
+          "week": 2,
+          "opp": "MIN",
+          "ha": "H",
+          "event": "401872937",
+          "takeaways": 0,
+          "giveaways": 2,
+          "take_int": 0,
+          "take_fum": 0,
+          "int_thrown": 1,
+          "fum_lost": 1
         }
       ],
       "rank": 8,
-      "rank_off": 17,
-      "rank_def": 9,
-      "rank_st": 14
+      "rank_off": 3,
+      "rank_def": 15,
+      "rank_st": 26,
+      "rank_take": 8,
+      "rank_give": 21
     },
     {
       "abbr": "BAL",
@@ -402,14 +648,24 @@
         "st_fgm": 3,
         "st_fga": 4,
         "st_fg_pct_used": 75.0,
-        "st_comp": -1.32
+        "st_comp": -1.32,
+        "takeaways": 2,
+        "giveaways": 2,
+        "takeaways_pg": 1.0,
+        "giveaways_pg": 1.0,
+        "take_int": 1,
+        "take_fum": 1,
+        "int_thrown": 1,
+        "fum_lost": 1
       },
       "pillars": {
         "off": 9.79,
         "def": 0.28,
-        "st": -3.61
+        "st": -3.61,
+        "take": -0.52,
+        "give": 1.84
       },
-      "composite": 4.77,
+      "composite": 4.0,
       "composite_od_only": 5.04,
       "games": [
         {
@@ -417,20 +673,36 @@
           "ptsAgainst": 23.0,
           "week": 1,
           "opp": "IND",
-          "ha": "A"
+          "ha": "A",
+          "event": "401872659",
+          "takeaways": 2,
+          "giveaways": 1,
+          "take_int": 1,
+          "take_fum": 1,
+          "int_thrown": 0,
+          "fum_lost": 1
         },
         {
           "ptsFor": 17.0,
           "ptsAgainst": 24.0,
           "week": 2,
           "opp": "NO",
-          "ha": "H"
+          "ha": "H",
+          "event": "401872938",
+          "takeaways": 0,
+          "giveaways": 1,
+          "take_int": 0,
+          "take_fum": 0,
+          "int_thrown": 1,
+          "fum_lost": 0
         }
       ],
       "rank": 9,
       "rank_off": 7,
       "rank_def": 16,
-      "rank_st": 22
+      "rank_st": 22,
+      "rank_take": 13,
+      "rank_give": 14
     },
     {
       "abbr": "DAL",
@@ -443,14 +715,24 @@
         "st_fgm": 3,
         "st_fga": 3,
         "st_fg_pct_used": 100.0,
-        "st_comp": 1.81
+        "st_comp": 1.81,
+        "takeaways": 2,
+        "giveaways": 1,
+        "takeaways_pg": 1.0,
+        "giveaways_pg": 0.5,
+        "take_int": 0,
+        "take_fum": 2,
+        "int_thrown": 1,
+        "fum_lost": 0
       },
       "pillars": {
         "off": 9.06,
         "def": -0.65,
-        "st": -0.87
+        "st": -0.87,
+        "take": -0.52,
+        "give": 5.0
       },
-      "composite": 4.04,
+      "composite": 3.82,
       "composite_od_only": 4.2,
       "games": [
         {
@@ -458,20 +740,36 @@
           "ptsAgainst": 28.0,
           "week": 1,
           "opp": "NYG",
-          "ha": "A"
+          "ha": "A",
+          "event": "401872930",
+          "takeaways": 1,
+          "giveaways": 1,
+          "take_int": 0,
+          "take_fum": 1,
+          "int_thrown": 1,
+          "fum_lost": 0
         },
         {
           "ptsFor": 37.0,
           "ptsAgainst": 20.0,
           "week": 2,
           "opp": "WSH",
-          "ha": "H"
+          "ha": "H",
+          "event": "401872944",
+          "takeaways": 1,
+          "giveaways": 0,
+          "take_int": 0,
+          "take_fum": 1,
+          "int_thrown": 0,
+          "fum_lost": 0
         }
       ],
       "rank": 10,
       "rank_off": 8,
       "rank_def": 18,
-      "rank_st": 5
+      "rank_st": 5,
+      "rank_take": 15,
+      "rank_give": 4
     },
     {
       "abbr": "NYJ",
@@ -484,14 +782,24 @@
         "st_fgm": 4,
         "st_fga": 5,
         "st_fg_pct_used": 80.0,
-        "st_comp": -0.69
+        "st_comp": -0.69,
+        "takeaways": 2,
+        "giveaways": 0,
+        "takeaways_pg": 1.0,
+        "giveaways_pg": 0.0,
+        "take_int": 0,
+        "take_fum": 2,
+        "int_thrown": 0,
+        "fum_lost": 0
       },
       "pillars": {
         "off": -3.46,
         "def": 12.0,
-        "st": -3.06
+        "st": -3.06,
+        "take": -0.52,
+        "give": 5.0
       },
-      "composite": 4.04,
+      "composite": 3.82,
       "composite_od_only": 4.27,
       "games": [
         {
@@ -499,20 +807,36 @@
           "ptsAgainst": 10.0,
           "week": 1,
           "opp": "TEN",
-          "ha": "A"
+          "ha": "A",
+          "event": "401872924",
+          "takeaways": 1,
+          "giveaways": 0,
+          "take_int": 0,
+          "take_fum": 1,
+          "int_thrown": 0,
+          "fum_lost": 0
         },
         {
           "ptsFor": 17.0,
           "ptsAgainst": 20.0,
           "week": 2,
           "opp": "GB",
-          "ha": "H"
+          "ha": "H",
+          "event": "401872936",
+          "takeaways": 1,
+          "giveaways": 0,
+          "take_int": 0,
+          "take_fum": 1,
+          "int_thrown": 0,
+          "fum_lost": 0
         }
       ],
       "rank": 11,
       "rank_off": 20,
       "rank_def": 7,
-      "rank_st": 21
+      "rank_st": 21,
+      "rank_take": 21,
+      "rank_give": 9
     },
     {
       "abbr": "PHI",
@@ -525,14 +849,24 @@
         "st_fgm": 2,
         "st_fga": 2,
         "st_fg_pct_used": 100.0,
-        "st_comp": 1.81
+        "st_comp": 1.81,
+        "takeaways": 0,
+        "giveaways": 2,
+        "takeaways_pg": 0.0,
+        "giveaways_pg": 1.0,
+        "take_int": 0,
+        "take_fum": 0,
+        "int_thrown": 2,
+        "fum_lost": 0
       },
       "pillars": {
         "off": 2.43,
         "def": 4.93,
-        "st": -0.87
+        "st": -0.87,
+        "take": -5.0,
+        "give": 1.84
       },
-      "composite": 3.54,
+      "composite": 2.69,
       "composite_od_only": 3.68,
       "games": [
         {
@@ -540,20 +874,36 @@
           "ptsAgainst": 22.0,
           "week": 1,
           "opp": "WSH",
-          "ha": "H"
+          "ha": "H",
+          "event": "401872929",
+          "takeaways": 0,
+          "giveaways": 0,
+          "take_int": 0,
+          "take_fum": 0,
+          "int_thrown": 0,
+          "fum_lost": 0
         },
         {
           "ptsFor": 24.0,
           "ptsAgainst": 20.0,
           "week": 2,
           "opp": "TEN",
-          "ha": "A"
+          "ha": "A",
+          "event": "401872939",
+          "takeaways": 0,
+          "giveaways": 2,
+          "take_int": 0,
+          "take_fum": 0,
+          "int_thrown": 2,
+          "fum_lost": 0
         }
       ],
       "rank": 12,
       "rank_off": 14,
       "rank_def": 12,
-      "rank_st": 13
+      "rank_st": 13,
+      "rank_take": 31,
+      "rank_give": 19
     },
     {
       "abbr": "NO",
@@ -566,14 +916,24 @@
         "st_fgm": 4,
         "st_fga": 5,
         "st_fg_pct_used": 80.0,
-        "st_comp": -0.69
+        "st_comp": -0.69,
+        "takeaways": 2,
+        "giveaways": 3,
+        "takeaways_pg": 1.0,
+        "giveaways_pg": 1.5,
+        "take_int": 1,
+        "take_fum": 1,
+        "int_thrown": 2,
+        "fum_lost": 1
       },
       "pillars": {
         "off": 6.85,
         "def": -0.65,
-        "st": -3.06
+        "st": -3.06,
+        "take": -0.52,
+        "give": -2.63
       },
-      "composite": 2.91,
+      "composite": 1.96,
       "composite_od_only": 3.1,
       "games": [
         {
@@ -581,20 +941,36 @@
           "ptsAgainst": 31.0,
           "week": 1,
           "opp": "DET",
-          "ha": "A"
+          "ha": "A",
+          "event": "401872923",
+          "takeaways": 1,
+          "giveaways": 3,
+          "take_int": 0,
+          "take_fum": 1,
+          "int_thrown": 2,
+          "fum_lost": 1
         },
         {
           "ptsFor": 24.0,
           "ptsAgainst": 17.0,
           "week": 2,
           "opp": "BAL",
-          "ha": "A"
+          "ha": "A",
+          "event": "401872938",
+          "takeaways": 1,
+          "giveaways": 0,
+          "take_int": 1,
+          "take_fum": 0,
+          "int_thrown": 0,
+          "fum_lost": 0
         }
       ],
       "rank": 13,
       "rank_off": 9,
       "rank_def": 19,
-      "rank_st": 20
+      "rank_st": 20,
+      "rank_take": 20,
+      "rank_give": 26
     },
     {
       "abbr": "LAR",
@@ -607,14 +983,24 @@
         "st_fgm": 0,
         "st_fga": 1,
         "st_fg_pct_used": 0.0,
-        "st_comp": -10.69
+        "st_comp": -10.69,
+        "takeaways": 2,
+        "giveaways": 4,
+        "takeaways_pg": 1.0,
+        "giveaways_pg": 2.0,
+        "take_int": 2,
+        "take_fum": 0,
+        "int_thrown": 2,
+        "fum_lost": 2
       },
       "pillars": {
         "off": -7.14,
         "def": 12.0,
-        "st": -4.0
+        "st": -4.0,
+        "take": -0.52,
+        "give": -5.0
       },
-      "composite": 2.23,
+      "composite": 1.12,
       "composite_od_only": 2.43,
       "games": [
         {
@@ -622,143 +1008,36 @@
           "ptsAgainst": 27.0,
           "week": 1,
           "opp": "SF",
-          "ha": "H"
+          "ha": "H",
+          "event": "401872657",
+          "takeaways": 1,
+          "giveaways": 2,
+          "take_int": 1,
+          "take_fum": 0,
+          "int_thrown": 1,
+          "fum_lost": 1
         },
         {
           "ptsFor": 28.0,
           "ptsAgainst": 6.0,
           "week": 2,
           "opp": "NYG",
-          "ha": "H"
+          "ha": "H",
+          "event": "401872947",
+          "takeaways": 1,
+          "giveaways": 2,
+          "take_int": 1,
+          "take_fum": 0,
+          "int_thrown": 1,
+          "fum_lost": 1
         }
       ],
       "rank": 14,
       "rank_off": 22,
       "rank_def": 3,
-      "rank_st": 28
-    },
-    {
-      "abbr": "NE",
-      "n": 2,
-      "raw": {
-        "off_ppg": 15.0,
-        "def_ppg": 8.0,
-        "st_ret_td": 0,
-        "st_fg_pct": 75.0,
-        "st_fgm": 3,
-        "st_fga": 4,
-        "st_fg_pct_used": 75.0,
-        "st_comp": -1.32
-      },
-      "pillars": {
-        "off": -10.82,
-        "def": 12.0,
-        "st": -3.61
-      },
-      "composite": 0.46,
-      "composite_od_only": 0.59,
-      "games": [
-        {
-          "ptsFor": 10.0,
-          "ptsAgainst": 13.0,
-          "week": 1,
-          "opp": "SEA",
-          "ha": "A"
-        },
-        {
-          "ptsFor": 20.0,
-          "ptsAgainst": 3.0,
-          "week": 2,
-          "opp": "PIT",
-          "ha": "H"
-        }
-      ],
-      "rank": 15,
-      "rank_off": 27,
-      "rank_def": 6,
-      "rank_st": 24
-    },
-    {
-      "abbr": "BUF",
-      "n": 2,
-      "raw": {
-        "off_ppg": 38.5,
-        "def_ppg": 31.0,
-        "st_ret_td": 0,
-        "st_fg_pct": 100.0,
-        "st_fgm": 3,
-        "st_fga": 3,
-        "st_fg_pct_used": 100.0,
-        "st_comp": 1.81
-      },
-      "pillars": {
-        "off": 12.0,
-        "def": -12.0,
-        "st": -0.87
-      },
-      "composite": -0.03,
-      "composite_od_only": 0.0,
-      "games": [
-        {
-          "ptsFor": 36.0,
-          "ptsAgainst": 31.0,
-          "week": 1,
-          "opp": "HOU",
-          "ha": "A"
-        },
-        {
-          "ptsFor": 41.0,
-          "ptsAgainst": 31.0,
-          "week": 2,
-          "opp": "DET",
-          "ha": "H"
-        }
-      ],
-      "rank": 16,
-      "rank_off": 1,
-      "rank_def": 27,
-      "rank_st": 1
-    },
-    {
-      "abbr": "CAR",
-      "n": 2,
-      "raw": {
-        "off_ppg": 35.5,
-        "def_ppg": 31.0,
-        "st_ret_td": 0,
-        "st_fg_pct": 100.0,
-        "st_fgm": 3,
-        "st_fga": 3,
-        "st_fg_pct_used": 100.0,
-        "st_comp": 1.81
-      },
-      "pillars": {
-        "off": 12.0,
-        "def": -12.0,
-        "st": -0.87
-      },
-      "composite": -0.03,
-      "composite_od_only": 0.0,
-      "games": [
-        {
-          "ptsFor": 37.0,
-          "ptsAgainst": 59.0,
-          "week": 1,
-          "opp": "CHI",
-          "ha": "H"
-        },
-        {
-          "ptsFor": 34.0,
-          "ptsAgainst": 3.0,
-          "week": 2,
-          "opp": "ATL",
-          "ha": "A"
-        }
-      ],
-      "rank": 17,
-      "rank_off": 2,
-      "rank_def": 28,
-      "rank_st": 2
+      "rank_st": 28,
+      "rank_take": 17,
+      "rank_give": 30
     },
     {
       "abbr": "DET",
@@ -771,14 +1050,24 @@
         "st_fgm": 2,
         "st_fga": 2,
         "st_fg_pct_used": 100.0,
-        "st_comp": 1.81
+        "st_comp": 1.81,
+        "takeaways": 3,
+        "giveaways": 1,
+        "takeaways_pg": 1.5,
+        "giveaways_pg": 0.5,
+        "take_int": 2,
+        "take_fum": 1,
+        "int_thrown": 0,
+        "fum_lost": 1
       },
       "pillars": {
         "off": 12.0,
         "def": -12.0,
-        "st": -0.87
+        "st": -0.87,
+        "take": 2.41,
+        "give": 5.0
       },
-      "composite": -0.03,
+      "composite": 0.78,
       "composite_od_only": 0.0,
       "games": [
         {
@@ -786,20 +1075,170 @@
           "ptsAgainst": 30.0,
           "week": 1,
           "opp": "NO",
-          "ha": "H"
+          "ha": "H",
+          "event": "401872923",
+          "takeaways": 3,
+          "giveaways": 1,
+          "take_int": 2,
+          "take_fum": 1,
+          "int_thrown": 0,
+          "fum_lost": 1
         },
         {
           "ptsFor": 31.0,
           "ptsAgainst": 41.0,
           "week": 2,
           "opp": "BUF",
-          "ha": "A"
+          "ha": "A",
+          "event": "401872932",
+          "takeaways": 0,
+          "giveaways": 0,
+          "take_int": 0,
+          "take_fum": 0,
+          "int_thrown": 0,
+          "fum_lost": 0
         }
       ],
-      "rank": 18,
+      "rank": 15,
       "rank_off": 4,
       "rank_def": 29,
-      "rank_st": 7
+      "rank_st": 7,
+      "rank_take": 9,
+      "rank_give": 5
+    },
+    {
+      "abbr": "BUF",
+      "n": 2,
+      "raw": {
+        "off_ppg": 38.5,
+        "def_ppg": 31.0,
+        "st_ret_td": 0,
+        "st_fg_pct": 100.0,
+        "st_fgm": 3,
+        "st_fga": 3,
+        "st_fg_pct_used": 100.0,
+        "st_comp": 1.81,
+        "takeaways": 2,
+        "giveaways": 0,
+        "takeaways_pg": 1.0,
+        "giveaways_pg": 0.0,
+        "take_int": 0,
+        "take_fum": 2,
+        "int_thrown": 0,
+        "fum_lost": 0
+      },
+      "pillars": {
+        "off": 12.0,
+        "def": -12.0,
+        "st": -0.87,
+        "take": -0.52,
+        "give": 5.0
+      },
+      "composite": 0.56,
+      "composite_od_only": 0.0,
+      "games": [
+        {
+          "ptsFor": 36.0,
+          "ptsAgainst": 31.0,
+          "week": 1,
+          "opp": "HOU",
+          "ha": "A",
+          "event": "401872660",
+          "takeaways": 2,
+          "giveaways": 0,
+          "take_int": 0,
+          "take_fum": 2,
+          "int_thrown": 0,
+          "fum_lost": 0
+        },
+        {
+          "ptsFor": 41.0,
+          "ptsAgainst": 31.0,
+          "week": 2,
+          "opp": "DET",
+          "ha": "H",
+          "event": "401872932",
+          "takeaways": 0,
+          "giveaways": 0,
+          "take_int": 0,
+          "take_fum": 0,
+          "int_thrown": 0,
+          "fum_lost": 0
+        }
+      ],
+      "rank": 16,
+      "rank_off": 1,
+      "rank_def": 27,
+      "rank_st": 1,
+      "rank_take": 14,
+      "rank_give": 2
+    },
+    {
+      "abbr": "CAR",
+      "n": 2,
+      "raw": {
+        "off_ppg": 35.5,
+        "def_ppg": 31.0,
+        "st_ret_td": 0,
+        "st_fg_pct": 100.0,
+        "st_fgm": 3,
+        "st_fga": 3,
+        "st_fg_pct_used": 100.0,
+        "st_comp": 1.81,
+        "takeaways": 6,
+        "giveaways": 3,
+        "takeaways_pg": 3.0,
+        "giveaways_pg": 1.5,
+        "take_int": 3,
+        "take_fum": 3,
+        "int_thrown": 1,
+        "fum_lost": 2
+      },
+      "pillars": {
+        "off": 12.0,
+        "def": -12.0,
+        "st": -0.87,
+        "take": 5.0,
+        "give": -2.63
+      },
+      "composite": 0.02,
+      "composite_od_only": 0.0,
+      "games": [
+        {
+          "ptsFor": 37.0,
+          "ptsAgainst": 59.0,
+          "week": 1,
+          "opp": "CHI",
+          "ha": "H",
+          "event": "401872661",
+          "takeaways": 1,
+          "giveaways": 3,
+          "take_int": 0,
+          "take_fum": 1,
+          "int_thrown": 1,
+          "fum_lost": 2
+        },
+        {
+          "ptsFor": 34.0,
+          "ptsAgainst": 3.0,
+          "week": 2,
+          "opp": "ATL",
+          "ha": "A",
+          "event": "401872933",
+          "takeaways": 5,
+          "giveaways": 0,
+          "take_int": 3,
+          "take_fum": 2,
+          "int_thrown": 0,
+          "fum_lost": 0
+        }
+      ],
+      "rank": 17,
+      "rank_off": 2,
+      "rank_def": 28,
+      "rank_st": 2,
+      "rank_take": 1,
+      "rank_give": 20
     },
     {
       "abbr": "PIT",
@@ -812,14 +1251,24 @@
         "st_fgm": 3,
         "st_fga": 5,
         "st_fg_pct_used": 60.0,
-        "st_comp": -3.19
+        "st_comp": -3.19,
+        "takeaways": 4,
+        "giveaways": 3,
+        "takeaways_pg": 2.0,
+        "giveaways_pg": 1.5,
+        "take_int": 3,
+        "take_fum": 1,
+        "int_thrown": 1,
+        "fum_lost": 2
       },
       "pillars": {
         "off": -12.0,
         "def": 12.0,
-        "st": -4.0
+        "st": -4.0,
+        "take": 5.0,
+        "give": -2.63
       },
-      "composite": -0.12,
+      "composite": -0.05,
       "composite_od_only": 0.0,
       "games": [
         {
@@ -827,61 +1276,103 @@
           "ptsAgainst": 13.0,
           "week": 1,
           "opp": "ATL",
-          "ha": "H"
+          "ha": "H",
+          "event": "401872658",
+          "takeaways": 2,
+          "giveaways": 1,
+          "take_int": 2,
+          "take_fum": 0,
+          "int_thrown": 0,
+          "fum_lost": 1
         },
         {
           "ptsFor": 3.0,
           "ptsAgainst": 20.0,
           "week": 2,
           "opp": "NE",
-          "ha": "A"
+          "ha": "A",
+          "event": "401872946",
+          "takeaways": 2,
+          "giveaways": 2,
+          "take_int": 1,
+          "take_fum": 1,
+          "int_thrown": 1,
+          "fum_lost": 1
+        }
+      ],
+      "rank": 18,
+      "rank_off": 32,
+      "rank_def": 8,
+      "rank_st": 30,
+      "rank_take": 5,
+      "rank_give": 27
+    },
+    {
+      "abbr": "NE",
+      "n": 2,
+      "raw": {
+        "off_ppg": 15.0,
+        "def_ppg": 8.0,
+        "st_ret_td": 0,
+        "st_fg_pct": 75.0,
+        "st_fgm": 3,
+        "st_fga": 4,
+        "st_fg_pct_used": 75.0,
+        "st_comp": -1.32,
+        "takeaways": 2,
+        "giveaways": 5,
+        "takeaways_pg": 1.0,
+        "giveaways_pg": 2.5,
+        "take_int": 1,
+        "take_fum": 1,
+        "int_thrown": 4,
+        "fum_lost": 1
+      },
+      "pillars": {
+        "off": -10.82,
+        "def": 12.0,
+        "st": -3.61,
+        "take": -0.52,
+        "give": -5.0
+      },
+      "composite": -0.3,
+      "composite_od_only": 0.59,
+      "games": [
+        {
+          "ptsFor": 10.0,
+          "ptsAgainst": 13.0,
+          "week": 1,
+          "opp": "SEA",
+          "ha": "A",
+          "event": "401872656",
+          "takeaways": 0,
+          "giveaways": 3,
+          "take_int": 0,
+          "take_fum": 0,
+          "int_thrown": 3,
+          "fum_lost": 0
+        },
+        {
+          "ptsFor": 20.0,
+          "ptsAgainst": 3.0,
+          "week": 2,
+          "opp": "PIT",
+          "ha": "H",
+          "event": "401872946",
+          "takeaways": 2,
+          "giveaways": 2,
+          "take_int": 1,
+          "take_fum": 1,
+          "int_thrown": 1,
+          "fum_lost": 1
         }
       ],
       "rank": 19,
-      "rank_off": 32,
-      "rank_def": 8,
-      "rank_st": 30
-    },
-    {
-      "abbr": "IND",
-      "n": 2,
-      "raw": {
-        "off_ppg": 26.5,
-        "def_ppg": 37.0,
-        "st_ret_td": 0,
-        "st_fg_pct": 100.0,
-        "st_fgm": 4,
-        "st_fga": 4,
-        "st_fg_pct_used": 100.0,
-        "st_comp": 1.81
-      },
-      "pillars": {
-        "off": 6.11,
-        "def": -12.0,
-        "st": -0.87
-      },
-      "composite": -2.88,
-      "composite_od_only": -2.94,
-      "games": [
-        {
-          "ptsFor": 23.0,
-          "ptsAgainst": 41.0,
-          "week": 1,
-          "opp": "BAL",
-          "ha": "H"
-        },
-        {
-          "ptsFor": 30.0,
-          "ptsAgainst": 33.0,
-          "week": 2,
-          "opp": "KC",
-          "ha": "A"
-        }
-      ],
-      "rank": 20,
-      "rank_off": 11,
-      "rank_def": 30,
-      "rank_st": 9
+      "rank_off": 27,
+      "rank_def": 6,
+      "rank_st": 24,
+      "rank_take": 19,
+      "rank_give": 31
     },
     {
       "abbr": "ARI",
@@ -894,14 +1385,24 @@
         "st_fgm": 4,
         "st_fga": 5,
         "st_fg_pct_used": 80.0,
-        "st_comp": -0.69
+        "st_comp": -0.69,
+        "takeaways": 3,
+        "giveaways": 1,
+        "takeaways_pg": 1.5,
+        "giveaways_pg": 0.5,
+        "take_int": 1,
+        "take_fum": 2,
+        "int_thrown": 1,
+        "fum_lost": 0
       },
       "pillars": {
         "off": -8.61,
         "def": 2.14,
-        "st": -3.06
+        "st": -3.06,
+        "take": 2.41,
+        "give": 5.0
       },
-      "composite": -3.23,
+      "composite": -1.78,
       "composite_od_only": -3.24,
       "games": [
         {
@@ -909,102 +1410,103 @@
           "ptsAgainst": 14.0,
           "week": 1,
           "opp": "LAC",
-          "ha": "A"
+          "ha": "A",
+          "event": "401872926",
+          "takeaways": 2,
+          "giveaways": 0,
+          "take_int": 1,
+          "take_fum": 1,
+          "int_thrown": 0,
+          "fum_lost": 0
         },
         {
           "ptsFor": 7.0,
           "ptsAgainst": 31.0,
           "week": 2,
           "opp": "SEA",
-          "ha": "H"
+          "ha": "H",
+          "event": "401872943",
+          "takeaways": 1,
+          "giveaways": 1,
+          "take_int": 0,
+          "take_fum": 1,
+          "int_thrown": 1,
+          "fum_lost": 0
+        }
+      ],
+      "rank": 20,
+      "rank_off": 24,
+      "rank_def": 14,
+      "rank_st": 18,
+      "rank_take": 7,
+      "rank_give": 1
+    },
+    {
+      "abbr": "IND",
+      "n": 2,
+      "raw": {
+        "off_ppg": 26.5,
+        "def_ppg": 37.0,
+        "st_ret_td": 0,
+        "st_fg_pct": 100.0,
+        "st_fgm": 4,
+        "st_fga": 4,
+        "st_fg_pct_used": 100.0,
+        "st_comp": 1.81,
+        "takeaways": 1,
+        "giveaways": 3,
+        "takeaways_pg": 0.5,
+        "giveaways_pg": 1.5,
+        "take_int": 0,
+        "take_fum": 1,
+        "int_thrown": 2,
+        "fum_lost": 1
+      },
+      "pillars": {
+        "off": 6.11,
+        "def": -12.0,
+        "st": -0.87,
+        "take": -3.45,
+        "give": -2.63
+      },
+      "composite": -2.89,
+      "composite_od_only": -2.94,
+      "games": [
+        {
+          "ptsFor": 23.0,
+          "ptsAgainst": 41.0,
+          "week": 1,
+          "opp": "BAL",
+          "ha": "H",
+          "event": "401872659",
+          "takeaways": 1,
+          "giveaways": 2,
+          "take_int": 0,
+          "take_fum": 1,
+          "int_thrown": 1,
+          "fum_lost": 1
+        },
+        {
+          "ptsFor": 30.0,
+          "ptsAgainst": 33.0,
+          "week": 2,
+          "opp": "KC",
+          "ha": "A",
+          "event": "401872945",
+          "takeaways": 0,
+          "giveaways": 1,
+          "take_int": 0,
+          "take_fum": 0,
+          "int_thrown": 1,
+          "fum_lost": 0
         }
       ],
       "rank": 21,
-      "rank_off": 24,
-      "rank_def": 14,
-      "rank_st": 18
-    },
-    {
-      "abbr": "TB",
-      "n": 2,
-      "raw": {
-        "off_ppg": 23.0,
-        "def_ppg": 28.0,
-        "st_ret_td": 0,
-        "st_fg_pct": 100.0,
-        "st_fgm": 6,
-        "st_fga": 6,
-        "st_fg_pct_used": 100.0,
-        "st_comp": 1.81
-      },
-      "pillars": {
-        "off": 0.96,
-        "def": -8.09,
-        "st": -0.87
-      },
-      "composite": -3.48,
-      "composite_od_only": -3.57,
-      "games": [
-        {
-          "ptsFor": 27.0,
-          "ptsAgainst": 33.0,
-          "week": 1,
-          "opp": "CIN",
-          "ha": "A"
-        },
-        {
-          "ptsFor": 19.0,
-          "ptsAgainst": 23.0,
-          "week": 2,
-          "opp": "CLE",
-          "ha": "H"
-        }
-      ],
-      "rank": 22,
-      "rank_off": 16,
-      "rank_def": 26,
-      "rank_st": 15
-    },
-    {
-      "abbr": "DEN",
-      "n": 2,
-      "raw": {
-        "off_ppg": 15.0,
-        "def_ppg": 22.0,
-        "st_ret_td": 0,
-        "st_fg_pct": 100.0,
-        "st_fgm": 3,
-        "st_fga": 3,
-        "st_fg_pct_used": 100.0,
-        "st_comp": 1.81
-      },
-      "pillars": {
-        "off": -10.82,
-        "def": 3.07,
-        "st": -0.87
-      },
-      "composite": -3.78,
-      "composite_od_only": -3.88,
-      "games": [
-        {
-          "ptsFor": 10.0,
-          "ptsAgainst": 31.0,
-          "week": 1,
-          "opp": "KC",
-          "ha": "A"
-        },
-        {
-          "ptsFor": 20.0,
-          "ptsAgainst": 13.0,
-          "week": 2,
-          "opp": "JAX",
-          "ha": "H"
-        }
-      ],
-      "rank": 23,
-      "rank_off": 26,
-      "rank_def": 13,
-      "rank_st": 6
+      "rank_off": 11,
+      "rank_def": 30,
+      "rank_st": 9,
+      "rank_take": 27,
+      "rank_give": 24
     },
     {
       "abbr": "NYG",
@@ -1017,14 +1519,24 @@
         "st_fgm": 2,
         "st_fga": 2,
         "st_fg_pct_used": 100.0,
-        "st_comp": 1.81
+        "st_comp": 1.81,
+        "takeaways": 3,
+        "giveaways": 2,
+        "takeaways_pg": 1.5,
+        "giveaways_pg": 1.0,
+        "take_int": 2,
+        "take_fum": 1,
+        "int_thrown": 1,
+        "fum_lost": 1
       },
       "pillars": {
         "off": -7.88,
         "def": -0.65,
-        "st": -0.87
+        "st": -0.87,
+        "take": 2.41,
+        "give": 1.84
       },
-      "composite": -4.16,
+      "composite": -2.92,
       "composite_od_only": -4.26,
       "games": [
         {
@@ -1032,61 +1544,103 @@
           "ptsAgainst": 20.0,
           "week": 1,
           "opp": "DAL",
-          "ha": "H"
+          "ha": "H",
+          "event": "401872930",
+          "takeaways": 1,
+          "giveaways": 1,
+          "take_int": 1,
+          "take_fum": 0,
+          "int_thrown": 0,
+          "fum_lost": 1
         },
         {
           "ptsFor": 6.0,
           "ptsAgainst": 28.0,
           "week": 2,
           "opp": "LAR",
-          "ha": "A"
+          "ha": "A",
+          "event": "401872947",
+          "takeaways": 2,
+          "giveaways": 1,
+          "take_int": 1,
+          "take_fum": 1,
+          "int_thrown": 1,
+          "fum_lost": 0
         }
       ],
-      "rank": 24,
+      "rank": 22,
       "rank_off": 23,
       "rank_def": 20,
-      "rank_st": 12
+      "rank_st": 12,
+      "rank_take": 12,
+      "rank_give": 18
     },
     {
-      "abbr": "GB",
+      "abbr": "DEN",
       "n": 2,
       "raw": {
-        "off_ppg": 21.0,
-        "def_ppg": 28.0,
+        "off_ppg": 15.0,
+        "def_ppg": 22.0,
         "st_ret_td": 0,
         "st_fg_pct": 100.0,
-        "st_fgm": 5,
-        "st_fga": 5,
+        "st_fgm": 3,
+        "st_fga": 3,
         "st_fg_pct_used": 100.0,
-        "st_comp": 1.81
+        "st_comp": 1.81,
+        "takeaways": 2,
+        "giveaways": 3,
+        "takeaways_pg": 1.0,
+        "giveaways_pg": 1.5,
+        "take_int": 2,
+        "take_fum": 0,
+        "int_thrown": 2,
+        "fum_lost": 1
       },
       "pillars": {
-        "off": -1.99,
-        "def": -8.09,
-        "st": -0.87
+        "off": -10.82,
+        "def": 3.07,
+        "st": -0.87,
+        "take": -0.52,
+        "give": -2.63
       },
-      "composite": -4.91,
-      "composite_od_only": -5.04,
+      "composite": -3.39,
+      "composite_od_only": -3.88,
       "games": [
         {
-          "ptsFor": 22.0,
-          "ptsAgainst": 39.0,
+          "ptsFor": 10.0,
+          "ptsAgainst": 31.0,
           "week": 1,
-          "opp": "MIN",
-          "ha": "A"
+          "opp": "KC",
+          "ha": "A",
+          "event": "401872931",
+          "takeaways": 1,
+          "giveaways": 2,
+          "take_int": 1,
+          "take_fum": 0,
+          "int_thrown": 1,
+          "fum_lost": 1
         },
         {
           "ptsFor": 20.0,
-          "ptsAgainst": 17.0,
+          "ptsAgainst": 13.0,
           "week": 2,
-          "opp": "NYJ",
-          "ha": "A"
+          "opp": "JAX",
+          "ha": "H",
+          "event": "401872940",
+          "takeaways": 1,
+          "giveaways": 1,
+          "take_int": 1,
+          "take_fum": 0,
+          "int_thrown": 1,
+          "fum_lost": 0
         }
       ],
-      "rank": 25,
-      "rank_off": 18,
-      "rank_def": 24,
-      "rank_st": 8
+      "rank": 23,
+      "rank_off": 26,
+      "rank_def": 13,
+      "rank_st": 6,
+      "rank_take": 16,
+      "rank_give": 22
     },
     {
       "abbr": "TEN",
@@ -1099,14 +1653,24 @@
         "st_fgm": 3,
         "st_fga": 3,
         "st_fg_pct_used": 100.0,
-        "st_comp": 1.81
+        "st_comp": 1.81,
+        "takeaways": 2,
+        "giveaways": 1,
+        "takeaways_pg": 1.0,
+        "giveaways_pg": 0.5,
+        "take_int": 2,
+        "take_fum": 0,
+        "int_thrown": 0,
+        "fum_lost": 1
       },
       "pillars": {
         "off": -10.82,
         "def": 0.28,
-        "st": -0.87
+        "st": -0.87,
+        "take": -0.52,
+        "give": 5.0
       },
-      "composite": -5.13,
+      "composite": -3.52,
       "composite_od_only": -5.27,
       "games": [
         {
@@ -1114,102 +1678,170 @@
           "ptsAgainst": 23.0,
           "week": 1,
           "opp": "NYJ",
-          "ha": "H"
+          "ha": "H",
+          "event": "401872924",
+          "takeaways": 0,
+          "giveaways": 1,
+          "take_int": 0,
+          "take_fum": 0,
+          "int_thrown": 0,
+          "fum_lost": 1
         },
         {
           "ptsFor": 20.0,
           "ptsAgainst": 24.0,
           "week": 2,
           "opp": "PHI",
-          "ha": "H"
+          "ha": "H",
+          "event": "401872939",
+          "takeaways": 2,
+          "giveaways": 0,
+          "take_int": 2,
+          "take_fum": 0,
+          "int_thrown": 0,
+          "fum_lost": 0
+        }
+      ],
+      "rank": 24,
+      "rank_off": 28,
+      "rank_def": 17,
+      "rank_st": 16,
+      "rank_take": 23,
+      "rank_give": 12
+    },
+    {
+      "abbr": "TB",
+      "n": 2,
+      "raw": {
+        "off_ppg": 23.0,
+        "def_ppg": 28.0,
+        "st_ret_td": 0,
+        "st_fg_pct": 100.0,
+        "st_fgm": 6,
+        "st_fga": 6,
+        "st_fg_pct_used": 100.0,
+        "st_comp": 1.81,
+        "takeaways": 1,
+        "giveaways": 5,
+        "takeaways_pg": 0.5,
+        "giveaways_pg": 2.5,
+        "take_int": 1,
+        "take_fum": 0,
+        "int_thrown": 1,
+        "fum_lost": 4
+      },
+      "pillars": {
+        "off": 0.96,
+        "def": -8.09,
+        "st": -0.87,
+        "take": -3.45,
+        "give": -5.0
+      },
+      "composite": -3.67,
+      "composite_od_only": -3.57,
+      "games": [
+        {
+          "ptsFor": 27.0,
+          "ptsAgainst": 33.0,
+          "week": 1,
+          "opp": "CIN",
+          "ha": "A",
+          "event": "401872925",
+          "takeaways": 1,
+          "giveaways": 4,
+          "take_int": 1,
+          "take_fum": 0,
+          "int_thrown": 0,
+          "fum_lost": 4
+        },
+        {
+          "ptsFor": 19.0,
+          "ptsAgainst": 23.0,
+          "week": 2,
+          "opp": "CLE",
+          "ha": "H",
+          "event": "401872935",
+          "takeaways": 0,
+          "giveaways": 1,
+          "take_int": 0,
+          "take_fum": 0,
+          "int_thrown": 1,
+          "fum_lost": 0
+        }
+      ],
+      "rank": 25,
+      "rank_off": 16,
+      "rank_def": 26,
+      "rank_st": 15,
+      "rank_take": 29,
+      "rank_give": 32
+    },
+    {
+      "abbr": "GB",
+      "n": 2,
+      "raw": {
+        "off_ppg": 21.0,
+        "def_ppg": 28.0,
+        "st_ret_td": 0,
+        "st_fg_pct": 100.0,
+        "st_fgm": 5,
+        "st_fga": 5,
+        "st_fg_pct_used": 100.0,
+        "st_comp": 1.81,
+        "takeaways": 1,
+        "giveaways": 3,
+        "takeaways_pg": 0.5,
+        "giveaways_pg": 1.5,
+        "take_int": 1,
+        "take_fum": 0,
+        "int_thrown": 1,
+        "fum_lost": 2
+      },
+      "pillars": {
+        "off": -1.99,
+        "def": -8.09,
+        "st": -0.87,
+        "take": -3.45,
+        "give": -2.63
+      },
+      "composite": -4.52,
+      "composite_od_only": -5.04,
+      "games": [
+        {
+          "ptsFor": 22.0,
+          "ptsAgainst": 39.0,
+          "week": 1,
+          "opp": "MIN",
+          "ha": "A",
+          "event": "401872927",
+          "takeaways": 1,
+          "giveaways": 2,
+          "take_int": 1,
+          "take_fum": 0,
+          "int_thrown": 1,
+          "fum_lost": 1
+        },
+        {
+          "ptsFor": 20.0,
+          "ptsAgainst": 17.0,
+          "week": 2,
+          "opp": "NYJ",
+          "ha": "A",
+          "event": "401872936",
+          "takeaways": 0,
+          "giveaways": 1,
+          "take_int": 0,
+          "take_fum": 0,
+          "int_thrown": 0,
+          "fum_lost": 1
         }
       ],
       "rank": 26,
-      "rank_off": 28,
-      "rank_def": 17,
-      "rank_st": 16
-    },
-    {
-      "abbr": "CLE",
-      "n": 2,
-      "raw": {
-        "off_ppg": 16.5,
-        "def_ppg": 26.5,
-        "st_ret_td": 0,
-        "st_fg_pct": 100.0,
-        "st_fgm": 4,
-        "st_fga": 4,
-        "st_fg_pct_used": 100.0,
-        "st_comp": 1.81
-      },
-      "pillars": {
-        "off": -8.61,
-        "def": -5.3,
-        "st": -0.87
-      },
-      "composite": -6.77,
-      "composite_od_only": -6.96,
-      "games": [
-        {
-          "ptsFor": 10.0,
-          "ptsAgainst": 34.0,
-          "week": 1,
-          "opp": "JAX",
-          "ha": "A"
-        },
-        {
-          "ptsFor": 23.0,
-          "ptsAgainst": 19.0,
-          "week": 2,
-          "opp": "TB",
-          "ha": "A"
-        }
-      ],
-      "rank": 27,
-      "rank_off": 25,
-      "rank_def": 22,
-      "rank_st": 4
-    },
-    {
-      "abbr": "HOU",
-      "n": 2,
-      "raw": {
-        "off_ppg": 18.5,
-        "def_ppg": 28.0,
-        "st_ret_td": 0,
-        "st_fg_pct": 75.0,
-        "st_fgm": 3,
-        "st_fga": 4,
-        "st_fg_pct_used": 75.0,
-        "st_comp": -1.32
-      },
-      "pillars": {
-        "off": -5.67,
-        "def": -8.09,
-        "st": -3.61
-      },
-      "composite": -6.78,
-      "composite_od_only": -6.88,
-      "games": [
-        {
-          "ptsFor": 31.0,
-          "ptsAgainst": 36.0,
-          "week": 1,
-          "opp": "BUF",
-          "ha": "H"
-        },
-        {
-          "ptsFor": 6.0,
-          "ptsAgainst": 20.0,
-          "week": 2,
-          "opp": "CIN",
-          "ha": "H"
-        }
-      ],
-      "rank": 28,
-      "rank_off": 21,
-      "rank_def": 25,
-      "rank_st": 23
+      "rank_off": 18,
+      "rank_def": 24,
+      "rank_st": 8,
+      "rank_take": 26,
+      "rank_give": 23
     },
     {
       "abbr": "WSH",
@@ -1222,14 +1854,24 @@
         "st_fgm": 3,
         "st_fga": 5,
         "st_fg_pct_used": 60.0,
-        "st_comp": -3.19
+        "st_comp": -3.19,
+        "takeaways": 0,
+        "giveaways": 1,
+        "takeaways_pg": 0.0,
+        "giveaways_pg": 0.5,
+        "take_int": 0,
+        "take_fum": 0,
+        "int_thrown": 0,
+        "fum_lost": 1
       },
       "pillars": {
         "off": -1.99,
         "def": -12.0,
-        "st": -4.0
+        "st": -4.0,
+        "take": -5.0,
+        "give": 5.0
       },
-      "composite": -6.9,
+      "composite": -5.27,
       "composite_od_only": -6.99,
       "games": [
         {
@@ -1237,20 +1879,170 @@
           "ptsAgainst": 24.0,
           "week": 1,
           "opp": "PHI",
-          "ha": "A"
+          "ha": "A",
+          "event": "401872929",
+          "takeaways": 0,
+          "giveaways": 0,
+          "take_int": 0,
+          "take_fum": 0,
+          "int_thrown": 0,
+          "fum_lost": 0
         },
         {
           "ptsFor": 20.0,
           "ptsAgainst": 37.0,
           "week": 2,
           "opp": "DAL",
-          "ha": "A"
+          "ha": "A",
+          "event": "401872944",
+          "takeaways": 0,
+          "giveaways": 1,
+          "take_int": 0,
+          "take_fum": 0,
+          "int_thrown": 0,
+          "fum_lost": 1
+        }
+      ],
+      "rank": 27,
+      "rank_off": 19,
+      "rank_def": 32,
+      "rank_st": 32,
+      "rank_take": 32,
+      "rank_give": 13
+    },
+    {
+      "abbr": "CLE",
+      "n": 2,
+      "raw": {
+        "off_ppg": 16.5,
+        "def_ppg": 26.5,
+        "st_ret_td": 0,
+        "st_fg_pct": 100.0,
+        "st_fgm": 4,
+        "st_fga": 4,
+        "st_fg_pct_used": 100.0,
+        "st_comp": 1.81,
+        "takeaways": 1,
+        "giveaways": 2,
+        "takeaways_pg": 0.5,
+        "giveaways_pg": 1.0,
+        "take_int": 1,
+        "take_fum": 0,
+        "int_thrown": 1,
+        "fum_lost": 1
+      },
+      "pillars": {
+        "off": -8.61,
+        "def": -5.3,
+        "st": -0.87,
+        "take": -3.45,
+        "give": 1.84
+      },
+      "composite": -5.44,
+      "composite_od_only": -6.96,
+      "games": [
+        {
+          "ptsFor": 10.0,
+          "ptsAgainst": 34.0,
+          "week": 1,
+          "opp": "JAX",
+          "ha": "A",
+          "event": "401872922",
+          "takeaways": 0,
+          "giveaways": 2,
+          "take_int": 0,
+          "take_fum": 0,
+          "int_thrown": 1,
+          "fum_lost": 1
+        },
+        {
+          "ptsFor": 23.0,
+          "ptsAgainst": 19.0,
+          "week": 2,
+          "opp": "TB",
+          "ha": "A",
+          "event": "401872935",
+          "takeaways": 1,
+          "giveaways": 0,
+          "take_int": 1,
+          "take_fum": 0,
+          "int_thrown": 0,
+          "fum_lost": 0
+        }
+      ],
+      "rank": 28,
+      "rank_off": 25,
+      "rank_def": 22,
+      "rank_st": 4,
+      "rank_take": 25,
+      "rank_give": 15
+    },
+    {
+      "abbr": "HOU",
+      "n": 2,
+      "raw": {
+        "off_ppg": 18.5,
+        "def_ppg": 28.0,
+        "st_ret_td": 0,
+        "st_fg_pct": 75.0,
+        "st_fgm": 3,
+        "st_fga": 4,
+        "st_fg_pct_used": 75.0,
+        "st_comp": -1.32,
+        "takeaways": 0,
+        "giveaways": 2,
+        "takeaways_pg": 0.0,
+        "giveaways_pg": 1.0,
+        "take_int": 0,
+        "take_fum": 0,
+        "int_thrown": 0,
+        "fum_lost": 2
+      },
+      "pillars": {
+        "off": -5.67,
+        "def": -8.09,
+        "st": -3.61,
+        "take": -5.0,
+        "give": 1.84
+      },
+      "composite": -5.57,
+      "composite_od_only": -6.88,
+      "games": [
+        {
+          "ptsFor": 31.0,
+          "ptsAgainst": 36.0,
+          "week": 1,
+          "opp": "BUF",
+          "ha": "H",
+          "event": "401872660",
+          "takeaways": 0,
+          "giveaways": 2,
+          "take_int": 0,
+          "take_fum": 0,
+          "int_thrown": 0,
+          "fum_lost": 2
+        },
+        {
+          "ptsFor": 6.0,
+          "ptsAgainst": 20.0,
+          "week": 2,
+          "opp": "CIN",
+          "ha": "H",
+          "event": "401872934",
+          "takeaways": 0,
+          "giveaways": 0,
+          "take_int": 0,
+          "take_fum": 0,
+          "int_thrown": 0,
+          "fum_lost": 0
         }
       ],
       "rank": 29,
-      "rank_off": 19,
-      "rank_def": 32,
-      "rank_st": 32
+      "rank_off": 21,
+      "rank_def": 25,
+      "rank_st": 23,
+      "rank_take": 30,
+      "rank_give": 16
     },
     {
       "abbr": "LAC",
@@ -1263,14 +2055,24 @@
         "st_fgm": 0,
         "st_fga": 1,
         "st_fg_pct_used": 0.0,
-        "st_comp": -10.69
+        "st_comp": -10.69,
+        "takeaways": 1,
+        "giveaways": 5,
+        "takeaways_pg": 0.5,
+        "giveaways_pg": 2.5,
+        "take_int": 1,
+        "take_fum": 0,
+        "int_thrown": 3,
+        "fum_lost": 2
       },
       "pillars": {
         "off": -12.0,
         "def": -4.37,
-        "st": -4.0
+        "st": -4.0,
+        "take": -3.45,
+        "give": -5.0
       },
-      "composite": -8.06,
+      "composite": -7.33,
       "composite_od_only": -8.19,
       "games": [
         {
@@ -1278,20 +2080,36 @@
           "ptsAgainst": 26.0,
           "week": 1,
           "opp": "ARI",
-          "ha": "H"
+          "ha": "H",
+          "event": "401872926",
+          "takeaways": 0,
+          "giveaways": 2,
+          "take_int": 0,
+          "take_fum": 0,
+          "int_thrown": 1,
+          "fum_lost": 1
         },
         {
           "ptsFor": 14.0,
           "ptsAgainst": 26.0,
           "week": 2,
           "opp": "LV",
-          "ha": "H"
+          "ha": "H",
+          "event": "401872941",
+          "takeaways": 1,
+          "giveaways": 3,
+          "take_int": 1,
+          "take_fum": 0,
+          "int_thrown": 2,
+          "fum_lost": 1
         }
       ],
       "rank": 30,
       "rank_off": 30,
       "rank_def": 21,
-      "rank_st": 27
+      "rank_st": 27,
+      "rank_take": 28,
+      "rank_give": 29
     },
     {
       "abbr": "ATL",
@@ -1304,14 +2122,24 @@
         "st_fgm": 3,
         "st_fga": 6,
         "st_fg_pct_used": 50.0,
-        "st_comp": -4.44
+        "st_comp": -4.44,
+        "takeaways": 1,
+        "giveaways": 7,
+        "takeaways_pg": 0.5,
+        "giveaways_pg": 3.5,
+        "take_int": 0,
+        "take_fum": 1,
+        "int_thrown": 5,
+        "fum_lost": 2
       },
       "pillars": {
         "off": -12.0,
         "def": -6.23,
-        "st": -4.0
+        "st": -4.0,
+        "take": -3.45,
+        "give": -5.0
       },
-      "composite": -8.96,
+      "composite": -8.05,
       "composite_od_only": -9.12,
       "games": [
         {
@@ -1319,20 +2147,36 @@
           "ptsAgainst": 20.0,
           "week": 1,
           "opp": "PIT",
-          "ha": "A"
+          "ha": "A",
+          "event": "401872658",
+          "takeaways": 1,
+          "giveaways": 2,
+          "take_int": 0,
+          "take_fum": 1,
+          "int_thrown": 2,
+          "fum_lost": 0
         },
         {
           "ptsFor": 3.0,
           "ptsAgainst": 34.0,
           "week": 2,
           "opp": "CAR",
-          "ha": "H"
+          "ha": "H",
+          "event": "401872933",
+          "takeaways": 0,
+          "giveaways": 5,
+          "take_int": 0,
+          "take_fum": 0,
+          "int_thrown": 3,
+          "fum_lost": 2
         }
       ],
       "rank": 31,
       "rank_off": 29,
       "rank_def": 23,
-      "rank_st": 25
+      "rank_st": 25,
+      "rank_take": 24,
+      "rank_give": 28
     },
     {
       "abbr": "MIA",
@@ -1345,14 +2189,24 @@
         "st_fgm": 4,
         "st_fga": 6,
         "st_fg_pct_used": 66.67,
-        "st_comp": -2.36
+        "st_comp": -2.36,
+        "takeaways": 2,
+        "giveaways": 2,
+        "takeaways_pg": 1.0,
+        "giveaways_pg": 1.0,
+        "take_int": 2,
+        "take_fum": 0,
+        "int_thrown": 1,
+        "fum_lost": 1
       },
       "pillars": {
         "off": -12.0,
         "def": -12.0,
-        "st": -4.0
+        "st": -4.0,
+        "take": -0.52,
+        "give": 1.84
       },
-      "composite": -11.75,
+      "composite": -9.21,
       "composite_od_only": -12.0,
       "games": [
         {
@@ -1360,20 +2214,36 @@
           "ptsAgainst": 27.0,
           "week": 1,
           "opp": "LV",
-          "ha": "A"
+          "ha": "A",
+          "event": "401872928",
+          "takeaways": 2,
+          "giveaways": 2,
+          "take_int": 2,
+          "take_fum": 0,
+          "int_thrown": 1,
+          "fum_lost": 1
         },
         {
           "ptsFor": 13.0,
           "ptsAgainst": 35.0,
           "week": 2,
           "opp": "SF",
-          "ha": "A"
+          "ha": "A",
+          "event": "401872942",
+          "takeaways": 0,
+          "giveaways": 0,
+          "take_int": 0,
+          "take_fum": 0,
+          "int_thrown": 0,
+          "fum_lost": 0
         }
       ],
       "rank": 32,
       "rank_off": 31,
       "rank_def": 31,
-      "rank_st": 29
+      "rank_st": 29,
+      "rank_take": 18,
+      "rank_give": 17
     }
   ]
 }
