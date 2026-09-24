@@ -2335,7 +2335,7 @@ async function loadOpenerSnaps() {
 
 async function loadNfl() {
   const openersReq = loadOpenerSnaps();
-  const nflReq = fetch("./data/nfl-2026.json?v=pffpre0924");
+  const nflReq = fetch("./data/nfl-2026.json?v=w3odds0924");
   const priorReq = fetch("./data/prior-2025.json?v=pffpre0924");
   const ytdStReq = fetch("./data/ytd-st-2026.json?v=pffpre0924");
   const ytdRankReq = fetch("./data/ytd-rankings-2026.json?v=pffpre0924");
@@ -3212,6 +3212,12 @@ function formatOurLine(homeLine, homeAbbr, awayAbbr) {
   if (homeLine === 0) return "PK";
   if (homeLine < 0) return homeAbbr + " −" + Math.abs(homeLine).toFixed(1);
   return awayAbbr + " −" + Math.abs(homeLine).toFixed(1);
+}
+
+/** Empty Current input hint. This game's favorite format, not another club's number. */
+function oddsInputPlaceholder(game) {
+  const away = game && game.away ? String(game.away) : "";
+  return away ? away + " -3" : "—";
 }
 
 function rtgClass(n) {
@@ -5193,7 +5199,7 @@ function renderSchedule() {
           </div>
           <div class="sked-line sked-mkt">
             <span class="lbl">Current</span>
-            <input class="mono" data-odds="${esc(g.id)}" value="${esc(mkt.odds)}" placeholder="SEA -3.5" spellcheck="false" aria-label="Current street">
+            <input class="mono" data-odds="${esc(g.id)}" value="${esc(mkt.odds)}" placeholder="${esc(oddsInputPlaceholder(g))}" spellcheck="false" aria-label="Current street">
             <span class="when">${esc(fmtLineStamp(street.currentAt))}</span>
             <label>O/U <input class="mono" type="number" step="0.5" data-ou="${esc(g.id)}" value="${esc(ouVal)}"></label>
           </div>
