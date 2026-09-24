@@ -17,6 +17,8 @@ const HFA_DEFAULT = 2;
 const TAPER_N = 3;
 /* 2026 FA stays on the sheet. It does not move the B$ line while this is false. */
 const INCLUDE_FA = false;
+/* 2026 PFF preseason OVER stays on the sheet. It does not move the B$ line while this is false. */
+const INCLUDE_PFF_PRESEASON = false;
 const SHEET_BOX_KEY = "nflScout.sheetBoxes.v1";
 const WEEKLY_BUDGET = 1000;
 const UNIT = 50;
@@ -521,8 +523,11 @@ function normAbbr(abbr) {
      net = clamp((off−μo)/5 + (def−μd)/5 + 0.15*(st−μs)/5, −2.0, +2.0).
      League means from all 32 clubs. Early-season n can be 1 — cap keeps it modest.
      IN the line (eff / ourHomeLine). Does not replace pff_term.
-   pff_pre_term is display only. Not in eff() or ourHomeLine.
-     2026 preseason team OVER stays on the club sheet so you can see it.
+   pff_pre_term(abbr) = INCLUDE_PFF_PRESEASON ? pff_pre_raw(abbr) : 0
+     INCLUDE_PFF_PRESEASON = false. The 2026 preseason OVER box is display-only.
+     pff_pre_raw is the stored net in pff-pre-2026.json (5 grade ≈ 1 point, cap ±1).
+     Does not rewrite the 2025 prior, the PFF 22, the 2026 REG YTD grade, or the
+     injury grade fallback (Madden first, then 2025 PFF grade).
    user_adjust = optional override on top of the algorithm (old "base").
    Injuries are a weekly point value. They do NOT taper with the prior (N=3).
    They stay until the row is off or deleted.
@@ -538,8 +543,9 @@ function normAbbr(abbr) {
      Manual overrides are NOT clamped (standing: Darnold 1.5 / Murray 0.5).
      injury_term = clamp(sum of ON rows, −cap_team, 0)
    Effective = algorithm + FA + draft + madden + pff + pff_ytd + SOS + return + injury + adjust + context
-   = algorithm_base + fa_term + draft_term + madden_term + pff_term + pff_ytd_term + sos_term + return_term + injury_term + user_adjust + sum of active (on) context. Preseason OVER is not in this sum.
+   = algorithm_base + fa_term + draft_term + madden_term + pff_term + pff_pre_term + pff_ytd_term + sos_term + return_term + injury_term + user_adjust + sum of active (on) context.
    fa_term is 0 while INCLUDE_FA is false.
+   pff_pre_term is 0 while INCLUDE_PFF_PRESEASON is false.
 
    Taper (do not invent another formula):
      N = 3  (prior phased out by Week 3)
@@ -583,7 +589,7 @@ function normAbbr(abbr) {
      GREAT +0.12, GOOD +0.05, FAIR 0, POOR −0.12. Best QB/RB/TE + top 2 WR
      per side. matchup_net = clamp(home − away, ±0.5). Week 1 only.
      Does not rewrite the prior.
-     eff() stays algorithm + FA + draft + madden + pff + injury + adjust + context. FA adds 0 while INCLUDE_FA is false. Preseason OVER is off the number.
+     eff() stays algorithm + FA + draft + madden + pff + pff_pre + pff_ytd + injury + adjust + context. FA adds 0 while INCLUDE_FA is false. Preseason OVER adds 0 while INCLUDE_PFF_PRESEASON is false.
 
    Neutral site (game.neutral, e.g. Melbourne LAR vs SF): hfa = 0.
 
@@ -920,10 +926,15 @@ function pffPreTeam(abbr) {
   return pffPreData.teams[a] || null;
 }
 
-function pffPreTerm(abbr) {
+function pffPreRaw(abbr) {
   const t = pffPreTeam(abbr);
   if (!t) return 0;
   return num(t.net) || 0;
+}
+
+function pffPreTerm(abbr) {
+  if (!INCLUDE_PFF_PRESEASON) return 0;
+  return pffPreRaw(abbr);
 }
 
 function pffYtdTeam(abbr) {
@@ -1369,7 +1380,7 @@ function seedInjuriesIfNeeded() {
 function eff(abbr) {
   const a = normAbbr(abbr);
   const p = getProfile(a);
-  return algorithmBase(a) + faTerm(a) + draftTerm(a) + maddenTerm(a) + pffTerm(a) + pffYtdTerm(a) + sosTerm(a) + returnTerm(a) + injuryTerm(a) + (num(p.user_adjust) || 0) + contextSum(p);
+  return algorithmBase(a) + faTerm(a) + draftTerm(a) + maddenTerm(a) + pffTerm(a) + pffPreTerm(a) + pffYtdTerm(a) + sosTerm(a) + returnTerm(a) + injuryTerm(a) + (num(p.user_adjust) || 0) + contextSum(p);
 }
 
 function coachOf(abbr) {
@@ -2324,15 +2335,15 @@ async function loadOpenerSnaps() {
 
 async function loadNfl() {
   const openersReq = loadOpenerSnaps();
-  const nflReq = fetch("./data/nfl-2026.json?v=ytdto0924");
-  const priorReq = fetch("./data/prior-2025.json?v=ytdto0924");
-  const ytdStReq = fetch("./data/ytd-st-2026.json?v=ytdto0924");
-  const ytdRankReq = fetch("./data/ytd-rankings-2026.json?v=ytdto0924");
+  const nflReq = fetch("./data/nfl-2026.json?v=pffpre0924");
+  const priorReq = fetch("./data/prior-2025.json?v=pffpre0924");
+  const ytdStReq = fetch("./data/ytd-st-2026.json?v=pffpre0924");
+  const ytdRankReq = fetch("./data/ytd-rankings-2026.json?v=pffpre0924");
   const faReq = fetch("./data/fa-2026.json");
   const draftReq = fetch("./data/draft-2026.json");
   const maddenReq = fetch("./data/madden-2026.json");
   const pffReq = fetch("./data/pff-2026.json?v=pff1");
-  const pffPreReq = fetch("./data/pff-pre-2026.json?v=pff2");
+  const pffPreReq = fetch("./data/pff-pre-2026.json?v=pffpre0924");
   const pffYtdReq = fetch("./data/pff-2026-ytd.json?v=pff5");
   const pffMatchReq = fetch("./data/pff-matchups-2026.json?v=pff2");
   const sosReq = fetch("./data/sos-2025.json");
@@ -3532,7 +3543,7 @@ function sheetBoxState() {
 function sheetBoxOpen(id) {
   const saved = sheetBoxState();
   if (Object.prototype.hasOwnProperty.call(saved, id)) return !!saved[id];
-  if (id === "fa") return false;
+  if (id === "fa" || id === "pffpre") return false;
   return true;
 }
 
@@ -3867,17 +3878,30 @@ function pffBlockHtml(abbr) {
   return sheetBoxHtml("pff", "fa-block pff-block", "PFF 2025 · same 22 (11 OFF + 11 DEF)", sheetHeadNum(net), body);
 }
 
+function pffPreKicker() {
+  return INCLUDE_PFF_PRESEASON ? "PFF 2026 preseason · team OVER" : "PFF 2026 preseason · not in B$ line";
+}
+
+function pffPreBoardNote(abbr) {
+  if (!INCLUDE_PFF_PRESEASON) return "on the board 0.0";
+  return "on the board " + fmtRtg(pffPreTerm(abbr));
+}
+
 function pffPreBlockHtml(abbr) {
   const t = pffPreTeam(abbr);
-  const net = pffPreTerm(abbr);
+  const raw = pffPreRaw(abbr);
   const over = t && t.over != null ? t.over : "—";
+  const record = t && t.record ? " · " + t.record : "";
+  const note = INCLUDE_PFF_PRESEASON
+    ? "Preseason team OVER vs league mean. 5 grade ≈ 1 point, cap ±1. In the B$ line."
+    : "Display only. Preseason team OVER does not move the B$ line. 5 grade ≈ 1 point vs league mean, cap ±1.";
   const body = `<div class="fa-net">
       <small>NET</small>
-      <em class="${rtgClass(net)}">${esc(fmtRtg(net))}</em>
-      <span class="fa-net-note">OVER ${esc(String(over))}${t && t.record ? " · " + esc(t.record) : ""}</span>
+      <em class="${rtgClass(raw)}">${esc(fmtRtg(raw))}</em>
+      <span class="fa-net-note">${esc(pffPreBoardNote(abbr))} · OVER ${esc(String(over))}${esc(record)}</span>
     </div>
-    <p class="prior-note">On the sheet only. Not in the rating or the line. Preseason is too noisy for the number.</p>`;
-  return sheetBoxHtml("pffpre", "fa-block pff-block", "PFF 2026 preseason · team OVER", sheetHeadNum(net), body);
+    <p class="prior-note">${esc(note)}</p>`;
+  return sheetBoxHtml("pffpre", "fa-block pff-block", pffPreKicker(), sheetHeadNum(raw), body);
 }
 
 function pffYtdBlockHtml(abbr) {
