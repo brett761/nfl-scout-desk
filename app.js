@@ -547,9 +547,11 @@ function normAbbr(abbr) {
      w_prior = (N − n) / N
      w_curr  = n / N
      blended = w_prior * prior + w_curr * current
-     currentRating from YTD O/D/ST on 2025 prior scale: ±12 off/def (2025 PPG min/max),
-     ±4 ST (2*ret+(FG%-mean)/8 → 2025 comp endpoints); composite
-     (0.3875*off+0.3875*def+0.025*st)/0.8; |current| capped at 12. TO deferred.
+     currentRating from YTD on the 2025 prior scale: ±12 off/def (2025 PPG min/max),
+     ±4 ST (2*ret+(FG%-mean)/8 → 2025 comp endpoints), ±5 take/give
+     (YTD per game vs 2025 season totals / 17). composite
+     0.3875*off + 0.3875*def + 0.025*st + 0.075*take + 0.125*give
+     (weights sum to 1, same structure as the prior); |current| capped at 12.
      When n = 0, blended = prior. When n ≥ 3, blended = current.
 
    ourHomeLine = −(homeEff − awayEff + hfa + coach_term + prep_net + ats_net + sched_net)
@@ -676,8 +678,67 @@ function currentStPillar(abbr) {
   return mapStToPillar(row.st_ret_td, row.st_fg_pct, row.st_fga);
 }
 
+function leagueTurnoverScale() {
+  // 2025 season-total min/max. Per-game anchors are those totals / games_in_prior.
+  // Same map as prior-2025.json pillars.take / pillars.give.
+  let takeLo = Infinity, takeHi = -Infinity, giveLo = Infinity, giveHi = -Infinity;
+  const games = (priorData && num(priorData.games_in_prior)) || 17;
+  if (priorData && priorData.teams) {
+    for (const t of Object.values(priorData.teams)) {
+      const take = t && t.raw ? num(t.raw.takeaways) : null;
+      const give = t && t.raw ? num(t.raw.giveaways) : null;
+      if (take !== null) {
+        if (take < takeLo) takeLo = take;
+        if (take > takeHi) takeHi = take;
+      }
+      if (give !== null) {
+        if (give < giveLo) giveLo = give;
+        if (give > giveHi) giveHi = give;
+      }
+    }
+  }
+  if (!Number.isFinite(takeLo) || !Number.isFinite(takeHi) || takeHi <= takeLo) {
+    takeLo = 4;
+    takeHi = 33;
+  }
+  if (!Number.isFinite(giveLo) || !Number.isFinite(giveHi) || giveHi <= giveLo) {
+    giveLo = 11;
+    giveHi = 30;
+  }
+  return { games, takeLo, takeHi, giveLo, giveHi };
+}
+
+function mapTurnoverToPillar(total, nGames, kind) {
+  const n = num(nGames);
+  const x = num(total);
+  if (n === null || n <= 0 || x === null) return 0;
+  const pg = x / n;
+  const scale = leagueTurnoverScale();
+  const priorGames = scale.games || 17;
+  const seasonLo = kind === "give" ? scale.giveLo : scale.takeLo;
+  const seasonHi = kind === "give" ? scale.giveHi : scale.takeHi;
+  const lo = seasonLo / priorGames;
+  const hi = seasonHi / priorGames;
+  const span = hi - lo || 1;
+  const t = Math.max(0, Math.min(1, (pg - lo) / span));
+  const pillar = kind === "give" ? (5 - t * 10) : (-5 + t * 10);
+  return Math.max(-5, Math.min(5, pillar));
+}
+
+function currentTurnovers(abbr) {
+  const row = ytdRankTeam(abbr);
+  const raw = row && row.raw ? row.raw : null;
+  if (!raw || num(raw.takeaways) === null || num(raw.giveaways) === null) return null;
+  const n = num(row.n);
+  return {
+    takeaways: num(raw.takeaways),
+    giveaways: num(raw.giveaways),
+    n: n === null ? 0 : n,
+  };
+}
+
 function currentPillars(abbr) {
-  // YTD pillars on 2025 prior scale. TO deferred.
+  // YTD pillars on the 2025 prior scale, including take/give per game.
   const rows = scoredGames2026(abbr);
   let off = 0, def = 0;
   if (rows.length) {
@@ -687,20 +748,26 @@ function currentPillars(abbr) {
     def = mapPpgToPillar(defPpg, "def");
   }
   const st = currentStPillar(abbr);
-  return { off, def, st, n: rows.length };
+  const to = currentTurnovers(abbr);
+  const nTo = to && to.n ? to.n : rows.length;
+  const take = to ? mapTurnoverToPillar(to.takeaways, nTo, "take") : 0;
+  const give = to ? mapTurnoverToPillar(to.giveaways, nTo, "give") : 0;
+  return { off, def, st, take, give, n: rows.length };
 }
 
 function currentRating(abbr) {
-  // In-season 2026 current: O/D/ST on 2025 prior scale (same units as prior pillars).
-  // Take/give deferred. Optional EMA later; for small n use straight mean of scored games.
-  const { off, def, st, n } = currentPillars(abbr);
+  // In-season 2026 current: five pillars on the 2025 prior scale.
+  // Optional EMA later; for small n use the straight mean of scored games.
+  const { off, def, st, take, give, n } = currentPillars(abbr);
   if (!n && !(ytdStData && ytdStData.teams && ytdStData.teams[normAbbr(abbr)])) return 0;
   const w = (priorData && priorData.weights) || {};
   const wOff = num(w.off) ?? 0.3875;
   const wDef = num(w.def) ?? 0.3875;
   const wSt = num(w.st) ?? 0.025;
-  const denom = (wOff + wDef + wSt) || 0.8;
-  let cur = (wOff * off + wDef * def + wSt * st) / denom;
+  const wTake = num(w.take) ?? 0.075;
+  const wGive = num(w.give) ?? 0.125;
+  const denom = (wOff + wDef + wSt + wTake + wGive) || 1;
+  let cur = (wOff * off + wDef * def + wSt * st + wTake * take + wGive * give) / denom;
   if (Math.abs(cur) > 12) cur = Math.sign(cur) * 12;
   return cur;
 }
@@ -2257,10 +2324,10 @@ async function loadOpenerSnaps() {
 
 async function loadNfl() {
   const openersReq = loadOpenerSnaps();
-  const nflReq = fetch("./data/nfl-2026.json?v=ytdfa0924");
-  const priorReq = fetch("./data/prior-2025.json?v=ytdfa0924");
-  const ytdStReq = fetch("./data/ytd-st-2026.json?v=ytdfa0924");
-  const ytdRankReq = fetch("./data/ytd-rankings-2026.json?v=ytdfa0924");
+  const nflReq = fetch("./data/nfl-2026.json?v=ytdto0924");
+  const priorReq = fetch("./data/prior-2025.json?v=ytdto0924");
+  const ytdStReq = fetch("./data/ytd-st-2026.json?v=ytdto0924");
+  const ytdRankReq = fetch("./data/ytd-rankings-2026.json?v=ytdto0924");
   const faReq = fetch("./data/fa-2026.json");
   const draftReq = fetch("./data/draft-2026.json");
   const maddenReq = fetch("./data/madden-2026.json");
@@ -3548,7 +3615,6 @@ function ytdGamesPlayed(abbr) {
 }
 
 function ytdPillarValue(abbr, key) {
-  if (key === "take" || key === "give") return 0;
   const row = ytdRankTeam(abbr);
   const fromFile = row && row.pillars ? num(row.pillars[key]) : null;
   if (fromFile !== null) return fromFile;
@@ -3567,6 +3633,8 @@ function ytdRawFor(abbr) {
     def_ppg: n ? games.reduce((s, r) => s + r.ptsAgainst, 0) / n : null,
     st_ret_td: stRow ? stRow.st_ret_td : null,
     st_fg_pct: stRow ? stRow.st_fg_pct : null,
+    takeaways: null,
+    giveaways: null,
   };
 }
 
@@ -3584,7 +3652,7 @@ function ytdBlockHtml(abbr) {
   const rows = pillarCols().map((col) => {
     const val = ytdPillarValue(abbr, col.key);
     const rng = ranges[col.key] || { lo: -5, hi: 5 };
-    const label = (col.key === "take" || col.key === "give") ? "—" : pillarRawLabel(col.key, raw);
+    const label = pillarRawLabel(col.key, raw);
     return pillarBarHtml(col.label, val, label, rng);
   }).join("");
   const combo = currentRating(abbr);
@@ -3598,7 +3666,7 @@ function ytdBlockHtml(abbr) {
         <span class="ytd-weight">${esc(ytdWeightCopy(abbr))}</span>
       </div>
     </div>
-    <p class="prior-note">Offense and defense sit on the same ±12 scale as the prior. Combined YTD is the current side of the blend. Takeaways and giveaways are still 0.</p>
+    <p class="prior-note">Offense and defense sit on the same ±12 scale as the prior. Takeaways and giveaways sit on the same ±5 scale, per game. Combined YTD is the current side of the blend.</p>
     <p class="prior-wts">${esc(pillarWeightLine())}</p>`;
   return sheetBoxHtml("ytd", "prior-block ytd-block", title, sheetHeadNum(combo), body);
 }
