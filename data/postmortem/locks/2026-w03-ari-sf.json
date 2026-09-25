@@ -1,0 +1,360 @@
+{
+  "week": 3,
+  "season": 2026,
+  "game_id": "ARI@SF",
+  "kick": "2026-09-27T20:05+00:00",
+  "away": "ARI",
+  "home": "SF",
+  "espn_id": "401872958",
+  "venue": "Levi's Stadium",
+  "neutral": false,
+  "window": "SUN_PM",
+  "model_home_spread": -14.71,
+  "model_home_spread_source": "desk_compute",
+  "street_home_spread": -8.5,
+  "close_at_lock": -8.5,
+  "ou_street": 47.5,
+  "street_note": "FINAL freeze 2026-09-25 4:27 PM ET (America/New_York). ESPN DraftKings: SF -8.5 / ou 47.5. Shop: ESPN/DK pickcenter primary; consensus held at freeze.",
+  "edge_home": 6.21,
+  "edge_note": "edgeHome = street \u2212 model = -8.5 \u2212 (-14.71) = 6.21 \u2192 home value (SF); |edge|\u22651.5",
+  "feature_stack": {
+    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W3 n\u22482 so fa/return at w_prior=1/3, draft_fade\u22480.5; pff_ytd IN line; injury 2026-09-25b FINAL",
+    "injury_pulled": "2026-09-25b",
+    "away_ARI": {
+      "prior": -3.68,
+      "fa": -0.1,
+      "draft": 0,
+      "madden": -0.31,
+      "pff": -0.81,
+      "pff_ytd": 2,
+      "sos": 0.72,
+      "return": 0,
+      "injury": -1.47,
+      "adjust": 0,
+      "context": 0,
+      "eff": -3.65,
+      "taper": {
+        "N": 3,
+        "n": 2,
+        "wPrior": 0.3333333333333333,
+        "wCurr": 0.6666666666666666
+      },
+      "current_rating": -3.23
+    },
+    "home_SF": {
+      "prior": 8.68,
+      "fa": 0.53,
+      "draft": 0,
+      "madden": 0.54,
+      "pff": 0.07,
+      "pff_ytd": 1.09,
+      "sos": -0.04,
+      "return": 0.67,
+      "injury": -2.48,
+      "adjust": 0,
+      "context": 0,
+      "eff": 9.06,
+      "taper": {
+        "N": 3,
+        "n": 2,
+        "wPrior": 0.3333333333333333,
+        "wCurr": 0.6666666666666666
+      },
+      "current_rating": 11.5
+    },
+    "layers_home_minus_away": {
+      "prior": 12.36,
+      "fa": 0.63,
+      "draft": 0,
+      "madden": 0.85,
+      "pff": 0.88,
+      "pff_ytd": -0.91,
+      "sos": -0.76,
+      "return": 0.67,
+      "injury": -1.01,
+      "adjust": 0,
+      "context": 0
+    },
+    "rating_diff_home_minus_away": 12.71,
+    "hfa": 2,
+    "coach": 0,
+    "coach_note": "coachTerm desk",
+    "prep": 0,
+    "prep_note": "week!==1 so week1_term=0; bye check via prepNet",
+    "ats": 0,
+    "ats_note": "atsNet desk",
+    "travel": 0,
+    "travel_note": "schedNet desk",
+    "matchup": 0,
+    "matchup_note": "pff-matchups missing \u2192 0",
+    "gap": 14.71,
+    "component_sum": [
+      {
+        "label": "rating_diff (SF\u2212ARI)",
+        "val": 12.71
+      },
+      {
+        "label": "HFA",
+        "val": 2
+      },
+      {
+        "label": "coach",
+        "val": 0
+      },
+      {
+        "label": "prep (W3)",
+        "val": 0
+      },
+      {
+        "label": "ats",
+        "val": 0
+      },
+      {
+        "label": "travel/sched",
+        "val": 0
+      },
+      {
+        "label": "matchup",
+        "val": 0
+      },
+      {
+        "label": "gap",
+        "val": 14.71
+      },
+      {
+        "label": "model_home_spread (\u2212gap)",
+        "val": -14.71
+      }
+    ],
+    "injuries": {
+      "ARI": [
+        {
+          "name": "Max Melton",
+          "pos": "CB1",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Dadrion Taylor-Demerson",
+          "pos": "S",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "pff",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Garrett Williams",
+          "pos": "CB1",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Hjalte Froholdt",
+          "pos": "C",
+          "status": "QUESTIONABLE",
+          "impact": 0.25,
+          "impact_source": "madden",
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "Roy Lopez",
+          "pos": "IDL",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "pff",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Will Johnson",
+          "pos": "CB1",
+          "status": "IR",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Kitan Crawford",
+          "pos": "S",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Kaleb Proctor",
+          "pos": "IDL",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Chase Bisontis",
+          "pos": "OG",
+          "status": "IR",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "James Conner",
+          "pos": "RB1",
+          "status": "IR",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        }
+      ],
+      "SF": [
+        {
+          "name": "Mike Evans",
+          "pos": "WR1",
+          "status": "QUESTIONABLE",
+          "impact": 0.5,
+          "impact_source": "madden",
+          "pts": -0.18,
+          "on": true
+        },
+        {
+          "name": "Nick Bosa",
+          "pos": "EDGE1",
+          "status": "DOUBTFUL",
+          "impact": 0.25,
+          "impact_source": "manual",
+          "pts": -0.19,
+          "on": true
+        },
+        {
+          "name": "Romello Height",
+          "pos": "EDGE1",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "C.J. West",
+          "pos": "IDL",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "James Thompson Jr.",
+          "pos": "IDL",
+          "status": "DOUBTFUL",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.19,
+          "on": true
+        },
+        {
+          "name": "Demarcus Robinson",
+          "pos": "WR2",
+          "status": "OUT",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Brandon Aiyuk",
+          "pos": "WR2",
+          "status": "OUT",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "De'Zhaun Stribling",
+          "pos": "WR2",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Jake Tonges",
+          "pos": "TE1",
+          "status": "IR",
+          "impact": 0.25,
+          "impact_source": "pff",
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Christian Kirk",
+          "pos": "WR2",
+          "status": "IR",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Ricky Pearsall",
+          "pos": "WR2",
+          "status": "IR",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Mykel Williams",
+          "pos": "EDGE1",
+          "status": "PUP",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        }
+      ]
+    },
+    "injury_terms": {
+      "ARI": {
+        "raw": -1.47,
+        "term": -1.47,
+        "capped": false,
+        "cap_team": 6
+      },
+      "SF": {
+        "raw": -2.48,
+        "term": -2.48,
+        "capped": false,
+        "cap_team": 6
+      }
+    }
+  },
+  "frozen_at": "2026-09-25 4:27 PM ET (America/New_York)",
+  "tickets": [],
+  "call": {
+    "action": "PASS",
+    "side": null,
+    "line": "SF -8.5",
+    "units": 0,
+    "price": null,
+    "class": "INFO",
+    "note": "|edge|=6.21; no clear injury/key-number thesis for Friday print \u2014 PASS (edge retained for postmortem)."
+  },
+  "notes": "FINAL pre-kick SUN_PM lock after Fri ~4pm ET status. Injury 2026-09-25b FINAL. ARI inj -1.47; SF inj -2.48. Street SF -8.5. Edge home 6.21. Call PASS."
+}

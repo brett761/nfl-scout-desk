@@ -1,0 +1,324 @@
+{
+  "week": 3,
+  "season": 2026,
+  "game_id": "PHI@CHI",
+  "kick": "2026-09-29T00:15+00:00",
+  "away": "PHI",
+  "home": "CHI",
+  "espn_id": "401872963",
+  "venue": "Soldier Field",
+  "neutral": false,
+  "window": "MNF",
+  "model_home_spread": 1.05,
+  "model_home_spread_source": "desk_compute",
+  "street_home_spread": 4.5,
+  "close_at_lock": 4.5,
+  "ou_street": 41.5,
+  "street_note": "FINAL freeze 2026-09-25 4:27 PM ET (America/New_York). ESPN DraftKings: PHI -4.5 / ou 41.5. Shop: ESPN/DK pickcenter primary; consensus held at freeze.",
+  "edge_home": 3.45,
+  "edge_note": "edgeHome = street \u2212 model = 4.5 \u2212 (1.05) = 3.45 \u2192 home value (CHI); |edge|\u22651.5",
+  "feature_stack": {
+    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W3 n\u22482 so fa/return at w_prior=1/3, draft_fade\u22480.5; pff_ytd IN line; injury 2026-09-25b FINAL",
+    "injury_pulled": "2026-09-25b",
+    "away_PHI": {
+      "prior": 3.56,
+      "fa": -1.03,
+      "draft": 0,
+      "madden": 0.73,
+      "pff": 0.47,
+      "pff_ytd": 2,
+      "sos": -0.53,
+      "return": 0,
+      "injury": -1.48,
+      "adjust": 0,
+      "context": 0,
+      "eff": 3.71,
+      "taper": {
+        "N": 3,
+        "n": 2,
+        "wPrior": 0.3333333333333333,
+        "wCurr": 0.6666666666666666
+      },
+      "current_rating": 3.54
+    },
+    "home_CHI": {
+      "prior": 4.99,
+      "fa": -0.13,
+      "draft": 0.3,
+      "madden": 0.06,
+      "pff": -0.01,
+      "pff_ytd": -0.98,
+      "sos": -0.86,
+      "return": 0,
+      "injury": -2.79,
+      "adjust": 0,
+      "context": 0,
+      "eff": 0.58,
+      "taper": {
+        "N": 3,
+        "n": 2,
+        "wPrior": 0.3333333333333333,
+        "wCurr": 0.6666666666666666
+      },
+      "current_rating": 6.27
+    },
+    "layers_home_minus_away": {
+      "prior": 1.43,
+      "fa": 0.9,
+      "draft": 0.3,
+      "madden": -0.67,
+      "pff": -0.48,
+      "pff_ytd": -2.98,
+      "sos": -0.33,
+      "return": 0,
+      "injury": -1.31,
+      "adjust": 0,
+      "context": 0
+    },
+    "rating_diff_home_minus_away": -3.13,
+    "hfa": 2,
+    "coach": 0,
+    "coach_note": "coachTerm desk",
+    "prep": 0,
+    "prep_note": "week!==1 so week1_term=0; bye check via prepNet",
+    "ats": 0.08,
+    "ats_note": "atsNet desk",
+    "travel": 0,
+    "travel_note": "schedNet desk",
+    "matchup": 0,
+    "matchup_note": "pff-matchups missing \u2192 0",
+    "gap": -1.05,
+    "component_sum": [
+      {
+        "label": "rating_diff (CHI\u2212PHI)",
+        "val": -3.13
+      },
+      {
+        "label": "HFA",
+        "val": 2
+      },
+      {
+        "label": "coach",
+        "val": 0
+      },
+      {
+        "label": "prep (W3)",
+        "val": 0
+      },
+      {
+        "label": "ats",
+        "val": 0.08
+      },
+      {
+        "label": "travel/sched",
+        "val": 0
+      },
+      {
+        "label": "matchup",
+        "val": 0
+      },
+      {
+        "label": "gap",
+        "val": -1.05
+      },
+      {
+        "label": "model_home_spread (\u2212gap)",
+        "val": 1.05
+      }
+    ],
+    "injuries": {
+      "PHI": [
+        {
+          "name": "DeVonta Smith",
+          "pos": "WR2",
+          "status": "QUESTIONABLE",
+          "impact": 0.25,
+          "impact_source": "madden",
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "Saquon Barkley",
+          "pos": "RB1",
+          "status": "QUESTIONABLE",
+          "impact": 0.5,
+          "impact_source": "manual",
+          "pts": -0.18,
+          "on": true
+        },
+        {
+          "name": "Jonathan Greenard",
+          "pos": "EDGE1",
+          "status": "QUESTIONABLE",
+          "impact": 0.25,
+          "impact_source": "madden",
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "Will Shipley",
+          "pos": "RB1",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "Andrew Mukuba",
+          "pos": "S",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "Jalen Carter",
+          "pos": "IDL",
+          "status": "QUESTIONABLE",
+          "impact": 0.5,
+          "impact_source": "manual",
+          "pts": -0.18,
+          "on": true
+        },
+        {
+          "name": "Tank Bigsby",
+          "pos": "RB1",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Dallas Goedert",
+          "pos": "TE1",
+          "status": "DOUBTFUL",
+          "impact": 0.25,
+          "impact_source": "madden",
+          "pts": -0.19,
+          "on": true
+        },
+        {
+          "name": "Landon Dickerson",
+          "pos": "OG",
+          "status": "IR",
+          "impact": 0.25,
+          "impact_source": "madden",
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Eli Stowers",
+          "pos": "TE1",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        }
+      ],
+      "CHI": [
+        {
+          "name": "Tyson Bagent",
+          "pos": "QB1",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.52,
+          "on": true
+        },
+        {
+          "name": "Caleb Williams",
+          "pos": "QB1",
+          "status": "DOUBTFUL",
+          "impact": 1.5,
+          "impact_source": "manual",
+          "pts": -1.13,
+          "on": true
+        },
+        {
+          "name": "Tyrique Stevenson Sr.",
+          "pos": "CB1",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Cairo Santos",
+          "pos": "K",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Shemar Turner",
+          "pos": "IDL",
+          "status": "OUT",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Noah Sewell",
+          "pos": "LB",
+          "status": "OUT",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Anthony Johnson Jr.",
+          "pos": "S",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Kyler Gordon",
+          "pos": "CB1",
+          "status": "PUP",
+          "impact": 0.25,
+          "impact_source": "madden",
+          "pts": -0.25,
+          "on": true
+        }
+      ]
+    },
+    "injury_terms": {
+      "PHI": {
+        "raw": -1.48,
+        "term": -1.48,
+        "capped": false,
+        "cap_team": 6
+      },
+      "CHI": {
+        "raw": -2.79,
+        "term": -2.79,
+        "capped": false,
+        "cap_team": 6
+      }
+    }
+  },
+  "frozen_at": "2026-09-25 4:27 PM ET (America/New_York)",
+  "tickets": [],
+  "call": {
+    "action": "FIRE",
+    "side": "CHI",
+    "line": "CHI +4.5",
+    "units": 3,
+    "price": -110,
+    "class": "INFO",
+    "note": "Caleb Williams DOUBTFUL (manual 1.5). Model PHI \u22121.05 vs street PHI \u22124.5; edge_home +3.45. Full 3u."
+  },
+  "notes": "FINAL pre-kick MNF lock after Fri ~4pm ET status. Injury 2026-09-25b FINAL. PHI inj -1.48; CHI inj -2.79. Street PHI -4.5. Edge home 3.45. Call FIRE."
+}

@@ -1,0 +1,270 @@
+{
+  "week": 3,
+  "season": 2026,
+  "game_id": "BAL@DAL",
+  "kick": "2026-09-27T20:25+00:00",
+  "away": "BAL",
+  "home": "DAL",
+  "espn_id": "401872960",
+  "venue": "Maracan\u00e3 Stadium",
+  "neutral": true,
+  "window": "SUN_PM",
+  "model_home_spread": 6.61,
+  "model_home_spread_source": "desk_compute",
+  "street_home_spread": 3.5,
+  "close_at_lock": 3.5,
+  "ou_street": 53.5,
+  "street_note": "FINAL freeze 2026-09-25 4:27 PM ET (America/New_York). ESPN DraftKings: BAL -3.5 / ou 53.5. Shop: ESPN/DK pickcenter primary; consensus held at freeze.",
+  "edge_home": -3.11,
+  "edge_note": "edgeHome = street \u2212 model = 3.5 \u2212 (6.61) = -3.11 \u2192 away value (BAL); |edge|\u22651.5",
+  "feature_stack": {
+    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=0 (neutral); W3 n\u22482 so fa/return at w_prior=1/3, draft_fade\u22480.5; pff_ytd IN line; injury 2026-09-25b FINAL",
+    "injury_pulled": "2026-09-25b",
+    "away_BAL": {
+      "prior": 3.66,
+      "fa": -0.57,
+      "draft": 0.35,
+      "madden": 0.59,
+      "pff": 0.22,
+      "pff_ytd": 2,
+      "sos": 0.08,
+      "return": 0.33,
+      "injury": -1,
+      "adjust": 0,
+      "context": 0,
+      "eff": 5.67,
+      "taper": {
+        "N": 3,
+        "n": 2,
+        "wPrior": 0.3333333333333333,
+        "wCurr": 0.6666666666666666
+      },
+      "current_rating": 4.77
+    },
+    "home_DAL": {
+      "prior": 2.08,
+      "fa": 0.4,
+      "draft": 0.3,
+      "madden": 0.16,
+      "pff": 0.24,
+      "pff_ytd": -2,
+      "sos": -0.96,
+      "return": 0,
+      "injury": -1.1,
+      "adjust": 0,
+      "context": 0,
+      "eff": -0.88,
+      "taper": {
+        "N": 3,
+        "n": 2,
+        "wPrior": 0.3333333333333333,
+        "wCurr": 0.6666666666666666
+      },
+      "current_rating": 4.04
+    },
+    "layers_home_minus_away": {
+      "prior": -1.58,
+      "fa": 0.97,
+      "draft": -0.05,
+      "madden": -0.43,
+      "pff": 0.02,
+      "pff_ytd": -4,
+      "sos": -1.04,
+      "return": -0.33,
+      "injury": -0.1,
+      "adjust": 0,
+      "context": 0
+    },
+    "rating_diff_home_minus_away": -6.55,
+    "hfa": 0,
+    "coach": 0,
+    "coach_note": "coachTerm desk",
+    "prep": 0,
+    "prep_note": "week!==1 so week1_term=0; bye check via prepNet",
+    "ats": -0.06,
+    "ats_note": "atsNet desk",
+    "travel": 0,
+    "travel_note": "schedNet desk",
+    "matchup": 0,
+    "matchup_note": "pff-matchups missing \u2192 0",
+    "gap": -6.61,
+    "component_sum": [
+      {
+        "label": "rating_diff (DAL\u2212BAL)",
+        "val": -6.55
+      },
+      {
+        "label": "HFA",
+        "val": 0
+      },
+      {
+        "label": "coach",
+        "val": 0
+      },
+      {
+        "label": "prep (W3)",
+        "val": 0
+      },
+      {
+        "label": "ats",
+        "val": -0.06
+      },
+      {
+        "label": "travel/sched",
+        "val": 0
+      },
+      {
+        "label": "matchup",
+        "val": 0
+      },
+      {
+        "label": "gap",
+        "val": -6.61
+      },
+      {
+        "label": "model_home_spread (\u2212gap)",
+        "val": 6.61
+      }
+    ],
+    "injuries": {
+      "BAL": [
+        {
+          "name": "Chris Moore",
+          "pos": "WR2",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Zay Flowers",
+          "pos": "WR1",
+          "status": "QUESTIONABLE",
+          "impact": 0.25,
+          "impact_source": "madden",
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "Ronnie Stanley",
+          "pos": "LT",
+          "status": "QUESTIONABLE",
+          "impact": 0.25,
+          "impact_source": "madden",
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "Malaki Starks",
+          "pos": "S",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Trey Hendrickson",
+          "pos": "LB",
+          "status": "QUESTIONABLE",
+          "impact": 0.5,
+          "impact_source": "madden",
+          "pts": -0.18,
+          "on": true
+        },
+        {
+          "name": "T.J. Tampa",
+          "pos": "CB1",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Ja'Kobi Lane",
+          "pos": "WR2",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        }
+      ],
+      "DAL": [
+        {
+          "name": "P.J. Locke",
+          "pos": "S",
+          "status": "OUT",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Cobie Durant",
+          "pos": "CB1",
+          "status": "OUT",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Malik Hooker",
+          "pos": "S",
+          "status": "OUT",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "DeMarvion Overshown",
+          "pos": "LB",
+          "status": "OUT",
+          "impact": 0.2,
+          "impact_source": "pff",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Malik Davis",
+          "pos": "RB1",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        }
+      ]
+    },
+    "injury_terms": {
+      "BAL": {
+        "raw": -1,
+        "term": -1,
+        "capped": false,
+        "cap_team": 6
+      },
+      "DAL": {
+        "raw": -1.1,
+        "term": -1.1,
+        "capped": false,
+        "cap_team": 6
+      }
+    }
+  },
+  "frozen_at": "2026-09-25 4:27 PM ET (America/New_York)",
+  "tickets": [],
+  "call": {
+    "action": "PASS",
+    "side": null,
+    "line": "BAL -3.5",
+    "units": 0,
+    "price": null,
+    "class": "INFO",
+    "note": "|edge|=3.11; no clear injury/key-number thesis for Friday print \u2014 PASS (edge retained for postmortem)."
+  },
+  "notes": "FINAL pre-kick SUN_PM lock after Fri ~4pm ET status. Injury 2026-09-25b FINAL. BAL inj -1; DAL inj -1.1. Street BAL -3.5. Edge home -3.11. Call PASS."
+}

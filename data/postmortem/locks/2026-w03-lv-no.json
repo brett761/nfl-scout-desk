@@ -1,0 +1,270 @@
+{
+  "week": 3,
+  "season": 2026,
+  "game_id": "LV@NO",
+  "kick": "2026-09-27T20:25+00:00",
+  "away": "LV",
+  "home": "NO",
+  "espn_id": "401872961",
+  "venue": "Caesars Superdome",
+  "neutral": false,
+  "window": "SUN_PM",
+  "model_home_spread": 1.96,
+  "model_home_spread_source": "desk_compute",
+  "street_home_spread": -3,
+  "close_at_lock": -3,
+  "ou_street": 43.5,
+  "street_note": "FINAL freeze 2026-09-25 4:27 PM ET (America/New_York). ESPN DraftKings: NO -3 / ou 43.5. Shop: ESPN/DK pickcenter primary; consensus held at freeze.",
+  "edge_home": -4.96,
+  "edge_note": "edgeHome = street \u2212 model = -3 \u2212 (1.96) = -4.96 \u2192 away value (LV); |edge|\u22651.5",
+  "feature_stack": {
+    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W3 n\u22482 so fa/return at w_prior=1/3, draft_fade\u22480.5; pff_ytd IN line; injury 2026-09-25b FINAL",
+    "injury_pulled": "2026-09-25b",
+    "away_LV": {
+      "prior": 3.76,
+      "fa": 1.33,
+      "draft": 0,
+      "madden": -0.44,
+      "pff": -1.24,
+      "pff_ytd": 1.94,
+      "sos": 0.39,
+      "return": 0,
+      "injury": -0.97,
+      "adjust": 0,
+      "context": 0,
+      "eff": 4.77,
+      "taper": {
+        "N": 3,
+        "n": 2,
+        "wPrior": 0.3333333333333333,
+        "wCurr": 0.6666666666666666
+      },
+      "current_rating": 8.75
+    },
+    "home_NO": {
+      "prior": 1.29,
+      "fa": 0.13,
+      "draft": 0,
+      "madden": -0.51,
+      "pff": -0.46,
+      "pff_ytd": 1.81,
+      "sos": -0.07,
+      "return": 0,
+      "injury": -1.64,
+      "adjust": 0,
+      "context": 0,
+      "eff": 0.56,
+      "taper": {
+        "N": 3,
+        "n": 2,
+        "wPrior": 0.3333333333333333,
+        "wCurr": 0.6666666666666666
+      },
+      "current_rating": 2.91
+    },
+    "layers_home_minus_away": {
+      "prior": -2.47,
+      "fa": -1.2,
+      "draft": 0,
+      "madden": -0.07,
+      "pff": 0.78,
+      "pff_ytd": -0.13,
+      "sos": -0.46,
+      "return": 0,
+      "injury": -0.67,
+      "adjust": 0,
+      "context": 0
+    },
+    "rating_diff_home_minus_away": -4.21,
+    "hfa": 2,
+    "coach": 0,
+    "coach_note": "coachTerm desk",
+    "prep": 0,
+    "prep_note": "week!==1 so week1_term=0; bye check via prepNet",
+    "ats": 0,
+    "ats_note": "atsNet desk",
+    "travel": 0.25,
+    "travel_note": "schedNet desk",
+    "matchup": 0,
+    "matchup_note": "pff-matchups missing \u2192 0",
+    "gap": -1.96,
+    "component_sum": [
+      {
+        "label": "rating_diff (NO\u2212LV)",
+        "val": -4.21
+      },
+      {
+        "label": "HFA",
+        "val": 2
+      },
+      {
+        "label": "coach",
+        "val": 0
+      },
+      {
+        "label": "prep (W3)",
+        "val": 0
+      },
+      {
+        "label": "ats",
+        "val": 0
+      },
+      {
+        "label": "travel/sched",
+        "val": 0.25
+      },
+      {
+        "label": "matchup",
+        "val": 0
+      },
+      {
+        "label": "gap",
+        "val": -1.96
+      },
+      {
+        "label": "model_home_spread (\u2212gap)",
+        "val": 1.96
+      }
+    ],
+    "injuries": {
+      "LV": [
+        {
+          "name": "Treydan Stukes",
+          "pos": "S",
+          "status": "OUT",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Brock Bowers",
+          "pos": "TE1",
+          "status": "QUESTIONABLE",
+          "impact": 0.5,
+          "impact_source": "madden",
+          "pts": -0.18,
+          "on": true
+        },
+        {
+          "name": "Kwity Paye",
+          "pos": "EDGE1",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Aidan O'Connell",
+          "pos": "QB1",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.52,
+          "on": true
+        }
+      ],
+      "NO": [
+        {
+          "name": "Christen Miller",
+          "pos": "IDL",
+          "status": "OUT",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Barion Brown",
+          "pos": "WR2",
+          "status": "OUT",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Kelvin Banks Jr.",
+          "pos": "RT",
+          "status": "IR",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Martin Emerson Jr.",
+          "pos": "CB1",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "Zach Wood",
+          "pos": "DEPTH",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Audric Estime",
+          "pos": "RB1",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Bryan Bresee",
+          "pos": "IDL",
+          "status": "IR",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Jordyn Tyson",
+          "pos": "WR2",
+          "status": "IR",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        }
+      ]
+    },
+    "injury_terms": {
+      "LV": {
+        "raw": -0.97,
+        "term": -0.97,
+        "capped": false,
+        "cap_team": 6
+      },
+      "NO": {
+        "raw": -1.64,
+        "term": -1.64,
+        "capped": false,
+        "cap_team": 6
+      }
+    }
+  },
+  "frozen_at": "2026-09-25 4:27 PM ET (America/New_York)",
+  "tickets": [],
+  "call": {
+    "action": "PASS",
+    "side": null,
+    "line": "LV +3",
+    "units": 0,
+    "price": null,
+    "class": "INFO",
+    "note": "|edge|=4.96; no clear injury/key-number thesis for Friday print \u2014 PASS (edge retained for postmortem)."
+  },
+  "notes": "FINAL pre-kick SUN_PM lock after Fri ~4pm ET status. Injury 2026-09-25b FINAL. LV inj -0.97; NO inj -1.64. Street NO -3. Edge home -4.96. Call PASS."
+}

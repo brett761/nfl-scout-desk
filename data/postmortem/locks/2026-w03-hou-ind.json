@@ -1,0 +1,315 @@
+{
+  "week": 3,
+  "season": 2026,
+  "game_id": "HOU@IND",
+  "kick": "2026-09-27T17:00+00:00",
+  "away": "HOU",
+  "home": "IND",
+  "espn_id": "401872951",
+  "venue": "Lucas Oil Stadium",
+  "neutral": false,
+  "window": "SUN_AM",
+  "model_home_spread": 1.48,
+  "model_home_spread_source": "desk_compute",
+  "street_home_spread": 1.5,
+  "close_at_lock": 1.5,
+  "ou_street": 42.5,
+  "street_note": "FINAL freeze 2026-09-25 4:27 PM ET (America/New_York). ESPN DraftKings: HOU -1.5 / ou 42.5. Shop: ESPN/DK pickcenter primary; consensus held at freeze.",
+  "edge_home": 0.02,
+  "edge_note": "edgeHome = street \u2212 model = 1.5 \u2212 (1.48) = 0.02 \u2192 home value (IND)",
+  "feature_stack": {
+    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W3 n\u22482 so fa/return at w_prior=1/3, draft_fade\u22480.5; pff_ytd IN line; injury 2026-09-25b FINAL",
+    "injury_pulled": "2026-09-25b",
+    "away_HOU": {
+      "prior": -2.48,
+      "fa": 0.4,
+      "draft": 0.35,
+      "madden": 0.32,
+      "pff": 0.49,
+      "pff_ytd": 1.15,
+      "sos": 0.42,
+      "return": 0,
+      "injury": -1.7,
+      "adjust": 0,
+      "context": 0,
+      "eff": -1.05,
+      "taper": {
+        "N": 3,
+        "n": 2,
+        "wPrior": 0.3333333333333333,
+        "wCurr": 0.6666666666666666
+      },
+      "current_rating": -6.78
+    },
+    "home_IND": {
+      "prior": -1.14,
+      "fa": -0.93,
+      "draft": 0.4,
+      "madden": 0.21,
+      "pff": 0.16,
+      "pff_ytd": -2,
+      "sos": 0.62,
+      "return": 0.23,
+      "injury": -1.58,
+      "adjust": 0,
+      "context": 0,
+      "eff": -4.03,
+      "taper": {
+        "N": 3,
+        "n": 2,
+        "wPrior": 0.3333333333333333,
+        "wCurr": 0.6666666666666666
+      },
+      "current_rating": -2.88
+    },
+    "layers_home_minus_away": {
+      "prior": 1.34,
+      "fa": -1.33,
+      "draft": 0.05,
+      "madden": -0.11,
+      "pff": -0.33,
+      "pff_ytd": -3.15,
+      "sos": 0.2,
+      "return": 0.23,
+      "injury": 0.12,
+      "adjust": 0,
+      "context": 0
+    },
+    "rating_diff_home_minus_away": -2.98,
+    "hfa": 2,
+    "coach": -0.5,
+    "coach_note": "coachTerm desk",
+    "prep": 0,
+    "prep_note": "week!==1 so week1_term=0; bye check via prepNet",
+    "ats": 0,
+    "ats_note": "atsNet desk",
+    "travel": 0,
+    "travel_note": "schedNet desk",
+    "matchup": 0,
+    "matchup_note": "pff-matchups missing \u2192 0",
+    "gap": -1.48,
+    "component_sum": [
+      {
+        "label": "rating_diff (IND\u2212HOU)",
+        "val": -2.98
+      },
+      {
+        "label": "HFA",
+        "val": 2
+      },
+      {
+        "label": "coach",
+        "val": -0.5
+      },
+      {
+        "label": "prep (W3)",
+        "val": 0
+      },
+      {
+        "label": "ats",
+        "val": 0
+      },
+      {
+        "label": "travel/sched",
+        "val": 0
+      },
+      {
+        "label": "matchup",
+        "val": 0
+      },
+      {
+        "label": "gap",
+        "val": -1.48
+      },
+      {
+        "label": "model_home_spread (\u2212gap)",
+        "val": 1.48
+      }
+    ],
+    "injuries": {
+      "HOU": [
+        {
+          "name": "Nico Collins",
+          "pos": "WR1",
+          "status": "OUT",
+          "impact": 0.25,
+          "impact_source": "madden",
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Jadeveon Clowney",
+          "pos": "EDGE1",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "M.J. Stewart",
+          "pos": "S",
+          "status": "PUP",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Trent Brown",
+          "pos": "RT",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Jake Hummel",
+          "pos": "LB",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "Ed Ingram",
+          "pos": "OG",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Henry To'oTo'o",
+          "pos": "LB",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Kayden McDonald",
+          "pos": "IDL",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Jayden Higgins",
+          "pos": "WR2",
+          "status": "IR",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Tank Dell",
+          "pos": "WR2",
+          "status": "IR",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        }
+      ],
+      "IND": [
+        {
+          "name": "Ashton Dulin",
+          "pos": "WR2",
+          "status": "OUT",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Charvarius Ward",
+          "pos": "CB1",
+          "status": "QUESTIONABLE",
+          "impact": 0.5,
+          "impact_source": "madden",
+          "pts": -0.18,
+          "on": true
+        },
+        {
+          "name": "Alec Pierce",
+          "pos": "WR1",
+          "status": "IR",
+          "impact": 0.25,
+          "impact_source": "madden",
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Micheal Clemons",
+          "pos": "EDGE1",
+          "status": "IR",
+          "impact": 0.2,
+          "impact_source": "pff",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Carson Towt",
+          "pos": "TE1",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "D.J. Montgomery",
+          "pos": "WR2",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Will Mallory",
+          "pos": "TE1",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        }
+      ]
+    },
+    "injury_terms": {
+      "HOU": {
+        "raw": -1.7,
+        "term": -1.7,
+        "capped": false,
+        "cap_team": 6
+      },
+      "IND": {
+        "raw": -1.58,
+        "term": -1.58,
+        "capped": false,
+        "cap_team": 6
+      }
+    }
+  },
+  "frozen_at": "2026-09-25 4:27 PM ET (America/New_York)",
+  "tickets": [],
+  "call": {
+    "action": "PASS",
+    "side": null,
+    "line": null,
+    "units": 0,
+    "price": null,
+    "class": "INFO",
+    "note": "|edge|=0.02; no clear injury/key-number thesis for Friday print \u2014 PASS (edge retained for postmortem)."
+  },
+  "notes": "FINAL pre-kick SUN_AM lock after Fri ~4pm ET status. Injury 2026-09-25b FINAL. HOU inj -1.7; IND inj -1.58. Street HOU -1.5. Edge home 0.02. Call PASS."
+}

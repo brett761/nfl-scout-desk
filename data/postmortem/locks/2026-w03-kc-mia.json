@@ -1,0 +1,288 @@
+{
+  "week": 3,
+  "season": 2026,
+  "game_id": "KC@MIA",
+  "kick": "2026-09-27T17:00+00:00",
+  "away": "KC",
+  "home": "MIA",
+  "espn_id": "401872952",
+  "venue": "Hard Rock Stadium",
+  "neutral": false,
+  "window": "SUN_AM",
+  "model_home_spread": 18.72,
+  "model_home_spread_source": "desk_compute",
+  "street_home_spread": 10.5,
+  "close_at_lock": 10.5,
+  "ou_street": 45.5,
+  "street_note": "FINAL freeze 2026-09-25 4:27 PM ET (America/New_York). ESPN DraftKings: KC -10.5 / ou 45.5. Shop: ESPN/DK pickcenter primary; consensus held at freeze.",
+  "edge_home": -8.22,
+  "edge_note": "edgeHome = street \u2212 model = 10.5 \u2212 (18.72) = -8.22 \u2192 away value (KC); |edge|\u22651.5",
+  "feature_stack": {
+    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W3 n\u22482 so fa/return at w_prior=1/3, draft_fade\u22480.5; pff_ytd IN line; injury 2026-09-25b FINAL",
+    "injury_pulled": "2026-09-25b",
+    "away_KC": {
+      "prior": 6.92,
+      "fa": -1,
+      "draft": 0,
+      "madden": 0.28,
+      "pff": 0.2,
+      "pff_ytd": 2,
+      "sos": 0.16,
+      "return": 0.33,
+      "injury": -1,
+      "adjust": 0,
+      "context": 0,
+      "eff": 7.89,
+      "taper": {
+        "N": 3,
+        "n": 2,
+        "wPrior": 0.3333333333333333,
+        "wCurr": 0.6666666666666666
+      },
+      "current_rating": 9.02
+    },
+    "home_MIA": {
+      "prior": -8.57,
+      "fa": -1.3,
+      "draft": 1,
+      "madden": -1.26,
+      "pff": -0.72,
+      "pff_ytd": -0.59,
+      "sos": -0.18,
+      "return": 0,
+      "injury": -1.21,
+      "adjust": 0,
+      "context": 0,
+      "eff": -12.83,
+      "taper": {
+        "N": 3,
+        "n": 2,
+        "wPrior": 0.3333333333333333,
+        "wCurr": 0.6666666666666666
+      },
+      "current_rating": -11.75
+    },
+    "layers_home_minus_away": {
+      "prior": -15.49,
+      "fa": -0.3,
+      "draft": 1,
+      "madden": -1.54,
+      "pff": -0.92,
+      "pff_ytd": -2.59,
+      "sos": -0.34,
+      "return": -0.33,
+      "injury": -0.21,
+      "adjust": 0,
+      "context": 0
+    },
+    "rating_diff_home_minus_away": -20.72,
+    "hfa": 2,
+    "coach": 0,
+    "coach_note": "coachTerm desk",
+    "prep": 0,
+    "prep_note": "week!==1 so week1_term=0; bye check via prepNet",
+    "ats": 0,
+    "ats_note": "atsNet desk",
+    "travel": 0,
+    "travel_note": "schedNet desk",
+    "matchup": 0,
+    "matchup_note": "pff-matchups missing \u2192 0",
+    "gap": -18.72,
+    "component_sum": [
+      {
+        "label": "rating_diff (MIA\u2212KC)",
+        "val": -20.72
+      },
+      {
+        "label": "HFA",
+        "val": 2
+      },
+      {
+        "label": "coach",
+        "val": 0
+      },
+      {
+        "label": "prep (W3)",
+        "val": 0
+      },
+      {
+        "label": "ats",
+        "val": 0
+      },
+      {
+        "label": "travel/sched",
+        "val": 0
+      },
+      {
+        "label": "matchup",
+        "val": 0
+      },
+      {
+        "label": "gap",
+        "val": -18.72
+      },
+      {
+        "label": "model_home_spread (\u2212gap)",
+        "val": 18.72
+      }
+    ],
+    "injuries": {
+      "KC": [
+        {
+          "name": "L'Jarius Sneed",
+          "pos": "CB1",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Chris Jones",
+          "pos": "IDL",
+          "status": "QUESTIONABLE",
+          "impact": 0.5,
+          "impact_source": "madden",
+          "pts": -0.18,
+          "on": true
+        },
+        {
+          "name": "Cooper McDonald",
+          "pos": "LB",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Omarr Norman-Lott",
+          "pos": "IDL",
+          "status": "PUP",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Jimmy Holiday",
+          "pos": "WR2",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        }
+      ],
+      "MIA": [
+        {
+          "name": "Jaylen Wright",
+          "pos": "RB1",
+          "status": "DOUBTFUL",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.15,
+          "on": true
+        },
+        {
+          "name": "Ryan Miller",
+          "pos": "WR2",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "Caleb Douglas",
+          "pos": "WR2",
+          "status": "OUT",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Chris Bell",
+          "pos": "WR2",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "Robert Beal Jr.",
+          "pos": "EDGE1",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "JuJu Brents",
+          "pos": "CB1",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Tucker Addington",
+          "pos": "DEPTH",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Ronnie Harrison Jr.",
+          "pos": "LB",
+          "status": "IR",
+          "impact": 0.2,
+          "impact_source": "pff",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Kyle Louis",
+          "pos": "LB",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        }
+      ]
+    },
+    "injury_terms": {
+      "KC": {
+        "raw": -1,
+        "term": -1,
+        "capped": false,
+        "cap_team": 6
+      },
+      "MIA": {
+        "raw": -1.21,
+        "term": -1.21,
+        "capped": false,
+        "cap_team": 6
+      }
+    }
+  },
+  "frozen_at": "2026-09-25 4:27 PM ET (America/New_York)",
+  "tickets": [],
+  "call": {
+    "action": "PASS",
+    "side": null,
+    "line": "KC -10.5",
+    "units": 0,
+    "price": null,
+    "class": "INFO",
+    "note": "|edge|=8.22; no clear injury/key-number thesis for Friday print \u2014 PASS (edge retained for postmortem)."
+  },
+  "notes": "FINAL pre-kick SUN_AM lock after Fri ~4pm ET status. Injury 2026-09-25b FINAL. KC inj -1; MIA inj -1.21. Street KC -10.5. Edge home -8.22. Call PASS."
+}

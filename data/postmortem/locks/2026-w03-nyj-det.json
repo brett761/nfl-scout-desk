@@ -1,0 +1,351 @@
+{
+  "week": 3,
+  "season": 2026,
+  "game_id": "NYJ@DET",
+  "kick": "2026-09-27T17:00+00:00",
+  "away": "NYJ",
+  "home": "DET",
+  "espn_id": "401872954",
+  "venue": "Ford Field",
+  "neutral": false,
+  "window": "SUN_AM",
+  "model_home_spread": -3.78,
+  "model_home_spread_source": "desk_compute",
+  "street_home_spread": -6.5,
+  "close_at_lock": -6.5,
+  "ou_street": 48.5,
+  "street_note": "FINAL freeze 2026-09-25 4:27 PM ET (America/New_York). ESPN DraftKings: DET -6.5 / ou 48.5. Shop: ESPN/DK pickcenter primary; consensus held at freeze.",
+  "edge_home": -2.72,
+  "edge_note": "edgeHome = street \u2212 model = -6.5 \u2212 (-3.78) = -2.72 \u2192 away value (NYJ); |edge|\u22651.5",
+  "feature_stack": {
+    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W3 n\u22482 so fa/return at w_prior=1/3, draft_fade\u22480.5; pff_ytd IN line; injury 2026-09-25b FINAL",
+    "injury_pulled": "2026-09-25b",
+    "away_NYJ": {
+      "prior": 0.21,
+      "fa": 0.73,
+      "draft": 0,
+      "madden": -0.64,
+      "pff": -1,
+      "pff_ytd": 2,
+      "sos": 0.54,
+      "return": 0,
+      "injury": -2.08,
+      "adjust": 0,
+      "context": 0,
+      "eff": -0.23,
+      "taper": {
+        "N": 3,
+        "n": 2,
+        "wPrior": 0.3333333333333333,
+        "wCurr": 0.6666666666666666
+      },
+      "current_rating": 4.04
+    },
+    "home_DET": {
+      "prior": 1.07,
+      "fa": -0.6,
+      "draft": 0,
+      "madden": 0.49,
+      "pff": 0.96,
+      "pff_ytd": 1.43,
+      "sos": -0.26,
+      "return": 0,
+      "injury": -1.81,
+      "adjust": 0,
+      "context": 0,
+      "eff": 1.28,
+      "taper": {
+        "N": 3,
+        "n": 2,
+        "wPrior": 0.3333333333333333,
+        "wCurr": 0.6666666666666666
+      },
+      "current_rating": -0.03
+    },
+    "layers_home_minus_away": {
+      "prior": 0.86,
+      "fa": -1.33,
+      "draft": 0,
+      "madden": 1.13,
+      "pff": 1.96,
+      "pff_ytd": -0.57,
+      "sos": -0.8,
+      "return": 0,
+      "injury": 0.27,
+      "adjust": 0,
+      "context": 0
+    },
+    "rating_diff_home_minus_away": 1.51,
+    "hfa": 2,
+    "coach": 0,
+    "coach_note": "coachTerm desk",
+    "prep": 0,
+    "prep_note": "week!==1 so week1_term=0; bye check via prepNet",
+    "ats": 0.27,
+    "ats_note": "atsNet desk",
+    "travel": 0,
+    "travel_note": "schedNet desk",
+    "matchup": 0,
+    "matchup_note": "pff-matchups missing \u2192 0",
+    "gap": 3.78,
+    "component_sum": [
+      {
+        "label": "rating_diff (DET\u2212NYJ)",
+        "val": 1.51
+      },
+      {
+        "label": "HFA",
+        "val": 2
+      },
+      {
+        "label": "coach",
+        "val": 0
+      },
+      {
+        "label": "prep (W3)",
+        "val": 0
+      },
+      {
+        "label": "ats",
+        "val": 0.27
+      },
+      {
+        "label": "travel/sched",
+        "val": 0
+      },
+      {
+        "label": "matchup",
+        "val": 0
+      },
+      {
+        "label": "gap",
+        "val": 3.78
+      },
+      {
+        "label": "model_home_spread (\u2212gap)",
+        "val": -3.78
+      }
+    ],
+    "injuries": {
+      "NYJ": [
+        {
+          "name": "Mason Taylor",
+          "pos": "TE1",
+          "status": "OUT",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Adonai Mitchell",
+          "pos": "WR2",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Minkah Fitzpatrick",
+          "pos": "S",
+          "status": "OUT",
+          "impact": 0.25,
+          "impact_source": "madden",
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Kiko Mauigoa",
+          "pos": "LB",
+          "status": "OUT",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Kene Nwangwu",
+          "pos": "RB1",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "Joseph Ossai",
+          "pos": "EDGE1",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "pff",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Arian Smith",
+          "pos": "WR2",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "David Onyemata",
+          "pos": "IDL",
+          "status": "IR",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Marcelino McCrary-Ball",
+          "pos": "LB",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Omar Cooper Jr.",
+          "pos": "WR2",
+          "status": "IR",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Tim Patrick",
+          "pos": "WR2",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        }
+      ],
+      "DET": [
+        {
+          "name": "Ben Bartch",
+          "pos": "OG",
+          "status": "QUESTIONABLE",
+          "impact": 0.25,
+          "impact_source": "pff",
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "Tate Ratledge",
+          "pos": "OG",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Blake Miller",
+          "pos": "RT",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Christian Mahogany",
+          "pos": "OG",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "Thomas Harper",
+          "pos": "S",
+          "status": "QUESTIONABLE",
+          "impact": 0.25,
+          "impact_source": "pff",
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "Avonte Maddox",
+          "pos": "CB1",
+          "status": "IR",
+          "impact": 0.25,
+          "impact_source": "pff",
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Brian Branch",
+          "pos": "S",
+          "status": "PUP",
+          "impact": 0.25,
+          "impact_source": "madden",
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Kerby Joseph",
+          "pos": "S",
+          "status": "PUP",
+          "impact": 0.5,
+          "impact_source": "madden",
+          "pts": -0.5,
+          "on": true
+        },
+        {
+          "name": "Cade Mays",
+          "pos": "C",
+          "status": "IR",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Isiah Pacheco",
+          "pos": "RB1",
+          "status": "IR",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        }
+      ]
+    },
+    "injury_terms": {
+      "NYJ": {
+        "raw": -2.08,
+        "term": -2.08,
+        "capped": false,
+        "cap_team": 6
+      },
+      "DET": {
+        "raw": -1.81,
+        "term": -1.81,
+        "capped": false,
+        "cap_team": 6
+      }
+    }
+  },
+  "frozen_at": "2026-09-25 4:27 PM ET (America/New_York)",
+  "tickets": [],
+  "call": {
+    "action": "PASS",
+    "side": null,
+    "line": "NYJ +6.5",
+    "units": 0,
+    "price": null,
+    "class": "INFO",
+    "note": "|edge|=2.72; no clear injury/key-number thesis for Friday print \u2014 PASS (edge retained for postmortem)."
+  },
+  "notes": "FINAL pre-kick SUN_AM lock after Fri ~4pm ET status. Injury 2026-09-25b FINAL. NYJ inj -2.08; DET inj -1.81. Street DET -6.5. Edge home -2.72. Call PASS."
+}

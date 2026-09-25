@@ -1,0 +1,342 @@
+{
+  "week": 3,
+  "season": 2026,
+  "game_id": "SEA@WSH",
+  "kick": "2026-09-27T17:00+00:00",
+  "away": "SEA",
+  "home": "WSH",
+  "espn_id": "401872955",
+  "venue": "Northwest Stadium",
+  "neutral": false,
+  "window": "SUN_AM",
+  "model_home_spread": 15.93,
+  "model_home_spread_source": "desk_compute",
+  "street_home_spread": 7.5,
+  "close_at_lock": 7.5,
+  "ou_street": 40.5,
+  "street_note": "FINAL freeze 2026-09-25 4:27 PM ET (America/New_York). ESPN DraftKings: SEA -7.5 / ou 40.5. Shop: ESPN/DK pickcenter primary; consensus held at freeze.",
+  "edge_home": -8.43,
+  "edge_note": "edgeHome = street \u2212 model = 7.5 \u2212 (15.93) = -8.43 \u2192 away value (SEA); |edge|\u22651.5",
+  "feature_stack": {
+    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W3 n\u22482 so fa/return at w_prior=1/3, draft_fade\u22480.5; pff_ytd IN line; injury 2026-09-25b FINAL",
+    "injury_pulled": "2026-09-25b",
+    "away_SEA": {
+      "prior": 6.31,
+      "fa": -1.03,
+      "draft": 0,
+      "madden": 0.22,
+      "pff": 1.04,
+      "pff_ytd": 2,
+      "sos": -0.04,
+      "return": 0,
+      "injury": -0.75,
+      "adjust": 0,
+      "context": 0,
+      "eff": 7.74,
+      "taper": {
+        "N": 3,
+        "n": 2,
+        "wPrior": 0.3333333333333333,
+        "wCurr": 0.6666666666666666
+      },
+      "current_rating": 5.54
+    },
+    "home_WSH": {
+      "prior": -5.69,
+      "fa": 0.67,
+      "draft": 0,
+      "madden": -0.3,
+      "pff": -0.61,
+      "pff_ytd": -2,
+      "sos": 0.03,
+      "return": 0.4,
+      "injury": -3.09,
+      "adjust": 0,
+      "context": 0,
+      "eff": -10.59,
+      "taper": {
+        "N": 3,
+        "n": 2,
+        "wPrior": 0.3333333333333333,
+        "wCurr": 0.6666666666666666
+      },
+      "current_rating": -6.9
+    },
+    "layers_home_minus_away": {
+      "prior": -12,
+      "fa": 1.7,
+      "draft": 0,
+      "madden": -0.52,
+      "pff": -1.65,
+      "pff_ytd": -4,
+      "sos": 0.07,
+      "return": 0.4,
+      "injury": -2.34,
+      "adjust": 0,
+      "context": 0
+    },
+    "rating_diff_home_minus_away": -18.33,
+    "hfa": 2,
+    "coach": 0,
+    "coach_note": "coachTerm desk",
+    "prep": 0,
+    "prep_note": "week!==1 so week1_term=0; bye check via prepNet",
+    "ats": -0.1,
+    "ats_note": "atsNet desk",
+    "travel": 0.5,
+    "travel_note": "schedNet desk",
+    "matchup": 0,
+    "matchup_note": "pff-matchups missing \u2192 0",
+    "gap": -15.93,
+    "component_sum": [
+      {
+        "label": "rating_diff (WSH\u2212SEA)",
+        "val": -18.33
+      },
+      {
+        "label": "HFA",
+        "val": 2
+      },
+      {
+        "label": "coach",
+        "val": 0
+      },
+      {
+        "label": "prep (W3)",
+        "val": 0
+      },
+      {
+        "label": "ats",
+        "val": -0.1
+      },
+      {
+        "label": "travel/sched",
+        "val": 0.5
+      },
+      {
+        "label": "matchup",
+        "val": 0
+      },
+      {
+        "label": "gap",
+        "val": -15.93
+      },
+      {
+        "label": "model_home_spread (\u2212gap)",
+        "val": 15.93
+      }
+    ],
+    "injuries": {
+      "SEA": [
+        {
+          "name": "Ty Okada",
+          "pos": "S",
+          "status": "QUESTIONABLE",
+          "impact": 0.25,
+          "impact_source": "pff",
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "Julian Love",
+          "pos": "S",
+          "status": "QUESTIONABLE",
+          "impact": 0.25,
+          "impact_source": "madden",
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "Jadarian Price",
+          "pos": "RB1",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Anthony Bradford",
+          "pos": "OG",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Zach Charbonnet",
+          "pos": "RB1",
+          "status": "OUT",
+          "impact": 0.25,
+          "impact_source": "madden",
+          "pts": -0.25,
+          "on": true
+        }
+      ],
+      "WSH": [
+        {
+          "name": "Jayden Daniels",
+          "pos": "QB1",
+          "status": "OUT",
+          "impact": 1.11,
+          "impact_source": "manual",
+          "pts": -1.11,
+          "on": true
+        },
+        {
+          "name": "Chig Okonkwo",
+          "pos": "TE1",
+          "status": "DOUBTFUL",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.19,
+          "on": true
+        },
+        {
+          "name": "Leo Chenal",
+          "pos": "LB",
+          "status": "QUESTIONABLE",
+          "impact": 0.25,
+          "impact_source": "madden",
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "Frankie Luvu",
+          "pos": "LB",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Charles Omenihu",
+          "pos": "EDGE1",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "pff",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Percy Butler",
+          "pos": "S",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "Dorance Armstrong",
+          "pos": "EDGE1",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Javon Kinlaw",
+          "pos": "IDL",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "Nick Cross",
+          "pos": "S",
+          "status": "OUT",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Jaylin Lane",
+          "pos": "WR2",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Sam Cosmi",
+          "pos": "OG",
+          "status": "QUESTIONABLE",
+          "impact": 0.25,
+          "impact_source": "madden",
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "Jordan Magee",
+          "pos": "LB",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Deatrich Wise Jr.",
+          "pos": "EDGE1",
+          "status": "PUP",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Laremy Tunsil",
+          "pos": "LT",
+          "status": "IR",
+          "impact": 0.25,
+          "impact_source": "madden",
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Trey Amos",
+          "pos": "CB1",
+          "status": "IR",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        }
+      ]
+    },
+    "injury_terms": {
+      "SEA": {
+        "raw": -0.75,
+        "term": -0.75,
+        "capped": false,
+        "cap_team": 6
+      },
+      "WSH": {
+        "raw": -3.09,
+        "term": -3.09,
+        "capped": false,
+        "cap_team": 6
+      }
+    }
+  },
+  "frozen_at": "2026-09-25 4:27 PM ET (America/New_York)",
+  "tickets": [],
+  "call": {
+    "action": "FIRE",
+    "side": "SEA",
+    "line": "SEA -7.5",
+    "units": 3,
+    "price": -110,
+    "class": "INFO",
+    "note": "Jayden Daniels OUT (1.11) + Cross OUT; WSH term \u22123.09. Model SEA \u221215.9 vs street \u22127.5; through 7. Full 3u favorite."
+  },
+  "notes": "FINAL pre-kick SUN_AM lock after Fri ~4pm ET status. Injury 2026-09-25b FINAL. SEA inj -0.75; WSH inj -3.09. Street SEA -7.5. Edge home -8.43. Call FIRE."
+}

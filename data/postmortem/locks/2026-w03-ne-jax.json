@@ -1,0 +1,306 @@
+{
+  "week": 3,
+  "season": 2026,
+  "game_id": "NE@JAX",
+  "kick": "2026-09-27T17:00+00:00",
+  "away": "NE",
+  "home": "JAX",
+  "espn_id": "401872957",
+  "venue": "EverBank Stadium",
+  "neutral": false,
+  "window": "SUN_AM",
+  "model_home_spread": -9.86,
+  "model_home_spread_source": "desk_compute",
+  "street_home_spread": -3,
+  "close_at_lock": -3,
+  "ou_street": 45.5,
+  "street_note": "FINAL freeze 2026-09-25 4:27 PM ET (America/New_York). ESPN DraftKings: JAX -3 / ou 45.5. Shop: ESPN/DK pickcenter primary; consensus held at freeze.",
+  "edge_home": 6.86,
+  "edge_note": "edgeHome = street \u2212 model = -3 \u2212 (-9.86) = 6.86 \u2192 home value (JAX); |edge|\u22651.5",
+  "feature_stack": {
+    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W3 n\u22482 so fa/return at w_prior=1/3, draft_fade\u22480.5; pff_ytd IN line; injury 2026-09-25b FINAL",
+    "injury_pulled": "2026-09-25b",
+    "away_NE": {
+      "prior": 2.82,
+      "fa": 0.87,
+      "draft": 0,
+      "madden": 0.52,
+      "pff": 0.4,
+      "pff_ytd": -0.99,
+      "sos": -2.31,
+      "return": 0,
+      "injury": -2,
+      "adjust": 0,
+      "context": 0,
+      "eff": -0.69,
+      "taper": {
+        "N": 3,
+        "n": 2,
+        "wPrior": 0.3333333333333333,
+        "wCurr": 0.6666666666666666
+      },
+      "current_rating": 0.46
+    },
+    "home_JAX": {
+      "prior": 6.51,
+      "fa": -0.33,
+      "draft": 0,
+      "madden": -0.58,
+      "pff": 0.49,
+      "pff_ytd": 2,
+      "sos": -0.45,
+      "return": 0,
+      "injury": -0.59,
+      "adjust": 0,
+      "context": 0,
+      "eff": 7.05,
+      "taper": {
+        "N": 3,
+        "n": 2,
+        "wPrior": 0.3333333333333333,
+        "wCurr": 0.6666666666666666
+      },
+      "current_rating": 6.54
+    },
+    "layers_home_minus_away": {
+      "prior": 3.69,
+      "fa": -1.2,
+      "draft": 0,
+      "madden": -1.1,
+      "pff": 0.09,
+      "pff_ytd": 2.99,
+      "sos": 1.86,
+      "return": 0,
+      "injury": 1.41,
+      "adjust": 0,
+      "context": 0
+    },
+    "rating_diff_home_minus_away": 7.74,
+    "hfa": 2,
+    "coach": 0,
+    "coach_note": "coachTerm desk",
+    "prep": 0,
+    "prep_note": "week!==1 so week1_term=0; bye check via prepNet",
+    "ats": 0.12,
+    "ats_note": "atsNet desk",
+    "travel": 0,
+    "travel_note": "schedNet desk",
+    "matchup": 0,
+    "matchup_note": "pff-matchups missing \u2192 0",
+    "gap": 9.86,
+    "component_sum": [
+      {
+        "label": "rating_diff (JAX\u2212NE)",
+        "val": 7.74
+      },
+      {
+        "label": "HFA",
+        "val": 2
+      },
+      {
+        "label": "coach",
+        "val": 0
+      },
+      {
+        "label": "prep (W3)",
+        "val": 0
+      },
+      {
+        "label": "ats",
+        "val": 0.12
+      },
+      {
+        "label": "travel/sched",
+        "val": 0
+      },
+      {
+        "label": "matchup",
+        "val": 0
+      },
+      {
+        "label": "gap",
+        "val": 9.86
+      },
+      {
+        "label": "model_home_spread (\u2212gap)",
+        "val": -9.86
+      }
+    ],
+    "injuries": {
+      "NE": [
+        {
+          "name": "Dre'Mont Jones",
+          "pos": "EDGE1",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Craig Woodson",
+          "pos": "S",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Eli Raridon",
+          "pos": "TE1",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "Dell Pettus",
+          "pos": "S",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Brenden Schooler",
+          "pos": "S",
+          "status": "OUT",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Reggie Gilliam",
+          "pos": "DEPTH",
+          "status": "QUESTIONABLE",
+          "impact": 0.25,
+          "impact_source": "madden",
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "Morgan Moses",
+          "pos": "RT",
+          "status": "QUESTIONABLE",
+          "impact": 0.25,
+          "impact_source": "madden",
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "Quintayvious Hutchins",
+          "pos": "LB",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "Mike Onwenu",
+          "pos": "RT",
+          "status": "IR",
+          "impact": 0.25,
+          "impact_source": "madden",
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "A.J. Brown",
+          "pos": "WR1",
+          "status": "IR",
+          "impact": 0.5,
+          "impact_source": "madden",
+          "pts": -0.5,
+          "on": true
+        },
+        {
+          "name": "Harold Landry",
+          "pos": "EDGE1",
+          "status": "PUP",
+          "impact": 0.25,
+          "impact_source": "madden",
+          "pts": -0.25,
+          "on": true
+        }
+      ],
+      "JAX": [
+        {
+          "name": "LeQuint Allen Jr.",
+          "pos": "RB1",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "DaVon Hamilton",
+          "pos": "IDL",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "Cole Van Lanen",
+          "pos": "RT",
+          "status": "QUESTIONABLE",
+          "impact": 0.25,
+          "impact_source": "pff",
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "Robert Hainsey",
+          "pos": "C",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "B.J. Green II",
+          "pos": "EDGE1",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        }
+      ]
+    },
+    "injury_terms": {
+      "NE": {
+        "raw": -2,
+        "term": -2,
+        "capped": false,
+        "cap_team": 6
+      },
+      "JAX": {
+        "raw": -0.59,
+        "term": -0.59,
+        "capped": false,
+        "cap_team": 6
+      }
+    }
+  },
+  "frozen_at": "2026-09-25 4:27 PM ET (America/New_York)",
+  "tickets": [],
+  "call": {
+    "action": "PASS",
+    "side": null,
+    "line": "JAX -3",
+    "units": 0,
+    "price": null,
+    "class": "INFO",
+    "note": "|edge|=6.86; no clear injury/key-number thesis for Friday print \u2014 PASS (edge retained for postmortem)."
+  },
+  "notes": "FINAL pre-kick SUN_AM lock after Fri ~4pm ET status. Injury 2026-09-25b FINAL. NE inj -2; JAX inj -0.59. Street JAX -3. Edge home 6.86. Call PASS."
+}
