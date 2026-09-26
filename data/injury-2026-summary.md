@@ -1,81 +1,115 @@
-# 2026 NFL injuries — Scout desk Week 3 FINAL (Sunday card)
+# 2026 NFL injuries — Scout desk Week 3 WORKING-SAT
 
-Pulled 2026-09-25 4:26 PM ET (America/New_York). Stamp `injury_pulled=2026-09-25b` **FINAL** Friday Game Status after ~4:00 p.m. ET official Sunday card report (prior seed 2026-09-25a WORKING-FRI). TNF ATL@GB already final (ATL 35, GB 14).
+Pulled 2026-09-26 10:06 AM ET (America/New_York). Stamp `injury_pulled=2026-09-26a` **WORKING-SAT** Saturday ESPN refresh (prior seed 2026-09-25b FINAL). TNF ATL@GB already final (ATL 35, GB 14).
 
-## Material designation flips vs 2026-09-25a WORKING-FRI
+## Material designation flips vs 2026-09-25b FINAL
 
-- **HOU Nico Collins** (WR1): QUESTIONABLE → OUT impact=0.25
-- **LAR Puka Nacua** (WR1): QUESTIONABLE → DOUBTFUL impact=0.5
-- **SF Nick Bosa** (EDGE1): QUESTIONABLE → DOUBTFUL impact=0.25
-- **NYJ Minkah Fitzpatrick** (S): QUESTIONABLE → OUT impact=0.25
-- **NYJ Mason Taylor** (TE1): DOUBTFUL → OUT impact=0.2
-- **CAR Devin Lloyd** (LB): QUESTIONABLE → OUT impact=0.5
-- **CAR Nick Scott** (S): QUESTIONABLE → OUT impact=0.2
-- **PIT Rico Dowdle** (RB1): QUESTIONABLE → OUT impact=0.25
-- **LAC Dalvin Tomlinson** (IDL): DOUBTFUL → OUT
-- **LAC Kayode Awosika** (OG): DOUBTFUL → OUT
-- **LAC Elijah Molden** (S): QUESTIONABLE → OUT impact=0.2
-- **LAC Trey Pipkins III** (RT): QUESTIONABLE → OUT
-- **MIA Jaylen Wright** (RB1): QUESTIONABLE → DOUBTFUL impact=0.2
-- **WSH Chig Okonkwo** (TE1): QUESTIONABLE → DOUBTFUL
-- **WSH Jayden Daniels** (QB1): IR → OUT impact=1.11
-- **BUF Jordan Hancock** (CB1): QUESTIONABLE → OUT
-- **BUF T.J. Sanders** (EDGE1): QUESTIONABLE → OUT
-- **CIN B.J. Hill** (IDL): QUESTIONABLE → DOUBTFUL impact=0.2
-- **CHI Kyle Monangai** (RB1): CLEARED off sheet (was QUESTIONABLE) was impact=0.2
-- **TEN Tony Pollard** (RB1): CLEARED off sheet (was QUESTIONABLE) was impact=0.25
-- **NO Kendre Miller** (RB1): CLEARED off sheet (was QUESTIONABLE) was impact=0.2
-- **NO Travis Etienne Jr.** (RB1): CLEARED off sheet (was QUESTIONABLE) was impact=0.25
-- **JAX Jakobi Meyers** (WR2): CLEARED off sheet (was QUESTIONABLE) was impact=0.25
-- **MIN Aaron Jones Sr.** (RB1): CLEARED off sheet (was QUESTIONABLE) was impact=0.2
-- **LAC Tuli Tuipulotu** (LB): CLEARED off sheet (was QUESTIONABLE) was impact=0.2
+- **ARI Dadrion Taylor-Demerson** (S): QUESTIONABLE → OUT impact=0.2
+- **BAL Ronnie Stanley** (LT): QUESTIONABLE → OUT impact=0.25
+- **BUF Jordan Hancock** (CB1): OUT → IR
+- **CLE Teven Jenkins** (OG): QUESTIONABLE → OUT impact=0.2
+- **DEN Jonah Coleman** (RB1): QUESTIONABLE → OUT
+- **DET Ben Bartch** (OG): QUESTIONABLE → OUT impact=0.25
+- **DET Thomas Harper** (S): QUESTIONABLE → OUT impact=0.25
+- **HOU Ed Ingram** (OG): QUESTIONABLE → OUT impact=0.2
+- **HOU Jake Hummel** (LB): QUESTIONABLE → OUT
+- **HOU Jadeveon Clowney** (EDGE1): QUESTIONABLE → OUT impact=0.2
+- **LAC Charlie Kolar** (TE1): IR → OUT impact=0.25
+- **LAR Kamren Kinchens** (S): QUESTIONABLE → DOUBTFUL impact=0.2
+- **MIA Robert Beal Jr.** (EDGE1): QUESTIONABLE → OUT
+- **NE Quintayvious Hutchins** (LB): QUESTIONABLE → IR
+- **NE Dre'Mont Jones** (EDGE1): QUESTIONABLE → OUT impact=0.2
+- **NYJ Kene Nwangwu** (RB1): QUESTIONABLE → DOUBTFUL
+- **PIT Gennings Dunker** (OG): QUESTIONABLE → OUT
+- **SEA Ty Okada** (S): QUESTIONABLE → OUT impact=0.25
+- **SEA Julian Love** (S): QUESTIONABLE → OUT impact=0.25
+- **SF James Thompson Jr.** (IDL): DOUBTFUL → OUT
+- **SF Romello Height** (EDGE1): QUESTIONABLE → OUT impact=0.2
+- **SF Nick Bosa** (EDGE1): DOUBTFUL → OUT impact=0.25
+- **WSH Sam Cosmi** (OG): QUESTIONABLE → OUT impact=0.25
+- **WSH Frankie Luvu** (LB): QUESTIONABLE → OUT impact=0.2
+- **WSH Chig Okonkwo** (TE1): DOUBTFUL → OUT
+- **CAR Claudin Cherelus** (LB): NEW OUT impact=0.2
+- **JAX Albert Regis** (IDL): NEW DOUBTFUL
+- **PHI Hollywood Brown** (WR2): NEW QUESTIONABLE
+- **ARI Garrett Williams** (CB1): CLEARED off sheet (was QUESTIONABLE) was impact=0.2
+- **ARI Hjalte Froholdt** (C): CLEARED off sheet (was QUESTIONABLE) was impact=0.25
+- **BAL Chris Moore** (WR2): CLEARED off sheet (was QUESTIONABLE) was impact=0.2
+- **BAL Malaki Starks** (S): CLEARED off sheet (was QUESTIONABLE) was impact=0.2
+- **BAL Trey Hendrickson** (LB): CLEARED off sheet (was QUESTIONABLE) was impact=0.5
+- **CLE Quincy Williams** (LB): CLEARED off sheet (was QUESTIONABLE) was impact=0.2
+- **DET Tate Ratledge** (OG): CLEARED off sheet (was QUESTIONABLE) was impact=0.2
+- **DET Blake Miller** (RT): CLEARED off sheet (was QUESTIONABLE) was impact=0.2
+- **DET Christian Mahogany** (OG): CLEARED off sheet (was QUESTIONABLE)
+- **GB Jayden Reed** (WR1): CLEARED off sheet (was OUT) was impact=0.5
+- **GB Zach Bako-Bewele** (RT): CLEARED off sheet (was OUT) was impact=0.75
+- **JAX LeQuint Allen Jr.** (RB1): CLEARED off sheet (was QUESTIONABLE)
+- **JAX DaVon Hamilton** (IDL): CLEARED off sheet (was QUESTIONABLE)
+- **JAX Cole Van Lanen** (RT): CLEARED off sheet (was QUESTIONABLE) was impact=0.25
+- **JAX Robert Hainsey** (C): CLEARED off sheet (was QUESTIONABLE) was impact=0.2
+- **KC L'Jarius Sneed** (CB1): CLEARED off sheet (was QUESTIONABLE) was impact=0.2
+- **KC Chris Jones** (IDL): CLEARED off sheet (was QUESTIONABLE) was impact=0.5
+- **LAR Jordan Whittington** (WR2): CLEARED off sheet (was QUESTIONABLE)
+- **LAR Nate Landman** (LB): CLEARED off sheet (was QUESTIONABLE) was impact=0.25
+- **MIA Chris Bell** (WR2): CLEARED off sheet (was QUESTIONABLE)
+- **NE Morgan Moses** (RT): CLEARED off sheet (was QUESTIONABLE) was impact=0.25
+- **NYG Andrew Thomas** (RT): CLEARED off sheet (was QUESTIONABLE) was impact=0.25
+- **NYG Shelby Harris** (IDL): CLEARED off sheet (was QUESTIONABLE) was impact=0.2
+- **PHI Saquon Barkley** (RB1): CLEARED off sheet (was QUESTIONABLE) was impact=0.5
+- **PHI Andrew Mukuba** (S): CLEARED off sheet (was QUESTIONABLE)
+- **PHI Jalen Carter** (IDL): CLEARED off sheet (was QUESTIONABLE) was impact=0.5
+- **SEA Jadarian Price** (RB1): CLEARED off sheet (was QUESTIONABLE) was impact=0.2
+- **TB Anthony Nelson** (LB): CLEARED off sheet (was QUESTIONABLE) was impact=0.2
+- **TEN Daniel Bellinger** (TE1): CLEARED off sheet (was QUESTIONABLE)
+- **TEN Micah Robinson** (CB1): CLEARED off sheet (was QUESTIONABLE)
+- **TEN Solomon Thomas** (IDL): CLEARED off sheet (was QUESTIONABLE)
+- **WSH Leo Chenal** (LB): CLEARED off sheet (was QUESTIONABLE) was impact=0.25
+- **WSH Charles Omenihu** (EDGE1): CLEARED off sheet (was QUESTIONABLE) was impact=0.2
+- **WSH Percy Butler** (S): CLEARED off sheet (was QUESTIONABLE)
+- **WSH Dorance Armstrong** (EDGE1): CLEARED off sheet (was QUESTIONABLE) was impact=0.2
+- **WSH Javon Kinlaw** (IDL): CLEARED off sheet (was QUESTIONABLE)
+- **WSH Jaylin Lane** (WR2): CLEARED off sheet (was QUESTIONABLE) was impact=0.2
 
-## Team injury terms (auto Madden-first + manuals, capped −6)
+## Team injury terms (auto Madden-first, capped −6)
 
 | Team | Term | Raw | Headliners |
 |------|-----:|----:|------------|
-| WSH | -3.09 | -3.09 | Jayden Daniels OUT, Chig Okonkwo DOUBTFUL, Nick Cross OUT |
+| WSH | -2.96 | -2.96 | Sam Cosmi OUT, Frankie Luvu OUT, Chig Okonkwo OUT, Jayden Daniels OUT, Nick Cross OUT |
 | CHI | -2.78 | -2.78 | Tyson Bagent QUESTIONABLE, Caleb Williams DOUBTFUL, Shemar Turner OUT, Noah Sewell OUT |
-| GB | -2.74 | -2.74 | Anthony Campbell OUT, Jayden Reed OUT, Zach Bako-Bewele OUT, Aaron Banks OUT, Warren Brinson OUT |
-| LAC | -2.71 | -2.71 | Dalvin Tomlinson OUT, Elijah Molden OUT, Trey Pipkins III OUT, Trey Lance QUESTIONABLE, Kayode Awosika OUT, Brenen Thompson OUT |
-| SF | -2.47 | -2.47 | Mike Evans QUESTIONABLE, Nick Bosa DOUBTFUL, James Thompson Jr. DOUBTFUL, Demarcus Robinson OUT, Brandon Aiyuk OUT |
-| CLE | -2.25 | -2.25 |  |
-| NYJ | -2.08 | -2.08 | Mason Taylor OUT, Minkah Fitzpatrick OUT, Kiko Mauigoa OUT, Kene Nwangwu QUESTIONABLE |
-| CAR | -2.01 | -2.01 | Nick Scott OUT, Devin Lloyd OUT |
-| NE | -2.00 | -2.00 | Brenden Schooler OUT |
-| DET | -1.81 | -1.81 |  |
-| HOU | -1.70 | -1.70 | Nico Collins OUT |
+| SF | -2.72 | -2.72 | James Thompson Jr. OUT, Romello Height OUT, Nick Bosa OUT, Mike Evans QUESTIONABLE, Demarcus Robinson OUT, Brandon Aiyuk OUT |
+| LAC | -2.71 | -2.71 | Trey Pipkins III OUT, Kayode Awosika OUT, Dalvin Tomlinson OUT, Elijah Molden OUT, Trey Lance QUESTIONABLE, Brenen Thompson OUT |
+| CLE | -2.31 | -2.31 | Teven Jenkins OUT |
+| CAR | -2.21 | -2.21 | Claudin Cherelus OUT, Nick Scott OUT, Devin Lloyd OUT |
+| NYJ | -2.18 | -2.18 | Kiko Mauigoa OUT, Minkah Fitzpatrick OUT, Kene Nwangwu DOUBTFUL, Mason Taylor OUT |
+| HOU | -2.12 | -2.12 | Ed Ingram OUT, Jake Hummel OUT, Jadeveon Clowney OUT, Nico Collins OUT |
+| NE | -2.11 | -2.11 | Dre'Mont Jones OUT, Brenden Schooler OUT |
+| DET | -1.90 | -1.90 | Ben Bartch OUT, Thomas Harper OUT |
 | NO | -1.64 | -1.64 | Christen Miller OUT, Barion Brown OUT |
+| DEN | -1.57 | -1.57 | Jonah Coleman OUT, Jonathon Cooper OUT |
 | IND | -1.57 | -1.57 | Ashton Dulin OUT |
-| ARI | -1.47 | -1.47 |  |
-| LAR | -1.47 | -1.47 | Puka Nacua DOUBTFUL |
-| PHI | -1.46 | -1.46 | Saquon Barkley QUESTIONABLE, Will Shipley QUESTIONABLE, Tank Bigsby QUESTIONABLE, Dallas Goedert DOUBTFUL |
-| DEN | -1.41 | -1.41 | Jonah Coleman QUESTIONABLE, Jonathon Cooper OUT |
-| NYG | -1.30 | -1.30 |  |
-| TB | -1.27 | -1.27 | Rueben Bain Jr. OUT, Josiah Trotter OUT |
-| MIA | -1.26 | -1.26 | Jaylen Wright DOUBTFUL, Caleb Douglas OUT |
-| TEN | -1.16 | -1.16 | Tyjae Spears QUESTIONABLE |
+| GB | -1.49 | -1.49 | Anthony Campbell OUT, Aaron Banks OUT, Warren Brinson OUT |
+| ARI | -1.44 | -1.44 | Dadrion Taylor-Demerson OUT |
+| LAR | -1.37 | -1.37 | Kamren Kinchens DOUBTFUL, Puka Nacua DOUBTFUL |
+| MIA | -1.26 | -1.26 | Robert Beal Jr. OUT, Jaylen Wright DOUBTFUL, Caleb Douglas OUT |
+| TB | -1.20 | -1.20 | Josiah Trotter OUT, Rueben Bain Jr. OUT |
 | ATL | -1.15 | -1.15 | Samson Ebukam OUT |
+| NYG | -1.14 | -1.14 |  |
+| PHI | -1.12 | -1.12 | Will Shipley QUESTIONABLE, Tank Bigsby QUESTIONABLE, Dallas Goedert DOUBTFUL |
 | DAL | -1.10 | -1.10 | P.J. Locke OUT, Cobie Durant OUT, Malik Hooker OUT, DeMarvion Overshown OUT |
-| BUF | -1.06 | -1.06 | T.J. Sanders OUT, Jordan Hancock OUT, DJ Moore QUESTIONABLE |
-| BAL | -0.99 | -0.99 | Zay Flowers QUESTIONABLE |
-| KC | -0.99 | -0.99 |  |
-| LV | -0.96 | -0.96 | Treydan Stukes OUT, Aidan O'Connell QUESTIONABLE |
-| PIT | -0.86 | -0.86 | Rico Dowdle OUT, Jaylen Warren QUESTIONABLE |
+| BUF | -1.06 | -1.06 | T.J. Sanders OUT, DJ Moore QUESTIONABLE |
+| PIT | -1.02 | -1.02 | Gennings Dunker OUT, Jaylen Warren QUESTIONABLE, Rico Dowdle OUT |
+| SEA | -1.00 | -1.00 | Ty Okada OUT, Julian Love OUT, Zach Charbonnet OUT |
+| LV | -0.96 | -0.96 | Aidan O'Connell QUESTIONABLE, Treydan Stukes OUT |
+| TEN | -0.89 | -0.89 | Tyjae Spears QUESTIONABLE |
 | CIN | -0.85 | -0.85 | B.J. Hill DOUBTFUL |
-| SEA | -0.75 | -0.75 | Jadarian Price QUESTIONABLE, Zach Charbonnet OUT |
+| BAL | -0.84 | -0.84 | Ronnie Stanley OUT, Zay Flowers QUESTIONABLE |
+| KC | -0.75 | -0.75 |  |
 
 ## Notes
 
-- Official Friday Game Status locked for Sunday/SNF/MNF. NFL.com game-status column blank for most Sunday games in scrape; ESPN API + Friday coach quotes used.
-- **CHI Caleb Williams QB1 DOUBTFUL** manual 1.5 (hamstring DNP Fri) — MNF vs PHI.
-- **WSH Jayden Daniels QB1 OUT** week-to-week (not IR) manual 1.11; Nick Cross OUT; Okonkwo DOUBTFUL.
-- **LAR Puka Nacua WR1 DOUBTFUL** (McVay Fri) manual 0.5 — SNF at DEN.
-- **SF Nick Bosa EDGE1 DOUBTFUL** (calf, few weeks) manual 0.25; Mike Evans Q; Aiyuk/Robinson OUT.
-- **HOU Nico Collins WR1 OUT**; **NYJ Minkah Fitzpatrick OUT** + Mason Taylor OUT; **CAR Devin Lloyd OUT**; **PIT Rico Dowdle OUT**.
-- **LAC** Tomlinson/Awosika/Molden/Pipkins OUT cluster vs BUF.
-- Manuals preserved: GB Reed 0.5 / Banks 0.4 / Bako 0.75; CHI Caleb 1.5; WSH Daniels 1.11; LAR Puka 0.5; SF Bosa 0.25; PHI Saquon/Carter 0.5 when listed.
-- TNF ATL@GB FINAL (ATL 35, GB 14 WON): Sunday tickets allowed when |edge|≥1.5.
-- ESPN API timestamp 2026-09-25T20:23:42Z.
+- Saturday WORKING refresh from live ESPN after Friday FINAL lock. Late moves / IR / upgrades only — no rumor designations.
+- TNF ATL@GB FINAL (ATL 35, GB 14 WON): no TNF protect; drop TNF-only gameday inactive noise for ATL/GB; keep IR/PUP/NFI and real injury notes. Sunday tickets allowed when |edge|≥1.5.
+- Manuals preserved when still listed: CHI Caleb Williams 1.5, GB Aaron Banks 0.4, LAR Puka Nacua 0.5, SF Nick Bosa 0.25, WSH Jayden Daniels 1.11.
+- ESPN API timestamp 2026-09-26T14:05:45Z.
 
 Sources: ESPN injuries API; nfl.com/injuries; Week 3 scoreboard.
