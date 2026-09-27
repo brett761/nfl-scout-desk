@@ -16,9 +16,9 @@
   "ou_street": 42.5,
   "street_note": "FINAL freeze 2026-09-25 4:27 PM ET (America/New_York). ESPN DraftKings: CIN -3.5 / ou 42.5. Shop: ESPN/DK pickcenter primary; consensus held at freeze.",
   "edge_home": 2.75,
-  "edge_note": "edgeHome = street \u2212 model = 3.5 \u2212 (0.75) = 2.75 \u2192 home value (PIT); |edge|\u22651.5",
+  "edge_note": "edgeHome = street − model = 3.5 − (0.75) = 2.75 → home value (PIT); |edge|≥1.5",
   "feature_stack": {
-    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W3 n\u22482 so fa/return at w_prior=1/3, draft_fade\u22480.5; pff_ytd IN line; injury 2026-09-25b FINAL",
+    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W3 n≈2 so fa/return at w_prior=1/3, draft_fade≈0.5; pff_ytd IN line; injury 2026-09-25b FINAL",
     "injury_pulled": "2026-09-25b",
     "away_CIN": {
       "prior": 4.9,
@@ -86,11 +86,11 @@
     "travel": 0,
     "travel_note": "schedNet desk",
     "matchup": 0,
-    "matchup_note": "pff-matchups missing \u2192 0",
+    "matchup_note": "pff-matchups missing → 0",
     "gap": -0.75,
     "component_sum": [
       {
-        "label": "rating_diff (PIT\u2212CIN)",
+        "label": "rating_diff (PIT−CIN)",
         "val": -2.74
       },
       {
@@ -122,7 +122,7 @@
         "val": -0.75
       },
       {
-        "label": "model_home_spread (\u2212gap)",
+        "label": "model_home_spread (−gap)",
         "val": 0.75
       }
     ],
@@ -255,16 +255,16 @@
     "units": 2,
     "price": -110,
     "class": "INFO",
-    "note": "Model PIT +0.75 vs street +3.5 (CIN \u22123.5). Through 3. Dowdle OUT already in PIT term. Standard 2u dog."
+    "note": "Model PIT +0.75 vs street +3.5 (CIN −3.5). Through 3. Dowdle OUT already in PIT term. Standard 2u dog."
   },
   "notes": "FINAL pre-kick SUN_AM lock after Fri ~4pm ET status. Injury 2026-09-25b FINAL. CIN inj -0.85; PIT inj -0.9. Street CIN -3.5. Edge home 2.75. Call FIRE.",
   "refresh": {
     "phase": "SUN_AM_CONFIRMED",
     "confirmed_at": "2026-09-27 8:05 AM ET (America/New_York)",
     "vs_friday": {
-      "dm": 0.0,
-      "ds": 0.0,
-      "dou": 0.0,
+      "dm": 0,
+      "ds": 0,
+      "dou": 0,
       "material": false
     },
     "live_street": 3.5,
@@ -273,5 +273,8 @@
     "live_edge_home": 2.75,
     "live_details": "CIN -3.5",
     "note": "Fri freeze still good pre-kick; street/model within material thresholds."
-  }
+  },
+  "model_home_spread_corrected": 0.22,
+  "edge_home_corrected": 3.28,
+  "correction_note": "Site-parity recompute 2026-09-27 (injury 2026-09-27a): FA and PFF 2026 preseason removed from line per 2026-09-24 (PR #7/#9), YTD take/give in currentRating (PR #8), N=3 taper n=2, HFA 2; = app.js B$ ourHomeSpread. Frozen model_home_spread/edge_home left untouched. eff CIN 3.99 / PIT 1.78; edge = street 3.5 − 0.22."
 }

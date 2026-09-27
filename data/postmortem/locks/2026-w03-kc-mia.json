@@ -16,9 +16,9 @@
   "ou_street": 45.5,
   "street_note": "SUN_AM refresh 2026-09-27 8:05 AM ET (America/New_York). ESPN DraftKings live: KC -10 / ou 45.5. vs Fri street 10.5 / ou 45.5 (ds=-0.5, dou=0.0, dm=0.04). Injury still 2026-09-25b FINAL.",
   "edge_home": -8.76,
-  "edge_note": "edgeHome = street \u2212 model = 10 \u2212 (18.76) = -8.76 \u2192 away value (KC)",
+  "edge_note": "edgeHome = street − model = 10 − (18.76) = -8.76 → away value (KC)",
   "feature_stack": {
-    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W3 n\u22482 so fa/return at w_prior=1/3, draft_fade\u22480.5; pff_ytd IN line; injury 2026-09-25b FINAL",
+    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W3 n≈2 so fa/return at w_prior=1/3, draft_fade≈0.5; pff_ytd IN line; injury 2026-09-25b FINAL",
     "injury_pulled": "2026-09-25b",
     "away_KC": {
       "prior": 6.96,
@@ -86,11 +86,11 @@
     "travel": 0,
     "travel_note": "schedNet desk",
     "matchup": 0,
-    "matchup_note": "pff-matchups missing \u2192 0",
+    "matchup_note": "pff-matchups missing → 0",
     "gap": -18.76,
     "component_sum": [
       {
-        "label": "rating_diff (MIA\u2212KC)",
+        "label": "rating_diff (MIA−KC)",
         "val": -20.76
       },
       {
@@ -122,7 +122,7 @@
         "val": -18.76
       },
       {
-        "label": "model_home_spread (\u2212gap)",
+        "label": "model_home_spread (−gap)",
         "val": 18.76
       }
     ],
@@ -282,7 +282,7 @@
     "units": 0,
     "price": -110,
     "class": "INFO",
-    "note": "Fri PASS retained. Live street KC -10 / ou 45.5. Model 18.76 edge_home -8.76. Public-dogs window \u2014 no new chase."
+    "note": "Fri PASS retained. Live street KC -10 / ou 45.5. Model 18.76 edge_home -8.76. Public-dogs window — no new chase."
   },
   "notes": "SUN_AM pre-kick refresh 2026-09-27 8:05 AM ET (America/New_York). Injury 2026-09-25b FINAL unchanged. KC inj -1; MIA inj -1.21. Street KC -10. Edge home -8.76. Fri call PASS.",
   "refresh": {
@@ -290,10 +290,13 @@
     "vs_friday": {
       "dm": 0.04,
       "ds": -0.5,
-      "dou": 0.0,
+      "dou": 0,
       "material": true
     },
     "fri_frozen_at": "2026-09-25 4:27 PM ET (America/New_York)",
     "confirmed_pre_kick": true
-  }
+  },
+  "model_home_spread_corrected": 16.06,
+  "edge_home_corrected": -6.06,
+  "correction_note": "Site-parity recompute 2026-09-27 (injury 2026-09-27a): FA and PFF 2026 preseason removed from line per 2026-09-24 (PR #7/#9), YTD take/give in currentRating (PR #8), N=3 taper n=2, HFA 2; = app.js B$ ourHomeSpread. Frozen model_home_spread/edge_home left untouched. eff KC 8.48 / MIA -9.84; edge = street 10 − 16.06."
 }

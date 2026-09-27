@@ -16,9 +16,9 @@
   "ou_street": 37.5,
   "street_note": "SUN_AM refresh 2026-09-27 8:05 AM ET (America/New_York). ESPN DraftKings live: NYG -2.5 / ou 37.5. vs Fri street -2.5 / ou 38.5 (ds=0.0, dou=-1.0, dm=-0.02). Injury still 2026-09-25b FINAL.",
   "edge_home": 2.64,
-  "edge_note": "edgeHome = street \u2212 model = -2.5 \u2212 (-5.14) = 2.64 \u2192 home value (NYG)",
+  "edge_note": "edgeHome = street − model = -2.5 − (-5.14) = 2.64 → home value (NYG)",
   "feature_stack": {
-    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W3 n\u22482 so fa/return at w_prior=1/3, draft_fade\u22480.5; pff_ytd IN line; injury 2026-09-25b FINAL",
+    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W3 n≈2 so fa/return at w_prior=1/3, draft_fade≈0.5; pff_ytd IN line; injury 2026-09-25b FINAL",
     "injury_pulled": "2026-09-25b",
     "away_TEN": {
       "prior": -5.57,
@@ -86,11 +86,11 @@
     "travel": 0,
     "travel_note": "schedNet desk",
     "matchup": 0,
-    "matchup_note": "pff-matchups missing \u2192 0",
+    "matchup_note": "pff-matchups missing → 0",
     "gap": 5.14,
     "component_sum": [
       {
-        "label": "rating_diff (NYG\u2212TEN)",
+        "label": "rating_diff (NYG−TEN)",
         "val": 2.94
       },
       {
@@ -122,7 +122,7 @@
         "val": 5.14
       },
       {
-        "label": "model_home_spread (\u2212gap)",
+        "label": "model_home_spread (−gap)",
         "val": -5.14
       }
     ],
@@ -291,18 +291,21 @@
     "units": 0,
     "price": -110,
     "class": "INFO",
-    "note": "Fri PASS retained. Live street NYG -2.5 / ou 37.5. Model -5.14 edge_home 2.64. Public-dogs window \u2014 no new chase."
+    "note": "Fri PASS retained. Live street NYG -2.5 / ou 37.5. Model -5.14 edge_home 2.64. Public-dogs window — no new chase."
   },
   "notes": "SUN_AM pre-kick refresh 2026-09-27 8:05 AM ET (America/New_York). Injury 2026-09-25b FINAL unchanged. TEN inj -1.16; NYG inj -1.31. Street NYG -2.5. Edge home 2.64. Fri call PASS.",
   "refresh": {
     "phase": "SUN_AM_REFRESH",
     "vs_friday": {
       "dm": -0.02,
-      "ds": 0.0,
-      "dou": -1.0,
+      "ds": 0,
+      "dou": -1,
       "material": true
     },
     "fri_frozen_at": "2026-09-25 4:27 PM ET (America/New_York)",
     "confirmed_pre_kick": true
-  }
+  },
+  "model_home_spread_corrected": -6.4,
+  "edge_home_corrected": 3.9,
+  "correction_note": "Site-parity recompute 2026-09-27 (injury 2026-09-27a): FA and PFF 2026 preseason removed from line per 2026-09-24 (PR #7/#9), YTD take/give in currentRating (PR #8), N=3 taper n=2, HFA 2; = app.js B$ ourHomeSpread. Frozen model_home_spread/edge_home left untouched. eff TEN -7.6 / NYG -3.41; edge = street -2.5 − -6.4."
 }
