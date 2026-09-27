@@ -9,19 +9,19 @@
   "venue": "Empower Field at Mile High",
   "neutral": false,
   "window": "SNF",
-  "model_home_spread": 9.26,
+  "model_home_spread": 9.35,
   "model_home_spread_source": "desk_compute",
   "street_home_spread": 2.5,
   "close_at_lock": 2.5,
-  "ou_street": 43.5,
-  "street_note": "FINAL freeze 2026-09-25 4:27 PM ET (America/New_York). ESPN DraftKings: LAR -2.5 / ou 43.5. Shop: ESPN/DK pickcenter primary; consensus held at freeze.",
-  "edge_home": -6.76,
-  "edge_note": "edgeHome = street \u2212 model = 2.5 \u2212 (9.26) = -6.76 \u2192 away value (LAR); |edge|\u22651.5",
+  "ou_street": 44.5,
+  "street_note": "SUN_AM refresh 2026-09-27 8:05 AM ET (America/New_York). ESPN DraftKings live: LAR -2.5 / ou 44.5. vs Fri street 2.5 / ou 43.5 (ds=0.0, dou=1.0, dm=0.09). Injury still 2026-09-25b FINAL.",
+  "edge_home": -6.85,
+  "edge_note": "edgeHome = street \u2212 model = 2.5 \u2212 (9.35) = -6.85 \u2192 away value (LAR)",
   "feature_stack": {
     "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W3 n\u22482 so fa/return at w_prior=1/3, draft_fade\u22480.5; pff_ytd IN line; injury 2026-09-25b FINAL",
     "injury_pulled": "2026-09-25b",
     "away_LAR": {
-      "prior": 3.98,
+      "prior": 4.06,
       "fa": 1,
       "draft": 0,
       "madden": 1.05,
@@ -32,14 +32,14 @@
       "injury": -1.47,
       "adjust": 0,
       "context": 0,
-      "eff": 6.04,
+      "eff": 6.13,
       "taper": {
         "N": 3,
         "n": 2,
         "wPrior": 0.3333333333333333,
         "wCurr": 0.6666666666666666
       },
-      "current_rating": 2.23
+      "current_rating": 2.35
     },
     "home_DEN": {
       "prior": -0.96,
@@ -63,7 +63,7 @@
       "current_rating": -3.78
     },
     "layers_home_minus_away": {
-      "prior": -4.94,
+      "prior": -5.02,
       "fa": -0.83,
       "draft": 0,
       "madden": -0.48,
@@ -75,7 +75,7 @@
       "adjust": 0,
       "context": 0
     },
-    "rating_diff_home_minus_away": -10.98,
+    "rating_diff_home_minus_away": -11.07,
     "hfa": 2,
     "coach": -0.25,
     "coach_note": "coachTerm desk",
@@ -87,11 +87,11 @@
     "travel_note": "schedNet desk",
     "matchup": 0,
     "matchup_note": "pff-matchups missing \u2192 0",
-    "gap": -9.26,
+    "gap": -9.35,
     "component_sum": [
       {
         "label": "rating_diff (DEN\u2212LAR)",
-        "val": -10.98
+        "val": -11.07
       },
       {
         "label": "HFA",
@@ -119,11 +119,11 @@
       },
       {
         "label": "gap",
-        "val": -9.26
+        "val": -9.35
       },
       {
         "label": "model_home_spread (\u2212gap)",
-        "val": 9.26
+        "val": 9.35
       }
     ],
     "injuries": {
@@ -273,7 +273,7 @@
       }
     }
   },
-  "frozen_at": "2026-09-25 4:27 PM ET (America/New_York)",
+  "frozen_at": "2026-09-27 8:05 AM ET (America/New_York)",
   "tickets": [],
   "call": {
     "action": "FIRE",
@@ -282,7 +282,18 @@
     "units": 2,
     "price": -110,
     "class": "INFO",
-    "note": "Puka DOUBTFUL in number (\u22120.375). Model still LAR \u22129.3 vs street \u22122.5. Standard 2u favorite lock-now."
+    "note": "Fri FIRE retained (LAR -2.5 2u). Live street LAR -2.5 / ou 44.5. Model 9.35 edge_home -6.85."
   },
-  "notes": "FINAL pre-kick SNF lock after Fri ~4pm ET status. Injury 2026-09-25b FINAL. LAR inj -1.47; DEN inj -1.41. Street LAR -2.5. Edge home -6.76. Call FIRE."
+  "notes": "SUN_AM pre-kick refresh 2026-09-27 8:05 AM ET (America/New_York). Injury 2026-09-25b FINAL unchanged. LAR inj -1.47; DEN inj -1.41. Street LAR -2.5. Edge home -6.85. Fri call FIRE.",
+  "refresh": {
+    "phase": "SUN_AM_REFRESH",
+    "vs_friday": {
+      "dm": 0.09,
+      "ds": 0.0,
+      "dou": 1.0,
+      "material": true
+    },
+    "fri_frozen_at": "2026-09-25 4:27 PM ET (America/New_York)",
+    "confirmed_pre_kick": true
+  }
 }

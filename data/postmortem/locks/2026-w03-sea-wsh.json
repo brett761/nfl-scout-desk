@@ -11,12 +11,12 @@
   "window": "SUN_AM",
   "model_home_spread": 15.93,
   "model_home_spread_source": "desk_compute",
-  "street_home_spread": 7.5,
-  "close_at_lock": 7.5,
+  "street_home_spread": 8.5,
+  "close_at_lock": 8.5,
   "ou_street": 40.5,
-  "street_note": "FINAL freeze 2026-09-25 4:27 PM ET (America/New_York). ESPN DraftKings: SEA -7.5 / ou 40.5. Shop: ESPN/DK pickcenter primary; consensus held at freeze.",
-  "edge_home": -8.43,
-  "edge_note": "edgeHome = street \u2212 model = 7.5 \u2212 (15.93) = -8.43 \u2192 away value (SEA); |edge|\u22651.5",
+  "street_note": "SUN_AM refresh 2026-09-27 8:05 AM ET (America/New_York). ESPN DraftKings live: SEA -8.5 / ou 40.5. vs Fri street 7.5 / ou 40.5 (ds=1.0, dou=0.0, dm=0.0). Injury still 2026-09-25b FINAL.",
+  "edge_home": -7.43,
+  "edge_note": "edgeHome = street \u2212 model = 8.5 \u2212 (15.93) = -7.43 \u2192 away value (SEA)",
   "feature_stack": {
     "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W3 n\u22482 so fa/return at w_prior=1/3, draft_fade\u22480.5; pff_ytd IN line; injury 2026-09-25b FINAL",
     "injury_pulled": "2026-09-25b",
@@ -327,7 +327,7 @@
       }
     }
   },
-  "frozen_at": "2026-09-25 4:27 PM ET (America/New_York)",
+  "frozen_at": "2026-09-27 8:05 AM ET (America/New_York)",
   "tickets": [],
   "call": {
     "action": "FIRE",
@@ -336,7 +336,18 @@
     "units": 3,
     "price": -110,
     "class": "INFO",
-    "note": "Jayden Daniels OUT (1.11) + Cross OUT; WSH term \u22123.09. Model SEA \u221215.9 vs street \u22127.5; through 7. Full 3u favorite."
+    "note": "Fri FIRE retained (SEA -7.5 3u). Live street SEA -8.5 / ou 40.5. Model 15.93 edge_home -7.43."
   },
-  "notes": "FINAL pre-kick SUN_AM lock after Fri ~4pm ET status. Injury 2026-09-25b FINAL. SEA inj -0.75; WSH inj -3.09. Street SEA -7.5. Edge home -8.43. Call FIRE."
+  "notes": "SUN_AM pre-kick refresh 2026-09-27 8:05 AM ET (America/New_York). Injury 2026-09-25b FINAL unchanged. SEA inj -0.75; WSH inj -3.09. Street SEA -8.5. Edge home -7.43. Fri call FIRE.",
+  "refresh": {
+    "phase": "SUN_AM_REFRESH",
+    "vs_friday": {
+      "dm": 0.0,
+      "ds": 1.0,
+      "dou": 0.0,
+      "material": true
+    },
+    "fri_frozen_at": "2026-09-25 4:27 PM ET (America/New_York)",
+    "confirmed_pre_kick": true
+  }
 }
