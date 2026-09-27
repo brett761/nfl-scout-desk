@@ -9,17 +9,17 @@
   "venue": "Empower Field at Mile High",
   "neutral": false,
   "window": "SNF",
-  "model_home_spread": 9.35,
+  "model_home_spread": 9.61,
   "model_home_spread_source": "desk_compute",
-  "street_home_spread": 2.5,
-  "close_at_lock": 2.5,
+  "street_home_spread": 1.5,
+  "close_at_lock": 1.5,
   "ou_street": 44.5,
-  "street_note": "SUN_AM refresh 2026-09-27 8:05 AM ET (America/New_York). ESPN DraftKings live: LAR -2.5 / ou 44.5. vs Fri street 2.5 / ou 43.5 (ds=0.0, dou=1.0, dm=0.09). Injury still 2026-09-25b FINAL.",
-  "edge_home": -6.85,
-  "edge_note": "edgeHome = street \u2212 model = 2.5 \u2212 (9.35) = -6.85 \u2192 away value (LAR)",
+  "street_note": "SNF_PREKICK freeze 2026-09-27 7:18 PM ET (America/New_York). ESPN DraftKings live: LAR -1.5 / ou 44.5. vs SUN_AM street 2.5 / ou 44.5 (ds=-1, dou=0, dm=0.26). Injury 2026-09-27a WORKING-SUN.",
+  "edge_home": -8.11,
+  "edge_note": "edgeHome = street − model = 1.5 − (9.61) = -8.11 → away value (LAR); |edge|≥1.5",
   "feature_stack": {
-    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W3 n\u22482 so fa/return at w_prior=1/3, draft_fade\u22480.5; pff_ytd IN line; injury 2026-09-25b FINAL",
-    "injury_pulled": "2026-09-25b",
+    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W3 n≈2 so fa/return at w_prior=1/3, draft_fade≈0.5; pff_ytd IN line; injury 2026-09-27a WORKING-SUN",
+    "injury_pulled": "2026-09-27a",
     "away_LAR": {
       "prior": 4.06,
       "fa": 1,
@@ -29,10 +29,10 @@
       "pff_ytd": -0.51,
       "sos": 0.5,
       "return": 0,
-      "injury": -1.47,
+      "injury": -1.37,
       "adjust": 0,
       "context": 0,
-      "eff": 6.13,
+      "eff": 6.23,
       "taper": {
         "N": 3,
         "n": 2,
@@ -50,10 +50,10 @@
       "pff_ytd": -2,
       "sos": -1.72,
       "return": 0,
-      "injury": -1.41,
+      "injury": -1.57,
       "adjust": 0,
       "context": 0,
-      "eff": -4.94,
+      "eff": -5.1,
       "taper": {
         "N": 3,
         "n": 2,
@@ -71,11 +71,11 @@
       "pff_ytd": -1.49,
       "sos": -2.22,
       "return": 0,
-      "injury": 0.06,
+      "injury": -0.2,
       "adjust": 0,
       "context": 0
     },
-    "rating_diff_home_minus_away": -11.07,
+    "rating_diff_home_minus_away": -11.33,
     "hfa": 2,
     "coach": -0.25,
     "coach_note": "coachTerm desk",
@@ -86,12 +86,12 @@
     "travel": 0,
     "travel_note": "schedNet desk",
     "matchup": 0,
-    "matchup_note": "pff-matchups missing \u2192 0",
-    "gap": -9.35,
+    "matchup_note": "pff-matchups missing → 0",
+    "gap": -9.61,
     "component_sum": [
       {
-        "label": "rating_diff (DEN\u2212LAR)",
-        "val": -11.07
+        "label": "rating_diff (DEN−LAR)",
+        "val": -11.33
       },
       {
         "label": "HFA",
@@ -119,11 +119,11 @@
       },
       {
         "label": "gap",
-        "val": -9.35
+        "val": -9.61
       },
       {
-        "label": "model_home_spread (\u2212gap)",
-        "val": 9.35
+        "label": "model_home_spread (−gap)",
+        "val": 9.61
       }
     ],
     "injuries": {
@@ -138,12 +138,21 @@
           "on": true
         },
         {
-          "name": "Jordan Whittington",
-          "pos": "WR2",
-          "status": "QUESTIONABLE",
-          "impact": null,
-          "impact_source": null,
-          "pts": -0.09,
+          "name": "Myles Garrett",
+          "pos": "EDGE1",
+          "status": "IR",
+          "impact": 0.5,
+          "impact_source": "madden",
+          "pts": -0.5,
+          "on": true
+        },
+        {
+          "name": "Kamren Kinchens",
+          "pos": "S",
+          "status": "DOUBTFUL",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.15,
           "on": true
         },
         {
@@ -156,25 +165,18 @@
           "on": true
         },
         {
-          "name": "Kamren Kinchens",
-          "pos": "S",
-          "status": "QUESTIONABLE",
-          "impact": 0.2,
-          "impact_source": "madden",
-          "pts": -0.07,
-          "on": true
-        },
-        {
-          "name": "Nate Landman",
-          "pos": "LB",
-          "status": "QUESTIONABLE",
-          "impact": 0.25,
-          "impact_source": "madden",
-          "pts": -0.09,
-          "on": true
-        },
-        {
           "name": "Ronnie Rivers",
+          "pos": "RB1",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        }
+      ],
+      "DEN": [
+        {
+          "name": "Jonah Coleman",
           "pos": "RB1",
           "status": "IR",
           "impact": null,
@@ -183,32 +185,12 @@
           "on": true
         },
         {
-          "name": "Myles Garrett",
-          "pos": "EDGE1",
-          "status": "IR",
-          "impact": 0.5,
-          "impact_source": "madden",
-          "pts": -0.5,
-          "on": true
-        }
-      ],
-      "DEN": [
-        {
           "name": "Marvin Mims Jr.",
           "pos": "WR2",
           "status": "QUESTIONABLE",
           "impact": 0.2,
           "impact_source": "madden",
           "pts": -0.07,
-          "on": true
-        },
-        {
-          "name": "Jonah Coleman",
-          "pos": "RB1",
-          "status": "QUESTIONABLE",
-          "impact": null,
-          "impact_source": null,
-          "pts": -0.09,
           "on": true
         },
         {
@@ -260,20 +242,20 @@
     },
     "injury_terms": {
       "LAR": {
-        "raw": -1.47,
-        "term": -1.47,
+        "raw": -1.37,
+        "term": -1.37,
         "capped": false,
         "cap_team": 6
       },
       "DEN": {
-        "raw": -1.41,
-        "term": -1.41,
+        "raw": -1.57,
+        "term": -1.57,
         "capped": false,
         "cap_team": 6
       }
     }
   },
-  "frozen_at": "2026-09-27 8:05 AM ET (America/New_York)",
+  "frozen_at": "2026-09-27 7:18 PM ET (America/New_York)",
   "tickets": [],
   "call": {
     "action": "FIRE",
@@ -282,18 +264,31 @@
     "units": 2,
     "price": -110,
     "class": "INFO",
-    "note": "Fri FIRE retained (LAR -2.5 2u). Live street LAR -2.5 / ou 44.5. Model 9.35 edge_home -6.85."
+    "note": "Fri FIRE retained (LAR -2.5 2u). SNF live street LAR -1.5 / ou 44.5. Model 9.61 edge_home -8.11. No new units."
   },
-  "notes": "SUN_AM pre-kick refresh 2026-09-27 8:05 AM ET (America/New_York). Injury 2026-09-25b FINAL unchanged. LAR inj -1.47; DEN inj -1.41. Street LAR -2.5. Edge home -6.85. Fri call FIRE.",
+  "notes": "SNF pre-kick freeze 2026-09-27 7:18 PM ET (America/New_York). Injury 2026-09-27a WORKING-SUN. LAR inj -1.37; DEN inj -1.57. Street LAR -1.5. Edge home -8.11. Fri call FIRE LAR -2.5 2u retained — no new tickets.",
   "refresh": {
-    "phase": "SUN_AM_REFRESH",
-    "vs_friday": {
-      "dm": 0.09,
-      "ds": 0.0,
-      "dou": 1.0,
+    "phase": "SNF_PREKICK",
+    "vs_sunday_am": {
+      "dm": 0.26,
+      "ds": -1,
+      "dou": 0,
       "material": true
     },
-    "fri_frozen_at": "2026-09-25 4:27 PM ET (America/New_York)",
-    "confirmed_pre_kick": true
-  }
+    "am_frozen_at": "2026-09-27 8:05 AM ET (America/New_York)",
+    "am_model": 9.35,
+    "am_street": 2.5,
+    "am_ou": 44.5,
+    "am_injury": "2026-09-25b",
+    "confirmed_pre_kick": true,
+    "espn_status": {
+      "state": "pre",
+      "name": "STATUS_SCHEDULED",
+      "completed": false,
+      "detail": "Sun, September 27th at 8:20 PM EDT"
+    }
+  },
+  "lock_phase": "SNF_PREKICK",
+  "injury_aligned_to_imp3": true,
+  "injury_source_policy": "madden_first"
 }
