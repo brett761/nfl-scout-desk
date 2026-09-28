@@ -3056,3 +3056,169 @@ button.sked-venue {
   .linelog-table th.linelog-dayhead,
   .linelog-table td.linelog-day { min-width: 84px; padding: 10px 8px; }
 }
+
+/* ---------- sign-in gate ---------- */
+body:not(.is-authed) .mast,
+body:not(.is-authed) #app,
+body:not(.is-authed) .colophon,
+body:not(.is-authed) .overlay,
+body:not(.is-authed) .sheet,
+body:not(.is-authed) .toast {
+  display: none !important;
+}
+body.is-authed #auth-gate { display: none !important; }
+
+.auth-gate {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: max(28px, env(safe-area-inset-top)) 20px max(28px, env(safe-area-inset-bottom));
+}
+.auth-card {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  width: min(860px, 100%);
+}
+.auth-bee {
+  width: min(240px, 34vw);
+  height: auto;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+.auth-panel { flex: 1; min-width: 0; max-width: 440px; }
+.auth-gate h1 {
+  font-size: clamp(42px, 8vw, 64px);
+  margin-bottom: 12px;
+}
+.auth-gate .lede { margin-bottom: 22px; }
+.auth-gate input {
+  min-height: 48px;
+  font-size: 16px;
+}
+.auth-submit {
+  width: 100%;
+  min-height: 48px;
+  margin-top: 4px;
+}
+.auth-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 14px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--copper);
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  cursor: pointer;
+}
+.auth-link:hover,
+.auth-link:focus-visible { color: var(--copper-hot); }
+.auth-error,
+.auth-ok {
+  margin: 0 0 12px;
+  font-size: 14px;
+}
+.auth-error { color: var(--lose); }
+.auth-ok { color: var(--process); }
+.nav-session {
+  align-self: center;
+  padding: 8px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--slate);
+  white-space: nowrap;
+}
+.nav-signout {
+  align-self: center;
+  border: 1px solid var(--copper);
+  background: transparent;
+  color: var(--copper);
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 8px 12px;
+  min-height: 36px;
+  cursor: pointer;
+}
+.nav-signout:hover,
+.nav-signout:focus-visible { background: var(--copper-faint); }
+.user-create {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr 140px auto;
+  gap: 12px;
+  align-items: end;
+  margin-bottom: 22px;
+}
+.user-create .field { margin-bottom: 0; }
+.user-create .btn { min-height: 42px; white-space: nowrap; }
+.users-table select,
+.user-actions input {
+  width: auto;
+  min-width: 120px;
+  min-height: 40px;
+  font-size: 14px;
+}
+.user-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.user-mail,
+.user-confirm {
+  display: block;
+  margin-top: 4px;
+  color: var(--slate);
+  font-size: 12px;
+}
+.user-confirm { display: inline; margin: 0; color: var(--cloud); }
+body.is-viewer .slip-actions,
+body.is-viewer .grade-btns,
+body.is-viewer .row-actions,
+body.is-viewer .file-btn,
+body.is-viewer #btn-add,
+body.is-viewer #btn-pass,
+body.is-viewer #btn-sample,
+body.is-viewer #btn-clear,
+body.is-viewer #tp-inj-add,
+body.is-viewer #tp-ctx-add,
+body.is-viewer .ctx-del,
+body.is-viewer #tp-adjust-minus,
+body.is-viewer #tp-adjust-plus,
+body.is-viewer #nav-users,
+body.is-viewer #hfa-minus,
+body.is-viewer #hfa-plus,
+body.is-viewer label.field:has(#tp-adjust-why) {
+  display: none !important;
+}
+body.is-viewer .home-look-sides { pointer-events: none; }
+body.is-viewer input:disabled,
+body.is-viewer select:disabled,
+body.is-viewer textarea:disabled {
+  opacity: 1;
+  color: var(--cloud);
+  -webkit-text-fill-color: var(--cloud);
+  cursor: default;
+}
+@media (max-width: 800px) {
+  .auth-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .auth-bee { width: min(168px, 48vw); }
+  .auth-panel { max-width: none; width: 100%; }
+  .user-create { grid-template-columns: 1fr; }
+  .user-create .btn { width: 100%; min-height: 48px; }
+}
