@@ -17,11 +17,50 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Geist+Mono:wght@400;500;600&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=w3odds0924">
+  <link rel="stylesheet" href="styles.css?v=auth0928">
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
   <div class="frame" aria-hidden="true"></div>
+
+  <div id="auth-gate" class="auth-gate">
+    <div class="auth-card">
+      <img class="auth-bee" src="brand/bee-256.png" width="240" height="160" alt="">
+      <div class="auth-panel" id="auth-signin">
+        <p class="eyebrow">The desk</p>
+        <h1>Sign in</h1>
+        <p class="lede">Friends can look. Only the admin changes the book.</p>
+        <form id="auth-form" autocomplete="on">
+          <label class="field">
+            <span>Email or username</span>
+            <input id="auth-id" name="username" type="text" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" required>
+          </label>
+          <label class="field">
+            <span>Password</span>
+            <input id="auth-password" name="password" type="password" autocomplete="current-password" required>
+          </label>
+          <p class="auth-error" id="auth-error" role="alert" hidden></p>
+          <button type="submit" class="btn btn-fill auth-submit" id="auth-submit">Sign in</button>
+        </form>
+        <button type="button" class="auth-link" id="auth-forgot-open">Forgot password</button>
+      </div>
+      <div class="auth-panel" id="auth-forgot" hidden>
+        <p class="eyebrow">Reset</p>
+        <h1>Forgot password</h1>
+        <p class="lede">We’ll email a link. Open it to set a new password. A username uses the same address as sign-in.</p>
+        <form id="auth-forgot-form">
+          <label class="field">
+            <span>Email or username</span>
+            <input id="auth-forgot-id" type="text" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" required>
+          </label>
+          <p class="auth-error" id="auth-forgot-error" role="alert" hidden></p>
+          <p class="auth-ok" id="auth-forgot-ok" role="status" hidden></p>
+          <button type="submit" class="btn btn-fill auth-submit" id="auth-forgot-submit">Send reset link</button>
+        </form>
+        <button type="button" class="auth-link" id="auth-forgot-back">Back to sign in</button>
+      </div>
+    </div>
+  </div>
 
   <header class="mast">
     <a class="wordmark" href="#desk">
@@ -45,6 +84,9 @@
       <a href="#clock" data-nav="clock">Plan</a>
       <a href="#playbook" data-nav="playbook">Rules</a>
       <a href="#tickets" data-nav="tickets">Bets</a>
+      <a href="#users" data-nav="users" id="nav-users" hidden>Users</a>
+      <span class="nav-session" id="session-label"></span>
+      <button type="button" class="nav-signout" id="btn-sign-out">Sign out</button>
     </nav>
 
     <div class="mast-week">
@@ -432,6 +474,55 @@
       </div>
       <p class="table-empty" id="table-empty" hidden>No tickets in the book. Log a ticket, record a pass, or load SAMPLE data to see the ledger.</p>
     </section>
+
+    <!-- ========== USERS (admin) ========== -->
+    <section id="users" class="view" data-view="users" hidden aria-labelledby="users-title">
+      <div class="view-head">
+        <p class="eyebrow">Admin · accounts</p>
+        <h1 id="users-title">Users</h1>
+        <p class="lede">Create a login for a friend. They can see the desk. They cannot change lines, tickets, injuries, weather, or anything else you type.</p>
+      </div>
+      <form id="user-create" class="user-create" autocomplete="off">
+        <label class="field">
+          <span>Email or username</span>
+          <input id="user-new-id" type="text" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" required>
+        </label>
+        <label class="field">
+          <span>Password</span>
+          <input id="user-new-pw" type="password" autocomplete="new-password" minlength="8" required>
+        </label>
+        <label class="field">
+          <span>Name</span>
+          <input id="user-new-name" type="text" autocomplete="off" placeholder="Optional">
+        </label>
+        <label class="field">
+          <span>Role</span>
+          <select id="user-new-role">
+            <option value="viewer" selected>Viewer</option>
+            <option value="admin">Admin</option>
+          </select>
+        </label>
+        <button type="submit" class="btn btn-fill" id="user-create-submit">Create user</button>
+      </form>
+      <p class="auth-error" id="users-error" role="alert" hidden></p>
+      <p class="auth-ok" id="users-ok" role="status" hidden></p>
+      <div class="table-wrap">
+        <table class="ledger users-table" id="users-table">
+          <thead>
+            <tr>
+              <th>login</th>
+              <th>name</th>
+              <th>role</th>
+              <th>last sign-in</th>
+              <th>password</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="users-body"></tbody>
+        </table>
+      </div>
+      <p class="table-empty" id="users-empty" hidden>No users yet.</p>
+    </section>
   </main>
 
   <footer class="colophon">
@@ -608,6 +699,8 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
-  <script src="app.js?v=w4odds0928"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.81.1/dist/umd/supabase.js"></script>
+  <script src="auth.js?v=auth0928"></script>
+  <script src="app.js?v=auth0928"></script>
 </body>
 </html>

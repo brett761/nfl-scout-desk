@@ -20,6 +20,50 @@ const INCLUDE_FA = false;
 /* 2026 PFF preseason OVER stays on the sheet. It does not move the B$ line while this is false. */
 const INCLUDE_PFF_PRESEASON = false;
 const SHEET_BOX_KEY = "nflScout.sheetBoxes.v1";
+
+function canEdit() {
+  return !!(window.BMB && window.BMB.role === "admin");
+}
+
+function publishDesk(key, value) {
+  if (!window.BMB || window.BMB.deskReady !== true || !canEdit()) return;
+  if (typeof window.BMB.pushDesk === "function") window.BMB.pushDesk(key, value);
+}
+
+const EDIT_CONTROL_SEL = [
+  "#btn-add", "#btn-pass", "#btn-sample", "#btn-clear", "#btn-import", "#btn-import-profiles",
+  "#hfa-input", "#hfa-minus", "#hfa-plus",
+  "#sharp-book", "#sharp-book-desk",
+  "#ticket-form input", "#ticket-form select", "#ticket-form textarea", "#ticket-form button",
+  ".slip-actions button",
+  ".grade-btns button", ".grade-btns input", ".row-actions button",
+  ".home-look-side",
+  "#sked-board input", "#sked-board select", "#sked-board textarea",
+  "#residuals-body input", "#residuals-body select", "#residuals-body textarea",
+  "#team-sheet-body input", "#team-sheet-body select", "#team-sheet-body textarea",
+  "#team-sheet-body .ctx-del", "#team-sheet-body .inj-add", "#team-sheet-body .ctx-add",
+  "#tp-adjust-minus", "#tp-adjust-plus",
+].join(",");
+
+function applyEditLocks() {
+  const edit = canEdit();
+  document.body.classList.toggle("is-admin", edit);
+  document.body.classList.toggle("is-viewer", !edit && !!(window.BMB && window.BMB.role));
+  document.querySelectorAll(EDIT_CONTROL_SEL).forEach((el) => {
+    if (!el.matches("button, input, select, textarea")) return;
+    if (!edit) {
+      el.disabled = true;
+      el.dataset.viewLock = "1";
+      if (el.matches("input, textarea") && el.type !== "checkbox" && el.type !== "radio") el.readOnly = true;
+      return;
+    }
+    if (el.dataset.viewLock === "1") {
+      el.disabled = false;
+      delete el.dataset.viewLock;
+      if (el.matches("input, textarea") && el.id !== "f-stake" && el.id !== "f-purpose") el.readOnly = false;
+    }
+  });
+}
 const WEEKLY_BUDGET = 1000;
 const UNIT = 50;
 const WEEKLY_UNITS = 20;
@@ -1939,7 +1983,8 @@ function load() {
 }
 
 function save() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(tickets));
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(tickets)); } catch { /* ignore */ }
+  publishDesk("tickets", tickets);
 }
 
 function seedTicketsIfNeeded() {
@@ -2011,6 +2056,7 @@ function getProfile(abbr) {
 }
 
 function setProfile(abbr, patch) {
+  if (!canEdit()) return;
   const a = normAbbr(abbr);
   profiles[a] = { ...getProfile(a), ...patch };
   saveProfiles();
@@ -2031,7 +2077,7 @@ function markAdjustWhyNeeded(on) {
 }
 
 function applyAdjust(next, opts = {}) {
-  if (!profileAbbr) return;
+  if (!profileAbbr || !canEdit()) return;
   const cur = num(getProfile(profileAbbr).user_adjust) || 0;
   const val = opts.snap === false ? (num(next) ?? 0) : snapHalf(next);
   if (adjustBurstFrom === null) adjustBurstFrom = cur;
@@ -2046,7 +2092,7 @@ function applyAdjust(next, opts = {}) {
 }
 
 function commitAdjustLog() {
-  if (!profileAbbr) return;
+  if (!profileAbbr || !canEdit()) return;
   const why = readAdjustWhy();
   const p = getProfile(profileAbbr);
   const to = num(p.user_adjust) || 0;
@@ -2131,15 +2177,18 @@ function loadProfiles() {
 }
 
 function saveProfiles() {
-  localStorage.setItem(PROFILES_KEY, JSON.stringify(profiles));
+  try { localStorage.setItem(PROFILES_KEY, JSON.stringify(profiles)); } catch { /* ignore */ }
+  publishDesk("profiles", profiles);
 }
 
 function saveOverrides() {
-  localStorage.setItem(OVERRIDES_KEY, JSON.stringify(lineOverrides));
+  try { localStorage.setItem(OVERRIDES_KEY, JSON.stringify(lineOverrides)); } catch { /* ignore */ }
+  publishDesk("lineOverrides", lineOverrides);
 }
 
 function saveHfa() {
-  localStorage.setItem(HFA_KEY, String(hfa));
+  try { localStorage.setItem(HFA_KEY, String(hfa)); } catch { /* ignore */ }
+  publishDesk("hfa", hfa);
 }
 
 function emptyWx() {
@@ -2155,7 +2204,8 @@ function loadWeather() {
 }
 
 function saveWeather() {
-  localStorage.setItem(WEATHER_KEY, JSON.stringify(weatherByGame));
+  try { localStorage.setItem(WEATHER_KEY, JSON.stringify(weatherByGame)); } catch { /* ignore */ }
+  publishDesk("weather", weatherByGame);
 }
 
 function loadResiduals() {
@@ -2167,7 +2217,8 @@ function loadResiduals() {
 }
 
 function saveResiduals() {
-  localStorage.setItem(RESIDUALS_KEY, JSON.stringify(residualsByGame));
+  try { localStorage.setItem(RESIDUALS_KEY, JSON.stringify(residualsByGame)); } catch { /* ignore */ }
+  publishDesk("residuals", residualsByGame);
 }
 
 function getResidual(id) {
@@ -2180,6 +2231,7 @@ function getResidual(id) {
 }
 
 function setResidual(id, patch) {
+  if (!canEdit()) return;
   residualsByGame[id] = { ...getResidual(id), ...patch };
   saveResiduals();
 }
@@ -2192,7 +2244,8 @@ function loadSharpBook() {
 }
 
 function saveSharpBook() {
-  localStorage.setItem(SHARP_BOOK_KEY, sharpBook);
+  try { localStorage.setItem(SHARP_BOOK_KEY, sharpBook); } catch { /* ignore */ }
+  publishDesk("sharpBook", sharpBook);
 }
 
 function syncSharpBookInputs() {
@@ -2704,6 +2757,7 @@ async function loadNfl() {
 }
 
 function upsert(partial) {
+  if (!canEdit()) return;
   const next = enrich(partial);
   const i = tickets.findIndex((t) => t.id === next.id);
   if (i >= 0) tickets[i] = next;
@@ -2713,6 +2767,7 @@ function upsert(partial) {
 }
 
 function remove(id) {
+  if (!canEdit()) return;
   tickets = tickets.filter((t) => t.id !== id);
   save();
   render();
@@ -4045,6 +4100,7 @@ function renderTeamSheet() {
       <p class="section-label">2026 schedule</p>
       <div id="tp-sked">${teamSkedHtml(team.abbr)}</div>
     </div>`;
+  applyEditLocks();
 }
 
 function refreshTeamDerived() {
@@ -5232,6 +5288,7 @@ function exportProfiles() {
 }
 
 function importProfiles(file) {
+  if (!canEdit()) return;
   const reader = new FileReader();
   reader.onload = () => {
     try {
@@ -5911,7 +5968,9 @@ function loadFriendPick() {
 }
 
 function saveFriendPick(pick) {
+  if (!canEdit()) return;
   try { localStorage.setItem(FRIEND_PICK_KEY, JSON.stringify(pick)); } catch { /* ignore */ }
+  publishDesk("friendPick", pick);
 }
 
 function renderHomeLook() {
@@ -5972,6 +6031,7 @@ function render() {
   syncSharpBookInputs();
   if (gameSheetId) renderGameSheet();
   if (lineLogChange) renderLineLogSheet();
+  applyEditLocks();
 }
 
 /* ---------- sheet ---------- */
@@ -6002,6 +6062,7 @@ function syncStakePurpose() {
 }
 
 function openSheet(opts = {}) {
+  if (!canEdit()) return;
   closeTeamSheet({ silent: true });
   closeGameSheet({ silent: true });
   lastFocus = document.activeElement;
@@ -6381,9 +6442,13 @@ function parseHash() {
 
 function fromHash() {
   const { view, team, game } = parseHash();
-  const known = ["desk", "card", "teams", "staff", "schedule", "linelog", "residuals", "keys", "vibe", "clock", "playbook", "tickets"];
-  const name = known.includes(view) ? view : "desk";
+  const known = ["desk", "card", "teams", "staff", "schedule", "linelog", "residuals", "keys", "vibe", "clock", "playbook", "tickets", "users"];
+  let name = known.includes(view) ? view : "desk";
+  if (name === "users" && !canEdit()) name = "desk";
   showView(name);
+  if (name === "users" && window.BMB && typeof window.BMB.onUsersView === "function") {
+    window.BMB.onUsersView();
+  }
   if (game) {
     if (nflData && nflData.games && nflData.games.length) openGameSheet(game, { silent: true });
     else pendingGame = game;
@@ -6408,6 +6473,7 @@ function fromHash() {
 /* ---------- samples / io ---------- */
 
 function loadSamples() {
+  if (!canEdit()) return;
   const without = tickets.filter((t) => !isSample(t));
   const samples = SAMPLES.map((s) => enrich({ ...s, id: uid(), sample: true, season: "EXAMPLE" }));
   tickets = [...without, ...samples];
@@ -6427,6 +6493,7 @@ function exportJSON() {
 }
 
 function importJSON(file) {
+  if (!canEdit()) return;
   const reader = new FileReader();
   reader.onload = () => {
     try {
@@ -6444,6 +6511,7 @@ function importJSON(file) {
 }
 
 function clearAll() {
+  if (!canEdit()) return;
   if (!confirm("Clear every ticket in localStorage? This cannot be undone.")) return;
   tickets = [];
   save();
@@ -6578,6 +6646,7 @@ function bind() {
   });
 
   document.getElementById("ledger-body").addEventListener("click", (e) => {
+    if (!canEdit()) return;
     const grade = e.target.closest("[data-grade]");
     const edit = e.target.closest("[data-edit]");
     const del = e.target.closest("[data-del]");
@@ -6595,6 +6664,7 @@ function bind() {
     }
   });
   document.getElementById("ledger-body").addEventListener("change", (e) => {
+    if (!canEdit()) return;
     const close = e.target.closest("[data-close]");
     if (!close) return;
     const t = tickets.find((x) => x.id === close.dataset.close);
@@ -6607,6 +6677,7 @@ function bind() {
   if (unitsEl) unitsEl.addEventListener("input", syncStakePurpose);
   document.getElementById("ticket-form").addEventListener("submit", (e) => {
     e.preventDefault();
+    if (!canEdit()) return;
     const t = readForm();
     if (t.ticket_type !== "PASS" && !t.pick) {
       toast("A ticket needs a pick — or record a PASS.");
@@ -6680,7 +6751,7 @@ function bind() {
       if (!sideBtn && !gameBtn) return;
       const id = (sideBtn || gameBtn).dataset.homeGame;
       if (!id) return;
-      if (sideBtn) {
+      if (sideBtn && canEdit()) {
         const g = gameById(id);
         const side = sideBtn.dataset.homeSide;
         const nick = g ? clubNick(side === "home" ? g.home : g.away) : side;
@@ -6701,6 +6772,7 @@ function bind() {
   });
 
   function setHfa(v) {
+    if (!canEdit()) return;
     hfa = snapHalf(v);
     saveHfa();
     const el = document.getElementById("hfa-input");
@@ -6736,6 +6808,7 @@ function bind() {
     openGameSheet(opener.dataset.openGame);
   });
   document.getElementById("sked-board").addEventListener("change", (e) => {
+    if (!canEdit()) return;
     const odds = e.target.closest("[data-odds]");
     const ou = e.target.closest("[data-ou]");
     if (odds || ou) {
@@ -6790,6 +6863,16 @@ function bind() {
       const panel = document.getElementById(boxBtn.getAttribute("aria-controls"));
       if (panel) panel.hidden = !open;
       saveSheetBox(id, open);
+      return;
+    }
+    if (!canEdit()) {
+      const oppOnly = e.target.closest("#tp-sked [data-team]");
+      if (oppOnly) {
+        openTeamProfile(oppOnly.dataset.team);
+        if (location.hash !== "#team-" + oppOnly.dataset.team) {
+          history.replaceState(null, "", "#team-" + oppOnly.dataset.team);
+        }
+      }
       return;
     }
     if (e.target.id === "tp-adjust-minus") {
@@ -6863,7 +6946,7 @@ function bind() {
     }
   });
   document.getElementById("team-sheet").addEventListener("input", (e) => {
-    if (!profileAbbr) return;
+    if (!profileAbbr || !canEdit()) return;
     if (e.target.id === "tp-notes") {
       setProfile(profileAbbr, { notes: e.target.value });
       return;
@@ -6946,7 +7029,7 @@ function bind() {
     }
   });
   document.getElementById("team-sheet").addEventListener("change", (e) => {
-    if (!profileAbbr) return;
+    if (!profileAbbr || !canEdit()) return;
     if (e.target.id === "tp-adjust") {
       applyAdjust(e.target.value);
       return;
@@ -7010,6 +7093,7 @@ function bind() {
   });
 
   function onSharpBook(e) {
+    if (!canEdit()) return;
     const v = String(e.target.value || "").trim() || SHARP_BOOK_DEFAULT;
     sharpBook = v;
     saveSharpBook();
@@ -7023,6 +7107,7 @@ function bind() {
   const residBody = document.getElementById("residuals-body");
   if (residBody) {
     residBody.addEventListener("change", (e) => {
+      if (!canEdit()) return;
       const sp = e.target.closest("[data-resid-spread]");
       const tot = e.target.closest("[data-resid-total]");
       if (!sp && !tot) return;
@@ -7078,11 +7163,89 @@ async function bootNfl() {
   render();
 }
 
-load();
-loadProfiles();
-loadWeather();
-loadResiduals();
-loadSharpBook();
-bind();
-render();
-bootNfl();
+function deskSnapshot() {
+  let friendPick = null;
+  try { friendPick = JSON.parse(localStorage.getItem(FRIEND_PICK_KEY) || "null"); } catch { friendPick = null; }
+  return {
+    tickets,
+    profiles,
+    lineOverrides,
+    hfa,
+    weather: weatherByGame,
+    residuals: residualsByGame,
+    sharpBook,
+    friendPick,
+  };
+}
+
+function applyDeskEdits(map) {
+  if (!map || typeof map !== "object") return;
+  if (Array.isArray(map.tickets)) {
+    tickets = map.tickets.map(enrich);
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(tickets)); } catch { /* ignore */ }
+  }
+  if (map.profiles && typeof map.profiles === "object" && !Array.isArray(map.profiles)) {
+    profiles = map.profiles;
+    try { localStorage.setItem(PROFILES_KEY, JSON.stringify(profiles)); } catch { /* ignore */ }
+    migrateAllProfiles();
+  }
+  if (map.lineOverrides && typeof map.lineOverrides === "object" && !Array.isArray(map.lineOverrides)) {
+    lineOverrides = map.lineOverrides;
+    try { localStorage.setItem(OVERRIDES_KEY, JSON.stringify(lineOverrides)); } catch { /* ignore */ }
+  }
+  if (map.hfa !== undefined && map.hfa !== null && map.hfa !== "") {
+    const h = num(map.hfa);
+    if (h !== null) {
+      hfa = h;
+      try { localStorage.setItem(HFA_KEY, String(hfa)); } catch { /* ignore */ }
+      const el = document.getElementById("hfa-input");
+      if (el) el.value = hfa;
+    }
+  }
+  if (map.weather && typeof map.weather === "object" && !Array.isArray(map.weather)) {
+    weatherByGame = map.weather;
+    try { localStorage.setItem(WEATHER_KEY, JSON.stringify(weatherByGame)); } catch { /* ignore */ }
+  }
+  if (map.residuals && typeof map.residuals === "object" && !Array.isArray(map.residuals)) {
+    residualsByGame = map.residuals;
+    try { localStorage.setItem(RESIDUALS_KEY, JSON.stringify(residualsByGame)); } catch { /* ignore */ }
+  }
+  if (typeof map.sharpBook === "string" && map.sharpBook.trim()) {
+    sharpBook = map.sharpBook;
+    try { localStorage.setItem(SHARP_BOOK_KEY, sharpBook); } catch { /* ignore */ }
+  }
+  if (map.friendPick && typeof map.friendPick === "object") {
+    try { localStorage.setItem(FRIEND_PICK_KEY, JSON.stringify(map.friendPick)); } catch { /* ignore */ }
+  }
+}
+
+window.BMBDesk = {
+  snapshot: deskSnapshot,
+  apply: applyDeskEdits,
+};
+
+function bootDesk() {
+  if (window.__bmbBooted) return;
+  window.__bmbBooted = true;
+  load();
+  loadProfiles();
+  loadWeather();
+  loadResiduals();
+  loadSharpBook();
+  bind();
+  render();
+  bootNfl().then(async () => {
+    if (window.BMB && typeof window.BMB.hydrateDesk === "function") {
+      await window.BMB.hydrateDesk();
+    }
+  }).catch((err) => {
+    console.warn("desk boot", err);
+  }).finally(() => {
+    if (window.BMB) window.BMB.deskReady = true;
+    applyEditLocks();
+  });
+}
+
+window.bootDesk = bootDesk;
+window.dispatchEvent(new Event("bmb-app-ready"));
+if (window.BMB && window.BMB.session && window.BMB.role) bootDesk();
