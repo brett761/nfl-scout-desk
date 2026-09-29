@@ -3,7 +3,10 @@
 import fs from "fs"; import path from "path"; import vm from "vm";
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
 const src = fs.readFileSync(path.join(ROOT,"app.js"),"utf8");
-const bootIdx = src.lastIndexOf("\nload();\nloadProfiles();");
+// Cut before boot. Post sign-in gate (2026-09-28) boot lives in bootDesk(); older app.js booted at top level.
+let bootIdx = src.lastIndexOf("\nwindow.bootDesk = bootDesk;");
+if (bootIdx < 0) bootIdx = src.lastIndexOf("\nload();\nloadProfiles();");
+if (bootIdx < 0) throw new Error("site_parity_harness: boot marker not found in app.js");
 const body = src.slice(0, bootIdx);
 function stub(){ const f=function(){return p;}; const p=new Proxy(f,{get(t,k){ if(k===Symbol.toPrimitive) return ()=> ""; if(k==="length")return 0; if(k===Symbol.iterator) return function*(){}; if(k==="then") return undefined; return p;}, set(){return true;}, apply(){return p;}, construct(){return p;}}); return p;}
 const store={};
