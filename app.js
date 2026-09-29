@@ -37,7 +37,6 @@ const EDIT_CONTROL_SEL = [
   "#ticket-form input", "#ticket-form select", "#ticket-form textarea", "#ticket-form button",
   ".slip-actions button",
   ".grade-btns button", ".grade-btns input", ".row-actions button",
-  ".home-look-side",
   "#sked-board input", "#sked-board select", "#sked-board textarea",
   "#residuals-body input", "#residuals-body select", "#residuals-body textarea",
   "#team-sheet-body input", "#team-sheet-body select", "#team-sheet-body textarea",
@@ -71,13 +70,6 @@ const MAX_UNITS = 4;
 const DEFAULT_STRAIGHT_UNITS = 3;
 const PARLAY_UNITS = 1;
 
-const WINDOWS = [
-  { id: "TNF", label: "Thursday Night", short: "TNF" },
-  { id: "SUN_AM", label: "Sunday AM / London", short: "SUN AM" },
-  { id: "SUN_PM", label: "Sunday PM", short: "SUN PM" },
-  { id: "SNF", label: "Sunday Night", short: "SNF" },
-  { id: "MNF", label: "Monday Night", short: "MNF" },
-];
 const ALL_WINDOWS = ["TNF", "SUN_AM", "SUN_PM", "SNF", "MNF", "THU_HOL", "FRI", "SAT"];
 
 const CLOCK = [
@@ -1963,15 +1955,7 @@ let coachData = null; // from ./data/coaches-2026.json; null if missing → coac
 let prepData = null; // from ./data/coach-prep-2026.json; null if missing → prep_net 0
 let atsData = null; // from ./data/coach-ats-2026.json; null if missing → ats_net 0
 let keysData = null; // from ./data/keys-nfl.json; null if missing
-let vibeIndex = null; // from ./data/vibe-check/index.json; null if missing
-let vibeWeeksCal = null; // from ./data/vibe-check/weeks.json; null if missing
-let vibeTeams = null; // from ./data/vibe-check/teams.json; null if missing
-let vibeWeekId = null; // selected vibe week; default current_week_id
-let vibeWeekPicked = false;
-let vibeRollupCache = {}; // { [weekId]: object | null }
-let vibeDayCache = {}; // { [dayKey]: object | null }
-let vibeOpenDay = null;
-let vibeInflight = {};
+let powerRankings = null; // ./data/published/power-rankings.json — frozen Tuesday ranks
 let schemeData = null; // from ./data/scheme-2025.json; null if missing
 let totalsModel = null; // from ./data/totals-model.json; formula note only
 let weatherByGame = {}; // { [gameId]: { wind, temp, precip, roof, note } }
@@ -2755,36 +2739,6 @@ async function loadNfl() {
     console.warn("openers", err);
   }
   try {
-    const res = await fetch("./data/vibe-check/index.json");
-    if (!res.ok) throw new Error(String(res.status));
-    const data = await res.json();
-    if (!data || typeof data !== "object") throw new Error("bad vibe index");
-    vibeIndex = data;
-    if (!vibeWeekPicked && data.current_week_id) vibeWeekId = data.current_week_id;
-  } catch (err) {
-    vibeIndex = null;
-    console.warn("vibe-check/index.json", err);
-  }
-  try {
-    const res = await fetch("./data/vibe-check/weeks.json");
-    if (!res.ok) throw new Error(String(res.status));
-    const data = await res.json();
-    if (!data || !Array.isArray(data.weeks)) throw new Error("bad vibe weeks");
-    vibeWeeksCal = data;
-  } catch (err) {
-    vibeWeeksCal = null;
-    console.warn("vibe-check/weeks.json", err);
-  }
-  try {
-    const res = await fetch("./data/vibe-check/teams.json");
-    if (!res.ok) throw new Error(String(res.status));
-    const data = await res.json();
-    if (!data || !Array.isArray(data.teams)) throw new Error("bad vibe teams");
-    vibeTeams = data;
-  } catch (err) {
-    vibeTeams = null;
-  }
-  try {
     const res = await fetch("./data/line-log/index.json?v=linelog2");
     if (!res.ok) throw new Error(String(res.status));
     const data = await res.json();
@@ -3051,54 +3005,6 @@ function renderKPIs() {
 
   document.getElementById("empty-desk").hidden = k.hasSeason;
   renderTallyStrips();
-}
-
-/* ---------- card ---------- */
-
-function slotStatus(ticket) {
-  if (!ticket) return { code: "EMPTY", label: "EMPTY" };
-  if (ticket.ticket_type === "PASS") return { code: "PASS", label: "PASS" };
-  const r = normalizeResult(ticket.result);
-  if (r && r !== "PENDING") return { code: "GRADED", label: "GRADED · " + r };
-  return { code: "LOCKED", label: "LOCKED" };
-}
-
-function renderCard() {
-  const week = weekTickets();
-  const html = WINDOWS.map((w) => {
-    const straight = week.find((t) => t.window === w.id && t.ticket_type === "Straight");
-    const parlay = week.find((t) => t.window === w.id && t.ticket_type === "Parlay");
-    const pass = week.find((t) => t.window === w.id && t.ticket_type === "PASS");
-    const sTicket = straight || pass;
-    const sStat = slotStatus(sTicket);
-    const pStat = slotStatus(parlay);
-    return `
-      <article class="slip" data-window="${w.id}">
-        <p class="slip-win">${esc(w.short)}</p>
-        <h3>${esc(w.label)}</h3>
-        <div class="slot">
-          <div class="slot-kicker"><span>${sTicket && sTicket.ticket_type !== "PASS" ? esc(fmtUnits(inferUnits(sTicket)) + " straight") : "1–3u straight"}</span><span class="tag tag-process">PROCESS</span></div>
-          <p class="slot-status ${sStat.code.toLowerCase()}">${sStat.label}</p>
-          ${sTicket ? `
-            <p class="slot-pick">${esc(sTicket.pick || sTicket.ticket_type)}</p>
-            <p class="slot-meta">${esc([sTicket.market, sTicket.bet_line != null ? sTicket.bet_line : "", sTicket.book, sTicket.clv_pts != null ? "CLV " + pts(sTicket.clv_pts) : ""].filter(Boolean).join(" · "))}</p>
-          ` : `<p class="slot-pick">No number yet.</p>`}
-        </div>
-        <div class="slot">
-          <div class="slot-kicker"><span>1u parlay</span><span class="tag tag-ent">ENTERTAINMENT</span></div>
-          <p class="slot-status ${pStat.code.toLowerCase()}">${pStat.label}</p>
-          ${parlay ? `
-            <p class="slot-pick">${esc(parlay.pick)}</p>
-            <p class="slot-meta">${esc([parlay.market, parlay.book].filter(Boolean).join(" · "))} · not scored</p>
-          ` : `<p class="slot-pick">Optional. Same lock window.</p>`}
-        </div>
-        <div class="slip-actions">
-          <button type="button" class="btn btn-fill" data-log="${w.id}">Log ticket</button>
-          <button type="button" class="btn" data-pass="${w.id}">Record pass</button>
-        </div>
-      </article>`;
-  }).join("");
-  document.getElementById("window-grid").innerHTML = html;
 }
 
 /* ---------- clock / playbook ---------- */
@@ -5369,326 +5275,6 @@ function importProfiles(file) {
 }
 
 
-/* ---------- vibe check ---------- */
-
-function fmtVibeDay(iso) {
-  const m = String(iso || "").match(/^(\d{4})-(\d{2})-(\d{2})/);
-  if (!m) return String(iso || "");
-  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  return Number(m[3]) + " " + months[Number(m[2]) - 1];
-}
-
-function fmtVibeRange(start, end) {
-  const a = String(start || "");
-  const b = String(end || "");
-  if (!a && !b) return "";
-  if (!b || a === b) {
-    const y = a.slice(0, 4);
-    return fmtVibeDay(a) + (y ? " " + y : "");
-  }
-  const ay = a.slice(0, 4);
-  const by = b.slice(0, 4);
-  if (ay && by && ay !== by) return fmtVibeDay(a) + " " + ay + " – " + fmtVibeDay(b) + " " + by;
-  return fmtVibeDay(a) + " – " + fmtVibeDay(b);
-}
-
-function vibeCalWeeks() {
-  return vibeWeeksCal && Array.isArray(vibeWeeksCal.weeks) ? vibeWeeksCal.weeks : [];
-}
-
-function vibeIndexWeeks() {
-  return vibeIndex && Array.isArray(vibeIndex.weeks) ? vibeIndex.weeks : [];
-}
-
-function vibeCalWeek(id) {
-  return vibeCalWeeks().find((w) => w.id === id) || null;
-}
-
-function vibeIndexWeek(id) {
-  return vibeIndexWeeks().find((w) => w.id === id) || null;
-}
-
-function vibeClubList() {
-  if (vibeTeams && Array.isArray(vibeTeams.teams) && vibeTeams.teams.length) {
-    return vibeTeams.teams.map((t) => ({ abbr: t.abbr, nick: t.nick || t.name || "" }));
-  }
-  if (nflData && Array.isArray(nflData.teams)) {
-    return nflData.teams.map((t) => ({ abbr: t.abbr, nick: t.nick || t.name || "" }));
-  }
-  return [];
-}
-
-function vibeTopicTitle(t) {
-  if (t == null) return "";
-  if (typeof t === "string") return t.trim();
-  if (typeof t === "object") {
-    return String(t.title || t.headline || t.name || t.text || t.topic || "").trim();
-  }
-  return "";
-}
-
-function vibeTeamRow(entry, abbr) {
-  if (!entry || typeof entry !== "object") return { abbr, volume: null, topics: [] };
-  const volume = entry.volume ?? entry.count ?? entry.posts ?? entry.n ?? null;
-  const raw = entry.topics || entry.items || entry.stories || entry.headlines || entry.titles || [];
-  const topics = Array.isArray(raw) ? raw.map(vibeTopicTitle).filter(Boolean).slice(0, 3) : [];
-  return { abbr, volume: volume === "" ? null : volume, topics };
-}
-
-function vibeTeamsFromPayload(data) {
-  const map = {};
-  if (!data || typeof data !== "object") return map;
-  const src = data.teams || data.clubs || data.rooms;
-  if (Array.isArray(src)) {
-    for (const t of src) {
-      const abbr = String((t && (t.abbr || t.team || t.id)) || "").toUpperCase();
-      if (!abbr) continue;
-      map[abbr] = vibeTeamRow(t, abbr);
-    }
-  } else if (src && typeof src === "object") {
-    for (const [k, v] of Object.entries(src)) {
-      map[String(k).toUpperCase()] = vibeTeamRow(v, String(k).toUpperCase());
-    }
-  }
-  return map;
-}
-
-function vibeHeadline(data) {
-  if (!data || typeof data !== "object") return "";
-  return String(data.headline || data.title || data.lede || "").trim();
-}
-
-function vibeLoudest(data) {
-  if (!data || typeof data !== "object") return [];
-  const raw = data.loudest || data.loudest_rooms || data.rooms_loudest;
-  if (!Array.isArray(raw)) return [];
-  return raw.map((x) => {
-    if (typeof x === "string") return x;
-    if (x && typeof x === "object") return x.abbr || x.team || x.id || "";
-    return "";
-  }).filter(Boolean);
-}
-
-function vibeFmtVolume(v) {
-  if (v == null || v === "") return "";
-  const n = Number(v);
-  if (Number.isFinite(n)) return n.toLocaleString("en-US");
-  return String(v);
-}
-
-function vibeDayRef(entry) {
-  if (entry == null) return null;
-  if (typeof entry === "string") {
-    const raw = entry.trim();
-    if (!raw) return null;
-    const id = raw.replace(/^.*\//, "").replace(/\.json$/i, "");
-    let path;
-    if (/^https?:\/\//i.test(raw) || raw.startsWith("./") || raw.startsWith("/")) {
-      path = raw;
-    } else if (raw.startsWith("data/")) {
-      path = "./" + raw;
-    } else if (raw.includes("/") || /\.json$/i.test(raw)) {
-      path = "./data/vibe-check/" + raw.replace(/^\.\//, "");
-    } else {
-      path = "./data/vibe-check/days/" + id + ".json";
-    }
-    return { id, label: id, path };
-  }
-  if (typeof entry === "object") {
-    const id = String(entry.id || entry.date || entry.day || "").trim();
-    const file = entry.path || entry.file || "";
-    const path = file
-      ? (String(file).startsWith("./") || String(file).startsWith("/") || String(file).startsWith("data/")
-        ? (String(file).startsWith("data/") ? "./" + file : file)
-        : "./data/vibe-check/" + String(file).replace(/^\.\//, ""))
-      : (id ? "./data/vibe-check/days/" + id.replace(/\.json$/i, "") + ".json" : "");
-    if (!id && !path) return null;
-    return { id: id || path, label: String(entry.label || entry.date || id || path), path };
-  }
-  return null;
-}
-
-async function fetchVibeJson(url) {
-  try {
-    const res = await fetch(url);
-    if (!res.ok) return null;
-    const data = await res.json();
-    return data && typeof data === "object" ? data : null;
-  } catch {
-    return null;
-  }
-}
-
-function ensureVibeRollup(id) {
-  if (!id || (id in vibeRollupCache) || vibeInflight["w:" + id]) return;
-  vibeInflight["w:" + id] = true;
-  fetchVibeJson("./data/vibe-check/weeks/" + encodeURIComponent(id) + ".json").then((data) => {
-    vibeRollupCache[id] = data;
-    delete vibeInflight["w:" + id];
-    renderVibe();
-  });
-}
-
-function ensureVibeDay(key, path) {
-  if (!key || (key in vibeDayCache) || vibeInflight["d:" + key]) return;
-  vibeInflight["d:" + key] = true;
-  fetchVibeJson(path).then((data) => {
-    vibeDayCache[key] = data;
-    delete vibeInflight["d:" + key];
-    renderVibe();
-  });
-}
-
-function vibeDayPanelHtml(data) {
-  if (data == null) {
-    return `<p class="table-empty">No log for this day yet.</p>`;
-  }
-  const headline = vibeHeadline(data);
-  const rooms = vibeLoudest(data);
-  const teamMap = vibeTeamsFromPayload(data);
-  const keys = Object.keys(teamMap);
-  const bits = [];
-  if (headline) bits.push(`<p class="vibe-headline">${esc(headline)}</p>`);
-  if (rooms.length) {
-    bits.push(`<p class="vibe-loudest"><span>Loudest</span> ${rooms.map((a) => `<em>${esc(a)}</em>`).join(" ")}</p>`);
-  }
-  if (keys.length) {
-    const clubs = vibeClubList();
-    const order = clubs.length ? clubs.map((c) => c.abbr) : keys;
-    const seen = new Set();
-    const rows = [];
-    for (const abbr of order) {
-      if (!teamMap[abbr] || seen.has(abbr)) continue;
-      seen.add(abbr);
-      const row = teamMap[abbr];
-      const vol = vibeFmtVolume(row.volume);
-      const quiet = !row.topics.length && (row.volume == null || row.volume === 0);
-      rows.push(`<li><span class="mono">${esc(abbr)}</span>${vol ? ` <span class="vibe-club-vol">${esc(vol)}</span>` : ""}${quiet ? ` <span class="vibe-quiet">quiet</span>` : ""}${row.topics.length ? ` — ${row.topics.map((t) => esc(t)).join(" · ")}` : ""}</li>`);
-    }
-    for (const abbr of keys) {
-      if (seen.has(abbr)) continue;
-      const row = teamMap[abbr];
-      const vol = vibeFmtVolume(row.volume);
-      rows.push(`<li><span class="mono">${esc(abbr)}</span>${vol ? ` <span class="vibe-club-vol">${esc(vol)}</span>` : ""}${row.topics.length ? ` — ${row.topics.map((t) => esc(t)).join(" · ")}` : ""}</li>`);
-    }
-    bits.push(`<ul class="vibe-day-clubs">${rows.join("")}</ul>`);
-  }
-  if (bits.length) return bits.join("");
-  return `<pre class="vibe-json">${esc(JSON.stringify(data, null, 2))}</pre>`;
-}
-
-function renderVibe() {
-  const sel = document.getElementById("vibe-week-select");
-  const board = document.getElementById("vibe-board");
-  if (!board) return;
-
-  const calWeeks = vibeCalWeeks();
-  const indexWeeks = vibeIndexWeeks();
-  if (!vibeWeekId) {
-    vibeWeekId = (vibeIndex && vibeIndex.current_week_id) || (calWeeks[0] && calWeeks[0].id) || (indexWeeks[0] && indexWeeks[0].id) || null;
-  }
-
-  const picker = calWeeks.length ? calWeeks : indexWeeks;
-  if (sel) {
-    sel.innerHTML = picker.map((w) => `<option value="${esc(w.id)}">${esc(w.label || w.id)}</option>`).join("");
-    if (vibeWeekId) sel.value = vibeWeekId;
-  }
-
-  if (!vibeIndex && !vibeWeeksCal) {
-    board.innerHTML = `<p class="table-empty">Serve the desk over http so vibe-check can load (python3 -m http.server from this folder).</p>`;
-    return;
-  }
-
-  const cal = vibeCalWeek(vibeWeekId) || {};
-  const idx = vibeIndexWeek(vibeWeekId) || {};
-  const label = cal.label || idx.label || vibeWeekId || "Vibe week";
-  const status = String(idx.status || "").toLowerCase() || "upcoming";
-  const range = fmtVibeRange(cal.start, cal.end);
-  const rollupReady = vibeWeekId && (vibeWeekId in vibeRollupCache);
-  if (vibeWeekId && !rollupReady) ensureVibeRollup(vibeWeekId);
-  const rollup = rollupReady ? vibeRollupCache[vibeWeekId] : null;
-
-  let rollupHtml;
-  if (rollup) {
-    const headline = vibeHeadline(rollup);
-    const rooms = vibeLoudest(rollup);
-    rollupHtml = `<div class="vibe-rollup">
-      ${headline ? `<p class="vibe-headline">${esc(headline)}</p>` : `<p class="lede">Weekly rollup is on file. No headline in the payload.</p>`}
-      ${rooms.length ? `<p class="vibe-loudest"><span>Loudest rooms</span> ${rooms.map((a) => `<em>${esc(a)}</em>`).join(" ")}</p>` : ""}
-    </div>`;
-  } else {
-    rollupHtml = `<div class="empty-desk" id="vibe-empty">
-      <p class="empty-kicker">Preseason · nothing logged yet</p>
-      <h2>Nightly starts tonight. First Saturday rollup is Preseason Week 2 (Aug 22).</h2>
-      <p>Daily files land under days/. Saturday 9:31pm ET writes weeks/${esc(vibeWeekId || "id")}.json. Until then the rooms stay quiet. The league is even.</p>
-    </div>`;
-  }
-
-  const teamMap = vibeTeamsFromPayload(rollup);
-  const clubs = vibeClubList();
-  let gridHtml;
-  if (!clubs.length) {
-    gridHtml = `<p class="table-empty">32 clubs load with vibe-check/teams.json.</p>`;
-  } else {
-    gridHtml = `<div class="vibe-grid">` + clubs.map((c) => {
-      const row = teamMap[c.abbr] || { abbr: c.abbr, volume: null, topics: [] };
-      const vol = vibeFmtVolume(row.volume);
-      const quiet = !row.topics.length && (row.volume == null || row.volume === 0);
-      const topics = quiet
-        ? `<p class="vibe-quiet">quiet</p>`
-        : `<ul class="vibe-topics">${row.topics.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>`;
-      return `<article class="vibe-club${quiet ? " is-quiet" : ""}">
-        <div class="vibe-club-top">
-          <span class="vibe-club-abbr">${esc(c.abbr)}</span>
-          ${vol ? `<span class="vibe-club-vol">${esc(vol)}</span>` : ""}
-        </div>
-        ${c.nick ? `<span class="vibe-club-nick">${esc(c.nick)}</span>` : ""}
-        ${topics}
-      </article>`;
-    }).join("") + `</div>`;
-  }
-
-  const days = (idx.days || []).map(vibeDayRef).filter(Boolean);
-  let daysHtml;
-  if (!days.length) {
-    daysHtml = `<p class="table-empty">No daily files attached to this week yet.</p>`;
-  } else {
-    const buttons = days.map((d) => {
-      const on = vibeOpenDay === d.id;
-      return `<button type="button" class="vibe-day${on ? " is-open" : ""}" data-vibe-day="${esc(d.id)}" data-vibe-path="${esc(d.path)}">${esc(fmtVibeDay(d.label) || d.label)}</button>`;
-    }).join("");
-    let panel = "";
-    if (vibeOpenDay) {
-      const ref = days.find((d) => d.id === vibeOpenDay);
-      if (ref && !(ref.id in vibeDayCache)) ensureVibeDay(ref.id, ref.path);
-      const loaded = ref && (ref.id in vibeDayCache);
-      panel = `<div class="vibe-day-panel" id="vibe-day-panel">
-        <p class="section-label">${esc(ref ? (fmtVibeRange(ref.label, ref.label) || ref.label) : vibeOpenDay)}</p>
-        ${loaded ? vibeDayPanelHtml(vibeDayCache[ref.id]) : `<p class="table-empty">Loading…</p>`}
-      </div>`;
-    }
-    daysHtml = `<div class="vibe-days" role="list">${buttons}</div>${panel}`;
-  }
-
-  const calNote = cal.note ? `<p class="vibe-cal-note">${esc(cal.note)}</p>` : "";
-  const games = cal.games ? `<p class="vibe-cal-note">Games ${esc(cal.games)}</p>` : "";
-
-  board.innerHTML = `
-    <div class="vibe-meta">
-      <h2>${esc(label)}</h2>
-      ${range ? `<p class="vibe-range">${esc(range)}</p>` : ""}
-      <span class="vibe-status ${esc(status)}">${esc(status)}</span>
-    </div>
-    ${calNote}${games}
-    ${rollupHtml}
-    <h2 class="section-label">32 clubs</h2>
-    ${gridHtml}
-    <h2 class="section-label">Daily files</h2>
-    ${daysHtml}
-    <p class="vibe-sent">Sentiment scores later.</p>`;
-}
-
-
 function staffClub(abbr) {
   const a = normAbbr(abbr);
   if (!staffData || !staffData.clubs) return null;
@@ -5954,28 +5540,6 @@ function renderHero() {
   el.innerHTML = [date, phase, weekLine, win].filter(Boolean).map((s) => `<li>${esc(s)}</li>`).join("");
 }
 
-function renderHomePicks() {
-  const el = document.getElementById("home-picks");
-  if (!el) return;
-  if (!nflData || !nflData.teams || !nflData.teams.length) {
-    el.hidden = true;
-    el.innerHTML = "";
-    return;
-  }
-  const ranked = nflData.teams.slice().sort((a, b) => (eff(b.abbr) || 0) - (eff(a.abbr) || 0)).slice(0, 3);
-  el.hidden = false;
-  el.innerHTML = `<p class="section-label">Highest rated right now. Tap one.</p>
-    <div class="home-picks-row">${ranked.map((t) => {
-      const n = eff(t.abbr);
-      return `<button type="button" class="home-pick" data-home-team="${esc(t.abbr)}">
-        <img src="${esc(t.logo)}" alt="" width="36" height="36">
-        <span>${esc(t.nick || t.name)}</span>
-        <em class="${rtgClass(n)}">${esc(fmtRtg(n))}</em>
-      </button>`;
-    }).join("")}</div>`;
-}
-
-
 function friendUrl(hash) {
   const h = String(hash || "").startsWith("#") ? String(hash) : "#" + String(hash || "");
   return "https://bmoneybets.com/" + h;
@@ -5991,101 +5555,99 @@ function copyFriendLink(hash) {
   toast(url);
 }
 
-function clubNick(abbr) {
-  const t = teamByAbbr(abbr);
-  if (t && t.nick) return t.nick;
-  if (t && t.name) return t.name;
-  return String(abbr || "").toUpperCase();
-}
-
 function lookWeek() {
   return currentNflWeek();
 }
 
-function featuredLookGame() {
-  if (!nflData || !nflData.games) return null;
-  const week = lookWeek();
-  let best = null;
-  let bestAbs = -1;
-  for (const g of nflData.games) {
-    if (Number(g.week) !== Number(week) || !hasOurNumber(g)) continue;
-    const mkt = marketFor(g);
-    const ourH = deskHomeSpread(g);
-    const edge = edgePts(ourH, mkt.parsed && mkt.parsed.homeLine);
-    const mag = edge == null ? 0 : Math.abs(edge);
-    if (mag > bestAbs) {
-      bestAbs = mag;
-      best = { game: g, ourH, edge, mkt, week };
-    }
-  }
-  return best;
-}
-
 const FRIEND_PICK_KEY = "bmb-friend-pick";
 
-function loadFriendPick() {
-  try { return JSON.parse(localStorage.getItem(FRIEND_PICK_KEY) || "null"); } catch { return null; }
+function powerRankWeeks() {
+  const weeks = powerRankings && Array.isArray(powerRankings.weeks) ? powerRankings.weeks : [];
+  return weeks
+    .filter((w) => w && Array.isArray(w.teams) && Number.isFinite(Number(w.week)))
+    .slice()
+    .sort((a, b) => Number(a.week) - Number(b.week));
 }
 
-function saveFriendPick(pick) {
-  if (!canEdit()) return;
-  try { localStorage.setItem(FRIEND_PICK_KEY, JSON.stringify(pick)); } catch { /* ignore */ }
-  publishDesk("friendPick", pick);
+function powerStamp(iso) {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return "";
+  const part = (opts) => new Intl.DateTimeFormat("en-US", Object.assign({ timeZone: "America/New_York" }, opts)).format(d);
+  return "Updated " + part({ weekday: "short" }) + " " + part({ month: "short" }) + " " + part({ day: "numeric" });
 }
 
-function renderHomeLook() {
-  const el = document.getElementById("home-look");
+function powerMoveLabel(abbr, current, prior) {
+  if (!prior || !Array.isArray(prior.teams)) return { text: "–", cls: "flat" };
+  const prev = prior.teams.find((t) => t && normAbbr(t.abbr) === abbr);
+  if (!prev || !Number.isFinite(Number(prev.rank))) return { text: "NEW", cls: "new" };
+  const cur = (current.teams || []).find((t) => t && normAbbr(t.abbr) === abbr);
+  const curRank = cur ? Number(cur.rank) : NaN;
+  const prevRank = Number(prev.rank);
+  if (!Number.isFinite(curRank)) return { text: "–", cls: "flat" };
+  const delta = prevRank - curRank;
+  if (delta > 0) return { text: "▲" + delta, cls: "up" };
+  if (delta < 0) return { text: "▼" + Math.abs(delta), cls: "down" };
+  return { text: "–", cls: "flat" };
+}
+
+function renderPowerRank() {
+  const el = document.getElementById("power-rank");
   if (!el) return;
-  const feat = featuredLookGame();
-  if (!feat) {
+  const weeks = powerRankWeeks();
+  const current = weeks.length ? weeks[weeks.length - 1] : null;
+  if (!current) {
     el.hidden = true;
     el.innerHTML = "";
     return;
   }
-  const g = feat.game;
-  const home = clubNick(g.home);
-  const away = clubNick(g.away);
-  const ourFav = feat.ourH < 0 ? home : feat.ourH > 0 ? away : null;
-  const ourPts = feat.ourH == null ? null : Math.abs(feat.ourH);
-  const street = feat.mkt && feat.mkt.odds ? feat.mkt.odds : "";
-  const look = feat.edge != null && Math.abs(feat.edge) >= 1.5;
-  let line = look && ourFav
-    ? "We like the " + ourFav + " by about " + ourPts.toFixed(1) + "."
-    : home + " vs " + away + ". We have " + formatOurLine(feat.ourH, g.home, g.away) + ".";
-  if (street) line += " The sportsbook has " + street + ".";
-  if (look) line += " That is a look, not a ticket.";
-  else line += " Close. Not a fire.";
-  const when = "Week " + feat.week;
-  const picked = loadFriendPick();
-  const onAway = picked && String(picked.id) === String(g.id) && picked.side === "away";
-  const onHome = picked && String(picked.id) === String(g.id) && picked.side === "home";
-  el.hidden = false;
-  el.innerHTML = `<p class="section-label">${esc(when)} · who do you like?</p>
-    <div class="home-look-card">
-      <button type="button" class="home-look-story" data-home-game="${esc(g.id)}">
-        <strong>${esc(away)} at ${esc(home)}</strong>
-        <span>${esc(line)}</span>
+  const prior = weeks.length > 1 ? weeks[weeks.length - 2] : null;
+  const top = current.teams.slice().sort((a, b) => Number(a.rank) - Number(b.rank)).slice(0, 10);
+  const weekLabel = current.label || ("Week " + current.week);
+  const stamp = powerStamp(current.generated_at);
+  const rows = top.map((t) => {
+    const abbr = normAbbr(t.abbr);
+    const name = t.nick || t.name || abbr;
+    const move = powerMoveLabel(abbr, current, prior);
+    return `<li>
+      <button type="button" class="power-rank-row" data-home-team="${esc(abbr)}">
+        <span class="power-rank-num">${esc(String(t.rank))}</span>
+        <img src="${esc(t.logo || "")}" alt="" width="40" height="40">
+        <span class="power-rank-id">
+          <strong>${esc(abbr)}</strong>
+          <span>${esc(name)}</span>
+        </span>
+        <span class="power-rank-meta">
+          <span class="power-rank-rec">${esc(t.record || "")}</span>
+          <span class="power-rank-move ${move.cls}">${esc(move.text)}</span>
+        </span>
       </button>
-      <div class="home-look-sides">
-        <button type="button" class="home-look-side${onAway ? " is-on" : ""}" data-home-game="${esc(g.id)}" data-home-side="away">${esc(away)}</button>
-        <button type="button" class="home-look-side${onHome ? " is-on" : ""}" data-home-game="${esc(g.id)}" data-home-side="home">${esc(home)}</button>
+    </li>`;
+  }).join("");
+  el.hidden = false;
+  el.innerHTML = `<article class="power-rank-card" aria-label="${esc(weekLabel)} top 10 power ranking">
+    <header class="power-rank-head">
+      <img class="power-rank-bee" src="brand/chrome-512.png" alt="" width="72" height="72">
+      <div class="power-rank-title">
+        <p class="eyebrow">${esc(weekLabel)}</p>
+        <h2>Top 10</h2>
       </div>
-    </div>`;
+      <p class="power-rank-stamp">${esc(stamp)}</p>
+    </header>
+    <ol class="power-rank-list">${rows}</ol>
+  </article>`;
 }
+
 
 function render() {
   renderHero();
-  renderHomeLook();
-  renderHomePicks();
+  renderPowerRank();
   renderKPIs();
-  renderCard();
   renderLedger();
   renderModelAts();
   renderTeams();
   renderSchedule();
   renderResiduals();
   renderKeys();
-  renderVibe();
   renderStaff();
   renderLineLog();
   syncSharpBookInputs();
@@ -6502,7 +6064,7 @@ function parseHash() {
 
 function fromHash() {
   const { view, team, game } = parseHash();
-  const known = ["desk", "card", "teams", "staff", "schedule", "linelog", "residuals", "keys", "vibe", "clock", "playbook", "tickets", "users", "outcomes", "history", "methodology", "sandbox"];
+  const known = ["desk", "teams", "staff", "schedule", "linelog", "residuals", "keys", "clock", "playbook", "tickets", "users", "outcomes", "history", "methodology", "sandbox"];
   let name = known.includes(view) ? view : "desk";
   if ((name === "users" || name === "sandbox") && !canEdit()) name = "desk";
   showView(name);
@@ -6656,33 +6218,6 @@ function bind() {
     });
   }
 
-  const vibeSel = document.getElementById("vibe-week-select");
-  if (vibeSel) {
-    vibeSel.addEventListener("change", (e) => {
-      vibeWeekPicked = true;
-      vibeWeekId = e.target.value || null;
-      vibeOpenDay = null;
-      renderVibe();
-    });
-  }
-  const vibeBoard = document.getElementById("vibe-board");
-  if (vibeBoard) {
-    vibeBoard.addEventListener("click", (e) => {
-      const btn = e.target.closest("[data-vibe-day]");
-      if (!btn) return;
-      const key = btn.dataset.vibeDay;
-      if (vibeOpenDay === key) {
-        vibeOpenDay = null;
-        renderVibe();
-        return;
-      }
-      vibeOpenDay = key;
-      const path = btn.dataset.vibePath;
-      if (key && !(key in vibeDayCache)) ensureVibeDay(key, path);
-      else renderVibe();
-    });
-  }
-
   document.getElementById("btn-add").addEventListener("click", () => openSheet({ week: currentWeek }));
   document.getElementById("btn-pass").addEventListener("click", () => openSheet({ week: currentWeek, ticket_type: "PASS" }));
   document.getElementById("btn-sample").addEventListener("click", loadSamples);
@@ -6693,13 +6228,6 @@ function bind() {
     e.target.value = "";
   });
   document.getElementById("btn-clear").addEventListener("click", clearAll);
-
-  document.getElementById("window-grid").addEventListener("click", (e) => {
-    const log = e.target.closest("[data-log]");
-    const pass = e.target.closest("[data-pass]");
-    if (log) openSheet({ week: currentWeek, window: log.dataset.log, ticket_type: "Straight" });
-    if (pass) openSheet({ week: currentWeek, window: pass.dataset.pass, ticket_type: "PASS" });
-  });
 
   document.getElementById("playbook-filters").addEventListener("click", (e) => {
     const btn = e.target.closest("[data-filter]");
@@ -6796,34 +6324,15 @@ function bind() {
     if (file) importProfiles(file);
     e.target.value = "";
   });
-  const homePicks = document.getElementById("home-picks");
-  if (homePicks) {
-    homePicks.addEventListener("click", (e) => {
+  const powerRank = document.getElementById("power-rank");
+  if (powerRank) {
+    powerRank.addEventListener("click", (e) => {
       const btn = e.target.closest("[data-home-team]");
       if (!btn) return;
       const abbr = btn.dataset.homeTeam;
+      if (!abbr) return;
       if (location.hash !== "#team-" + abbr) history.replaceState(null, "", "#team-" + abbr);
       openTeamProfile(abbr);
-    });
-  }
-  const homeLook = document.getElementById("home-look");
-  if (homeLook) {
-    homeLook.addEventListener("click", (e) => {
-      const sideBtn = e.target.closest("[data-home-side]");
-      const gameBtn = e.target.closest("[data-home-game]");
-      if (!sideBtn && !gameBtn) return;
-      const id = (sideBtn || gameBtn).dataset.homeGame;
-      if (!id) return;
-      if (sideBtn && canEdit()) {
-        const g = gameById(id);
-        const side = sideBtn.dataset.homeSide;
-        const nick = g ? clubNick(side === "home" ? g.home : g.away) : side;
-        saveFriendPick({ id, side, nick, ts: Date.now() });
-        toast("You picked the " + nick + ".");
-        renderHomeLook();
-      }
-      if (location.hash !== "#game-" + id) history.replaceState(null, "", "#game-" + id);
-      openGameSheet(id);
     });
   }
   document.getElementById("team-grid").addEventListener("click", (e) => {
@@ -7238,10 +6747,24 @@ async function loadPublishedLines() {
   }
 }
 
+async function loadPowerRankings() {
+  try {
+    const res = await fetch("./data/published/power-rankings.json?v=prank20260929T160844");
+    if (!res.ok) throw new Error(String(res.status));
+    const data = await res.json();
+    if (!data || !Array.isArray(data.weeks)) throw new Error("bad power rankings");
+    powerRankings = data;
+  } catch (err) {
+    powerRankings = null;
+    console.warn("power-rankings.json", err);
+  }
+}
+
 async function bootNfl() {
   await loadNfl();
   await loadPublishedLines();
   await loadModelAts();
+  await loadPowerRankings();
   applyDefaultCurrentWeek();
   if (pendingTeam) openTeamProfile(pendingTeam);
   if (pendingGame) openGameSheet(pendingGame, { silent: true });
