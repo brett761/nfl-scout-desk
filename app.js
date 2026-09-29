@@ -1844,6 +1844,19 @@ function ourHomeSpread(game, hfaVal) {
   return -(homeE - awayE + pad + coachTerm(game) + prepNet(game) + atsNet(game) + schedNet(game) + matchupNet(game));
 }
 
+function publishedRecordFor(game) {
+  if (!game) return null;
+  if (game.id && publishedByEspn[String(game.id)]) return publishedByEspn[String(game.id)];
+  const key = normAbbr(game.away) + "@" + normAbbr(game.home) + "|w" + Number(game.week);
+  return publishedByPair[key] || null;
+}
+
+function deskHomeSpread(game) {
+  const rec = publishedRecordFor(game);
+  if (rec) return num(rec.b_line_home_spread);
+  return ourHomeSpread(game, hfa);
+}
+
 function parseMarket(details, homeAbbr, awayAbbr) {
   const raw = typeof details === "string"
     ? details
@@ -1941,6 +1954,9 @@ let injuryPlayerByTeam = null; // abbr → Map(normName → {ovr?, grade?, snaps
 let injuryPlayerGlobal = null; // Map(normName → {ovr?, grade?, snaps?, sources[]})
 let notesSeed = null;  // optional ./data/profile-notes.json; null if missing
 let ticketsSeed = null; // optional ./data/tickets-2026.json; null if missing
+let publishedByEspn = {};
+let publishedByPair = {};
+let ticketsMergedFromFile = false;
 let modelAtsData = null; // ./data/model-ats-2026.json — model ATS at close (not tickets)
 let weatherScale = null; // from ./data/weather-scale.json
 let coachData = null; // from ./data/coaches-2026.json; null if missing → coach_term 0
@@ -1987,24 +2003,48 @@ function save() {
   publishDesk("tickets", tickets);
 }
 
+function mergeTicketRows(fileRows, remoteRows) {
+  const file = Array.isArray(fileRows) ? fileRows : [];
+  const remote = Array.isArray(remoteRows) ? remoteRows : [];
+  const remoteById = new Map();
+  for (const raw of remote) {
+    if (raw && raw.id) remoteById.set(String(raw.id), raw);
+  }
+  const out = [];
+  const seen = new Set();
+  for (const raw of file) {
+    if (!raw || !raw.id) continue;
+    const id = String(raw.id);
+    if (seen.has(id)) continue;
+    seen.add(id);
+    out.push(remoteById.has(id) ? remoteById.get(id) : raw);
+  }
+  for (const raw of remote) {
+    if (!raw || !raw.id) continue;
+    const id = String(raw.id);
+    if (seen.has(id)) continue;
+    seen.add(id);
+    out.push(raw);
+  }
+  return out;
+}
+
 function seedTicketsIfNeeded() {
   if (!ticketsSeed || !Array.isArray(ticketsSeed.tickets)) return;
-  let storedPulled = "";
-  try { storedPulled = localStorage.getItem(TICKETS_SEED_PULLED_KEY) || ""; } catch { storedPulled = ""; }
-  const seedPulled = typeof ticketsSeed.pulled === "string" ? ticketsSeed.pulled : "";
-  const pulledNewer = !!(seedPulled && (!storedPulled || seedPulled > storedPulled));
-  const have = new Set(tickets.map((t) => t && t.id).filter(Boolean));
-  const missing = ticketsSeed.tickets.some((t) => t && t.id && !have.has(t.id));
-  if (!pulledNewer && !missing) return;
+  const have = new Set(tickets.map((t) => t && t.id).filter(Boolean).map(String));
+  let added = false;
   for (const raw of ticketsSeed.tickets) {
-    if (!raw || !raw.id) continue;
-    const next = enrich(raw);
-    const i = tickets.findIndex((t) => t.id === next.id);
-    if (i >= 0) tickets[i] = next;
-    else tickets.push(next);
+    if (!raw || !raw.id || have.has(String(raw.id))) continue;
+    tickets.push(enrich(raw));
+    have.add(String(raw.id));
+    added = true;
   }
+  if (!added) return;
   save();
-  try { localStorage.setItem(TICKETS_SEED_PULLED_KEY, seedPulled); } catch { /* ignore */ }
+  try {
+    const seedPulled = typeof ticketsSeed.pulled === "string" ? ticketsSeed.pulled : "";
+    localStorage.setItem(TICKETS_SEED_PULLED_KEY, seedPulled);
+  } catch { /* ignore */ }
 }
 
 function emptyProfile() {
@@ -3486,8 +3526,9 @@ function teamSkedHtml(abbr) {
     let our = "—";
     let edgeStr = "—";
     let edgeClass = "";
-    if (hasOurNumber(g)) {
-      const ourH = ourHomeSpread(g, hfa);
+    const ourHsk = deskHomeSpread(g);
+    if (ourHsk != null && Number.isFinite(ourHsk)) {
+      const ourH = ourHsk;
       our = formatOurLine(ourH, g.home, g.away);
       const edge = edgePts(ourH, mkt.parsed.homeLine);
       if (edge != null) {
@@ -4238,18 +4279,33 @@ function marketFavLabel(parsed) {
 }
 
 function gameLeadCopy(game) {
-  if (!hasOurNumber(game)) {
+  const pub = publishedRecordFor(game);
+  const ourH = deskHomeSpread(game);
+  if (pub && (ourH == null || !Number.isFinite(ourH))) {
+    return "This game is final and the lock has no pre-kick B$ Line. We do not fill one in.";
+  }
+  if (!pub && !hasOurNumber(game)) {
     return "We do not have a number yet. The ratings are still even.";
   }
   const mkt = marketFor(game);
   const parsed = mkt.parsed || {};
-  const ourH = ourHomeSpread(game, hfa);
   const ourLabel = formatOurLine(ourH, game.home, game.away);
   const mktLabel = marketFavLabel(parsed);
   const marketHome = parsed.homeLine;
   const parts = [];
   if (ourH != null && Number.isFinite(ourH)) {
-    parts.push("We think the gap is " + ourLabel + ".");
+    if (pub && pub.published_at) {
+      parts.push("The published B$ Line is " + ourLabel + ", frozen " + pub.published_at + ".");
+    } else if (pub) {
+      parts.push("The published B$ Line is " + ourLabel + ".");
+    } else {
+      parts.push("We think the gap is " + ourLabel + ".");
+    }
+    if (pub && pub.lock_quality && pub.lock_quality !== "official") {
+      parts.push(pub.lock_quality === "reconstructed"
+        ? "That figure was reconstructed, not a pre-kick publication."
+        : "That lock is flagged " + pub.lock_quality + ".");
+    }
   }
   if (mktLabel && marketHome != null && Number.isFinite(marketHome)) {
     parts.push("The sportsbook has " + mktLabel + ".");
@@ -4357,11 +4413,13 @@ function renderGameSheet() {
   const sched = schedNet(game);
   const matchup = matchupNet(game);
   const gap = diff + hfaUsed + coach + prep + ats + sched + matchup;
-  const ourLine = ourHomeSpread(game, hfa);
+  const pubLine = publishedRecordFor(game);
+  const ourLine = deskHomeSpread(game);
+  const showPublished = !!(pubLine && ourLine != null && Number.isFinite(ourLine));
   const mkt = marketFor(game);
   const marketHome = mkt.parsed && mkt.parsed.homeLine;
-  const edge = hasOurNumber(game) ? edgePts(ourLine, marketHome) : null;
-  const keys = (hasOurNumber(game) && ourLine != null && marketHome != null)
+  const edge = (ourLine != null && Number.isFinite(ourLine)) ? edgePts(ourLine, marketHome) : null;
+  const keys = (ourLine != null && Number.isFinite(ourLine) && marketHome != null)
     ? crossesKeys(ourLine, marketHome) : [];
   const fire = edge != null && (Math.abs(edge) >= 1.5 || keys.length > 0);
   const hfaNote = game.neutral ? "neutral / Melbourne · 0" : "";
@@ -4375,7 +4433,7 @@ function renderGameSheet() {
     { label: "+ travel / trap / rest", val: sched, note: schedSheetNote(game) },
     { label: "+ PFF matchup", val: matchup, note: matchupSheetNote(game) },
     { label: "Combined gap", val: gap, note: "add those up", sum: true },
-    { label: "B$ Line (flip the sign)", val: hasOurNumber(game) ? ourLine : 0, note: hasOurNumber(game) ? "" : "ratings even · no number", hideVal: !hasOurNumber(game) },
+    { label: "B$ Line (flip the sign)", val: (ourLine != null && Number.isFinite(ourLine)) ? ourLine : 0, note: showPublished ? ("Published " + (pubLine.published_at || "lock") + ". Not recomputed.") : ((ourLine != null && Number.isFinite(ourLine)) ? "" : "ratings even · no number"), hideVal: !(ourLine != null && Number.isFinite(ourLine)) },
   ];
   const stackHtml = stack.map((s) => `
     <div class="game-stack-row${s.sum ? " is-sum" : ""}">
@@ -4386,7 +4444,7 @@ function renderGameSheet() {
   const street = streetLinesFor(game);
   const openVal = street.openLine == null ? "—" : fmtSpreadNum(street.openLine);
   const curVal = street.currentLine == null ? "—" : fmtSpreadNum(street.currentLine);
-  const bLineVal = hasOurNumber(game) ? fmtSpreadNum(ourLine) : "—";
+  const bLineVal = (ourLine != null && Number.isFinite(ourLine)) ? fmtSpreadNum(ourLine) : "—";
   let compare = `<div class="game-compare">
       <div class="game-stack-row">
         <span class="game-stack-label">Open street<small class="game-stack-when">${esc(fmtLineStamp(street.openAt))}</small></span>
@@ -4400,7 +4458,7 @@ function renderGameSheet() {
         <span class="game-stack-label">B$ Line</span>
         <span class="game-stack-val mono">${esc(bLineVal)}</span>
       </div>`;
-  if (hasOurNumber(game)) {
+  if (ourLine != null && Number.isFinite(ourLine)) {
     const side = edge != null && edge < 0 ? " · away" : edge != null && edge > 0 ? " · home" : "";
     compare += `
       <div class="game-stack-row">
@@ -4413,7 +4471,7 @@ function renderGameSheet() {
       </div>
       <p class="game-sheet-keys">${keys.length ? "This sits on opposite sides of " + keys.join(" / ") + "." : "This does not sit on opposite sides of 3 or 7."} Copper is a look, not a ticket.</p>`;
   } else {
-    compare += `<p class="game-sheet-none">Ratings are even. We do not post a number yet.</p>`;
+    compare += `<p class="game-sheet-none">${pubLine ? "No pre-kick B$ Line on the lock." : "Ratings are even. We do not post a number yet."}</p>`;
   }
   compare += `</div>`;
 
@@ -4437,7 +4495,7 @@ function renderGameSheet() {
 
   body.innerHTML = `
     <p class="game-sheet-lead">${esc(gameLeadCopy(game))}</p>
-    <p class="section-label">How we built the number</p>
+    <p class="section-label">${pubLine ? "Today’s desk build · the B$ Line in the comparison is the frozen publication" : "How we built the number"}</p>
     <div class="table-wrap">
       <table class="game-club-table">
         <thead><tr><th></th><th>Away · ${esc(away)}</th><th>Home · ${esc(home)}</th></tr></thead>
@@ -5026,7 +5084,7 @@ function clubRollupRows() {
     return acc[a];
   };
   for (const g of regGames()) {
-    const ourH = ourHomeSpread(g, hfa);
+    const ourH = deskHomeSpread(g);
     if (!Number.isFinite(ourH)) continue;
     const closeH = residualCloseSpread(g.id);
     const mktH = marketFor(g).parsed.homeLine;
@@ -5062,7 +5120,7 @@ function renderResiduals() {
   } else if (empty) empty.hidden = true;
   body.innerHTML = games.map((g) => {
     const mkt = marketFor(g);
-    const ourH = ourHomeSpread(g, hfa);
+    const ourH = deskHomeSpread(g);
     const mktH = mkt.parsed.homeLine;
     const edge = edgePts(ourH, mktH);
     const oursTot = ourTotal(g);
@@ -5218,8 +5276,9 @@ function renderSchedule() {
       let ourHtml = "—";
       let edgeHtml = "—";
       let fire = false;
-      if (hasOurNumber(g)) {
-        const ourH = ourHomeSpread(g, hfa);
+      const pubRow = publishedRecordFor(g);
+      const ourH = deskHomeSpread(g);
+      if (ourH != null && Number.isFinite(ourH)) {
         ourHtml = formatOurLine(ourH, g.home, g.away);
         const edge = edgePts(ourH, mkt.parsed.homeLine);
         if (edge != null) {
@@ -5262,11 +5321,12 @@ function renderSchedule() {
           <div class="sked-line sked-our">
             <span class="lbl">B$ Line</span>
             <span class="val">${esc(ourHtml)}</span>
+            ${pubRow ? `<span class="when">${esc(pubRow.published_at || (pubRow.lock_quality === "null_line" ? "No pre-kick B Line" : "Frozen lock"))}</span>` : ""}
           </div>
         </div>
         <div class="sked-edge"><span class="lbl">Gap</span>${edgeHtml === "—" ? '<span class="val">—</span>' : edgeHtml}${coachChipHtml(g)}${prepChipHtml(g)}${atsChipHtml(g)}${matchupChipHtml(g)}</div>
         ${wxStripHtml(g, mkt)}
-        ${hasOurNumber(g) ? coverHelperHtml(ourHomeSpread(g, hfa), mkt.parsed.homeLine) : ""}
+        ${(ourH != null && Number.isFinite(ourH)) ? coverHelperHtml(ourH, mkt.parsed.homeLine) : ""}
       </article>`;
     }).join("");
     return `<section class="sked-group">
@@ -5950,7 +6010,7 @@ function featuredLookGame() {
   for (const g of nflData.games) {
     if (Number(g.week) !== Number(week) || !hasOurNumber(g)) continue;
     const mkt = marketFor(g);
-    const ourH = ourHomeSpread(g, hfa);
+    const ourH = deskHomeSpread(g);
     const edge = edgePts(ourH, mkt.parsed && mkt.parsed.homeLine);
     const mag = edge == null ? 0 : Math.abs(edge);
     if (mag > bestAbs) {
@@ -6442,10 +6502,13 @@ function parseHash() {
 
 function fromHash() {
   const { view, team, game } = parseHash();
-  const known = ["desk", "card", "teams", "staff", "schedule", "linelog", "residuals", "keys", "vibe", "clock", "playbook", "tickets", "users"];
+  const known = ["desk", "card", "teams", "staff", "schedule", "linelog", "residuals", "keys", "vibe", "clock", "playbook", "tickets", "users", "outcomes", "history", "methodology", "sandbox"];
   let name = known.includes(view) ? view : "desk";
-  if (name === "users" && !canEdit()) name = "desk";
+  if ((name === "users" || name === "sandbox") && !canEdit()) name = "desk";
   showView(name);
+  if ((name === "outcomes" || name === "history" || name === "sandbox") && window.BMBLedger && typeof window.BMBLedger.render === "function") {
+    window.BMBLedger.render();
+  }
   if (name === "users" && window.BMB && typeof window.BMB.onUsersView === "function") {
     window.BMB.onUsersView();
   }
@@ -7119,7 +7182,7 @@ function bind() {
       const g = nflData && nflData.games ? nflData.games.find((x) => x.id === id) : null;
       const cell = residBody.querySelector('[data-rclose="' + id + '"]');
       if (cell && g) {
-        const ourH = ourHomeSpread(g, hfa);
+        const ourH = deskHomeSpread(g);
         const rClose = residualVsClose(ourH, num(cur.close_spread));
         cell.textContent = rClose == null ? "" : ((rClose > 0 ? "+" : rClose < 0 ? "−" : "") + Math.abs(rClose).toFixed(1));
       }
@@ -7153,8 +7216,31 @@ async function loadModelAts() {
   }
 }
 
+async function loadPublishedLines() {
+  try {
+    const res = await fetch("./data/published/finals.json?v=w3pub0929");
+    if (!res.ok) throw new Error(String(res.status));
+    const data = await res.json();
+    publishedByEspn = {};
+    publishedByPair = {};
+    const rows = data && Array.isArray(data.board) ? data.board : [];
+    for (const row of rows) {
+      if (!row || String(row.status).toUpperCase() !== "FINAL") continue;
+      if (row.espn_id) publishedByEspn[String(row.espn_id)] = row;
+      if (row.away && row.home) {
+        publishedByPair[normAbbr(row.away) + "@" + normAbbr(row.home) + "|w" + Number(row.week)] = row;
+      }
+    }
+  } catch (err) {
+    publishedByEspn = {};
+    publishedByPair = {};
+    console.warn("published finals", err);
+  }
+}
+
 async function bootNfl() {
   await loadNfl();
+  await loadPublishedLines();
   await loadModelAts();
   applyDefaultCurrentWeek();
   if (pendingTeam) openTeamProfile(pendingTeam);
@@ -7181,7 +7267,11 @@ function deskSnapshot() {
 function applyDeskEdits(map) {
   if (!map || typeof map !== "object") return;
   if (Array.isArray(map.tickets)) {
-    tickets = map.tickets.map(enrich);
+    const fileRows = ticketsSeed && Array.isArray(ticketsSeed.tickets) ? ticketsSeed.tickets : [];
+    const remoteIds = new Set(map.tickets.map((t) => t && t.id).filter(Boolean).map(String));
+    const merged = mergeTicketRows(fileRows, map.tickets);
+    ticketsMergedFromFile = fileRows.some((t) => t && t.id && !remoteIds.has(String(t.id)));
+    tickets = merged.map(enrich);
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(tickets)); } catch { /* ignore */ }
   }
   if (map.profiles && typeof map.profiles === "object" && !Array.isArray(map.profiles)) {
@@ -7242,6 +7332,7 @@ function bootDesk() {
     console.warn("desk boot", err);
   }).finally(() => {
     if (window.BMB) window.BMB.deskReady = true;
+    if (ticketsMergedFromFile) publishDesk("tickets", tickets);
     applyEditLocks();
   });
 }

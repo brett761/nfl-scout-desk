@@ -26,6 +26,7 @@
     hydrateDesk,
     onUsersView,
     paintUsers,
+    syncPublic: syncPublicShell,
   };
 
   function esc(s) {
@@ -80,6 +81,24 @@
     el.textContent = name + " · " + role;
     const nav = document.getElementById("nav-users");
     if (nav) nav.hidden = window.BMB.role !== "admin";
+    const sandboxNav = document.getElementById("nav-sandbox");
+    if (sandboxNav) sandboxNav.hidden = window.BMB.role !== "admin";
+  }
+
+  function publicHash() {
+    const raw = (location.hash || "").replace(/^#/, "").split("?")[0].toLowerCase();
+    if (raw === "history" || raw === "methodology") return raw;
+    return "";
+  }
+
+  function syncPublicShell() {
+    const authed = document.body.classList.contains("is-authed");
+    const name = publicHash();
+    const pub = !authed && !!name;
+    document.body.classList.toggle("is-public", pub);
+    if (pub && window.BMBLedger && typeof window.BMBLedger.show === "function") {
+      window.BMBLedger.show(name);
+    }
   }
 
   async function loadRole(session) {
@@ -115,6 +134,7 @@
     await loadRole(session);
     paintSession();
     document.body.classList.add("is-authed");
+    document.body.classList.remove("is-public");
     if (!entered) {
       entered = true;
       startDesk();
@@ -524,8 +544,12 @@
     }
     if (event === "SIGNED_OUT") {
       document.body.classList.remove("is-authed", "is-admin", "is-viewer");
+      syncPublicShell();
     }
   });
+
+  window.addEventListener("hashchange", syncPublicShell);
+  syncPublicShell();
 
   client.auth.getSession().then(({ data }) => {
     if (data && data.session) enterApp(data.session);

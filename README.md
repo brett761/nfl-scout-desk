@@ -23,3 +23,13 @@ Load SAMPLE only to see the UI move. Those rows are season EXAMPLE.
 
 Process is scored on CLV of straights. Profit is variance. Entertainment stays on the card.
 No build step. Open the HTML file directly.
+
+## Published B Lines
+
+Bet Outcomes, public Bet History, and the B$ Line on a finished game read `data/published/finals.json`. That file is a pinned snapshot, not a live recompute. After a week is final and its locks are in `data/postmortem/locks/`:
+
+```bash
+node data/published/build_published_lines.mjs
+```
+
+See `data/published/README.md`. The Supabase migration in `supabase/migrations/` is applied by hand. It is not run by the site.
