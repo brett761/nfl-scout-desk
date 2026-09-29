@@ -5590,14 +5590,20 @@ function powerMoveLabel(abbr, current, prior) {
   return { text: "–", cls: "flat" };
 }
 
-function renderPowerRank() {
-  const el = document.getElementById("power-rank");
+function renderPowerRank(opts) {
+  const publicMode = !!(opts && opts.public);
+  const el = document.getElementById(publicMode ? "public-rank" : "power-rank");
   if (!el) return;
   const weeks = powerRankWeeks();
   const current = weeks.length ? weeks[weeks.length - 1] : null;
   if (!current) {
-    el.hidden = true;
-    el.innerHTML = "";
+    if (publicMode) {
+      el.hidden = false;
+      el.innerHTML = `<p class="public-rank-empty">The weekly Top 10 is not posted yet.</p>`;
+    } else {
+      el.hidden = true;
+      el.innerHTML = "";
+    }
     return;
   }
   const prior = weeks.length > 1 ? weeks[weeks.length - 2] : null;
@@ -5608,9 +5614,7 @@ function renderPowerRank() {
     const abbr = normAbbr(t.abbr);
     const name = t.nick || t.name || abbr;
     const move = powerMoveLabel(abbr, current, prior);
-    return `<li>
-      <button type="button" class="power-rank-row" data-home-team="${esc(abbr)}">
-        <span class="power-rank-num">${esc(String(t.rank))}</span>
+    const inner = `<span class="power-rank-num">${esc(String(t.rank))}</span>
         <img src="${esc(t.logo || "")}" alt="" width="40" height="40">
         <span class="power-rank-id">
           <strong>${esc(abbr)}</strong>
@@ -5619,20 +5623,33 @@ function renderPowerRank() {
         <span class="power-rank-meta">
           <span class="power-rank-rec">${esc(t.record || "")}</span>
           <span class="power-rank-move ${move.cls}">${esc(move.text)}</span>
-        </span>
+        </span>`;
+    if (publicMode) return `<li><div class="power-rank-row">${inner}</div></li>`;
+    return `<li>
+      <button type="button" class="power-rank-row" data-home-team="${esc(abbr)}">
+        ${inner}
       </button>
     </li>`;
   }).join("");
-  el.hidden = false;
-  el.innerHTML = `<article class="power-rank-card" aria-label="${esc(weekLabel)} top 10 power ranking">
-    <header class="power-rank-head">
+  const head = publicMode
+    ? `<header class="power-rank-head public-rank-head">
+        <div class="power-rank-title">
+          <p class="eyebrow">${esc(weekLabel)}</p>
+          <h2>Top 10</h2>
+        </div>
+        <p class="power-rank-stamp">${esc(stamp)}</p>
+      </header>`
+    : `<header class="power-rank-head">
       <img class="power-rank-bee" src="brand/chrome-512.png" alt="" width="72" height="72">
       <div class="power-rank-title">
         <p class="eyebrow">${esc(weekLabel)}</p>
         <h2>Top 10</h2>
       </div>
       <p class="power-rank-stamp">${esc(stamp)}</p>
-    </header>
+    </header>`;
+  el.hidden = false;
+  el.innerHTML = `<article class="power-rank-card${publicMode ? " public-rank-card" : ""}" aria-label="${esc(weekLabel)} top 10 power ranking">
+    ${head}
     <ol class="power-rank-list">${rows}</ol>
   </article>`;
 }
@@ -6755,7 +6772,7 @@ async function loadPowerRankings() {
     if (!data || !Array.isArray(data.weeks)) throw new Error("bad power rankings");
     powerRankings = data;
   } catch (err) {
-    powerRankings = null;
+    if (!powerRankings) powerRankings = null;
     console.warn("power-rankings.json", err);
   }
 }
@@ -6863,3 +6880,11 @@ function bootDesk() {
 window.bootDesk = bootDesk;
 window.dispatchEvent(new Event("bmb-app-ready"));
 if (window.BMB && window.BMB.session && window.BMB.role) bootDesk();
+
+async function bootPublicRank() {
+  const el = document.getElementById("public-rank");
+  if (!el) return;
+  if (!powerRankings) await loadPowerRankings();
+  renderPowerRank({ public: true });
+}
+bootPublicRank();

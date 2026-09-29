@@ -17,52 +17,74 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Geist+Mono:wght@400;500;600&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=prank0929">
+  <link rel="stylesheet" href="styles.css?v=pubhome0929">
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem("sb-zajfiyviybclkrqyohdt-auth-token")) {
+          document.documentElement.classList.add("has-session");
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
   <div class="frame" aria-hidden="true"></div>
 
-  <div id="auth-gate" class="auth-gate">
-    <div class="auth-card">
-      <img class="auth-bee" src="brand/bee-256.png" width="240" height="160" alt="">
-      <div class="auth-panel" id="auth-signin">
-        <p class="eyebrow">The desk</p>
-        <h1>Sign in</h1>
-        <p class="lede">Friends can look. Only the admin changes the book.</p>
-        <form id="auth-form" autocomplete="on">
-          <label class="field">
-            <span>Email or username</span>
-            <input id="auth-id" name="username" type="text" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" required>
-          </label>
-          <label class="field">
-            <span>Password</span>
-            <input id="auth-password" name="password" type="password" autocomplete="current-password" required>
-          </label>
-          <p class="auth-error" id="auth-error" role="alert" hidden></p>
-          <button type="submit" class="btn btn-fill auth-submit" id="auth-submit">Sign in</button>
-        </form>
-        <button type="button" class="auth-link" id="auth-forgot-open">Forgot password</button>
+  <header class="public-mast">
+    <a class="public-mark" href="#desk" aria-label="B Money Bets">
+      <img src="brand/chrome-512.png" width="44" height="44" alt="">
+    </a>
+    <div class="public-auth">
+      <button type="button" class="public-signin" id="public-signin" aria-expanded="false" aria-controls="auth-gate">Sign in</button>
+      <div id="auth-gate" class="auth-pop" hidden>
+        <div class="auth-panel" id="auth-signin">
+          <p class="eyebrow">The desk</p>
+          <h1>Sign in</h1>
+          <p class="lede">Friends can look. Only the admin changes the book.</p>
+          <form id="auth-form" autocomplete="on">
+            <label class="field">
+              <span>Email or username</span>
+              <input id="auth-id" name="username" type="text" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" required>
+            </label>
+            <label class="field">
+              <span>Password</span>
+              <input id="auth-password" name="password" type="password" autocomplete="current-password" required>
+            </label>
+            <p class="auth-error" id="auth-error" role="alert" hidden></p>
+            <button type="submit" class="btn btn-fill auth-submit" id="auth-submit">Sign in</button>
+          </form>
+          <button type="button" class="auth-link" id="auth-forgot-open">Forgot password</button>
+        </div>
+        <div class="auth-panel" id="auth-forgot" hidden>
+          <p class="eyebrow">Reset</p>
+          <h1>Forgot password</h1>
+          <p class="lede">We’ll email a link. Open it to set a new password. A username uses the same address as sign-in.</p>
+          <form id="auth-forgot-form">
+            <label class="field">
+              <span>Email or username</span>
+              <input id="auth-forgot-id" type="text" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" required>
+            </label>
+            <p class="auth-error" id="auth-forgot-error" role="alert" hidden></p>
+            <p class="auth-ok" id="auth-forgot-ok" role="status" hidden></p>
+            <button type="submit" class="btn btn-fill auth-submit" id="auth-forgot-submit">Send reset link</button>
+          </form>
+          <button type="button" class="auth-link" id="auth-forgot-back">Back to sign in</button>
+        </div>
       </div>
-      <div class="auth-panel" id="auth-forgot" hidden>
-        <p class="eyebrow">Reset</p>
-        <h1>Forgot password</h1>
-        <p class="lede">We’ll email a link. Open it to set a new password. A username uses the same address as sign-in.</p>
-        <form id="auth-forgot-form">
-          <label class="field">
-            <span>Email or username</span>
-            <input id="auth-forgot-id" type="text" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" required>
-          </label>
-          <p class="auth-error" id="auth-forgot-error" role="alert" hidden></p>
-          <p class="auth-ok" id="auth-forgot-ok" role="status" hidden></p>
-          <button type="submit" class="btn btn-fill auth-submit" id="auth-forgot-submit">Send reset link</button>
-        </form>
-        <button type="button" class="auth-link" id="auth-forgot-back">Back to sign in</button>
-      </div>
-      <p class="auth-public">
-        <a href="#history">Bet History</a>
-        <a href="#methodology">Methodology</a>
-      </p>
+    </div>
+  </header>
+
+  <div id="public-home">
+    <div class="public-stage">
+      <section class="public-hero" aria-labelledby="public-title">
+        <img class="public-bee" src="brand/chrome-512.png" width="512" height="512" alt="">
+        <p class="eyebrow">B Money Bets</p>
+        <h1 id="public-title">Who’s better.</h1>
+        <p class="lede">The desk’s weekly Top 10. The order, the club, and the record.</p>
+      </section>
+      <div class="power-rank" id="public-rank" aria-live="polite"></div>
     </div>
   </div>
 
@@ -87,11 +109,10 @@
       <a href="#playbook" data-nav="playbook">Rules</a>
       <a href="#tickets" data-nav="tickets">Bets</a>
       <a href="#outcomes" data-nav="outcomes">Bet Outcomes</a>
-      <a href="#history" data-nav="history" data-public="true">Bet History</a>
-      <a href="#methodology" data-nav="methodology" data-public="true">Methodology</a>
+      <a href="#history" data-nav="history">Bet History</a>
+      <a href="#methodology" data-nav="methodology">Methodology</a>
       <a href="#sandbox" data-nav="sandbox" id="nav-sandbox" hidden>Testing</a>
       <a href="#users" data-nav="users" id="nav-users" hidden>Users</a>
-      <a href="#desk" id="nav-sign-in" data-public="true" hidden>Sign in</a>
       <span class="nav-session" id="session-label"></span>
       <button type="button" class="nav-signout" id="btn-sign-out">Sign out</button>
     </nav>
@@ -739,8 +760,8 @@
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.81.1/dist/umd/supabase.js"></script>
-  <script src="auth.js?v=w3rec0929"></script>
-  <script src="app.js?v=prank20260929T160844"></script>
+  <script src="auth.js?v=pubhome0929"></script>
+  <script src="app.js?v=pubhome0929"></script>
   <script src="ledger.js?v=w3rec0929"></script>
 </body>
 </html>
