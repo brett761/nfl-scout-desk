@@ -12,8 +12,7 @@ Then open http://localhost:8765
 Google Fonts need a network the first time.
 
 ## What it is
-- Desk: week KPIs. Sample tickets never count toward 2026.
-- Card: five windows. Straight $150 process. Parlay $50 entertainment. PASS is a result.
+- Desk: week KPIs and the Tuesday Top 10. Sample tickets never count toward 2026.
 - Clock: week timeline. Folklore labeled. Action in plain English.
 - Playbook: COPY / ENTERTAINMENT / ADAPT / IGNORE.
 - Tickets: live ledger in localStorage key nflScout.tickets.v1.
@@ -33,3 +32,13 @@ node data/published/build_published_lines.mjs
 ```
 
 See `data/published/README.md`. The Supabase migration in `supabase/migrations/` is applied by hand. It is not run by the site.
+
+## Tuesday power ranking
+
+Home reads `data/published/power-rankings.json`. It does not recompute the rating. After the Tuesday injury and YTD refresh:
+
+```bash
+node data/published/build_power_rankings.mjs
+```
+
+That ranks all 32 clubs with the live desk B$ rating (`eff()` in `app.js`: PFF preseason and 2026 FA off, 2025 prior tapered, YTD pillars in) and appends the week. The file stores rank, record, and identity. It does not store rating points. Commit the JSON.
