@@ -85,19 +85,38 @@
     if (sandboxNav) sandboxNav.hidden = window.BMB.role !== "admin";
   }
 
-  function publicHash() {
-    const raw = (location.hash || "").replace(/^#/, "").split("?")[0].toLowerCase();
-    if (raw === "history" || raw === "methodology") return raw;
-    return "";
+  function closeSignInPop() {
+    const pop = document.getElementById("auth-gate");
+    const btn = document.getElementById("public-signin");
+    const signIn = document.getElementById("auth-signin");
+    const forgot = document.getElementById("auth-forgot");
+    if (signIn) signIn.hidden = false;
+    if (forgot) forgot.hidden = true;
+    if (pop) pop.hidden = true;
+    if (btn) btn.setAttribute("aria-expanded", "false");
+  }
+
+  function openSignInPop() {
+    const pop = document.getElementById("auth-gate");
+    const btn = document.getElementById("public-signin");
+    if (!pop || !btn) return;
+    pop.hidden = false;
+    btn.setAttribute("aria-expanded", "true");
+    const id = document.getElementById("auth-id");
+    if (id) id.focus();
   }
 
   function syncPublicShell() {
-    const authed = document.body.classList.contains("is-authed");
-    const name = publicHash();
-    const pub = !authed && !!name;
-    document.body.classList.toggle("is-public", pub);
-    if (pub && window.BMBLedger && typeof window.BMBLedger.show === "function") {
-      window.BMBLedger.show(name);
+    document.body.classList.remove("is-public");
+    if (document.body.classList.contains("is-authed")) {
+      closeSignInPop();
+      return;
+    }
+    const raw = (location.hash || "").replace(/^#/, "").split("?")[0].toLowerCase();
+    if (raw && raw !== "desk") {
+      const pin = () => window.scrollTo(0, 0);
+      pin();
+      requestAnimationFrame(pin);
     }
   }
 
@@ -135,6 +154,8 @@
     paintSession();
     document.body.classList.add("is-authed");
     document.body.classList.remove("is-public");
+    document.documentElement.classList.add("has-session");
+    closeSignInPop();
     if (!entered) {
       entered = true;
       startDesk();
@@ -273,6 +294,28 @@
         location.reload();
       });
     }
+    const signBtn = document.getElementById("public-signin");
+    if (signBtn) {
+      signBtn.addEventListener("click", () => {
+        const pop = document.getElementById("auth-gate");
+        if (pop && pop.hidden) openSignInPop();
+        else closeSignInPop();
+      });
+    }
+    document.addEventListener("click", (e) => {
+      const pop = document.getElementById("auth-gate");
+      const btn = document.getElementById("public-signin");
+      if (!pop || pop.hidden) return;
+      if (pop.contains(e.target) || (btn && btn.contains(e.target))) return;
+      closeSignInPop();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape") return;
+      const pop = document.getElementById("auth-gate");
+      if (!pop || pop.hidden) return;
+      closeSignInPop();
+      if (signBtn) signBtn.focus();
+    });
   }
 
   let usersCache = [];
@@ -544,6 +587,7 @@
     }
     if (event === "SIGNED_OUT") {
       document.body.classList.remove("is-authed", "is-admin", "is-viewer");
+      document.documentElement.classList.remove("has-session");
       syncPublicShell();
     }
   });
@@ -553,5 +597,8 @@
 
   client.auth.getSession().then(({ data }) => {
     if (data && data.session) enterApp(data.session);
+    else document.documentElement.classList.remove("has-session");
+  }).catch(() => {
+    document.documentElement.classList.remove("has-session");
   });
 })();
