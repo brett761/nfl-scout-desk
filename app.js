@@ -2415,7 +2415,7 @@ async function loadOpenerSnaps() {
 
 async function loadNfl() {
   const openersReq = loadOpenerSnaps();
-  const nflReq = fetch("./data/nfl-2026.json?v=w5sked0930");
+  const nflReq = fetch("./data/nfl-2026.json?v=atsclv0930");
   const priorReq = fetch("./data/prior-2025.json?v=pffpre0924");
   const ytdStReq = fetch("./data/ytd-st-2026.json?v=w3fin0929");
   const ytdRankReq = fetch("./data/ytd-rankings-2026.json?v=w3fin0929");
@@ -4242,7 +4242,8 @@ function hideOverlayIfIdle() {
   const team = document.getElementById("team-sheet");
   const game = document.getElementById("game-sheet");
   const linelog = document.getElementById("linelog-sheet");
-  if ((!ticket || ticket.hidden) && (!team || team.hidden) && (!game || game.hidden) && (!linelog || linelog.hidden)) {
+  const historySheet = document.getElementById("history-sheet");
+  if ((!ticket || ticket.hidden) && (!team || team.hidden) && (!game || game.hidden) && (!linelog || linelog.hidden) && (!historySheet || historySheet.hidden)) {
     const overlay = document.getElementById("overlay");
     if (overlay) overlay.hidden = true;
   }
@@ -6622,7 +6623,9 @@ function bind() {
   document.getElementById("f-cancel").addEventListener("click", closeSheet);
   document.getElementById("sheet-close").addEventListener("click", closeSheet);
   document.getElementById("overlay").addEventListener("click", () => {
-    if (document.getElementById("linelog-sheet") && !document.getElementById("linelog-sheet").hidden) closeLineLogSheet();
+    const historySheet = document.getElementById("history-sheet");
+    if (historySheet && !historySheet.hidden && window.BMBLedger && typeof window.BMBLedger.closeHistory === "function") window.BMBLedger.closeHistory();
+    else if (document.getElementById("linelog-sheet") && !document.getElementById("linelog-sheet").hidden) closeLineLogSheet();
     else if (document.getElementById("game-sheet") && !document.getElementById("game-sheet").hidden) closeGameSheet();
     else if (!document.getElementById("team-sheet").hidden) closeTeamSheet();
     else closeSheet();
@@ -6630,7 +6633,11 @@ function bind() {
 
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Escape") return;
-    if (document.getElementById("linelog-sheet") && !document.getElementById("linelog-sheet").hidden) {
+    const historySheet = document.getElementById("history-sheet");
+    if (historySheet && !historySheet.hidden && window.BMBLedger && typeof window.BMBLedger.closeHistory === "function") {
+      e.preventDefault();
+      window.BMBLedger.closeHistory();
+    } else if (document.getElementById("linelog-sheet") && !document.getElementById("linelog-sheet").hidden) {
       e.preventDefault();
       closeLineLogSheet();
     } else if (document.getElementById("game-sheet") && !document.getElementById("game-sheet").hidden) {

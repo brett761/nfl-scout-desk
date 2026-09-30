@@ -1,0 +1,2021 @@
+{
+  "schema": 1,
+  "season": 2026,
+  "sign_convention": "Home-centric spreads and the B$ line. Negative means the home team is favored.",
+  "immutability": "Each version is append-only. A correction is a new version. Existing versions are never edited or deleted.",
+  "games": [
+    {
+      "game_id": "DEN@KC",
+      "espn_id": "401872931",
+      "season": 2026,
+      "week": 1,
+      "away": "DEN",
+      "home": "KC",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "DEN@KC",
+          "week": 1,
+          "published_at": "2026-09-14T23:30:00.000Z",
+          "source": "data/postmortem/locks/2026-w01-den-kc.json",
+          "commit": "418cefa07f6dc200dffceb8d4ce9952298103c95",
+          "b_line": 2.87,
+          "market_spread": -2.5,
+          "market_total": 42.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/postmortem/locks/2026-w01-den-kc.json",
+          "market_total_source": "data/postmortem/locks/2026-w01-den-kc.json"
+        }
+      ]
+    },
+    {
+      "game_id": "NE@SEA",
+      "espn_id": "401872656",
+      "season": 2026,
+      "week": 1,
+      "away": "NE",
+      "home": "SEA",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "NE@SEA",
+          "week": 1,
+          "published_at": "2026-09-16T13:04:40.000Z",
+          "source": "data/postmortem/locks/2026-w01-ne-sea.json",
+          "commit": "418cefa07f6dc200dffceb8d4ce9952298103c95",
+          "b_line": -0.2,
+          "market_spread": -3.5,
+          "market_total": 44.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/closes/2026-w01.json",
+          "market_total_source": "data/postmortem/locks/2026-w01-ne-sea.json"
+        }
+      ]
+    },
+    {
+      "game_id": "SF@LAR",
+      "espn_id": "401872657",
+      "season": 2026,
+      "week": 1,
+      "away": "SF",
+      "home": "LAR",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "SF@LAR",
+          "week": 1,
+          "published_at": "2026-09-16T13:04:40.000Z",
+          "source": "data/postmortem/locks/2026-w01-sf-lar.json",
+          "commit": "418cefa07f6dc200dffceb8d4ce9952298103c95",
+          "b_line": null,
+          "market_spread": -3.5,
+          "market_total": 48.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/closes/2026-w01.json",
+          "market_total_source": "data/postmortem/locks/2026-w01-sf-lar.json",
+          "note": "Lock has no B$ line. No number was filled in."
+        }
+      ]
+    },
+    {
+      "game_id": "CAR@ATL",
+      "espn_id": "401872933",
+      "season": 2026,
+      "week": 2,
+      "away": "CAR",
+      "home": "ATL",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "CAR@ATL",
+          "week": 2,
+          "published_at": "2026-09-18T20:39:00.000Z",
+          "source": "data/postmortem/locks/2026-w02-car-atl.json",
+          "commit": "2830d93fdda64ed2866492ef414f9ed856912ec8",
+          "b_line": 2.88,
+          "market_spread": 2.5,
+          "market_total": 43.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W02.json#fri",
+          "market_total_source": "data/postmortem/locks/2026-w02-car-atl.json"
+        },
+        {
+          "version": 2,
+          "game_id": "CAR@ATL",
+          "week": 2,
+          "published_at": "2026-09-20T14:45:49.000Z",
+          "source": "data/postmortem/locks/2026-w02-car-atl.json",
+          "commit": "a0f1248a1ed4bb1f01a76d5a1efc63c468c72824",
+          "b_line": 2.89,
+          "market_spread": 2.5,
+          "market_total": 43.5,
+          "supersedes": 1,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W02.json#fri",
+          "market_total_source": "data/postmortem/locks/2026-w02-car-atl.json"
+        }
+      ]
+    },
+    {
+      "game_id": "CIN@HOU",
+      "espn_id": "401872934",
+      "season": 2026,
+      "week": 2,
+      "away": "CIN",
+      "home": "HOU",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "CIN@HOU",
+          "week": 2,
+          "published_at": "2026-09-18T20:39:00.000Z",
+          "source": "data/postmortem/locks/2026-w02-cin-hou.json",
+          "commit": "2830d93fdda64ed2866492ef414f9ed856912ec8",
+          "b_line": -5.4,
+          "market_spread": -2.5,
+          "market_total": 45.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W02.json#fri",
+          "market_total_source": "data/postmortem/locks/2026-w02-cin-hou.json"
+        },
+        {
+          "version": 2,
+          "game_id": "CIN@HOU",
+          "week": 2,
+          "published_at": "2026-09-20T12:11:00.000Z",
+          "source": "data/postmortem/locks/2026-w02-cin-hou.json",
+          "commit": "7f8cfeb1cdb065d0e6fda460278c6a40cc4b2c3f",
+          "b_line": -5.16,
+          "market_spread": -2.5,
+          "market_total": 45.5,
+          "supersedes": 1,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W02.json#fri",
+          "market_total_source": "data/postmortem/locks/2026-w02-cin-hou.json"
+        },
+        {
+          "version": 3,
+          "game_id": "CIN@HOU",
+          "week": 2,
+          "published_at": "2026-09-20T14:45:49.000Z",
+          "source": "data/postmortem/locks/2026-w02-cin-hou.json",
+          "commit": "a0f1248a1ed4bb1f01a76d5a1efc63c468c72824",
+          "b_line": -5.14,
+          "market_spread": -3,
+          "market_total": 45.5,
+          "supersedes": 2,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W02.json#sun",
+          "market_total_source": "data/postmortem/locks/2026-w02-cin-hou.json"
+        }
+      ]
+    },
+    {
+      "game_id": "CLE@TB",
+      "espn_id": "401872935",
+      "season": 2026,
+      "week": 2,
+      "away": "CLE",
+      "home": "TB",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "CLE@TB",
+          "week": 2,
+          "published_at": "2026-09-18T20:39:00.000Z",
+          "source": "data/postmortem/locks/2026-w02-cle-tb.json",
+          "commit": "2830d93fdda64ed2866492ef414f9ed856912ec8",
+          "b_line": -8.47,
+          "market_spread": -8.5,
+          "market_total": 41.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/openers/2026-09-13-week2-sunday-night.json",
+          "market_total_source": "data/postmortem/locks/2026-w02-cle-tb.json"
+        },
+        {
+          "version": 2,
+          "game_id": "CLE@TB",
+          "week": 2,
+          "published_at": "2026-09-20T14:45:49.000Z",
+          "source": "data/postmortem/locks/2026-w02-cle-tb.json",
+          "commit": "a0f1248a1ed4bb1f01a76d5a1efc63c468c72824",
+          "b_line": -8.56,
+          "market_spread": -8.5,
+          "market_total": 41.5,
+          "supersedes": 1,
+          "backfilled": true,
+          "market_spread_source": "data/openers/2026-09-13-week2-sunday-night.json",
+          "market_total_source": "data/postmortem/locks/2026-w02-cle-tb.json"
+        }
+      ]
+    },
+    {
+      "game_id": "DET@BUF",
+      "espn_id": "401872932",
+      "season": 2026,
+      "week": 2,
+      "away": "DET",
+      "home": "BUF",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "DET@BUF",
+          "week": 2,
+          "published_at": "2026-09-14T13:11:00.000Z",
+          "source": "data/postmortem/locks/2026-w02-det-buf.json",
+          "commit": "9b9c616585513158c2788631c084440b710894d3",
+          "b_line": null,
+          "market_spread": -3.5,
+          "market_total": 53.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/openers/2026-09-13-week2-sunday-night.json",
+          "market_total_source": "data/postmortem/locks/2026-w02-det-buf.json",
+          "note": "Lock has no B$ line. No number was filled in."
+        },
+        {
+          "version": 2,
+          "game_id": "DET@BUF",
+          "week": 2,
+          "published_at": "2026-09-16T13:04:00.000Z",
+          "source": "data/postmortem/locks/2026-w02-det-buf.json",
+          "commit": "418cefa07f6dc200dffceb8d4ce9952298103c95",
+          "b_line": -9.26,
+          "market_spread": -3.5,
+          "market_total": 54.5,
+          "supersedes": 1,
+          "backfilled": true,
+          "market_spread_source": "data/openers/2026-09-13-week2-sunday-night.json",
+          "market_total_source": "data/postmortem/locks/2026-w02-det-buf.json"
+        },
+        {
+          "version": 3,
+          "game_id": "DET@BUF",
+          "week": 2,
+          "published_at": "2026-09-16T21:44:00.000Z",
+          "source": "data/postmortem/locks/2026-w02-det-buf.json",
+          "commit": "ff9202702d41b57ed28cbf9ab70b422109fe05bd",
+          "b_line": -9.28,
+          "market_spread": -4.5,
+          "market_total": 54.5,
+          "supersedes": 2,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W02.json#wed",
+          "market_total_source": "data/postmortem/locks/2026-w02-det-buf.json"
+        }
+      ]
+    },
+    {
+      "game_id": "GB@NYJ",
+      "espn_id": "401872936",
+      "season": 2026,
+      "week": 2,
+      "away": "GB",
+      "home": "NYJ",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "GB@NYJ",
+          "week": 2,
+          "published_at": "2026-09-18T20:39:00.000Z",
+          "source": "data/postmortem/locks/2026-w02-gb-nyj.json",
+          "commit": "2830d93fdda64ed2866492ef414f9ed856912ec8",
+          "b_line": -8.72,
+          "market_spread": 3.5,
+          "market_total": 44.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W02.json#fri",
+          "market_total_source": "data/postmortem/locks/2026-w02-gb-nyj.json"
+        }
+      ]
+    },
+    {
+      "game_id": "IND@KC",
+      "espn_id": "401872945",
+      "season": 2026,
+      "week": 2,
+      "away": "IND",
+      "home": "KC",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "IND@KC",
+          "week": 2,
+          "published_at": "2026-09-18T20:39:00.000Z",
+          "source": "data/postmortem/locks/2026-w02-ind-kc.json",
+          "commit": "2830d93fdda64ed2866492ef414f9ed856912ec8",
+          "b_line": -10.12,
+          "market_spread": -6.5,
+          "market_total": 46.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/openers/2026-09-11-week2-friday.json",
+          "market_total_source": "data/postmortem/locks/2026-w02-ind-kc.json"
+        },
+        {
+          "version": 2,
+          "game_id": "IND@KC",
+          "week": 2,
+          "published_at": "2026-09-20T12:11:00.000Z",
+          "source": "data/postmortem/locks/2026-w02-ind-kc.json",
+          "commit": "7f8cfeb1cdb065d0e6fda460278c6a40cc4b2c3f",
+          "b_line": -9.92,
+          "market_spread": -6.5,
+          "market_total": 46.5,
+          "supersedes": 1,
+          "backfilled": true,
+          "market_spread_source": "data/openers/2026-09-11-week2-friday.json",
+          "market_total_source": "data/postmortem/locks/2026-w02-ind-kc.json"
+        },
+        {
+          "version": 3,
+          "game_id": "IND@KC",
+          "week": 2,
+          "published_at": "2026-09-20T14:45:49.000Z",
+          "source": "data/postmortem/locks/2026-w02-ind-kc.json",
+          "commit": "a0f1248a1ed4bb1f01a76d5a1efc63c468c72824",
+          "b_line": -9.91,
+          "market_spread": -6,
+          "market_total": 46.5,
+          "supersedes": 2,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W02.json#sun",
+          "market_total_source": "data/postmortem/locks/2026-w02-ind-kc.json"
+        },
+        {
+          "version": 4,
+          "game_id": "IND@KC",
+          "week": 2,
+          "published_at": "2026-09-20T23:12:00.000Z",
+          "source": "data/postmortem/locks/2026-w02-ind-kc.json",
+          "commit": "d3e630d0588a95d3c8760238ea33ca646055a61f",
+          "b_line": -11.5,
+          "market_spread": -6,
+          "market_total": 46.5,
+          "supersedes": 3,
+          "backfilled": true,
+          "market_spread_source": "data/postmortem/locks/2026-w02-ind-kc.json",
+          "market_total_source": "data/postmortem/locks/2026-w02-ind-kc.json"
+        }
+      ]
+    },
+    {
+      "game_id": "JAX@DEN",
+      "espn_id": "401872940",
+      "season": 2026,
+      "week": 2,
+      "away": "JAX",
+      "home": "DEN",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "JAX@DEN",
+          "week": 2,
+          "published_at": "2026-09-18T20:39:00.000Z",
+          "source": "data/postmortem/locks/2026-w02-jax-den.json",
+          "commit": "2830d93fdda64ed2866492ef414f9ed856912ec8",
+          "b_line": 10.4,
+          "market_spread": -2.5,
+          "market_total": 45.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W02.json#fri",
+          "market_total_source": "data/postmortem/locks/2026-w02-jax-den.json"
+        },
+        {
+          "version": 2,
+          "game_id": "JAX@DEN",
+          "week": 2,
+          "published_at": "2026-09-20T12:11:00.000Z",
+          "source": "data/postmortem/locks/2026-w02-jax-den.json",
+          "commit": "7f8cfeb1cdb065d0e6fda460278c6a40cc4b2c3f",
+          "b_line": 12.52,
+          "market_spread": -2.5,
+          "market_total": 45.5,
+          "supersedes": 1,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W02.json#fri",
+          "market_total_source": "data/postmortem/locks/2026-w02-jax-den.json"
+        }
+      ]
+    },
+    {
+      "game_id": "LV@LAC",
+      "espn_id": "401872941",
+      "season": 2026,
+      "week": 2,
+      "away": "LV",
+      "home": "LAC",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "LV@LAC",
+          "week": 2,
+          "published_at": "2026-09-18T20:39:00.000Z",
+          "source": "data/postmortem/locks/2026-w02-lv-lac.json",
+          "commit": "2830d93fdda64ed2866492ef414f9ed856912ec8",
+          "b_line": 3.81,
+          "market_spread": -6.5,
+          "market_total": 43.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W02.json#fri",
+          "market_total_source": "data/postmortem/locks/2026-w02-lv-lac.json"
+        },
+        {
+          "version": 2,
+          "game_id": "LV@LAC",
+          "week": 2,
+          "published_at": "2026-09-20T12:11:00.000Z",
+          "source": "data/postmortem/locks/2026-w02-lv-lac.json",
+          "commit": "7f8cfeb1cdb065d0e6fda460278c6a40cc4b2c3f",
+          "b_line": 3.26,
+          "market_spread": -6.5,
+          "market_total": 43.5,
+          "supersedes": 1,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W02.json#fri",
+          "market_total_source": "data/postmortem/locks/2026-w02-lv-lac.json"
+        },
+        {
+          "version": 3,
+          "game_id": "LV@LAC",
+          "week": 2,
+          "published_at": "2026-09-20T14:45:49.000Z",
+          "source": "data/postmortem/locks/2026-w02-lv-lac.json",
+          "commit": "a0f1248a1ed4bb1f01a76d5a1efc63c468c72824",
+          "b_line": 1.21,
+          "market_spread": -6.5,
+          "market_total": 43.5,
+          "supersedes": 2,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W02.json#fri",
+          "market_total_source": "data/postmortem/locks/2026-w02-lv-lac.json"
+        }
+      ]
+    },
+    {
+      "game_id": "MIA@SF",
+      "espn_id": "401872942",
+      "season": 2026,
+      "week": 2,
+      "away": "MIA",
+      "home": "SF",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "MIA@SF",
+          "week": 2,
+          "published_at": "2026-09-18T20:39:00.000Z",
+          "source": "data/postmortem/locks/2026-w02-mia-sf.json",
+          "commit": "2830d93fdda64ed2866492ef414f9ed856912ec8",
+          "b_line": -16.08,
+          "market_spread": -13.5,
+          "market_total": 44.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W02.json#fri",
+          "market_total_source": "data/postmortem/locks/2026-w02-mia-sf.json"
+        },
+        {
+          "version": 2,
+          "game_id": "MIA@SF",
+          "week": 2,
+          "published_at": "2026-09-20T12:11:00.000Z",
+          "source": "data/postmortem/locks/2026-w02-mia-sf.json",
+          "commit": "7f8cfeb1cdb065d0e6fda460278c6a40cc4b2c3f",
+          "b_line": -18.05,
+          "market_spread": -13.5,
+          "market_total": 44.5,
+          "supersedes": 1,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W02.json#fri",
+          "market_total_source": "data/postmortem/locks/2026-w02-mia-sf.json"
+        },
+        {
+          "version": 3,
+          "game_id": "MIA@SF",
+          "week": 2,
+          "published_at": "2026-09-20T14:45:49.000Z",
+          "source": "data/postmortem/locks/2026-w02-mia-sf.json",
+          "commit": "a0f1248a1ed4bb1f01a76d5a1efc63c468c72824",
+          "b_line": -18.35,
+          "market_spread": -13.5,
+          "market_total": 44.5,
+          "supersedes": 2,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W02.json#fri",
+          "market_total_source": "data/postmortem/locks/2026-w02-mia-sf.json"
+        }
+      ]
+    },
+    {
+      "game_id": "MIN@CHI",
+      "espn_id": "401872937",
+      "season": 2026,
+      "week": 2,
+      "away": "MIN",
+      "home": "CHI",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "MIN@CHI",
+          "week": 2,
+          "published_at": "2026-09-18T20:39:00.000Z",
+          "source": "data/postmortem/locks/2026-w02-min-chi.json",
+          "commit": "2830d93fdda64ed2866492ef414f9ed856912ec8",
+          "b_line": -3.93,
+          "market_spread": -4.5,
+          "market_total": 47.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W02.json#fri",
+          "market_total_source": "data/postmortem/locks/2026-w02-min-chi.json"
+        },
+        {
+          "version": 2,
+          "game_id": "MIN@CHI",
+          "week": 2,
+          "published_at": "2026-09-20T12:11:00.000Z",
+          "source": "data/postmortem/locks/2026-w02-min-chi.json",
+          "commit": "7f8cfeb1cdb065d0e6fda460278c6a40cc4b2c3f",
+          "b_line": -0.93,
+          "market_spread": -4.5,
+          "market_total": 47.5,
+          "supersedes": 1,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W02.json#fri",
+          "market_total_source": "data/postmortem/locks/2026-w02-min-chi.json"
+        },
+        {
+          "version": 3,
+          "game_id": "MIN@CHI",
+          "week": 2,
+          "published_at": "2026-09-20T14:45:49.000Z",
+          "source": "data/postmortem/locks/2026-w02-min-chi.json",
+          "commit": "a0f1248a1ed4bb1f01a76d5a1efc63c468c72824",
+          "b_line": -0.41,
+          "market_spread": -4.5,
+          "market_total": 46.5,
+          "supersedes": 2,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W02.json#fri",
+          "market_total_source": "data/postmortem/locks/2026-w02-min-chi.json"
+        }
+      ]
+    },
+    {
+      "game_id": "NO@BAL",
+      "espn_id": "401872938",
+      "season": 2026,
+      "week": 2,
+      "away": "NO",
+      "home": "BAL",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "NO@BAL",
+          "week": 2,
+          "published_at": "2026-09-18T20:39:00.000Z",
+          "source": "data/postmortem/locks/2026-w02-no-bal.json",
+          "commit": "2830d93fdda64ed2866492ef414f9ed856912ec8",
+          "b_line": -5.73,
+          "market_spread": -8.5,
+          "market_total": 46.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/openers/2026-09-13-week2-sunday-night.json",
+          "market_total_source": "data/postmortem/locks/2026-w02-no-bal.json"
+        }
+      ]
+    },
+    {
+      "game_id": "NYG@LAR",
+      "espn_id": "401872947",
+      "season": 2026,
+      "week": 2,
+      "away": "NYG",
+      "home": "LAR",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "NYG@LAR",
+          "week": 2,
+          "published_at": "2026-09-18T20:39:00.000Z",
+          "source": "data/postmortem/locks/2026-w02-nyg-lar.json",
+          "commit": "2830d93fdda64ed2866492ef414f9ed856912ec8",
+          "b_line": -5.44,
+          "market_spread": -7,
+          "market_total": 48.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W02.json#mon",
+          "market_total_source": "data/postmortem/locks/2026-w02-nyg-lar.json"
+        },
+        {
+          "version": 2,
+          "game_id": "NYG@LAR",
+          "week": 2,
+          "published_at": "2026-09-20T12:11:00.000Z",
+          "source": "data/postmortem/locks/2026-w02-nyg-lar.json",
+          "commit": "7f8cfeb1cdb065d0e6fda460278c6a40cc4b2c3f",
+          "b_line": -5.38,
+          "market_spread": -7,
+          "market_total": 47.5,
+          "supersedes": 1,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W02.json#mon",
+          "market_total_source": "data/postmortem/locks/2026-w02-nyg-lar.json"
+        },
+        {
+          "version": 3,
+          "game_id": "NYG@LAR",
+          "week": 2,
+          "published_at": "2026-09-20T14:45:49.000Z",
+          "source": "data/postmortem/locks/2026-w02-nyg-lar.json",
+          "commit": "a0f1248a1ed4bb1f01a76d5a1efc63c468c72824",
+          "b_line": -2.67,
+          "market_spread": -7,
+          "market_total": 47.5,
+          "supersedes": 2,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W02.json#mon",
+          "market_total_source": "data/postmortem/locks/2026-w02-nyg-lar.json"
+        },
+        {
+          "version": 4,
+          "game_id": "NYG@LAR",
+          "week": 2,
+          "published_at": "2026-09-21T23:28:00.000Z",
+          "source": "data/postmortem/locks/2026-w02-nyg-lar.json",
+          "commit": "393a23a5d611392acf2ccdacdf3e355e907628fe",
+          "b_line": -6.77,
+          "market_spread": -7,
+          "market_total": 47.5,
+          "supersedes": 3,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W02.json#mon",
+          "market_total_source": "data/postmortem/locks/2026-w02-nyg-lar.json"
+        }
+      ]
+    },
+    {
+      "game_id": "PHI@TEN",
+      "espn_id": "401872939",
+      "season": 2026,
+      "week": 2,
+      "away": "PHI",
+      "home": "TEN",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "PHI@TEN",
+          "week": 2,
+          "published_at": "2026-09-18T20:39:00.000Z",
+          "source": "data/postmortem/locks/2026-w02-phi-ten.json",
+          "commit": "2830d93fdda64ed2866492ef414f9ed856912ec8",
+          "b_line": 5.48,
+          "market_spread": 7,
+          "market_total": 39.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/openers/2026-09-13-week2-sunday-night.json",
+          "market_total_source": "data/postmortem/locks/2026-w02-phi-ten.json"
+        },
+        {
+          "version": 2,
+          "game_id": "PHI@TEN",
+          "week": 2,
+          "published_at": "2026-09-20T12:11:00.000Z",
+          "source": "data/postmortem/locks/2026-w02-phi-ten.json",
+          "commit": "7f8cfeb1cdb065d0e6fda460278c6a40cc4b2c3f",
+          "b_line": 5.85,
+          "market_spread": 7,
+          "market_total": 39.5,
+          "supersedes": 1,
+          "backfilled": true,
+          "market_spread_source": "data/openers/2026-09-13-week2-sunday-night.json",
+          "market_total_source": "data/postmortem/locks/2026-w02-phi-ten.json"
+        },
+        {
+          "version": 3,
+          "game_id": "PHI@TEN",
+          "week": 2,
+          "published_at": "2026-09-20T14:45:49.000Z",
+          "source": "data/postmortem/locks/2026-w02-phi-ten.json",
+          "commit": "a0f1248a1ed4bb1f01a76d5a1efc63c468c72824",
+          "b_line": 5.78,
+          "market_spread": 7,
+          "market_total": 39.5,
+          "supersedes": 2,
+          "backfilled": true,
+          "market_spread_source": "data/openers/2026-09-13-week2-sunday-night.json",
+          "market_total_source": "data/postmortem/locks/2026-w02-phi-ten.json"
+        }
+      ]
+    },
+    {
+      "game_id": "PIT@NE",
+      "espn_id": "401872946",
+      "season": 2026,
+      "week": 2,
+      "away": "PIT",
+      "home": "NE",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "PIT@NE",
+          "week": 2,
+          "published_at": "2026-09-18T20:39:00.000Z",
+          "source": "data/postmortem/locks/2026-w02-pit-ne.json",
+          "commit": "2830d93fdda64ed2866492ef414f9ed856912ec8",
+          "b_line": 2.57,
+          "market_spread": -5.5,
+          "market_total": 41.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W02.json#fri",
+          "market_total_source": "data/postmortem/locks/2026-w02-pit-ne.json"
+        },
+        {
+          "version": 2,
+          "game_id": "PIT@NE",
+          "week": 2,
+          "published_at": "2026-09-20T14:45:49.000Z",
+          "source": "data/postmortem/locks/2026-w02-pit-ne.json",
+          "commit": "a0f1248a1ed4bb1f01a76d5a1efc63c468c72824",
+          "b_line": 4.23,
+          "market_spread": -5.5,
+          "market_total": 41.5,
+          "supersedes": 1,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W02.json#fri",
+          "market_total_source": "data/postmortem/locks/2026-w02-pit-ne.json"
+        }
+      ]
+    },
+    {
+      "game_id": "SEA@ARI",
+      "espn_id": "401872943",
+      "season": 2026,
+      "week": 2,
+      "away": "SEA",
+      "home": "ARI",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "SEA@ARI",
+          "week": 2,
+          "published_at": "2026-09-18T20:39:00.000Z",
+          "source": "data/postmortem/locks/2026-w02-sea-ari.json",
+          "commit": "2830d93fdda64ed2866492ef414f9ed856912ec8",
+          "b_line": -0.19,
+          "market_spread": 3.5,
+          "market_total": 40.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W02.json#fri",
+          "market_total_source": "data/postmortem/locks/2026-w02-sea-ari.json"
+        },
+        {
+          "version": 2,
+          "game_id": "SEA@ARI",
+          "week": 2,
+          "published_at": "2026-09-20T12:11:00.000Z",
+          "source": "data/postmortem/locks/2026-w02-sea-ari.json",
+          "commit": "7f8cfeb1cdb065d0e6fda460278c6a40cc4b2c3f",
+          "b_line": 2.09,
+          "market_spread": 3.5,
+          "market_total": 41.5,
+          "supersedes": 1,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W02.json#fri",
+          "market_total_source": "data/postmortem/locks/2026-w02-sea-ari.json"
+        },
+        {
+          "version": 3,
+          "game_id": "SEA@ARI",
+          "week": 2,
+          "published_at": "2026-09-20T14:45:49.000Z",
+          "source": "data/postmortem/locks/2026-w02-sea-ari.json",
+          "commit": "a0f1248a1ed4bb1f01a76d5a1efc63c468c72824",
+          "b_line": 1.76,
+          "market_spread": 3.5,
+          "market_total": 40.5,
+          "supersedes": 2,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W02.json#fri",
+          "market_total_source": "data/postmortem/locks/2026-w02-sea-ari.json"
+        }
+      ]
+    },
+    {
+      "game_id": "WSH@DAL",
+      "espn_id": "401872944",
+      "season": 2026,
+      "week": 2,
+      "away": "WSH",
+      "home": "DAL",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "WSH@DAL",
+          "week": 2,
+          "published_at": "2026-09-18T20:39:00.000Z",
+          "source": "data/postmortem/locks/2026-w02-wsh-dal.json",
+          "commit": "2830d93fdda64ed2866492ef414f9ed856912ec8",
+          "b_line": -5.8,
+          "market_spread": -4.5,
+          "market_total": 50.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W02.json#fri",
+          "market_total_source": "data/postmortem/locks/2026-w02-wsh-dal.json"
+        },
+        {
+          "version": 2,
+          "game_id": "WSH@DAL",
+          "week": 2,
+          "published_at": "2026-09-20T12:11:00.000Z",
+          "source": "data/postmortem/locks/2026-w02-wsh-dal.json",
+          "commit": "7f8cfeb1cdb065d0e6fda460278c6a40cc4b2c3f",
+          "b_line": -5.62,
+          "market_spread": -4.5,
+          "market_total": 50.5,
+          "supersedes": 1,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W02.json#fri",
+          "market_total_source": "data/postmortem/locks/2026-w02-wsh-dal.json"
+        }
+      ]
+    },
+    {
+      "game_id": "ARI@SF",
+      "espn_id": "401872958",
+      "season": 2026,
+      "week": 3,
+      "away": "ARI",
+      "home": "SF",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "ARI@SF",
+          "week": 3,
+          "published_at": "2026-09-25T20:27:00.000Z",
+          "source": "data/postmortem/locks/2026-w03-ari-sf.json",
+          "commit": "4c4e70883d23f752cc139b882b3d43433b67bc3d",
+          "b_line": -14.71,
+          "market_spread": -8.5,
+          "market_total": 47.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W03.json#mon",
+          "market_total_source": "data/postmortem/locks/2026-w03-ari-sf.json"
+        },
+        {
+          "version": 2,
+          "game_id": "ARI@SF",
+          "week": 3,
+          "published_at": "2026-09-27T23:22:14.000Z",
+          "source": "data/postmortem/locks/2026-w03-ari-sf.json#model_home_spread_corrected",
+          "commit": "2d16989fe48ddb0e377de2e8cb7627301ae867fb",
+          "b_line": -11.69,
+          "market_spread": -7.5,
+          "market_total": 48.5,
+          "supersedes": 1,
+          "backfilled": true,
+          "market_spread_source": "data/postmortem/locks/2026-w03-ari-sf.json",
+          "market_total_source": "data/postmortem/locks/2026-w03-ari-sf.json",
+          "note": "Correction published as a new version. The earlier number stays."
+        }
+      ]
+    },
+    {
+      "game_id": "ATL@GB",
+      "espn_id": "401872948",
+      "season": 2026,
+      "week": 3,
+      "away": "ATL",
+      "home": "GB",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "ATL@GB",
+          "week": 3,
+          "published_at": "2026-09-23T20:47:00.000Z",
+          "source": "data/postmortem/locks/2026-w03-atl-gb.json",
+          "commit": "ee3b1fe3b3f95f2b1d31d0fab9c4f05605d9e419",
+          "b_line": -2.33,
+          "market_spread": -5.5,
+          "market_total": 42.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/postmortem/locks/2026-w03-atl-gb.json",
+          "market_total_source": "data/postmortem/locks/2026-w03-atl-gb.json"
+        }
+      ]
+    },
+    {
+      "game_id": "BAL@DAL",
+      "espn_id": "401872960",
+      "season": 2026,
+      "week": 3,
+      "away": "BAL",
+      "home": "DAL",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "BAL@DAL",
+          "week": 3,
+          "published_at": "2026-09-25T20:27:00.000Z",
+          "source": "data/postmortem/locks/2026-w03-bal-dal.json",
+          "commit": "4c4e70883d23f752cc139b882b3d43433b67bc3d",
+          "b_line": 6.61,
+          "market_spread": 3.5,
+          "market_total": 53.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/postmortem/locks/2026-w03-bal-dal.json",
+          "market_total_source": "data/postmortem/locks/2026-w03-bal-dal.json"
+        },
+        {
+          "version": 2,
+          "game_id": "BAL@DAL",
+          "week": 3,
+          "published_at": "2026-09-27T23:22:14.000Z",
+          "source": "data/postmortem/locks/2026-w03-bal-dal.json#model_home_spread_corrected",
+          "commit": "2d16989fe48ddb0e377de2e8cb7627301ae867fb",
+          "b_line": 7.38,
+          "market_spread": 3.5,
+          "market_total": 53.5,
+          "supersedes": 1,
+          "backfilled": true,
+          "market_spread_source": "data/postmortem/locks/2026-w03-bal-dal.json",
+          "market_total_source": "data/postmortem/locks/2026-w03-bal-dal.json",
+          "note": "Correction published as a new version. The earlier number stays."
+        }
+      ]
+    },
+    {
+      "game_id": "CAR@CLE",
+      "espn_id": "401872949",
+      "season": 2026,
+      "week": 3,
+      "away": "CAR",
+      "home": "CLE",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "CAR@CLE",
+          "week": 3,
+          "published_at": "2026-09-25T20:27:00.000Z",
+          "source": "data/postmortem/locks/2026-w03-car-cle.json",
+          "commit": "4c4e70883d23f752cc139b882b3d43433b67bc3d",
+          "b_line": 5.83,
+          "market_spread": 2.5,
+          "market_total": 42.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W03.json#mon",
+          "market_total_source": "data/postmortem/locks/2026-w03-car-cle.json"
+        },
+        {
+          "version": 2,
+          "game_id": "CAR@CLE",
+          "week": 3,
+          "published_at": "2026-09-27T23:22:14.000Z",
+          "source": "data/postmortem/locks/2026-w03-car-cle.json#model_home_spread_corrected",
+          "commit": "2d16989fe48ddb0e377de2e8cb7627301ae867fb",
+          "b_line": 4.54,
+          "market_spread": 1.5,
+          "market_total": 42.5,
+          "supersedes": 1,
+          "backfilled": true,
+          "market_spread_source": "data/postmortem/locks/2026-w03-car-cle.json",
+          "market_total_source": "data/postmortem/locks/2026-w03-car-cle.json",
+          "note": "Correction published as a new version. The earlier number stays."
+        }
+      ]
+    },
+    {
+      "game_id": "CIN@PIT",
+      "espn_id": "401872950",
+      "season": 2026,
+      "week": 3,
+      "away": "CIN",
+      "home": "PIT",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "CIN@PIT",
+          "week": 3,
+          "published_at": "2026-09-25T20:27:00.000Z",
+          "source": "data/postmortem/locks/2026-w03-cin-pit.json",
+          "commit": "4c4e70883d23f752cc139b882b3d43433b67bc3d",
+          "b_line": 0.75,
+          "market_spread": 3.5,
+          "market_total": 42.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/postmortem/locks/2026-w03-cin-pit.json",
+          "market_total_source": "data/postmortem/locks/2026-w03-cin-pit.json"
+        },
+        {
+          "version": 2,
+          "game_id": "CIN@PIT",
+          "week": 3,
+          "published_at": "2026-09-27T23:22:14.000Z",
+          "source": "data/postmortem/locks/2026-w03-cin-pit.json#model_home_spread_corrected",
+          "commit": "2d16989fe48ddb0e377de2e8cb7627301ae867fb",
+          "b_line": 0.22,
+          "market_spread": 3.5,
+          "market_total": 42.5,
+          "supersedes": 1,
+          "backfilled": true,
+          "market_spread_source": "data/postmortem/locks/2026-w03-cin-pit.json",
+          "market_total_source": "data/postmortem/locks/2026-w03-cin-pit.json",
+          "note": "Correction published as a new version. The earlier number stays."
+        }
+      ]
+    },
+    {
+      "game_id": "HOU@IND",
+      "espn_id": "401872951",
+      "season": 2026,
+      "week": 3,
+      "away": "HOU",
+      "home": "IND",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "HOU@IND",
+          "week": 3,
+          "published_at": "2026-09-25T20:27:00.000Z",
+          "source": "data/postmortem/locks/2026-w03-hou-ind.json",
+          "commit": "4c4e70883d23f752cc139b882b3d43433b67bc3d",
+          "b_line": 1.48,
+          "market_spread": 1.5,
+          "market_total": 42.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/postmortem/locks/2026-w03-hou-ind.json",
+          "market_total_source": "data/postmortem/locks/2026-w03-hou-ind.json"
+        },
+        {
+          "version": 2,
+          "game_id": "HOU@IND",
+          "week": 3,
+          "published_at": "2026-09-27T23:22:14.000Z",
+          "source": "data/postmortem/locks/2026-w03-hou-ind.json#model_home_spread_corrected",
+          "commit": "2d16989fe48ddb0e377de2e8cb7627301ae867fb",
+          "b_line": 0.54,
+          "market_spread": 1.5,
+          "market_total": 42.5,
+          "supersedes": 1,
+          "backfilled": true,
+          "market_spread_source": "data/postmortem/locks/2026-w03-hou-ind.json",
+          "market_total_source": "data/postmortem/locks/2026-w03-hou-ind.json",
+          "note": "Correction published as a new version. The earlier number stays."
+        }
+      ]
+    },
+    {
+      "game_id": "KC@MIA",
+      "espn_id": "401872952",
+      "season": 2026,
+      "week": 3,
+      "away": "KC",
+      "home": "MIA",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "KC@MIA",
+          "week": 3,
+          "published_at": "2026-09-25T20:27:00.000Z",
+          "source": "data/postmortem/locks/2026-w03-kc-mia.json",
+          "commit": "4c4e70883d23f752cc139b882b3d43433b67bc3d",
+          "b_line": 18.72,
+          "market_spread": 10.5,
+          "market_total": 45.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W03.json#mon",
+          "market_total_source": "data/postmortem/locks/2026-w03-kc-mia.json"
+        },
+        {
+          "version": 2,
+          "game_id": "KC@MIA",
+          "week": 3,
+          "published_at": "2026-09-27T12:05:00.000Z",
+          "source": "data/postmortem/locks/2026-w03-kc-mia.json",
+          "commit": "cc2c9f0f9b3be57cb5f738303049883ee11f26c4",
+          "b_line": 18.76,
+          "market_spread": 10,
+          "market_total": 45.5,
+          "supersedes": 1,
+          "backfilled": true,
+          "market_spread_source": "data/postmortem/locks/2026-w03-kc-mia.json",
+          "market_total_source": "data/postmortem/locks/2026-w03-kc-mia.json"
+        },
+        {
+          "version": 3,
+          "game_id": "KC@MIA",
+          "week": 3,
+          "published_at": "2026-09-27T23:22:14.000Z",
+          "source": "data/postmortem/locks/2026-w03-kc-mia.json#model_home_spread_corrected",
+          "commit": "2d16989fe48ddb0e377de2e8cb7627301ae867fb",
+          "b_line": 16.06,
+          "market_spread": 10,
+          "market_total": 45.5,
+          "supersedes": 2,
+          "backfilled": true,
+          "market_spread_source": "data/postmortem/locks/2026-w03-kc-mia.json",
+          "market_total_source": "data/postmortem/locks/2026-w03-kc-mia.json",
+          "note": "Correction published as a new version. The earlier number stays."
+        }
+      ]
+    },
+    {
+      "game_id": "LAC@BUF",
+      "espn_id": "401872953",
+      "season": 2026,
+      "week": 3,
+      "away": "LAC",
+      "home": "BUF",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "LAC@BUF",
+          "week": 3,
+          "published_at": "2026-09-25T20:27:00.000Z",
+          "source": "data/postmortem/locks/2026-w03-lac-buf.json",
+          "commit": "4c4e70883d23f752cc139b882b3d43433b67bc3d",
+          "b_line": -14.71,
+          "market_spread": -7,
+          "market_total": 50.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/postmortem/locks/2026-w03-lac-buf.json",
+          "market_total_source": "data/postmortem/locks/2026-w03-lac-buf.json"
+        },
+        {
+          "version": 2,
+          "game_id": "LAC@BUF",
+          "week": 3,
+          "published_at": "2026-09-27T23:22:14.000Z",
+          "source": "data/postmortem/locks/2026-w03-lac-buf.json#model_home_spread_corrected",
+          "commit": "2d16989fe48ddb0e377de2e8cb7627301ae867fb",
+          "b_line": -14.3,
+          "market_spread": -7,
+          "market_total": 50.5,
+          "supersedes": 1,
+          "backfilled": true,
+          "market_spread_source": "data/postmortem/locks/2026-w03-lac-buf.json",
+          "market_total_source": "data/postmortem/locks/2026-w03-lac-buf.json",
+          "note": "Correction published as a new version. The earlier number stays."
+        }
+      ]
+    },
+    {
+      "game_id": "LAR@DEN",
+      "espn_id": "401872962",
+      "season": 2026,
+      "week": 3,
+      "away": "LAR",
+      "home": "DEN",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "LAR@DEN",
+          "week": 3,
+          "published_at": "2026-09-25T20:27:00.000Z",
+          "source": "data/postmortem/locks/2026-w03-lar-den.json",
+          "commit": "4c4e70883d23f752cc139b882b3d43433b67bc3d",
+          "b_line": 9.26,
+          "market_spread": 2.5,
+          "market_total": 43.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W03.json#mon",
+          "market_total_source": "data/postmortem/locks/2026-w03-lar-den.json"
+        },
+        {
+          "version": 2,
+          "game_id": "LAR@DEN",
+          "week": 3,
+          "published_at": "2026-09-27T12:05:00.000Z",
+          "source": "data/postmortem/locks/2026-w03-lar-den.json",
+          "commit": "cc2c9f0f9b3be57cb5f738303049883ee11f26c4",
+          "b_line": 9.35,
+          "market_spread": 2.5,
+          "market_total": 44.5,
+          "supersedes": 1,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W03.json#mon",
+          "market_total_source": "data/postmortem/locks/2026-w03-lar-den.json"
+        },
+        {
+          "version": 3,
+          "game_id": "LAR@DEN",
+          "week": 3,
+          "published_at": "2026-09-27T23:18:00.000Z",
+          "source": "data/postmortem/locks/2026-w03-lar-den.json",
+          "commit": "8e945fbdaec34805a356d077c1502b3665ba62dc",
+          "b_line": 9.61,
+          "market_spread": 1.5,
+          "market_total": 44.5,
+          "supersedes": 2,
+          "backfilled": true,
+          "market_spread_source": "data/postmortem/locks/2026-w03-lar-den.json",
+          "market_total_source": "data/postmortem/locks/2026-w03-lar-den.json"
+        },
+        {
+          "version": 4,
+          "game_id": "LAR@DEN",
+          "week": 3,
+          "published_at": "2026-09-27T23:22:14.000Z",
+          "source": "data/postmortem/locks/2026-w03-lar-den.json#model_home_spread_corrected",
+          "commit": "2d16989fe48ddb0e377de2e8cb7627301ae867fb",
+          "b_line": 7.69,
+          "market_spread": 1.5,
+          "market_total": 44.5,
+          "supersedes": 3,
+          "backfilled": true,
+          "market_spread_source": "data/postmortem/locks/2026-w03-lar-den.json",
+          "market_total_source": "data/postmortem/locks/2026-w03-lar-den.json",
+          "note": "Correction published as a new version. The earlier number stays."
+        }
+      ]
+    },
+    {
+      "game_id": "LV@NO",
+      "espn_id": "401872961",
+      "season": 2026,
+      "week": 3,
+      "away": "LV",
+      "home": "NO",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "LV@NO",
+          "week": 3,
+          "published_at": "2026-09-25T20:27:00.000Z",
+          "source": "data/postmortem/locks/2026-w03-lv-no.json",
+          "commit": "4c4e70883d23f752cc139b882b3d43433b67bc3d",
+          "b_line": 1.96,
+          "market_spread": -3.5,
+          "market_total": 43.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W03.json#mon",
+          "market_total_source": "data/postmortem/locks/2026-w03-lv-no.json"
+        },
+        {
+          "version": 2,
+          "game_id": "LV@NO",
+          "week": 3,
+          "published_at": "2026-09-27T12:05:00.000Z",
+          "source": "data/postmortem/locks/2026-w03-lv-no.json",
+          "commit": "cc2c9f0f9b3be57cb5f738303049883ee11f26c4",
+          "b_line": 1.98,
+          "market_spread": -3.5,
+          "market_total": 43.5,
+          "supersedes": 1,
+          "backfilled": true,
+          "market_spread_source": "data/postmortem/locks/2026-w03-lv-no.json",
+          "market_total_source": "data/postmortem/locks/2026-w03-lv-no.json"
+        },
+        {
+          "version": 3,
+          "game_id": "LV@NO",
+          "week": 3,
+          "published_at": "2026-09-27T23:22:14.000Z",
+          "source": "data/postmortem/locks/2026-w03-lv-no.json#model_home_spread_corrected",
+          "commit": "2d16989fe48ddb0e377de2e8cb7627301ae867fb",
+          "b_line": -0.72,
+          "market_spread": -3.5,
+          "market_total": 43.5,
+          "supersedes": 2,
+          "backfilled": true,
+          "market_spread_source": "data/postmortem/locks/2026-w03-lv-no.json",
+          "market_total_source": "data/postmortem/locks/2026-w03-lv-no.json",
+          "note": "Correction published as a new version. The earlier number stays."
+        }
+      ]
+    },
+    {
+      "game_id": "MIN@TB",
+      "espn_id": "401872959",
+      "season": 2026,
+      "week": 3,
+      "away": "MIN",
+      "home": "TB",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "MIN@TB",
+          "week": 3,
+          "published_at": "2026-09-25T20:27:00.000Z",
+          "source": "data/postmortem/locks/2026-w03-min-tb.json",
+          "commit": "4c4e70883d23f752cc139b882b3d43433b67bc3d",
+          "b_line": 6.28,
+          "market_spread": 1.5,
+          "market_total": 42.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/postmortem/locks/2026-w03-min-tb.json",
+          "market_total_source": "data/postmortem/locks/2026-w03-min-tb.json"
+        },
+        {
+          "version": 2,
+          "game_id": "MIN@TB",
+          "week": 3,
+          "published_at": "2026-09-27T23:22:14.000Z",
+          "source": "data/postmortem/locks/2026-w03-min-tb.json#model_home_spread_corrected",
+          "commit": "2d16989fe48ddb0e377de2e8cb7627301ae867fb",
+          "b_line": 5.94,
+          "market_spread": 1.5,
+          "market_total": 42.5,
+          "supersedes": 1,
+          "backfilled": true,
+          "market_spread_source": "data/postmortem/locks/2026-w03-min-tb.json",
+          "market_total_source": "data/postmortem/locks/2026-w03-min-tb.json",
+          "note": "Correction published as a new version. The earlier number stays."
+        }
+      ]
+    },
+    {
+      "game_id": "NE@JAX",
+      "espn_id": "401872957",
+      "season": 2026,
+      "week": 3,
+      "away": "NE",
+      "home": "JAX",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "NE@JAX",
+          "week": 3,
+          "published_at": "2026-09-25T20:27:00.000Z",
+          "source": "data/postmortem/locks/2026-w03-ne-jax.json",
+          "commit": "4c4e70883d23f752cc139b882b3d43433b67bc3d",
+          "b_line": -9.86,
+          "market_spread": -3,
+          "market_total": 45.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/postmortem/locks/2026-w03-ne-jax.json",
+          "market_total_source": "data/postmortem/locks/2026-w03-ne-jax.json"
+        },
+        {
+          "version": 2,
+          "game_id": "NE@JAX",
+          "week": 3,
+          "published_at": "2026-09-27T23:22:14.000Z",
+          "source": "data/postmortem/locks/2026-w03-ne-jax.json#model_home_spread_corrected",
+          "commit": "2d16989fe48ddb0e377de2e8cb7627301ae867fb",
+          "b_line": -11.49,
+          "market_spread": -3,
+          "market_total": 45.5,
+          "supersedes": 1,
+          "backfilled": true,
+          "market_spread_source": "data/postmortem/locks/2026-w03-ne-jax.json",
+          "market_total_source": "data/postmortem/locks/2026-w03-ne-jax.json",
+          "note": "Correction published as a new version. The earlier number stays."
+        }
+      ]
+    },
+    {
+      "game_id": "NYJ@DET",
+      "espn_id": "401872954",
+      "season": 2026,
+      "week": 3,
+      "away": "NYJ",
+      "home": "DET",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "NYJ@DET",
+          "week": 3,
+          "published_at": "2026-09-25T20:27:00.000Z",
+          "source": "data/postmortem/locks/2026-w03-nyj-det.json",
+          "commit": "4c4e70883d23f752cc139b882b3d43433b67bc3d",
+          "b_line": -3.78,
+          "market_spread": -6.5,
+          "market_total": 48.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/postmortem/locks/2026-w03-nyj-det.json",
+          "market_total_source": "data/postmortem/locks/2026-w03-nyj-det.json"
+        },
+        {
+          "version": 2,
+          "game_id": "NYJ@DET",
+          "week": 3,
+          "published_at": "2026-09-27T23:22:14.000Z",
+          "source": "data/postmortem/locks/2026-w03-nyj-det.json#model_home_spread_corrected",
+          "commit": "2d16989fe48ddb0e377de2e8cb7627301ae867fb",
+          "b_line": -5.87,
+          "market_spread": -6.5,
+          "market_total": 48.5,
+          "supersedes": 1,
+          "backfilled": true,
+          "market_spread_source": "data/postmortem/locks/2026-w03-nyj-det.json",
+          "market_total_source": "data/postmortem/locks/2026-w03-nyj-det.json",
+          "note": "Correction published as a new version. The earlier number stays."
+        }
+      ]
+    },
+    {
+      "game_id": "PHI@CHI",
+      "espn_id": "401872963",
+      "season": 2026,
+      "week": 3,
+      "away": "PHI",
+      "home": "CHI",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "PHI@CHI",
+          "week": 3,
+          "published_at": "2026-09-25T20:27:00.000Z",
+          "source": "data/postmortem/locks/2026-w03-phi-chi.json",
+          "commit": "4c4e70883d23f752cc139b882b3d43433b67bc3d",
+          "b_line": 1.05,
+          "market_spread": 4.5,
+          "market_total": 41.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W03.json#mon",
+          "market_total_source": "data/postmortem/locks/2026-w03-phi-chi.json"
+        },
+        {
+          "version": 2,
+          "game_id": "PHI@CHI",
+          "week": 3,
+          "published_at": "2026-09-27T12:05:00.000Z",
+          "source": "data/postmortem/locks/2026-w03-phi-chi.json",
+          "commit": "cc2c9f0f9b3be57cb5f738303049883ee11f26c4",
+          "b_line": 0.99,
+          "market_spread": 4.5,
+          "market_total": 42.5,
+          "supersedes": 1,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W03.json#mon",
+          "market_total_source": "data/postmortem/locks/2026-w03-phi-chi.json"
+        },
+        {
+          "version": 3,
+          "game_id": "PHI@CHI",
+          "week": 3,
+          "published_at": "2026-09-27T23:22:14.000Z",
+          "source": "data/postmortem/locks/2026-w03-phi-chi.json#model_home_spread_corrected",
+          "commit": "2d16989fe48ddb0e377de2e8cb7627301ae867fb",
+          "b_line": 2.69,
+          "market_spread": 4.5,
+          "market_total": 42.5,
+          "supersedes": 2,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W03.json#mon",
+          "market_total_source": "data/postmortem/locks/2026-w03-phi-chi.json",
+          "note": "Correction published as a new version. The earlier number stays."
+        },
+        {
+          "version": 4,
+          "game_id": "PHI@CHI",
+          "week": 3,
+          "published_at": "2026-09-28T23:16:00.000Z",
+          "source": "data/postmortem/locks/2026-w03-phi-chi.json",
+          "commit": "c849ab6e60fcc1c37adc97575de879fa1224279d",
+          "b_line": 2.11,
+          "market_spread": 3.5,
+          "market_total": 42.5,
+          "supersedes": 3,
+          "backfilled": true,
+          "market_spread_source": "data/postmortem/locks/2026-w03-phi-chi.json",
+          "market_total_source": "data/postmortem/locks/2026-w03-phi-chi.json"
+        }
+      ]
+    },
+    {
+      "game_id": "SEA@WSH",
+      "espn_id": "401872955",
+      "season": 2026,
+      "week": 3,
+      "away": "SEA",
+      "home": "WSH",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "SEA@WSH",
+          "week": 3,
+          "published_at": "2026-09-25T20:27:00.000Z",
+          "source": "data/postmortem/locks/2026-w03-sea-wsh.json",
+          "commit": "4c4e70883d23f752cc139b882b3d43433b67bc3d",
+          "b_line": 15.93,
+          "market_spread": 6.5,
+          "market_total": 40.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W03.json#mon",
+          "market_total_source": "data/postmortem/locks/2026-w03-sea-wsh.json"
+        },
+        {
+          "version": 2,
+          "game_id": "SEA@WSH",
+          "week": 3,
+          "published_at": "2026-09-27T23:22:14.000Z",
+          "source": "data/postmortem/locks/2026-w03-sea-wsh.json#model_home_spread_corrected",
+          "commit": "2d16989fe48ddb0e377de2e8cb7627301ae867fb",
+          "b_line": 16.1,
+          "market_spread": 8.5,
+          "market_total": 40.5,
+          "supersedes": 1,
+          "backfilled": true,
+          "market_spread_source": "data/postmortem/locks/2026-w03-sea-wsh.json",
+          "market_total_source": "data/postmortem/locks/2026-w03-sea-wsh.json",
+          "note": "Correction published as a new version. The earlier number stays."
+        }
+      ]
+    },
+    {
+      "game_id": "TEN@NYG",
+      "espn_id": "401872956",
+      "season": 2026,
+      "week": 3,
+      "away": "TEN",
+      "home": "NYG",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "TEN@NYG",
+          "week": 3,
+          "published_at": "2026-09-25T20:27:00.000Z",
+          "source": "data/postmortem/locks/2026-w03-ten-nyg.json",
+          "commit": "4c4e70883d23f752cc139b882b3d43433b67bc3d",
+          "b_line": -5.12,
+          "market_spread": -6,
+          "market_total": 38.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/line-log/2026-W03.json#mon",
+          "market_total_source": "data/postmortem/locks/2026-w03-ten-nyg.json"
+        },
+        {
+          "version": 2,
+          "game_id": "TEN@NYG",
+          "week": 3,
+          "published_at": "2026-09-27T12:05:00.000Z",
+          "source": "data/postmortem/locks/2026-w03-ten-nyg.json",
+          "commit": "cc2c9f0f9b3be57cb5f738303049883ee11f26c4",
+          "b_line": -5.14,
+          "market_spread": -2.5,
+          "market_total": 37.5,
+          "supersedes": 1,
+          "backfilled": true,
+          "market_spread_source": "data/postmortem/locks/2026-w03-ten-nyg.json",
+          "market_total_source": "data/postmortem/locks/2026-w03-ten-nyg.json"
+        },
+        {
+          "version": 3,
+          "game_id": "TEN@NYG",
+          "week": 3,
+          "published_at": "2026-09-27T23:22:14.000Z",
+          "source": "data/postmortem/locks/2026-w03-ten-nyg.json#model_home_spread_corrected",
+          "commit": "2d16989fe48ddb0e377de2e8cb7627301ae867fb",
+          "b_line": -6.4,
+          "market_spread": -2.5,
+          "market_total": 37.5,
+          "supersedes": 2,
+          "backfilled": true,
+          "market_spread_source": "data/postmortem/locks/2026-w03-ten-nyg.json",
+          "market_total_source": "data/postmortem/locks/2026-w03-ten-nyg.json",
+          "note": "Correction published as a new version. The earlier number stays."
+        }
+      ]
+    },
+    {
+      "game_id": "ARI@NYG",
+      "espn_id": "401872966",
+      "season": 2026,
+      "week": 4,
+      "away": "ARI",
+      "home": "NYG",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "ARI@NYG",
+          "week": 4,
+          "published_at": "2026-09-30T14:20:39.000Z",
+          "source": "site_parity_harness ourHomeSpread",
+          "commit": "c945c879ce0418ea15b51c261730f600d41ba022",
+          "b_line": -4.01,
+          "market_spread": 1.5,
+          "market_total": 44.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/nfl-2026.json",
+          "market_total_source": "data/nfl-2026.json",
+          "note": "No lock file. B$ line is the desk ourHomeSpread at backfill. Market is the latest street snapshot."
+        }
+      ]
+    },
+    {
+      "game_id": "ATL@NO",
+      "espn_id": "401872979",
+      "season": 2026,
+      "week": 4,
+      "away": "ATL",
+      "home": "NO",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "ATL@NO",
+          "week": 4,
+          "published_at": "2026-09-30T14:20:39.000Z",
+          "source": "site_parity_harness ourHomeSpread",
+          "commit": "c945c879ce0418ea15b51c261730f600d41ba022",
+          "b_line": -3.45,
+          "market_spread": -3,
+          "market_total": 48.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/nfl-2026.json",
+          "market_total_source": "data/nfl-2026.json",
+          "note": "No lock file. B$ line is the desk ourHomeSpread at backfill. Market is the latest street snapshot."
+        }
+      ]
+    },
+    {
+      "game_id": "DAL@HOU",
+      "espn_id": "401872967",
+      "season": 2026,
+      "week": 4,
+      "away": "DAL",
+      "home": "HOU",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "DAL@HOU",
+          "week": 4,
+          "published_at": "2026-09-30T14:20:39.000Z",
+          "source": "site_parity_harness ourHomeSpread",
+          "commit": "c945c879ce0418ea15b51c261730f600d41ba022",
+          "b_line": -1.71,
+          "market_spread": -2.5,
+          "market_total": 48.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/nfl-2026.json",
+          "market_total_source": "data/nfl-2026.json",
+          "note": "No lock file. B$ line is the desk ourHomeSpread at backfill. Market is the latest street snapshot."
+        }
+      ]
+    },
+    {
+      "game_id": "DEN@SF",
+      "espn_id": "401872975",
+      "season": 2026,
+      "week": 4,
+      "away": "DEN",
+      "home": "SF",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "DEN@SF",
+          "week": 4,
+          "published_at": "2026-09-30T14:20:39.000Z",
+          "source": "site_parity_harness ourHomeSpread",
+          "commit": "c945c879ce0418ea15b51c261730f600d41ba022",
+          "b_line": -16.27,
+          "market_spread": -3,
+          "market_total": 47.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/nfl-2026.json",
+          "market_total_source": "data/nfl-2026.json",
+          "note": "No lock file. B$ line is the desk ourHomeSpread at backfill. Market is the latest street snapshot."
+        }
+      ]
+    },
+    {
+      "game_id": "DET@CAR",
+      "espn_id": "401872978",
+      "season": 2026,
+      "week": 4,
+      "away": "DET",
+      "home": "CAR",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "DET@CAR",
+          "week": 4,
+          "published_at": "2026-09-30T14:20:39.000Z",
+          "source": "site_parity_harness ourHomeSpread",
+          "commit": "c945c879ce0418ea15b51c261730f600d41ba022",
+          "b_line": -0.78,
+          "market_spread": 3.5,
+          "market_total": 50.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/nfl-2026.json",
+          "market_total_source": "data/nfl-2026.json",
+          "note": "No lock file. B$ line is the desk ourHomeSpread at backfill. Market is the latest street snapshot."
+        }
+      ]
+    },
+    {
+      "game_id": "GB@TB",
+      "espn_id": "401872968",
+      "season": 2026,
+      "week": 4,
+      "away": "GB",
+      "home": "TB",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "GB@TB",
+          "week": 4,
+          "published_at": "2026-09-30T14:20:39.000Z",
+          "source": "site_parity_harness ourHomeSpread",
+          "commit": "c945c879ce0418ea15b51c261730f600d41ba022",
+          "b_line": -4.47,
+          "market_spread": 3.5,
+          "market_total": 39.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/nfl-2026.json",
+          "market_total_source": "data/nfl-2026.json",
+          "note": "No lock file. B$ line is the desk ourHomeSpread at backfill. Market is the latest street snapshot."
+        }
+      ]
+    },
+    {
+      "game_id": "IND@WSH",
+      "espn_id": "401872965",
+      "season": 2026,
+      "week": 4,
+      "away": "IND",
+      "home": "WSH",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "IND@WSH",
+          "week": 4,
+          "published_at": "2026-09-30T14:20:39.000Z",
+          "source": "site_parity_harness ourHomeSpread",
+          "commit": "c945c879ce0418ea15b51c261730f600d41ba022",
+          "b_line": 1.11,
+          "market_spread": 3.5,
+          "market_total": 47.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/nfl-2026.json",
+          "market_total_source": "data/nfl-2026.json",
+          "note": "No lock file. B$ line is the desk ourHomeSpread at backfill. Market is the latest street snapshot."
+        }
+      ]
+    },
+    {
+      "game_id": "JAX@CIN",
+      "espn_id": "401872969",
+      "season": 2026,
+      "week": 4,
+      "away": "JAX",
+      "home": "CIN",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "JAX@CIN",
+          "week": 4,
+          "published_at": "2026-09-30T14:20:39.000Z",
+          "source": "site_parity_harness ourHomeSpread",
+          "commit": "c945c879ce0418ea15b51c261730f600d41ba022",
+          "b_line": 4.33,
+          "market_spread": -2.5,
+          "market_total": 51.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/nfl-2026.json",
+          "market_total_source": "data/nfl-2026.json",
+          "note": "No lock file. B$ line is the desk ourHomeSpread at backfill. Market is the latest street snapshot."
+        }
+      ]
+    },
+    {
+      "game_id": "KC@LV",
+      "espn_id": "401872976",
+      "season": 2026,
+      "week": 4,
+      "away": "KC",
+      "home": "LV",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "KC@LV",
+          "week": 4,
+          "published_at": "2026-09-30T14:20:39.000Z",
+          "source": "site_parity_harness ourHomeSpread",
+          "commit": "c945c879ce0418ea15b51c261730f600d41ba022",
+          "b_line": 1.78,
+          "market_spread": 4.5,
+          "market_total": 47.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/nfl-2026.json",
+          "market_total_source": "data/nfl-2026.json",
+          "note": "No lock file. B$ line is the desk ourHomeSpread at backfill. Market is the latest street snapshot."
+        }
+      ]
+    },
+    {
+      "game_id": "LAC@SEA",
+      "espn_id": "401872977",
+      "season": 2026,
+      "week": 4,
+      "away": "LAC",
+      "home": "SEA",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "LAC@SEA",
+          "week": 4,
+          "published_at": "2026-09-30T14:20:39.000Z",
+          "source": "site_parity_harness ourHomeSpread",
+          "commit": "c945c879ce0418ea15b51c261730f600d41ba022",
+          "b_line": -18.57,
+          "market_spread": -7,
+          "market_total": 42.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/nfl-2026.json",
+          "market_total_source": "data/nfl-2026.json",
+          "note": "No lock file. B$ line is the desk ourHomeSpread at backfill. Market is the latest street snapshot."
+        }
+      ]
+    },
+    {
+      "game_id": "LAR@PHI",
+      "espn_id": "401872970",
+      "season": 2026,
+      "week": 4,
+      "away": "LAR",
+      "home": "PHI",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "LAR@PHI",
+          "week": 4,
+          "published_at": "2026-09-30T14:20:39.000Z",
+          "source": "site_parity_harness ourHomeSpread",
+          "commit": "c945c879ce0418ea15b51c261730f600d41ba022",
+          "b_line": 3.11,
+          "market_spread": 3,
+          "market_total": 43.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/nfl-2026.json",
+          "market_total_source": "data/nfl-2026.json",
+          "note": "No lock file. B$ line is the desk ourHomeSpread at backfill. Market is the latest street snapshot."
+        }
+      ]
+    },
+    {
+      "game_id": "MIA@MIN",
+      "espn_id": "401872974",
+      "season": 2026,
+      "week": 4,
+      "away": "MIA",
+      "home": "MIN",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "MIA@MIN",
+          "week": 4,
+          "published_at": "2026-09-30T14:20:39.000Z",
+          "source": "site_parity_harness ourHomeSpread",
+          "commit": "c945c879ce0418ea15b51c261730f600d41ba022",
+          "b_line": -19.49,
+          "market_spread": -10.5,
+          "market_total": 38.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/nfl-2026.json",
+          "market_total_source": "data/nfl-2026.json",
+          "note": "No lock file. B$ line is the desk ourHomeSpread at backfill. Market is the latest street snapshot."
+        }
+      ]
+    },
+    {
+      "game_id": "NE@BUF",
+      "espn_id": "401872971",
+      "season": 2026,
+      "week": 4,
+      "away": "NE",
+      "home": "BUF",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "NE@BUF",
+          "week": 4,
+          "published_at": "2026-09-30T14:20:39.000Z",
+          "source": "site_parity_harness ourHomeSpread",
+          "commit": "c945c879ce0418ea15b51c261730f600d41ba022",
+          "b_line": -10.21,
+          "market_spread": -6.5,
+          "market_total": 48.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/nfl-2026.json",
+          "market_total_source": "data/nfl-2026.json",
+          "note": "No lock file. B$ line is the desk ourHomeSpread at backfill. Market is the latest street snapshot."
+        }
+      ]
+    },
+    {
+      "game_id": "NYJ@CHI",
+      "espn_id": "401872972",
+      "season": 2026,
+      "week": 4,
+      "away": "NYJ",
+      "home": "CHI",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "NYJ@CHI",
+          "week": 4,
+          "published_at": "2026-09-30T14:20:39.000Z",
+          "source": "site_parity_harness ourHomeSpread",
+          "commit": "c945c879ce0418ea15b51c261730f600d41ba022",
+          "b_line": -7.98,
+          "market_spread": -3.5,
+          "market_total": 43.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/nfl-2026.json",
+          "market_total_source": "data/nfl-2026.json",
+          "note": "No lock file. B$ line is the desk ourHomeSpread at backfill. Market is the latest street snapshot."
+        }
+      ]
+    },
+    {
+      "game_id": "PIT@CLE",
+      "espn_id": "401872964",
+      "season": 2026,
+      "week": 4,
+      "away": "PIT",
+      "home": "CLE",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "PIT@CLE",
+          "week": 4,
+          "published_at": "2026-09-30T14:20:39.000Z",
+          "source": "site_parity_harness ourHomeSpread",
+          "commit": "c945c879ce0418ea15b51c261730f600d41ba022",
+          "b_line": 7.15,
+          "market_spread": 2.5,
+          "market_total": 38.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/nfl-2026.json",
+          "market_total_source": "data/nfl-2026.json",
+          "note": "No lock file. B$ line is the desk ourHomeSpread at backfill. Market is the latest street snapshot."
+        }
+      ]
+    },
+    {
+      "game_id": "TEN@BAL",
+      "espn_id": "401872973",
+      "season": 2026,
+      "week": 4,
+      "away": "TEN",
+      "home": "BAL",
+      "versions": [
+        {
+          "version": 1,
+          "game_id": "TEN@BAL",
+          "week": 4,
+          "published_at": "2026-09-30T14:20:39.000Z",
+          "source": "site_parity_harness ourHomeSpread",
+          "commit": "c945c879ce0418ea15b51c261730f600d41ba022",
+          "b_line": -13.17,
+          "market_spread": -11.5,
+          "market_total": 43.5,
+          "supersedes": null,
+          "backfilled": true,
+          "market_spread_source": "data/nfl-2026.json",
+          "market_total_source": "data/nfl-2026.json",
+          "note": "No lock file. B$ line is the desk ourHomeSpread at backfill. Market is the latest street snapshot."
+        }
+      ]
+    }
+  ]
+}

@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Geist+Mono:wght@400;500;600&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=dvoa0930b">
+  <link rel="stylesheet" href="styles.css?v=atsclv0930">
   <script>
     (function () {
       try {
@@ -549,9 +549,9 @@
     <!-- ========== PUBLIC BET HISTORY ========== -->
     <section id="history" class="view" data-view="history" hidden aria-labelledby="history-title">
       <div class="view-head">
-        <p class="eyebrow">Final games only · no live card</p>
+        <p class="eyebrow">The ledger · behind sign-in</p>
         <h1 id="history-title">Bet History</h1>
-        <p class="lede">The same published record, open to anyone. Nothing here is a current bet. Unplayed games stay off this page. Stakes and the book stay behind sign-in.</p>
+        <p class="lede">Spread tickets already on the book, then the published B Line. Open tickets stay pending. Dollar stakes stay off this page.</p>
       </div>
       <div id="history-root"></div>
     </section>
@@ -747,6 +747,14 @@
     <div id="team-sheet-body"></div>
   </aside>
 
+  <aside class="sheet sheet-history" id="history-sheet" role="dialog" aria-modal="true" aria-labelledby="history-sheet-title" hidden>
+    <header class="sheet-head">
+      <h2 id="history-sheet-title">Ticket</h2>
+      <button type="button" class="icon-btn" id="history-sheet-close" aria-label="Close">×</button>
+    </header>
+    <div id="history-sheet-body"></div>
+  </aside>
+
   <aside class="sheet sheet-game" id="game-sheet" role="dialog" aria-modal="true" aria-labelledby="game-sheet-title" hidden>
     <header class="sheet-head">
       <div class="game-sheet-ident" id="game-sheet-ident">
@@ -776,8 +784,9 @@
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.81.1/dist/umd/supabase.js"></script>
-  <script src="auth.js?v=dvoa0930b"></script>
-  <script src="app.js?v=dvoa0930b"></script>
-  <script src="ledger.js?v=w3rec0929"></script>
+  <script src="auth.js?v=atsclv0930"></script>
+  <script src="app.js?v=atsclv0930"></script>
+  <script src="ledger.js?v=atsclv0930"></script>
+  <script type="module" src="data/book/boot.js?v=atsclv0930"></script>
 </body>
 </html>
