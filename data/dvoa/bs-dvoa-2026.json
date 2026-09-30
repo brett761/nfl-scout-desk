@@ -1,0 +1,1795 @@
+{
+  "schema": 1,
+  "name": "B$ DVOA",
+  "shadow": true,
+  "not_in_b_line": true,
+  "season": 2026,
+  "sign_convention": "Team ratings are points per game against an average team on a neutral field. Positive is better for offense, defense, and overall. Game spreads are home-centric: negative means the home team is favored.",
+  "settings": {
+    "decay": 0.9,
+    "prior_weight": 0.2,
+    "ridge_alpha": 200.0,
+    "garbage_wp": [
+      0.1,
+      0.9
+    ],
+    "garbage_weight": 0.25,
+    "b_epa": 15.99,
+    "b_sr": 93.63,
+    "hfa": 2.12,
+    "fit_seasons": [
+      2021,
+      2022,
+      2023
+    ],
+    "st_included": false
+  },
+  "generated_at": "2026-09-30T08:53:09-04:00",
+  "as_of_week": 3,
+  "weeks": [
+    {
+      "week": 1,
+      "plays_through_week": 0,
+      "generated_at": "2026-09-30T08:53:08-04:00",
+      "teams": [
+        {
+          "abbr": "LAR",
+          "off": 4.87,
+          "def": 2.04,
+          "overall": 6.91,
+          "off_rank": 1,
+          "def_rank": 7,
+          "overall_rank": 1
+        },
+        {
+          "abbr": "SEA",
+          "off": 1.37,
+          "def": 3.26,
+          "overall": 4.63,
+          "off_rank": 8,
+          "def_rank": 3,
+          "overall_rank": 2
+        },
+        {
+          "abbr": "DEN",
+          "off": -0.42,
+          "def": 3.37,
+          "overall": 2.95,
+          "off_rank": 19,
+          "def_rank": 2,
+          "overall_rank": 3
+        },
+        {
+          "abbr": "GB",
+          "off": 3.04,
+          "def": -0.83,
+          "overall": 2.21,
+          "off_rank": 3,
+          "def_rank": 20,
+          "overall_rank": 4
+        },
+        {
+          "abbr": "NE",
+          "off": 3.07,
+          "def": -0.88,
+          "overall": 2.18,
+          "off_rank": 2,
+          "def_rank": 21,
+          "overall_rank": 5
+        },
+        {
+          "abbr": "BUF",
+          "off": 2.39,
+          "def": -0.4,
+          "overall": 1.99,
+          "off_rank": 6,
+          "def_rank": 18,
+          "overall_rank": 6
+        },
+        {
+          "abbr": "PHI",
+          "off": -0.44,
+          "def": 2.26,
+          "overall": 1.82,
+          "off_rank": 20,
+          "def_rank": 5,
+          "overall_rank": 7
+        },
+        {
+          "abbr": "JAX",
+          "off": 1.05,
+          "def": 0.64,
+          "overall": 1.69,
+          "off_rank": 10,
+          "def_rank": 11,
+          "overall_rank": 8
+        },
+        {
+          "abbr": "HOU",
+          "off": -1.78,
+          "def": 3.44,
+          "overall": 1.66,
+          "off_rank": 27,
+          "def_rank": 1,
+          "overall_rank": 9
+        },
+        {
+          "abbr": "DET",
+          "off": 0.67,
+          "def": 0.9,
+          "overall": 1.57,
+          "off_rank": 12,
+          "def_rank": 10,
+          "overall_rank": 10
+        },
+        {
+          "abbr": "LAC",
+          "off": -0.76,
+          "def": 1.83,
+          "overall": 1.08,
+          "off_rank": 23,
+          "def_rank": 8,
+          "overall_rank": 11
+        },
+        {
+          "abbr": "MIN",
+          "off": -1.52,
+          "def": 2.42,
+          "overall": 0.9,
+          "off_rank": 26,
+          "def_rank": 4,
+          "overall_rank": 12
+        },
+        {
+          "abbr": "ATL",
+          "off": 0.19,
+          "def": 0.41,
+          "overall": 0.6,
+          "off_rank": 16,
+          "def_rank": 14,
+          "overall_rank": 13
+        },
+        {
+          "abbr": "SF",
+          "off": 2.79,
+          "def": -2.21,
+          "overall": 0.58,
+          "off_rank": 4,
+          "def_rank": 29,
+          "overall_rank": 14
+        },
+        {
+          "abbr": "PIT",
+          "off": 0.04,
+          "def": 0.49,
+          "overall": 0.53,
+          "off_rank": 17,
+          "def_rank": 13,
+          "overall_rank": 15
+        },
+        {
+          "abbr": "BAL",
+          "off": 0.4,
+          "def": 0.04,
+          "overall": 0.43,
+          "off_rank": 14,
+          "def_rank": 16,
+          "overall_rank": 16
+        },
+        {
+          "abbr": "IND",
+          "off": 1.36,
+          "def": -0.93,
+          "overall": 0.43,
+          "off_rank": 9,
+          "def_rank": 22,
+          "overall_rank": 17
+        },
+        {
+          "abbr": "CHI",
+          "off": 1.62,
+          "def": -1.34,
+          "overall": 0.27,
+          "off_rank": 7,
+          "def_rank": 23,
+          "overall_rank": 18
+        },
+        {
+          "abbr": "KC",
+          "off": 0.39,
+          "def": -0.39,
+          "overall": -0.0,
+          "off_rank": 15,
+          "def_rank": 17,
+          "overall_rank": 19
+        },
+        {
+          "abbr": "TB",
+          "off": 0.01,
+          "def": -0.58,
+          "overall": -0.56,
+          "off_rank": 18,
+          "def_rank": 19,
+          "overall_rank": 20
+        },
+        {
+          "abbr": "NO",
+          "off": -1.97,
+          "def": 1.13,
+          "overall": -0.84,
+          "off_rank": 28,
+          "def_rank": 9,
+          "overall_rank": 21
+        },
+        {
+          "abbr": "CAR",
+          "off": -1.04,
+          "def": 0.1,
+          "overall": -0.94,
+          "off_rank": 25,
+          "def_rank": 15,
+          "overall_rank": 22
+        },
+        {
+          "abbr": "DAL",
+          "off": 2.41,
+          "def": -3.68,
+          "overall": -1.28,
+          "off_rank": 5,
+          "def_rank": 32,
+          "overall_rank": 23
+        },
+        {
+          "abbr": "CIN",
+          "off": 0.97,
+          "def": -2.49,
+          "overall": -1.53,
+          "off_rank": 11,
+          "def_rank": 30,
+          "overall_rank": 24
+        },
+        {
+          "abbr": "WSH",
+          "off": 0.65,
+          "def": -2.66,
+          "overall": -2.01,
+          "off_rank": 13,
+          "def_rank": 31,
+          "overall_rank": 25
+        },
+        {
+          "abbr": "NYG",
+          "off": -0.61,
+          "def": -1.44,
+          "overall": -2.04,
+          "off_rank": 22,
+          "def_rank": 24,
+          "overall_rank": 26
+        },
+        {
+          "abbr": "ARI",
+          "off": -0.59,
+          "def": -1.75,
+          "overall": -2.34,
+          "off_rank": 21,
+          "def_rank": 27,
+          "overall_rank": 27
+        },
+        {
+          "abbr": "MIA",
+          "off": -0.83,
+          "def": -2.2,
+          "overall": -3.03,
+          "off_rank": 24,
+          "def_rank": 28,
+          "overall_rank": 28
+        },
+        {
+          "abbr": "LV",
+          "off": -4.15,
+          "def": 0.51,
+          "overall": -3.64,
+          "off_rank": 31,
+          "def_rank": 12,
+          "overall_rank": 29
+        },
+        {
+          "abbr": "CLE",
+          "off": -6.17,
+          "def": 2.09,
+          "overall": -4.08,
+          "off_rank": 32,
+          "def_rank": 6,
+          "overall_rank": 30
+        },
+        {
+          "abbr": "NYJ",
+          "off": -3.18,
+          "def": -1.59,
+          "overall": -4.77,
+          "off_rank": 29,
+          "def_rank": 26,
+          "overall_rank": 31
+        },
+        {
+          "abbr": "TEN",
+          "off": -3.82,
+          "def": -1.55,
+          "overall": -5.37,
+          "off_rank": 30,
+          "def_rank": 25,
+          "overall_rank": 32
+        }
+      ],
+      "games": [
+        {
+          "espn_id": "401872656",
+          "away": "NE",
+          "home": "SEA",
+          "neutral": false,
+          "kick": "2026-09-10T00:20Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -4.56
+        },
+        {
+          "espn_id": "401872657",
+          "away": "SF",
+          "home": "LAR",
+          "neutral": true,
+          "kick": "2026-09-11T00:35Z",
+          "hfa": 0.0,
+          "bs_dvoa_home_spread": -6.33
+        },
+        {
+          "espn_id": "401872925",
+          "away": "TB",
+          "home": "CIN",
+          "neutral": false,
+          "kick": "2026-09-13T17:00Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -1.16
+        },
+        {
+          "espn_id": "401872923",
+          "away": "NO",
+          "home": "DET",
+          "neutral": false,
+          "kick": "2026-09-13T17:00Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -4.53
+        },
+        {
+          "espn_id": "401872924",
+          "away": "NYJ",
+          "home": "TEN",
+          "neutral": false,
+          "kick": "2026-09-13T17:00Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -1.52
+        },
+        {
+          "espn_id": "401872659",
+          "away": "BAL",
+          "home": "IND",
+          "neutral": false,
+          "kick": "2026-09-13T17:00Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -2.12
+        },
+        {
+          "espn_id": "401872658",
+          "away": "ATL",
+          "home": "PIT",
+          "neutral": false,
+          "kick": "2026-09-13T17:00Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -2.05
+        },
+        {
+          "espn_id": "401872661",
+          "away": "CHI",
+          "home": "CAR",
+          "neutral": false,
+          "kick": "2026-09-13T17:00Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -0.91
+        },
+        {
+          "espn_id": "401872922",
+          "away": "CLE",
+          "home": "JAX",
+          "neutral": false,
+          "kick": "2026-09-13T17:00Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -7.89
+        },
+        {
+          "espn_id": "401872660",
+          "away": "BUF",
+          "home": "HOU",
+          "neutral": false,
+          "kick": "2026-09-13T17:00Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -1.79
+        },
+        {
+          "espn_id": "401872928",
+          "away": "MIA",
+          "home": "LV",
+          "neutral": false,
+          "kick": "2026-09-13T20:25Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -1.51
+        },
+        {
+          "espn_id": "401872927",
+          "away": "GB",
+          "home": "MIN",
+          "neutral": false,
+          "kick": "2026-09-13T20:25Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -0.81
+        },
+        {
+          "espn_id": "401872929",
+          "away": "WSH",
+          "home": "PHI",
+          "neutral": false,
+          "kick": "2026-09-13T20:25Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -5.95
+        },
+        {
+          "espn_id": "401872926",
+          "away": "ARI",
+          "home": "LAC",
+          "neutral": false,
+          "kick": "2026-09-13T20:25Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -5.54
+        },
+        {
+          "espn_id": "401872930",
+          "away": "DAL",
+          "home": "NYG",
+          "neutral": false,
+          "kick": "2026-09-14T00:20Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -1.36
+        },
+        {
+          "espn_id": "401872931",
+          "away": "DEN",
+          "home": "KC",
+          "neutral": false,
+          "kick": "2026-09-15T00:15Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": 0.83
+        }
+      ]
+    },
+    {
+      "week": 2,
+      "plays_through_week": 1,
+      "generated_at": "2026-09-30T08:53:09-04:00",
+      "teams": [
+        {
+          "abbr": "SEA",
+          "off": 0.48,
+          "def": 4.0,
+          "overall": 4.48,
+          "off_rank": 16,
+          "def_rank": 1,
+          "overall_rank": 1
+        },
+        {
+          "abbr": "LAR",
+          "off": 4.18,
+          "def": 0.15,
+          "overall": 4.33,
+          "off_rank": 2,
+          "def_rank": 16,
+          "overall_rank": 2
+        },
+        {
+          "abbr": "JAX",
+          "off": 2.31,
+          "def": 1.21,
+          "overall": 3.52,
+          "off_rank": 7,
+          "def_rank": 8,
+          "overall_rank": 3
+        },
+        {
+          "abbr": "SF",
+          "off": 4.51,
+          "def": -1.39,
+          "overall": 3.12,
+          "off_rank": 1,
+          "def_rank": 24,
+          "overall_rank": 4
+        },
+        {
+          "abbr": "NE",
+          "off": 2.34,
+          "def": -0.04,
+          "overall": 2.3,
+          "off_rank": 6,
+          "def_rank": 17,
+          "overall_rank": 5
+        },
+        {
+          "abbr": "HOU",
+          "off": -1.1,
+          "def": 3.29,
+          "overall": 2.19,
+          "off_rank": 21,
+          "def_rank": 3,
+          "overall_rank": 6
+        },
+        {
+          "abbr": "DEN",
+          "off": -1.28,
+          "def": 3.26,
+          "overall": 1.99,
+          "off_rank": 22,
+          "def_rank": 4,
+          "overall_rank": 7
+        },
+        {
+          "abbr": "DET",
+          "off": 1.04,
+          "def": 0.92,
+          "overall": 1.96,
+          "off_rank": 11,
+          "def_rank": 11,
+          "overall_rank": 8
+        },
+        {
+          "abbr": "GB",
+          "off": 2.0,
+          "def": -0.06,
+          "overall": 1.94,
+          "off_rank": 8,
+          "def_rank": 18,
+          "overall_rank": 9
+        },
+        {
+          "abbr": "BAL",
+          "off": 0.83,
+          "def": 0.98,
+          "overall": 1.8,
+          "off_rank": 12,
+          "def_rank": 10,
+          "overall_rank": 10
+        },
+        {
+          "abbr": "CHI",
+          "off": 3.26,
+          "def": -1.71,
+          "overall": 1.55,
+          "off_rank": 3,
+          "def_rank": 28,
+          "overall_rank": 11
+        },
+        {
+          "abbr": "BUF",
+          "off": 2.64,
+          "def": -1.37,
+          "overall": 1.27,
+          "off_rank": 4,
+          "def_rank": 22,
+          "overall_rank": 12
+        },
+        {
+          "abbr": "MIN",
+          "off": -2.19,
+          "def": 3.45,
+          "overall": 1.27,
+          "off_rank": 29,
+          "def_rank": 2,
+          "overall_rank": 13
+        },
+        {
+          "abbr": "KC",
+          "off": 0.49,
+          "def": 0.55,
+          "overall": 1.04,
+          "off_rank": 15,
+          "def_rank": 15,
+          "overall_rank": 14
+        },
+        {
+          "abbr": "PIT",
+          "off": -1.67,
+          "def": 2.16,
+          "overall": 0.49,
+          "off_rank": 25,
+          "def_rank": 6,
+          "overall_rank": 15
+        },
+        {
+          "abbr": "ATL",
+          "off": -1.58,
+          "def": 2.07,
+          "overall": 0.48,
+          "off_rank": 24,
+          "def_rank": 7,
+          "overall_rank": 16
+        },
+        {
+          "abbr": "PHI",
+          "off": -1.88,
+          "def": 2.36,
+          "overall": 0.48,
+          "off_rank": 27,
+          "def_rank": 5,
+          "overall_rank": 17
+        },
+        {
+          "abbr": "LAC",
+          "off": -1.04,
+          "def": 0.65,
+          "overall": -0.39,
+          "off_rank": 20,
+          "def_rank": 14,
+          "overall_rank": 18
+        },
+        {
+          "abbr": "NYG",
+          "off": 1.06,
+          "def": -1.55,
+          "overall": -0.49,
+          "off_rank": 10,
+          "def_rank": 27,
+          "overall_rank": 19
+        },
+        {
+          "abbr": "WSH",
+          "off": 0.57,
+          "def": -1.37,
+          "overall": -0.8,
+          "off_rank": 13,
+          "def_rank": 23,
+          "overall_rank": 20
+        },
+        {
+          "abbr": "IND",
+          "off": 0.42,
+          "def": -1.27,
+          "overall": -0.85,
+          "off_rank": 17,
+          "def_rank": 21,
+          "overall_rank": 21
+        },
+        {
+          "abbr": "ARI",
+          "off": 0.53,
+          "def": -1.42,
+          "overall": -0.89,
+          "off_rank": 14,
+          "def_rank": 25,
+          "overall_rank": 22
+        },
+        {
+          "abbr": "TB",
+          "off": -0.04,
+          "def": -0.97,
+          "overall": -1.01,
+          "off_rank": 18,
+          "def_rank": 19,
+          "overall_rank": 23
+        },
+        {
+          "abbr": "CIN",
+          "off": 1.42,
+          "def": -2.47,
+          "overall": -1.05,
+          "off_rank": 9,
+          "def_rank": 29,
+          "overall_rank": 24
+        },
+        {
+          "abbr": "NO",
+          "off": -2.1,
+          "def": 0.92,
+          "overall": -1.18,
+          "off_rank": 28,
+          "def_rank": 12,
+          "overall_rank": 25
+        },
+        {
+          "abbr": "LV",
+          "off": -3.11,
+          "def": 1.18,
+          "overall": -1.93,
+          "off_rank": 30,
+          "def_rank": 9,
+          "overall_rank": 26
+        },
+        {
+          "abbr": "CAR",
+          "off": -0.67,
+          "def": -1.49,
+          "overall": -2.16,
+          "off_rank": 19,
+          "def_rank": 26,
+          "overall_rank": 27
+        },
+        {
+          "abbr": "DAL",
+          "off": 2.6,
+          "def": -5.27,
+          "overall": -2.67,
+          "off_rank": 5,
+          "def_rank": 32,
+          "overall_rank": 28
+        },
+        {
+          "abbr": "NYJ",
+          "off": -1.75,
+          "def": -1.27,
+          "overall": -3.01,
+          "off_rank": 26,
+          "def_rank": 20,
+          "overall_rank": 29
+        },
+        {
+          "abbr": "MIA",
+          "off": -1.49,
+          "def": -3.34,
+          "overall": -4.83,
+          "off_rank": 23,
+          "def_rank": 31,
+          "overall_rank": 30
+        },
+        {
+          "abbr": "CLE",
+          "off": -6.45,
+          "def": 0.78,
+          "overall": -5.67,
+          "off_rank": 32,
+          "def_rank": 13,
+          "overall_rank": 31
+        },
+        {
+          "abbr": "TEN",
+          "off": -4.34,
+          "def": -2.93,
+          "overall": -7.26,
+          "off_rank": 31,
+          "def_rank": 30,
+          "overall_rank": 32
+        }
+      ],
+      "games": [
+        {
+          "espn_id": "401872932",
+          "away": "DET",
+          "home": "BUF",
+          "neutral": false,
+          "kick": "2026-09-18T00:15Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -1.43
+        },
+        {
+          "espn_id": "401872933",
+          "away": "CAR",
+          "home": "ATL",
+          "neutral": false,
+          "kick": "2026-09-20T17:00Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -4.77
+        },
+        {
+          "espn_id": "401872937",
+          "away": "MIN",
+          "home": "CHI",
+          "neutral": false,
+          "kick": "2026-09-20T17:00Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -2.41
+        },
+        {
+          "espn_id": "401872939",
+          "away": "PHI",
+          "home": "TEN",
+          "neutral": false,
+          "kick": "2026-09-20T17:00Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": 5.62
+        },
+        {
+          "espn_id": "401872946",
+          "away": "PIT",
+          "home": "NE",
+          "neutral": false,
+          "kick": "2026-09-20T17:00Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -3.92
+        },
+        {
+          "espn_id": "401872936",
+          "away": "GB",
+          "home": "NYJ",
+          "neutral": false,
+          "kick": "2026-09-20T17:00Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": 2.84
+        },
+        {
+          "espn_id": "401872935",
+          "away": "CLE",
+          "home": "TB",
+          "neutral": false,
+          "kick": "2026-09-20T17:00Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -6.78
+        },
+        {
+          "espn_id": "401872938",
+          "away": "NO",
+          "home": "BAL",
+          "neutral": false,
+          "kick": "2026-09-20T17:00Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -5.11
+        },
+        {
+          "espn_id": "401872934",
+          "away": "CIN",
+          "home": "HOU",
+          "neutral": false,
+          "kick": "2026-09-20T17:00Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -5.36
+        },
+        {
+          "espn_id": "401872940",
+          "away": "JAX",
+          "home": "DEN",
+          "neutral": false,
+          "kick": "2026-09-20T20:05Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -0.59
+        },
+        {
+          "espn_id": "401872941",
+          "away": "LV",
+          "home": "LAC",
+          "neutral": false,
+          "kick": "2026-09-20T20:05Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -3.66
+        },
+        {
+          "espn_id": "401872944",
+          "away": "WSH",
+          "home": "DAL",
+          "neutral": false,
+          "kick": "2026-09-20T20:25Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -0.25
+        },
+        {
+          "espn_id": "401872943",
+          "away": "SEA",
+          "home": "ARI",
+          "neutral": false,
+          "kick": "2026-09-20T20:25Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": 3.25
+        },
+        {
+          "espn_id": "401872942",
+          "away": "MIA",
+          "home": "SF",
+          "neutral": false,
+          "kick": "2026-09-20T20:25Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -10.07
+        },
+        {
+          "espn_id": "401872945",
+          "away": "IND",
+          "home": "KC",
+          "neutral": false,
+          "kick": "2026-09-21T00:20Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -4.01
+        },
+        {
+          "espn_id": "401872947",
+          "away": "NYG",
+          "home": "LAR",
+          "neutral": false,
+          "kick": "2026-09-22T00:15Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -6.94
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "plays_through_week": 2,
+      "generated_at": "2026-09-30T08:53:09-04:00",
+      "teams": [
+        {
+          "abbr": "LAR",
+          "off": 4.36,
+          "def": 2.18,
+          "overall": 6.54,
+          "off_rank": 3,
+          "def_rank": 5,
+          "overall_rank": 1
+        },
+        {
+          "abbr": "SEA",
+          "off": 0.78,
+          "def": 4.81,
+          "overall": 5.59,
+          "off_rank": 12,
+          "def_rank": 1,
+          "overall_rank": 2
+        },
+        {
+          "abbr": "NE",
+          "off": 3.11,
+          "def": 0.85,
+          "overall": 3.96,
+          "off_rank": 5,
+          "def_rank": 13,
+          "overall_rank": 3
+        },
+        {
+          "abbr": "SF",
+          "off": 5.78,
+          "def": -1.85,
+          "overall": 3.93,
+          "off_rank": 1,
+          "def_rank": 27,
+          "overall_rank": 4
+        },
+        {
+          "abbr": "JAX",
+          "off": 2.69,
+          "def": 0.44,
+          "overall": 3.13,
+          "off_rank": 7,
+          "def_rank": 14,
+          "overall_rank": 5
+        },
+        {
+          "abbr": "BAL",
+          "off": 2.89,
+          "def": 0.18,
+          "overall": 3.07,
+          "off_rank": 6,
+          "def_rank": 16,
+          "overall_rank": 6
+        },
+        {
+          "abbr": "BUF",
+          "off": 4.66,
+          "def": -1.71,
+          "overall": 2.95,
+          "off_rank": 2,
+          "def_rank": 24,
+          "overall_rank": 7
+        },
+        {
+          "abbr": "DEN",
+          "off": -0.5,
+          "def": 3.01,
+          "overall": 2.5,
+          "off_rank": 18,
+          "def_rank": 4,
+          "overall_rank": 8
+        },
+        {
+          "abbr": "HOU",
+          "off": -2.31,
+          "def": 4.26,
+          "overall": 1.95,
+          "off_rank": 25,
+          "def_rank": 3,
+          "overall_rank": 9
+        },
+        {
+          "abbr": "MIN",
+          "off": -2.99,
+          "def": 4.78,
+          "overall": 1.79,
+          "off_rank": 29,
+          "def_rank": 2,
+          "overall_rank": 10
+        },
+        {
+          "abbr": "KC",
+          "off": 1.81,
+          "def": -0.61,
+          "overall": 1.19,
+          "off_rank": 8,
+          "def_rank": 17,
+          "overall_rank": 11
+        },
+        {
+          "abbr": "GB",
+          "off": 0.52,
+          "def": 0.2,
+          "overall": 0.72,
+          "off_rank": 14,
+          "def_rank": 15,
+          "overall_rank": 12
+        },
+        {
+          "abbr": "CHI",
+          "off": 1.58,
+          "def": -0.98,
+          "overall": 0.6,
+          "off_rank": 10,
+          "def_rank": 20,
+          "overall_rank": 13
+        },
+        {
+          "abbr": "DET",
+          "off": 1.1,
+          "def": -1.04,
+          "overall": 0.06,
+          "off_rank": 11,
+          "def_rank": 21,
+          "overall_rank": 14
+        },
+        {
+          "abbr": "CIN",
+          "off": 0.71,
+          "def": -1.31,
+          "overall": -0.6,
+          "off_rank": 13,
+          "def_rank": 22,
+          "overall_rank": 15
+        },
+        {
+          "abbr": "ATL",
+          "off": -2.35,
+          "def": 1.6,
+          "overall": -0.75,
+          "off_rank": 26,
+          "def_rank": 9,
+          "overall_rank": 16
+        },
+        {
+          "abbr": "PHI",
+          "off": -2.39,
+          "def": 1.64,
+          "overall": -0.75,
+          "off_rank": 27,
+          "def_rank": 8,
+          "overall_rank": 17
+        },
+        {
+          "abbr": "PIT",
+          "off": -2.23,
+          "def": 1.45,
+          "overall": -0.79,
+          "off_rank": 24,
+          "def_rank": 10,
+          "overall_rank": 18
+        },
+        {
+          "abbr": "IND",
+          "off": 1.64,
+          "def": -2.66,
+          "overall": -1.02,
+          "off_rank": 9,
+          "def_rank": 30,
+          "overall_rank": 19
+        },
+        {
+          "abbr": "CAR",
+          "off": -0.31,
+          "def": -0.73,
+          "overall": -1.04,
+          "off_rank": 17,
+          "def_rank": 18,
+          "overall_rank": 20
+        },
+        {
+          "abbr": "LAC",
+          "off": -2.12,
+          "def": 1.01,
+          "overall": -1.11,
+          "off_rank": 23,
+          "def_rank": 11,
+          "overall_rank": 21
+        },
+        {
+          "abbr": "NYJ",
+          "off": -2.46,
+          "def": 0.93,
+          "overall": -1.53,
+          "off_rank": 28,
+          "def_rank": 12,
+          "overall_rank": 22
+        },
+        {
+          "abbr": "LV",
+          "off": -3.83,
+          "def": 2.18,
+          "overall": -1.65,
+          "off_rank": 31,
+          "def_rank": 6,
+          "overall_rank": 23
+        },
+        {
+          "abbr": "DAL",
+          "off": 3.49,
+          "def": -5.21,
+          "overall": -1.72,
+          "off_rank": 4,
+          "def_rank": 32,
+          "overall_rank": 24
+        },
+        {
+          "abbr": "ARI",
+          "off": -0.27,
+          "def": -1.58,
+          "overall": -1.85,
+          "off_rank": 16,
+          "def_rank": 23,
+          "overall_rank": 25
+        },
+        {
+          "abbr": "NO",
+          "off": -1.55,
+          "def": -0.93,
+          "overall": -2.48,
+          "off_rank": 22,
+          "def_rank": 19,
+          "overall_rank": 26
+        },
+        {
+          "abbr": "WSH",
+          "off": 0.09,
+          "def": -2.66,
+          "overall": -2.57,
+          "off_rank": 15,
+          "def_rank": 29,
+          "overall_rank": 27
+        },
+        {
+          "abbr": "NYG",
+          "off": -0.83,
+          "def": -1.81,
+          "overall": -2.64,
+          "off_rank": 19,
+          "def_rank": 26,
+          "overall_rank": 28
+        },
+        {
+          "abbr": "TB",
+          "off": -0.96,
+          "def": -1.77,
+          "overall": -2.73,
+          "off_rank": 21,
+          "def_rank": 25,
+          "overall_rank": 29
+        },
+        {
+          "abbr": "CLE",
+          "off": -5.5,
+          "def": 2.06,
+          "overall": -3.44,
+          "off_rank": 32,
+          "def_rank": 7,
+          "overall_rank": 30
+        },
+        {
+          "abbr": "MIA",
+          "off": -0.93,
+          "def": -4.35,
+          "overall": -5.28,
+          "off_rank": 20,
+          "def_rank": 31,
+          "overall_rank": 31
+        },
+        {
+          "abbr": "TEN",
+          "off": -3.65,
+          "def": -2.39,
+          "overall": -6.04,
+          "off_rank": 30,
+          "def_rank": 28,
+          "overall_rank": 32
+        }
+      ],
+      "games": [
+        {
+          "espn_id": "401872948",
+          "away": "ATL",
+          "home": "GB",
+          "neutral": false,
+          "kick": "2026-09-25T00:15Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -3.59
+        },
+        {
+          "espn_id": "401872953",
+          "away": "LAC",
+          "home": "BUF",
+          "neutral": false,
+          "kick": "2026-09-27T17:00Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -6.19
+        },
+        {
+          "espn_id": "401872949",
+          "away": "CAR",
+          "home": "CLE",
+          "neutral": false,
+          "kick": "2026-09-27T17:00Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": 0.28
+        },
+        {
+          "espn_id": "401872954",
+          "away": "NYJ",
+          "home": "DET",
+          "neutral": false,
+          "kick": "2026-09-27T17:00Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -3.72
+        },
+        {
+          "espn_id": "401872951",
+          "away": "HOU",
+          "home": "IND",
+          "neutral": false,
+          "kick": "2026-09-27T17:00Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": 0.85
+        },
+        {
+          "espn_id": "401872952",
+          "away": "KC",
+          "home": "MIA",
+          "neutral": false,
+          "kick": "2026-09-27T17:00Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": 4.35
+        },
+        {
+          "espn_id": "401872956",
+          "away": "TEN",
+          "home": "NYG",
+          "neutral": false,
+          "kick": "2026-09-27T17:00Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -5.52
+        },
+        {
+          "espn_id": "401872950",
+          "away": "CIN",
+          "home": "PIT",
+          "neutral": false,
+          "kick": "2026-09-27T17:00Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -1.94
+        },
+        {
+          "espn_id": "401872955",
+          "away": "SEA",
+          "home": "WSH",
+          "neutral": false,
+          "kick": "2026-09-27T17:00Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": 6.03
+        },
+        {
+          "espn_id": "401872957",
+          "away": "NE",
+          "home": "JAX",
+          "neutral": false,
+          "kick": "2026-09-27T17:00Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -1.28
+        },
+        {
+          "espn_id": "401872958",
+          "away": "ARI",
+          "home": "SF",
+          "neutral": false,
+          "kick": "2026-09-27T20:05Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -7.9
+        },
+        {
+          "espn_id": "401872959",
+          "away": "MIN",
+          "home": "TB",
+          "neutral": false,
+          "kick": "2026-09-27T20:05Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": 2.39
+        },
+        {
+          "espn_id": "401872960",
+          "away": "BAL",
+          "home": "DAL",
+          "neutral": true,
+          "kick": "2026-09-27T20:25Z",
+          "hfa": 0.0,
+          "bs_dvoa_home_spread": 4.8
+        },
+        {
+          "espn_id": "401872961",
+          "away": "LV",
+          "home": "NO",
+          "neutral": false,
+          "kick": "2026-09-27T20:25Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -1.29
+        },
+        {
+          "espn_id": "401872962",
+          "away": "LAR",
+          "home": "DEN",
+          "neutral": false,
+          "kick": "2026-09-28T00:20Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": 1.92
+        },
+        {
+          "espn_id": "401872963",
+          "away": "PHI",
+          "home": "CHI",
+          "neutral": false,
+          "kick": "2026-09-29T00:15Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -3.47
+        }
+      ]
+    },
+    {
+      "week": 4,
+      "plays_through_week": 3,
+      "generated_at": "2026-09-30T08:53:09-04:00",
+      "teams": [
+        {
+          "abbr": "LAR",
+          "off": 3.84,
+          "def": 2.76,
+          "overall": 6.6,
+          "off_rank": 3,
+          "def_rank": 5,
+          "overall_rank": 1
+        },
+        {
+          "abbr": "SEA",
+          "off": 0.87,
+          "def": 5.32,
+          "overall": 6.2,
+          "off_rank": 13,
+          "def_rank": 2,
+          "overall_rank": 2
+        },
+        {
+          "abbr": "JAX",
+          "off": 3.31,
+          "def": 1.73,
+          "overall": 5.05,
+          "off_rank": 5,
+          "def_rank": 7,
+          "overall_rank": 3
+        },
+        {
+          "abbr": "SF",
+          "off": 6.71,
+          "def": -2.49,
+          "overall": 4.22,
+          "off_rank": 1,
+          "def_rank": 29,
+          "overall_rank": 4
+        },
+        {
+          "abbr": "KC",
+          "off": 2.53,
+          "def": 0.9,
+          "overall": 3.43,
+          "off_rank": 8,
+          "def_rank": 11,
+          "overall_rank": 5
+        },
+        {
+          "abbr": "DEN",
+          "off": -0.75,
+          "def": 3.76,
+          "overall": 3.01,
+          "off_rank": 18,
+          "def_rank": 4,
+          "overall_rank": 6
+        },
+        {
+          "abbr": "BAL",
+          "off": 2.62,
+          "def": 0.27,
+          "overall": 2.89,
+          "off_rank": 7,
+          "def_rank": 14,
+          "overall_rank": 7
+        },
+        {
+          "abbr": "BUF",
+          "off": 4.18,
+          "def": -1.86,
+          "overall": 2.33,
+          "off_rank": 2,
+          "def_rank": 24,
+          "overall_rank": 8
+        },
+        {
+          "abbr": "HOU",
+          "off": -2.43,
+          "def": 4.52,
+          "overall": 2.09,
+          "off_rank": 25,
+          "def_rank": 3,
+          "overall_rank": 9
+        },
+        {
+          "abbr": "NE",
+          "off": 1.79,
+          "def": 0.15,
+          "overall": 1.94,
+          "off_rank": 11,
+          "def_rank": 15,
+          "overall_rank": 10
+        },
+        {
+          "abbr": "DET",
+          "off": 2.96,
+          "def": -1.06,
+          "overall": 1.9,
+          "off_rank": 6,
+          "def_rank": 20,
+          "overall_rank": 11
+        },
+        {
+          "abbr": "ATL",
+          "off": 0.16,
+          "def": 1.59,
+          "overall": 1.75,
+          "off_rank": 16,
+          "def_rank": 8,
+          "overall_rank": 12
+        },
+        {
+          "abbr": "CHI",
+          "off": 2.4,
+          "def": -1.02,
+          "overall": 1.37,
+          "off_rank": 9,
+          "def_rank": 19,
+          "overall_rank": 13
+        },
+        {
+          "abbr": "MIN",
+          "off": -5.58,
+          "def": 6.77,
+          "overall": 1.19,
+          "off_rank": 32,
+          "def_rank": 1,
+          "overall_rank": 14
+        },
+        {
+          "abbr": "CIN",
+          "off": 2.32,
+          "def": -2.36,
+          "overall": -0.04,
+          "off_rank": 10,
+          "def_rank": 27,
+          "overall_rank": 15
+        },
+        {
+          "abbr": "IND",
+          "off": 1.66,
+          "def": -2.07,
+          "overall": -0.41,
+          "off_rank": 12,
+          "def_rank": 25,
+          "overall_rank": 16
+        },
+        {
+          "abbr": "LAC",
+          "off": -1.93,
+          "def": 1.43,
+          "overall": -0.5,
+          "off_rank": 23,
+          "def_rank": 9,
+          "overall_rank": 17
+        },
+        {
+          "abbr": "PIT",
+          "off": -1.45,
+          "def": 0.11,
+          "overall": -1.35,
+          "off_rank": 21,
+          "def_rank": 16,
+          "overall_rank": 18
+        },
+        {
+          "abbr": "CAR",
+          "off": -1.11,
+          "def": -0.24,
+          "overall": -1.35,
+          "off_rank": 20,
+          "def_rank": 17,
+          "overall_rank": 19
+        },
+        {
+          "abbr": "PHI",
+          "off": -2.3,
+          "def": 0.67,
+          "overall": -1.63,
+          "off_rank": 24,
+          "def_rank": 12,
+          "overall_rank": 20
+        },
+        {
+          "abbr": "NO",
+          "off": -0.09,
+          "def": -1.64,
+          "overall": -1.73,
+          "off_rank": 17,
+          "def_rank": 23,
+          "overall_rank": 21
+        },
+        {
+          "abbr": "DAL",
+          "off": 3.59,
+          "def": -5.42,
+          "overall": -1.82,
+          "off_rank": 4,
+          "def_rank": 32,
+          "overall_rank": 22
+        },
+        {
+          "abbr": "GB",
+          "off": 0.41,
+          "def": -2.28,
+          "overall": -1.87,
+          "off_rank": 14,
+          "def_rank": 26,
+          "overall_rank": 23
+        },
+        {
+          "abbr": "TB",
+          "off": -2.93,
+          "def": 0.93,
+          "overall": -2.0,
+          "off_rank": 29,
+          "def_rank": 10,
+          "overall_rank": 24
+        },
+        {
+          "abbr": "ARI",
+          "off": 0.29,
+          "def": -2.45,
+          "overall": -2.16,
+          "off_rank": 15,
+          "def_rank": 28,
+          "overall_rank": 25
+        },
+        {
+          "abbr": "LV",
+          "off": -2.69,
+          "def": 0.35,
+          "overall": -2.33,
+          "off_rank": 27,
+          "def_rank": 13,
+          "overall_rank": 26
+        },
+        {
+          "abbr": "NYG",
+          "off": -1.78,
+          "def": -0.74,
+          "overall": -2.51,
+          "off_rank": 22,
+          "def_rank": 18,
+          "overall_rank": 27
+        },
+        {
+          "abbr": "CLE",
+          "off": -5.52,
+          "def": 2.54,
+          "overall": -2.97,
+          "off_rank": 31,
+          "def_rank": 6,
+          "overall_rank": 28
+        },
+        {
+          "abbr": "WSH",
+          "off": -0.76,
+          "def": -2.73,
+          "overall": -3.5,
+          "off_rank": 19,
+          "def_rank": 30,
+          "overall_rank": 29
+        },
+        {
+          "abbr": "NYJ",
+          "off": -2.58,
+          "def": -1.33,
+          "overall": -3.91,
+          "off_rank": 26,
+          "def_rank": 22,
+          "overall_rank": 30
+        },
+        {
+          "abbr": "TEN",
+          "off": -4.88,
+          "def": -1.31,
+          "overall": -6.18,
+          "off_rank": 30,
+          "def_rank": 21,
+          "overall_rank": 31
+        },
+        {
+          "abbr": "MIA",
+          "off": -2.88,
+          "def": -4.83,
+          "overall": -7.71,
+          "off_rank": 28,
+          "def_rank": 31,
+          "overall_rank": 32
+        }
+      ],
+      "games": [
+        {
+          "espn_id": "401872964",
+          "away": "PIT",
+          "home": "CLE",
+          "neutral": false,
+          "kick": "2026-10-02T00:15Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -0.49
+        },
+        {
+          "espn_id": "401872965",
+          "away": "IND",
+          "home": "WSH",
+          "neutral": true,
+          "kick": "2026-10-04T13:30Z",
+          "hfa": 0.0,
+          "bs_dvoa_home_spread": 3.08
+        },
+        {
+          "espn_id": "401872971",
+          "away": "NE",
+          "home": "BUF",
+          "neutral": false,
+          "kick": "2026-10-04T17:00Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -2.51
+        },
+        {
+          "espn_id": "401872972",
+          "away": "NYJ",
+          "home": "CHI",
+          "neutral": false,
+          "kick": "2026-10-04T17:00Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -7.41
+        },
+        {
+          "espn_id": "401872969",
+          "away": "JAX",
+          "home": "CIN",
+          "neutral": false,
+          "kick": "2026-10-04T17:00Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": 2.97
+        },
+        {
+          "espn_id": "401872966",
+          "away": "ARI",
+          "home": "NYG",
+          "neutral": false,
+          "kick": "2026-10-04T17:00Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -1.76
+        },
+        {
+          "espn_id": "401872970",
+          "away": "LAR",
+          "home": "PHI",
+          "neutral": false,
+          "kick": "2026-10-04T17:00Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": 6.12
+        },
+        {
+          "espn_id": "401872968",
+          "away": "GB",
+          "home": "TB",
+          "neutral": false,
+          "kick": "2026-10-04T17:00Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -1.99
+        },
+        {
+          "espn_id": "401872973",
+          "away": "TEN",
+          "home": "BAL",
+          "neutral": false,
+          "kick": "2026-10-04T17:00Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -11.19
+        },
+        {
+          "espn_id": "401872967",
+          "away": "DAL",
+          "home": "HOU",
+          "neutral": false,
+          "kick": "2026-10-04T17:00Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -6.03
+        },
+        {
+          "espn_id": "401872974",
+          "away": "MIA",
+          "home": "MIN",
+          "neutral": false,
+          "kick": "2026-10-04T20:05Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -11.02
+        },
+        {
+          "espn_id": "401872976",
+          "away": "KC",
+          "home": "LV",
+          "neutral": false,
+          "kick": "2026-10-04T20:25Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": 3.65
+        },
+        {
+          "espn_id": "401872975",
+          "away": "DEN",
+          "home": "SF",
+          "neutral": false,
+          "kick": "2026-10-04T20:25Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -3.33
+        },
+        {
+          "espn_id": "401872977",
+          "away": "LAC",
+          "home": "SEA",
+          "neutral": false,
+          "kick": "2026-10-04T20:25Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": -8.82
+        },
+        {
+          "espn_id": "401872978",
+          "away": "DET",
+          "home": "CAR",
+          "neutral": false,
+          "kick": "2026-10-05T00:20Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": 1.12
+        },
+        {
+          "espn_id": "401872979",
+          "away": "ATL",
+          "home": "NO",
+          "neutral": false,
+          "kick": "2026-10-06T00:15Z",
+          "hfa": 2.12,
+          "bs_dvoa_home_spread": 1.36
+        }
+      ]
+    }
+  ]
+}

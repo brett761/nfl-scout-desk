@@ -1,0 +1,111 @@
+{
+  "generated_at": "2026-09-30T08:53:01-04:00",
+  "frozen_coefficients": {
+    "hfa": 2.12,
+    "b_epa": 15.99,
+    "b_sr": 93.63
+  },
+  "refit_2021_2023": {
+    "hfa": 2.12,
+    "b_epa": 15.99,
+    "b_sr": 93.63
+  },
+  "headline": {
+    "label": "2024-25",
+    "frozen": {
+      "n": 544,
+      "model_mae": 10.39,
+      "market_mae": 9.67,
+      "ats": "253-286"
+    },
+    "refit": {
+      "n": 544,
+      "model_mae": 10.39,
+      "market_mae": 9.67,
+      "ats": "253-286"
+    },
+    "research": {
+      "model_mae": 10.4,
+      "market_mae_low": 9.61,
+      "market_mae_high": 9.72,
+      "note": "Report: about 10.4 vs market 9.6-9.7. Season file was 10.37 / 9.61 in 2024 and 10.41 / 9.72 in 2025."
+    },
+    "versus_research_pooled_10_39": 0.0,
+    "why_it_can_differ": "Replay uses the frozen 15.99 / 93.63 / 2.12 coefficients on a fresh nflverse pull. Small MAE gaps versus the Sep 29 snapshot are stat corrections in the nightly pbp, not a retune. The weekly JSON does not refit."
+  },
+  "seasons": [
+    {
+      "n": 272,
+      "model_mae": 11.15,
+      "market_mae": 10.78,
+      "ats": "136-132",
+      "season": 2021,
+      "set": "train"
+    },
+    {
+      "n": 271,
+      "model_mae": 8.82,
+      "market_mae": 8.74,
+      "ats": "144-117",
+      "season": 2022,
+      "set": "train"
+    },
+    {
+      "n": 272,
+      "model_mae": 10.5,
+      "market_mae": 9.9,
+      "ats": "119-139",
+      "season": 2023,
+      "set": "train"
+    },
+    {
+      "n": 272,
+      "model_mae": 10.37,
+      "market_mae": 9.61,
+      "ats": "130-138",
+      "season": 2024,
+      "set": "test"
+    },
+    {
+      "n": 272,
+      "model_mae": 10.41,
+      "market_mae": 9.72,
+      "ats": "123-148",
+      "season": 2025,
+      "set": "test"
+    },
+    {
+      "n": 48,
+      "model_mae": 10.85,
+      "market_mae": 10.41,
+      "ats": "21-24",
+      "season": 2026,
+      "set": "test"
+    }
+  ],
+  "factor_fit": {
+    "fit_seasons": [
+      2021,
+      2022,
+      2023
+    ],
+    "n": 815,
+    "note": "margin ~ home + factor. Chip = -(coef * home_net_minus_away). Not in the B$ line.",
+    "pass": {
+      "hfa": 2.1088,
+      "coef": 37.7224
+    },
+    "early_sr": {
+      "hfa": 2.0812,
+      "coef": 134.3072
+    },
+    "pressure": {
+      "hfa": 2.119,
+      "coef": 81.798
+    },
+    "explosive": {
+      "hfa": 2.1357,
+      "coef": 155.872
+    }
+  }
+}

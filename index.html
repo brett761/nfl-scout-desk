@@ -17,11 +17,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Geist+Mono:wght@400;500;600&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=pubhome0929">
+  <link rel="stylesheet" href="styles.css?v=dvoa0930">
   <script>
     (function () {
       try {
-        if (localStorage.getItem("sb-zajfiyviybclkrqyohdt-auth-token")) {
+        var host = location.hostname;
+        var preview = (host === "localhost" || host === "127.0.0.1")
+          && new URLSearchParams(location.search).get("preview") === "desk";
+        if (preview) window.__BMB_PREVIEW = "viewer";
+        if (preview || localStorage.getItem("sb-zajfiyviybclkrqyohdt-auth-token")) {
           document.documentElement.classList.add("has-session");
         }
       } catch (e) {}
@@ -102,6 +106,7 @@
       <a href="#teams" data-nav="teams">Teams</a>
       <a href="#staff" data-nav="staff">Staff</a>
       <a href="#schedule" data-nav="schedule">Games</a>
+      <a href="#ats" data-nav="ats">ATS</a>
       <a href="#linelog" data-nav="linelog">Line log</a>
       <a href="#residuals" data-nav="residuals">After</a>
       <a href="#keys" data-nav="keys">3 &amp; 7</a>
@@ -286,6 +291,17 @@
         <p>Zero is average. Plus is better. Home teams get a couple of extra points for playing at home, except neutral sites. We show the number. We do not auto-bet.</p>
       </div>
       <div id="sked-board"></div>
+    </section>
+
+    <!-- ========== ATS (signed-in shadow board) ========== -->
+    <section id="ats" class="view" data-view="ats" hidden aria-labelledby="ats-title">
+      <div class="view-head">
+        <p class="eyebrow">Shadow board · chips are not on the B$ line</p>
+        <h1 id="ats-title">ATS</h1>
+        <p class="lede" id="ats-sub">One game per card. The B$ line is the only bet number. B$ DVOA and the stat chips explain the matchup. They do not move the line. A dot is not a betting signal.</p>
+      </div>
+      <p class="ats-season" id="ats-season"></p>
+      <div id="ats-board"></div>
     </section>
 
     <!-- ========== LINE LOG ========== -->
@@ -760,8 +776,8 @@
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.81.1/dist/umd/supabase.js"></script>
-  <script src="auth.js?v=pubhome0929"></script>
-  <script src="app.js?v=pubhome0929"></script>
+  <script src="auth.js?v=dvoa0930"></script>
+  <script src="app.js?v=dvoa0930"></script>
   <script src="ledger.js?v=w3rec0929"></script>
 </body>
 </html>

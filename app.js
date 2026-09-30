@@ -1923,6 +1923,9 @@ let lineLogIndex = null; // data/line-log/index.json
 let lineLogCache = {}; // "2026-W02" → week payload or null
 let lineLogInflight = {};
 let lineLogChange = null; // { id, fromDay, toDay }
+let bsDvoaData = null; // shadow B$ DVOA. Not an input to eff() or the B$ line.
+let factorData = null; // info chips. Not an input to eff() or the B$ line.
+let lineHistory = null; // open / mid / close street snapshots
 let priorData = null; // { teams, ranges, weights, taper } from ./data/prior-2025.json
 let ytdStData = null; // { teams } from ./data/ytd-st-2026.json; YTD ST raw for currentRating
 let ytdRankData = null; // ./data/ytd-rankings-2026.json; display pillars for the YTD panel
@@ -2747,6 +2750,36 @@ async function loadNfl() {
   } catch (err) {
     lineLogIndex = null;
     console.warn("line-log/index.json", err);
+  }
+  try {
+    const res = await fetch("./data/dvoa/bs-dvoa-2026.json?v=dvoa0930");
+    if (!res.ok) throw new Error(String(res.status));
+    const data = await res.json();
+    if (!data || !Array.isArray(data.weeks)) throw new Error("bad B$ DVOA");
+    bsDvoaData = data;
+  } catch (err) {
+    bsDvoaData = null;
+    console.warn("bs-dvoa-2026.json", err);
+  }
+  try {
+    const res = await fetch("./data/dvoa/factors-2026.json?v=dvoa0930");
+    if (!res.ok) throw new Error(String(res.status));
+    const data = await res.json();
+    if (!data || !Array.isArray(data.weeks)) throw new Error("bad factors");
+    factorData = data;
+  } catch (err) {
+    factorData = null;
+    console.warn("factors-2026.json", err);
+  }
+  try {
+    const res = await fetch("./data/lines/line-history-2026.json?v=dvoa0930");
+    if (!res.ok) throw new Error(String(res.status));
+    const data = await res.json();
+    if (!data || !Array.isArray(data.games)) throw new Error("bad line history");
+    lineHistory = data;
+  } catch (err) {
+    lineHistory = null;
+    console.warn("line-history-2026.json", err);
   }
 }
 
@@ -4002,6 +4035,7 @@ function renderTeamSheet() {
   const fa = faTerm(team.abbr);
   const draft = draftTerm(team.abbr);
   body.innerHTML = `
+    <div id="bsdvoa-slot">${bsdvoaPanelHtml(team.abbr)}</div>
     ${ytdBlockHtml(team.abbr)}
     ${priorBlockHtml(team.abbr)}
     ${faBlockHtml(team.abbr)}
@@ -5655,6 +5689,230 @@ function renderPowerRank(opts) {
 }
 
 
+/* ---------- ATS shadow board (not in the B$ line) ---------- */
+
+function dvoaWeek(week) {
+  const weeks = bsDvoaData && Array.isArray(bsDvoaData.weeks) ? bsDvoaData.weeks : [];
+  return weeks.find((w) => Number(w.week) === Number(week)) || null;
+}
+
+function factorWeek(week) {
+  const weeks = factorData && Array.isArray(factorData.weeks) ? factorData.weeks : [];
+  return weeks.find((w) => Number(w.week) === Number(week)) || null;
+}
+
+function dvoaTeam(abbr, week) {
+  const block = dvoaWeek(week) || (bsDvoaData && bsDvoaData.weeks && bsDvoaData.weeks[bsDvoaData.weeks.length - 1]);
+  if (!block || !Array.isArray(block.teams)) return null;
+  const a = normAbbr(abbr);
+  return block.teams.find((t) => normAbbr(t.abbr) === a) || null;
+}
+
+function historySnaps(game) {
+  const rows = lineHistory && Array.isArray(lineHistory.games) ? lineHistory.games : [];
+  const row = rows.find((g) => String(g.espn_id) === String(game && game.id));
+  return row && Array.isArray(row.snapshots) ? row.snapshots : [];
+}
+
+function historyTag(game, tag, which) {
+  const rows = historySnaps(game).filter((s) => s && s.tag === tag && num(s.home_spread) != null);
+  if (!rows.length) return null;
+  return which === "last" ? rows[rows.length - 1] : rows[0];
+}
+
+function clvMark(openLine, nowLine, bLine) {
+  if (openLine == null || nowLine == null || bLine == null) return "none";
+  if (![openLine, nowLine, bLine].every((n) => Number.isFinite(n))) return "none";
+  if (Math.abs(nowLine - openLine) < 0.05) return "flat";
+  const before = Math.abs(openLine - bLine);
+  const after = Math.abs(nowLine - bLine);
+  if (after + 0.049 < before) return "toward";
+  if (after > before + 0.049) return "away";
+  return "flat";
+}
+
+function seasonClvSummary() {
+  let toward = 0;
+  let away = 0;
+  let flat = 0;
+  if (!nflData || !Array.isArray(nflData.games)) return { toward, away, flat, pct: null };
+  for (const g of nflData.games) {
+    const open = historyTag(g, "open", "first");
+    const close = historyTag(g, "close", "last");
+    if (!open || !close) continue;
+    const b = deskHomeSpread(g);
+    const mark = clvMark(open.home_spread, close.home_spread, b);
+    if (mark === "toward") toward += 1;
+    else if (mark === "away") away += 1;
+    else if (mark === "flat") flat += 1;
+  }
+  const decided = toward + away;
+  return { toward, away, flat, pct: decided ? Math.round((100 * toward) / decided) : null, decided };
+}
+
+function shadowInjury(abbr) {
+  const p = getProfile(abbr);
+  const rows = p && Array.isArray(p.injuries) ? p.injuries : [];
+  const olPos = new Set(["LT", "RT", "OT", "C"]);
+  const unavailable = new Set(["OUT", "IR", "PUP", "DOUBTFUL", "NFI"]);
+  const notes = [];
+  let olOut = false;
+  for (const r of rows) {
+    if (!r || r.on === false) continue;
+    const pos = String(r.pos || "").toUpperCase();
+    const status = String(r.status || "").toUpperCase();
+    const qb = isStartingQbPos(pos);
+    const ol = olPos.has(pos);
+    if (!qb && !ol) continue;
+    const last = String(r.name || pos).trim().split(/\s+/).slice(-1)[0] || pos;
+    if (qb && (unavailable.has(status) || status === "QUESTIONABLE")) notes.push(last + " " + status);
+    if (ol && unavailable.has(status)) {
+      olOut = true;
+      notes.push(pos + " " + status);
+    }
+  }
+  return { olOut, notes: notes.slice(0, 3) };
+}
+
+function factorChipHtml(value, kind) {
+  if (value == null || !Number.isFinite(Number(value))) return `<span class="ats-chip is-empty">—</span>`;
+  const n = Number(value);
+  const tone = kind === "explosive" ? "is-low" : n < 0 ? "is-home" : n > 0 ? "is-away" : "";
+  return `<span class="ats-chip ${tone}">${esc(fmtSpreadNum(n))}</span>`;
+}
+
+function bsdvoaPanelHtml(abbr) {
+  const block = dvoaWeek(currentWeek) || (bsDvoaData && bsDvoaData.weeks && bsDvoaData.weeks[bsDvoaData.weeks.length - 1]) || null;
+  const team = dvoaTeam(abbr, block && block.week);
+  if (!team) {
+    return `<details class="bsdvoa-panel" open><summary>B$ DVOA <span>Shadow — not in B$ line</span></summary><p class="bsdvoa-empty">No shadow rating on file for this club.</p></details>`;
+  }
+  const through = block && block.plays_through_week != null ? "Plays through week " + block.plays_through_week + "." : "";
+  return `<details class="bsdvoa-panel" open>
+    <summary>B$ DVOA <span>Shadow — not in B$ line</span></summary>
+    <p class="bsdvoa-overall ${rtgClass(team.overall)}">${esc(fmtRtg(team.overall))} <small>overall · rank ${esc(team.overall_rank)}</small></p>
+    <p class="bsdvoa-split">Offense ${esc(fmtRtg(team.off))} · rank ${esc(team.off_rank)} · Defense ${esc(fmtRtg(team.def))} · rank ${esc(team.def_rank)}</p>
+    <p class="bsdvoa-note">${esc(through)} Points per game against an average team on a neutral field. This number is not inside the B$ line.</p>
+  </details>`;
+}
+
+function renderAts() {
+  const board = document.getElementById("ats-board");
+  const seasonEl = document.getElementById("ats-season");
+  if (!board) return;
+  const clv = seasonClvSummary();
+  if (seasonEl) {
+    seasonEl.textContent = clv.pct == null
+      ? "Season CLV — no closed games with an open and a close yet."
+      : "Season CLV " + clv.toward + " of " + clv.decided + " (" + clv.pct + "%). A game counts when the close moved toward the B$ line. Unmoved games stay out.";
+  }
+  if (!nflData || !Array.isArray(nflData.games) || !nflData.games.length) {
+    board.innerHTML = `<p class="table-empty">Schedule is not loaded.</p>`;
+    return;
+  }
+  const games = nflData.games.filter((g) => Number(g.week) === Number(currentWeek))
+    .slice()
+    .sort((a, b) => String(a.date).localeCompare(String(b.date)) || String(a.id).localeCompare(String(b.id)));
+  const dw = dvoaWeek(currentWeek);
+  const fw = factorWeek(currentWeek);
+  if (!games.length) {
+    board.innerHTML = `<p class="table-empty">No games for week ${esc(currentWeek)}.</p>`;
+    return;
+  }
+  board.innerHTML = games.map((g) => {
+    const et = toET(g.date);
+    const kick = et ? et.label + " · " + et.clock + " ET" : "";
+    const openSnap = historyTag(g, "open", "first");
+    const closeSnap = historyTag(g, "close", "last");
+    const mkt = marketFor(g);
+    const currentLine = mkt.parsed && mkt.parsed.homeLine != null ? mkt.parsed.homeLine : null;
+    const openLine = openSnap ? openSnap.home_spread : (streetLinesFor(g).openLine);
+    const closeLine = closeSnap ? closeSnap.home_spread : null;
+    const bLine = deskHomeSpread(g);
+    const dvoaGame = dw && Array.isArray(dw.games) ? dw.games.find((r) => String(r.espn_id) === String(g.id) || (normAbbr(r.away) === normAbbr(g.away) && normAbbr(r.home) === normAbbr(g.home))) : null;
+    const fac = fw && Array.isArray(fw.games) ? fw.games.find((r) => String(r.espn_id) === String(g.id) || (normAbbr(r.away) === normAbbr(g.away) && normAbbr(r.home) === normAbbr(g.home))) : null;
+    const latest = closeLine != null ? closeLine : currentLine;
+    const keys = openLine != null && latest != null ? crossesKeys(openLine, latest) : [];
+    const keyHtml = keys.map((k) => `<span class="ats-key">K${esc(k)}</span>`).join("");
+    const gap = bLine != null && currentLine != null ? bLine - currentLine : null;
+    const gapAbs = gap == null ? null : Math.abs(gap);
+    const look = gapAbs != null && gapAbs >= 3;
+    const bold = gapAbs != null && gapAbs >= 5;
+    const gradeLine = closeLine != null ? closeLine : currentLine;
+    const mark = clvMark(openLine, gradeLine, bLine);
+    const markText = mark === "toward" ? "✓" : mark === "away" ? "✗" : "–";
+    const markLabel = mark === "toward" ? "Street moved toward the B$ line" : mark === "away" ? "Street moved away from the B$ line" : "No line move to grade";
+    const homeInj = shadowInjury(g.home);
+    const awayInj = shadowInjury(g.away);
+    const olOut = homeInj.olOut || awayInj.olOut;
+    const news = []
+      .concat(awayInj.notes.map((n) => g.away + " " + n))
+      .concat(homeInj.notes.map((n) => g.home + " " + n));
+    const luck = [];
+    if (fac && fac.away_to_luck) luck.push(g.away + " TO luck");
+    if (fac && fac.home_to_luck) luck.push(g.home + " TO luck");
+    if (fac && fac.away_rz_luck) luck.push(g.away + " RZ luck");
+    if (fac && fac.home_rz_luck) luck.push(g.home + " RZ luck");
+    const gapSign = gap == null || gap === 0 ? 0 : Math.sign(gap);
+    const dots = [
+      ["pass", fac && fac.pass_edge],
+      ["early", fac && fac.early_sr_edge],
+      ["pressure", fac && fac.pressure_edge],
+      ["explosive", fac && fac.explosive_edge],
+    ].map(([name, value]) => {
+      const v = num(value);
+      const on = v != null && v !== 0 && gapSign !== 0 && Math.sign(v) === gapSign;
+      return `<span class="ats-dot${on ? " is-on" : ""}" data-dot="${esc(name)}"></span>`;
+    }).join("");
+    const match = `<button type="button" class="abbr-link" data-team="${esc(g.away)}">${esc(g.away)}</button> @ <button type="button" class="abbr-link" data-team="${esc(g.home)}">${esc(g.home)}</button>${g.neutral ? ` <span class="ats-neutral">neutral</span>` : ""}`;
+    return `<article class="ats-game">
+      <div class="ats-match">
+        <p class="ats-k">Game</p>
+        <h2>${match}</h2>
+        <p class="ats-kick">${esc(kick)}</p>
+      </div>
+      <div class="ats-trail">
+        <p class="ats-k">Open → current → close</p>
+        <p class="ats-lines">${esc(formatOurLine(openLine, g.home, g.away))} <span aria-hidden="true">→</span> ${esc(formatOurLine(currentLine, g.home, g.away))} <span aria-hidden="true">→</span> ${closeLine == null ? "—" : esc(formatOurLine(closeLine, g.home, g.away))} ${keyHtml}</p>
+      </div>
+      <div class="ats-num">
+        <p class="ats-k">B$ line</p>
+        <p class="ats-bet">${bLine == null ? "—" : esc(formatOurLine(bLine, g.home, g.away))}</p>
+      </div>
+      <div class="ats-num">
+        <p class="ats-k">B$ DVOA</p>
+        <p>${dvoaGame && dvoaGame.bs_dvoa_home_spread != null ? esc(formatOurLine(dvoaGame.bs_dvoa_home_spread, g.home, g.away)) : "—"}</p>
+      </div>
+      <div class="ats-num">
+        <p class="ats-k">Gap · B$ − street</p>
+        <p class="ats-gap${look ? " is-look" : ""}${bold ? " is-bold" : ""}">${gap == null ? "—" : esc(fmtSpreadNum(gap))}${look ? `<em>Investigate</em>` : ""}</p>
+      </div>
+      <div class="ats-num">
+        <p class="ats-k">CLV</p>
+        <p class="ats-clv" aria-label="${esc(markLabel)}">${markText}</p>
+      </div>
+      <div class="ats-chips">
+        <p class="ats-k">Info · not in the B$ line</p>
+        <p>
+          <span class="ats-chip-label">Pass</span>${factorChipHtml(fac && fac.pass_edge, "pass")}
+          <span class="ats-chip-label">Early</span>${factorChipHtml(fac && fac.early_sr_edge, "early")}
+          <span class="ats-chip-label">Pressure</span>${factorChipHtml(fac && fac.pressure_edge, "pressure")}${olOut ? `<span class="ats-ol">OL out</span>` : ""}
+          <span class="ats-chip-label">Explosive</span>${factorChipHtml(fac && fac.explosive_edge, "explosive")}
+          <span class="ats-lowtag">low reliability</span>
+        </p>
+      </div>
+      <div class="ats-flags">
+        ${luck.map((t) => `<span class="ats-badge">${esc(t)}</span>`).join("")}
+        ${news.map((t) => `<span class="ats-badge ats-news">${esc(t)}</span>`).join("")}
+      </div>
+      <div class="ats-agree" title="Not a betting signal. 2024–25, all four agreeing went 135–150.">
+        <p class="ats-k">Agreement</p>
+        <p class="ats-dots" aria-label="Not a betting signal. 2024–25, all four agreeing went 135–150.">${dots}</p>
+      </div>
+    </article>`;
+  }).join("");
+}
+
 function render() {
   renderHero();
   renderPowerRank();
@@ -5667,6 +5925,7 @@ function render() {
   renderKeys();
   renderStaff();
   renderLineLog();
+  renderAts();
   syncSharpBookInputs();
   if (gameSheetId) renderGameSheet();
   if (lineLogChange) renderLineLogSheet();
@@ -6081,7 +6340,7 @@ function parseHash() {
 
 function fromHash() {
   const { view, team, game } = parseHash();
-  const known = ["desk", "teams", "staff", "schedule", "linelog", "residuals", "keys", "clock", "playbook", "tickets", "users", "outcomes", "history", "methodology", "sandbox"];
+  const known = ["desk", "teams", "staff", "schedule", "ats", "linelog", "residuals", "keys", "clock", "playbook", "tickets", "users", "outcomes", "history", "methodology", "sandbox"];
   let name = known.includes(view) ? view : "desk";
   if ((name === "users" || name === "sandbox") && !canEdit()) name = "desk";
   showView(name);
@@ -6177,6 +6436,17 @@ function bind() {
       const abbr = btn.getAttribute("data-staff");
       staffOpenAbbr = staffOpenAbbr === abbr ? null : abbr;
       renderStaff();
+    });
+  }
+  const atsBoard = document.getElementById("ats-board");
+  if (atsBoard) {
+    atsBoard.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-team]");
+      if (!btn) return;
+      const abbr = btn.dataset.team;
+      if (!abbr) return;
+      if (location.hash !== "#team-" + abbr) history.replaceState(null, "", "#team-" + abbr);
+      openTeamProfile(abbr);
     });
   }
   window.addEventListener("hashchange", fromHash);
