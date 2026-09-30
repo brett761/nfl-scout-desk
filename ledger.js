@@ -925,8 +925,8 @@
         return res.json();
       };
       const ticketsFile = await get("data/tickets-2026.json?v=w4tix0929");
-      const nfl = await get("data/nfl-2026.json?v=book0930");
-      const lineHistory = await get("data/lines/line-history-2026.json?v=book0930");
+      const nfl = await get("data/nfl-2026.json?v=atsclv0930");
+      const lineHistory = await get("data/lines/line-history-2026.json?v=atsclv0930");
       const closes = [];
       for (const rel of ["data/closes/2026-w01.json", "data/closes/2026-w02.json"]) {
         const file = await get(rel);
