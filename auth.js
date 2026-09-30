@@ -192,6 +192,7 @@
   }
 
   async function hydrateDesk() {
+    if (window.__BMB_PREVIEW) return;
     const q = await client.from("desk_edits").select("key, value");
     if (q.error) {
       console.warn("desk_edits", q.error);
@@ -573,8 +574,27 @@
     }
   }
 
+  function previewDesk() {
+    if (window.__BMB_PREVIEW !== "viewer") return false;
+    const host = location.hostname;
+    if (host !== "localhost" && host !== "127.0.0.1") return false;
+    window.BMB.role = "viewer";
+    window.BMB.session = { user: { id: "preview", email: "preview@local" } };
+    window.BMB.profile = { display_name: "Preview", email: "preview@local", role: "viewer" };
+    document.body.classList.add("is-authed", "is-viewer");
+    document.documentElement.classList.add("has-session");
+    paintSession();
+    startDesk();
+    return true;
+  }
+
   bindGate();
   bindUsers();
+
+  if (previewDesk()) {
+    window.addEventListener("hashchange", syncPublicShell);
+    return;
+  }
 
   client.auth.onAuthStateChange((event, session) => {
     if (event === "PASSWORD_RECOVERY") {

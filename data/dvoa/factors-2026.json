@@ -1,0 +1,1660 @@
+{
+  "schema": 1,
+  "shadow": true,
+  "not_in_b_line": true,
+  "season": 2026,
+  "sign_convention": "Edges are home-centric points. Negative means the factor favors the home team. None of these chips are added to the B$ line.",
+  "reliability": {
+    "pass": "info",
+    "early_sr": "info",
+    "pressure": "info",
+    "explosive": "low"
+  },
+  "luck_rules": {
+    "to_luck": "YTD turnover margin >= +1 per game and fumble recovery rate >= 60% on at least 4 fumbles",
+    "rz_luck": "Red-zone TD rate at least 20 points above the league, on at least 3 trips"
+  },
+  "generated_at": "2026-09-30T08:53:09-04:00",
+  "as_of_week": 3,
+  "weeks": [
+    {
+      "week": 1,
+      "plays_through_week": 0,
+      "generated_at": "2026-09-30T08:53:08-04:00",
+      "league_rz_td_pct": null,
+      "teams": {},
+      "games": [
+        {
+          "espn_id": "401872656",
+          "away": "NE",
+          "home": "SEA",
+          "pass_edge": 1.4,
+          "early_sr_edge": -2.72,
+          "pressure_edge": -2.29,
+          "explosive_edge": -1.26,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872657",
+          "away": "SF",
+          "home": "LAR",
+          "pass_edge": -3.36,
+          "early_sr_edge": -8.11,
+          "pressure_edge": -3.51,
+          "explosive_edge": -2.34,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872925",
+          "away": "TB",
+          "home": "CIN",
+          "pass_edge": 2.17,
+          "early_sr_edge": -0.38,
+          "pressure_edge": 1.71,
+          "explosive_edge": 1.74,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872923",
+          "away": "NO",
+          "home": "DET",
+          "pass_edge": -3.29,
+          "early_sr_edge": -2.62,
+          "pressure_edge": 1.68,
+          "explosive_edge": -2.2,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872924",
+          "away": "NYJ",
+          "home": "TEN",
+          "pass_edge": -1.26,
+          "early_sr_edge": 1.45,
+          "pressure_edge": -1.99,
+          "explosive_edge": -1.62,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872659",
+          "away": "BAL",
+          "home": "IND",
+          "pass_edge": -1.06,
+          "early_sr_edge": 0.36,
+          "pressure_edge": -2.68,
+          "explosive_edge": 0.32,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872658",
+          "away": "ATL",
+          "home": "PIT",
+          "pass_edge": 1.35,
+          "early_sr_edge": 0.14,
+          "pressure_edge": -0.82,
+          "explosive_edge": 1.03,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872661",
+          "away": "CHI",
+          "home": "CAR",
+          "pass_edge": 2.94,
+          "early_sr_edge": -1.35,
+          "pressure_edge": 0.97,
+          "explosive_edge": -0.42,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872922",
+          "away": "CLE",
+          "home": "JAX",
+          "pass_edge": -3.54,
+          "early_sr_edge": -5.78,
+          "pressure_edge": -1.67,
+          "explosive_edge": -2.48,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872660",
+          "away": "BUF",
+          "home": "HOU",
+          "pass_edge": 0.55,
+          "early_sr_edge": 0.87,
+          "pressure_edge": 1.7,
+          "explosive_edge": 0.6,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872928",
+          "away": "MIA",
+          "home": "LV",
+          "pass_edge": 1.3,
+          "early_sr_edge": -0.93,
+          "pressure_edge": 0.58,
+          "explosive_edge": 0.72,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872927",
+          "away": "GB",
+          "home": "MIN",
+          "pass_edge": 2.3,
+          "early_sr_edge": -0.42,
+          "pressure_edge": 1.36,
+          "explosive_edge": 1.3,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872929",
+          "away": "WSH",
+          "home": "PHI",
+          "pass_edge": -4.4,
+          "early_sr_edge": -2.37,
+          "pressure_edge": -0.32,
+          "explosive_edge": -0.89,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872926",
+          "away": "ARI",
+          "home": "LAC",
+          "pass_edge": -1.19,
+          "early_sr_edge": -3.46,
+          "pressure_edge": -0.15,
+          "explosive_edge": -1.35,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872930",
+          "away": "DAL",
+          "home": "NYG",
+          "pass_edge": -1.34,
+          "early_sr_edge": 2.73,
+          "pressure_edge": 2.85,
+          "explosive_edge": -1.5,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872931",
+          "away": "DEN",
+          "home": "KC",
+          "pass_edge": 2.87,
+          "early_sr_edge": 1.44,
+          "pressure_edge": 3.42,
+          "explosive_edge": 2.44,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        }
+      ]
+    },
+    {
+      "week": 2,
+      "plays_through_week": 1,
+      "generated_at": "2026-09-30T08:53:09-04:00",
+      "league_rz_td_pct": 0.687,
+      "teams": {
+        "ARI": {
+          "games": 1,
+          "to_margin_pg": 2.0,
+          "fumble_recovery_rate": 1.0,
+          "rz_td_pct": 0.4,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "ATL": {
+          "games": 1,
+          "to_margin_pg": -1.0,
+          "fumble_recovery_rate": 1.0,
+          "rz_td_pct": 1.0,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "BAL": {
+          "games": 1,
+          "to_margin_pg": 1.0,
+          "fumble_recovery_rate": 0.5,
+          "rz_td_pct": 0.833,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "BUF": {
+          "games": 1,
+          "to_margin_pg": 2.0,
+          "fumble_recovery_rate": 1.0,
+          "rz_td_pct": 0.667,
+          "to_luck": true,
+          "rz_luck": false
+        },
+        "CAR": {
+          "games": 1,
+          "to_margin_pg": 0.0,
+          "fumble_recovery_rate": 0.667,
+          "rz_td_pct": 1.0,
+          "to_luck": false,
+          "rz_luck": true
+        },
+        "CHI": {
+          "games": 1,
+          "to_margin_pg": 0.0,
+          "fumble_recovery_rate": 0.333,
+          "rz_td_pct": 1.0,
+          "to_luck": false,
+          "rz_luck": true
+        },
+        "CIN": {
+          "games": 1,
+          "to_margin_pg": 3.0,
+          "fumble_recovery_rate": 1.0,
+          "rz_td_pct": 0.333,
+          "to_luck": true,
+          "rz_luck": false
+        },
+        "CLE": {
+          "games": 1,
+          "to_margin_pg": -2.0,
+          "fumble_recovery_rate": 0.333,
+          "rz_td_pct": 0.333,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "DAL": {
+          "games": 1,
+          "to_margin_pg": 0.0,
+          "fumble_recovery_rate": 0.25,
+          "rz_td_pct": 1.0,
+          "to_luck": false,
+          "rz_luck": true
+        },
+        "DEN": {
+          "games": 1,
+          "to_margin_pg": -1.0,
+          "fumble_recovery_rate": 0.4,
+          "rz_td_pct": 0.5,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "DET": {
+          "games": 1,
+          "to_margin_pg": 2.0,
+          "fumble_recovery_rate": 0.5,
+          "rz_td_pct": 0.8,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "GB": {
+          "games": 1,
+          "to_margin_pg": -1.0,
+          "fumble_recovery_rate": 0.5,
+          "rz_td_pct": 0.333,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "HOU": {
+          "games": 1,
+          "to_margin_pg": -2.0,
+          "fumble_recovery_rate": 0.0,
+          "rz_td_pct": 0.8,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "IND": {
+          "games": 1,
+          "to_margin_pg": -1.0,
+          "fumble_recovery_rate": 0.5,
+          "rz_td_pct": 1.0,
+          "to_luck": false,
+          "rz_luck": true
+        },
+        "JAX": {
+          "games": 1,
+          "to_margin_pg": 2.0,
+          "fumble_recovery_rate": 0.667,
+          "rz_td_pct": 1.0,
+          "to_luck": false,
+          "rz_luck": true
+        },
+        "KC": {
+          "games": 1,
+          "to_margin_pg": 1.0,
+          "fumble_recovery_rate": 0.6,
+          "rz_td_pct": 0.667,
+          "to_luck": true,
+          "rz_luck": false
+        },
+        "LAR": {
+          "games": 1,
+          "to_margin_pg": -1.0,
+          "fumble_recovery_rate": 0.5,
+          "rz_td_pct": 0.333,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "LAC": {
+          "games": 1,
+          "to_margin_pg": -2.0,
+          "fumble_recovery_rate": 0.0,
+          "rz_td_pct": 0.667,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "LV": {
+          "games": 1,
+          "to_margin_pg": 0.0,
+          "fumble_recovery_rate": 0.5,
+          "rz_td_pct": 0.75,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "MIA": {
+          "games": 1,
+          "to_margin_pg": 0.0,
+          "fumble_recovery_rate": 0.5,
+          "rz_td_pct": 0.333,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "MIN": {
+          "games": 1,
+          "to_margin_pg": 1.0,
+          "fumble_recovery_rate": 0.5,
+          "rz_td_pct": 0.833,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "NE": {
+          "games": 1,
+          "to_margin_pg": -3.0,
+          "fumble_recovery_rate": null,
+          "rz_td_pct": 0.5,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "NO": {
+          "games": 1,
+          "to_margin_pg": -2.0,
+          "fumble_recovery_rate": 0.5,
+          "rz_td_pct": 0.8,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "NYG": {
+          "games": 1,
+          "to_margin_pg": 0.0,
+          "fumble_recovery_rate": 0.75,
+          "rz_td_pct": 0.8,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "NYJ": {
+          "games": 1,
+          "to_margin_pg": 1.0,
+          "fumble_recovery_rate": 1.0,
+          "rz_td_pct": 0.667,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "PHI": {
+          "games": 1,
+          "to_margin_pg": 0.0,
+          "fumble_recovery_rate": 0.0,
+          "rz_td_pct": 0.75,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "PIT": {
+          "games": 1,
+          "to_margin_pg": 1.0,
+          "fumble_recovery_rate": 0.0,
+          "rz_td_pct": 0.333,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "SEA": {
+          "games": 1,
+          "to_margin_pg": 3.0,
+          "fumble_recovery_rate": null,
+          "rz_td_pct": 0.333,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "SF": {
+          "games": 1,
+          "to_margin_pg": 1.0,
+          "fumble_recovery_rate": 0.5,
+          "rz_td_pct": 0.75,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "TB": {
+          "games": 1,
+          "to_margin_pg": -3.0,
+          "fumble_recovery_rate": 0.0,
+          "rz_td_pct": 0.4,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "TEN": {
+          "games": 1,
+          "to_margin_pg": -1.0,
+          "fumble_recovery_rate": 0.0,
+          "rz_td_pct": 1.0,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "WSH": {
+          "games": 1,
+          "to_margin_pg": 0.0,
+          "fumble_recovery_rate": 1.0,
+          "rz_td_pct": 1.0,
+          "to_luck": false,
+          "rz_luck": true
+        }
+      },
+      "games": [
+        {
+          "espn_id": "401872932",
+          "away": "DET",
+          "home": "BUF",
+          "pass_edge": -0.54,
+          "early_sr_edge": 2.82,
+          "pressure_edge": -2.58,
+          "explosive_edge": -1.4,
+          "home_to_luck": true,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872933",
+          "away": "CAR",
+          "home": "ATL",
+          "pass_edge": -1.89,
+          "early_sr_edge": -2.29,
+          "pressure_edge": -5.59,
+          "explosive_edge": -1.67,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": true
+        },
+        {
+          "espn_id": "401872937",
+          "away": "MIN",
+          "home": "CHI",
+          "pass_edge": -2.84,
+          "early_sr_edge": -0.74,
+          "pressure_edge": 2.26,
+          "explosive_edge": -1.38,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": true,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872939",
+          "away": "PHI",
+          "home": "TEN",
+          "pass_edge": 8.04,
+          "early_sr_edge": 4.6,
+          "pressure_edge": 3.66,
+          "explosive_edge": 3.43,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872946",
+          "away": "PIT",
+          "home": "NE",
+          "pass_edge": -2.06,
+          "early_sr_edge": 0.48,
+          "pressure_edge": 1.42,
+          "explosive_edge": -1.42,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872936",
+          "away": "GB",
+          "home": "NYJ",
+          "pass_edge": 5.76,
+          "early_sr_edge": 4.99,
+          "pressure_edge": 0.1,
+          "explosive_edge": 5.67,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872935",
+          "away": "CLE",
+          "home": "TB",
+          "pass_edge": -1.38,
+          "early_sr_edge": -4.89,
+          "pressure_edge": -3.64,
+          "explosive_edge": -1.07,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872938",
+          "away": "NO",
+          "home": "BAL",
+          "pass_edge": -3.28,
+          "early_sr_edge": -3.23,
+          "pressure_edge": 1.98,
+          "explosive_edge": -1.76,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872934",
+          "away": "CIN",
+          "home": "HOU",
+          "pass_edge": -1.75,
+          "early_sr_edge": -2.61,
+          "pressure_edge": 0.81,
+          "explosive_edge": -0.63,
+          "home_to_luck": false,
+          "away_to_luck": true,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872940",
+          "away": "JAX",
+          "home": "DEN",
+          "pass_edge": 1.98,
+          "early_sr_edge": -1.23,
+          "pressure_edge": -1.67,
+          "explosive_edge": 0.69,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": true
+        },
+        {
+          "espn_id": "401872941",
+          "away": "LV",
+          "home": "LAC",
+          "pass_edge": -1.31,
+          "early_sr_edge": -0.19,
+          "pressure_edge": 2.66,
+          "explosive_edge": 0.7,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872944",
+          "away": "WSH",
+          "home": "DAL",
+          "pass_edge": 0.22,
+          "early_sr_edge": 2.49,
+          "pressure_edge": -1.92,
+          "explosive_edge": 2.04,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": true,
+          "away_rz_luck": true
+        },
+        {
+          "espn_id": "401872943",
+          "away": "SEA",
+          "home": "ARI",
+          "pass_edge": 2.14,
+          "early_sr_edge": 6.17,
+          "pressure_edge": 3.3,
+          "explosive_edge": 6.28,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872942",
+          "away": "MIA",
+          "home": "SF",
+          "pass_edge": -3.82,
+          "early_sr_edge": -5.11,
+          "pressure_edge": -2.95,
+          "explosive_edge": -0.91,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872945",
+          "away": "IND",
+          "home": "KC",
+          "pass_edge": -3.24,
+          "early_sr_edge": -1.06,
+          "pressure_edge": -0.76,
+          "explosive_edge": -0.95,
+          "home_to_luck": true,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": true
+        },
+        {
+          "espn_id": "401872947",
+          "away": "NYG",
+          "home": "LAR",
+          "pass_edge": -1.61,
+          "early_sr_edge": -5.94,
+          "pressure_edge": -1.17,
+          "explosive_edge": -3.44,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "plays_through_week": 2,
+      "generated_at": "2026-09-30T08:53:09-04:00",
+      "league_rz_td_pct": 0.633,
+      "teams": {
+        "ARI": {
+          "games": 2,
+          "to_margin_pg": 1.0,
+          "fumble_recovery_rate": 0.667,
+          "rz_td_pct": 0.5,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "ATL": {
+          "games": 2,
+          "to_margin_pg": -3.0,
+          "fumble_recovery_rate": 0.5,
+          "rz_td_pct": 1.0,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "BAL": {
+          "games": 2,
+          "to_margin_pg": 0.0,
+          "fumble_recovery_rate": 0.333,
+          "rz_td_pct": 0.778,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "BUF": {
+          "games": 2,
+          "to_margin_pg": 1.0,
+          "fumble_recovery_rate": 0.714,
+          "rz_td_pct": 0.769,
+          "to_luck": true,
+          "rz_luck": false
+        },
+        "CAR": {
+          "games": 2,
+          "to_margin_pg": 2.5,
+          "fumble_recovery_rate": 0.833,
+          "rz_td_pct": 0.667,
+          "to_luck": true,
+          "rz_luck": false
+        },
+        "CHI": {
+          "games": 2,
+          "to_margin_pg": -1.0,
+          "fumble_recovery_rate": 0.333,
+          "rz_td_pct": 0.727,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "CIN": {
+          "games": 2,
+          "to_margin_pg": 1.5,
+          "fumble_recovery_rate": 0.8,
+          "rz_td_pct": 0.444,
+          "to_luck": true,
+          "rz_luck": false
+        },
+        "CLE": {
+          "games": 2,
+          "to_margin_pg": -0.5,
+          "fumble_recovery_rate": 0.25,
+          "rz_td_pct": 0.429,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "DAL": {
+          "games": 2,
+          "to_margin_pg": 0.5,
+          "fumble_recovery_rate": 0.286,
+          "rz_td_pct": 0.875,
+          "to_luck": false,
+          "rz_luck": true
+        },
+        "DEN": {
+          "games": 2,
+          "to_margin_pg": -0.5,
+          "fumble_recovery_rate": 0.429,
+          "rz_td_pct": 0.429,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "DET": {
+          "games": 2,
+          "to_margin_pg": 1.0,
+          "fumble_recovery_rate": 0.571,
+          "rz_td_pct": 0.8,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "GB": {
+          "games": 2,
+          "to_margin_pg": -1.0,
+          "fumble_recovery_rate": 0.6,
+          "rz_td_pct": 0.4,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "HOU": {
+          "games": 2,
+          "to_margin_pg": -1.0,
+          "fumble_recovery_rate": 0.2,
+          "rz_td_pct": 0.444,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "IND": {
+          "games": 2,
+          "to_margin_pg": -1.0,
+          "fumble_recovery_rate": 0.5,
+          "rz_td_pct": 0.857,
+          "to_luck": false,
+          "rz_luck": true
+        },
+        "JAX": {
+          "games": 2,
+          "to_margin_pg": 1.0,
+          "fumble_recovery_rate": 0.6,
+          "rz_td_pct": 0.833,
+          "to_luck": true,
+          "rz_luck": true
+        },
+        "KC": {
+          "games": 2,
+          "to_margin_pg": 1.0,
+          "fumble_recovery_rate": 0.6,
+          "rz_td_pct": 0.636,
+          "to_luck": true,
+          "rz_luck": false
+        },
+        "LAR": {
+          "games": 2,
+          "to_margin_pg": -1.0,
+          "fumble_recovery_rate": 0.4,
+          "rz_td_pct": 0.625,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "LAC": {
+          "games": 2,
+          "to_margin_pg": -2.0,
+          "fumble_recovery_rate": 0.625,
+          "rz_td_pct": 0.8,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "LV": {
+          "games": 2,
+          "to_margin_pg": 1.0,
+          "fumble_recovery_rate": 0.333,
+          "rz_td_pct": 0.667,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "MIA": {
+          "games": 2,
+          "to_margin_pg": 0.0,
+          "fumble_recovery_rate": 0.75,
+          "rz_td_pct": 0.333,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "MIN": {
+          "games": 2,
+          "to_margin_pg": 1.5,
+          "fumble_recovery_rate": 0.6,
+          "rz_td_pct": 0.714,
+          "to_luck": true,
+          "rz_luck": false
+        },
+        "NE": {
+          "games": 2,
+          "to_margin_pg": -1.5,
+          "fumble_recovery_rate": 0.5,
+          "rz_td_pct": 0.4,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "NO": {
+          "games": 2,
+          "to_margin_pg": -0.5,
+          "fumble_recovery_rate": 0.6,
+          "rz_td_pct": 0.75,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "NYG": {
+          "games": 2,
+          "to_margin_pg": 0.5,
+          "fumble_recovery_rate": 0.714,
+          "rz_td_pct": 0.571,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "NYJ": {
+          "games": 2,
+          "to_margin_pg": 1.0,
+          "fumble_recovery_rate": 0.5,
+          "rz_td_pct": 0.667,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "PHI": {
+          "games": 2,
+          "to_margin_pg": -1.0,
+          "fumble_recovery_rate": 0.0,
+          "rz_td_pct": 0.75,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "PIT": {
+          "games": 2,
+          "to_margin_pg": 0.5,
+          "fumble_recovery_rate": 0.286,
+          "rz_td_pct": 0.25,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "SEA": {
+          "games": 2,
+          "to_margin_pg": 1.5,
+          "fumble_recovery_rate": 0.5,
+          "rz_td_pct": 0.556,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "SF": {
+          "games": 2,
+          "to_margin_pg": 0.5,
+          "fumble_recovery_rate": 0.25,
+          "rz_td_pct": 0.889,
+          "to_luck": false,
+          "rz_luck": true
+        },
+        "TB": {
+          "games": 2,
+          "to_margin_pg": -2.0,
+          "fumble_recovery_rate": 0.2,
+          "rz_td_pct": 0.333,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "TEN": {
+          "games": 2,
+          "to_margin_pg": 0.5,
+          "fumble_recovery_rate": 0.333,
+          "rz_td_pct": 0.6,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "WSH": {
+          "games": 2,
+          "to_margin_pg": -0.5,
+          "fumble_recovery_rate": 0.75,
+          "rz_td_pct": 0.714,
+          "to_luck": false,
+          "rz_luck": false
+        }
+      },
+      "games": [
+        {
+          "espn_id": "401872948",
+          "away": "ATL",
+          "home": "GB",
+          "pass_edge": -2.91,
+          "early_sr_edge": -1.73,
+          "pressure_edge": 1.39,
+          "explosive_edge": -3.25,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872953",
+          "away": "LAC",
+          "home": "BUF",
+          "pass_edge": -6.08,
+          "early_sr_edge": -2.84,
+          "pressure_edge": -4.02,
+          "explosive_edge": -3.33,
+          "home_to_luck": true,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872949",
+          "away": "CAR",
+          "home": "CLE",
+          "pass_edge": 0.6,
+          "early_sr_edge": 3.67,
+          "pressure_edge": -1.79,
+          "explosive_edge": 3.65,
+          "home_to_luck": false,
+          "away_to_luck": true,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872954",
+          "away": "NYJ",
+          "home": "DET",
+          "pass_edge": -4.1,
+          "early_sr_edge": -3.69,
+          "pressure_edge": -3.29,
+          "explosive_edge": -1.17,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872951",
+          "away": "HOU",
+          "home": "IND",
+          "pass_edge": 2.88,
+          "early_sr_edge": 4.12,
+          "pressure_edge": 0.13,
+          "explosive_edge": -0.78,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": true,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872952",
+          "away": "KC",
+          "home": "MIA",
+          "pass_edge": 5.38,
+          "early_sr_edge": 6.37,
+          "pressure_edge": 4.51,
+          "explosive_edge": -0.08,
+          "home_to_luck": false,
+          "away_to_luck": true,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872956",
+          "away": "TEN",
+          "home": "NYG",
+          "pass_edge": -3.72,
+          "early_sr_edge": -2.8,
+          "pressure_edge": -0.3,
+          "explosive_edge": 1.84,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872950",
+          "away": "CIN",
+          "home": "PIT",
+          "pass_edge": -1.1,
+          "early_sr_edge": -0.84,
+          "pressure_edge": -2.43,
+          "explosive_edge": 2.08,
+          "home_to_luck": false,
+          "away_to_luck": true,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872955",
+          "away": "SEA",
+          "home": "WSH",
+          "pass_edge": 7.33,
+          "early_sr_edge": 6.07,
+          "pressure_edge": -0.18,
+          "explosive_edge": 6.76,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872957",
+          "away": "NE",
+          "home": "JAX",
+          "pass_edge": 1.43,
+          "early_sr_edge": 0.06,
+          "pressure_edge": -1.7,
+          "explosive_edge": 1.19,
+          "home_to_luck": true,
+          "away_to_luck": false,
+          "home_rz_luck": true,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872958",
+          "away": "ARI",
+          "home": "SF",
+          "pass_edge": -4.43,
+          "early_sr_edge": -5.73,
+          "pressure_edge": -4.15,
+          "explosive_edge": -4.13,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": true,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872959",
+          "away": "MIN",
+          "home": "TB",
+          "pass_edge": 3.15,
+          "early_sr_edge": 3.69,
+          "pressure_edge": 2.84,
+          "explosive_edge": -0.74,
+          "home_to_luck": false,
+          "away_to_luck": true,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872960",
+          "away": "BAL",
+          "home": "DAL",
+          "pass_edge": 2.42,
+          "early_sr_edge": 5.25,
+          "pressure_edge": -2.66,
+          "explosive_edge": 2.43,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": true,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872961",
+          "away": "LV",
+          "home": "NO",
+          "pass_edge": -1.21,
+          "early_sr_edge": 3.8,
+          "pressure_edge": -0.53,
+          "explosive_edge": 1.41,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872962",
+          "away": "LAR",
+          "home": "DEN",
+          "pass_edge": 2.46,
+          "early_sr_edge": 3.65,
+          "pressure_edge": -0.44,
+          "explosive_edge": 2.82,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872963",
+          "away": "PHI",
+          "home": "CHI",
+          "pass_edge": 0.64,
+          "early_sr_edge": -1.62,
+          "pressure_edge": 0.68,
+          "explosive_edge": -0.36,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        }
+      ]
+    },
+    {
+      "week": 4,
+      "plays_through_week": 3,
+      "generated_at": "2026-09-30T08:53:09-04:00",
+      "league_rz_td_pct": 0.62,
+      "teams": {
+        "ARI": {
+          "games": 3,
+          "to_margin_pg": 0.333,
+          "fumble_recovery_rate": 0.5,
+          "rz_td_pct": 0.545,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "ATL": {
+          "games": 3,
+          "to_margin_pg": -2.0,
+          "fumble_recovery_rate": 0.429,
+          "rz_td_pct": 0.833,
+          "to_luck": false,
+          "rz_luck": true
+        },
+        "BAL": {
+          "games": 3,
+          "to_margin_pg": 0.333,
+          "fumble_recovery_rate": 0.4,
+          "rz_td_pct": 0.733,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "BUF": {
+          "games": 3,
+          "to_margin_pg": -0.667,
+          "fumble_recovery_rate": 0.5,
+          "rz_td_pct": 0.765,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "CAR": {
+          "games": 3,
+          "to_margin_pg": 1.667,
+          "fumble_recovery_rate": 0.857,
+          "rz_td_pct": 0.6,
+          "to_luck": true,
+          "rz_luck": false
+        },
+        "CHI": {
+          "games": 3,
+          "to_margin_pg": 0.333,
+          "fumble_recovery_rate": 0.5,
+          "rz_td_pct": 0.647,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "CIN": {
+          "games": 3,
+          "to_margin_pg": 1.333,
+          "fumble_recovery_rate": 0.714,
+          "rz_td_pct": 0.538,
+          "to_luck": true,
+          "rz_luck": false
+        },
+        "CLE": {
+          "games": 3,
+          "to_margin_pg": -0.333,
+          "fumble_recovery_rate": 0.2,
+          "rz_td_pct": 0.5,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "DAL": {
+          "games": 3,
+          "to_margin_pg": 0.0,
+          "fumble_recovery_rate": 0.333,
+          "rz_td_pct": 0.714,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "DEN": {
+          "games": 3,
+          "to_margin_pg": 0.0,
+          "fumble_recovery_rate": 0.5,
+          "rz_td_pct": 0.545,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "DET": {
+          "games": 3,
+          "to_margin_pg": 1.0,
+          "fumble_recovery_rate": 0.625,
+          "rz_td_pct": 0.8,
+          "to_luck": true,
+          "rz_luck": false
+        },
+        "GB": {
+          "games": 3,
+          "to_margin_pg": -0.667,
+          "fumble_recovery_rate": 0.636,
+          "rz_td_pct": 0.429,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "HOU": {
+          "games": 3,
+          "to_margin_pg": 0.333,
+          "fumble_recovery_rate": 0.375,
+          "rz_td_pct": 0.5,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "IND": {
+          "games": 3,
+          "to_margin_pg": -1.667,
+          "fumble_recovery_rate": 0.4,
+          "rz_td_pct": 0.7,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "JAX": {
+          "games": 3,
+          "to_margin_pg": 1.333,
+          "fumble_recovery_rate": 0.571,
+          "rz_td_pct": 0.909,
+          "to_luck": false,
+          "rz_luck": true
+        },
+        "KC": {
+          "games": 3,
+          "to_margin_pg": 1.0,
+          "fumble_recovery_rate": 0.667,
+          "rz_td_pct": 0.625,
+          "to_luck": true,
+          "rz_luck": false
+        },
+        "LAR": {
+          "games": 3,
+          "to_margin_pg": -1.0,
+          "fumble_recovery_rate": 0.333,
+          "rz_td_pct": 0.5,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "LAC": {
+          "games": 3,
+          "to_margin_pg": 0.0,
+          "fumble_recovery_rate": 0.727,
+          "rz_td_pct": 0.556,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "LV": {
+          "games": 3,
+          "to_margin_pg": 1.667,
+          "fumble_recovery_rate": 0.438,
+          "rz_td_pct": 0.625,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "MIA": {
+          "games": 3,
+          "to_margin_pg": -0.333,
+          "fumble_recovery_rate": 0.6,
+          "rz_td_pct": 0.375,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "MIN": {
+          "games": 3,
+          "to_margin_pg": 1.333,
+          "fumble_recovery_rate": 0.6,
+          "rz_td_pct": 0.75,
+          "to_luck": true,
+          "rz_luck": false
+        },
+        "NE": {
+          "games": 3,
+          "to_margin_pg": -1.667,
+          "fumble_recovery_rate": 0.5,
+          "rz_td_pct": 0.222,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "NO": {
+          "games": 3,
+          "to_margin_pg": -1.333,
+          "fumble_recovery_rate": 0.5,
+          "rz_td_pct": 0.769,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "NYG": {
+          "games": 3,
+          "to_margin_pg": 1.0,
+          "fumble_recovery_rate": 0.8,
+          "rz_td_pct": 0.444,
+          "to_luck": true,
+          "rz_luck": false
+        },
+        "NYJ": {
+          "games": 3,
+          "to_margin_pg": 0.333,
+          "fumble_recovery_rate": 0.455,
+          "rz_td_pct": 0.7,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "PHI": {
+          "games": 3,
+          "to_margin_pg": -1.667,
+          "fumble_recovery_rate": 0.0,
+          "rz_td_pct": 0.636,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "PIT": {
+          "games": 3,
+          "to_margin_pg": 0.0,
+          "fumble_recovery_rate": 0.333,
+          "rz_td_pct": 0.444,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "SEA": {
+          "games": 3,
+          "to_margin_pg": 0.0,
+          "fumble_recovery_rate": 0.5,
+          "rz_td_pct": 0.643,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "SF": {
+          "games": 3,
+          "to_margin_pg": 0.667,
+          "fumble_recovery_rate": 0.4,
+          "rz_td_pct": 0.929,
+          "to_luck": false,
+          "rz_luck": true
+        },
+        "TB": {
+          "games": 3,
+          "to_margin_pg": -1.667,
+          "fumble_recovery_rate": 0.2,
+          "rz_td_pct": 0.333,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "TEN": {
+          "games": 3,
+          "to_margin_pg": -0.333,
+          "fumble_recovery_rate": 0.167,
+          "rz_td_pct": 0.5,
+          "to_luck": false,
+          "rz_luck": false
+        },
+        "WSH": {
+          "games": 3,
+          "to_margin_pg": 0.667,
+          "fumble_recovery_rate": 0.667,
+          "rz_td_pct": 0.727,
+          "to_luck": false,
+          "rz_luck": false
+        }
+      },
+      "games": [
+        {
+          "espn_id": "401872964",
+          "away": "PIT",
+          "home": "CLE",
+          "pass_edge": -0.91,
+          "early_sr_edge": 3.31,
+          "pressure_edge": 3.27,
+          "explosive_edge": 0.79,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872965",
+          "away": "IND",
+          "home": "WSH",
+          "pass_edge": -0.17,
+          "early_sr_edge": 2.43,
+          "pressure_edge": -1.17,
+          "explosive_edge": 1.26,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872971",
+          "away": "NE",
+          "home": "BUF",
+          "pass_edge": -1.21,
+          "early_sr_edge": -0.32,
+          "pressure_edge": -2.74,
+          "explosive_edge": 0.27,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872972",
+          "away": "NYJ",
+          "home": "CHI",
+          "pass_edge": -6.08,
+          "early_sr_edge": -2.96,
+          "pressure_edge": -1.3,
+          "explosive_edge": -0.72,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872969",
+          "away": "JAX",
+          "home": "CIN",
+          "pass_edge": 3.94,
+          "early_sr_edge": 3.38,
+          "pressure_edge": -0.22,
+          "explosive_edge": 2.57,
+          "home_to_luck": true,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": true
+        },
+        {
+          "espn_id": "401872966",
+          "away": "ARI",
+          "home": "NYG",
+          "pass_edge": -1.3,
+          "early_sr_edge": -0.81,
+          "pressure_edge": 0.59,
+          "explosive_edge": -3.13,
+          "home_to_luck": true,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872970",
+          "away": "LAR",
+          "home": "PHI",
+          "pass_edge": 4.91,
+          "early_sr_edge": 10.49,
+          "pressure_edge": 2.48,
+          "explosive_edge": 4.53,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872968",
+          "away": "GB",
+          "home": "TB",
+          "pass_edge": 3.82,
+          "early_sr_edge": 2.36,
+          "pressure_edge": -0.61,
+          "explosive_edge": 2.88,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872973",
+          "away": "TEN",
+          "home": "BAL",
+          "pass_edge": -7.73,
+          "early_sr_edge": -9.1,
+          "pressure_edge": 0.31,
+          "explosive_edge": -0.88,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872967",
+          "away": "DAL",
+          "home": "HOU",
+          "pass_edge": -1.49,
+          "early_sr_edge": -5.07,
+          "pressure_edge": 1.05,
+          "explosive_edge": -3.25,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872974",
+          "away": "MIA",
+          "home": "MIN",
+          "pass_edge": -3.39,
+          "early_sr_edge": -9.85,
+          "pressure_edge": -5.15,
+          "explosive_edge": -0.03,
+          "home_to_luck": true,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872976",
+          "away": "KC",
+          "home": "LV",
+          "pass_edge": 2.47,
+          "early_sr_edge": 7.78,
+          "pressure_edge": -1.74,
+          "explosive_edge": 1.25,
+          "home_to_luck": false,
+          "away_to_luck": true,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872975",
+          "away": "DEN",
+          "home": "SF",
+          "pass_edge": -1.27,
+          "early_sr_edge": 0.23,
+          "pressure_edge": 1.83,
+          "explosive_edge": -2.35,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": true,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872977",
+          "away": "LAC",
+          "home": "SEA",
+          "pass_edge": -5.25,
+          "early_sr_edge": -6.85,
+          "pressure_edge": -4.22,
+          "explosive_edge": -6.43,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872978",
+          "away": "DET",
+          "home": "CAR",
+          "pass_edge": 3.18,
+          "early_sr_edge": 3.99,
+          "pressure_edge": 3.7,
+          "explosive_edge": -1.24,
+          "home_to_luck": true,
+          "away_to_luck": true,
+          "home_rz_luck": false,
+          "away_rz_luck": false
+        },
+        {
+          "espn_id": "401872979",
+          "away": "ATL",
+          "home": "NO",
+          "pass_edge": -0.64,
+          "early_sr_edge": 6.87,
+          "pressure_edge": 0.24,
+          "explosive_edge": 2.92,
+          "home_to_luck": false,
+          "away_to_luck": false,
+          "home_rz_luck": false,
+          "away_rz_luck": true
+        }
+      ]
+    }
+  ]
+}

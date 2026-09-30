@@ -3436,3 +3436,154 @@ body.is-viewer textarea:disabled {
   .record-summary div { min-width: calc(50% - 10px); flex: 1; }
   .preset-row .btn, .sandbox-actions .btn { min-height: 44px; }
 }
+
+/* ---------- ATS shadow board ---------- */
+.ats-season {
+  margin: -12px 0 18px;
+  color: var(--cloud);
+  font-size: 15px;
+}
+.ats-game {
+  display: grid;
+  grid-template-columns: minmax(140px, 1.1fr) minmax(220px, 1.6fr) repeat(4, minmax(88px, 0.7fr));
+  gap: 6px 14px;
+  align-items: start;
+  padding: 14px 0 16px;
+  border-top: 1px solid var(--slate-line);
+  background: #0B0B0E;
+  color: var(--cloud);
+}
+.ats-game h2 {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 28px;
+  letter-spacing: 0.03em;
+  line-height: 1;
+}
+.ats-kick, .ats-lines, .ats-num p, .ats-chips p, .ats-flags, .ats-agree p {
+  margin: 0;
+}
+.ats-kick { color: var(--slate); font-size: 13px; margin-top: 4px; }
+.ats-k {
+  display: block;
+  margin: 0 0 2px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #959696;
+}
+.ats-lines { font-size: 14px; line-height: 1.35; }
+.ats-bet { color: var(--white); font-weight: 700; }
+.ats-key {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 6px;
+  border: 1px solid #C56C34;
+  color: #C56C34;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+.ats-gap.is-look { color: #C56C34; }
+.ats-gap.is-bold { font-weight: 800; }
+.ats-gap em {
+  display: inline-block;
+  margin-left: 6px;
+  font-style: normal;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.ats-clv { font-size: 20px; font-weight: 700; }
+.ats-chips { grid-column: 1 / -1; }
+.ats-chip-label, .ats-lowtag {
+  margin-right: 4px;
+  color: #959696;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.ats-chip {
+  display: inline-block;
+  min-width: 42px;
+  margin: 0 10px 0 4px;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: #141418;
+  font-variant-numeric: tabular-nums;
+}
+.ats-chip.is-home { color: var(--process); }
+.ats-chip.is-away { color: var(--lose); }
+.ats-chip.is-low { color: #959696; }
+.ats-ol {
+  margin-right: 10px;
+  color: var(--lose);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.ats-flags { grid-column: 1 / span 4; display: flex; flex-wrap: wrap; gap: 6px; }
+.ats-badge {
+  padding: 2px 8px;
+  border: 1px solid var(--slate-line);
+  color: var(--cloud);
+  font-size: 12px;
+}
+.ats-badge.ats-news { border-color: rgba(197, 108, 52, 0.55); color: #C56C34; }
+.ats-agree { grid-column: 5 / -1; justify-self: end; text-align: right; }
+.ats-dots { display: flex; gap: 6px; justify-content: flex-end; }
+.ats-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid #959696;
+  background: transparent;
+}
+.ats-dot.is-on { background: #C56C34; border-color: #C56C34; }
+.ats-neutral { color: #959696; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
+
+.bsdvoa-panel {
+  margin: 0 0 18px;
+  padding: 12px 14px;
+  background: #0B0B0E;
+  border: 1px solid rgba(197, 108, 52, 0.45);
+  border-radius: 12px;
+}
+.bsdvoa-panel summary {
+  cursor: pointer;
+  font-family: var(--display);
+  font-size: 22px;
+  letter-spacing: 0.04em;
+  color: var(--white);
+}
+.bsdvoa-panel summary span {
+  display: inline-block;
+  margin-left: 8px;
+  color: #C56C34;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.bsdvoa-overall { margin: 10px 0 4px; font-size: 28px; font-weight: 700; }
+.bsdvoa-overall small { font-size: 13px; font-weight: 600; color: #959696; }
+.bsdvoa-split, .bsdvoa-note, .bsdvoa-empty { margin: 0; color: var(--cloud); font-size: 14px; }
+.bsdvoa-note { margin-top: 6px; color: #959696; }
+
+@media (max-width: 800px) {
+  .ats-game {
+    grid-template-columns: 1fr;
+    margin: 0 0 12px;
+    padding: 14px;
+    border: 1px solid var(--slate-line);
+    border-radius: 14px;
+  }
+  .ats-chips, .ats-flags, .ats-agree { grid-column: 1; }
+  .ats-agree { justify-self: start; text-align: left; }
+  .ats-dots { justify-content: flex-start; }
+  .ats-game h2 { font-size: 26px; }
+  .ats-chip { margin-bottom: 6px; }
+}

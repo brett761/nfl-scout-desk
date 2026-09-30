@@ -33,6 +33,17 @@ node data/published/build_published_lines.mjs
 
 See `data/published/README.md`. The Supabase migration in `supabase/migrations/` is applied by hand. It is not run by the site.
 
+## Tuesday shadow ratings, then the power ranking
+
+B$ DVOA is a shadow rating. It does not change the B$ line. After the nflverse overnight update (about 5:00 AM ET) and before the 11:16 AM ET power-rankings run:
+
+```bash
+python3 data/dvoa/build_bs_dvoa.py --week 4
+node data/published/build_power_rankings.mjs
+```
+
+Use the week you are rating. See `data/dvoa/README.md`. Street open, midweek, and close history is `data/lines/line-history-2026.json`. The daily refresh appends with `node data/lines/append_line_snapshot.mjs --tag mid --week 4`. See `data/lines/README.md`.
+
 ## Tuesday power ranking
 
 Home reads `data/published/power-rankings.json`. It does not recompute the rating. After the Tuesday injury and YTD refresh:
