@@ -1,0 +1,261 @@
+{
+  "week": 4,
+  "season": 2026,
+  "game_id": "PIT@CLE",
+  "kick": "2026-10-01T20:15:00-04:00",
+  "away": "PIT",
+  "home": "CLE",
+  "espn_id": "401872964",
+  "venue": "Huntington Bank Field",
+  "neutral": false,
+  "window": "TNF",
+  "model_home_spread": 5.63,
+  "model_home_spread_source": "desk_compute",
+  "street_home_spread": 2.5,
+  "close_at_lock": 2.5,
+  "ou_street": 38.5,
+  "street_note": "FINAL freeze 2026-09-30 4:25 PM ET (America/New_York). Consensus PIT −2.5 / 38.5 (home CLE +2.5). ESPN DraftKings pickcenter PIT −2.5 (−120) / 38.5 CLE +2.5 (+100); CBS Sports Steelers by 2½; ESPN game page PIT −2.5 / 38.5. Shop: hold +2.5 home / −2.5 away consensus (DK away juice −120 worse than −110).",
+  "edge_home": -3.13,
+  "edge_note": "edgeHome = street − model = 2.5 − (5.63) = -3.13 → away value (PIT); |edge|≥1.5",
+  "feature_stack": {
+    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W4 n=3 so fa/return at w_prior=0, draft_fade=(4-3)/4=0.25; pff_ytd IN line; injury 2026-09-30b FINAL",
+    "injury_pulled": "2026-09-30b",
+    "away_PIT": {
+      "prior": 0.1,
+      "fa": 0,
+      "draft": 0,
+      "madden": 0.21,
+      "pff": 0.5,
+      "pff_ytd": 1.89,
+      "sos": 0.03,
+      "return": 0,
+      "injury": -1.08,
+      "adjust": 0,
+      "context": 0,
+      "eff": 1.65,
+      "taper": {
+        "N": 3,
+        "n": 3,
+        "wPrior": 0,
+        "wCurr": 1
+      },
+      "current_rating": 0.1
+    },
+    "home_CLE": {
+      "prior": -2.47,
+      "fa": 0,
+      "draft": 0.5,
+      "madden": -0.4,
+      "pff": -0.35,
+      "pff_ytd": -2,
+      "sos": -0.2,
+      "return": 0,
+      "injury": -1.2,
+      "adjust": 0,
+      "context": 0,
+      "eff": -6.12,
+      "taper": {
+        "N": 3,
+        "n": 3,
+        "wPrior": 0,
+        "wCurr": 1
+      },
+      "current_rating": -2.47
+    },
+    "layers_home_minus_away": {
+      "prior": -2.57,
+      "fa": 0,
+      "draft": 0.5,
+      "madden": -0.61,
+      "pff": -0.85,
+      "pff_ytd": -3.89,
+      "sos": -0.23,
+      "return": 0,
+      "injury": -0.12,
+      "adjust": 0,
+      "context": 0
+    },
+    "rating_diff_home_minus_away": -7.77,
+    "hfa": 2,
+    "coach": 0,
+    "coach_note": "Todd Monken vs Mike McCarthy — H2H term 0",
+    "prep": 0,
+    "prep_note": "week!==1 so week1_term=0; neither club off bye → prep_net=0",
+    "ats": -0.11,
+    "ats_note": "home ATS 0 − away ATS 0.11 = -0.11",
+    "travel": 0.25,
+    "travel_note": "PIT road short week after Sun (short week) pts=-0.25; CLE home short-week travel N/A pts=0; sched_net=0.25. TZ hop PIT→CLE = 0 (both ET).",
+    "matchup": 0,
+    "matchup_note": "pff-matchups-2026.json has no W4 PIT@CLE row → matchup_net=0",
+    "gap": -5.63,
+    "component_sum": [
+      {
+        "label": "rating_diff (CLE−PIT)",
+        "val": -7.77
+      },
+      {
+        "label": "HFA",
+        "val": 2
+      },
+      {
+        "label": "coach",
+        "val": 0
+      },
+      {
+        "label": "prep (W4)",
+        "val": 0
+      },
+      {
+        "label": "ats",
+        "val": -0.11
+      },
+      {
+        "label": "travel/sched",
+        "val": 0.25
+      },
+      {
+        "label": "matchup",
+        "val": 0
+      },
+      {
+        "label": "gap",
+        "val": -5.63
+      },
+      {
+        "label": "model_home_spread (−gap)",
+        "val": 5.63
+      }
+    ],
+    "injuries": {
+      "PIT": [
+        {
+          "name": "Joey Porter Jr.",
+          "pos": "CB1",
+          "status": "OUT",
+          "on": true,
+          "impact": 0.45,
+          "impact_source": "manual",
+          "pts": -0.45
+        },
+        {
+          "name": "Rico Dowdle",
+          "pos": "RB1",
+          "status": "OUT",
+          "on": true,
+          "impact": 0.25,
+          "impact_source": "madden",
+          "pts": -0.25
+        },
+        {
+          "name": "Jalen Ramsey",
+          "pos": "CB1",
+          "status": "QUESTIONABLE",
+          "on": true,
+          "impact": 0.5,
+          "impact_source": "manual",
+          "pts": -0.18
+        },
+        {
+          "name": "DeShon Elliott",
+          "pos": "S",
+          "status": "IR",
+          "on": true,
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2
+        },
+        {
+          "name": "Gennings Dunker",
+          "pos": "OG",
+          "status": "IR",
+          "on": true,
+          "impact": 0,
+          "impact_source": "manual",
+          "pts": 0
+        }
+      ],
+      "CLE": [
+        {
+          "name": "Elgton Jenkins",
+          "pos": "C",
+          "status": "OUT",
+          "on": true,
+          "impact": 0.45,
+          "impact_source": "manual",
+          "pts": -0.45
+        },
+        {
+          "name": "Teven Jenkins",
+          "pos": "OG",
+          "status": "OUT",
+          "on": true,
+          "impact": 0.35,
+          "impact_source": "manual",
+          "pts": -0.35
+        },
+        {
+          "name": "Tylan Wallace",
+          "pos": "WR2",
+          "status": "OUT",
+          "on": true,
+          "impact": 0.2,
+          "impact_source": "manual",
+          "pts": -0.2
+        },
+        {
+          "name": "Dylan Sampson",
+          "pos": "RB1",
+          "status": "IR",
+          "on": true,
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2
+        },
+        {
+          "name": "Dillon Gabriel",
+          "pos": "QB1",
+          "status": "IR",
+          "on": true,
+          "impact": 0,
+          "impact_source": "manual",
+          "pts": 0
+        },
+        {
+          "name": "Kendrick Green",
+          "pos": "OG",
+          "status": "IR",
+          "on": true,
+          "impact": 0,
+          "impact_source": "manual",
+          "pts": 0
+        }
+      ]
+    },
+    "injury_terms": {
+      "PIT": {
+        "raw": -1.08,
+        "term": -1.08,
+        "capped": false,
+        "cap_team": 6
+      },
+      "CLE": {
+        "raw": -1.2,
+        "term": -1.2,
+        "capped": false,
+        "cap_team": 6
+      }
+    }
+  },
+  "frozen_at": "2026-09-30 4:25 PM ET (America/New_York)",
+  "tickets": [],
+  "call": {
+    "action": "FIRE",
+    "side": "PIT",
+    "line": -2.5,
+    "units": 3,
+    "price": -120,
+    "class": "INFO",
+    "note": "Model home 5.63 vs street CLE +2.5; edge_home -3.13 → PIT side."
+  },
+  "notes": "FINAL pre-kick TNF lock after official Wed ~4pm ET status. Model desk_compute. Injury 2026-09-30b FINAL. PIT injury -1.08 (Porter/Dowdle Out; Ramsey Q; Elliott IR). CLE injury -1.2 (Elgton/Teven/Wallace Out; Sampson IR; Campbell/Delpit/Howard cleared). Street CLE +2.5 / 38.5. Edge home -3.13. Call FIRE INFO."
+}

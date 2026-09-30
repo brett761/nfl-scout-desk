@@ -1,0 +1,341 @@
+{
+  "season": 2026,
+  "week": 4,
+  "window": "TNF",
+  "game": "PIT@CLE",
+  "status": "FINAL",
+  "pulled": "2026-09-30T20:24:40Z",
+  "pulled_et": "2026-09-30 4:24 PM ET (America/New_York)",
+  "injury_pulled": "2026-09-30b",
+  "note": "FINAL after Wed ~4pm ET official Game Status. PIT: Dowdle/Porter OUT; Ramsey Q (broken wrist); Echols Q cleared protocol OFF number; Elliott IR; Dunker IR impact 0. CLE: Elgton/Teven/Wallace OUT; Campbell/Delpit/Howard cleared; Sampson IR; Gabriel/Green IR impact 0. Manuals Porter 0.45 / Ramsey 0.5 / Elgton 0.45 / Teven 0.35 / Wallace 0.2. PIT term -1.08; CLE term -1.2.",
+  "source_url": "https://www.steelers.com/team/injury-report/",
+  "source_urls": [
+    "https://www.steelers.com/team/injury-report/",
+    "https://www.clevelandbrowns.com/team/injury-report/",
+    "https://www.nfl.com/injuries/"
+  ],
+  "players": [
+    {
+      "team": "PIT",
+      "name": "Joey Porter Jr.",
+      "pos": "CB1",
+      "injury": "NIR/conditioning/back",
+      "game_status": "OUT",
+      "p_play": 0.0,
+      "baseline_pos": 0.25,
+      "player_quality": "high-end starting CB (Madden 85 / PFF 67.6)",
+      "role": "outside CB1 (missed W1\u2013W3; was trending return FP Mon/Tue)",
+      "replacement": "Asante Samuel Jr. / Brandin Echols (Q) / Jamel Dean",
+      "drop_off": "moderate-large \u2014 Samuel struggled in slot/outside vs CIN",
+      "scheme_sig": "moderate \u2014 McCarthy press/man identity thinner without JPJ",
+      "opponent_sig": "CLE WR corps (Boston/Jeudy) \u2014 secondary stress with Ramsey Q",
+      "estimated_spread_impact_range": [
+        0.35,
+        0.55
+      ],
+      "desk_impact": 0.45,
+      "impact_source": "manual",
+      "status_mult": 1.0,
+      "desk_pts": -0.45,
+      "confidence": "Moderate-High",
+      "note": "Official Out after back flare-up Wed. Madden auto tier 0.25 light for CB1 who was about to return \u2192 manual 0.45."
+    },
+    {
+      "team": "PIT",
+      "name": "Rico Dowdle",
+      "pos": "RB1",
+      "injury": "toe",
+      "game_status": "OUT",
+      "p_play": 0.0,
+      "baseline_pos": 0.25,
+      "player_quality": "committee HB (Madden 82); Warren is feature back",
+      "role": "co-back / change-of-pace; 2nd straight miss",
+      "replacement": "Jaylen Warren (healthy, 176 total yds vs CIN) / Homer",
+      "drop_off": "small-moderate \u2014 Warren absorbs touches",
+      "estimated_spread_impact_range": [
+        0.15,
+        0.3
+      ],
+      "desk_impact": 0.25,
+      "impact_source": "madden",
+      "status_mult": 1.0,
+      "desk_pts": -0.25,
+      "confidence": "Moderate-High",
+      "note": "Official Out. Keep Madden auto 0.25; Warren healthy softens."
+    },
+    {
+      "team": "PIT",
+      "name": "Jalen Ramsey",
+      "pos": "CB1",
+      "injury": "wrist (broken)",
+      "game_status": "QUESTIONABLE",
+      "p_play": 0.7,
+      "baseline_pos": 0.25,
+      "player_quality": "elite CB/FS hybrid (Madden 90); auto tier 0.25 too light",
+      "role": "every-down perimeter / nickel communicator",
+      "replacement": "Dean / Samuel / Echols if miss",
+      "drop_off": "large if Out; if plays \u2014 limited grab/tackle with cast",
+      "scheme_sig": "high \u2014 identity CB",
+      "opponent_sig": "vs CLE WR/TE \u2014 compounds Porter Out",
+      "estimated_spread_impact_range": [
+        0.12,
+        0.22
+      ],
+      "desk_impact": 0.5,
+      "impact_source": "manual",
+      "status_mult": 0.35,
+      "desk_pts": -0.18,
+      "confidence": "Moderate",
+      "note": "Official Q. Played through broken wrist Sun. Expected-impact on (not Out). Manual full-out 0.5 (elite beyond other-tier 0.25); Q mult \u2192 \u22120.18 desk."
+    },
+    {
+      "team": "PIT",
+      "name": "Brandin Echols",
+      "pos": "CB1",
+      "injury": "concussion",
+      "game_status": "QUESTIONABLE",
+      "p_play": 0.85,
+      "baseline_pos": 0.25,
+      "player_quality": "rotation CB (PFF 72.1; no Madden top-22)",
+      "role": "depth / nickel",
+      "replacement": "Samuel / practice-squad elevation",
+      "drop_off": "small if Out",
+      "estimated_spread_impact_range": [
+        0.0,
+        0.08
+      ],
+      "desk_impact": 0.2,
+      "impact_source": "pff",
+      "status_mult": 0.35,
+      "desk_pts": 0.0,
+      "confidence": "Moderate-High",
+      "note": "Cleared concussion protocol Wed (Steelers PR); still Q but expected to play \u2192 OFF number (on:false)."
+    },
+    {
+      "team": "PIT",
+      "name": "DeShon Elliott",
+      "pos": "S",
+      "injury": "season IR",
+      "game_status": "IR",
+      "p_play": 0.0,
+      "baseline_pos": 0.25,
+      "player_quality": "starter S (Madden 80)",
+      "role": "SS \u2014 season-long",
+      "replacement": "Brisker / depth",
+      "drop_off": "already in prior",
+      "estimated_spread_impact_range": [
+        0.2,
+        0.2
+      ],
+      "desk_impact": 0.2,
+      "impact_source": "madden",
+      "status_mult": 1.0,
+      "desk_pts": -0.2,
+      "confidence": "High",
+      "note": "Season IR \u2014 keep."
+    },
+    {
+      "team": "PIT",
+      "name": "Gennings Dunker",
+      "pos": "OG",
+      "injury": "knee",
+      "game_status": "IR",
+      "p_play": 0.0,
+      "desk_impact": 0,
+      "impact_source": "manual",
+      "status_mult": 1.0,
+      "desk_pts": 0.0,
+      "confidence": "Moderate",
+      "note": "IR depth G \u2014 no impact (null). Explicit desk_impact 0 (no pos_base fallthrough)."
+    },
+    {
+      "team": "CLE",
+      "name": "Elgton Jenkins",
+      "pos": "C",
+      "injury": "concussion",
+      "game_status": "OUT",
+      "p_play": 0.0,
+      "baseline_pos": 0.25,
+      "player_quality": "starting C (Madden 82)",
+      "role": "starting center / protection caller",
+      "replacement": "Luke Wypler (will start; 2023 6th-rd; prior PIT start graded OK)",
+      "drop_off": "moderate \u2014 usable backup but starter-C miss vs Watt/Highsmith",
+      "scheme_sig": "high \u2014 interior vs PIT 4-man pressure identity",
+      "opponent_sig": "PIT EDGE/DT pressure rate elevated \u2014 OL cluster matters",
+      "estimated_spread_impact_range": [
+        0.35,
+        0.55
+      ],
+      "desk_impact": 0.45,
+      "impact_source": "manual",
+      "status_mult": 1.0,
+      "desk_pts": -0.45,
+      "confidence": "High",
+      "note": "Official Out. Madden auto 0.25 light for starting C vs PIT front \u2192 manual 0.45."
+    },
+    {
+      "team": "CLE",
+      "name": "Teven Jenkins",
+      "pos": "OG",
+      "injury": "back",
+      "game_status": "OUT",
+      "p_play": 0.0,
+      "baseline_pos": 0.25,
+      "player_quality": "starting RG (Madden 77 / PFF 77.7)",
+      "role": "starting right guard (trying to return; LP Tue/Wed then OUT)",
+      "replacement": "depth / swing G",
+      "drop_off": "moderate \u2014 starter G + C both Out compounds",
+      "scheme_sig": "moderate \u2014 interior protection",
+      "opponent_sig": "PIT interior pressure",
+      "estimated_spread_impact_range": [
+        0.25,
+        0.4
+      ],
+      "desk_impact": 0.35,
+      "impact_source": "manual",
+      "status_mult": 1.0,
+      "desk_pts": -0.35,
+      "confidence": "Moderate-High",
+      "note": "Official Out. Manual 0.35 (starter G; auto floor 0.2 light given OL cluster)."
+    },
+    {
+      "team": "CLE",
+      "name": "Tylan Wallace",
+      "pos": "WR2",
+      "injury": "knee",
+      "game_status": "OUT",
+      "p_play": 0.0,
+      "baseline_pos": 0.25,
+      "player_quality": "depth WR (not Madden top-22)",
+      "role": "WR depth / special teams",
+      "replacement": "Boston / Concepcion / Jeudy tree",
+      "drop_off": "small",
+      "estimated_spread_impact_range": [
+        0.15,
+        0.25
+      ],
+      "desk_impact": 0.2,
+      "impact_source": "manual",
+      "status_mult": 1.0,
+      "desk_pts": -0.2,
+      "confidence": "Moderate",
+      "note": "Official Out. Floor 0.2 manual (no Madden match)."
+    },
+    {
+      "team": "CLE",
+      "name": "Tyson Campbell",
+      "pos": "CB1",
+      "injury": "knee (cleared)",
+      "game_status": "PROBABLE/CLEARED",
+      "p_play": 0.95,
+      "estimated_spread_impact_range": [
+        0.0,
+        0.0
+      ],
+      "desk_pts": 0.0,
+      "confidence": "High",
+      "note": "Full Wed, no game designation \u2192 OFF number."
+    },
+    {
+      "team": "CLE",
+      "name": "Grant Delpit",
+      "pos": "S",
+      "injury": "shoulder (cleared)",
+      "game_status": "PROBABLE/CLEARED",
+      "p_play": 0.95,
+      "estimated_spread_impact_range": [
+        0.0,
+        0.0
+      ],
+      "desk_pts": 0.0,
+      "confidence": "High",
+      "note": "Full Wed, no designation \u2192 OFF number."
+    },
+    {
+      "team": "CLE",
+      "name": "Tytus Howard",
+      "pos": "RT",
+      "injury": "knee (cleared)",
+      "game_status": "PROBABLE/CLEARED",
+      "p_play": 0.95,
+      "estimated_spread_impact_range": [
+        0.0,
+        0.0
+      ],
+      "desk_pts": 0.0,
+      "confidence": "High",
+      "note": "Full Wed, no designation \u2192 OFF number (still plays; pressures allowed noted in media)."
+    },
+    {
+      "team": "CLE",
+      "name": "Dylan Sampson",
+      "pos": "RB1",
+      "injury": "knee",
+      "game_status": "IR",
+      "p_play": 0.0,
+      "desk_impact": 0.2,
+      "impact_source": "madden",
+      "status_mult": 1.0,
+      "desk_pts": -0.2,
+      "confidence": "High",
+      "note": "IR \u2014 keep; Judkins is feature back."
+    },
+    {
+      "team": "CLE",
+      "name": "Dillon Gabriel",
+      "pos": "QB1",
+      "injury": "IR",
+      "game_status": "IR",
+      "p_play": 0.0,
+      "desk_impact": 0,
+      "impact_source": "manual",
+      "desk_pts": 0.0,
+      "confidence": "High",
+      "note": "IR \u2014 Watson is starter; null impact (do not apply QB1 base). Explicit desk_impact 0 (no pos_base fallthrough)."
+    },
+    {
+      "team": "CLE",
+      "name": "Kendrick Green",
+      "pos": "OG",
+      "injury": "IR",
+      "game_status": "IR",
+      "p_play": 0.0,
+      "desk_impact": 0,
+      "impact_source": "manual",
+      "desk_pts": 0.0,
+      "confidence": "Moderate",
+      "note": "IR depth \u2014 null impact. Explicit desk_impact 0 (no pos_base fallthrough)."
+    }
+  ],
+  "team_rollup": {
+    "PIT": {
+      "individual_sum": -1.08,
+      "unit_interaction": 0.0,
+      "final_injury_adjustment": -1.08,
+      "confidence": "Moderate-High",
+      "note": "Porter Out (new) + Dowdle Out + Ramsey soft Q + Elliott IR; Echols off."
+    },
+    "CLE": {
+      "individual_sum": -1.2,
+      "unit_interaction": 0.0,
+      "final_injury_adjustment": -1.2,
+      "confidence": "High",
+      "note": "Starting C+G Out (Elgton/Teven) + Wallace Out + Sampson IR; secondary cleared."
+    }
+  },
+  "model_snapshot": {
+    "model_home_spread": 5.63,
+    "street_home_spread": 2.5,
+    "ou_street": 38.5,
+    "edge_home": -3.13,
+    "call": {
+      "action": "FIRE",
+      "side": "PIT",
+      "line": -2.5,
+      "units": 3,
+      "price": -120,
+      "class": "INFO",
+      "note": "Model home 5.63 vs street CLE +2.5; edge_home -3.13 \u2192 PIT side."
+    }
+  }
+}

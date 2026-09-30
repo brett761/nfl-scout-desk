@@ -1,15 +1,16 @@
 {
-  "pulled": "2026-09-30a",
-  "pulled_et": "2026-09-30 10:04 AM ET (America/New_York)",
-  "phase": "WORKING-WED",
+  "pulled": "2026-09-30b",
+  "pulled_et": "2026-09-30 4:24 PM ET (America/New_York)",
+  "phase": "FINAL",
   "sources": [
-    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+    "https://www.steelers.com/team/injury-report/",
+    "https://www.clevelandbrowns.com/team/injury-report/",
     "https://www.nfl.com/injuries/",
-    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?seasontype=2&week=3&year=2026",
-    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?seasontype=2&week=4&year=2026"
+    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872964"
   ],
-  "note": "WORKING-WED Wednesday AM ESPN working refresh; Week 4 board (TNF PIT@CLE Thu); no rumor designations; official NFL.com Wed ~4pm ET sheet later today; preserve manuals; tier caps QB<=1.5 / recent All-Pro<=0.5 / other<=0.25 on auto; Madden-first else PFF; floor 0.2x status; IR/PUP/NFI merged; Cap team 6.0. Drop finished-game inactive noise; keep multi-week injuries.",
-  "espn_timestamp": "2026-09-30T14:03:41Z",
+  "note": "FINAL 2026-09-30b Week 4 TNF PIT@CLE after official Wed ~4pm ET Game Status (steelers.com / clevelandbrowns.com / NFL.com). PIT: Dowdle OUT, Porter Jr OUT, Ramsey Q (on), Echols Q cleared protocol (off number), Elliott+Dunker IR. CLE: Elgton Jenkins OUT, Teven Jenkins OUT, Wallace OUT; Campbell/Delpit/Howard cleared off number; Sampson/Gabriel/Green IR. Manuals: Porter 0.45, Ramsey 0.5, Elgton 0.45, Teven 0.35, Wallace 0.2. Sunday card still WORKING until Friday FINAL \u2014 other teams unchanged from 2026-09-30a WORKING-WED ESPN seed. Madden-first else PFF; floor 0.2\u00d7status; Probable/cleared OFF number; Q only with expected-impact judgment. Explicit impact 0 on Gabriel/Green/Dunker (prevent QB1/OG pos_base fallthrough).",
+  "espn_timestamp": "2026-09-30T20:24:40Z",
   "teams": {
     "ARI": [
       {
@@ -429,50 +430,35 @@
       {
         "name": "Elgton Jenkins",
         "pos": "C",
-        "status": "QUESTIONABLE",
-        "note": "Jenkins (concussion) did not participate at practice Tuesday, Daniel Oyefusi of ESPN.com reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "status": "OUT",
+        "injury": "Concussion",
+        "note": "Official Wed FINAL Out \u2014 DNP all week; Wypler starts. Manual 0.45 (starter C vs PIT front).",
+        "source": "https://www.clevelandbrowns.com/team/injury-report/",
         "on": true,
-        "impact": 0.25,
-        "impact_source": "madden"
-      },
-      {
-        "name": "Tylan Wallace",
-        "pos": "WR2",
-        "status": "QUESTIONABLE",
-        "note": "Wallace (knee) didn't participate in Cleveland's practice Tuesday, Daniel Oyefusi of ESPN.com reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "impact": 0.45,
+        "impact_source": "manual"
       },
       {
         "name": "Teven Jenkins",
         "pos": "OG",
-        "status": "QUESTIONABLE",
-        "note": "questionable",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "status": "OUT",
+        "injury": "Back",
+        "note": "Official Wed FINAL Out \u2014 starter G; LP Tue/Wed. Manual 0.35 (OL cluster with Elgton).",
+        "source": "https://www.clevelandbrowns.com/team/injury-report/",
         "on": true,
-        "impact": 0.2,
-        "impact_source": "madden"
+        "impact": 0.35,
+        "impact_source": "manual"
       },
       {
-        "name": "Tyson Campbell",
-        "pos": "CB1",
-        "status": "QUESTIONABLE",
-        "note": "Campbell (knee) was estimated as a limited participant in Monday's practice, Adam Caplan of SiriusXM NFL Radio reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "name": "Tylan Wallace",
+        "pos": "WR2",
+        "status": "OUT",
+        "injury": "Knee",
+        "note": "Official Wed FINAL Out \u2014 DNP all week. Floor 0.2.",
+        "source": "https://www.clevelandbrowns.com/team/injury-report/",
         "on": true,
         "impact": 0.2,
-        "impact_source": "madden"
-      },
-      {
-        "name": "Grant Delpit",
-        "pos": "S",
-        "status": "QUESTIONABLE",
-        "note": "Delpit (shoulder) was estimated as a limited participant in Monday's practice, Adam Caplan of SiriusXM NFL Radio reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.25,
-        "impact_source": "madden"
+        "impact_source": "manual"
       },
       {
         "name": "Dylan Sampson",
@@ -488,17 +474,21 @@
         "name": "Dillon Gabriel",
         "pos": "QB1",
         "status": "IR",
-        "note": "ir",
+        "note": "ir \u2014 Watson starter; null impact Explicit impact 0 \u2014 Watson is starter; do not apply QB1 pos_base.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "on": true,
+        "impact": 0,
+        "impact_source": "manual"
       },
       {
         "name": "Kendrick Green",
         "pos": "OG",
         "status": "IR",
-        "note": "ir",
+        "note": "ir Explicit impact 0 \u2014 depth IR; no pos_base fallthrough.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "on": true,
+        "impact": 0,
+        "impact_source": "manual"
       }
     ],
     "DAL": [
@@ -1653,42 +1643,48 @@
     ],
     "PIT": [
       {
-        "name": "Jalen Ramsey",
+        "name": "Joey Porter Jr.",
         "pos": "CB1",
-        "status": "QUESTIONABLE",
-        "note": "Ramsey revealed Tuesday that he played through a broken right wrist during Sunday's 30-27 win over the Bengals, Nick Farabaugh of PennLive.com reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "status": "OUT",
+        "injury": "NIR/Conditioning/Back",
+        "note": "Official Wed FINAL Out \u2014 back flare-up after FP Mon/Tue; 4th straight miss. Manual 0.45 (CB1 return scrubbed).",
+        "source": "https://www.steelers.com/team/injury-report/",
+        "on": true,
+        "impact": 0.45,
+        "impact_source": "manual"
+      },
+      {
+        "name": "Rico Dowdle",
+        "pos": "RB1",
+        "status": "OUT",
+        "injury": "Toe",
+        "note": "Official Wed FINAL Out \u2014 DNP all week; 2nd straight miss. Warren healthy.",
+        "source": "https://www.steelers.com/team/injury-report/",
         "on": true,
         "impact": 0.25,
         "impact_source": "madden"
       },
       {
-        "name": "Rico Dowdle",
-        "pos": "RB1",
+        "name": "Jalen Ramsey",
+        "pos": "CB1",
         "status": "QUESTIONABLE",
-        "note": "Dowdle (toe) was estimated as a non-participant on Tuesday's injury report, Nick Farabaugh of PennLive.com reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "injury": "Wrist",
+        "note": "Official Wed FINAL Q \u2014 broken wrist (played Sun); LP all week. Expected-impact ON; manual full-out 0.5 elite.",
+        "source": "https://www.steelers.com/team/injury-report/",
         "on": true,
-        "impact": 0.25,
-        "impact_source": "madden"
+        "impact": 0.5,
+        "impact_source": "manual"
       },
       {
         "name": "Brandin Echols",
         "pos": "CB1",
         "status": "QUESTIONABLE",
-        "note": "Echols (concussion) was listed as a limited participant in Monday's practice estimate.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.25,
+        "injury": "Concussion",
+        "note": "Official Wed FINAL Q \u2014 cleared concussion protocol (Steelers PR) but still Q; expected to play \u2192 OFF number.",
+        "source": "https://www.steelers.com/team/injury-report/",
+        "on": false,
+        "impact": 0.2,
         "impact_source": "pff"
-      },
-      {
-        "name": "Gennings Dunker",
-        "pos": "OG",
-        "status": "IR",
-        "note": "The Steelers placed Dunker (knee) on injured reserve Saturday, Tom Pelissero of Netflix reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
       },
       {
         "name": "DeShon Elliott",
@@ -1699,6 +1695,16 @@
         "on": true,
         "impact": 0.2,
         "impact_source": "madden"
+      },
+      {
+        "name": "Gennings Dunker",
+        "pos": "OG",
+        "status": "IR",
+        "note": "The Steelers placed Dunker (knee) on injured reserve Saturday, Tom Pelissero of Netflix reports. Explicit impact 0 \u2014 depth IR; no pos_base fallthrough.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0,
+        "impact_source": "manual"
       }
     ],
     "SEA": [
@@ -2062,5 +2068,5 @@
       }
     ]
   },
-  "stamp": "2026-09-30a"
+  "stamp": "2026-09-30b"
 }
