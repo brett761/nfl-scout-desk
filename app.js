@@ -3975,22 +3975,76 @@ function injurySelectOptions(keys, selected) {
   return list.map((k) => `<option value="${esc(k)}"${k === selected ? " selected" : ""}>${esc(k)}</option>`).join("");
 }
 
+/* Empty impact is not stored. Points already fall back to the position base.
+   Show that number and mark it auto. Do not write it back onto the row. */
+function injuryImpactView(row) {
+  const stored = row && row.impact != null && row.impact !== "" ? num(row.impact) : null;
+  if (stored != null) {
+    const src = row.impact_source ? String(row.impact_source) : "";
+    return {
+      value: String(stored),
+      auto: false,
+      title: src ? `Full-Out impact · ${src}` : "Full-Out impact (surplus vs replacement)",
+      cap: "Impact",
+    };
+  }
+  if (row && row.impact_source === "manual") {
+    return {
+      value: "",
+      auto: false,
+      title: "Full-Out impact · manual",
+      cap: "Impact",
+    };
+  }
+  const base = injuryPosBase(row && row.pos);
+  return {
+    value: base != null ? String(base) : "",
+    auto: true,
+      title: "Auto from the position base. No saved impact. Points use this full-out value. Type a number to override.",
+      cap: "Auto",
+  };
+}
+
+function paintInjImpact(rowEl, row) {
+  if (!rowEl || !row) return;
+  const view = injuryImpactView(row);
+  const cell = rowEl.querySelector(".inj-impact");
+  const impInp = rowEl.querySelector("[data-inj-impact]");
+  if (cell) cell.dataset.cap = view.cap;
+  if (!impInp) return;
+  impInp.value = view.value;
+  impInp.title = view.title;
+  impInp.placeholder = view.auto ? "auto" : "";
+  impInp.classList.toggle("is-auto", view.auto);
+  impInp.setAttribute("aria-label", view.auto ? "Impact, auto" : "Impact");
+}
+
 function injRowHtml(row) {
   const posOpts = injurySelectOptions(injuryPosKeys(), row.pos);
   const stOpts = injurySelectOptions(injuryStatusKeys(), row.status);
-  const impactVal = row.impact != null && row.impact !== "" ? esc(row.impact) : "";
-  const srcHint = row.impact_source ? String(row.impact_source) : "";
-  const impactTitle = srcHint
-    ? `Full-Out impact · ${srcHint}`
-    : "Full-Out impact (surplus vs replacement)";
+  const view = injuryImpactView(row);
   return `<div class="inj-row" data-inj="${esc(row.id)}">
-      <input type="text" data-inj-name="${esc(row.id)}" value="${esc(row.name)}" placeholder="Name" autocomplete="off">
-      <select data-inj-pos="${esc(row.id)}" aria-label="Position">${posOpts}</select>
-      <select data-inj-status="${esc(row.id)}" aria-label="Status">${stOpts}</select>
-      <input type="number" class="mono" step="0.01" min="0" data-inj-impact="${esc(row.id)}" value="${impactVal}" placeholder="imp" title="${esc(impactTitle)}" aria-label="Impact">
-      <input type="number" class="mono" step="0.01" data-inj-pts="${esc(row.id)}" value="${esc(row.pts)}" aria-label="Injury points">
-      <input type="checkbox" class="ctx-on" data-inj-on="${esc(row.id)}" ${row.on ? "checked" : ""} aria-label="Injury on">
-      <button type="button" class="ctx-del" data-inj-del="${esc(row.id)}" aria-label="Delete injury">×</button>
+      <label class="inj-cell inj-name" data-cap="Player">
+        <input type="text" data-inj-name="${esc(row.id)}" value="${esc(row.name)}" placeholder="Name" autocomplete="off" aria-label="Player">
+      </label>
+      <label class="inj-cell inj-pos" data-cap="Pos">
+        <select data-inj-pos="${esc(row.id)}" aria-label="Position">${posOpts}</select>
+      </label>
+      <label class="inj-cell inj-status" data-cap="Status">
+        <select data-inj-status="${esc(row.id)}" aria-label="Status">${stOpts}</select>
+      </label>
+      <label class="inj-cell inj-impact" data-cap="${esc(view.cap)}">
+        <input type="number" class="mono${view.auto ? " is-auto" : ""}" step="0.01" min="0" data-inj-impact="${esc(row.id)}" value="${esc(view.value)}" placeholder="${view.auto ? "auto" : ""}" title="${esc(view.title)}" aria-label="${view.auto ? "Impact, auto" : "Impact"}">
+      </label>
+      <label class="inj-cell inj-pts" data-cap="Pts">
+        <input type="number" class="mono" step="0.01" data-inj-pts="${esc(row.id)}" value="${esc(row.pts)}" aria-label="Injury points">
+      </label>
+      <label class="inj-cell inj-on" data-cap="On">
+        <input type="checkbox" class="ctx-on" data-inj-on="${esc(row.id)}" ${row.on ? "checked" : ""} aria-label="Injury on">
+      </label>
+      <span class="inj-cell inj-del" data-cap="Del">
+        <button type="button" class="ctx-del" data-inj-del="${esc(row.id)}" aria-label="Delete injury">×</button>
+      </span>
     </div>`;
 }
 
@@ -4024,8 +4078,8 @@ function renderTeamSheet() {
     </div>`;
   const ctxRows = (p.context || []).map((c) => `
     <div class="ctx-row" data-ctx="${esc(c.id)}">
-      <input type="text" data-ctx-text="${esc(c.id)}" value="${esc(c.text)}" placeholder="QB questionable −1.5">
-      <input type="number" class="mono" step="0.5" data-ctx-pts="${esc(c.id)}" value="${esc(c.pts)}">
+      <input type="text" data-ctx-text="${esc(c.id)}" value="${esc(c.text)}" placeholder="QB questionable −1.5" aria-label="Context">
+      <input type="number" class="mono" step="0.5" data-ctx-pts="${esc(c.id)}" value="${esc(c.pts)}" aria-label="Context points">
       <input type="checkbox" class="ctx-on" data-ctx-on="${esc(c.id)}" ${c.on ? "checked" : ""} aria-label="Context on">
       <button type="button" class="ctx-del" data-ctx-del="${esc(c.id)}" aria-label="Delete context">×</button>
     </div>`).join("");
@@ -6842,14 +6896,8 @@ function bind() {
         if (row.impact == null && prevImp != null && !prevSrc) row.impact = prevImp;
         row.pts = injuryRowPts(row.pos, row.status, row.impact, { name: row.name, manual: false });
         const rowEl = e.target.closest(".inj-row");
-        const impInp = rowEl && rowEl.querySelector("[data-inj-impact]");
         const ptsInp = rowEl && rowEl.querySelector("[data-inj-pts]");
-        if (impInp) {
-          impInp.value = row.impact != null ? row.impact : "";
-          impInp.title = row.impact_source
-            ? `Full-Out impact · ${row.impact_source}`
-            : "Full-Out impact (surplus vs replacement)";
-        }
+        paintInjImpact(rowEl, row);
         if (ptsInp) ptsInp.value = row.pts;
         setProfile(profileAbbr, p);
         refreshTeamDerived();
@@ -6871,7 +6919,12 @@ function bind() {
       const rowEl = e.target.closest(".inj-row");
       const ptsInp = rowEl && rowEl.querySelector("[data-inj-pts]");
       if (ptsInp) ptsInp.value = row.pts;
+      injImpact.classList.remove("is-auto");
+      injImpact.placeholder = "";
       injImpact.title = "Full-Out impact · manual";
+      injImpact.setAttribute("aria-label", "Impact");
+      const impactCell = rowEl && rowEl.querySelector(".inj-impact");
+      if (impactCell) impactCell.dataset.cap = "Impact";
       setProfile(profileAbbr, p);
       refreshTeamDerived();
       return;
@@ -6927,14 +6980,8 @@ function bind() {
         }
         const rowEl = e.target.closest(".inj-row");
         const ptsInp = rowEl && rowEl.querySelector("[data-inj-pts]");
-        const impInp = rowEl && rowEl.querySelector("[data-inj-impact]");
         if (ptsInp) ptsInp.value = row.pts;
-        if (impInp && injPos && row.impact_source !== "manual") {
-          impInp.value = row.impact != null ? row.impact : "";
-          impInp.title = row.impact_source
-            ? `Full-Out impact · ${row.impact_source}`
-            : "Full-Out impact (surplus vs replacement)";
-        }
+        if (injPos && row.impact_source !== "manual") paintInjImpact(rowEl, row);
       }
       setProfile(profileAbbr, p);
       refreshTeamDerived();
