@@ -274,6 +274,151 @@
     </tr>`;
   }
 
+  let bookRows = [];
+  let bookNote = "";
+
+  function formatPts(n) {
+    if (n == null || !Number.isFinite(Number(n))) return "—";
+    const r = Math.round(Number(n) * 1000) / 1000;
+    const body = String(Math.abs(r));
+    if (r > 0) return "+" + body;
+    if (r < 0) return "−" + body;
+    return "0";
+  }
+
+  function pctText(pct) {
+    return pct == null ? "" : " · " + pct + "%";
+  }
+
+  function pendingText(rec) {
+    return rec && rec.pending ? " · " + rec.pending + " pending" : "";
+  }
+
+  function bookFilters() {
+    return {
+      season: val("history-season"),
+      week: val("history-week"),
+      team: val("history-team"),
+    };
+  }
+
+  function visibleBookRows() {
+    const f = bookFilters();
+    return bookRows.filter((row) => {
+      if (f.season && String(row.season) !== String(f.season)) return false;
+      if (f.week && String(row.week) !== String(f.week)) return false;
+      if (f.team && row.away !== f.team && row.home !== f.team && row.team !== f.team) return false;
+      return row.kind === "spread" || row.side === "dog";
+    });
+  }
+
+  function splitList(title, lines) {
+    return `<section><h3>${esc(title)}</h3><ul>${lines.join("")}</ul></section>`;
+  }
+
+  function splitItem(label, rec) {
+    return `<li><span>${esc(label)}</span><strong>${esc(rec.text)}${esc(pctText(rec.pct))}${esc(pendingText(rec))}</strong></li>`;
+  }
+
+  function paintBook() {
+    const sum = document.getElementById("history-book-summary");
+    const groups = document.getElementById("history-book-groups");
+    const list = document.getElementById("history-book-list");
+    const empty = document.getElementById("history-book-empty");
+    if (!sum || !list) return;
+    if (!window.BMBBook || !bookRows.length) {
+      sum.innerHTML = "";
+      if (groups) groups.innerHTML = "";
+      list.innerHTML = "";
+      if (empty) {
+        empty.hidden = false;
+        empty.textContent = bookNote || "The ticket book is loading.";
+      }
+      return;
+    }
+    const rows = visibleBookRows();
+    const roll = window.BMBBook.rollup(rows.filter((row) => row.kind === "spread" || row.side === "dog"));
+    const season = roll.season;
+    const clv = roll.clv;
+    const upset = roll.upset;
+    const clvAvg = clv.avg == null ? "—" : formatPts(clv.avg);
+    const beat = clv.n ? clv.beat + " of " + clv.n : "—";
+    const beatPct = clv.beatPct == null ? "" : " · " + clv.beatPct + "%";
+    sum.innerHTML = `<div><strong>${esc(season.text)}</strong><span>ATS ${season.pct == null ? "—" : season.pct + "%"}${esc(pendingText(season))}</span></div>
+      <div><strong>${esc(clvAvg)}</strong><span>Avg CLV · beat close ${esc(beat)}${esc(beatPct)}</span></div>
+      <div><strong>${esc(String(clv.crossed[3]))} / ${esc(String(clv.crossed[7]))}</strong><span>Crossed 3 / crossed 7</span></div>
+      <div><strong>${esc(upset.covered.text)}</strong><span>Dogs covered${upset.covered.pct == null ? "" : " · " + upset.covered.pct + "%"}</span></div>
+      <div><strong>${esc(String(upset.outrightWins))} of ${esc(String(upset.outrightKnown))}</strong><span>Dogs won outright</span></div>`;
+    if (groups) {
+      const weeks = roll.byWeek.map((rec) => splitItem("Week " + rec.week, rec));
+      const sides = [
+        splitItem("Favorite", roll.bySide.fav),
+        splitItem("Dog", roll.bySide.dog),
+        splitItem("Pick’em", roll.bySide.pk),
+        splitItem("Home", roll.bySide.home),
+        splitItem("Away", roll.bySide.away),
+      ];
+      const units = roll.byUnits.map((rec) => splitItem(rec.label, rec));
+      groups.innerHTML = splitList("By week", weeks) + splitList("By side", sides) + splitList("By units", units);
+    }
+    if (empty) {
+      empty.hidden = rows.length > 0;
+      if (!rows.length) empty.textContent = "No spread tickets in this filter.";
+    }
+    list.innerHTML = rows.map((row) => {
+      const res = row.kind === "ml"
+        ? (row.outright === "W" || row.outright === "L" || row.outright === "P" ? "SU " + row.outright : "Pending")
+        : (row.result === "PENDING" ? "Pending" : row.result);
+      const resClass = (row.kind === "spread" ? row.result : row.outright) === "W" ? "profit-up" : (row.kind === "spread" ? row.result : row.outright) === "L" ? "profit-down" : "";
+      const key = row.keys && row.keys.length ? `<span class="book-key">crossed ${esc(row.keys.join(" · "))}</span>` : "";
+      const outright = row.side === "dog" && row.outright === "W" ? `<span class="book-key">outright</span>` : "";
+      return `<button type="button" class="book-row" data-ticket="${esc(row.id)}">
+        <span class="book-wk">W${esc(row.week)}</span>
+        <span class="book-main"><span class="book-game">${esc(row.game)}</span><span class="book-pick">${esc(row.pick)}</span></span>
+        <span class="book-extra">${row.kind === "spread" ? "CLV " + esc(formatPts(row.clv)) : "Moneyline"}${key}${outright}</span>
+        <span class="book-res ${resClass}">${esc(res)}</span>
+      </button>`;
+    }).join("");
+  }
+
+  function openHistory(id) {
+    const row = bookRows.find((r) => r.id === id);
+    const sheet = document.getElementById("history-sheet");
+    const body = document.getElementById("history-sheet-body");
+    const title = document.getElementById("history-sheet-title");
+    if (!row || !sheet || !body) return;
+    if (title) title.textContent = row.game;
+    const side = row.side === "dog" ? "Dog" : row.side === "fav" ? "Favorite" : row.side === "pk" ? "Pick’em" : "—";
+    const where = row.where === "home" ? "Home" : "Away";
+    const units = row.units == null ? "unset" : String(row.units) + "u";
+    const outright = row.side !== "dog" ? "—" : row.outright === "W" ? "Won outright" : row.outright === "L" ? "Lost outright" : row.outright === "P" ? "Tied" : "No final score";
+    const ats = row.kind === "spread" ? (row.result === "PENDING" ? "Pending" : row.result) : "—";
+    const keys = row.keys && row.keys.length ? "Crossed " + row.keys.join(" and ") : "No 3 or 7";
+    const src = row.closeSource ? String(row.closeSource).split("/").pop() : "—";
+    body.innerHTML = `<dl class="book-sheet">
+      <div><dt>Pick</dt><dd>${esc(row.pick)}</dd></div>
+      <div><dt>Line taken</dt><dd>${row.line == null ? "—" : esc(formatPts(row.line))}</dd></div>
+      <div><dt>Close</dt><dd>${row.close == null ? "—" : esc(formatPts(row.close))}</dd></div>
+      <div><dt>CLV</dt><dd>${esc(formatPts(row.clv))}</dd></div>
+      <div><dt>Key numbers</dt><dd>${esc(keys)}</dd></div>
+      <div><dt>ATS</dt><dd>${esc(ats)}</dd></div>
+      <div><dt>Side</dt><dd>${esc(side)} · ${esc(where)} · ${esc(units)}</dd></div>
+      <div><dt>Outright</dt><dd>${esc(outright)}</dd></div>
+      <div><dt>Close file</dt><dd>${esc(src)}</dd></div>
+    </dl>`;
+    sheet.hidden = false;
+    const overlay = document.getElementById("overlay");
+    if (overlay) overlay.hidden = false;
+    const closer = document.getElementById("history-sheet-close");
+    if (closer) closer.focus();
+  }
+
+  function closeHistory() {
+    const sheet = document.getElementById("history-sheet");
+    if (sheet) sheet.hidden = true;
+    if (typeof hideOverlayIfIdle === "function") hideOverlayIfIdle();
+  }
+
   function ensureHistory() {
     const root = document.getElementById("history-root");
     if (!root || root.dataset.ready) return;
@@ -285,12 +430,31 @@
         <label class="sort-field"><span>Game</span><select id="history-game" aria-label="Game"></select></label>
         <label class="sort-field"><span>Version</span><select id="history-version" aria-label="Model version"></select></label>
       </div>
+      <section class="book-panel" id="history-book" aria-labelledby="history-book-title">
+        <h2 id="history-book-title">Against the number</h2>
+        <p class="prior-note">Spread tickets already on the ledger, graded at the line taken. Pending stays pending. The close is the closes file, then the line history, then the pre-kick lock. A dog’s outright win is marked only from the final score.</p>
+        <div class="record-summary" id="history-book-summary"></div>
+        <div class="book-groups" id="history-book-groups"></div>
+        <div class="book-list" id="history-book-list"></div>
+        <p class="table-empty" id="history-book-empty" hidden>No spread tickets in this filter.</p>
+      </section>
+      <h2 class="book-published-title">Published B Line</h2>
       <p class="hash-warn" id="history-hash-warn" hidden></p>
       <div id="history-summary"></div>
       <div class="table-wrap"><table class="ledger record-table"><thead>${tableHead(true)}</thead><tbody id="history-body"></tbody></table></div>
       <p class="table-empty" id="history-empty" hidden>No final games in this filter.</p>
-      <p class="prior-note">Open is the first logged market line. Close is the post-final closes file when we have one, otherwise the pre-kick lock. The B Line is the frozen publication. Flagged rows were not a clean pre-kick compute and stay off the record above. ATS is the side that number liked against the close. It is not a ticket.</p>`;
+      <p class="prior-note">Open is the first logged market line. Close is the post-final closes file when we have one, otherwise the pre-kick lock. The B Line is the frozen publication. Flagged rows were not a clean pre-kick compute and stay off the record above. ATS on that table is the side the B Line liked against the close. It is not a ticket.</p>`;
     wireFilters("history", paintHistory);
+    root.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-ticket]");
+      if (!btn) return;
+      openHistory(btn.getAttribute("data-ticket"));
+    });
+    const closer = document.getElementById("history-sheet-close");
+    if (closer && !closer.dataset.bound) {
+      closer.dataset.bound = "1";
+      closer.addEventListener("click", closeHistory);
+    }
   }
 
   function ensureOutcomes() {
@@ -331,6 +495,14 @@
       if (!seen.g.has(row.game_id)) { seen.g.add(row.game_id); games.push(row.game_id); }
       if (row.model_version && !seen.v.has(row.model_version)) { seen.v.add(row.model_version); versions.push(row.model_version); }
     }
+    for (const row of bookRows) {
+      if (!seen.s.has(row.season)) { seen.s.add(row.season); seasons.push(row.season); }
+      if (!seen.w.has(row.week)) { seen.w.add(row.week); weeks.push(row.week); }
+      for (const t of [row.away, row.home]) {
+        if (!seenT.has(t)) { seenT.add(t); teams.push(t); }
+      }
+    }
+    teams.sort();
     weeks.sort((a, b) => a - b);
     games.sort();
     const opt = (list, label) => `<option value="">${label}</option>` + list.map((v) => `<option value="${esc(v)}">${esc(v)}</option>`).join("");
@@ -353,6 +525,7 @@
     if (sum) sum.innerHTML = summaryHtml(rows, true);
     if (body) body.innerHTML = rows.map((row) => rowHtml(row, true)).join("");
     if (empty) empty.hidden = rows.length > 0;
+    paintBook();
     if (warn) {
       warn.hidden = !hashWarn && !remoteNote;
       warn.textContent = [hashWarn, remoteNote].filter(Boolean).join(" ");
@@ -743,12 +916,74 @@
     }
   }
 
-  window.BMBLedger = { show, render: renderSurfaces };
+  async function loadBook() {
+    if (!window.BMBBook || typeof window.BMBBook.gradeBook !== "function") return;
+    try {
+      const get = async (rel) => {
+        const res = await fetch("./" + rel);
+        if (!res.ok) return null;
+        return res.json();
+      };
+      const ticketsFile = await get("data/tickets-2026.json?v=w4tix0929");
+      const nfl = await get("data/nfl-2026.json?v=book0930");
+      const lineHistory = await get("data/lines/line-history-2026.json?v=book0930");
+      const closes = [];
+      for (const rel of ["data/closes/2026-w01.json", "data/closes/2026-w02.json"]) {
+        const file = await get(rel);
+        if (file) {
+          file.__source = rel;
+          closes.push(file);
+        }
+      }
+      const lockPaths = new Set();
+      for (const g of (lineHistory && lineHistory.games) || []) {
+        for (const s of g.snapshots || []) {
+          const src = String(s.source || "").split("#")[0];
+          if (src.indexOf("data/postmortem/locks/") === 0 && src.endsWith(".json")) lockPaths.add(src);
+        }
+      }
+      const locks = [];
+      await Promise.all([...lockPaths].map(async (rel) => {
+        const row = await get(rel);
+        if (row) {
+          row.__source = rel;
+          locks.push(row);
+        }
+      }));
+      const graded = window.BMBBook.gradeBook({
+        tickets: ticketsFile && ticketsFile.tickets,
+        games: nfl && nfl.games,
+        closes,
+        lineHistory,
+        locks,
+      });
+      bookRows = graded.rows;
+      bookNote = "";
+      renderSurfaces();
+    } catch (err) {
+      console.warn("ticket book", err);
+      bookNote = "The ticket book did not load.";
+      paintBook();
+    }
+  }
+
+  function startBook() {
+    if (window.BMBBook) loadBook();
+    else window.addEventListener("bmb-book", function onBook() { loadBook(); }, { once: true });
+  }
+
+  window.BMBLedger = { show, render: renderSurfaces, closeHistory, openHistory };
+
+  startBook();
 
   loadFile().catch((err) => {
     console.warn("published finals", err);
-    const history = document.getElementById("history-root");
-    if (history) history.textContent = "The published record did not load.";
+    ensureHistory();
+    const empty = document.getElementById("history-empty");
+    if (empty) {
+      empty.hidden = false;
+      empty.textContent = "The published record did not load.";
+    }
   });
 
   if (window.BMB && typeof window.BMB.syncPublic === "function") window.BMB.syncPublic();

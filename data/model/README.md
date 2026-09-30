@@ -1,0 +1,36 @@
+# Published B$ line history
+
+`bs-line-history-2026.json` is the append-only record of every published B$ line. A correction is a new version. An existing version is never edited and never deleted.
+
+Each version has a game id, week, version number, `published_at`, source, commit, the B$ line, the market spread and total at that moment, and a `supersedes` pointer. Spreads are home-centric. Negative means the home team is favored.
+
+Backfilled rows are marked `backfilled: true`. The timestamp is the best one on the lock (`frozen_at`), otherwise the commit time. Week 4 has no lock file yet, so that version is the desk `ourHomeSpread` from `data/site_parity_harness.mjs` at backfill, with the latest street snapshot from `data/lines/line-history-2026.json`.
+
+Weeks 1–3 come from git history of `data/postmortem/locks/`. When a lock stores `model_home_spread_corrected` and it differs from the frozen number, that correction is the next version. The market is the line-history snapshot at or before `published_at`, then the number on the lock, then `data/nfl-2026.json` at that commit.
+
+Street open, mid, and close ticks stay in `data/lines/line-history-2026.json`. This file does not copy every midweek move.
+
+## Append
+
+After a new publish, or when the desk line or the street has moved:
+
+```bash
+node data/model/append_model_snapshot.mjs --week 4
+```
+
+The same B$ line and the same market spread and total are skipped. A change is version N+1. The script throws if it would modify or delete a version already in the file.
+
+Rebuild the backfill only against an empty file. Once versions exist, `--backfill` refuses to rewrite them:
+
+```bash
+node data/model/append_model_snapshot.mjs --backfill
+```
+
+## Check
+
+Fails if any version that was in the previous commit was edited or deleted. A newly appended version is allowed. Also checks that version numbers run 1..n and `supersedes` points at the previous version.
+
+```bash
+node data/model/check_model_history.mjs
+node data/model/check_model_history.mjs --self-test
+```

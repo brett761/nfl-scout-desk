@@ -44,6 +44,10 @@ node data/published/build_power_rankings.mjs
 
 Use the week you are rating. See `data/dvoa/README.md`. Street open, midweek, and close history is `data/lines/line-history-2026.json`. The daily refresh appends with `node data/lines/append_line_snapshot.mjs --tag mid --week 4`. See `data/lines/README.md`.
 
+Published B$ lines are append-only in `data/model/bs-line-history-2026.json`. A correction is a new version. `node data/model/append_model_snapshot.mjs --week 4` appends. `node data/model/check_model_history.mjs` fails if a published version was edited or deleted. See `data/model/README.md`.
+
+Bet History (signed in) grades the ticket ledger: ATS at the line taken, closing line value, and underdog calls. The one-line switch is `BET_HISTORY_PUBLIC` in `auth.js`. It stays false, so a signed-out visitor still sees only the public home.
+
 ## Tuesday power ranking
 
 Home reads `data/published/power-rankings.json`. It does not recompute the rating. After the Tuesday injury and YTD refresh:

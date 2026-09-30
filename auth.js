@@ -2,6 +2,9 @@
    Public keys are meant to ship in the browser. RLS and the admin-users
    function decide what a session can do. */
 (function () {
+  // Flip to true to show Bet History without sign-in. Signed-out visitors otherwise see only the public home.
+  const BET_HISTORY_PUBLIC = false;
+
   const SUPABASE_URL = "https://zajfiyviybclkrqyohdt.supabase.co";
   const SUPABASE_KEY = "sb_publishable_vP-xB4iF8WTWcJkDMm9A2w_koy7GSVX";
   const USER_DOMAIN = "users.bmoneybets.com";
@@ -108,6 +111,11 @@
 
   function syncPublicShell() {
     document.body.classList.remove("is-public");
+    const historyPublic = BET_HISTORY_PUBLIC && !document.body.classList.contains("is-authed");
+    document.body.classList.toggle("history-public", historyPublic);
+    if (historyPublic && window.BMBLedger && typeof window.BMBLedger.show === "function") {
+      window.BMBLedger.show("history");
+    }
     if (document.body.classList.contains("is-authed")) {
       closeSignInPop();
       return;
