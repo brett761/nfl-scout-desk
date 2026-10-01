@@ -1843,9 +1843,65 @@ function publishedRecordFor(game) {
   return publishedByPair[key] || null;
 }
 
-function deskHomeSpread(game) {
+let gameDayByEspn = {};
+let gameDayByPair = {};
+
+function indexGameDay(data) {
+  gameDayByEspn = {};
+  gameDayByPair = {};
+  const games = data && Array.isArray(data.games) ? data.games : [];
+  for (const g of games) {
+    let last = null;
+    for (const v of g.versions || []) {
+      if (!v || !String(v.source || "").startsWith("game-day site compute")) continue;
+      if (num(v.b_line) == null) continue;
+      if (!last || Number(v.version) >= Number(last.version)) last = v;
+    }
+    if (!last) continue;
+    const rec = { b_line: num(last.b_line), source: last.source, version: last.version };
+    if (g.espn_id) gameDayByEspn[String(g.espn_id)] = rec;
+    if (g.away && g.home) {
+      gameDayByPair[normAbbr(g.away) + "@" + normAbbr(g.home) + "|w" + Number(g.week)] = rec;
+    }
+  }
+}
+
+function gameDayVersionFor(game) {
+  if (!game) return null;
+  if (game.id && gameDayByEspn[String(game.id)]) return gameDayByEspn[String(game.id)];
+  const key = normAbbr(game.away) + "@" + normAbbr(game.home) + "|w" + Number(game.week);
+  return gameDayByPair[key] || null;
+}
+
+function gameIsFinished(game) {
+  if (publishedRecordFor(game)) return true;
+  return !!(game && String(game.status || "").toUpperCase() === "FINAL");
+}
+
+function gameDayDiffers(game) {
   const rec = publishedRecordFor(game);
-  if (rec) return num(rec.b_line_home_spread);
+  const gd = gameDayVersionFor(game);
+  if (!rec || !gd) return false;
+  const day = num(gd.b_line);
+  const pinned = num(rec.b_line_home_spread);
+  if (day == null || pinned == null) return false;
+  return Math.abs(day - pinned) >= 0.005;
+}
+
+function gameDayMarkHtml(game) {
+  if (!gameDayDiffers(game)) return "";
+  const rec = publishedRecordFor(game);
+  const pinned = formatOurLine(rec.b_line_home_spread, game.home, game.away);
+  return `<button type="button" class="gd-mark" aria-expanded="false" title="Pinned lock ${esc(pinned)}">game-day line<span class="gd-pin">Pinned lock ${esc(pinned)}</span></button>`;
+}
+
+function deskHomeSpread(game) {
+  if (gameIsFinished(game)) {
+    const gd = gameDayVersionFor(game);
+    if (gd && num(gd.b_line) != null) return num(gd.b_line);
+    const rec = publishedRecordFor(game);
+    if (rec) return num(rec.b_line_home_spread);
+  }
   return ourHomeSpread(game, hfa);
 }
 
@@ -4289,7 +4345,16 @@ function gameLeadCopy(game) {
   const marketHome = parsed.homeLine;
   const parts = [];
   if (ourH != null && Number.isFinite(ourH)) {
-    if (pub && pub.published_at) {
+    const day = gameDayVersionFor(game);
+    if (day && num(day.b_line) != null && gameIsFinished(game)) {
+      if (gameDayDiffers(game)) {
+        parts.push("The game-day B$ Line is " + ourLabel + ", the number the site showed at kickoff. The pinned lock was " + formatOurLine(pub.b_line_home_spread, game.home, game.away) + ".");
+      } else if (pub) {
+        parts.push("The game-day B$ Line is " + ourLabel + ". It matches the pinned lock.");
+      } else {
+        parts.push("The game-day B$ Line is " + ourLabel + ".");
+      }
+    } else if (pub && pub.published_at) {
       parts.push("The published B$ Line is " + ourLabel + ", frozen " + pub.published_at + ".");
     } else if (pub) {
       parts.push("The published B$ Line is " + ourLabel + ".");
@@ -4410,7 +4475,19 @@ function renderGameSheet() {
   const gap = diff + hfaUsed + coach + prep + ats + sched + matchup;
   const pubLine = publishedRecordFor(game);
   const ourLine = deskHomeSpread(game);
+  const dayLine = gameDayVersionFor(game);
+  const usingDay = !!(dayLine && num(dayLine.b_line) != null && gameIsFinished(game));
   const showPublished = !!(pubLine && ourLine != null && Number.isFinite(ourLine));
+  let bNote = "";
+  if (usingDay && gameDayDiffers(game)) {
+    bNote = "Game-day line. Pinned lock " + formatOurLine(pubLine.b_line_home_spread, home, away) + ".";
+  } else if (usingDay) {
+    bNote = "Game-day line" + (pubLine ? ". Same as the pinned lock." : ".");
+  } else if (showPublished) {
+    bNote = "Published " + (pubLine.published_at || "lock") + ". Not recomputed.";
+  } else if (!(ourLine != null && Number.isFinite(ourLine))) {
+    bNote = "ratings even · no number";
+  }
   const mkt = marketFor(game);
   const marketHome = mkt.parsed && mkt.parsed.homeLine;
   const edge = (ourLine != null && Number.isFinite(ourLine)) ? edgePts(ourLine, marketHome) : null;
@@ -4428,7 +4505,7 @@ function renderGameSheet() {
     { label: "+ travel / trap / rest", val: sched, note: schedSheetNote(game) },
     { label: "+ PFF matchup", val: matchup, note: matchupSheetNote(game) },
     { label: "Combined gap", val: gap, note: "add those up", sum: true },
-    { label: "B$ Line (flip the sign)", val: (ourLine != null && Number.isFinite(ourLine)) ? ourLine : 0, note: showPublished ? ("Published " + (pubLine.published_at || "lock") + ". Not recomputed.") : ((ourLine != null && Number.isFinite(ourLine)) ? "" : "ratings even · no number"), hideVal: !(ourLine != null && Number.isFinite(ourLine)) },
+    { label: "B$ Line (flip the sign)", val: (ourLine != null && Number.isFinite(ourLine)) ? ourLine : 0, note: bNote, hideVal: !(ourLine != null && Number.isFinite(ourLine)) },
   ];
   const stackHtml = stack.map((s) => `
     <div class="game-stack-row${s.sum ? " is-sum" : ""}">
@@ -4452,6 +4529,7 @@ function renderGameSheet() {
       <div class="game-stack-row">
         <span class="game-stack-label">B$ Line</span>
         <span class="game-stack-val mono">${esc(bLineVal)}</span>
+        ${gameDayMarkHtml(game)}
       </div>`;
   if (ourLine != null && Number.isFinite(ourLine)) {
     const side = edge != null && edge < 0 ? " · away" : edge != null && edge > 0 ? " · home" : "";
@@ -4490,7 +4568,7 @@ function renderGameSheet() {
 
   body.innerHTML = `
     <p class="game-sheet-lead">${esc(gameLeadCopy(game))}</p>
-    <p class="section-label">${pubLine ? "Today’s desk build · the B$ Line in the comparison is the frozen publication" : "How we built the number"}</p>
+    <p class="section-label">${usingDay ? "Today’s desk build · the B$ Line in the comparison is the game-day line" : pubLine ? "Today’s desk build · the B$ Line in the comparison is the frozen publication" : "How we built the number"}</p>
     <div class="table-wrap">
       <table class="game-club-table">
         <thead><tr><th></th><th>Away · ${esc(away)}</th><th>Home · ${esc(home)}</th></tr></thead>
@@ -5316,7 +5394,7 @@ function renderSchedule() {
           <div class="sked-line sked-our">
             <span class="lbl">B$ Line</span>
             <span class="val">${esc(ourHtml)}</span>
-            ${pubRow ? `<span class="when">${esc(pubRow.published_at || (pubRow.lock_quality === "null_line" ? "No pre-kick B Line" : "Frozen lock"))}</span>` : ""}
+            ${gameDayDiffers(g) ? gameDayMarkHtml(g) : (pubRow ? `<span class="when">${esc(pubRow.published_at || (pubRow.lock_quality === "null_line" ? "No pre-kick B Line" : "Frozen lock"))}</span>` : "")}
           </div>
         </div>
         <div class="sked-edge"><span class="lbl">Gap</span>${edgeHtml === "—" ? '<span class="val">—</span>' : edgeHtml}${coachChipHtml(g)}${prepChipHtml(g)}${atsChipHtml(g)}${matchupChipHtml(g)}</div>
@@ -6705,7 +6783,16 @@ function bind() {
   document.getElementById("hfa-minus").addEventListener("click", () => setHfa(hfa - 0.5));
   document.getElementById("hfa-plus").addEventListener("click", () => setHfa(hfa + 0.5));
 
+  document.addEventListener("click", (e) => {
+    const mark = e.target.closest(".gd-mark");
+    if (!mark) return;
+    e.preventDefault();
+    const open = mark.getAttribute("aria-expanded") === "true";
+    mark.setAttribute("aria-expanded", open ? "false" : "true");
+  });
+
   document.getElementById("sked-board").addEventListener("click", (e) => {
+    if (e.target.closest(".gd-mark")) return;
     if (e.target.closest("input, select, textarea, .sked-mkt, .sked-lines, .sked-line, .wx-strip, .hc-chip, .wx-chip, .sked-cover, .sked-our, .sked-edge")) {
       return;
     }
@@ -7055,7 +7142,7 @@ function bind() {
 
 async function loadModelAts() {
   try {
-    const res = await fetch("./data/model-ats-2026.json?v=mats2");
+    const res = await fetch("./data/model-ats-2026.json?v=gdline1001");
     if (!res.ok) throw new Error(String(res.status));
     const data = await res.json();
     if (!data || !Array.isArray(data.games)) throw new Error("bad model-ats");
@@ -7063,6 +7150,18 @@ async function loadModelAts() {
   } catch (err) {
     modelAtsData = null;
     console.warn("model-ats-2026.json", err);
+  }
+}
+
+async function loadGameDayLines() {
+  try {
+    const res = await fetch("./data/model/bs-line-history-2026.json?v=gdline1001");
+    if (!res.ok) throw new Error(String(res.status));
+    indexGameDay(await res.json());
+  } catch (err) {
+    gameDayByEspn = {};
+    gameDayByPair = {};
+    console.warn("game-day lines", err);
   }
 }
 
@@ -7104,6 +7203,7 @@ async function loadPowerRankings() {
 async function bootNfl() {
   await loadNfl();
   await loadPublishedLines();
+  await loadGameDayLines();
   await loadModelAts();
   await loadPowerRankings();
   applyDefaultCurrentWeek();

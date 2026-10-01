@@ -24,7 +24,7 @@ Week 3 closes are `lock.close_at_lock` (the pre-kick street on the freeze). Week
 
 The first run creates both. Later runs append a version only when the identity changes (line, publish time, quality, score, open, close). They never edit a pinned board row. Rebuilding with no new identity prints `unchanged` and does not touch the file.
 
-Each row has `content_sha256` over a canonical JSON form of the row (every key except the hash itself). The Games page, Bet Outcomes, and Bet History display these fields. A future model change does not move them.
+Each row has `content_sha256` over a canonical JSON form of the row (every key except the hash itself). The fingerprint stays on these pinned fields. Bet Outcomes, Bet History, and finished games on the Games page grade a separate game-day B$ line: the latest `bs-line-history` version whose source starts with `game-day site compute`, falling back to `b_line_home_spread` when there isn’t one. That overlay is not written into this file. A future model change does not move a pinned row.
 
 `replay` is the component points copied off that lock so the admin sandbox can adjust those stored points. Identity (no adjustment) matches `b_line_home_spread`. The sandbox does not call `ourHomeSpread`.
 
