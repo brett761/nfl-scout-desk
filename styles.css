@@ -3406,6 +3406,39 @@ body.is-viewer textarea:disabled {
 .pos-even { color: var(--slate); }
 .flag-note { color: var(--copper-hot); font-size: 12px; margin-top: 2px; }
 .hash-warn { color: var(--copper-hot); }
+.gd-mark {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 4px 8px;
+  border: 1px solid var(--copper);
+  background: var(--copper-faint);
+  color: var(--copper);
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.3;
+  cursor: pointer;
+  max-width: 100%;
+  text-align: left;
+}
+.gd-mark .gd-pin {
+  display: none;
+  margin-top: 4px;
+  color: var(--cloud);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  white-space: normal;
+}
+.gd-mark:hover .gd-pin,
+.gd-mark:focus-visible .gd-pin,
+.gd-mark[aria-expanded="true"] .gd-pin {
+  display: block;
+}
+.sked-our .gd-mark,
+.game-compare .gd-mark { margin-top: 6px; }
 .method-page h2 {
   font-family: var(--display);
   font-size: 28px;

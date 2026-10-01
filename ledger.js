@@ -1,8 +1,11 @@
 /* Bet Outcomes, public Bet History, Methodology routing, admin sandbox.
-   Numbers come from data/published/finals.json. This file does not recompute
-   a production B Line and does not write production tables. */
+   The pinned lock stays in data/published/finals.json and is never rewritten.
+   Finished games grade the latest game-day B$ line from bs-line-history when
+   that version is on file, and fall back to the pinned lock when it is not.
+   This file does not recompute a production B Line and does not write production tables. */
 (function () {
   const FILE = "./data/published/finals.json?v=w3pub0929";
+  const HISTORY = "./data/model/bs-line-history-2026.json?v=gdline1001";
   const EXP_KEY = "nflScout.experiments.v1";
 
   // REPLAY_START
@@ -74,8 +77,10 @@
   ];
 
   let board = [];
+  let gameDay = { byEspn: new Map(), byKey: new Map() };
   let hashWarn = "";
   let remoteNote = "";
+  let gameDayNote = "";
   let scales = {};
   let presetId = "production";
   let lastRun = null;
@@ -163,6 +168,106 @@
     return { ats: side === cover ? "W" : "L", ats_side: side === "home" ? row.home : row.away };
   }
 
+  function positionOf(bLine, close, homeScore, awayScore) {
+    if (bLine == null || close == null || homeScore == null || awayScore == null) return "unavailable";
+    const actual = homeScore - awayScore;
+    const modelErr = Math.abs(-bLine - actual);
+    const marketErr = Math.abs(-close - actual);
+    const diff = Math.round((modelErr - marketErr) * 100) / 100;
+    if (Math.abs(diff) < 0.05) return "even";
+    return diff < 0 ? "b_line" : "market";
+  }
+
+  function lineNum(v) {
+    if (v == null || v === "") return null;
+    const n = Number(v);
+    return Number.isFinite(n) ? n : null;
+  }
+
+  function linesDiffer(a, b) {
+    const x = lineNum(a);
+    const y = lineNum(b);
+    if (x == null || y == null) return false;
+    return Math.abs(x - y) >= 0.005;
+  }
+
+  function indexGameDay(data) {
+    const byEspn = new Map();
+    const byKey = new Map();
+    for (const g of (data && data.games) || []) {
+      let last = null;
+      for (const v of g.versions || []) {
+        if (!v || !String(v.source || "").startsWith("game-day site compute")) continue;
+        if (lineNum(v.b_line) == null) continue;
+        if (!last || Number(v.version) >= Number(last.version)) last = v;
+      }
+      if (!last) continue;
+      const rec = { b_line: lineNum(last.b_line), source: last.source, version: last.version };
+      if (g.espn_id) byEspn.set(String(g.espn_id), rec);
+      byKey.set(String(g.season) + "|" + String(g.week) + "|" + String(g.game_id), rec);
+    }
+    gameDay = { byEspn, byKey };
+  }
+
+  function gameDayForRow(row) {
+    if (!row) return null;
+    if (row.espn_id && gameDay.byEspn.has(String(row.espn_id))) return gameDay.byEspn.get(String(row.espn_id));
+    const key = String(row.season) + "|" + String(row.week) + "|" + String(row.game_id);
+    return gameDay.byKey.get(key) || null;
+  }
+
+  function stampGrade(row) {
+    if (!row || row._graded) return;
+    const gd = gameDayForRow(row);
+    const pinned = lineNum(row.b_line_home_spread);
+    const graded = gd ? gd.b_line : pinned;
+    const g = atsGrade(graded, row.close_home_spread, row);
+    row.pinned_b_line = row.b_line_home_spread;
+    row.pinned_ats = row.ats;
+    row.pinned_position = row.position;
+    row.graded_b_line = graded;
+    row.graded_source = gd ? gd.source : null;
+    row.game_day_version = gd ? gd.version : null;
+    row.graded_ats = g.ats;
+    row.graded_ats_side = g.ats_side;
+    row.graded_position = positionOf(graded, row.close_home_spread, row.home_score, row.away_score);
+    row._graded = true;
+  }
+
+  function shownLine(row) {
+    return row._graded ? row.graded_b_line : row.b_line_home_spread;
+  }
+
+  function shownAts(row) {
+    return row._graded ? row.graded_ats : row.ats;
+  }
+
+  function shownSide(row) {
+    return row._graded ? row.graded_ats_side : row.ats_side;
+  }
+
+  function shownPos(row) {
+    return row._graded ? row.graded_position : row.position;
+  }
+
+  function pinnedLineOf(row) {
+    if (row.b_line_home_spread != null && row.b_line_home_spread !== "") return row.b_line_home_spread;
+    if (row.pinned_b_line != null) return row.pinned_b_line;
+    return null;
+  }
+
+  function pinnedAtsOf(row) {
+    if (row.ats != null && row.ats !== "") return row.ats;
+    if (row.pinned_ats != null) return row.pinned_ats;
+    return "unavailable";
+  }
+
+  function gameDayMark(row) {
+    if (!linesDiffer(shownLine(row), row.b_line_home_spread)) return "";
+    const pinned = fmtLine(row.b_line_home_spread, row.home, row.away);
+    return `<button type="button" class="gd-mark" aria-expanded="false" title="Pinned lock ${esc(pinned)}">game-day line<span class="gd-pin">Pinned lock ${esc(pinned)}</span></button>`;
+  }
+
   function rank(ats) {
     if (ats === "W") return 2;
     if (ats === "P") return 1;
@@ -231,12 +336,14 @@
   }
 
   function summaryHtml(rows, withAts) {
-    const official = rows.filter((r) => r.lock_quality === "official" && r.b_line_home_spread != null);
+    const official = rows.filter((r) => r.lock_quality === "official" && shownLine(r) != null);
     const pos = { b_line: 0, market: 0, even: 0 };
     const grade = { W: 0, L: 0, P: 0 };
     for (const row of official) {
-      if (pos[row.position] != null) pos[row.position] += 1;
-      if (grade[row.ats] != null) grade[row.ats] += 1;
+      const position = shownPos(row);
+      const ats = shownAts(row);
+      if (pos[position] != null) pos[position] += 1;
+      if (grade[ats] != null) grade[ats] += 1;
     }
     const decided = grade.W + grade.L;
     const pct = decided ? Math.round((1000 * grade.W) / decided) / 10 : 0;
@@ -256,14 +363,14 @@
     const when = row.published_at || (flag ? "No publish time on the lock" : "—");
     return `<tr>
       <td class="num">${esc(row.week)}</td>
-      <td>${esc(row.away)} @ ${esc(row.home)}${flag ? `<div class="flag-note">${esc(flag)}</div>` : ""}</td>
+      <td>${esc(row.away)} @ ${esc(row.home)}${flag ? `<div class="flag-note">${esc(flag)}</div>` : ""}${gameDayMark(row)}</td>
       <td class="num">${esc(fmtLine(row.open_home_spread, row.home, row.away))}</td>
       <td class="num">${esc(fmtLine(row.close_home_spread, row.home, row.away))}</td>
-      <td class="num">${esc(fmtLine(row.b_line_home_spread, row.home, row.away))}</td>
+      <td class="num">${esc(fmtLine(shownLine(row), row.home, row.away))}</td>
       <td class="num">${esc(fmtScore(row))}</td>
-      <td><span class="pos-pill ${positionClass(row.position)}">${esc(positionLabel(row.position))}</span></td>
+      <td><span class="pos-pill ${positionClass(shownPos(row))}">${esc(positionLabel(shownPos(row)))}</span></td>
       <td>${esc(when)}</td>
-      ${withAts ? `<td class="num">${esc(row.ats === "unavailable" ? "—" : row.ats)}${row.ats_side ? " " + esc(row.ats_side) : ""}</td>` : ""}
+      ${withAts ? `<td class="num">${esc(shownAts(row) === "unavailable" ? "—" : shownAts(row))}${shownSide(row) ? " " + esc(shownSide(row)) : ""}</td>` : ""}
     </tr>`;
   }
 
@@ -443,7 +550,7 @@
       <div id="history-summary"></div>
       <div class="table-wrap"><table class="ledger record-table"><thead>${tableHead(true)}</thead><tbody id="history-body"></tbody></table></div>
       <p class="table-empty" id="history-empty" hidden>No final games in this filter.</p>
-      <p class="prior-note">Open is the first logged market line. Close is the post-final closes file when we have one, otherwise the pre-kick lock. The B Line is the frozen publication. Flagged rows were not a clean pre-kick compute and stay off the record above. ATS on that table is the side the B Line liked against the close. It is not a ticket.</p>`;
+      <p class="prior-note">Open is the first logged market line. Close is the post-final closes file when we have one, otherwise the pre-kick lock. The B Line is the game-day number the site showed at kickoff when that version is on file, otherwise the pinned lock. A game-day line mark means it differs from the lock. Tap it for the pinned number. Flagged rows stay off the record above. ATS on that table is the side that B Line liked against the same close. It is not a ticket.</p>`;
     wireFilters("history", paintHistory);
     root.addEventListener("click", (e) => {
       const btn = e.target.closest("[data-ticket]");
@@ -471,7 +578,7 @@
       <div id="outcomes-summary"></div>
       <div class="table-wrap"><table class="ledger record-table"><thead>${tableHead(false)}</thead><tbody id="outcomes-body"></tbody></table></div>
       <p class="table-empty" id="outcomes-empty" hidden>No final games in this filter.</p>
-      <p class="prior-note">Same frozen rows as the public Bet History. A later model does not move these lines.</p>`;
+      <p class="prior-note">The B Line is the game-day number the site showed at kickoff when that version is on file. Otherwise it is the pinned lock. A game-day line mark means the two differ. Tap it for the pinned number. The lock is not rewritten, and a later model does not move it.</p>`;
     wireFilters("outcomes", paintOutcomes);
   }
 
@@ -528,7 +635,7 @@
     paintBook();
     if (warn) {
       warn.hidden = !hashWarn && !remoteNote;
-      warn.textContent = [hashWarn, remoteNote].filter(Boolean).join(" ");
+      warn.textContent = [hashWarn, remoteNote, gameDayNote].filter(Boolean).join(" ");
     }
   }
 
@@ -555,7 +662,9 @@
     const games = [];
     let withheld = 0;
     for (const row of rows) {
-      if (row.b_line_home_spread == null || !row.replay || row.replay.ok !== true) {
+      const production = pinnedLineOf(row);
+      const productionAts = pinnedAtsOf(row);
+      if (production == null || !row.replay || row.replay.ok !== true) {
         withheld += 1;
         games.push({
           game_id: row.game_id,
@@ -567,11 +676,12 @@
           home_score: row.home_score,
           open_home_spread: row.open_home_spread,
           close_home_spread: row.close_home_spread,
-          production: row.b_line_home_spread,
+          production,
           experimental: null,
           diff: null,
-          production_ats: row.ats,
+          production_ats: productionAts,
           experimental_ats: "unavailable",
+          production_basis: "pinned lock",
           model_version: row.model_version,
           lock_quality: row.lock_quality,
           withheld: true,
@@ -580,7 +690,7 @@
       }
       const exp = replayLineBrowser(row.replay, usedScales);
       const graded = atsGrade(exp, row.close_home_spread, row);
-      const diff = exp == null || row.b_line_home_spread == null ? null : Math.round((exp - row.b_line_home_spread) * 100) / 100;
+      const diff = exp == null || production == null ? null : Math.round((exp - production) * 100) / 100;
       games.push({
         game_id: row.game_id,
         week: row.week,
@@ -591,11 +701,12 @@
         home_score: row.home_score,
         open_home_spread: row.open_home_spread,
         close_home_spread: row.close_home_spread,
-        production: row.b_line_home_spread,
+        production,
         experimental: exp,
         diff,
-        production_ats: row.ats,
+        production_ats: productionAts,
         experimental_ats: graded.ats,
+        production_basis: "pinned lock",
         model_version: row.model_version,
         lock_quality: row.lock_quality,
         withheld: exp == null,
@@ -675,7 +786,7 @@
     }
     if (!root.dataset.ready) {
       root.dataset.ready = "1";
-      root.innerHTML = `<div class="sandbox-banner">This is a sandbox. A run stays here. It does not write the live Games page, current B Lines, Bet Outcomes, Bet History, or any locked number. Putting a test into production is a separate decision, outside this page.</div>
+      root.innerHTML = `<div class="sandbox-banner">This is a sandbox. A run stays here. It does not write the live Games page, current B Lines, Bet Outcomes, Bet History, or any locked number. The production column is the pinned lock in finals.json, so the baseline still matches the frozen replay. Bet Outcomes grades the game-day B$ line when that version is on file, and falls back to the pinned lock when it is not. Putting a test into production is a separate decision, outside this page.</div>
         <div class="preset-row" id="sb-presets"></div>
         <div class="record-filters" id="sb-scales"></div>
         <div class="record-filters">
@@ -788,7 +899,7 @@
     if (viewing) {
       viewing.textContent = source
         ? (viewingSaved ? "Viewing saved experiment “" + viewingSaved.name + "”. The lines below are the ones stored with it." : "Current run. Save it if you want to come back to these lines.")
-        : "Pick a preset or run the filtered games. Production lines in the table are the frozen record.";
+        : "Pick a preset or run the filtered games. Production lines in the table are the pinned lock. Bet Outcomes uses the game-day line when one is on file.";
     }
     if (agg) agg.innerHTML = source ? aggHtml(source.agg || source.comparison) : "";
     if (table) table.innerHTML = source ? sandboxTable(source.games || (source.results && source.results.games) || []) : "";
@@ -877,6 +988,7 @@
       if (!row || String(row.status).toUpperCase() !== "FINAL") continue;
       const key = gameKey(row);
       if (keys.has(key)) continue;
+      stampGrade(row);
       board.push(row);
       keys.add(key);
       added += 1;
@@ -900,14 +1012,29 @@
     }
   }
 
+  async function loadGameDay() {
+    try {
+      const res = await fetch(HISTORY);
+      if (!res.ok) throw new Error(String(res.status));
+      indexGameDay(await res.json());
+      gameDayNote = "";
+    } catch (err) {
+      console.warn("game-day lines", err);
+      gameDay = { byEspn: new Map(), byKey: new Map() };
+      gameDayNote = "Game-day lines did not load. Grading stays on the pinned lock.";
+    }
+  }
+
   async function loadFile() {
     const res = await fetch(FILE);
     if (!res.ok) throw new Error(String(res.status));
     const data = await res.json();
     board = (Array.isArray(data.board) ? data.board : []).filter((row) => row && String(row.status).toUpperCase() === "FINAL");
     window.BMBPublished = data;
+    await verify(board);
+    await loadGameDay();
+    for (const row of board) stampGrade(row);
     renderSurfaces();
-    verify(board);
     if (window.BMB && window.BMB.client) {
       const q = await window.BMB.client.from("published_lines_public").select("payload, status");
       if (!q.error && Array.isArray(q.data)) {

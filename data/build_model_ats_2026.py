@@ -23,6 +23,8 @@ LOCKS = POST / "locks"
 CLOSES = ROOT / "closes"
 NFL = ROOT / "nfl-2026.json"
 OUT = ROOT / "model-ats-2026.json"
+HISTORY = ROOT / "model" / "bs-line-history-2026.json"
+GAME_DAY_WEEKS = {2, 3}
 
 
 def num(v):
@@ -72,6 +74,46 @@ def tally(results: list[str]) -> dict:
     l = sum(1 for r in results if r == "L")
     p = sum(1 for r in results if r == "P")
     return {"w": w, "l": l, "p": p, "text": f"{w}–{l}–{p}", "n": w + l + p}
+
+
+def load_game_day() -> dict:
+    """Latest version whose source starts with 'game-day site compute'."""
+    if not HISTORY.exists():
+        return {}
+    data = load_json(HISTORY)
+    out = {}
+    for game in data.get("games") or []:
+        last = None
+        for version in game.get("versions") or []:
+            source = str(version.get("source") or "")
+            if not source.startswith("game-day site compute"):
+                continue
+            if num(version.get("b_line")) is None:
+                continue
+            if last is None or int(version.get("version") or 0) >= int(last.get("version") or 0):
+                last = version
+        if last is None:
+            continue
+        rec = {"b_line": num(last.get("b_line")), "source": last.get("source")}
+        espn = str(game.get("espn_id") or "")
+        week = int(game.get("week") or 0)
+        gid = game.get("game_id")
+        if espn:
+            out[("espn", espn)] = rec
+        if gid:
+            out[(week, gid)] = rec
+    return out
+
+
+def prefer_game_day(game_day: dict, week: int, game: str, espn: str, model, model_src: str):
+    """Weeks 2 and 3 grade the game-day B$ line. Other weeks keep their source.
+    A missing game-day version leaves the caller on the pinned / lock line."""
+    if int(week) not in GAME_DAY_WEEKS:
+        return model, model_src
+    rec = game_day.get(("espn", str(espn or ""))) or game_day.get((int(week), game))
+    if rec is None:
+        return model, model_src
+    return rec["b_line"], rec["source"]
 
 
 def load_locks() -> dict:
@@ -180,6 +222,7 @@ def main():
     locks = load_locks()
     closes = load_closes()
     nfl = load_nfl_scores()
+    game_day = load_game_day()
     games = []
     coverage = {
         "weeks_scanned": [],
@@ -216,6 +259,7 @@ def main():
                 model = lock.get("model_home_spread")
                 if model is not None:
                     model_src = f"lock:{lock['path']}"
+            model, model_src = prefer_game_day(game_day, week, game, espn, model, model_src)
 
             close = num(row.get("close_spread"))
             close_src = "postmortem_week"
@@ -294,6 +338,8 @@ def main():
             continue
 
         model = num(lock.get("model_home_spread"))
+        model_src = f"lock:{f.name}"
+        model, model_src = prefer_game_day(game_day, week, game, espn, model, model_src)
         if model is None:
             continue
 
@@ -368,7 +414,7 @@ def main():
             "espn_id": espn,
             "status": "FINAL",
             "model_home_spread": model,
-            "model_source": f"lock:{f.name}",
+            "model_source": model_src,
             "close_spread": close,
             "close_source": close_src,
             "actual_home_margin": margin,
@@ -406,6 +452,12 @@ def main():
     )
     coverage["notes"].append(
         "W2 TNF DET@BUF included from lock + nfl-2026 FINAL score when week postmortem file is not yet written."
+    )
+    coverage["notes"].append(
+        "Weeks 2 and 3 use the latest bs-line-history version whose source starts with "
+        "'game-day site compute'. The close is unchanged. A week without that version stays on the "
+        "postmortem or lock line. finals.json is not rewritten. The site push band is 0.05 points; "
+        "this file pushes only on an exact zero."
     )
 
     payload = {

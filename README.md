@@ -25,7 +25,7 @@ No build step. Open the HTML file directly.
 
 ## Published B Lines
 
-Bet Outcomes, public Bet History, and the B$ Line on a finished game read `data/published/finals.json`. That file is a pinned snapshot, not a live recompute. After a week is final and its locks are in `data/postmortem/locks/`:
+Bet Outcomes, Bet History, and the B$ Line on a finished game grade the latest `game-day site compute` version in `data/model/bs-line-history-2026.json` when one exists, and fall back to the pinned row in `data/published/finals.json` when it does not. The pinned file is not rewritten. After a week is final and its locks are in `data/postmortem/locks/`:
 
 ```bash
 node data/published/build_published_lines.mjs

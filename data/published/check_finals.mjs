@@ -4,6 +4,7 @@ import path from "path";
 import crypto from "crypto";
 import vm from "vm";
 import { replayLine } from "./replay.mjs";
+import { indexGameDay, gameDayFor, atsGrade, tallyAts } from "../model/game_day_grade.mjs";
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "../..");
 const doc = JSON.parse(fs.readFileSync(path.join(ROOT, "data/published/finals.json"), "utf8"));
@@ -97,6 +98,27 @@ else {
   if (!bRow || bRow.stake !== 9) fail("supabase did not win on matching id");
 }
 
+if (!/game-day site compute/.test(ledger)) fail("ledger.js does not grade from game-day lines");
+if (!/game-day site compute/.test(app)) fail("app.js does not read game-day lines");
+
+const history = JSON.parse(fs.readFileSync(path.join(ROOT, "data/model/bs-line-history-2026.json"), "utf8"));
+const gameDay = indexGameDay(history);
+const expect = { 2: "11-5-0", 3: "10-6-0" };
+const pinnedByWeek = {};
+const dayByWeek = {};
+for (const week of [2, 3]) {
+  const rows = (doc.board || []).filter((r) => r.week === week && r.lock_quality === "official" && r.b_line_home_spread != null);
+  pinnedByWeek[week] = tallyAts(rows.map((r) => r.ats));
+  dayByWeek[week] = tallyAts(rows.map((r) => {
+    const gd = gameDayFor(gameDay, r);
+    const line = gd ? gd.b_line : r.b_line_home_spread;
+    return atsGrade(line, r.close_home_spread, r).ats;
+  }));
+  if (dayByWeek[week] !== expect[week]) {
+    fail("week " + week + " game-day ATS " + dayByWeek[week] + " expected " + expect[week]);
+  }
+}
+
 if (errors.length) {
   console.error(errors.join("\n"));
   process.exit(1);
@@ -104,3 +126,11 @@ if (errors.length) {
 const ats = { W: 0, L: 0, P: 0 };
 for (const row of w3) if (ats[row.ats] != null) ats[row.ats] += 1;
 console.log("ok", "board", doc.board.length, "week3", w3.length, "ATS", ats.W + "-" + ats.L + "-" + ats.P);
+console.log(
+  "game-day ATS",
+  "week2", dayByWeek[2],
+  "week3", dayByWeek[3],
+  "| pinned",
+  "week2", pinnedByWeek[2],
+  "week3", pinnedByWeek[3]
+);
