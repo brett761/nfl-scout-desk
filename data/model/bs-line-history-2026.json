@@ -2500,6 +2500,21 @@
           "market_spread_source": "data/nfl-2026.json",
           "market_total_source": "data/nfl-2026.json",
           "note": "No lock file. B$ line is the desk ourHomeSpread at backfill. Market is the latest street snapshot."
+        },
+        {
+          "version": 2,
+          "game_id": "PIT@CLE",
+          "week": 4,
+          "published_at": "2026-10-01T13:59:23.598Z",
+          "source": "data/model/append_model_snapshot.mjs",
+          "commit": "8944a7cda99886bb195e17941bceb5b9f27cbdbb",
+          "b_line": 5.63,
+          "market_spread": 2.5,
+          "market_total": 38.5,
+          "supersedes": 1,
+          "backfilled": false,
+          "market_spread_source": "data/nfl-2026.json",
+          "market_total_source": "data/nfl-2026.json"
         }
       ]
     },
