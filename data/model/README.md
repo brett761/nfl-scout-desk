@@ -34,3 +34,20 @@ Fails if any version that was in the previous commit was edited or deleted. A ne
 node data/model/check_model_history.mjs
 node data/model/check_model_history.mjs --self-test
 ```
+
+## Game-day lines
+
+The number a visitor saw at kickoff is the site's own `ourHomeSpread` at the main commit whose Pages deploy was live then. `game_day_harness.mjs` runs a checkout's `app.js` in a Node vm with file-backed fetch, the clock pinned to a given instant, and empty localStorage (default profile, HFA 2):
+
+```bash
+git worktree add --detach /tmp/live <commit>
+node data/model/game_day_harness.mjs /tmp/live 2026-09-27T16:55:00Z 401872950
+```
+
+`game-day-lines-2026-w02-w03.json` holds those runs for every Week 2 and Week 3 game (commit, commit time, Pages deploy time, kick, line). Append them as new versions:
+
+```bash
+node data/model/append_model_snapshot.mjs --game-day data/model/game-day-lines-2026-w02-w03.json
+```
+
+Each becomes version N+1 with source `game-day site compute @<commit>`, `published_at` at the live commit's time, and `supersedes` at the prior version. Re-running is a no-op.

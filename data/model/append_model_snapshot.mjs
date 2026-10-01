@@ -4,6 +4,7 @@
  *
  *   node data/model/append_model_snapshot.mjs --backfill
  *   node data/model/append_model_snapshot.mjs --week 4
+ *   node data/model/append_model_snapshot.mjs --game-day data/model/game-day-lines-2026-w02-w03.json
  *
  * A version already in the file is never edited or deleted.
  * A different line or a different market is a new version.
@@ -476,6 +477,52 @@ async function appendWeek(data, week) {
   return added;
 }
 
+// Game-day lines: the B$ line the site showed at kickoff, computed by
+// data/model/game_day_harness.mjs against the commit that was live then.
+// Each event becomes a new version on top of whatever is already there.
+// Re-running is a no-op for an event already appended (same source + commit + line).
+function appendGameDay(data, rel) {
+  const before = JSON.parse(JSON.stringify(data.games));
+  const doc = JSON.parse(fs.readFileSync(path.resolve(ROOT, rel), "utf8"));
+  const history = loadLineHistory();
+  let added = 0;
+  for (const ev of doc.events || []) {
+    const game = data.games.find((x) => x.game_id === ev.game_id && Number(x.week) === Number(ev.week));
+    if (!game) throw new Error("no history row for " + ev.game_id + " week " + ev.week);
+    const short = String(ev.commit).slice(0, 7);
+    const source = "game-day site compute @" + short;
+    if (game.versions.some((v) => v.source === source && v.commit === ev.commit && v.b_line === ev.b_line)) continue;
+    const last = game.versions[game.versions.length - 1] || null;
+    const published_at = toIso(ev.commit_at);
+    const m = marketFor(ev.espn_id, published_at, null, history);
+    const prior = last
+      ? "v" + last.version + " " + (last.b_line == null ? "null" : last.b_line) + " (" + last.source + ")"
+      : "none";
+    const missing = (ev.missing_at_commit || []).length
+      ? " Files absent at that commit (the live site 404'd them too): " + ev.missing_at_commit.join(", ") + "."
+      : "";
+    const note = "Game-day line: site app.js ourHomeSpread at " + short + ", the last main commit deployed to Pages before the "
+      + ev.window + " kick " + ev.kick_et + " (deploy done " + ev.pages_deploy_done + "). Clock pinned to kick minus 5 min, default profile, HFA 2."
+      + " Supersedes " + prior + "." + missing;
+    const version = (last ? last.version : 0) + 1;
+    game.versions.push(shape(game.game_id, Number(ev.week), {
+      b_line: r2(ev.b_line),
+      published_at,
+      source,
+      commit: ev.commit,
+      backfilled: true,
+      market_spread: m.market_spread,
+      market_spread_source: m.market_spread_source,
+      market_total: m.market_total,
+      market_total_source: m.market_total_source,
+      note,
+    }, version, last ? last.version : null));
+    added += 1;
+  }
+  guard(before, data.games);
+  return added;
+}
+
 async function main() {
   const data = load();
   if (hasFlag("--backfill")) {
@@ -484,6 +531,13 @@ async function main() {
     const versions = data.games.reduce((n, g) => n + g.versions.length, 0);
     console.log("games " + data.games.length + " versions " + versions);
     console.log("wrote " + path.relative(ROOT, OUT));
+    return;
+  }
+  const gameDay = arg("--game-day");
+  if (gameDay) {
+    const added = appendGameDay(data, gameDay);
+    if (added) save(data);
+    console.log("game-day appended " + added);
     return;
   }
   const week = arg("--week");
