@@ -1,0 +1,254 @@
+{
+  "week": 4,
+  "season": 2026,
+  "game_id": "JAX@CIN",
+  "kick": "2026-10-04T17:00+00:00",
+  "away": "JAX",
+  "home": "CIN",
+  "espn_id": "401872969",
+  "venue": "Paycor Stadium",
+  "neutral": false,
+  "window": "SUN_PM",
+  "model_home_spread": 4.52,
+  "model_home_spread_source": "desk_compute",
+  "street_home_spread": -2.5,
+  "close_at_lock": -2.5,
+  "ou_street": 51.5,
+  "street_note": "FINAL freeze 2026-10-02 4:25 PM ET (America/New_York). ESPN DraftKings: CIN -2.5 / ou 51.5. Shop: ESPN/DK pickcenter primary; consensus held at freeze.",
+  "edge_home": -7.02,
+  "edge_note": "edgeHome = street − model = -2.5 − (4.52) = -7.02 → away value (JAX); |edge|≥1.5",
+  "feature_stack": {
+    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W3 n≈2 so return at w_prior=1/3; FA & PFF-preseason OFF (site INCLUDE_FA/INCLUDE_PFF_PRESEASON=false); currentRating incl YTD take/give, draft_fade≈0.5; pff_ytd IN line; injury 2026-10-02b FINAL; W4 n≈3 taper",
+    "injury_pulled": "2026-10-02b",
+    "away_JAX": {
+      "prior": 8.37,
+      "fa": 0,
+      "draft": 0,
+      "madden": -0.59,
+      "pff": 0.49,
+      "pff_ytd": 1.96,
+      "sos": -0.45,
+      "return": 0,
+      "injury": -0.34,
+      "adjust": 0,
+      "context": 0,
+      "eff": 9.44,
+      "taper": {
+        "N": 3,
+        "n": 3,
+        "wPrior": 0,
+        "wCurr": 1
+      },
+      "current_rating": 8.37
+    },
+    "home_CIN": {
+      "prior": 4.84,
+      "fa": 0,
+      "draft": 0,
+      "madden": -0.22,
+      "pff": -0.49,
+      "pff_ytd": -0.05,
+      "sos": 0.26,
+      "return": 0,
+      "injury": -1.42,
+      "adjust": 0,
+      "context": 0,
+      "eff": 2.92,
+      "taper": {
+        "N": 3,
+        "n": 3,
+        "wPrior": 0,
+        "wCurr": 1
+      },
+      "current_rating": 4.84
+    },
+    "layers_home_minus_away": {
+      "prior": -3.53,
+      "fa": 0,
+      "draft": 0,
+      "madden": 0.37,
+      "pff": -0.98,
+      "pff_ytd": -2.01,
+      "sos": 0.71,
+      "return": 0,
+      "injury": -1.08,
+      "adjust": 0,
+      "context": 0
+    },
+    "rating_diff_home_minus_away": -6.52,
+    "hfa": 2,
+    "coach": 0,
+    "coach_note": "coachTerm desk",
+    "prep": 0,
+    "prep_note": "week!==1 so week1_term=0; bye check via prepNet",
+    "ats": 0,
+    "ats_note": "atsNet desk",
+    "travel": 0,
+    "travel_note": "schedNet desk",
+    "matchup": 0,
+    "matchup_note": "pff-matchups missing → 0",
+    "gap": -4.52,
+    "component_sum": [
+      {
+        "label": "rating_diff (CIN−JAX)",
+        "val": -6.52
+      },
+      {
+        "label": "HFA",
+        "val": 2
+      },
+      {
+        "label": "coach",
+        "val": 0
+      },
+      {
+        "label": "prep (W4)",
+        "val": 0
+      },
+      {
+        "label": "ats",
+        "val": 0
+      },
+      {
+        "label": "travel/sched",
+        "val": 0
+      },
+      {
+        "label": "matchup",
+        "val": 0
+      },
+      {
+        "label": "gap",
+        "val": -4.52
+      },
+      {
+        "label": "model_home_spread (−gap)",
+        "val": 4.52
+      }
+    ],
+    "injuries": {
+      "JAX": [
+        {
+          "name": "Albert Regis",
+          "pos": "IDL",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "B.J. Green II",
+          "pos": "EDGE1",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        }
+      ],
+      "CIN": [
+        {
+          "name": "Kyle Dugger",
+          "pos": "S",
+          "status": "OUT",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Jalen Davis",
+          "pos": "CB1",
+          "status": "IR",
+          "impact": 0.2,
+          "impact_source": "pff",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "B.J. Hill",
+          "pos": "IDL",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Colbie Young",
+          "pos": "WR2",
+          "status": "OUT",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Andrei Iosivas",
+          "pos": "WR2",
+          "status": "IR",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Brian Parker II",
+          "pos": "RT",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Ja'Sir Taylor",
+          "pos": "CB1",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        }
+      ]
+    },
+    "injury_terms": {
+      "JAX": {
+        "raw": -0.34,
+        "term": -0.34,
+        "capped": false,
+        "cap_team": 6
+      },
+      "CIN": {
+        "raw": -1.42,
+        "term": -1.42,
+        "capped": false,
+        "cap_team": 6
+      }
+    }
+  },
+  "frozen_at": "2026-10-02 4:25 PM ET (America/New_York)",
+  "tickets": [
+    {
+      "id": "w4-jax-plus3",
+      "pick": "JAX +3",
+      "bet_line": 3,
+      "juice": -135,
+      "units": null,
+      "window": "SUN_AM",
+      "market": "Spread",
+      "result": "PENDING"
+    }
+  ],
+  "call": {
+    "action": "FIRE",
+    "side": "JAX",
+    "line": "JAX +2.5",
+    "units": 3,
+    "price": -110,
+    "class": "INFO",
+    "note": "Model 4.52 vs street -2.5 → edge_home -7.02. JAX side."
+  },
+  "notes": "FINAL pre-kick SUN_PM lock after Fri ~4pm ET status. Injury 2026-10-02b FINAL. JAX inj -0.34; CIN inj -1.42. Street CIN -2.5. Edge home -7.02. Call FIRE."
+}

@@ -1,0 +1,353 @@
+{
+  "week": 4,
+  "season": 2026,
+  "game_id": "DAL@HOU",
+  "kick": "2026-10-04T17:00+00:00",
+  "away": "DAL",
+  "home": "HOU",
+  "espn_id": "401872967",
+  "venue": "Reliant Stadium",
+  "neutral": false,
+  "window": "SUN_PM",
+  "model_home_spread": -1.29,
+  "model_home_spread_source": "desk_compute",
+  "street_home_spread": -3,
+  "close_at_lock": -3,
+  "ou_street": 48.5,
+  "street_note": "FINAL freeze 2026-10-02 4:25 PM ET (America/New_York). ESPN DraftKings: HOU -3 / ou 48.5. Shop: ESPN/DK pickcenter primary; consensus held at freeze.",
+  "edge_home": -1.71,
+  "edge_note": "edgeHome = street − model = -3 − (-1.29) = -1.71 → away value (DAL); |edge|≥1.5",
+  "feature_stack": {
+    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W3 n≈2 so return at w_prior=1/3; FA & PFF-preseason OFF (site INCLUDE_FA/INCLUDE_PFF_PRESEASON=false); currentRating incl YTD take/give, draft_fade≈0.5; pff_ytd IN line; injury 2026-10-02b FINAL; W4 n≈3 taper",
+    "injury_pulled": "2026-10-02b",
+    "away_DAL": {
+      "prior": 1.69,
+      "fa": 0,
+      "draft": 0.15,
+      "madden": 0.15,
+      "pff": 0.24,
+      "pff_ytd": -1.14,
+      "sos": -0.96,
+      "return": 0,
+      "injury": -2.06,
+      "adjust": 0,
+      "context": 0,
+      "eff": -1.93,
+      "taper": {
+        "N": 3,
+        "n": 3,
+        "wPrior": 0,
+        "wCurr": 1
+      },
+      "current_rating": 1.69
+    },
+    "home_HOU": {
+      "prior": -2.97,
+      "fa": 0,
+      "draft": 0.18,
+      "madden": 0.33,
+      "pff": 0.49,
+      "pff_ytd": 1.08,
+      "sos": 0.42,
+      "return": 0,
+      "injury": -2.23,
+      "adjust": 0,
+      "context": 0,
+      "eff": -2.7,
+      "taper": {
+        "N": 3,
+        "n": 3,
+        "wPrior": 0,
+        "wCurr": 1
+      },
+      "current_rating": -2.97
+    },
+    "layers_home_minus_away": {
+      "prior": -4.66,
+      "fa": 0,
+      "draft": 0.03,
+      "madden": 0.18,
+      "pff": 0.25,
+      "pff_ytd": 2.22,
+      "sos": 1.38,
+      "return": 0,
+      "injury": -0.17,
+      "adjust": 0,
+      "context": 0
+    },
+    "rating_diff_home_minus_away": -0.77,
+    "hfa": 2,
+    "coach": 0,
+    "coach_note": "coachTerm desk",
+    "prep": 0,
+    "prep_note": "week!==1 so week1_term=0; bye check via prepNet",
+    "ats": 0.06,
+    "ats_note": "atsNet desk",
+    "travel": 0,
+    "travel_note": "schedNet desk",
+    "matchup": 0,
+    "matchup_note": "pff-matchups missing → 0",
+    "gap": 1.29,
+    "component_sum": [
+      {
+        "label": "rating_diff (HOU−DAL)",
+        "val": -0.77
+      },
+      {
+        "label": "HFA",
+        "val": 2
+      },
+      {
+        "label": "coach",
+        "val": 0
+      },
+      {
+        "label": "prep (W4)",
+        "val": 0
+      },
+      {
+        "label": "ats",
+        "val": 0.06
+      },
+      {
+        "label": "travel/sched",
+        "val": 0
+      },
+      {
+        "label": "matchup",
+        "val": 0
+      },
+      {
+        "label": "gap",
+        "val": 1.29
+      },
+      {
+        "label": "model_home_spread (−gap)",
+        "val": -1.29
+      }
+    ],
+    "injuries": {
+      "DAL": [
+        {
+          "name": "Cobie Durant",
+          "pos": "CB1",
+          "status": "OUT",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "DeMarvion Overshown",
+          "pos": "LB",
+          "status": "OUT",
+          "impact": 0.2,
+          "impact_source": "pff",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Malik Hooker",
+          "pos": "S",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Shavon Revel Jr.",
+          "pos": "CB1",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "Jonathan Bullard",
+          "pos": "IDL",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Jalen Thompson",
+          "pos": "S",
+          "status": "IR",
+          "impact": 0.25,
+          "impact_source": "madden",
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Tyler Smith",
+          "pos": "OG",
+          "status": "IR",
+          "impact": 0.5,
+          "impact_source": "madden",
+          "pts": -0.5,
+          "on": true
+        },
+        {
+          "name": "P.J. Locke",
+          "pos": "S",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Malik Davis",
+          "pos": "RB1",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        }
+      ],
+      "HOU": [
+        {
+          "name": "M.J. Stewart",
+          "pos": "S",
+          "status": "OUT",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "British Brooks",
+          "pos": "RB1",
+          "status": "OUT",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Mario Edwards Jr.",
+          "pos": "IDL",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Azeez Al-Shaair",
+          "pos": "LB",
+          "status": "DOUBTFUL",
+          "impact": 0.25,
+          "impact_source": "madden",
+          "pts": -0.19,
+          "on": true
+        },
+        {
+          "name": "Ed Ingram",
+          "pos": "OG",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Jadeveon Clowney",
+          "pos": "EDGE1",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Jake Hummel",
+          "pos": "LB",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Henry To'oTo'o",
+          "pos": "LB",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Kayden McDonald",
+          "pos": "IDL",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Jayden Higgins",
+          "pos": "WR2",
+          "status": "IR",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Tank Dell",
+          "pos": "WR2",
+          "status": "IR",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        }
+      ]
+    },
+    "injury_terms": {
+      "DAL": {
+        "raw": -2.06,
+        "term": -2.06,
+        "capped": false,
+        "cap_team": 6
+      },
+      "HOU": {
+        "raw": -2.23,
+        "term": -2.23,
+        "capped": false,
+        "cap_team": 6
+      }
+    }
+  },
+  "frozen_at": "2026-10-02 4:25 PM ET (America/New_York)",
+  "tickets": [
+    {
+      "id": "w4-dal-plus3",
+      "pick": "DAL +3",
+      "bet_line": 3,
+      "juice": -135,
+      "units": null,
+      "window": "SUN_AM",
+      "market": "Spread",
+      "result": "PENDING"
+    }
+  ],
+  "call": {
+    "action": "FIRE",
+    "side": "DAL",
+    "line": "DAL +3",
+    "units": 1,
+    "price": -110,
+    "class": "INFO",
+    "note": "Model -1.29 vs street -3 → edge_home -1.71. DAL side."
+  },
+  "notes": "FINAL pre-kick SUN_PM lock after Fri ~4pm ET status. Injury 2026-10-02b FINAL. DAL inj -2.06; HOU inj -2.23. Street HOU -3. Edge home -1.71. Call FIRE."
+}

@@ -1,0 +1,326 @@
+{
+  "week": 4,
+  "season": 2026,
+  "game_id": "ATL@NO",
+  "kick": "2026-10-06T00:15+00:00",
+  "away": "ATL",
+  "home": "NO",
+  "espn_id": "401872979",
+  "venue": "Caesars Superdome",
+  "neutral": false,
+  "window": "MNF",
+  "model_home_spread": -3.45,
+  "model_home_spread_source": "desk_compute",
+  "street_home_spread": -2.5,
+  "close_at_lock": -2.5,
+  "ou_street": 47.5,
+  "street_note": "FINAL freeze 2026-10-02 4:25 PM ET (America/New_York). ESPN DraftKings: NO -2.5 / ou 47.5. Shop: ESPN/DK pickcenter primary; consensus held at freeze.",
+  "edge_home": 0.95,
+  "edge_note": "edgeHome = street − model = -2.5 − (-3.45) = 0.95 → home value (NO)",
+  "feature_stack": {
+    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W3 n≈2 so return at w_prior=1/3; FA & PFF-preseason OFF (site INCLUDE_FA/INCLUDE_PFF_PRESEASON=false); currentRating incl YTD take/give, draft_fade≈0.5; pff_ytd IN line; injury 2026-10-02b FINAL; W4 n≈3 taper",
+    "injury_pulled": "2026-10-02b",
+    "away_ATL": {
+      "prior": -3.25,
+      "fa": 0,
+      "draft": 0,
+      "madden": -0.06,
+      "pff": 0.2,
+      "pff_ytd": 0.68,
+      "sos": -0.08,
+      "return": 0,
+      "injury": -1.02,
+      "adjust": 0,
+      "context": 0,
+      "eff": -3.53,
+      "taper": {
+        "N": 3,
+        "n": 3,
+        "wPrior": 0,
+        "wCurr": 1
+      },
+      "current_rating": -3.25
+    },
+    "home_NO": {
+      "prior": -0.98,
+      "fa": 0,
+      "draft": 0,
+      "madden": -0.49,
+      "pff": -0.46,
+      "pff_ytd": 1.6,
+      "sos": -0.07,
+      "return": 0,
+      "injury": -1.82,
+      "adjust": 0,
+      "context": 0,
+      "eff": -2.22,
+      "taper": {
+        "N": 3,
+        "n": 3,
+        "wPrior": 0,
+        "wCurr": 1
+      },
+      "current_rating": -0.98
+    },
+    "layers_home_minus_away": {
+      "prior": 2.27,
+      "fa": 0,
+      "draft": 0,
+      "madden": -0.43,
+      "pff": -0.66,
+      "pff_ytd": 0.92,
+      "sos": 0.01,
+      "return": 0,
+      "injury": -0.8,
+      "adjust": 0,
+      "context": 0
+    },
+    "rating_diff_home_minus_away": 1.31,
+    "hfa": 2,
+    "coach": 0,
+    "coach_note": "coachTerm desk",
+    "prep": 0,
+    "prep_note": "week!==1 so week1_term=0; bye check via prepNet",
+    "ats": 0.14,
+    "ats_note": "atsNet desk",
+    "travel": 0,
+    "travel_note": "schedNet desk",
+    "matchup": 0,
+    "matchup_note": "pff-matchups missing → 0",
+    "gap": 3.45,
+    "component_sum": [
+      {
+        "label": "rating_diff (NO−ATL)",
+        "val": 1.31
+      },
+      {
+        "label": "HFA",
+        "val": 2
+      },
+      {
+        "label": "coach",
+        "val": 0
+      },
+      {
+        "label": "prep (W4)",
+        "val": 0
+      },
+      {
+        "label": "ats",
+        "val": 0.14
+      },
+      {
+        "label": "travel/sched",
+        "val": 0
+      },
+      {
+        "label": "matchup",
+        "val": 0
+      },
+      {
+        "label": "gap",
+        "val": 3.45
+      },
+      {
+        "label": "model_home_spread (−gap)",
+        "val": -3.45
+      }
+    ],
+    "injuries": {
+      "ATL": [
+        {
+          "name": "Samson Ebukam",
+          "pos": "EDGE1",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "A.J. Terrell Jr.",
+          "pos": "CB1",
+          "status": "IR",
+          "impact": 0.25,
+          "impact_source": "madden",
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Da'Shawn Hand",
+          "pos": "IDL",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Cameron Williams",
+          "pos": "OG",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Jalon Walker",
+          "pos": "EDGE1",
+          "status": "IR",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        }
+      ],
+      "NO": [
+        {
+          "name": "Julian Blackmon",
+          "pos": "S",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Pete Werner",
+          "pos": "LB",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "Kaden Elliss",
+          "pos": "LB",
+          "status": "QUESTIONABLE",
+          "impact": 0.25,
+          "impact_source": "madden",
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "Noah Fant",
+          "pos": "TE1",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "Jordyn Tyson",
+          "pos": "WR2",
+          "status": "IR",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Travis Etienne Jr.",
+          "pos": "RB1",
+          "status": "IR",
+          "impact": 0.25,
+          "impact_source": "madden",
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Christen Miller",
+          "pos": "IDL",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "Barion Brown",
+          "pos": "WR2",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "Kelvin Banks Jr.",
+          "pos": "RT",
+          "status": "IR",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Zach Wood",
+          "pos": "DEPTH",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Audric Estime",
+          "pos": "RB1",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Bryan Bresee",
+          "pos": "IDL",
+          "status": "IR",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        }
+      ]
+    },
+    "injury_terms": {
+      "ATL": {
+        "raw": -1.02,
+        "term": -1.02,
+        "capped": false,
+        "cap_team": 6
+      },
+      "NO": {
+        "raw": -1.82,
+        "term": -1.82,
+        "capped": false,
+        "cap_team": 6
+      }
+    }
+  },
+  "frozen_at": "2026-10-02 4:25 PM ET (America/New_York)",
+  "tickets": [
+    {
+      "id": "w4-no-minus25",
+      "pick": "NO −2.5",
+      "bet_line": -2.5,
+      "juice": -125,
+      "units": null,
+      "window": "MNF",
+      "market": "Spread",
+      "result": "PENDING"
+    }
+  ],
+  "call": {
+    "action": "PASS",
+    "side": null,
+    "line": null,
+    "units": 0,
+    "price": -110,
+    "class": "INFO",
+    "note": "No ≥1.5-pt edge vs street at freeze."
+  },
+  "notes": "FINAL pre-kick MNF lock after Fri ~4pm ET status. Injury 2026-10-02b FINAL. ATL inj -1.02; NO inj -1.82. Street NO -2.5. Edge home 0.95. Call PASS."
+}

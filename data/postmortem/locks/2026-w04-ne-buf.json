@@ -1,0 +1,326 @@
+{
+  "week": 4,
+  "season": 2026,
+  "game_id": "NE@BUF",
+  "kick": "2026-10-04T17:00+00:00",
+  "away": "NE",
+  "home": "BUF",
+  "espn_id": "401872971",
+  "venue": "Highmark Stadium",
+  "neutral": false,
+  "window": "SUN_PM",
+  "model_home_spread": -11.18,
+  "model_home_spread_source": "desk_compute",
+  "street_home_spread": -7,
+  "close_at_lock": -7,
+  "ou_street": 49.5,
+  "street_note": "FINAL freeze 2026-10-02 4:25 PM ET (America/New_York). ESPN DraftKings: BUF -7 / ou 49.5. Shop: ESPN/DK pickcenter primary; consensus held at freeze.",
+  "edge_home": 4.18,
+  "edge_note": "edgeHome = street − model = -7 − (-11.18) = 4.18 → home value (BUF); |edge|≥1.5",
+  "feature_stack": {
+    "formula": "ourHomeLine = -(eff(home)-eff(away) + HFA + coach + prep + ats + sched + matchup); HFA=2; W3 n≈2 so return at w_prior=1/3; FA & PFF-preseason OFF (site INCLUDE_FA/INCLUDE_PFF_PRESEASON=false); currentRating incl YTD take/give, draft_fade≈0.5; pff_ytd IN line; injury 2026-10-02b FINAL; W4 n≈3 taper",
+    "injury_pulled": "2026-10-02b",
+    "away_NE": {
+      "prior": -0.76,
+      "fa": 0,
+      "draft": 0,
+      "madden": 0.51,
+      "pff": 0.4,
+      "pff_ytd": -2,
+      "sos": -2.31,
+      "return": 0,
+      "injury": -2.72,
+      "adjust": 0,
+      "context": 0,
+      "eff": -6.88,
+      "taper": {
+        "N": 3,
+        "n": 3,
+        "wPrior": 0,
+        "wCurr": 1
+      },
+      "current_rating": -0.76
+    },
+    "home_BUF": {
+      "prior": 2.38,
+      "fa": 0,
+      "draft": 0,
+      "madden": 0.06,
+      "pff": 0.28,
+      "pff_ytd": 0.96,
+      "sos": -0.56,
+      "return": 0,
+      "injury": -0.82,
+      "adjust": 0,
+      "context": 0,
+      "eff": 2.3,
+      "taper": {
+        "N": 3,
+        "n": 3,
+        "wPrior": 0,
+        "wCurr": 1
+      },
+      "current_rating": 2.38
+    },
+    "layers_home_minus_away": {
+      "prior": 3.14,
+      "fa": 0,
+      "draft": 0,
+      "madden": -0.45,
+      "pff": -0.12,
+      "pff_ytd": 2.96,
+      "sos": 1.75,
+      "return": 0,
+      "injury": 1.9,
+      "adjust": 0,
+      "context": 0
+    },
+    "rating_diff_home_minus_away": 9.18,
+    "hfa": 2,
+    "coach": 0,
+    "coach_note": "coachTerm desk",
+    "prep": 0,
+    "prep_note": "week!==1 so week1_term=0; bye check via prepNet",
+    "ats": 0,
+    "ats_note": "atsNet desk",
+    "travel": 0,
+    "travel_note": "schedNet desk",
+    "matchup": 0,
+    "matchup_note": "pff-matchups missing → 0",
+    "gap": 11.18,
+    "component_sum": [
+      {
+        "label": "rating_diff (BUF−NE)",
+        "val": 9.18
+      },
+      {
+        "label": "HFA",
+        "val": 2
+      },
+      {
+        "label": "coach",
+        "val": 0
+      },
+      {
+        "label": "prep (W4)",
+        "val": 0
+      },
+      {
+        "label": "ats",
+        "val": 0
+      },
+      {
+        "label": "travel/sched",
+        "val": 0
+      },
+      {
+        "label": "matchup",
+        "val": 0
+      },
+      {
+        "label": "gap",
+        "val": 11.18
+      },
+      {
+        "label": "model_home_spread (−gap)",
+        "val": -11.18
+      }
+    ],
+    "injuries": {
+      "NE": [
+        {
+          "name": "Christian Barmore",
+          "pos": "IDL",
+          "status": "OUT",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Christian Gonzalez",
+          "pos": "CB1",
+          "status": "OUT",
+          "impact": 0.5,
+          "impact_source": "madden",
+          "pts": -0.5,
+          "on": true
+        },
+        {
+          "name": "Eli Raridon",
+          "pos": "TE1",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "Dre'Mont Jones",
+          "pos": "EDGE1",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "Reggie Gilliam",
+          "pos": "DEPTH",
+          "status": "QUESTIONABLE",
+          "impact": 0.25,
+          "impact_source": "madden",
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "Greg Van Roten",
+          "pos": "OG",
+          "status": "IR",
+          "impact": 0.2,
+          "impact_source": "pff",
+          "pts": -0.2,
+          "on": true
+        },
+        {
+          "name": "Craig Woodson",
+          "pos": "S",
+          "status": "QUESTIONABLE",
+          "impact": 0.2,
+          "impact_source": "madden",
+          "pts": -0.07,
+          "on": true
+        },
+        {
+          "name": "A.J. Brown",
+          "pos": "WR1",
+          "status": "IR",
+          "impact": 0.5,
+          "impact_source": "madden",
+          "pts": -0.5,
+          "on": true
+        },
+        {
+          "name": "Quintayvious Hutchins",
+          "pos": "LB",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Dell Pettus",
+          "pos": "S",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Mike Onwenu",
+          "pos": "RT",
+          "status": "IR",
+          "impact": 0.25,
+          "impact_source": "madden",
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Harold Landry",
+          "pos": "EDGE1",
+          "status": "PUP",
+          "impact": 0.25,
+          "impact_source": "madden",
+          "pts": -0.25,
+          "on": true
+        }
+      ],
+      "BUF": [
+        {
+          "name": "Ray Davis",
+          "pos": "RB1",
+          "status": "QUESTIONABLE",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "Christian Benford",
+          "pos": "CB1",
+          "status": "QUESTIONABLE",
+          "impact": 0.25,
+          "impact_source": "madden",
+          "pts": -0.09,
+          "on": true
+        },
+        {
+          "name": "T.J. Sanders",
+          "pos": "IDL",
+          "status": "DOUBTFUL",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.19,
+          "on": true
+        },
+        {
+          "name": "Jordan Hancock",
+          "pos": "CB1",
+          "status": "IR",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.25,
+          "on": true
+        },
+        {
+          "name": "Dorian Strong",
+          "pos": "DEPTH",
+          "status": "NFI",
+          "impact": null,
+          "impact_source": null,
+          "pts": -0.2,
+          "on": true
+        }
+      ]
+    },
+    "injury_terms": {
+      "NE": {
+        "raw": -2.72,
+        "term": -2.72,
+        "capped": false,
+        "cap_team": 6
+      },
+      "BUF": {
+        "raw": -0.82,
+        "term": -0.82,
+        "capped": false,
+        "cap_team": 6
+      }
+    }
+  },
+  "frozen_at": "2026-10-02 4:25 PM ET (America/New_York)",
+  "tickets": [
+    {
+      "id": "w4-buf-minus7",
+      "pick": "BUF −7",
+      "bet_line": -7,
+      "juice": 100,
+      "units": null,
+      "window": "SUN_AM",
+      "market": "Spread",
+      "result": "PENDING"
+    }
+  ],
+  "call": {
+    "action": "FIRE",
+    "side": "BUF",
+    "line": "BUF -7",
+    "units": 3,
+    "price": -110,
+    "class": "INFO",
+    "note": "Model -11.18 vs street -7 → edge_home 4.18. BUF side."
+  },
+  "notes": "FINAL pre-kick SUN_PM lock after Fri ~4pm ET status. Injury 2026-10-02b FINAL. NE inj -2.72; BUF inj -0.82. Street BUF -7. Edge home 4.18. Call FIRE."
+}
