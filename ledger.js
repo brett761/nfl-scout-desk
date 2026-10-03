@@ -786,7 +786,7 @@
     }
     if (!root.dataset.ready) {
       root.dataset.ready = "1";
-      root.innerHTML = `<div class="sandbox-banner">This is a sandbox. A run stays here. It does not write the live Games page, current B Lines, Bet Outcomes, Bet History, or any locked number. The production column is the pinned lock in finals.json, so the baseline still matches the frozen replay. Bet Outcomes grades the game-day B$ line when that version is on file, and falls back to the pinned lock when it is not. Putting a test into production is a separate decision, outside this page.</div>
+      root.innerHTML = `<div class="sandbox-banner">This is a sandbox. A run stays here. It does not write the live Games page, current B Lines, Bet History, Overall Record, or any locked number. The production column is the pinned lock in finals.json, so the baseline still matches the frozen replay. The official record grades the game-day B$ line when that version is on file, and falls back to the pinned lock when it is not. Putting a test into production is a separate decision, outside this page.</div>
         <div class="preset-row" id="sb-presets"></div>
         <div class="record-filters" id="sb-scales"></div>
         <div class="record-filters">
@@ -899,7 +899,7 @@
     if (viewing) {
       viewing.textContent = source
         ? (viewingSaved ? "Viewing saved experiment “" + viewingSaved.name + "”. The lines below are the ones stored with it." : "Current run. Save it if you want to come back to these lines.")
-        : "Pick a preset or run the filtered games. Production lines in the table are the pinned lock. Bet Outcomes uses the game-day line when one is on file.";
+        : "Pick a preset or run the filtered games. Production lines in the table are the pinned lock. The official record uses the game-day line when one is on file.";
     }
     if (agg) agg.innerHTML = source ? aggHtml(source.agg || source.comparison) : "";
     if (table) table.innerHTML = source ? sandboxTable(source.games || (source.results && source.results.games) || []) : "";

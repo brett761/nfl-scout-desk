@@ -1,6 +1,6 @@
 # Published B Lines
 
-Append-only snapshots of the B Line the desk actually published. Bet Outcomes, public Bet History, and the Games page read this file. They do not recompute the number from today's model.
+Append-only snapshots of the B Line the desk actually published. The Games page reads this file for a finished game. Bet History and Overall Record read `data/record/canonical-2026.json`. They do not recompute the number from today's model.
 
 ## What gets in
 

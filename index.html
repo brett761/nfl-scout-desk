@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Geist+Mono:wght@400;500;600&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=gdline1001">
+  <link rel="stylesheet" href="styles.css?v=record1003">
   <script>
     (function () {
       try {
@@ -112,9 +112,8 @@
       <a href="#keys" data-nav="keys">3 &amp; 7</a>
       <a href="#clock" data-nav="clock">Plan</a>
       <a href="#playbook" data-nav="playbook">Rules</a>
-      <a href="#tickets" data-nav="tickets">Bets</a>
-      <a href="#outcomes" data-nav="outcomes">Bet Outcomes</a>
       <a href="#history" data-nav="history">Bet History</a>
+      <a href="#record" data-nav="record">Overall Record</a>
       <a href="#methodology" data-nav="methodology">Methodology</a>
       <a href="#sandbox" data-nav="sandbox" id="nav-sandbox" hidden>Testing</a>
       <a href="#users" data-nav="users" id="nav-users" hidden>Users</a>
@@ -406,85 +405,71 @@
       <div class="playbook-grid" id="playbook-grid"></div>
     </section>
 
-    <!-- ========== TICKETS ========== -->
-    <section id="tickets" class="view" data-view="tickets" hidden aria-labelledby="tickets-title">
+    <!-- ========== BET HISTORY ========== -->
+    <section id="history" class="view" data-view="history" hidden aria-labelledby="history-title">
       <div class="view-head">
-        <p class="eyebrow">Bets we logged · one-game bets are the score</p>
-        <h1 id="tickets-title">Bets</h1>
-        <p class="lede">The grade is whether our one-game bets beat the sportsbook’s last number. Size them in units. Parlays stay visible and tagged as fun. Sample rows are examples and do not count.</p>
+        <p class="eyebrow">Weeks 2 and 3 · the line we published</p>
+        <h1 id="history-title">Bet History</h1>
+        <p class="lede">What the B$ line was before the game, the final score, and the against-the-spread result. Thirty-two games. The same games as Overall Record.</p>
       </div>
-      <div class="bets-tally" id="bets-tally" hidden></div>
+      <div id="bet-history-root" data-official-rows="0"></div>
+    </section>
 
-      <section class="model-ats" id="model-ats" aria-labelledby="model-ats-title">
-        <div class="model-ats-head">
-          <p class="eyebrow">Model ATS at the close · not tickets</p>
-          <h2 id="model-ats-title">Model vs close</h2>
-          <p class="lede model-ats-lede">Every final game with a model line, graded against the closing home spread — whether or not we bet it. Weeks 2 and 3 use the game-day B$ line the site showed at kickoff. Separate from ticket / process P/L.</p>
+    <!-- ========== OVERALL RECORD ========== -->
+    <section id="record" class="view" data-view="record" hidden aria-labelledby="record-title">
+      <div class="view-head">
+        <p class="eyebrow">Same 32 games · behind sign-in</p>
+        <h1 id="record-title">Overall Record</h1>
+        <p class="lede">The record, the closing line value, and the outright upsets. Opening and closing lines are ESPN DraftKings. Week 1 is not in this record.</p>
+      </div>
+      <div id="overall-record-root" data-official-rows="0"></div>
+      <div id="week4-slot"></div>
+      <details class="record-fold my-tickets">
+        <summary>My tickets</summary>
+        <p class="prior-note">Personal tickets. Stakes, open bets, and profit stay here. They are not the official 32-game record.</p>
+        <div class="bets-tally" id="bets-tally" hidden></div>
+        <div class="ticket-toolbar">
+          <button type="button" class="btn btn-fill" id="btn-add">Log ticket</button>
+          <button type="button" class="btn" id="btn-pass">Record pass</button>
+          <button type="button" class="btn" id="btn-sample">Load SAMPLE</button>
+          <button type="button" class="btn" id="btn-export">Export JSON</button>
+          <label class="btn file-btn">
+            Import JSON
+            <input type="file" id="btn-import" accept="application/json,.json" hidden>
+          </label>
+          <button type="button" class="btn btn-danger" id="btn-clear">Clear all</button>
+          <label class="sort-field sharp-field">Sharp book
+            <input id="sharp-book" type="text" class="mono" spellcheck="false" autocomplete="off">
+          </label>
         </div>
-        <div class="model-ats-strip" id="model-ats-strip" role="status">
-          <span><em>Season</em> <strong id="model-ats-season">—</strong></span>
-          <span><em>This week</em> <strong id="model-ats-week">—</strong></span>
-          <span class="model-ats-gap" id="model-ats-gap"></span>
-        </div>
-        <div class="table-wrap model-ats-table-wrap">
-          <table class="ledger model-ats-table" id="model-ats-table">
+        <div class="table-wrap">
+          <table class="ledger" id="ledger">
             <thead>
               <tr>
-                <th>wk</th>
+                <th>week</th>
+                <th>window</th>
+                <th>type</th>
+                <th>purpose</th>
                 <th>game</th>
-                <th>our line</th>
+                <th>market</th>
+                <th>pick</th>
+                <th>line</th>
+                <th>juice</th>
+                <th>stake</th>
+                <th>book</th>
                 <th>close</th>
-                <th>side</th>
+                <th>CLV</th>
                 <th>result</th>
+                <th>profit</th>
+                <th>notes</th>
+                <th>grade</th>
               </tr>
             </thead>
-            <tbody id="model-ats-body"></tbody>
+            <tbody id="ledger-body"></tbody>
           </table>
         </div>
-        <p class="table-empty" id="model-ats-empty" hidden>No graded model-vs-close games yet.</p>
-      </section>
-
-      <div class="ticket-toolbar">
-        <button type="button" class="btn btn-fill" id="btn-add">Log ticket</button>
-        <button type="button" class="btn" id="btn-pass">Record pass</button>
-        <button type="button" class="btn" id="btn-sample">Load SAMPLE</button>
-        <button type="button" class="btn" id="btn-export">Export JSON</button>
-        <label class="btn file-btn">
-          Import JSON
-          <input type="file" id="btn-import" accept="application/json,.json" hidden>
-        </label>
-        <button type="button" class="btn btn-danger" id="btn-clear">Clear all</button>
-        <label class="sort-field sharp-field">Sharp book
-          <input id="sharp-book" type="text" class="mono" spellcheck="false" autocomplete="off">
-        </label>
-      </div>
-      <div class="table-wrap">
-        <table class="ledger" id="ledger">
-          <thead>
-            <tr>
-              <th>week</th>
-              <th>window</th>
-              <th>type</th>
-              <th>purpose</th>
-              <th>game</th>
-              <th>market</th>
-              <th>pick</th>
-              <th>line</th>
-              <th>juice</th>
-              <th>stake</th>
-              <th>book</th>
-              <th>close</th>
-              <th>CLV</th>
-              <th>result</th>
-              <th>profit</th>
-              <th>notes</th>
-              <th>grade</th>
-            </tr>
-          </thead>
-          <tbody id="ledger-body"></tbody>
-        </table>
-      </div>
-      <p class="table-empty" id="table-empty" hidden>No tickets in the book. Log a ticket, record a pass, or load SAMPLE data to see the ledger.</p>
+        <p class="table-empty" id="table-empty" hidden>No tickets in the book. Log a ticket, record a pass, or load SAMPLE data to see the ledger.</p>
+      </details>
     </section>
 
     <!-- ========== USERS (admin) ========== -->
@@ -536,26 +521,6 @@
       <p class="table-empty" id="users-empty" hidden>No users yet.</p>
     </section>
 
-    <!-- ========== BET OUTCOMES ========== -->
-    <section id="outcomes" class="view" data-view="outcomes" hidden aria-labelledby="outcomes-title">
-      <div class="view-head">
-        <p class="eyebrow">Final games · the line we published</p>
-        <h1 id="outcomes-title">Bet Outcomes</h1>
-        <p class="lede">Every finished game. Open, close, the game-day B$ line the site showed at kickoff, the final, and which number finished closer. When that version is missing, the row stays on the pinned lock. The lock itself is not rewritten.</p>
-      </div>
-      <div id="outcomes-root"></div>
-    </section>
-
-    <!-- ========== PUBLIC BET HISTORY ========== -->
-    <section id="history" class="view" data-view="history" hidden aria-labelledby="history-title">
-      <div class="view-head">
-        <p class="eyebrow">The ledger · behind sign-in</p>
-        <h1 id="history-title">Bet History</h1>
-        <p class="lede">Spread tickets already on the book, then the published B Line. Open tickets stay pending. Dollar stakes stay off this page.</p>
-      </div>
-      <div id="history-root"></div>
-    </section>
-
     <!-- ========== METHODOLOGY ========== -->
     <section id="methodology" class="view" data-view="methodology" hidden aria-labelledby="method-title">
       <article class="method-page">
@@ -565,7 +530,7 @@
           <p class="lede">The B Line is our number for a game: the gap we expect between the two teams, from the home side. It is an opinion we freeze before the kick. It is not a ticket, a price at a book, or a promise.</p>
         </div>
         <h2>The record</h2>
-        <p>Bet History shows that number only after the game is final. The line on the page is the game-day B$ line the site showed at kickoff when that version is on file. Otherwise it is the pinned lock. We do not rewrite the lock, and we do not recompute the row from today’s model. A flagged row was not a clean pre-kick publication, and it stays off the record.</p>
+        <p>Bet History and Overall Record show the same finished games from Weeks 2 and 3. Week 1 is not in that record. The B$ line is the game-day number the site showed at kickoff. Those Weeks 2 and 3 lines stay as they were recorded. From Week 4 on, the official line is that projection rounded to the nearest half point, and the raw number stays with it. We do not rewrite a locked line, and we do not recompute a finished row from today’s model.</p>
         <h2>What the desk looks at</h2>
         <p>A lot of things are judged together. None of them is the model by itself.</p>
         <ul>
@@ -595,7 +560,7 @@
       <div class="view-head">
         <p class="eyebrow">Admin only · not the production model</p>
         <h1 id="sandbox-title">Testing</h1>
-        <p class="lede">Rerun frozen inputs from games that are already final. The production B Line in the table is the pinned lock. Bet Outcomes grades the game-day line when one is on file. An experimental number lives only in this test.</p>
+        <p class="lede">Rerun frozen inputs from games that are already final. The production B Line in the table is the pinned lock. The official record grades the game-day line. An experimental number lives only in this test.</p>
       </div>
       <div id="sandbox-root"></div>
     </section>
@@ -784,9 +749,10 @@
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.81.1/dist/umd/supabase.js"></script>
-  <script src="auth.js?v=atsclv0930"></script>
-  <script src="app.js?v=gdline1001"></script>
-  <script src="ledger.js?v=gdline1001"></script>
-  <script type="module" src="data/book/boot.js?v=atsclv0930"></script>
+  <script src="auth.js?v=record1003"></script>
+  <script src="app.js?v=record1003"></script>
+  <script src="ledger.js?v=record1003"></script>
+  <script src="record.js?v=record1003"></script>
+  <script type="module" src="data/book/boot.js?v=record1003"></script>
 </body>
 </html>
