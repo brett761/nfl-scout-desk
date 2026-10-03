@@ -52,4 +52,4 @@ node data/model/append_model_snapshot.mjs --game-day data/model/game-day-lines-2
 
 Each becomes version N+1 with source `game-day site compute @<commit>`, `published_at` at the live commit's time, and `supersedes` at the prior version. Re-running is a no-op.
 
-Finished games on the site grade the latest of those versions. The close stays the one on the pinned `finals.json` row. ATS and better-position use the same rules as the pinned grade. A game with no game-day version stays on the pinned lock. The pinned row is not edited. The admin sandbox still compares experiments with that pinned lock, so the frozen replay stays the production baseline.
+Finished games on the Games page grade the latest of those versions. The close stays the one on the pinned `finals.json` row. ATS and better-position use the same rules as the pinned grade. A game with no game-day version stays on the pinned lock. The pinned row is not edited. Bet History and Overall Record use that same game-day line for Weeks 2 and 3 and do not round it. The admin sandbox still compares experiments with that pinned lock, so the frozen replay stays the production baseline.

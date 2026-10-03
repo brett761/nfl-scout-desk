@@ -3474,9 +3474,104 @@ body.is-viewer textarea:disabled {
 .exp-list { list-style: none; padding: 0; margin: 0; }
 .exp-list li { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; margin: 0 0 8px; }
 .exp-meta { color: var(--slate); font-size: 13px; }
+.record-ats {
+  margin: 0 0 16px;
+  font-family: var(--display);
+  font-size: clamp(28px, 5vw, 40px);
+  letter-spacing: 0.02em;
+  color: var(--white);
+}
+.record-dash div { min-width: 180px; flex: 1; }
+.record-dash strong { color: var(--copper); }
+.record-weeks {
+  margin: 0 0 14px;
+  padding: 0;
+  list-style: none;
+  color: var(--cloud);
+}
+.record-weeks li { margin: 0 0 4px; }
+.record-names {
+  margin: 0 0 8px;
+  max-width: 90ch;
+  color: var(--cloud);
+}
+.record-names span {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--copper);
+}
+.record-alert {
+  border: 1px solid var(--copper);
+  background: var(--copper-faint);
+  padding: 14px 16px;
+  margin: 0 0 18px;
+  max-width: 70ch;
+}
+.record-alert p { margin: 0 0 8px; color: var(--white); }
+.record-alert ul { margin: 0; padding-left: 1.2em; }
+.ats-mark { font-weight: 800; letter-spacing: 0.04em; }
+.ats-w { color: var(--process); }
+.ats-l { color: var(--lose); }
+.ats-p { color: var(--slate); }
+.record-fold {
+  margin: 22px 0 0;
+  border-top: 1px solid var(--slate-line);
+  padding-top: 8px;
+}
+.record-fold summary {
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  font-family: var(--display);
+  font-size: 28px;
+  letter-spacing: 0.03em;
+  color: var(--copper);
+}
+.record-fold .ticket-toolbar { margin-top: 12px; }
 @media (max-width: 720px) {
   .record-summary div { min-width: calc(50% - 10px); flex: 1; }
   .preset-row .btn, .sandbox-actions .btn { min-height: 44px; }
+  #history .record-table thead,
+  #record .record-table thead { display: none; }
+  #history .record-table,
+  #history .record-table tbody,
+  #history .record-table tr,
+  #history .record-table td,
+  #record .record-table,
+  #record .record-table tbody,
+  #record .record-table tr,
+  #record .record-table td { display: block; width: 100%; }
+  #history .record-table tr,
+  #record .record-table tr {
+    margin: 0 0 12px;
+    padding: 10px 12px;
+    background: #0B0B0E;
+    border: 1px solid var(--slate-line);
+  }
+  #history .record-table td,
+  #record .record-table td {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 6px 0;
+    white-space: normal;
+    text-align: right;
+  }
+  #history .record-table td::before,
+  #record .record-table td::before {
+    content: attr(data-label);
+    color: var(--slate);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: left;
+  }
 }
 
 /* ---------- ATS shadow board ---------- */

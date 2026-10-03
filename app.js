@@ -6473,12 +6473,16 @@ function parseHash() {
 
 function fromHash() {
   const { view, team, game } = parseHash();
-  const known = ["desk", "teams", "staff", "schedule", "ats", "linelog", "residuals", "keys", "clock", "playbook", "tickets", "users", "outcomes", "history", "methodology", "sandbox"];
+  const known = ["desk", "teams", "staff", "schedule", "ats", "linelog", "residuals", "keys", "clock", "playbook", "tickets", "users", "outcomes", "history", "record", "methodology", "sandbox"];
   let name = known.includes(view) ? view : "desk";
+  if (view === "tickets" || view === "outcomes" || view === "bets") name = "record";
   if ((name === "users" || name === "sandbox") && !canEdit()) name = "desk";
   showView(name);
-  if ((name === "outcomes" || name === "history" || name === "sandbox") && window.BMBLedger && typeof window.BMBLedger.render === "function") {
+  if (name === "sandbox" && window.BMBLedger && typeof window.BMBLedger.render === "function") {
     window.BMBLedger.render();
+  }
+  if ((name === "history" || name === "record") && window.BMBRecord && typeof window.BMBRecord.render === "function") {
+    window.BMBRecord.render();
   }
   if (name === "users" && window.BMB && typeof window.BMB.onUsersView === "function") {
     window.BMB.onUsersView();

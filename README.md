@@ -25,7 +25,14 @@ No build step. Open the HTML file directly.
 
 ## Published B Lines
 
-Bet Outcomes, Bet History, and the B$ Line on a finished game grade the latest `game-day site compute` version in `data/model/bs-line-history-2026.json` when one exists, and fall back to the pinned row in `data/published/finals.json` when it does not. The pinned file is not rewritten. After a week is final and its locks are in `data/postmortem/locks/`:
+Bet History and Overall Record read `data/record/canonical-2026.json`. Both stay behind sign-in. The official set is Weeks 2 and 3 (32 games). Week 1 is excluded. Those B$ lines are the game-day versions in `data/model/bs-line-history-2026.json` and are not rounded. From Week 4 the official line is the locked raw projection rounded to the nearest 0.5, stored beside the raw number. The lock files are not rewritten. Rebuild and check with:
+
+```bash
+node data/record/build_canonical.mjs
+node data/record/validate_record.mjs
+```
+
+The Games page still grades a finished game from the latest `game-day site compute` version, and falls back to the pinned row in `data/published/finals.json` when that version is missing. The pinned file is not rewritten. After a week is final and its locks are in `data/postmortem/locks/`:
 
 ```bash
 node data/published/build_published_lines.mjs
@@ -46,7 +53,7 @@ Use the week you are rating. See `data/dvoa/README.md`. Street open, midweek, an
 
 Published B$ lines are append-only in `data/model/bs-line-history-2026.json`. A correction is a new version. `node data/model/append_model_snapshot.mjs --week 4` appends. `node data/model/check_model_history.mjs` fails if a published version was edited or deleted. See `data/model/README.md`.
 
-Bet History (signed in) grades the ticket ledger: ATS at the line taken, closing line value, and underdog calls. The one-line switch is `BET_HISTORY_PUBLIC` in `auth.js`. It stays false, so a signed-out visitor still sees only the public home.
+`BET_HISTORY_PUBLIC` in `auth.js` stays false. A signed-out visitor still sees only the public home. Direct links to Bet History or Overall Record do not open those pages until sign-in.
 
 ## Tuesday power ranking
 
