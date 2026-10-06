@@ -1,5 +1,5 @@
 {
-  "pulled": "2026-10-06a",
+  "pulled": "2026-10-06b",
   "pulled_et": "2026-10-06 10:08 AM ET (America/New_York)",
   "phase": "WORKING-TUE",
   "sources": [
@@ -7,7 +7,7 @@
     "https://www.nfl.com/injuries/",
     "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?seasontype=2&week=5&year=2026"
   ],
-  "note": "WORKING-TUE Tuesday refresh after Monday WORKING (2026-10-05a). Week 4 fully FINAL (incl. ATL@NO MNF). Week 5 board: TNF TB@DAL Thu, PHI vs JAX London Sun AM, 12 more Sunday, BAL@ATL SNF, BUF@LAR MNF; byes KC/CAR. No official NFL practice sheet yet (TNF clubs Wed ~4pm ET) \u2014 ESPN working list only, no rumor moves. Drop gameday inactive / ruled-out-for-remainder / coach's-decision noise; keep multi-week OUT + IR/PUP/NFI. Drop Aaron Donald retired ESPN quirk. Preserve manuals. Tier caps QB<=1.5 / All-Pro<=0.5 / other<=0.25 on auto; Madden-first else PFF; floor 0.2x status; Cap team 6.0.",
+  "note": "WORKING-TUE Tuesday refresh after Monday WORKING (2026-10-05a). Week 4 fully FINAL (incl. ATL@NO MNF). Week 5 board: TNF TB@DAL Thu, PHI vs JAX London Sun AM, 12 more Sunday, BAL@ATL SNF, BUF@LAR MNF; byes KC/CAR. No official NFL practice sheet yet (TNF clubs Wed ~4pm ET) \u2014 ESPN working list only, no rumor moves. Drop gameday inactive / ruled-out-for-remainder / coach's-decision noise; keep multi-week OUT + IR/PUP/NFI. Drop Aaron Donald retired ESPN quirk. Preserve manuals. Tier caps QB<=1.5 / All-Pro<=0.5 / other<=0.25 on auto; Madden-first else PFF; floor 0.2x status; Cap team 6.0. Desk manual 2026-10-06b: TB David Sills V (WR2, IR) impact 0, unproven backup. Standing manuals in this file win on the next ESPN reseed.",
   "espn_timestamp": "2026-10-06T14:07:25Z",
   "teams": {
     "ARI": [
@@ -2361,9 +2361,11 @@
         "name": "David Sills V",
         "pos": "WR2",
         "status": "IR",
-        "note": "Sills (undisclosed) was placed on injured reserve by the Buccaneers on Sunday with a designation to return, Scott Smith of the team's official website reports.",
+        "note": "Sills (undisclosed) was placed on injured reserve by the Buccaneers on Sunday with a designation to return, Scott Smith of the team's official website reports. Explicit impact 0 — unproven backup; no pos_base fallthrough.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "on": true,
+        "impact": 0,
+        "impact_source": "manual"
       },
       {
         "name": "Mohamed Kamara",

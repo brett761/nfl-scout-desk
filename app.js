@@ -63,6 +63,7 @@ const EDIT_CONTROL_SEL = [
   "#residuals-body input", "#residuals-body select", "#residuals-body textarea",
   "#team-sheet-body input", "#team-sheet-body select", "#team-sheet-body textarea",
   "#team-sheet-body .ctx-del", "#team-sheet-body .inj-add", "#team-sheet-body .ctx-add",
+  "#game-sheet-body .im-impact", "#game-sheet-body .im-zero-btn",
   "#tp-adjust-minus", "#tp-adjust-plus",
 ].join(",");
 
@@ -1400,6 +1401,29 @@ function applyInjuryImpactFields(row, abbr) {
   return row;
 }
 
+/** Commit a full-out impact edit on a profile injury row.
+ *  Empty clears the manual and returns to auto. A number, including 0, stores
+ *  impact_source manual and reprices with no floor (injuryRowPts manual: true).
+ *  Returns "manual", "auto", or null when the text is not a commit. */
+function writeInjuryImpact(row, abbr, raw) {
+  if (!row) return null;
+  const text = String(raw ?? "").trim();
+  if (text === "") {
+    row.impact = null;
+    row.impact_source = null;
+    row.custom = false;
+    applyInjuryImpactFields(row, abbr);
+    return "auto";
+  }
+  const v = num(text);
+  if (v == null) return null;
+  row.impact = v;
+  row.impact_source = "manual";
+  row.custom = false;
+  row.pts = injuryRowPts(row.pos, row.status, row.impact, { name: row.name, manual: true });
+  return "manual";
+}
+
 function seedInjuryRow(raw, abbr, prior) {
   const pos = raw && raw.pos ? String(raw.pos) : "DEPTH";
   const status = raw && raw.status ? String(raw.status).toUpperCase() : "QUESTIONABLE";
@@ -2732,7 +2756,7 @@ async function loadNfl() {
   const staffAtsReq = fetch("./data/staff-ats-2026.json");
   const scaleReq = fetch("./data/injury-scale.json?v=dbt1w5tue06");
   const allProReq = fetch("./data/allpro-last3.json?v=w3tue22");
-  const injReq = fetch("./data/injury-2026.json?v=w5tue06");
+  const injReq = fetch("./data/injury-2026.json?v=sills1006");
   const wxReq = fetch("./data/weather-scale.json");
   const coachReq = fetch("./data/coaches-2026.json");
   const prepReq = fetch("./data/coach-prep-2026.json");
@@ -4883,15 +4907,24 @@ function renderGameSheet() {
     ${totHtml}`;
   const im = body.querySelector("details.injmath");
   if (im) im.addEventListener("toggle", () => { injMathOpen = im.open; });
+  body.querySelectorAll("details.im-other").forEach((d) => {
+    d.addEventListener("toggle", () => {
+      const key = d.dataset.imOther || "";
+      if (!key) return;
+      if (d.open) injMathOtherOpen.add(key);
+      else injMathOtherOpen.delete(key);
+    });
+  });
   const um = body.querySelector("details.unitmis");
   if (um) um.addEventListener("toggle", () => { unitMisOpen[String(game.id) + ":sheet"] = um.open; });
 }
 
 /* ---------- Injury math on the game sheet (Live vs Proposed trench shadow) ----------
-   Display only. The Proposed column is the 2026-10-06 trench study weighting. It is
-   NOT an input to eff(), injuryTerm(), or the B$ line. Live is exactly the injury
-   rows inside the B$ line (profile rows for an open game, the lock rows for a
-   finished one). Nightly inputs: data/injury-trench/health-2026-wNN.json. */
+   Live rows are the injury rows inside the B$ line (profile rows for an open game,
+   the lock rows for a finished one). An admin can edit a Live full-out impact here;
+   it is the same profile manual as the team Injury block. The Proposed column is
+   the 2026-10-06 trench study weighting. It is NOT an input to eff(), injuryTerm(),
+   or the B$ line. Nightly inputs: data/injury-trench/health-2026-wNN.json. */
 const TRENCH = {
   posValue: { DL: 0.9, EDGE: 0.7, LB: 0.7, T: 1.0, IOL: 0.8 },
   unitOf: { DL: "F7", EDGE: "F7", LB: "F7", T: "OL", IOL: "OL" },
@@ -4914,6 +4947,7 @@ let trenchIndex = null;
 let trenchIndexState = "idle"; // idle | loading | ready | missing
 const trenchWeeks = Object.create(null); // week -> data | "loading" | "missing"
 let injMathOpen = false;
+const injMathOtherOpen = new Set();
 
 function trenchSnapWeight(share) {
   const s = num(share);
@@ -4994,6 +5028,7 @@ function trenchTeamMath(abbr, game, weekData) {
     for (const row of (getProfile(a).injuries || [])) {
       const pts = Math.abs(num(row.pts) || 0);
       src.push({
+        id: row.id || "",
         name: row.name, pos: row.pos || "", status: String(row.status || "").toUpperCase(),
         on: !!row.on, livePts: row.on ? pts : 0, value: num(row.impact),
         manual: row.impact_source === "manual", hit: trenchLookup(weekData, a, row.name),
@@ -5023,6 +5058,7 @@ function trenchTeamMath(abbr, game, weekData) {
       if (w >= 0.75 && pS >= 0.5) starters[unit] += 1;
     }
     rows.push({
+      id: s.id || "", abbr: a, editable: !frozenTeam && !!s.id,
       name: s.name, pos: s.pos, nflPos: hit ? hit.pos_nfl : "", group, unit, status: s.status, practice,
       practiceSource: hit ? hit.practice_source : "", practiceDays: hit ? hit.practice_days : null, share,
       live: { on: s.on, mult, value, pts: s.livePts, manual: s.manual }, prop: p,
@@ -5082,9 +5118,10 @@ function imRowHtml(r) {
   } else {
     propF = "same as Live";
   }
-  return `<div class="im-row">
+  const liveEdit = r.editable ? `<span class="im-impact-edit"><input type="number" class="mono im-impact${r.live.manual ? "" : " is-auto"}" step="0.01" min="0" inputmode="decimal" data-im-impact="${esc(r.id)}" data-im-team="${esc(r.abbr)}" value="${r.live.value != null ? esc(String(r.live.value)) : ""}" aria-label="Live full-out impact for ${esc(r.name)}" title="Full-out impact. Same manual as the team Injury block. Empty returns to auto."><button type="button" class="im-zero-btn" data-im-zero="${esc(r.id)}" data-im-team="${esc(r.abbr)}" title="Set full-out impact to 0 (manual)">Zero</button></span>` : "";
+  return `<div class="im-row"${r.id ? ` data-im-row="${esc(r.id)}"` : ""}>
       <div class="im-who"><b>${esc(r.name)}</b><small>${esc(pos)} · ${esc(unitLabel)} · ${esc(status)}${practice ? " · " + esc(practice) : ""}</small></div>
-      <div class="im-cell im-live"><span class="im-f">${esc(liveF)}</span><span class="im-pts">${imPts(r.live.pts)}</span></div>
+      <div class="im-cell im-live">${liveEdit}<span class="im-f">${esc(liveF)}</span><span class="im-pts">${imPts(r.live.pts)}</span></div>
       <div class="im-cell im-prop"><span class="im-f">${propF}</span><span class="im-pts">${imPts(r.prop ? r.prop.pts : r.live.pts)}</span></div>
     </div>`;
 }
@@ -5098,8 +5135,9 @@ function imSubRow(label, liveVal, propVal, cls = "", liveNote = "", propNote = "
 }
 
 function imTeamHtml(m, side) {
-  const trench = m.rows.filter((r) => r.unit !== "OTHER" && ((r.prop && r.prop.pts > 0) || r.live.pts > 0 || r.status === "QUESTIONABLE" || r.status === "DOUBTFUL" || r.status === "OUT"));
-  const other = m.rows.filter((r) => r.unit === "OTHER" && r.live.pts > 0);
+  const liveShown = (r) => r.live.pts > 0 || (r.live.manual && r.live.on);
+  const trench = m.rows.filter((r) => r.unit !== "OTHER" && (liveShown(r) || (r.prop && r.prop.pts > 0) || r.status === "QUESTIONABLE" || r.status === "DOUBTFUL" || r.status === "OUT"));
+  const other = m.rows.filter((r) => r.unit === "OTHER" && liveShown(r));
   const zero = m.rows.length - trench.length - other.length;
   const order = { F7: 0, OL: 1 };
   trench.sort((x, y) => (order[x.unit] - order[y.unit]) || ((y.prop ? y.prop.pts : 0) - (x.prop ? x.prop.pts : 0)) || (y.live.pts - x.live.pts));
@@ -5108,6 +5146,8 @@ function imTeamHtml(m, side) {
   const capNote = (u, label) => u.capped ? `${label} capped at ${TRENCH.unitCap.toFixed(1)} (was ${imNum(u.raw)})` : `${label} under ${TRENCH.unitCap.toFixed(1)} cap`;
   const clusterNote = (u) => u.cluster ? `+${TRENCH.clusterBonus.toFixed(1)} (${u.starters} starters out)` : `${u.starters} of ${TRENCH.clusterMin} starters`;
   const otherRows = other.map(imRowHtml).join("");
+  const otherHasManualZero = other.some((r) => r.live.manual && !(r.live.pts > 0));
+  const otherOpen = otherHasManualZero || injMathOtherOpen.has(m.abbr);
   const capCut = (f7.capped ? f7.raw - f7.total : 0) + (ol.capped ? ol.raw - ol.total : 0);
   return `<section class="injmath-team">
       <h4><span>${esc(m.abbr)} · ${esc(side)}</span><small>Live ${imPts(m.live.total)} · Proposed ${imPts(m.prop.total)}</small></h4>
@@ -5118,7 +5158,7 @@ function imTeamHtml(m, side) {
         ${imSubRow("OL subtotal", imPts(m.live.OL), imPts(ol.rows))}
         ${imSubRow("Cluster bonus", "—", imPts(f7.bonus + ol.bonus), "", "not in Live", "F7 " + clusterNote(f7) + " · OL " + clusterNote(ol))}
         ${imSubRow("Unit caps", "—", capCut > 0 ? `+${imNum(capCut)} cut` : "none", "", "no unit cap", capNote(f7, "F7") + " · " + capNote(ol, "OL"))}
-        ${other.length ? `<details class="im-other"><summary><span>Other positions · ${other.length} row${other.length === 1 ? "" : "s"} · priced the same in both</span><span class="im-pts">${imPts(m.live.OTHER)}</span></summary>${otherRows}</details>` : imSubRow("Other positions", imPts(m.live.OTHER), imPts(m.prop.OTHER))}
+        ${other.length ? `<details class="im-other" data-im-other="${esc(m.abbr)}"${otherOpen ? " open" : ""}><summary><span>Other positions · ${other.length} row${other.length === 1 ? "" : "s"} · priced the same in both</span><span class="im-pts">${imPts(m.live.OTHER)}</span></summary>${otherRows}</details>` : imSubRow("Other positions", imPts(m.live.OTHER), imPts(m.prop.OTHER))}
         ${imSubRow("Team total", imPts(m.live.total), imPts(m.prop.total), "is-total", m.live.capped ? "capped at 6.0" : "cap 6.0", m.prop.capped ? "capped at 6.0" : "cap 6.0")}
       </div>
       ${zero > 0 ? `<p class="im-zero">${zero} more listed row${zero === 1 ? "" : "s"} price at 0 in both.</p>` : ""}
@@ -5179,12 +5219,31 @@ function injuryMathHtml(game, ourLine) {
         ${imTeamHtml(mA, "away")}
         ${imTeamHtml(mH, "home")}
         <div class="injmath-foot">
-          <p><b>Live</b> = impact × status (IR/Out/Doubtful 1.0, Questionable 0.35 when on; Doubtful was 0.75 through Week 4, and locked weeks keep it). Auto impact is clamped: QB1 1.5, All-Pro 0.5, else 0.25, floor 0.2. Team cap 6.0. This is injuryTerm() in eff().</p>
+          <p><b>Live</b> = impact × status (IR/Out/Doubtful 1.0, Questionable 0.35 when on; Doubtful was 0.75 through Week 4, and locked weeks keep it). Auto impact is clamped: QB1 1.5, All-Pro 0.5, else 0.25, floor 0.2. A typed Live impact, including 0, is the same manual as the team Injury block (clear the field to go back to auto) and moves injuryTerm() in the B$ line. No floor on a manual. Team cap 6.0. A standing zero has to live in data/injury-2026.json as impact 0, impact_source manual, or the next ESPN reseed puts auto back. Export profiles keeps the desk copy only. A newer pulled stamp is what refreshes a desk that already stored the old auto.</p>
           <p><b>Proposed</b> = position value × snap weight × P(sits), front seven and OL only. Value: DL 0.9, EDGE/LB 0.7, T 1.0, G/C 0.8. Snap weight (last 4 team games): 75%+ 1.0, 60–75% 0.75, 45–60% 0.25, under 45% 0. P(sits): Out/Doubtful/IR 1.0; Questionable 0.45 DNP, 0.24 limited, 0.12 full, 0.27 unknown. +0.5 when 3+ starters in a unit are out. Caps: front seven 3.5, OL 3.5, team 6.0. Other positions stay on Live pricing.</p>
           <p class="injmath-src">${sourceNote}${practiceNote}Line if Proposed = B$ line + (home Proposed − home Live) − (away Proposed − away Live).</p>
         </div>
       </div>
     </details>`;
+}
+
+/** Write a Live full-out impact from the Injury math panel onto the profile row, then refresh the sheet and the schedule cards. */
+function commitLiveImpact(abbr, rowId, raw) {
+  if (!canEdit()) return;
+  const a = normAbbr(abbr);
+  if (!a || !rowId) return;
+  const p = getProfile(a);
+  const row = (p.injuries || []).find((r) => r && r.id === rowId);
+  if (!row) return;
+  if (!writeInjuryImpact(row, a, raw)) return;
+  setProfile(a, p);
+  injMathOtherOpen.add(a);
+  const sheet = document.getElementById("game-sheet");
+  const top = sheet ? sheet.scrollTop : 0;
+  if (gameSheetId) renderGameSheet();
+  if (sheet) sheet.scrollTop = top;
+  if (profileAbbr === a) refreshTeamDerived();
+  else renderSchedule();
 }
 
 /* ---------- Unit mismatch (research only) ----------
@@ -7605,6 +7664,20 @@ function bind() {
 
   const gameClose = document.getElementById("game-sheet-close");
   if (gameClose) gameClose.addEventListener("click", () => closeGameSheet());
+  const gameBody = document.getElementById("game-sheet-body");
+  if (gameBody) {
+    gameBody.addEventListener("change", (e) => {
+      const inp = e.target.closest("[data-im-impact]");
+      if (!inp || !canEdit()) return;
+      commitLiveImpact(inp.dataset.imTeam, inp.dataset.imImpact, inp.value);
+    });
+    gameBody.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-im-zero]");
+      if (!btn || !canEdit()) return;
+      e.preventDefault();
+      commitLiveImpact(btn.dataset.imTeam, btn.dataset.imZero, "0");
+    });
+  }
   document.getElementById("team-sheet-close").addEventListener("click", () => closeTeamSheet());
   document.getElementById("team-sheet").addEventListener("keydown", (e) => {
     if (e.target.id === "tp-adjust-why" && e.key === "Enter") {
@@ -7759,14 +7832,11 @@ function bind() {
     }
     const injImpact = e.target.closest("[data-inj-impact]");
     if (injImpact) {
+      if (String(injImpact.value ?? "").trim() === "") return;
       const p = getProfile(profileAbbr);
       const row = p.injuries.find((r) => r.id === injImpact.dataset.injImpact);
       if (!row) return;
-      const v = num(injImpact.value);
-      row.impact = v;
-      row.impact_source = "manual";
-      row.custom = false;
-      row.pts = injuryRowPts(row.pos, row.status, row.impact, { name: row.name, manual: true });
+      if (!writeInjuryImpact(row, profileAbbr, injImpact.value)) return;
       const rowEl = e.target.closest(".inj-row");
       const ptsInp = rowEl && rowEl.querySelector("[data-inj-pts]");
       if (ptsInp) ptsInp.value = row.pts;
@@ -7793,6 +7863,21 @@ function bind() {
   });
   document.getElementById("team-sheet").addEventListener("change", (e) => {
     if (!profileAbbr || !canEdit()) return;
+    const injImpactCh = e.target.closest("[data-inj-impact]");
+    if (injImpactCh && String(injImpactCh.value ?? "").trim() === "") {
+      const p = getProfile(profileAbbr);
+      const row = p.injuries.find((r) => r.id === injImpactCh.dataset.injImpact);
+      if (!row) return;
+      writeInjuryImpact(row, profileAbbr, "");
+      const rowEl = e.target.closest(".inj-row");
+      paintInjImpact(rowEl, row);
+      const ptsInp = rowEl && rowEl.querySelector("[data-inj-pts]");
+      if (ptsInp) ptsInp.value = row.pts;
+      setProfile(profileAbbr, p);
+      refreshTeamDerived();
+      if (gameSheetId) renderGameSheet();
+      return;
+    }
     if (e.target.id === "tp-adjust") {
       applyAdjust(e.target.value);
       return;
