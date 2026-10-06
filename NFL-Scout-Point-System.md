@@ -13,6 +13,8 @@ The league is even. No pet teams.
 effective = 2025 prior (tapered) + FA + draft + Madden 22 + injuries + manual adjust + weekly context
 ```
 
+From Week 5 (2026-10-06) the 2025 prior is out of the line: `effective = 2026 results + draft + Madden 22 + PFF 22 + PFF YTD + last-year SOS + injuries + manual adjust + weekly context` (FA, PFF preseason, and back-from-injury are 0). See section 1.
+
 **Game extras (only that matchup)**
 ```
 home-field = 2   (0 on a neutral field)
@@ -35,22 +37,26 @@ Weather does **not** move the spread. It only shades the total.
 
 ---
 
-## 1. 2025 prior (the baseline)
-Last year’s 17-game stats, scaled, then blended so a +12 defense does not become a 20-point line.
+## 1. 2025 prior (the baseline) — out of the B$ line from Week 5
+Last year’s 17-game stats, scaled, then blended so a +12 defense does not become a 20-point line. Week 1 starting point only. On the game sheet it is the “Last year (2025)” row; the “2026 results” row is this season’s side of the same blend.
 
 | Pillar | Scale | What it is | Weight |
 |---|---|---|---|
-| Offense | −12 to +12 | Points scored / game | 35% |
-| Defense | −12 to +12 | Points allowed / game | 35% |
-| Special teams | −4 to +4 | Return TDs + FG% vs league | 10% |
+| Offense | −12 to +12 | Points scored / game | 38.75% |
+| Defense | −12 to +12 | Points allowed / game | 38.75% |
+| Special teams | −4 to +4 | Return TDs + FG% vs league | 2.5% |
 | Takeaways | −5 to +5 | Takeaways | 7.5% |
 | Giveaways | −5 to +5 | Giveaways (minus is sloppy) | 12.5% |
 
 2025 endpoints we locked: offense Rams 30.5 = +8 / Raiders 14.2 = −10. Defense Seahawks 17.2 = +12 / Cowboys 30.1 = −12.
 
-**Taper:** after n 2026 games, prior weight is (17−n)/17. Week 1 is 100% last year. After 17 games the prior is gone. In-season “current” updates 90/10 (one Sunday is 10%).
+**Taper (N = 3, Brett 2026-09-17):** n = scored 2026 regular-season finals. Prior weight is (3−n)/3, 2026 weight is n/3. Week 1 is 100% last year; after 3 games the prior is 0% and the row is 100% 2026 results (same five pillars on the 2025 scale, straight mean of games played).
 
-FA tapers on the same clock (it is a correction to last year’s roster). Draft fades over the first 4 games, not 17. Injuries, coaches, and weather do not fade.
+**Out from Week 5 (Brett 2026-10-06: “We should not have any last year rankings”):** once every Week 4 game is final, the 2025 prior weight is 0 for every club no matter n (`PRIOR_OUT_FROM_WEEK = 5` in app.js). The game sheet shows “Last year (2025) · not in line” at 0.0 and the team sheet keeps the 2025 prior box collapsed, display only (same pattern as FA and PFF preseason). Weeks 1–4 are graded and pinned; they were already at 0% prior by Week 4, so no locked line moves.
+
+Back-from-injury and FA (when on) fade with the same prior weight, so they are 0 from Week 5 too. Draft fades over the first 4 games. Injuries, coaches, and weather do not fade.
+
+**Last year SOS** (2025 realized strength of schedule × 2025 record, cap ±2.5) is a separate layer and is still in the line. It does not fade. Whether to drop it is an open question.
 
 ---
 
@@ -238,5 +244,5 @@ Adjust on a club is a human plus/minus on top of the algorithm. Context rows are
 1. Are the injury bases (QB 3.5, LT 2, EDGE 1.5) in the right neighborhood?
 2. Is ±1 enough for “has his number,” or do you want a real 8–2 to be bigger?
 3. Should Week 1 / bye stay ATS, or do you want a second SU look?
-4. Anything we are double-counting (FA vs injury vs last year’s prior)?
+4. Anything we are double-counting (FA vs injury vs last year’s prior)? The 2025 prior is out from Week 5; last-year SOS is still in.
 5. What is missing that you would not price a Thursday without?
