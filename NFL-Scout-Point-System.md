@@ -13,7 +13,9 @@ The league is even. No pet teams.
 effective = 2025 prior (tapered) + FA + draft + Madden 22 + injuries + manual adjust + weekly context
 ```
 
-From Week 5 (2026-10-06) the 2025 prior is out of the line: `effective = 2026 results + draft + Madden 22 + PFF 22 + PFF YTD + last-year SOS + injuries + manual adjust + weekly context` (FA, PFF preseason, and back-from-injury are 0). See section 1.
+From Week 5 (2026-10-06) the 2025 prior and last-year SOS are out of the line: `effective = 2026 results + Madden 22 + PFF 22 (2025 grades) + PFF YTD (2026 grades) + injuries + manual adjust + weekly context`. FA, PFF preseason, back-from-injury, and the draft (after 4 games) are 0. See section 1.
+
+**Weeks 1–4 are pinned.** The desk shows the B$ line each Week 1–4 game had at main 31939cf (`data/model/desk-pins-2026-w01-w04.json`), unless a game-day line or a `finals.json` lock exists (those are the same numbers). Loading new results or changing the model does not move a graded week.
 
 **Game extras (only that matchup)**
 ```
@@ -54,9 +56,11 @@ Last year’s 17-game stats, scaled, then blended so a +12 defense does not beco
 
 **Out from Week 5 (Brett 2026-10-06: “We should not have any last year rankings”):** once every Week 4 game is final, the 2025 prior weight is 0 for every club no matter n (`PRIOR_OUT_FROM_WEEK = 5` in app.js). The game sheet shows “Last year (2025) · not in line” at 0.0 and the team sheet keeps the 2025 prior box collapsed, display only (same pattern as FA and PFF preseason). Weeks 1–4 are graded and pinned; they were already at 0% prior by Week 4, so no locked line moves.
 
-Back-from-injury and FA (when on) fade with the same prior weight, so they are 0 from Week 5 too. Draft fades over the first 4 games. Injuries, coaches, and weather do not fade.
+Back-from-injury and FA (when on) fade with the same prior weight, so they are 0 from Week 5 too. Draft fades over the first 4 games played (fixed 2026-10-06: it had been using the prior-taper n, which stops at 3, so 25% of the draft stayed on).
 
-**Last year SOS** (2025 realized strength of schedule × 2025 record, cap ±2.5) is a separate layer and is still in the line. It does not fade. Whether to drop it is an open question.
+**2026 results** come from `data/ytd-rankings-2026.json` (through Week 4 as of 2026-10-06): points for and against per game from the ESPN scoreboard finals in `nfl-2026.json`, ESPN team special teams, and ESPN box-score takeaways and giveaways, all on the 2025 pillar scales and weights. Injuries, coaches, and weather do not fade.
+
+**Last year SOS** (2025 realized strength of schedule × 2025 record, cap ±2.5) is out of the line from Week 5 on the same switch (Brett 2026-10-06, `SOS_OUT_WITH_PRIOR`). The game sheet shows “Last year SOS · not in line” at 0.0 with the 2025 numbers in the note. The team sheet keeps a collapsed “2025 SOS · not in B$ line” box, display only. Weeks 1–4 kept it (pinned).
 
 ---
 
@@ -244,5 +248,5 @@ Adjust on a club is a human plus/minus on top of the algorithm. Context rows are
 1. Are the injury bases (QB 3.5, LT 2, EDGE 1.5) in the right neighborhood?
 2. Is ±1 enough for “has his number,” or do you want a real 8–2 to be bigger?
 3. Should Week 1 / bye stay ATS, or do you want a second SU look?
-4. Anything we are double-counting (FA vs injury vs last year’s prior)? The 2025 prior is out from Week 5; last-year SOS is still in.
+4. Anything we are double-counting (FA vs injury vs last year’s prior)? The 2025 prior and last-year SOS are out from Week 5. PFF 22 (2025 grades) is still in by choice, next to PFF YTD (2026 grades).
 5. What is missing that you would not price a Thursday without?

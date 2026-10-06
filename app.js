@@ -25,6 +25,10 @@ const INCLUDE_PFF_PRESEASON = false;
    already at w_prior 0 by Week 4 (N=3), so no graded line moves. The 2025 prior box stays
    on the team sheet, collapsed, display only. Last year SOS is a separate layer (still in). */
 const PRIOR_OUT_FROM_WEEK = 5;
+/* Last year SOS (sos-2025.json) leaves the B$ line on the same switch (Brett 2026-10-06).
+   Display only after that ("Last year SOS · not in line"). Weeks 1-4 lines are pinned
+   (data/model/desk-pins-2026-w01-w04.json), so a graded line never moves. */
+const SOS_OUT_WITH_PRIOR = true;
 const SHEET_BOX_KEY = "nflScout.sheetBoxes.v1";
 
 function canEdit() {
@@ -547,7 +551,8 @@ function normAbbr(abbr) {
      net is already team-capped ±4. If net is missing, sum starters[].pts and clamp ±4.
    draft_term(abbr) = draft_raw(abbr) * draft_fade
      draft_fade = max(0, (window − n) / window) where window = window_games or 4
-     and n = gamesPlayed2026(abbr). Week 1 (n=0) is 100%. Gone after 4 games.
+     and n = scored 2026 finals for the club (not capped at the prior N=3; that cap
+     left 25% on through 2026-10-06). Week 1 (n=0) is 100%. Gone after 4 games.
      Do not use the prior FA taper for draft. Incoming rookies only. Starters only.
      Year-1 fade is baked into pts. Does not rewrite the 2025 prior.
    return_raw(abbr) = return-2026.json team net (0 if missing).
@@ -588,6 +593,9 @@ function normAbbr(abbr) {
      Manual overrides are NOT clamped (standing: Darnold 1.5 / Murray 0.5).
      injury_term = clamp(sum of ON rows, −cap_team, 0)
    Effective = algorithm + FA + draft + madden + pff + pff_ytd + SOS + return + injury + adjust + context
+   sos_term = sos-2025.json net, 0 from Week 5 (SOS_OUT_WITH_PRIOR + priorRetired()). Display only after.
+   deskHomeSpread(): game-day line → finals.json lock → Weeks 1-4 pin
+   (data/model/desk-pins-2026-w01-w04.json) → live ourHomeSpread.
    = algorithm_base + fa_term + draft_term + madden_term + pff_term + pff_pre_term + pff_ytd_term + sos_term + return_term + injury_term + user_adjust + sum of active (on) context.
    fa_term is 0 while INCLUDE_FA is false.
    pff_pre_term is 0 while INCLUDE_PFF_PRESEASON is false.
@@ -968,7 +976,11 @@ function draftWindow() {
 
 function draftFade(abbr) {
   const window = draftWindow();
-  return Math.max(0, (window - taperFor(abbr).n) / window);
+  // Games played, not the prior-taper n (that one stops at N = 3, which left 25% of the
+  // draft on forever). Scored finals; date fallback only before any final is stamped.
+  const scored = scoredGames2026(abbr).length;
+  const n = scored > 0 ? scored : taperFor(abbr).n;
+  return Math.max(0, (window - n) / window);
 }
 
 function draftTerm(abbr) {
@@ -1092,11 +1104,18 @@ function sosTeam(abbr) {
   return sosData.teams[a] || null;
 }
 
-function sosTerm(abbr) {
+/** Raw 2025 SOS net (display). */
+function sosRaw(abbr) {
   const t = sosTeam(abbr);
   if (!t) return 0;
   const n = num(t.net);
   return n === null ? 0 : n;
+}
+
+/** SOS inside eff() / the B$ line. 0 from Week 5 (same switch as the 2025 prior). */
+function sosTerm(abbr) {
+  if (SOS_OUT_WITH_PRIOR && priorRetired()) return 0;
+  return sosRaw(abbr);
 }
 
 function returnTeam(abbr) {
@@ -1985,6 +2004,28 @@ function gameDayMarkHtml(game) {
   return `<button type="button" class="gd-mark" aria-expanded="false" title="Pinned lock ${esc(pinned)}">game-day line<span class="gd-pin">Pinned lock ${esc(pinned)}</span></button>`;
 }
 
+let deskPinByEspn = {};
+let deskPinByPair = {};
+
+function indexDeskPins(data) {
+  deskPinByEspn = {};
+  deskPinByPair = {};
+  for (const r of (data && Array.isArray(data.games) ? data.games : [])) {
+    if (!r || num(r.b_line) == null) continue;
+    const rec = { b_line: num(r.b_line), week: Number(r.week), source: data.source_commit || "" };
+    if (r.espn_id) deskPinByEspn[String(r.espn_id)] = rec;
+    if (r.away && r.home) deskPinByPair[normAbbr(r.away) + "@" + normAbbr(r.home) + "|w" + Number(r.week)] = rec;
+  }
+}
+
+/** Weeks 1-4 desk line frozen at main 31939cf (data/model/desk-pins-2026-w01-w04.json). */
+function deskPinFor(game) {
+  if (!game) return null;
+  if (game.id && deskPinByEspn[String(game.id)]) return deskPinByEspn[String(game.id)];
+  const key = normAbbr(game.away) + "@" + normAbbr(game.home) + "|w" + Number(game.week);
+  return deskPinByPair[key] || null;
+}
+
 function deskHomeSpread(game) {
   if (gameIsFinished(game)) {
     const gd = gameDayVersionFor(game);
@@ -1992,6 +2033,9 @@ function deskHomeSpread(game) {
     const rec = publishedRecordFor(game);
     if (rec) return num(rec.b_line_home_spread);
   }
+  // Graded weeks never float with today's model or new results.
+  const pin = deskPinFor(game);
+  if (pin) return pin.b_line;
   return ourHomeSpread(game, hfa);
 }
 
@@ -2561,10 +2605,10 @@ async function loadOpenerSnaps() {
 
 async function loadNfl() {
   const openersReq = loadOpenerSnaps();
-  const nflReq = fetch("./data/nfl-2026.json?v=20261005a");
+  const nflReq = fetch("./data/nfl-2026.json?v=20261006w4");
   const priorReq = fetch("./data/prior-2025.json?v=pffpre0924");
-  const ytdStReq = fetch("./data/ytd-st-2026.json?v=w3fin0929");
-  const ytdRankReq = fetch("./data/ytd-rankings-2026.json?v=w3fin0929");
+  const ytdStReq = fetch("./data/ytd-st-2026.json?v=w4fin1006");
+  const ytdRankReq = fetch("./data/ytd-rankings-2026.json?v=w4fin1006");
   const faReq = fetch("./data/fa-2026.json");
   const draftReq = fetch("./data/draft-2026.json");
   const maddenReq = fetch("./data/madden-2026.json");
@@ -2982,7 +3026,7 @@ const SKED_TIPS = {
   edge: "How far our number is from the sportsbook. Plus = we like the home team more than they do. Minus = we like the visitor. Copper means the gap is about a field goal, or we sit on opposite sides of 3 or 7. Highlight is not a ticket.",
   crosses: "We sit on one side of 3 or 7 and the sportsbook sits on the other. NFL games land on field goals and touchdowns a lot, so that half-point is the bet. Still not automatic.",
   fire: "Copper when we disagree with the sportsbook by about a field goal, or we landed on opposite sides of 3 or 7. We show the disagreement. We do not auto-bet.",
-  our: "The gap we expect, from the home team’s view. Minus means we think the home team is better. Built from this season’s results, Madden, PFF, injuries, coaches, and home field. Last year’s rating is out from Week 5.",
+  our: "The gap we expect, from the home team’s view. Minus means we think the home team is better. Built from this season’s results, Madden, PFF, injuries, coaches, and home field. Last year’s rating and last year’s SOS are out from Week 5.",
   mkt: "The sportsbook number right now (Current). Open is the first number we logged. Compare Current to B$ Line. The difference is the edge.",
   open: "The first sportsbook number we logged for this game, with the time we recorded it. Em dash means we do not have an opener snapshot.",
   current: "Today’s sportsbook number. Type here to override. The time is when that street was last pulled — not a guessed clock.",
@@ -3732,6 +3776,7 @@ function sheetBoxOpen(id) {
   if (Object.prototype.hasOwnProperty.call(saved, id)) return !!saved[id];
   if (id === "fa" || id === "pffpre") return false;
   if (id === "prior" && priorRetired()) return false;
+  if (id === "sos" && sosOut()) return false;
   return true;
 }
 
@@ -3960,6 +4005,32 @@ function returnRowHtml(row) {
       <span class="fa-row-pts ${rtgClass(row.pts)}">${esc(fmtRtg(row.pts))}</span>
       <span class="fa-row-note">${esc(row.note || "")}</span>
     </div>`;
+}
+
+function sosOut() {
+  return SOS_OUT_WITH_PRIOR && priorRetired();
+}
+
+function sosBlockHtml(abbr) {
+  const t = sosTeam(abbr);
+  const out = sosOut();
+  const kicker = out ? "2025 SOS · not in B$ line" : "2025 SOS · in the line";
+  if (!t) {
+    return sheetBoxHtml("sos", "fa-block sos-block", kicker, "", `<p class="prior-note">No 2025 SOS row for this club.</p>`);
+  }
+  const net = sosRaw(abbr);
+  const rec = [t.w, t.l].every((x) => x != null) ? t.w + "-" + t.l + (num(t.t) ? "-" + t.t : "") : "—";
+  const opp = num(t.opp_pct);
+  const body = `<div class="fa-net">
+      <small>NET</small>
+      <em class="${rtgClass(net)}">${esc(fmtRtg(net))}</em>
+      <span class="fa-net-note">on the board ${esc(fmtRtg(sosTerm(abbr)))}</span>
+    </div>
+    <p class="prior-note">2025 record ${esc(rec)} · opponents ${opp == null ? "—" : esc((opp * 100).toFixed(1)) + "%"}.</p>
+    <p class="prior-note">${out
+      ? "Display only. Last year’s strength of schedule does not move the B$ line from Week 5."
+      : "Harder 2025 schedule adds, cupcake schedule subtracts, weighted by the 2025 record. Cap 2.5."}</p>`;
+  return sheetBoxHtml("sos", "fa-block sos-block", kicker, sheetHeadNum(net), body);
 }
 
 function returnBlockHtml(abbr) {
@@ -4246,6 +4317,7 @@ function renderTeamSheet() {
     <div id="bsdvoa-slot">${bsdvoaPanelHtml(team.abbr)}</div>
     ${ytdBlockHtml(team.abbr)}
     ${priorBlockHtml(team.abbr)}
+    ${sosBlockHtml(team.abbr)}
     ${faBlockHtml(team.abbr)}
     ${returnBlockHtml(team.abbr)}
     ${draftBlockHtml(team.abbr)}
@@ -4551,7 +4623,7 @@ function renderGameSheet() {
     ["Madden 22", maddenTerm(away), maddenTerm(home)],
     ["PFF 22", pffTerm(away), pffTerm(home)],
     ["PFF YTD", pffYtdTerm(away), pffYtdTerm(home)],
-    ["Last year SOS", sosTerm(away), sosTerm(home)],
+    [lyOut && SOS_OUT_WITH_PRIOR ? "Last year SOS · not in line" : "Last year SOS", sosTerm(away), sosTerm(home)],
     ["Injuries", injuryTerm(away) + injuryWeekAdj(away, game.week), injuryTerm(home) + injuryWeekAdj(home, game.week)],
     ["Manual", num(pA.user_adjust) || 0, num(pH.user_adjust) || 0],
     ["Extra notes", contextSum(pA), contextSum(pH)],
@@ -4588,6 +4660,8 @@ function renderGameSheet() {
     bNote = "Game-day line" + (pubLine ? ". Same as the pinned lock." : ".");
   } else if (showPublished) {
     bNote = "Published " + (pubLine.published_at || "lock") + ". Not recomputed.";
+  } else if (deskPinFor(game) && ourLine != null && Number.isFinite(ourLine)) {
+    bNote = "Pinned Week " + Number(game.week) + " line. Not recomputed.";
   } else if (!(ourLine != null && Number.isFinite(ourLine))) {
     bNote = "ratings even · no number";
   }
@@ -4671,14 +4745,14 @@ function renderGameSheet() {
 
   body.innerHTML = `
     <p class="game-sheet-lead">${esc(gameLeadCopy(game))}</p>
-    <p class="section-label">${usingDay ? "Today’s desk build · the B$ Line in the comparison is the game-day line" : pubLine ? "Today’s desk build · the B$ Line in the comparison is the frozen publication" : "How we built the number"}</p>
+    <p class="section-label">${usingDay ? "Today’s desk build · the B$ Line in the comparison is the game-day line" : pubLine ? "Today’s desk build · the B$ Line in the comparison is the frozen publication" : deskPinFor(game) ? "Today’s desk build · the B$ Line in the comparison is the pinned Week " + esc(String(game.week)) + " line" : "How we built the number"}</p>
     <div class="table-wrap">
       <table class="game-club-table">
         <thead><tr><th></th><th>Away · ${esc(away)}</th><th>Home · ${esc(home)}</th></tr></thead>
         <tbody>${table}</tbody>
       </table>
     </div>
-    ${lyOut ? `<p class="prior-note">Last year’s 2025 rating is out of the B$ line from Week 5. Its 0.0 row is display only. Last year SOS is still in.</p>` : ""}
+    ${lyOut ? `<p class="prior-note">Last year’s 2025 rating and last year’s SOS are out of the B$ line from Week 5. Their 0.0 rows are display only (2025 SOS ${esc(fmtRtg(sosRaw(away)))} / ${esc(fmtRtg(sosRaw(home)))}).</p>` : ""}
     <div class="game-stack">${stackHtml}</div>
     ${injuryMathHtml(game, (ourLine != null && Number.isFinite(ourLine)) ? ourLine : null)}
     ${compare}
@@ -7576,6 +7650,18 @@ async function loadGameDayLines() {
   }
 }
 
+async function loadDeskPins() {
+  try {
+    const res = await fetch("./data/model/desk-pins-2026-w01-w04.json?v=pin1006");
+    if (!res.ok) throw new Error(String(res.status));
+    indexDeskPins(await res.json());
+  } catch (err) {
+    deskPinByEspn = {};
+    deskPinByPair = {};
+    console.warn("desk pins", err);
+  }
+}
+
 async function loadPublishedLines() {
   try {
     const res = await fetch("./data/published/finals.json?v=w3pub0929");
@@ -7615,6 +7701,7 @@ async function bootNfl() {
   await loadNfl();
   await loadPublishedLines();
   await loadGameDayLines();
+  await loadDeskPins();
   await loadModelAts();
   await loadPowerRankings();
   applyDefaultCurrentWeek();

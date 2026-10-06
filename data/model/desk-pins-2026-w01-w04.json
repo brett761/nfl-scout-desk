@@ -1,0 +1,522 @@
+{
+  "schema": "desk-pins-v1",
+  "season": 2026,
+  "source_commit": "31939cf",
+  "captured_at": "2026-10-06T13:50:36.303Z",
+  "sign_convention": "Home-centric spreads. Negative means the home team is favored.",
+  "note": "The B$ line the desk showed for every Week 1-4 game at main 31939cf (after PR #23), before Week 4 finals and the 2026 YTD refresh were loaded. deskHomeSpread() returns this number for a Week 1-4 game that has no game-day line or finals.json lock, so loading new results or changing the model never moves a graded week. Game-day lines and finals.json locks still win (they equal these numbers). Do not edit; a correction is a new file.",
+  "games": [
+    {
+      "espn_id": "401872656",
+      "week": 1,
+      "away": "NE",
+      "home": "SEA",
+      "b_line": -0.2,
+      "shown_via": "finals.json pinned lock"
+    },
+    {
+      "espn_id": "401872657",
+      "week": 1,
+      "away": "SF",
+      "home": "LAR",
+      "b_line": null,
+      "shown_via": "finals.json pinned lock"
+    },
+    {
+      "espn_id": "401872925",
+      "week": 1,
+      "away": "TB",
+      "home": "CIN",
+      "b_line": -12.79319245405419,
+      "shown_via": "live ourHomeSpread"
+    },
+    {
+      "espn_id": "401872923",
+      "week": 1,
+      "away": "NO",
+      "home": "DET",
+      "b_line": -7.5938654823270495,
+      "shown_via": "live ourHomeSpread"
+    },
+    {
+      "espn_id": "401872924",
+      "week": 1,
+      "away": "NYJ",
+      "home": "TEN",
+      "b_line": 1.9768149002147841,
+      "shown_via": "live ourHomeSpread"
+    },
+    {
+      "espn_id": "401872659",
+      "week": 1,
+      "away": "BAL",
+      "home": "IND",
+      "b_line": 9.155030086170614,
+      "shown_via": "live ourHomeSpread"
+    },
+    {
+      "espn_id": "401872658",
+      "week": 1,
+      "away": "ATL",
+      "home": "PIT",
+      "b_line": -7.705485751825403,
+      "shown_via": "live ourHomeSpread"
+    },
+    {
+      "espn_id": "401872661",
+      "week": 1,
+      "away": "CHI",
+      "home": "CAR",
+      "b_line": 1.8424645343820834,
+      "shown_via": "live ourHomeSpread"
+    },
+    {
+      "espn_id": "401872922",
+      "week": 1,
+      "away": "CLE",
+      "home": "JAX",
+      "b_line": -17.90217864673643,
+      "shown_via": "live ourHomeSpread"
+    },
+    {
+      "espn_id": "401872660",
+      "week": 1,
+      "away": "BUF",
+      "home": "HOU",
+      "b_line": 2.7221953640442487,
+      "shown_via": "live ourHomeSpread"
+    },
+    {
+      "espn_id": "401872928",
+      "week": 1,
+      "away": "MIA",
+      "home": "LV",
+      "b_line": -23.706131521578907,
+      "shown_via": "live ourHomeSpread"
+    },
+    {
+      "espn_id": "401872927",
+      "week": 1,
+      "away": "GB",
+      "home": "MIN",
+      "b_line": -17.867981893952216,
+      "shown_via": "live ourHomeSpread"
+    },
+    {
+      "espn_id": "401872929",
+      "week": 1,
+      "away": "WSH",
+      "home": "PHI",
+      "b_line": -8.546426005112611,
+      "shown_via": "live ourHomeSpread"
+    },
+    {
+      "espn_id": "401872926",
+      "week": 1,
+      "away": "ARI",
+      "home": "LAC",
+      "b_line": 1.3786942366463464,
+      "shown_via": "live ourHomeSpread"
+    },
+    {
+      "espn_id": "401872930",
+      "week": 1,
+      "away": "DAL",
+      "home": "NYG",
+      "b_line": -1.1493409199343483,
+      "shown_via": "live ourHomeSpread"
+    },
+    {
+      "espn_id": "401872931",
+      "week": 1,
+      "away": "DEN",
+      "home": "KC",
+      "b_line": 2.87,
+      "shown_via": "finals.json pinned lock"
+    },
+    {
+      "espn_id": "401872932",
+      "week": 2,
+      "away": "DET",
+      "home": "BUF",
+      "b_line": -8.45,
+      "shown_via": "game-day line"
+    },
+    {
+      "espn_id": "401872933",
+      "week": 2,
+      "away": "CAR",
+      "home": "ATL",
+      "b_line": 2.89,
+      "shown_via": "game-day line"
+    },
+    {
+      "espn_id": "401872937",
+      "week": 2,
+      "away": "MIN",
+      "home": "CHI",
+      "b_line": -0.51,
+      "shown_via": "game-day line"
+    },
+    {
+      "espn_id": "401872939",
+      "week": 2,
+      "away": "PHI",
+      "home": "TEN",
+      "b_line": 5.7,
+      "shown_via": "game-day line"
+    },
+    {
+      "espn_id": "401872946",
+      "week": 2,
+      "away": "PIT",
+      "home": "NE",
+      "b_line": 1.67,
+      "shown_via": "game-day line"
+    },
+    {
+      "espn_id": "401872936",
+      "week": 2,
+      "away": "GB",
+      "home": "NYJ",
+      "b_line": -8.55,
+      "shown_via": "game-day line"
+    },
+    {
+      "espn_id": "401872935",
+      "week": 2,
+      "away": "CLE",
+      "home": "TB",
+      "b_line": -8.44,
+      "shown_via": "game-day line"
+    },
+    {
+      "espn_id": "401872938",
+      "week": 2,
+      "away": "NO",
+      "home": "BAL",
+      "b_line": -5.69,
+      "shown_via": "game-day line"
+    },
+    {
+      "espn_id": "401872934",
+      "week": 2,
+      "away": "CIN",
+      "home": "HOU",
+      "b_line": -5.19,
+      "shown_via": "game-day line"
+    },
+    {
+      "espn_id": "401872940",
+      "week": 2,
+      "away": "JAX",
+      "home": "DEN",
+      "b_line": 12.26,
+      "shown_via": "game-day line"
+    },
+    {
+      "espn_id": "401872941",
+      "week": 2,
+      "away": "LV",
+      "home": "LAC",
+      "b_line": 1.04,
+      "shown_via": "game-day line"
+    },
+    {
+      "espn_id": "401872944",
+      "week": 2,
+      "away": "WSH",
+      "home": "DAL",
+      "b_line": -5.69,
+      "shown_via": "game-day line"
+    },
+    {
+      "espn_id": "401872943",
+      "week": 2,
+      "away": "SEA",
+      "home": "ARI",
+      "b_line": 2.14,
+      "shown_via": "game-day line"
+    },
+    {
+      "espn_id": "401872942",
+      "week": 2,
+      "away": "MIA",
+      "home": "SF",
+      "b_line": -17.61,
+      "shown_via": "game-day line"
+    },
+    {
+      "espn_id": "401872945",
+      "week": 2,
+      "away": "IND",
+      "home": "KC",
+      "b_line": -11.32,
+      "shown_via": "game-day line"
+    },
+    {
+      "espn_id": "401872947",
+      "week": 2,
+      "away": "NYG",
+      "home": "LAR",
+      "b_line": -7.15,
+      "shown_via": "game-day line"
+    },
+    {
+      "espn_id": "401872948",
+      "week": 3,
+      "away": "ATL",
+      "home": "GB",
+      "b_line": -2.92,
+      "shown_via": "game-day line"
+    },
+    {
+      "espn_id": "401872953",
+      "week": 3,
+      "away": "LAC",
+      "home": "BUF",
+      "b_line": -14.3,
+      "shown_via": "game-day line"
+    },
+    {
+      "espn_id": "401872949",
+      "week": 3,
+      "away": "CAR",
+      "home": "CLE",
+      "b_line": 4.54,
+      "shown_via": "game-day line"
+    },
+    {
+      "espn_id": "401872954",
+      "week": 3,
+      "away": "NYJ",
+      "home": "DET",
+      "b_line": -5.87,
+      "shown_via": "game-day line"
+    },
+    {
+      "espn_id": "401872951",
+      "week": 3,
+      "away": "HOU",
+      "home": "IND",
+      "b_line": 0.54,
+      "shown_via": "game-day line"
+    },
+    {
+      "espn_id": "401872952",
+      "week": 3,
+      "away": "KC",
+      "home": "MIA",
+      "b_line": 16.06,
+      "shown_via": "game-day line"
+    },
+    {
+      "espn_id": "401872956",
+      "week": 3,
+      "away": "TEN",
+      "home": "NYG",
+      "b_line": -6.4,
+      "shown_via": "game-day line"
+    },
+    {
+      "espn_id": "401872950",
+      "week": 3,
+      "away": "CIN",
+      "home": "PIT",
+      "b_line": 0.22,
+      "shown_via": "game-day line"
+    },
+    {
+      "espn_id": "401872955",
+      "week": 3,
+      "away": "SEA",
+      "home": "WSH",
+      "b_line": 16.1,
+      "shown_via": "game-day line"
+    },
+    {
+      "espn_id": "401872957",
+      "week": 3,
+      "away": "NE",
+      "home": "JAX",
+      "b_line": -11.49,
+      "shown_via": "game-day line"
+    },
+    {
+      "espn_id": "401872958",
+      "week": 3,
+      "away": "ARI",
+      "home": "SF",
+      "b_line": -11.69,
+      "shown_via": "game-day line"
+    },
+    {
+      "espn_id": "401872959",
+      "week": 3,
+      "away": "MIN",
+      "home": "TB",
+      "b_line": 5.94,
+      "shown_via": "game-day line"
+    },
+    {
+      "espn_id": "401872960",
+      "week": 3,
+      "away": "BAL",
+      "home": "DAL",
+      "b_line": 7.38,
+      "shown_via": "game-day line"
+    },
+    {
+      "espn_id": "401872961",
+      "week": 3,
+      "away": "LV",
+      "home": "NO",
+      "b_line": -0.72,
+      "shown_via": "game-day line"
+    },
+    {
+      "espn_id": "401872962",
+      "week": 3,
+      "away": "LAR",
+      "home": "DEN",
+      "b_line": 7.69,
+      "shown_via": "game-day line"
+    },
+    {
+      "espn_id": "401872963",
+      "week": 3,
+      "away": "PHI",
+      "home": "CHI",
+      "b_line": 2.17,
+      "shown_via": "game-day line"
+    },
+    {
+      "espn_id": "401872964",
+      "week": 4,
+      "away": "PIT",
+      "home": "CLE",
+      "b_line": 5.94245860274681,
+      "shown_via": "live ourHomeSpread"
+    },
+    {
+      "espn_id": "401872965",
+      "week": 4,
+      "away": "IND",
+      "home": "WSH",
+      "b_line": 3.364404513774492,
+      "shown_via": "live ourHomeSpread"
+    },
+    {
+      "espn_id": "401872971",
+      "week": 4,
+      "away": "NE",
+      "home": "BUF",
+      "b_line": -11.053523185585007,
+      "shown_via": "live ourHomeSpread"
+    },
+    {
+      "espn_id": "401872972",
+      "week": 4,
+      "away": "NYJ",
+      "home": "CHI",
+      "b_line": -7.813591471974108,
+      "shown_via": "live ourHomeSpread"
+    },
+    {
+      "espn_id": "401872969",
+      "week": 4,
+      "away": "JAX",
+      "home": "CIN",
+      "b_line": 4.865257578093979,
+      "shown_via": "live ourHomeSpread"
+    },
+    {
+      "espn_id": "401872966",
+      "week": 4,
+      "away": "ARI",
+      "home": "NYG",
+      "b_line": -4.3837080861890545,
+      "shown_via": "live ourHomeSpread"
+    },
+    {
+      "espn_id": "401872970",
+      "week": 4,
+      "away": "LAR",
+      "home": "PHI",
+      "b_line": 5.4548777245963445,
+      "shown_via": "live ourHomeSpread"
+    },
+    {
+      "espn_id": "401872968",
+      "week": 4,
+      "away": "GB",
+      "home": "TB",
+      "b_line": -4.629698478184075,
+      "shown_via": "live ourHomeSpread"
+    },
+    {
+      "espn_id": "401872973",
+      "week": 4,
+      "away": "TEN",
+      "home": "BAL",
+      "b_line": -12.161226831655105,
+      "shown_via": "live ourHomeSpread"
+    },
+    {
+      "espn_id": "401872967",
+      "week": 4,
+      "away": "DAL",
+      "home": "HOU",
+      "b_line": -0.8318635051657564,
+      "shown_via": "live ourHomeSpread"
+    },
+    {
+      "espn_id": "401872974",
+      "week": 4,
+      "away": "MIA",
+      "home": "MIN",
+      "b_line": -19.979076755351848,
+      "shown_via": "live ourHomeSpread"
+    },
+    {
+      "espn_id": "401872976",
+      "week": 4,
+      "away": "KC",
+      "home": "LV",
+      "b_line": 1.4933625550328529,
+      "shown_via": "live ourHomeSpread"
+    },
+    {
+      "espn_id": "401872975",
+      "week": 4,
+      "away": "DEN",
+      "home": "SF",
+      "b_line": -16.38501355918072,
+      "shown_via": "live ourHomeSpread"
+    },
+    {
+      "espn_id": "401872977",
+      "week": 4,
+      "away": "LAC",
+      "home": "SEA",
+      "b_line": -19.212628250488525,
+      "shown_via": "live ourHomeSpread"
+    },
+    {
+      "espn_id": "401872978",
+      "week": 4,
+      "away": "DET",
+      "home": "CAR",
+      "b_line": -0.43350096285330986,
+      "shown_via": "live ourHomeSpread"
+    },
+    {
+      "espn_id": "401872979",
+      "week": 4,
+      "away": "ATL",
+      "home": "NO",
+      "b_line": -3.0009193014994358,
+      "shown_via": "live ourHomeSpread"
+    }
+  ]
+}
