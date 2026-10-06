@@ -1,0 +1,1007 @@
+{
+  "season": 2026,
+  "built_at": "2026-10-06T10:44:41-04:00",
+  "built_et": "2026-10-06 10:44 AM ET",
+  "starter_week": 4,
+  "sources": [
+    "https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2026/teams/<id>/depthcharts",
+    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=<id> (QB with most pass attempts)"
+  ],
+  "note": "ESPN depth order, first listed = designated starter when healthy. last_game_passer = QB with the most pass attempts (an injured starter can show his backup, e.g. WSH W4 Mariota started, Kaliakmanis threw most) in that club's most recent final game. season_starts = that proxy for every 2026 week (info only). injured_starter = MANUAL desk pin {name, why, source} for a starter on OUT/IR whom ESPN moved down or off the depth chart; the builder keeps it across rebuilds; clear it (null) when he returns or loses the job. The injury reseed prices a QB as QB1 only if he is at or above the first healthy QB on the depth list, or he is the sidelined injured_starter; every other QB row is DEPTH.",
+  "teams": {
+    "ARI": {
+      "depth": [
+        "Jacoby Brissett",
+        "Gardner Minshew II",
+        "Carson Beck"
+      ],
+      "last_game_passer": {
+        "name": "Jacoby Brissett",
+        "event": "401872966",
+        "game": "ARI @ NYG"
+      },
+      "season_starts": [
+        {
+          "week": 1,
+          "name": "Jacoby Brissett"
+        },
+        {
+          "week": 2,
+          "name": "Jacoby Brissett"
+        },
+        {
+          "week": 3,
+          "name": "Jacoby Brissett"
+        },
+        {
+          "week": 4,
+          "name": "Jacoby Brissett"
+        }
+      ],
+      "injured_starter": null
+    },
+    "ATL": {
+      "depth": [
+        "Michael Penix Jr.",
+        "Tua Tagovailoa",
+        "Cooper Rush",
+        "Jack Strand"
+      ],
+      "last_game_passer": {
+        "name": "Michael Penix Jr.",
+        "event": "401872979",
+        "game": "ATL @ NO"
+      },
+      "season_starts": [
+        {
+          "week": 1,
+          "name": "Cooper Rush"
+        },
+        {
+          "week": 2,
+          "name": "Cooper Rush"
+        },
+        {
+          "week": 3,
+          "name": "Michael Penix Jr."
+        },
+        {
+          "week": 4,
+          "name": "Michael Penix Jr."
+        }
+      ],
+      "injured_starter": null
+    },
+    "BAL": {
+      "depth": [
+        "Lamar Jackson",
+        "Tyler Huntley",
+        "Joe Fagnano",
+        "Skylar Thompson"
+      ],
+      "last_game_passer": {
+        "name": "Lamar Jackson",
+        "event": "401872973",
+        "game": "TEN @ BAL"
+      },
+      "season_starts": [
+        {
+          "week": 1,
+          "name": "Lamar Jackson"
+        },
+        {
+          "week": 2,
+          "name": "Lamar Jackson"
+        },
+        {
+          "week": 3,
+          "name": "Lamar Jackson"
+        },
+        {
+          "week": 4,
+          "name": "Lamar Jackson"
+        }
+      ],
+      "injured_starter": null
+    },
+    "BUF": {
+      "depth": [
+        "Josh Allen",
+        "Kyle Allen"
+      ],
+      "last_game_passer": {
+        "name": "Josh Allen",
+        "event": "401872971",
+        "game": "NE @ BUF"
+      },
+      "season_starts": [
+        {
+          "week": 1,
+          "name": "Josh Allen"
+        },
+        {
+          "week": 2,
+          "name": "Josh Allen"
+        },
+        {
+          "week": 3,
+          "name": "Josh Allen"
+        },
+        {
+          "week": 4,
+          "name": "Josh Allen"
+        }
+      ],
+      "injured_starter": null
+    },
+    "CAR": {
+      "depth": [
+        "Bryce Young",
+        "Kenny Pickett",
+        "Haynes King"
+      ],
+      "last_game_passer": {
+        "name": "Bryce Young",
+        "event": "401872978",
+        "game": "DET @ CAR"
+      },
+      "season_starts": [
+        {
+          "week": 1,
+          "name": "Bryce Young"
+        },
+        {
+          "week": 2,
+          "name": "Bryce Young"
+        },
+        {
+          "week": 3,
+          "name": "Bryce Young"
+        },
+        {
+          "week": 4,
+          "name": "Bryce Young"
+        }
+      ],
+      "injured_starter": null
+    },
+    "CHI": {
+      "depth": [
+        "Caleb Williams",
+        "Tyson Bagent",
+        "Case Keenum"
+      ],
+      "last_game_passer": {
+        "name": "Tyson Bagent",
+        "event": "401872972",
+        "game": "NYJ @ CHI"
+      },
+      "season_starts": [
+        {
+          "week": 1,
+          "name": "Caleb Williams"
+        },
+        {
+          "week": 2,
+          "name": "Caleb Williams"
+        },
+        {
+          "week": 3,
+          "name": "Case Keenum"
+        },
+        {
+          "week": 4,
+          "name": "Tyson Bagent"
+        }
+      ],
+      "injured_starter": null
+    },
+    "CIN": {
+      "depth": [
+        "Joe Burrow",
+        "Joe Flacco"
+      ],
+      "last_game_passer": {
+        "name": "Joe Burrow",
+        "event": "401872969",
+        "game": "JAX @ CIN"
+      },
+      "season_starts": [
+        {
+          "week": 1,
+          "name": "Joe Burrow"
+        },
+        {
+          "week": 2,
+          "name": "Joe Burrow"
+        },
+        {
+          "week": 3,
+          "name": "Joe Burrow"
+        },
+        {
+          "week": 4,
+          "name": "Joe Burrow"
+        }
+      ],
+      "injured_starter": null
+    },
+    "CLE": {
+      "depth": [
+        "Deshaun Watson",
+        "Shedeur Sanders",
+        "Taylen Green",
+        "Dillon Gabriel"
+      ],
+      "last_game_passer": {
+        "name": "Deshaun Watson",
+        "event": "401872964",
+        "game": "PIT @ CLE"
+      },
+      "season_starts": [
+        {
+          "week": 1,
+          "name": "Deshaun Watson"
+        },
+        {
+          "week": 2,
+          "name": "Deshaun Watson"
+        },
+        {
+          "week": 3,
+          "name": "Deshaun Watson"
+        },
+        {
+          "week": 4,
+          "name": "Deshaun Watson"
+        }
+      ],
+      "injured_starter": null
+    },
+    "DAL": {
+      "depth": [
+        "Dak Prescott",
+        "Sam Howell"
+      ],
+      "last_game_passer": {
+        "name": "Dak Prescott",
+        "event": "401872967",
+        "game": "DAL @ HOU"
+      },
+      "season_starts": [
+        {
+          "week": 1,
+          "name": "Dak Prescott"
+        },
+        {
+          "week": 2,
+          "name": "Dak Prescott"
+        },
+        {
+          "week": 3,
+          "name": "Dak Prescott"
+        },
+        {
+          "week": 4,
+          "name": "Dak Prescott"
+        }
+      ],
+      "injured_starter": null
+    },
+    "DEN": {
+      "depth": [
+        "Bo Nix",
+        "Jarrett Stidham",
+        "Sam Ehlinger"
+      ],
+      "last_game_passer": {
+        "name": "Bo Nix",
+        "event": "401872975",
+        "game": "DEN @ SF"
+      },
+      "season_starts": [
+        {
+          "week": 1,
+          "name": "Bo Nix"
+        },
+        {
+          "week": 2,
+          "name": "Bo Nix"
+        },
+        {
+          "week": 3,
+          "name": "Bo Nix"
+        },
+        {
+          "week": 4,
+          "name": "Bo Nix"
+        }
+      ],
+      "injured_starter": null
+    },
+    "DET": {
+      "depth": [
+        "Jared Goff",
+        "Joshua Dobbs"
+      ],
+      "last_game_passer": {
+        "name": "Jared Goff",
+        "event": "401872978",
+        "game": "DET @ CAR"
+      },
+      "season_starts": [
+        {
+          "week": 1,
+          "name": "Jared Goff"
+        },
+        {
+          "week": 2,
+          "name": "Jared Goff"
+        },
+        {
+          "week": 3,
+          "name": "Jared Goff"
+        },
+        {
+          "week": 4,
+          "name": "Jared Goff"
+        }
+      ],
+      "injured_starter": null
+    },
+    "GB": {
+      "depth": [
+        "Jordan Love",
+        "Tyrod Taylor"
+      ],
+      "last_game_passer": {
+        "name": "Jordan Love",
+        "event": "401872968",
+        "game": "GB @ TB"
+      },
+      "season_starts": [
+        {
+          "week": 1,
+          "name": "Jordan Love"
+        },
+        {
+          "week": 2,
+          "name": "Jordan Love"
+        },
+        {
+          "week": 3,
+          "name": "Jordan Love"
+        },
+        {
+          "week": 4,
+          "name": "Jordan Love"
+        }
+      ],
+      "injured_starter": null
+    },
+    "HOU": {
+      "depth": [
+        "C.J. Stroud",
+        "Davis Mills",
+        "Graham Mertz"
+      ],
+      "last_game_passer": {
+        "name": "C.J. Stroud",
+        "event": "401872967",
+        "game": "DAL @ HOU"
+      },
+      "season_starts": [
+        {
+          "week": 1,
+          "name": "C.J. Stroud"
+        },
+        {
+          "week": 2,
+          "name": "C.J. Stroud"
+        },
+        {
+          "week": 3,
+          "name": "C.J. Stroud"
+        },
+        {
+          "week": 4,
+          "name": "C.J. Stroud"
+        }
+      ],
+      "injured_starter": null
+    },
+    "IND": {
+      "depth": [
+        "Daniel Jones",
+        "Anthony Richardson Sr.",
+        "Riley Leonard"
+      ],
+      "last_game_passer": {
+        "name": "Daniel Jones",
+        "event": "401872965",
+        "game": "IND VS WSH"
+      },
+      "season_starts": [
+        {
+          "week": 1,
+          "name": "Daniel Jones"
+        },
+        {
+          "week": 2,
+          "name": "Daniel Jones"
+        },
+        {
+          "week": 3,
+          "name": "Daniel Jones"
+        },
+        {
+          "week": 4,
+          "name": "Daniel Jones"
+        }
+      ],
+      "injured_starter": null
+    },
+    "JAX": {
+      "depth": [
+        "Trevor Lawrence",
+        "Quinn Ewers"
+      ],
+      "last_game_passer": {
+        "name": "Trevor Lawrence",
+        "event": "401872969",
+        "game": "JAX @ CIN"
+      },
+      "season_starts": [
+        {
+          "week": 1,
+          "name": "Trevor Lawrence"
+        },
+        {
+          "week": 2,
+          "name": "Trevor Lawrence"
+        },
+        {
+          "week": 3,
+          "name": "Trevor Lawrence"
+        },
+        {
+          "week": 4,
+          "name": "Trevor Lawrence"
+        }
+      ],
+      "injured_starter": null
+    },
+    "KC": {
+      "depth": [
+        "Patrick Mahomes",
+        "Justin Fields",
+        "Garrett Nussmeier"
+      ],
+      "last_game_passer": {
+        "name": "Patrick Mahomes",
+        "event": "401872976",
+        "game": "KC @ LV"
+      },
+      "season_starts": [
+        {
+          "week": 1,
+          "name": "Patrick Mahomes"
+        },
+        {
+          "week": 2,
+          "name": "Patrick Mahomes"
+        },
+        {
+          "week": 3,
+          "name": "Patrick Mahomes"
+        },
+        {
+          "week": 4,
+          "name": "Patrick Mahomes"
+        }
+      ],
+      "injured_starter": null
+    },
+    "LAC": {
+      "depth": [
+        "Justin Herbert",
+        "Trey Lance",
+        "DJ Uiagalelei"
+      ],
+      "last_game_passer": {
+        "name": "Justin Herbert",
+        "event": "401872977",
+        "game": "LAC @ SEA"
+      },
+      "season_starts": [
+        {
+          "week": 1,
+          "name": "Justin Herbert"
+        },
+        {
+          "week": 2,
+          "name": "Justin Herbert"
+        },
+        {
+          "week": 3,
+          "name": "Justin Herbert"
+        },
+        {
+          "week": 4,
+          "name": "Justin Herbert"
+        }
+      ],
+      "injured_starter": null
+    },
+    "LAR": {
+      "depth": [
+        "Matthew Stafford",
+        "Stetson Bennett IV",
+        "Ty Simpson",
+        "Matthew Caldwell"
+      ],
+      "last_game_passer": {
+        "name": "Matthew Stafford",
+        "event": "401872970",
+        "game": "LAR @ PHI"
+      },
+      "season_starts": [
+        {
+          "week": 1,
+          "name": "Matthew Stafford"
+        },
+        {
+          "week": 2,
+          "name": "Matthew Stafford"
+        },
+        {
+          "week": 3,
+          "name": "Matthew Stafford"
+        },
+        {
+          "week": 4,
+          "name": "Matthew Stafford"
+        }
+      ],
+      "injured_starter": null
+    },
+    "LV": {
+      "depth": [
+        "Kirk Cousins",
+        "Fernando Mendoza",
+        "Aidan O'Connell"
+      ],
+      "last_game_passer": {
+        "name": "Kirk Cousins",
+        "event": "401872976",
+        "game": "KC @ LV"
+      },
+      "season_starts": [
+        {
+          "week": 1,
+          "name": "Kirk Cousins"
+        },
+        {
+          "week": 2,
+          "name": "Kirk Cousins"
+        },
+        {
+          "week": 3,
+          "name": "Kirk Cousins"
+        },
+        {
+          "week": 4,
+          "name": "Kirk Cousins"
+        }
+      ],
+      "injured_starter": null
+    },
+    "MIA": {
+      "depth": [
+        "Malik Willis",
+        "Kyle McCord",
+        "Brady Cook"
+      ],
+      "last_game_passer": {
+        "name": "Malik Willis",
+        "event": "401872974",
+        "game": "MIA @ MIN"
+      },
+      "season_starts": [
+        {
+          "week": 1,
+          "name": "Malik Willis"
+        },
+        {
+          "week": 2,
+          "name": "Malik Willis"
+        },
+        {
+          "week": 3,
+          "name": "Malik Willis"
+        },
+        {
+          "week": 4,
+          "name": "Malik Willis"
+        }
+      ],
+      "injured_starter": null
+    },
+    "MIN": {
+      "depth": [
+        "Kyler Murray",
+        "Carson Wentz",
+        "Max Brosmer"
+      ],
+      "last_game_passer": {
+        "name": "Kyler Murray",
+        "event": "401872974",
+        "game": "MIA @ MIN"
+      },
+      "season_starts": [
+        {
+          "week": 1,
+          "name": "Carson Wentz"
+        },
+        {
+          "week": 2,
+          "name": "Carson Wentz"
+        },
+        {
+          "week": 3,
+          "name": "Kyler Murray"
+        },
+        {
+          "week": 4,
+          "name": "Kyler Murray"
+        }
+      ],
+      "injured_starter": null
+    },
+    "NE": {
+      "depth": [
+        "Drake Maye",
+        "Tommy DeVito",
+        "Behren Morton"
+      ],
+      "last_game_passer": {
+        "name": "Drake Maye",
+        "event": "401872971",
+        "game": "NE @ BUF"
+      },
+      "season_starts": [
+        {
+          "week": 1,
+          "name": "Drake Maye"
+        },
+        {
+          "week": 2,
+          "name": "Drake Maye"
+        },
+        {
+          "week": 3,
+          "name": "Drake Maye"
+        },
+        {
+          "week": 4,
+          "name": "Drake Maye"
+        }
+      ],
+      "injured_starter": null
+    },
+    "NO": {
+      "depth": [
+        "Tyler Shough",
+        "Spencer Rattler",
+        "Zach Wilson"
+      ],
+      "last_game_passer": {
+        "name": "Tyler Shough",
+        "event": "401872979",
+        "game": "ATL @ NO"
+      },
+      "season_starts": [
+        {
+          "week": 1,
+          "name": "Tyler Shough"
+        },
+        {
+          "week": 2,
+          "name": "Tyler Shough"
+        },
+        {
+          "week": 3,
+          "name": "Tyler Shough"
+        },
+        {
+          "week": 4,
+          "name": "Tyler Shough"
+        }
+      ],
+      "injured_starter": null
+    },
+    "NYG": {
+      "depth": [
+        "Jameis Winston",
+        "J.J. McCarthy",
+        "Jaxson Dart"
+      ],
+      "last_game_passer": {
+        "name": "Jameis Winston",
+        "event": "401872966",
+        "game": "ARI @ NYG"
+      },
+      "season_starts": [
+        {
+          "week": 1,
+          "name": "Jaxson Dart"
+        },
+        {
+          "week": 2,
+          "name": "Jameis Winston"
+        },
+        {
+          "week": 3,
+          "name": "Jameis Winston"
+        },
+        {
+          "week": 4,
+          "name": "Jameis Winston"
+        }
+      ],
+      "injured_starter": {
+        "name": "Jaxson Dart",
+        "why": "NYG Week 1 starter (23/29); hurt in Week 2, knee meniscus + MCL surgery, IR. ESPN lists him QB3 behind Winston and McCarthy while he is on IR.",
+        "source": "ESPN W1 box score + ESPN injuries (Dan Duggan, The Athletic)",
+        "set": "2026-10-06"
+      }
+    },
+    "NYJ": {
+      "depth": [
+        "Geno Smith",
+        "Cade Klubnik"
+      ],
+      "last_game_passer": {
+        "name": "Geno Smith",
+        "event": "401872972",
+        "game": "NYJ @ CHI"
+      },
+      "season_starts": [
+        {
+          "week": 1,
+          "name": "Geno Smith"
+        },
+        {
+          "week": 2,
+          "name": "Geno Smith"
+        },
+        {
+          "week": 3,
+          "name": "Geno Smith"
+        },
+        {
+          "week": 4,
+          "name": "Geno Smith"
+        }
+      ],
+      "injured_starter": null
+    },
+    "PHI": {
+      "depth": [
+        "Jalen Hurts",
+        "Tanner McKee",
+        "Andy Dalton",
+        "Cole Payton"
+      ],
+      "last_game_passer": {
+        "name": "Jalen Hurts",
+        "event": "401872970",
+        "game": "LAR @ PHI"
+      },
+      "season_starts": [
+        {
+          "week": 1,
+          "name": "Jalen Hurts"
+        },
+        {
+          "week": 2,
+          "name": "Jalen Hurts"
+        },
+        {
+          "week": 3,
+          "name": "Jalen Hurts"
+        },
+        {
+          "week": 4,
+          "name": "Jalen Hurts"
+        }
+      ],
+      "injured_starter": null
+    },
+    "PIT": {
+      "depth": [
+        "Aaron Rodgers",
+        "Mason Rudolph",
+        "Will Howard",
+        "Drew Allar"
+      ],
+      "last_game_passer": {
+        "name": "Aaron Rodgers",
+        "event": "401872964",
+        "game": "PIT @ CLE"
+      },
+      "season_starts": [
+        {
+          "week": 1,
+          "name": "Aaron Rodgers"
+        },
+        {
+          "week": 2,
+          "name": "Aaron Rodgers"
+        },
+        {
+          "week": 3,
+          "name": "Aaron Rodgers"
+        },
+        {
+          "week": 4,
+          "name": "Aaron Rodgers"
+        }
+      ],
+      "injured_starter": null
+    },
+    "SEA": {
+      "depth": [
+        "Sam Darnold",
+        "Drew Lock",
+        "Jalen Milroe"
+      ],
+      "last_game_passer": {
+        "name": "Sam Darnold",
+        "event": "401872977",
+        "game": "LAC @ SEA"
+      },
+      "season_starts": [
+        {
+          "week": 1,
+          "name": "Drew Lock"
+        },
+        {
+          "week": 2,
+          "name": "Drew Lock"
+        },
+        {
+          "week": 3,
+          "name": "Sam Darnold"
+        },
+        {
+          "week": 4,
+          "name": "Sam Darnold"
+        }
+      ],
+      "injured_starter": null
+    },
+    "SF": {
+      "depth": [
+        "Brock Purdy",
+        "Mac Jones",
+        "Kurtis Rourke"
+      ],
+      "last_game_passer": {
+        "name": "Brock Purdy",
+        "event": "401872975",
+        "game": "DEN @ SF"
+      },
+      "season_starts": [
+        {
+          "week": 1,
+          "name": "Brock Purdy"
+        },
+        {
+          "week": 2,
+          "name": "Brock Purdy"
+        },
+        {
+          "week": 3,
+          "name": "Brock Purdy"
+        },
+        {
+          "week": 4,
+          "name": "Brock Purdy"
+        }
+      ],
+      "injured_starter": null
+    },
+    "TB": {
+      "depth": [
+        "Baker Mayfield",
+        "Jalon Daniels"
+      ],
+      "last_game_passer": {
+        "name": "Jalon Daniels",
+        "event": "401872968",
+        "game": "GB @ TB"
+      },
+      "season_starts": [
+        {
+          "week": 1,
+          "name": "Baker Mayfield"
+        },
+        {
+          "week": 2,
+          "name": "Baker Mayfield"
+        },
+        {
+          "week": 3,
+          "name": "Baker Mayfield"
+        },
+        {
+          "week": 4,
+          "name": "Jalon Daniels"
+        }
+      ],
+      "injured_starter": null
+    },
+    "TEN": {
+      "depth": [
+        "Cam Ward",
+        "Mitchell Trubisky"
+      ],
+      "last_game_passer": {
+        "name": "Cam Ward",
+        "event": "401872973",
+        "game": "TEN @ BAL"
+      },
+      "season_starts": [
+        {
+          "week": 1,
+          "name": "Cam Ward"
+        },
+        {
+          "week": 2,
+          "name": "Cam Ward"
+        },
+        {
+          "week": 3,
+          "name": "Cam Ward"
+        },
+        {
+          "week": 4,
+          "name": "Cam Ward"
+        }
+      ],
+      "injured_starter": null
+    },
+    "WSH": {
+      "depth": [
+        "Jayden Daniels",
+        "Marcus Mariota",
+        "Athan Kaliakmanis"
+      ],
+      "last_game_passer": {
+        "name": "Athan Kaliakmanis",
+        "event": "401872965",
+        "game": "IND VS WSH"
+      },
+      "season_starts": [
+        {
+          "week": 1,
+          "name": "Jayden Daniels"
+        },
+        {
+          "week": 2,
+          "name": "Jayden Daniels"
+        },
+        {
+          "week": 3,
+          "name": "Marcus Mariota"
+        },
+        {
+          "week": 4,
+          "name": "Athan Kaliakmanis"
+        }
+      ],
+      "injured_starter": null
+    }
+  }
+}
