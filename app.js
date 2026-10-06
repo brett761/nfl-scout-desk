@@ -19,6 +19,12 @@ const TAPER_N = 3;
 const INCLUDE_FA = false;
 /* 2026 PFF preseason OVER stays on the sheet. It does not move the B$ line while this is false. */
 const INCLUDE_PFF_PRESEASON = false;
+/* 2025 prior ("Last year") is out of the B$ line from this week on (Brett 2026-10-06:
+   "We should not have any last year rankings"). Once the week before is in the books
+   (see priorRetired()), w_prior is 0 for every club no matter n. Weeks 1-4 are pinned/locked and were
+   already at w_prior 0 by Week 4 (N=3), so no graded line moves. The 2025 prior box stays
+   on the team sheet, collapsed, display only. Last year SOS is a separate layer (still in). */
+const PRIOR_OUT_FROM_WEEK = 5;
 const SHEET_BOX_KEY = "nflScout.sheetBoxes.v1";
 
 function canEdit() {
@@ -525,6 +531,9 @@ function normAbbr(abbr) {
 /* Walters power ratings
    0.0 = league average. Plus is better than average. Minus is worse.
    algorithm_base = blended 2025 prior (tapers off over N=3 scored games).
+     From Week 5 (PRIOR_OUT_FROM_WEEK, see priorRetired()) w_prior = 0 for
+     every club, so algorithm_base = 100% 2026 current (results). The game sheet
+     row is "2026 results"; "Last year (2025)" shows 0.0, not in line.
    fa_raw(abbr) = fa-2026.json team net (0 if missing / failed load).
      net is already team-capped ±4. If net is missing, sum in/out pts and clamp ±4.
    INCLUDE_FA = false. The 2026 FA box is display-only.
@@ -595,6 +604,7 @@ function normAbbr(abbr) {
      0.3875*off + 0.3875*def + 0.025*st + 0.075*take + 0.125*give
      (weights sum to 1, same structure as the prior); |current| capped at 12.
      When n = 0, blended = prior. When n ≥ 3, blended = current.
+     From Week 5 on (priorRetired()): w_prior = 0, w_curr = 1 for every club.
 
    ourHomeLine = −(homeEff − awayEff + hfa + coach_term + prep_net + ats_net + sched_net)
      negative = home favored. Example: SEA +4, NE +1, HFA 2, SEA home
@@ -843,10 +853,44 @@ function taperN() {
   return TAPER_N;
 }
 
+/** 2025 prior out of the line from PRIOR_OUT_FROM_WEEK on. True when either
+ *  (a) every regular-season game of the week before has a final score, or
+ *  (b) every game of the week before has kicked off AND every club already has n ≥ N
+ *      (taper complete), which covers a schedule file that has not picked up the last finals.
+ *  (b) keeps backfills from an older data/ snapshot honest: a Week 3 snapshot has n = 2,
+ *  so the prior keeps its 1/3 weight there. Memoized per schedule load (60 s for the clock). */
+let priorRetiredMemo = { data: null, at: 0, val: false };
+function priorRetired() {
+  if (!nflData || !Array.isArray(nflData.games)) return false;
+  const now = Date.now();
+  if (priorRetiredMemo.data === nflData && now - priorRetiredMemo.at < 60000) return priorRetiredMemo.val;
+  const wk = PRIOR_OUT_FROM_WEEK - 1;
+  const games = nflData.games.filter((g) => Number(g.week) === wk);
+  let val = false;
+  if (games.length) {
+    const scored = games.every((g) => num(g.home_score) !== null && num(g.away_score) !== null);
+    if (scored) {
+      val = true;
+    } else {
+      const kicked = games.every((g) => {
+        const d = g.date ? new Date(g.date) : null;
+        return d && !Number.isNaN(d.getTime()) && d.getTime() < now;
+      });
+      const N = taperN();
+      const teams = Array.isArray(nflData.teams) ? nflData.teams : [];
+      val = kicked && teams.length > 0 && teams.every((t) => scoredGames2026(t.abbr).length >= N);
+    }
+  }
+  priorRetiredMemo = { data: nflData, at: now, val };
+  return val;
+}
+
 function taperFor(abbr) {
   const N = taperN();
   const n = gamesPlayed2026(abbr);
-  return { N, n, wPrior: (N - n) / N, wCurr: n / N };
+  // n still drives the draft fade; only the 2025 weight is forced to 0 once retired.
+  if (priorRetired()) return { N, n, wPrior: 0, wCurr: 1, retired: true };
+  return { N, n, wPrior: (N - n) / N, wCurr: n / N, retired: false };
 }
 
 function priorTeam(abbr) {
@@ -2938,7 +2982,7 @@ const SKED_TIPS = {
   edge: "How far our number is from the sportsbook. Plus = we like the home team more than they do. Minus = we like the visitor. Copper means the gap is about a field goal, or we sit on opposite sides of 3 or 7. Highlight is not a ticket.",
   crosses: "We sit on one side of 3 or 7 and the sportsbook sits on the other. NFL games land on field goals and touchdowns a lot, so that half-point is the bet. Still not automatic.",
   fire: "Copper when we disagree with the sportsbook by about a field goal, or we landed on opposite sides of 3 or 7. We show the disagreement. We do not auto-bet.",
-  our: "The gap we expect, from the home team’s view. Minus means we think the home team is better. Built from last year, roster changes, rookies, Madden, injuries, and home field.",
+  our: "The gap we expect, from the home team’s view. Minus means we think the home team is better. Built from this season’s results, Madden, PFF, injuries, coaches, and home field. Last year’s rating is out from Week 5.",
   mkt: "The sportsbook number right now (Current). Open is the first number we logged. Compare Current to B$ Line. The difference is the edge.",
   open: "The first sportsbook number we logged for this game, with the time we recorded it. Em dash means we do not have an opener snapshot.",
   current: "Today’s sportsbook number. Type here to override. The time is when that street was last pulled — not a guessed clock.",
@@ -3523,7 +3567,7 @@ function renderTeams() {
     const draftN = draftRaw(t.abbr);
     const injN = injuryTerm(t.abbr);
     const extras = [
-      rank ? `<span class="club-prior">PRIOR #${rank}</span>` : "",
+      rank ? `<span class="club-prior">${priorRetired() ? "YTD" : "PRIOR"} #${rank}</span>` : "",
       Math.abs(faN) >= 0.3 ? `<span class="club-fa ${rtgClass(faN)}">FA ${esc(fmtRtg(faN))}</span>` : "",
       Math.abs(draftN) >= 0.3 ? `<span class="club-draft ${rtgClass(draftN)}">DRFT ${esc(fmtRtg(draftN))}</span>` : "",
       Math.abs(maddenTerm(t.abbr)) >= 0.3 ? `<span class="club-madden ${rtgClass(maddenTerm(t.abbr))}">MAD ${esc(fmtRtg(maddenTerm(t.abbr)))}</span>` : "",
@@ -3687,6 +3731,7 @@ function sheetBoxOpen(id) {
   const saved = sheetBoxState();
   if (Object.prototype.hasOwnProperty.call(saved, id)) return !!saved[id];
   if (id === "fa" || id === "pffpre") return false;
+  if (id === "prior" && priorRetired()) return false;
   return true;
 }
 
@@ -3735,8 +3780,12 @@ function priorBlockHtml(abbr) {
     const rng = ranges[col.key] || { lo: -5, hi: 5 };
     return pillarBarHtml(col.label, val, pillarRawLabel(col.key, t.raw), rng);
   }).join("");
-  const combo = algorithmBase(abbr); // tapered blend shown on the board
-  const copy = priorWeightCopy(abbr);
+  const lyOut = priorRetired();
+  // Retired: show the raw 2025 number (display only, like FA). Otherwise the tapered blend on the board.
+  const combo = lyOut ? priorValue(abbr) : algorithmBase(abbr);
+  const copy = lyOut
+    ? { games: "From Week 5", line: "on the board 0.0 · not in B$ line" }
+    : priorWeightCopy(abbr);
   const body = `<div class="pillar-list">${rows}</div>
     <div class="prior-combo">
       <div class="prior-combo-num">
@@ -3748,9 +3797,11 @@ function priorBlockHtml(abbr) {
         <span>${esc(copy.line)}</span>
       </div>
     </div>
-    <p class="prior-note">Offense and defense sit on the same ±12 scale and the same weight. Those stay visible. The number on the board is the blend.</p>
+    <p class="prior-note">${lyOut
+      ? "Display only. Last year does not move the B$ line from Week 5. The board uses 2026 results (the 2026 YTD box)."
+      : "Offense and defense sit on the same ±12 scale and the same weight. Those stay visible. The number on the board is the blend."}</p>
     <p class="prior-wts">${esc(pillarWeightLine())}</p>`;
-  return sheetBoxHtml("prior", "prior-block", "2025 prior · tapers off", sheetHeadNum(combo), body);
+  return sheetBoxHtml("prior", "prior-block", lyOut ? "2025 prior · not in B$ line" : "2025 prior · tapers off", sheetHeadNum(combo), body);
 }
 
 function ytdRankTeam(abbr) {
@@ -3795,6 +3846,7 @@ function ytdRawFor(abbr) {
 function ytdWeightCopy(abbr) {
   const { N, n, wCurr } = taperFor(abbr);
   const pct = Math.round(wCurr * 100);
+  if (priorRetired()) return "Weight in B$ line: " + pct + "% · 2025 prior out from Week 5";
   return "Weight in B$ line: " + pct + "% (" + n + "/" + N + " games)";
 }
 
@@ -4486,8 +4538,13 @@ function renderGameSheet() {
   const home = game.home;
   const pA = getProfile(away);
   const pH = getProfile(home);
+  const lyOut = priorRetired();
+  const lyPart = (abbr) => taperFor(abbr).wPrior * priorValue(abbr);
+  const curPart = (abbr) => taperFor(abbr).wCurr * currentRating(abbr);
   const clubRows = [
-    ["Last year", algorithmBase(away), algorithmBase(home)],
+    // 2025 prior and 2026 results are the two sides of algorithmBase(); split so the label is honest.
+    [lyOut ? "Last year (2025) · not in line" : "Last year (2025)", lyPart(away), lyPart(home)],
+    ["2026 results", curPart(away), curPart(home)],
     ["Roster changes", faTerm(away), faTerm(home)],
     ["Back from injury", returnTerm(away), returnTerm(home)],
     ["Rookies", draftTerm(away), draftTerm(home)],
@@ -4621,6 +4678,7 @@ function renderGameSheet() {
         <tbody>${table}</tbody>
       </table>
     </div>
+    ${lyOut ? `<p class="prior-note">Last year’s 2025 rating is out of the B$ line from Week 5. Its 0.0 row is display only. Last year SOS is still in.</p>` : ""}
     <div class="game-stack">${stackHtml}</div>
     ${injuryMathHtml(game, (ourLine != null && Number.isFinite(ourLine)) ? ourLine : null)}
     ${compare}
