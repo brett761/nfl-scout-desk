@@ -565,8 +565,10 @@ function normAbbr(abbr) {
      Surplus vs league mean of those 22. 4 OVR ≈ 1 point. Cap ±2.
      Launch snapshot. Does not fade. Does not rewrite the 2025 prior.
    pff_term(abbr) = pff-2026.json team net (0 if missing).
-     Same 22 per club: top 11 OFF + top 11 DEF by 2025 PFF grade, min 200 snaps.
-     Surplus vs league mean of those 22. 5 grade ≈ 1 point. Cap ±1.5.
+     Same 22 per club: top 11 OFF + top 11 DEF by 2025 PFF grade, min 200 snaps,
+     each player counted for his current 2026 club (data/pff-roster-map-2026.json;
+     free agents / retired / practice squad out). Surplus vs league mean of those 22.
+     5 grade ≈ 1 point. Cap ±1.5.
      Official PFF+ CSV export. Does not fade. Does not rewrite the 2025 prior.
    pff_ytd_term(abbr) = pff-2026-ytd.json team net (0 if missing).
      2026 REG YTD team OFF/DEF/ST grades (Pro API overview, REG weeks only).
@@ -2612,7 +2614,7 @@ async function loadNfl() {
   const faReq = fetch("./data/fa-2026.json");
   const draftReq = fetch("./data/draft-2026.json");
   const maddenReq = fetch("./data/madden-2026.json");
-  const pffReq = fetch("./data/pff-2026.json?v=pff1");
+  const pffReq = fetch("./data/pff-2026.json?v=pffroster1006");
   const pffPreReq = fetch("./data/pff-pre-2026.json?v=pffpre0924");
   const pffYtdReq = fetch("./data/pff-2026-ytd.json?v=pff7");
   const pffMatchReq = fetch("./data/pff-matchups-2026.json?v=pff2");
@@ -4140,7 +4142,7 @@ function pffBlockHtml(abbr) {
       ${maddenUnitHtml(t && t.off, "OFF")}
       ${maddenUnitHtml(t && t.def, "DEF")}
     </div>
-    <p class="prior-note">Equal count. Top 11 per side by 2025 PFF grade, 200-snap floor. 5 grade ≈ 1 point vs league mean, cap ±1.5. Official CSV. Not the prior.</p>`;
+    <p class="prior-note">Equal count. Top 11 per side by 2025 PFF grade, 200-snap floor, counted for each player’s 2026 club. 5 grade ≈ 1 point vs league mean, cap ±1.5. Official CSV. Not the prior.</p>`;
   return sheetBoxHtml("pff", "fa-block pff-block", "PFF 2025 · same 22 (11 OFF + 11 DEF)", sheetHeadNum(net), body);
 }
 
