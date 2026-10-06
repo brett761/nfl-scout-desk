@@ -4576,8 +4576,311 @@ function renderGameSheet() {
       </table>
     </div>
     <div class="game-stack">${stackHtml}</div>
+    ${injuryMathHtml(game, (ourLine != null && Number.isFinite(ourLine)) ? ourLine : null)}
     ${compare}
     ${totHtml}`;
+  const im = body.querySelector("details.injmath");
+  if (im) im.addEventListener("toggle", () => { injMathOpen = im.open; });
+}
+
+/* ---------- Injury math on the game sheet (Live vs Proposed trench shadow) ----------
+   Display only. The Proposed column is the 2026-10-06 trench study weighting. It is
+   NOT an input to eff(), injuryTerm(), or the B$ line. Live is exactly the injury
+   rows inside the B$ line (profile rows for an open game, the lock rows for a
+   finished one). Nightly inputs: data/injury-trench/health-2026-wNN.json. */
+const TRENCH = {
+  posValue: { DL: 0.9, EDGE: 0.7, LB: 0.7, T: 1.0, IOL: 0.8 },
+  unitOf: { DL: "F7", EDGE: "F7", LB: "F7", T: "OL", IOL: "OL" },
+  groupLabel: { DL: "DL", EDGE: "EDGE", LB: "LB", T: "T", IOL: "G/C" },
+  posGroup: {
+    DT: "DL", NT: "DL", DL: "DL", IDL: "DL", DE: "EDGE", EDGE: "EDGE", EDGE1: "EDGE", OLB: "EDGE",
+    LB: "LB", ILB: "LB", MLB: "LB", T: "T", OT: "T", LT: "T", RT: "T", G: "IOL", OG: "IOL", C: "IOL", OL: "IOL",
+  },
+  sits: { IR: 1, OUT: 1, PUP: 1, NFI: 1, DOUBTFUL: 1 },
+  q: { DNP: 0.45, LP: 0.24, FP: 0.12 },
+  qUnknown: 0.27,
+  unitCap: 3.5,
+  teamCap: 6,
+  clusterBonus: 0.5,
+  clusterMin: 3,
+};
+const TRENCH_STATUS_SHORT = { IR: "IR", OUT: "Out", PUP: "PUP", NFI: "NFI", DOUBTFUL: "Doubtful", QUESTIONABLE: "Q", PROBABLE: "Probable" };
+const TRENCH_PRACTICE_LABEL = { DNP: "DNP", LP: "limited", FP: "full", unknown: "practice n/a" };
+let trenchIndex = null;
+let trenchIndexState = "idle"; // idle | loading | ready | missing
+const trenchWeeks = Object.create(null); // week -> data | "loading" | "missing"
+let injMathOpen = false;
+
+function trenchSnapWeight(share) {
+  const s = num(share);
+  if (s == null) return 0;
+  const r = Math.round(s * 10000) / 10000;
+  if (r >= 0.75) return 1;
+  if (r >= 0.6) return 0.75;
+  if (r >= 0.45) return 0.25;
+  return 0;
+}
+
+function trenchPSits(status, practice) {
+  const st = String(status || "").toUpperCase();
+  if (TRENCH.sits[st]) return 1;
+  if (st === "QUESTIONABLE") return TRENCH.q[practice] ?? TRENCH.qUnknown;
+  return 0;
+}
+
+async function loadTrenchWeek(week) {
+  const w = Number(week);
+  if (!w) return null;
+  if (trenchWeeks[w] && trenchWeeks[w] !== "loading") return trenchWeeks[w] === "missing" ? null : trenchWeeks[w];
+  if (trenchWeeks[w] === "loading") return null;
+  trenchWeeks[w] = "loading";
+  try {
+    if (trenchIndexState === "idle") {
+      trenchIndexState = "loading";
+      const res = await fetch("./data/injury-trench/index.json?v=" + Date.now().toString(36).slice(0, -3));
+      trenchIndex = res.ok ? await res.json() : null;
+      trenchIndexState = trenchIndex ? "ready" : "missing";
+    }
+    const entry = trenchIndex && trenchIndex.weeks && trenchIndex.weeks[String(w)];
+    if (!entry || !entry.file) {
+      trenchWeeks[w] = "missing";
+    } else {
+      const res = await fetch("./data/injury-trench/" + encodeURIComponent(entry.file) + "?v=" + encodeURIComponent(entry.generated_et || ""));
+      trenchWeeks[w] = res.ok ? await res.json() : "missing";
+    }
+  } catch (err) {
+    console.warn("injury-trench", err);
+    trenchWeeks[w] = "missing";
+  }
+  if (gameSheetId) {
+    const g = gameById(gameSheetId);
+    if (g && Number(g.week) === w) renderGameSheet();
+  }
+  return trenchWeeks[w] === "missing" ? null : trenchWeeks[w];
+}
+
+function trenchWeekData(week) {
+  const d = trenchWeeks[Number(week)];
+  return d && d !== "loading" && d !== "missing" ? d : null;
+}
+
+function trenchLookup(weekData, abbr, name) {
+  const team = weekData && weekData.teams && weekData.teams[normAbbr(abbr)];
+  if (!team || !Array.isArray(team.rows)) return null;
+  const key = normInjuryName(name);
+  return team.rows.find((r) => normInjuryName(r.name) === key) || null;
+}
+
+/** One team's rows priced both ways. Returns points lost (positive). */
+function trenchTeamMath(abbr, game, weekData) {
+  const a = normAbbr(abbr);
+  const kickMs = game && game.date ? Date.parse(game.date) : NaN;
+  const played = gameIsFinished(game) || (Number.isFinite(kickMs) && Date.now() > kickMs + 4 * 3600 * 1000);
+  const frozenTeam = weekData && weekData.frozen && played && weekData.teams && weekData.teams[a];
+  const src = [];
+  if (frozenTeam) {
+    for (const r of frozenTeam.rows || []) {
+      src.push({
+        name: r.name, pos: r.pos_desk || "", status: String(r.status || "").toUpperCase(),
+        on: !!(r.live && r.live.on), livePts: num(r.live && r.live.pts) || 0,
+        value: r.live ? num(r.live.value) : null, manual: !!(r.live && r.live.manual), hit: r,
+      });
+    }
+  } else {
+    for (const row of (getProfile(a).injuries || [])) {
+      const pts = Math.abs(num(row.pts) || 0);
+      src.push({
+        name: row.name, pos: row.pos || "", status: String(row.status || "").toUpperCase(),
+        on: !!row.on, livePts: row.on ? pts : 0, value: num(row.impact),
+        manual: row.impact_source === "manual", hit: trenchLookup(weekData, a, row.name),
+      });
+    }
+  }
+  const rows = [];
+  const live = { F7: 0, OL: 0, OTHER: 0 };
+  const prop = { F7: 0, OL: 0 };
+  const starters = { F7: 0, OL: 0 };
+  for (const s of src) {
+    const hit = s.hit;
+    const group = (hit && hit.group) || TRENCH.posGroup[String(s.pos).toUpperCase()] || null;
+    const unit = (group && TRENCH.unitOf[group]) || "OTHER";
+    const practice = (hit && hit.practice) || "unknown";
+    const share = hit ? num(hit.share) : null;
+    const mult = (injuryScale && injuryScale.status && num(injuryScale.status[s.status])) ?? 0;
+    const value = s.value != null ? s.value : injuryPosBase(s.pos);
+    live[unit] += s.livePts;
+    let p = null;
+    if (unit !== "OTHER") {
+      const pS = trenchPSits(s.status, practice);
+      const w = trenchSnapWeight(share);
+      const v = TRENCH.posValue[group] || 0;
+      p = { pSits: pS, w, v, pts: Math.round(v * w * pS * 1000) / 1000 };
+      prop[unit] += p.pts;
+      if (w >= 0.75 && pS >= 0.5) starters[unit] += 1;
+    }
+    rows.push({
+      name: s.name, pos: s.pos, nflPos: hit ? hit.pos_nfl : "", group, unit, status: s.status, practice,
+      practiceSource: hit ? hit.practice_source : "", practiceDays: hit ? hit.practice_days : null, share,
+      live: { on: s.on, mult, value, pts: s.livePts, manual: s.manual }, prop: p,
+    });
+  }
+  const units = {};
+  for (const u of ["F7", "OL"]) {
+    const cluster = starters[u] >= TRENCH.clusterMin;
+    const raw = prop[u] + (cluster ? TRENCH.clusterBonus : 0);
+    units[u] = { rows: prop[u], starters: starters[u], cluster, bonus: cluster ? TRENCH.clusterBonus : 0, raw, capped: raw > TRENCH.unitCap, total: Math.min(TRENCH.unitCap, raw) };
+  }
+  const liveRaw = live.F7 + live.OL + live.OTHER;
+  const propRaw = live.OTHER + units.F7.total + units.OL.total;
+  return {
+    abbr: a, frozen: !!frozenTeam, source: frozenTeam ? frozenTeam.rows_source : "profile rows (what eff() reads)",
+    rows,
+    live: { F7: live.F7, OL: live.OL, OTHER: live.OTHER, raw: liveRaw, capped: liveRaw > TRENCH.teamCap, total: Math.min(TRENCH.teamCap, liveRaw) },
+    prop: { F7: units.F7, OL: units.OL, OTHER: live.OTHER, raw: propRaw, capped: propRaw > TRENCH.teamCap, total: Math.min(TRENCH.teamCap, propRaw) },
+  };
+}
+
+function imNum(n, d = 2) {
+  const x = num(n);
+  if (x == null) return "—";
+  return (Math.round(x * 100) / 100).toFixed(d);
+}
+
+function imPts(n) {
+  const x = num(n) || 0;
+  if (Math.abs(x) < 0.005) return "0.00";
+  return "−" + Math.abs(x).toFixed(2);
+}
+
+function imMove(diff, home, away) {
+  // diff is the change to the home spread. Positive moves the number toward the away team.
+  if (diff == null || !Number.isFinite(diff) || Math.abs(diff) < 0.005) return "even · no move";
+  return Math.abs(diff).toFixed(2) + " toward " + (diff > 0 ? away : home);
+}
+
+function imRowHtml(r) {
+  const unitLabel = r.unit === "F7" ? "front seven" : r.unit === "OL" ? "OL" : "other";
+  const pos = [r.group ? TRENCH.groupLabel[r.group] : r.pos, r.nflPos && r.group && r.nflPos !== r.pos ? "desk " + r.pos : ""].filter(Boolean).join(" · ");
+  const status = TRENCH_STATUS_SHORT[r.status] || r.status;
+  let practice = "";
+  if (r.status === "QUESTIONABLE" || (r.practice && r.practice !== "unknown")) {
+    practice = TRENCH_PRACTICE_LABEL[r.practice] || r.practice;
+    const days = r.practiceDays && typeof r.practiceDays === "object" ? Object.entries(r.practiceDays).map(([k, v]) => k.slice(0, 3) + " " + v).join(" / ") : "";
+    if (days) practice += " (" + days + ")";
+  }
+  const liveF = r.live.on
+    ? `${imNum(r.live.value)}${r.live.manual ? " manual" : ""} × ${status} ${imNum(r.live.mult)}`
+    : `${status} · off (not counted)`;
+  let propF;
+  if (r.prop) {
+    const share = r.share == null ? "no snap data" : Math.round(r.share * 100) + "% snaps";
+    propF = `P ${imNum(r.prop.pSits)} × ${imNum(r.prop.v, 1)} × snap ${imNum(r.prop.w)} <em>(${esc(share)})</em>`;
+  } else {
+    propF = "same as Live";
+  }
+  return `<div class="im-row">
+      <div class="im-who"><b>${esc(r.name)}</b><small>${esc(pos)} · ${esc(unitLabel)} · ${esc(status)}${practice ? " · " + esc(practice) : ""}</small></div>
+      <div class="im-cell im-live"><span class="im-f">${esc(liveF)}</span><span class="im-pts">${imPts(r.live.pts)}</span></div>
+      <div class="im-cell im-prop"><span class="im-f">${propF}</span><span class="im-pts">${imPts(r.prop ? r.prop.pts : r.live.pts)}</span></div>
+    </div>`;
+}
+
+function imSubRow(label, liveVal, propVal, cls = "", liveNote = "", propNote = "") {
+  return `<div class="im-row im-sub ${cls}">
+      <div class="im-who"><b>${esc(label)}</b></div>
+      <div class="im-cell im-live"><span class="im-f">${esc(liveNote)}</span><span class="im-pts">${liveVal}</span></div>
+      <div class="im-cell im-prop"><span class="im-f">${esc(propNote)}</span><span class="im-pts">${propVal}</span></div>
+    </div>`;
+}
+
+function imTeamHtml(m, side) {
+  const trench = m.rows.filter((r) => r.unit !== "OTHER" && ((r.prop && r.prop.pts > 0) || r.live.pts > 0 || r.status === "QUESTIONABLE" || r.status === "DOUBTFUL" || r.status === "OUT"));
+  const other = m.rows.filter((r) => r.unit === "OTHER" && r.live.pts > 0);
+  const zero = m.rows.length - trench.length - other.length;
+  const order = { F7: 0, OL: 1 };
+  trench.sort((x, y) => (order[x.unit] - order[y.unit]) || ((y.prop ? y.prop.pts : 0) - (x.prop ? x.prop.pts : 0)) || (y.live.pts - x.live.pts));
+  const f7 = m.prop.F7;
+  const ol = m.prop.OL;
+  const capNote = (u, label) => u.capped ? `${label} capped at ${TRENCH.unitCap.toFixed(1)} (was ${imNum(u.raw)})` : `${label} under ${TRENCH.unitCap.toFixed(1)} cap`;
+  const clusterNote = (u) => u.cluster ? `+${TRENCH.clusterBonus.toFixed(1)} (${u.starters} starters out)` : `${u.starters} of ${TRENCH.clusterMin} starters`;
+  const otherRows = other.map(imRowHtml).join("");
+  const capCut = (f7.capped ? f7.raw - f7.total : 0) + (ol.capped ? ol.raw - ol.total : 0);
+  return `<section class="injmath-team">
+      <h4><span>${esc(m.abbr)} · ${esc(side)}</span><small>Live ${imPts(m.live.total)} · Proposed ${imPts(m.prop.total)}</small></h4>
+      <div class="im-grid">
+        <div class="im-row im-head"><div class="im-who">Player · unit · final status</div><div class="im-cell im-live">Live</div><div class="im-cell im-prop">Proposed</div></div>
+        ${trench.length ? trench.map(imRowHtml).join("") : `<p class="im-empty">No front-seven or OL rows on the list.</p>`}
+        ${imSubRow("Front seven subtotal", imPts(m.live.F7), imPts(f7.rows))}
+        ${imSubRow("OL subtotal", imPts(m.live.OL), imPts(ol.rows))}
+        ${imSubRow("Cluster bonus", "—", imPts(f7.bonus + ol.bonus), "", "not in Live", "F7 " + clusterNote(f7) + " · OL " + clusterNote(ol))}
+        ${imSubRow("Unit caps", "—", capCut > 0 ? `+${imNum(capCut)} cut` : "none", "", "no unit cap", capNote(f7, "F7") + " · " + capNote(ol, "OL"))}
+        ${other.length ? `<details class="im-other"><summary><span>Other positions · ${other.length} row${other.length === 1 ? "" : "s"} · priced the same in both</span><span class="im-pts">${imPts(m.live.OTHER)}</span></summary>${otherRows}</details>` : imSubRow("Other positions", imPts(m.live.OTHER), imPts(m.prop.OTHER))}
+        ${imSubRow("Team total", imPts(m.live.total), imPts(m.prop.total), "is-total", m.live.capped ? "capped at 6.0" : "cap 6.0", m.prop.capped ? "capped at 6.0" : "cap 6.0")}
+      </div>
+      ${zero > 0 ? `<p class="im-zero">${zero} more listed row${zero === 1 ? "" : "s"} price at 0 in both.</p>` : ""}
+    </section>`;
+}
+
+function injuryMathHtml(game, ourLine) {
+  const week = Number(game.week);
+  let weekData = trenchWeekData(week);
+  const state = trenchWeeks[week];
+  if (!state) loadTrenchWeek(week);
+  if (!weekData && trenchIndex && trenchIndex.latest_week && Number(trenchIndex.latest_week) !== week && !gameIsFinished(game)) {
+    weekData = trenchWeekData(trenchIndex.latest_week);
+    if (!trenchWeeks[trenchIndex.latest_week]) loadTrenchWeek(trenchIndex.latest_week);
+  }
+  const home = game.home;
+  const away = game.away;
+  const mA = trenchTeamMath(away, game, weekData);
+  const mH = trenchTeamMath(home, game, weekData);
+  const liveDiff = mH.live.total - mA.live.total; // change to the home spread from injuries
+  const propDiff = mH.prop.total - mA.prop.total;
+  const hasLine = ourLine != null && Number.isFinite(ourLine);
+  const propLine = hasLine ? ourLine + (propDiff - liveDiff) : null;
+  const shift = hasLine ? propLine - ourLine : null;
+  const frozen = mA.frozen || mH.frozen;
+  const loading = state === "loading" || (!state && !weekData);
+  const stamp = weekData ? (weekData.generated_et || "") : "";
+  const lineLabel = (l) => (l == null ? "—" : `${home} ${fmtLayer(l)} · ${formatOurLine(l, home, away)}`);
+  const card = (kind, label, sub, aPts, hPts, diff, line, extra) => `
+      <div class="injmath-card ${kind}">
+        <p class="injmath-kicker">${esc(label)}</p>
+        <p class="injmath-sub">${esc(sub)}</p>
+        <div class="im-kv"><span>${esc(away)} injuries</span><b class="mono">${imPts(aPts)}</b></div>
+        <div class="im-kv"><span>${esc(home)} injuries</span><b class="mono">${imPts(hPts)}</b></div>
+        <div class="im-kv"><span>Net injury adjustment to the line</span><b class="mono">${esc(imMove(diff, home, away))}</b></div>
+        <div class="im-kv is-line"><span>${esc(extra)}</span><b class="mono">${esc(lineLabel(line))}</b></div>
+      </div>`;
+  const headNum = hasLine ? `${home} ${fmtLayer(ourLine)} → ${fmtLayer(propLine)}` : "";
+  const liveSub = frozen ? "Locked rows · what the posted B$ line used" : "In the B$ line today";
+  const sourceNote = frozen
+    ? `Live rows come from the lock (${mA.source === mH.source ? mA.source : mA.source + " / " + mH.source}). `
+    : "Live rows are the injury rows eff() reads right now. ";
+  const practiceNote = weekData
+    ? `Snap shares and practice status from ${weekData.week === week ? "" : "Week " + weekData.week + " "}data/injury-trench (${esc(stamp)}). `
+    : loading ? "Loading snap shares and practice status… " : "No trench file for this week yet, so snap weights read 0 and Q practice is unknown. ";
+  return `<details class="injmath"${injMathOpen ? " open" : ""}>
+      <summary>
+        <span class="injmath-title">Injury math</span>
+        <span class="injmath-tag">Live vs Proposed (shadow, not in line)</span>
+        ${headNum ? `<span class="injmath-headnum mono">${esc(headNum)}</span>` : ""}
+      </summary>
+      <div class="injmath-body">
+        <div class="injmath-compare">
+          ${card("is-live", "Live", liveSub, mA.live.total, mH.live.total, liveDiff, ourLine, "B$ line (Live)")}
+          ${card("is-prop", "Proposed (shadow, not in line)", "Trench weighting · display only", mA.prop.total, mH.prop.total, propDiff, propLine, "Line if Proposed replaced Live")}
+        </div>
+        ${hasLine ? `<p class="injmath-shift">Proposed moves this number ${esc(imMove(shift, home, away))}. The posted B$ line does not change.</p>` : ""}
+        ${imTeamHtml(mA, "away")}
+        ${imTeamHtml(mH, "home")}
+        <div class="injmath-foot">
+          <p><b>Live</b> = impact × status (IR/Out 1.0, Doubtful 0.75, Questionable 0.35 when on). Auto impact is clamped: QB1 1.5, All-Pro 0.5, else 0.25, floor 0.2. Team cap 6.0. This is injuryTerm() in eff().</p>
+          <p><b>Proposed</b> = position value × snap weight × P(sits), front seven and OL only. Value: DL 0.9, EDGE/LB 0.7, T 1.0, G/C 0.8. Snap weight (last 4 team games): 75%+ 1.0, 60–75% 0.75, 45–60% 0.25, under 45% 0. P(sits): Out/Doubtful/IR 1.0; Questionable 0.45 DNP, 0.24 limited, 0.12 full, 0.27 unknown. +0.5 when 3+ starters in a unit are out. Caps: front seven 3.5, OL 3.5, team 6.0. Other positions stay on Live pricing.</p>
+          <p class="injmath-src">${sourceNote}${practiceNote}Line if Proposed = B$ line + (home Proposed − home Live) − (away Proposed − away Live).</p>
+        </div>
+      </div>
+    </details>`;
 }
 
 function openGameSheet(id, opts = {}) {
