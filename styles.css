@@ -4040,3 +4040,115 @@ body.is-admin .im-impact-edit {
   .im-head .im-who { display: none; }
   .im-cell.im-prop { padding-left: 8px; }
 }
+
+/* ---------- Unit mismatch (research only, not in the B$ line) ---------- */
+.unitmis {
+  margin: 0 0 18px;
+  background: #0B0B0E;
+  border: 1px solid rgba(197, 108, 52, 0.45);
+  border-radius: 12px;
+}
+.unitmis > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  padding: 12px 40px 12px 14px;
+  position: relative;
+}
+.unitmis > summary::-webkit-details-marker { display: none; }
+.unitmis > summary::after {
+  content: "";
+  position: absolute;
+  right: 16px;
+  top: 19px;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--copper);
+  border-bottom: 2px solid var(--copper);
+  transform: rotate(45deg);
+  transition: transform 0.15s ease;
+}
+.unitmis[open] > summary::after { transform: rotate(225deg); top: 23px; }
+.unitmis > summary:focus-visible { outline: 2px solid var(--copper); outline-offset: 2px; border-radius: 12px; }
+.unitmis-title {
+  font-family: var(--display);
+  font-size: 22px;
+  letter-spacing: 0.04em;
+  color: var(--white);
+}
+.unitmis-tag {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--copper);
+}
+.unitmis-headnum {
+  margin-left: auto;
+  font-size: 13px;
+  color: var(--cloud);
+  font-variant-numeric: tabular-nums;
+}
+.unitmis-body { padding: 0 14px 14px; }
+.unitmis-net {
+  margin: 0 0 10px;
+  font-size: 13px;
+  color: var(--cloud);
+}
+.unitmis-list { list-style: none; margin: 0; padding: 0; }
+.unitmis-row {
+  padding: 8px 0;
+  border-top: 1px solid rgba(149, 150, 150, 0.16);
+}
+.unitmis-flag {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--white);
+}
+.unitmis-flag b { font-weight: 650; }
+.unitmis-meta {
+  margin: 3px 0 0;
+  font-size: 12px;
+  color: var(--slate);
+}
+.unitmis-vs { font-weight: 650; letter-spacing: 0.02em; }
+.unitmis-row.is-against .unitmis-vs { color: var(--copper-hot); }
+.unitmis-row.is-with .unitmis-vs { color: var(--cloud); }
+.unitmis-qb {
+  display: block;
+  margin-top: 3px;
+  font-size: 11px;
+  line-height: 1.35;
+  color: var(--slate);
+}
+.unitmis-near-label {
+  margin: 12px 0 0;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+.unitmis-list.is-near .unitmis-flag { color: var(--cloud); font-size: 13px; }
+.unitmis-empty { margin: 0 0 8px; font-size: 14px; color: var(--cloud); }
+.unitmis-method, .unitmis-foot {
+  margin: 10px 0 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--slate);
+}
+.unitmis-foot { padding-top: 8px; border-top: 1px solid var(--slate-line); }
+.sked-row > .unitmis-card { grid-column: 1 / -1; margin: 6px 0 0; }
+.unitmis-card > summary { padding: 8px 36px 8px 12px; }
+.unitmis-card .unitmis-title { font-size: 18px; }
+.unitmis-card .unitmis-body { padding: 0 12px 12px; }
+@media (max-width: 560px) {
+  .unitmis > summary { padding-right: 36px; }
+  .unitmis-headnum { margin-left: 0; width: 100%; }
+  .unitmis-title { font-size: 20px; }
+}
