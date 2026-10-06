@@ -29,6 +29,16 @@ const PRIOR_OUT_FROM_WEEK = 5;
    Display only after that ("Last year SOS · not in line"). Weeks 1-4 lines are pinned
    (data/model/desk-pins-2026-w01-w04.json), so a graded line never moves. */
 const SOS_OUT_WITH_PRIOR = true;
+/* DVOA blend SHADOW line (Brett 2026-10-06). Shown and logged, NOT in the B$ line.
+   From Week 5 the 2026-performance part of each club (algorithmBase = 2026 results rating, plus PFF YTD)
+   becomes (1 - W) * itself + W * B$ DVOA overall from data/dvoa/bs-dvoa-2026.json (the block for the
+   game's week, plays through the prior week). Madden, PFF 22, injuries, adjustments, game terms and
+   HFA 2.0 (0 at a neutral site) stay exactly as ourHomeSpread() has them. Only
+   dvoaBlendShadowHomeSpread() computes it; eff(), ourHomeSpread(), deskHomeSpread(), power rankings,
+   Bet History, Overall Record, ATS records and the B$ Daily never read it. Tracked Weeks 5-8, then
+   graded for promotion (data/model/grade_shadow_blend.mjs, Sandmoney PR #5). */
+const DVOA_BLEND_SHADOW_WEIGHT = 0.5;
+const DVOA_BLEND_SHADOW_FROM_WEEK = 5;
 const SHEET_BOX_KEY = "nflScout.sheetBoxes.v1";
 
 function canEdit() {
@@ -1945,6 +1955,100 @@ function ourHomeSpread(game, hfaVal) {
   const homeE = eff(game.home) + injuryWeekAdj(game.home, game.week);
   const awayE = eff(game.away) + injuryWeekAdj(game.away, game.week);
   return -(homeE - awayE + pad + coachTerm(game) + prepNet(game) + atsNet(game) + schedNet(game) + matchupNet(game));
+}
+
+/* ---------- DVOA blend shadow (not in the B$ line) ---------- */
+
+/** Latest B$ DVOA block with week <= the game's week (plays through the prior week). */
+function dvoaBlendShadowBlock(week) {
+  const weeks = bsDvoaData && Array.isArray(bsDvoaData.weeks) ? bsDvoaData.weeks : [];
+  let best = null;
+  for (const w of weeks) {
+    const n = Number(w && w.week);
+    if (!Number.isFinite(n) || n > Number(week) || !Array.isArray(w.teams)) continue;
+    if (!best || n > Number(best.week)) best = w;
+  }
+  return best;
+}
+
+/**
+ * Shadow only: raw home spread of the 50/50 B$ + DVOA blend, or null before Week 5 / with no DVOA.
+ * Same as ourHomeSpread() except each club's 2026-performance part (algorithmBase + pffYtdTerm) is
+ * replaced by (1 - W) * itself + W * B$ DVOA overall. HFA is HFA_DEFAULT (2.0), 0 at a neutral site.
+ */
+function dvoaBlendShadowHomeSpread(game, weight = DVOA_BLEND_SHADOW_WEIGHT) {
+  if (!game || Number(game.week) < DVOA_BLEND_SHADOW_FROM_WEEK) return null;
+  const block = dvoaBlendShadowBlock(game.week);
+  if (!block) return null;
+  const dvoaOf = (abbr) => {
+    const a = normAbbr(abbr);
+    const row = block.teams.find((t) => normAbbr(t.abbr) === a);
+    return row ? num(row.overall) : null;
+  };
+  const dHome = dvoaOf(game.home);
+  const dAway = dvoaOf(game.away);
+  if (dHome == null || dAway == null) return null;
+  const blendEff = (abbr, dvoa) => {
+    const perf = algorithmBase(abbr) + pffYtdTerm(abbr);
+    return eff(abbr) - weight * perf + weight * dvoa;
+  };
+  const pad = game.neutral ? 0 : HFA_DEFAULT;
+  const homeE = blendEff(game.home, dHome) + injuryWeekAdj(game.home, game.week);
+  const awayE = blendEff(game.away, dAway) + injuryWeekAdj(game.away, game.week);
+  return -(homeE - awayE + pad + coachTerm(game) + prepNet(game) + atsNet(game) + schedNet(game) + matchupNet(game));
+}
+
+/** Nearest 0.5, exact .25/.75 away from zero (same rule as the official B$ line from Week 4). */
+function dvoaBlendShadowRound(value) {
+  const n = num(value);
+  if (n == null) return null;
+  const sign = n < 0 ? -1 : 1;
+  const steps = Math.abs(n) / 0.5;
+  const lower = Math.floor(steps + 1e-9);
+  const out = sign * (steps - lower > 0.5 - 1e-8 ? lower + 1 : lower) * 0.5;
+  return out === 0 ? 0 : out;
+}
+
+let shadowLogByEspn = {};
+
+/** Logged shadow snapshots from bs-line-history (versions carrying shadow_dvoa_blend). */
+function indexShadowLog(data) {
+  shadowLogByEspn = {};
+  for (const g of (data && Array.isArray(data.games) ? data.games : [])) {
+    const rows = [];
+    for (const v of g.versions || []) {
+      const sh = v && v.shadow_dvoa_blend;
+      if (!sh || num(sh.raw) == null) continue;
+      rows.push({ at: Date.parse(v.published_at), raw: num(sh.raw), rounded: num(sh.rounded), version: v.version });
+    }
+    if (rows.length && g.espn_id) shadowLogByEspn[String(g.espn_id)] = rows.sort((a, b) => a.at - b.at || a.version - b.version);
+  }
+}
+
+/** What the card shows: live shadow before kick; after kick, the last logged pre-kick shadow (or null). */
+function dvoaBlendShadowFor(game, nowMs = Date.now()) {
+  if (!game || Number(game.week) < DVOA_BLEND_SHADOW_FROM_WEEK) return null;
+  const kick = Date.parse(String(game.date || ""));
+  const started = gameIsFinished(game) || (Number.isFinite(kick) && kick <= nowMs);
+  if (started) {
+    const rows = shadowLogByEspn[String(game.id)] || [];
+    const pre = rows.filter((r) => !Number.isFinite(kick) || r.at < kick);
+    const last = pre[pre.length - 1];
+    return last ? { raw: last.raw, rounded: last.rounded, locked: true } : null;
+  }
+  const full = dvoaBlendShadowHomeSpread(game);
+  if (full == null) return null;
+  const raw = Math.round(full * 100) / 100; // logged precision; rounded from it, like the locks
+  return { raw, rounded: dvoaBlendShadowRound(raw), locked: false };
+}
+
+function dvoaBlendShadowHtml(game) {
+  const sh = dvoaBlendShadowFor(game);
+  if (!sh) return "";
+  const line = sh.rounded === 0 ? "PK" : formatOurLine(sh.rounded, game.home, game.away);
+  const tipText = "Shadow only. 50/50 blend of the 2026 performance part (results + PFF YTD) with B$ DVOA; every other B$ layer and HFA 2.0 unchanged. Raw "
+    + fmtSpreadNum(sh.raw) + (sh.locked ? ". Last logged pre-kick value." : ".") + " Not in the B$ line, the record or ATS.";
+  return `<span class="sked-shadow" title="${esc(tipText)}">DVOA blend (shadow, not in B$ line${sh.locked ? ", locked" : ""}): <b>${esc(line)}</b></span>`;
 }
 
 function publishedRecordFor(game) {
@@ -5878,6 +5982,7 @@ function renderSchedule() {
             <span class="lbl">B$ Line</span>
             <span class="val">${esc(ourHtml)}</span>
             ${gameDayDiffers(g) ? gameDayMarkHtml(g) : (pubRow ? `<span class="when">${esc(pubRow.published_at || (pubRow.lock_quality === "null_line" ? "No pre-kick B Line" : "Frozen lock"))}</span>` : "")}
+            ${dvoaBlendShadowHtml(g)}
           </div>
         </div>
         <div class="sked-edge"><span class="lbl">Gap</span>${edgeHtml === "—" ? '<span class="val">—</span>' : edgeHtml}${coachChipHtml(g)}${prepChipHtml(g)}${atsChipHtml(g)}${matchupChipHtml(g)}</div>
@@ -7642,12 +7747,15 @@ async function loadModelAts() {
 
 async function loadGameDayLines() {
   try {
-    const res = await fetch("./data/model/bs-line-history-2026.json?v=gdline1001");
+    const res = await fetch("./data/model/bs-line-history-2026.json?v=shadow1006");
     if (!res.ok) throw new Error(String(res.status));
-    indexGameDay(await res.json());
+    const history = await res.json();
+    indexGameDay(history);
+    indexShadowLog(history);
   } catch (err) {
     gameDayByEspn = {};
     gameDayByPair = {};
+    shadowLogByEspn = {};
     console.warn("game-day lines", err);
   }
 }

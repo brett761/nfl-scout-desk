@@ -3439,6 +3439,15 @@ body.is-viewer textarea:disabled {
 }
 .sked-our .gd-mark,
 .game-compare .gd-mark { margin-top: 6px; }
+.sked-line .sked-shadow {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--sans);
+  font-size: 10px;
+  line-height: 1.35;
+  color: var(--slate);
+}
+.sked-line .sked-shadow b { font-family: var(--mono); font-weight: 600; color: var(--cloud); }
 .method-page h2 {
   font-family: var(--display);
   font-size: 28px;

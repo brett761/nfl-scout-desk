@@ -55,3 +55,18 @@ node data/model/append_model_snapshot.mjs --game-day data/model/game-day-lines-2
 Each becomes version N+1 with source `game-day site compute @<commit>`, `published_at` at the live commit's time, and `supersedes` at the prior version. Re-running is a no-op.
 
 Finished games on the Games page grade the latest of those versions. The close stays the one on the pinned `finals.json` row. ATS and better-position use the same rules as the pinned grade. A game with no game-day version stays on the pinned lock. The pinned row is not edited. Bet History and Overall Record use that same game-day line for Weeks 2 and 3 and do not round it. The admin sandbox still compares experiments with that pinned lock, so the frozen replay stays the production baseline.
+
+## DVOA blend shadow line (Weeks 5–8 tracking)
+
+The 50/50 B$ + DVOA blend is tracked as a logged **shadow** line from Week 5. It is not the B$ line: it doesn't feed `eff()`, `ourHomeSpread()`, `deskHomeSpread()`, power rankings, Bet History, Overall Record, ATS records or the B$ Daily.
+
+- **Method.** `app.js` has one function, `dvoaBlendShadowHomeSpread(game)`, controlled by `DVOA_BLEND_SHADOW_WEIGHT = 0.5` and `DVOA_BLEND_SHADOW_FROM_WEEK = 5`. The function is `ourHomeSpread()` with one change: each club's 2026-performance part (`algorithmBase` + `pffYtdTerm`) becomes (1 − w) × itself + w × B$ DVOA overall. DVOA overall comes from the `data/dvoa/bs-dvoa-2026.json` block for the game's week, which has plays through the prior week. Madden, PFF 22, injuries, adjustments, game terms and HFA 2.0 are unchanged; a neutral site gets 0 HFA. The rounded value goes to the nearest 0.5, with .25 and .75 rounding away from zero, the same rule as the official line.
+- **Display.** Each Games card shows "DVOA blend (shadow, not in B$ line): …" under the B$ Line. Before kick it is the live value. After kick it is the last logged pre-kick value, marked "locked".
+- **Log.** Every live version written by `append_model_snapshot.mjs --week N` stores `shadow_dvoa_blend` (`raw`, `rounded`, `weight`, `dvoa_week`, `dvoa_plays_through_week`, `in_b_line: false`) in the same snapshot as the B$ line. A shadow-only change with the same B$ line and market is a new version, so the last version before kick always carries the game-day shadow. `--pre-kick` stamps one version per upcoming game even when nothing changed; use it right after the locks are frozen. Week 5 was backfilled once at 2026-10-06 12:09:58 PM ET.
+- **Guard.** `check_model_history.mjs` fails if a past version's shadow is edited, removed or added after the fact. It also fails if a stored shadow has a bad rounding or `in_b_line` isn't false.
+- **Grade.** Run `node data/model/grade_shadow_blend.mjs` (self-test: `--self-test`). It writes `data/model/shadow-dvoa-blend-grades-2026.json` and grades every finished game from Week 5:
+  - The locked shadow is the last pre-kick version.
+  - The official B$ line is the lock rounded; with no lock it falls back to the snapshot, flagged.
+  - The close comes from line history, then `data/closes`, then the lock street, then the last pre-kick street, flagged when it isn't a true close.
+  - Metrics: average absolute error vs the final margin, ATS vs the close, record by gap to the close (<3, 3–8, 8+), and head-to-head when the sides differ.
+  - The file also carries the Sandmoney PR #5 backtest headline for the promote-or-drop call after Week 8.

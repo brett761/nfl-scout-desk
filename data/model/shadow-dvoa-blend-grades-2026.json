@@ -1,0 +1,84 @@
+{
+  "schema": 1,
+  "season": 2026,
+  "generated_at": "2026-10-06T16:09:53.069Z",
+  "what": "DVOA blend shadow line (50/50 B$ + DVOA on the 2026-performance part, from Week 5) vs the official B$ line and the close. Shadow only: not in the B$ line, the record, Bet History, Overall Record, ATS or the B$ Daily.",
+  "method": {
+    "shadow": "shadow_dvoa_blend.rounded on the last data/model/bs-line-history-2026.json version published before kick (app.js dvoaBlendShadowHomeSpread, weight DVOA_BLEND_SHADOW_WEIGHT).",
+    "official": "Lock model_home_spread rounded to the nearest 0.5 (.25/.75 away from zero), same as data/record/lib.mjs from Week 4. No lock: last pre-kick snapshot b_line, flagged in official_source.",
+    "close": "line-history close tag, else data/closes file, else lock street at freeze, else last pre-kick street snapshot (see close_source).",
+    "error": "Absolute error vs the final home margin; a home spread L implies an expected home margin of -L.",
+    "ats": "data/model/game_day_grade.mjs atsGrade vs the close. Gap buckets use |line - close|: <3, 3-8, 8+."
+  },
+  "tracking_window": {
+    "from_week": 5,
+    "decision_after_week": 8,
+    "weeks_graded": [],
+    "decision_ready": false
+  },
+  "through_week": null,
+  "cumulative": {
+    "n": 0,
+    "mae_shadow": null,
+    "mae_official": null,
+    "mae_close": null
+  },
+  "by_week": [],
+  "sandmoney_pr5_backtest": {
+    "pr": "https://github.com/brett761/sandmoney-lines/pull/5",
+    "note": "2021-25 replica (results rating only; no PFF/Madden/injury history). Close = nflverse.",
+    "w5_18_mae": {
+      "b_line_replica": 10.32,
+      "blend_50_50": 10.16,
+      "narrowing_control": 10.27,
+      "market_close": 9.73
+    },
+    "w5_18_blend_vs_b": {
+      "delta": -0.16,
+      "ci95": [
+        -0.27,
+        -0.06
+      ]
+    },
+    "w5_8_blend_vs_b": {
+      "delta": -0.34,
+      "ci95": [
+        -0.59,
+        -0.1
+      ]
+    },
+    "w9_18_blend_vs_b": {
+      "delta": -0.09,
+      "ci95": [
+        -0.2,
+        0.03
+      ]
+    },
+    "blend_vs_narrowing_control": {
+      "delta": -0.11,
+      "ci95": [
+        -0.21,
+        -0.02
+      ],
+      "seasons_won": "4/5"
+    },
+    "out_of_sample_2024_25_w5_18_vs_b": {
+      "delta": -0.06,
+      "ci95": [
+        -0.23,
+        0.12
+      ],
+      "by_season": {
+        "2024": -0.12,
+        "2025": 0.01
+      }
+    },
+    "ats_w5_18": {
+      "b_line_replica": "508-507",
+      "blend_50_50": "517-498"
+    },
+    "caveat": "Frozen DVOA coefficients were fit on 2021-23; 2024-25 is the only out-of-sample stretch."
+  },
+  "games": [],
+  "not_graded": []
+}

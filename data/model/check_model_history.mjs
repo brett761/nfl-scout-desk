@@ -11,6 +11,11 @@
  * Also checks data/lines/line-history-2026.json: every street snapshot must carry an
  * "at" that is an ISO timestamp with an offset (Z or +hh:mm). A null or missing "at"
  * fails, and so does a B$ version without published_at.
+ *
+ * DVOA blend shadow (shadow_dvoa_blend on a version, Week 5+): it is part of the version, so a
+ * past snapshot's shadow can't be edited, removed, or added after the fact ("modified ... shadow").
+ * Each stored shadow must have a numeric raw, rounded = raw to the nearest 0.5 (.25/.75 away from
+ * zero), and in_b_line false.
  */
 import fs from "fs";
 import path from "path";
@@ -51,6 +56,33 @@ export function checkPublishedAt(data) {
   return problems;
 }
 
+function roundHalfAway(value) {
+  const n = Number(value);
+  const sign = n < 0 ? -1 : 1;
+  const steps = Math.abs(n) / 0.5;
+  const lower = Math.floor(steps + 1e-9);
+  const out = sign * (steps - lower > 0.5 - 1e-8 ? lower + 1 : lower) * 0.5;
+  return out === 0 ? 0 : out;
+}
+
+// Stored shadow values must be well formed and never claim to be the B$ line.
+export function checkShadow(data) {
+  const problems = [];
+  for (const g of (data && data.games) || []) {
+    for (const v of g.versions || []) {
+      if (!("shadow_dvoa_blend" in v)) continue;
+      const sh = v.shadow_dvoa_blend;
+      const label = g.game_id + " W" + g.week + " version " + v.version + " shadow";
+      if (!sh || typeof sh !== "object") { problems.push(label + " is not an object"); continue; }
+      if (typeof sh.raw !== "number" || !Number.isFinite(sh.raw)) { problems.push(label + " raw is not a number"); continue; }
+      if (sh.rounded !== roundHalfAway(sh.raw)) problems.push(label + " rounded " + sh.rounded + " is not " + roundHalfAway(sh.raw) + " (raw " + sh.raw + ")");
+      if (sh.in_b_line !== false) problems.push(label + " must have in_b_line false");
+      if (Number(g.week) < 5) problems.push(label + " is before Week 5");
+    }
+  }
+  return problems;
+}
+
 function canon(value) {
   if (Array.isArray(value)) return "[" + value.map(canon).join(",") + "]";
   if (value && typeof value === "object") {
@@ -81,10 +113,19 @@ function indexVersions(data) {
 export function compare(previous, current) {
   const prior = indexVersions(previous);
   const next = indexVersions(current);
+  const shadowOf = (data) => {
+    const m = new Map();
+    for (const g of (data && data.games) || []) for (const v of g.versions || []) m.set(g.game_id + "#" + g.week + "#" + v.version, canon(v.shadow_dvoa_blend ?? null));
+    return m;
+  };
+  const priorShadow = shadowOf(previous);
+  const nextShadow = shadowOf(current);
   const problems = [];
   for (const [key, fp] of prior) {
     if (!next.has(key)) problems.push("deleted " + key);
-    else if (next.get(key) !== fp) problems.push("modified " + key);
+    else if (next.get(key) !== fp) {
+      problems.push("modified " + key + (priorShadow.get(key) !== nextShadow.get(key) ? " (shadow_dvoa_blend changed)" : ""));
+    }
   }
   return problems;
 }
@@ -138,7 +179,35 @@ function selfTest() {
   noPub.games[0].versions[2].published_at = null;
   noPub.games[0].versions.forEach((v) => { if (v.published_at === undefined) v.published_at = "2026-09-07T12:00:00Z"; });
   if (checkPublishedAt(noPub).length !== 1) throw new Error("null published_at should fail");
-  console.log("self-test ok");
+
+  // Shadow: append OK; edit, removal, or late addition of a stored shadow fails.
+  const sh = { raw: -7.73, rounded: -7.5, weight: 0.5, dvoa_week: 5, dvoa_plays_through_week: 4, in_b_line: false };
+  const prevS = { games: [{ game_id: "TB@DAL", week: 5, versions: [
+    { version: 1, game_id: "TB@DAL", week: 5, b_line: -10.11, supersedes: null },
+    { version: 2, game_id: "TB@DAL", week: 5, b_line: -10.11, supersedes: 1, shadow_dvoa_blend: sh },
+  ] }] };
+  const appendS = JSON.parse(JSON.stringify(prevS));
+  appendS.games[0].versions.push({ version: 3, game_id: "TB@DAL", week: 5, b_line: -10.11, supersedes: 2, shadow_dvoa_blend: { ...sh, raw: -7.2, rounded: -7 } });
+  if (compare(prevS, appendS).length || checkShadow(appendS).length) throw new Error("shadow append should pass");
+  const editS = JSON.parse(JSON.stringify(prevS));
+  editS.games[0].versions[1].shadow_dvoa_blend.raw = -6.9;
+  if (!compare(prevS, editS).some((p) => p.includes("shadow_dvoa_blend changed"))) throw new Error("shadow edit should fail");
+  const dropS = JSON.parse(JSON.stringify(prevS));
+  delete dropS.games[0].versions[1].shadow_dvoa_blend;
+  if (!compare(prevS, dropS).some((p) => p.includes("shadow_dvoa_blend changed"))) throw new Error("shadow removal should fail");
+  const lateS = JSON.parse(JSON.stringify(prevS));
+  lateS.games[0].versions[0].shadow_dvoa_blend = sh;
+  if (!compare(prevS, lateS).some((p) => p.includes("shadow_dvoa_blend changed"))) throw new Error("adding a shadow to a past version should fail");
+  const badRound = JSON.parse(JSON.stringify(prevS));
+  badRound.games[0].versions[1].shadow_dvoa_blend.rounded = -8;
+  if (checkShadow(badRound).length !== 1) throw new Error("bad shadow rounding should fail");
+  const inLine = JSON.parse(JSON.stringify(prevS));
+  inLine.games[0].versions[1].shadow_dvoa_blend.in_b_line = true;
+  if (checkShadow(inLine).length !== 1) throw new Error("shadow claiming in_b_line should fail");
+  const half = JSON.parse(JSON.stringify(prevS));
+  half.games[0].versions[1].shadow_dvoa_blend = { ...sh, raw: 3.25, rounded: 3.5 };
+  if (checkShadow(half).length) throw new Error(".25 away from zero should pass");
+  console.log("self-test ok (incl. shadow_dvoa_blend guard)");
 }
 
 function main() {
@@ -152,7 +221,7 @@ function main() {
   }
   const current = JSON.parse(fs.readFileSync(OUT, "utf8"));
   indexVersions(current);
-  const stampProblems = checkPublishedAt(current);
+  const stampProblems = checkPublishedAt(current).concat(checkShadow(current));
   if (fs.existsSync(LINES)) stampProblems.push(...checkLineHistory(JSON.parse(fs.readFileSync(LINES, "utf8"))));
   if (stampProblems.length) {
     console.error(stampProblems.join("\n"));

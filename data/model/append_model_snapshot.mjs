@@ -7,6 +7,12 @@
  *   node data/model/append_model_snapshot.mjs --week 4 --now 2026-10-04T16:00:00Z   (pin the clock)
  *   node data/model/append_model_snapshot.mjs --self-test
  *   node data/model/append_model_snapshot.mjs --game-day data/model/game-day-lines-2026-w02-w03.json
+ *   node data/model/append_model_snapshot.mjs --week 5 --pre-kick   (lock stamp: one version per upcoming game even if unchanged)
+ *
+ * From Week 5 every live version also stores the DVOA blend shadow line (shadow_dvoa_blend:
+ * raw, rounded, weight, DVOA block). It is NOT the B$ line: b_line is unchanged, and graders only
+ * read "game-day site compute" versions. A changed shadow with the same B$ line and market is a new
+ * version, so the last version before kick always carries the locked game-day shadow.
  *
  * --week skips games that are already played: FINAL in data/nfl-2026.json or
  * data/published/finals.json, or past kickoff (in progress counts as played).
@@ -254,8 +260,39 @@ function shape(gameId, week, event, version, supersedes) {
     backfilled: event.backfilled === true,
     market_spread_source: event.market_spread_source,
     market_total_source: event.market_total_source,
+    ...(event.shadow_dvoa_blend ? { shadow_dvoa_blend: event.shadow_dvoa_blend } : {}),
     ...(event.note ? { note: event.note } : {}),
   };
+}
+
+// Same rule as the official B$ line from Week 4 (data/record/lib.mjs): nearest 0.5, .25/.75 away from zero.
+export function roundHalfAway(value) {
+  const n = num(value);
+  if (n == null) return null;
+  const sign = n < 0 ? -1 : 1;
+  const steps = Math.abs(n) / 0.5;
+  const lower = Math.floor(steps + 1e-9);
+  const out = sign * (steps - lower > 0.5 - 1e-8 ? lower + 1 : lower) * 0.5;
+  return out === 0 ? 0 : out;
+}
+
+// Shadow record stored on a version. raw is 2 decimals; rounded is computed from that raw.
+export function shadowRecord(raw, meta = {}) {
+  const r = r2(raw);
+  if (r == null) return null;
+  return {
+    raw: r,
+    rounded: roundHalfAway(r),
+    weight: meta.weight ?? 0.5,
+    dvoa_week: meta.dvoa_week ?? null,
+    dvoa_plays_through_week: meta.dvoa_plays_through_week ?? null,
+    in_b_line: false,
+    method: "app.js dvoaBlendShadowHomeSpread: 2026-performance part (results + PFF YTD) = (1-w)*itself + w*B$ DVOA overall; other layers and HFA 2.0 unchanged",
+  };
+}
+
+function shadowRaw(v) {
+  return v && v.shadow_dvoa_blend ? num(v.shadow_dvoa_blend.raw) : null;
 }
 
 function lockEvents() {
@@ -464,10 +501,24 @@ export async function appendWeek(data, week, deps = {}) {
   const finalIds = deps.finalIds || finalIdsFromRepo(nfl);
   const log = deps.log || console.log;
   let lineFor = deps.lineFor;
+  let shadowFor = deps.shadowFor || null;
   if (!lineFor) {
     const api = await init();
     lineFor = (g) => api.ourHomeSpread(g, 2);
+    if (!shadowFor && typeof api.dvoaBlendShadowHomeSpread === "function") {
+      shadowFor = (g) => {
+        const raw = api.dvoaBlendShadowHomeSpread(g);
+        if (raw == null) return null;
+        const block = api.dvoaBlendShadowBlock ? api.dvoaBlendShadowBlock(g.week) : null;
+        return shadowRecord(raw, {
+          weight: api.DVOA_BLEND_SHADOW_WEIGHT,
+          dvoa_week: block ? Number(block.week) : null,
+          dvoa_plays_through_week: block && block.plays_through_week != null ? Number(block.plays_through_week) : null,
+        });
+      };
+    }
   }
+  const force = deps.preKick === true;
   const published_at = new Date(nowMs).toISOString();
   let added = 0;
   const skipped = [];
@@ -498,6 +549,9 @@ export async function appendWeek(data, week, deps = {}) {
       market_total: num(g.ou),
       market_total_source: num(g.ou) != null ? "data/nfl-2026.json" : null,
     };
+    if (force) event.source = "data/model/append_model_snapshot.mjs --pre-kick";
+    const shadow = shadowFor ? shadowFor(g) : null;
+    if (shadow) event.shadow_dvoa_blend = shadow;
     let game = data.games.find((x) => x.game_id === gameId && Number(x.week) === Number(week));
     if (!game) {
       game = {
@@ -512,7 +566,8 @@ export async function appendWeek(data, week, deps = {}) {
       data.games.push(game);
     }
     const last = game.versions[game.versions.length - 1];
-    if (last && last.b_line === event.b_line && last.market_spread === event.market_spread && last.market_total === event.market_total) {
+    const sameShadow = shadowRaw(last) === (shadow ? shadow.raw : null);
+    if (!force && last && last.b_line === event.b_line && last.market_spread === event.market_spread && last.market_total === event.market_total && sameShadow) {
       continue;
     }
     const version = (last ? last.version : 0) + 1;
@@ -555,7 +610,26 @@ async function selfTest() {
   if (!playedReason({ date: "2026-10-11T17:00Z" }, now)) fail("in-progress game reported upcoming");
   const again = await appendWeek(data, 5, deps);
   if (again !== 0) fail("re-run should add nothing");
-  console.log("self-test ok: FINAL / kicked-off / finals.json games skipped, upcoming game appended (" + logs[0] + ")");
+  // Shadow: stored in the same snapshot; a shadow-only change is a new version; B$ line untouched.
+  const sdeps = { ...deps, shadowFor: () => shadowRecord(-2.26, { weight: 0.5, dvoa_week: 5, dvoa_plays_through_week: 4 }) };
+  if (await appendWeek(data, 5, sdeps) !== 1) fail("first shadow should append one version");
+  const lar = data.games.find((g) => g.game_id === "BUF@LAR").versions;
+  const top = lar[lar.length - 1];
+  if (!top.shadow_dvoa_blend || top.shadow_dvoa_blend.raw !== -2.26 || top.shadow_dvoa_blend.rounded !== -2.5) fail("shadow not stored/rounded (-2.26 -> -2.5)");
+  if (top.b_line !== 1.23 || top.shadow_dvoa_blend.in_b_line !== false) fail("shadow touched the B$ line");
+  if (await appendWeek(data, 5, sdeps) !== 0) fail("same shadow should add nothing");
+  const sdeps2 = { ...deps, shadowFor: () => shadowRecord(-3.25, { weight: 0.5 }) };
+  if (await appendWeek(data, 5, sdeps2) !== 1) fail("changed shadow should append");
+  if (lar[lar.length - 1].shadow_dvoa_blend.rounded !== -3.5) fail(".25 should round away from zero");
+  if (await appendWeek(data, 5, { ...sdeps2, preKick: true }) !== 1) fail("--pre-kick should stamp the upcoming game");
+  if (!String(lar[lar.length - 1].source).endsWith("--pre-kick")) fail("--pre-kick source missing");
+  if (count("TB@DAL") !== 1 || count("NYG@WSH") !== 1) fail("--pre-kick touched a played game");
+  const edited = JSON.parse(JSON.stringify(data.games));
+  edited.find((g) => g.game_id === "BUF@LAR").versions[2].shadow_dvoa_blend.raw = -9;
+  let blocked = false;
+  try { guard(data.games, edited); } catch { blocked = true; }
+  if (!blocked) fail("editing a stored shadow should be refused");
+  console.log("self-test ok: FINAL / kicked-off / finals.json games skipped, upcoming game appended, shadow stored + versioned + guarded (" + logs[0] + ")");
 }
 
 function appendGameDay(data, rel) {
@@ -632,7 +706,7 @@ async function main() {
     console.error("--now must be an ISO timestamp");
     process.exit(1);
   }
-  const added = await appendWeek(data, Number(week), { now });
+  const added = await appendWeek(data, Number(week), { now, preKick: hasFlag("--pre-kick") });
   if (added) save(data);
   console.log("week " + week + " appended " + added);
   if (added) console.log("wrote " + path.relative(ROOT, OUT));
