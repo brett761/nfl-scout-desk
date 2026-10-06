@@ -7,7 +7,7 @@ Finished Week 4 clubs (all 32): drop gameday inactive / ruled-out-for-remainder 
 noise; keep real multi-week OUT + IR/PUP/NFI; one-game Q/D leftovers clear when ESPN drops them.
 Week 5 official practice sheet locks Wed ~4pm ET — not invented here. Drop Aaron Donald (retired ESPN quirk).
 """
-import json, re, copy
+import json, re, copy, sys
 from datetime import datetime
 from zoneinfo import ZoneInfo
 from pathlib import Path
@@ -452,6 +452,15 @@ for abbr in all_abbrs:
         cleared.append((abbr, old["name"], old.get("pos"), old.get("status"), old.get("impact")))
 
   new_teams[abbr] = out
+
+# --- QB1 depth rule (data/qb-depth-2026.json): ESPN tags every QB "QB"; only the acting starter
+# (first QB on ESPN's depth chart not OUT/IR/PUP/NFI/DOUBTFUL), any injured QB above him, and a pinned
+# injured_starter are QB1. Every other QB is DEPTH. Overrides ROLE. Keep this block in every reseed copy.
+# W4 miss it fixes: LAC Trey Lance / LV Aidan O'Connell (backups) were priced as QB1.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from injury_qb_depth import apply_qb_depth
+qb_depth_changes = apply_qb_depth(new_teams, auto_impact)
+print("QB depth retags:", "; ".join(qb_depth_changes) if qb_depth_changes else "none")
 
 def team_term(rows):
   s = 0.0
