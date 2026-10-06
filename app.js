@@ -39,6 +39,8 @@ const SOS_OUT_WITH_PRIOR = true;
    graded for promotion (data/model/grade_shadow_blend.mjs, Sandmoney PR #5). */
 const DVOA_BLEND_SHADOW_WEIGHT = 0.5;
 const DVOA_BLEND_SHADOW_FROM_WEEK = 5;
+/* Unit mismatch is desk research from Week 5 on. It is not a line input. */
+const UNIT_MISMATCH_FROM_WEEK = 5;
 const SHEET_BOX_KEY = "nflScout.sheetBoxes.v1";
 
 function canEdit() {
@@ -2241,6 +2243,8 @@ let injuryScale = null; // from ./data/injury-scale.json
 let allProLast3 = null; // from ./data/allpro-last3.json; AP 1st+2nd 2023–2025
 let allProNameSet = null; // Set of normInjuryName keys from name + names[]
 let injurySeed = null;  // optional ./data/injury-2026.json; null if missing
+let unitMismatchData = null; // ./data/unit-mismatches-2026.json — research panel, not a line
+let unitMismatchState = "idle"; // idle | loading | ready | missing
 let injuryPlayerByTeam = null; // abbr → Map(normName → {ovr?, grade?, snaps?, sources[]})
 let injuryPlayerGlobal = null; // Map(normName → {ovr?, grade?, snaps?, sources[]})
 let notesSeed = null;  // optional ./data/profile-notes.json; null if missing
@@ -3076,6 +3080,19 @@ async function loadNfl() {
   } catch (err) {
     lineHistory = null;
     console.warn("line-history-2026.json", err);
+  }
+  unitMismatchState = "loading";
+  try {
+    const res = await fetch("./data/unit-mismatches-2026.json?v=unitmis1006");
+    if (!res.ok) throw new Error(String(res.status));
+    const data = await res.json();
+    if (!data || !data.weeks || typeof data.weeks !== "object") throw new Error("bad unit mismatches");
+    unitMismatchData = data;
+    unitMismatchState = "ready";
+  } catch (err) {
+    unitMismatchData = null;
+    unitMismatchState = "missing";
+    console.warn("unit-mismatches-2026.json", err);
   }
 }
 
@@ -4860,11 +4877,14 @@ function renderGameSheet() {
     </div>
     ${lyOut ? `<p class="prior-note">Last year’s 2025 rating and last year’s SOS are out of the B$ line from Week 5. Their 0.0 rows are display only (2025 SOS ${esc(fmtRtg(sosRaw(away)))} / ${esc(fmtRtg(sosRaw(home)))}).</p>` : ""}
     <div class="game-stack">${stackHtml}</div>
+    ${unitMismatchHtml(game, "sheet")}
     ${injuryMathHtml(game, (ourLine != null && Number.isFinite(ourLine)) ? ourLine : null)}
     ${compare}
     ${totHtml}`;
   const im = body.querySelector("details.injmath");
   if (im) im.addEventListener("toggle", () => { injMathOpen = im.open; });
+  const um = body.querySelector("details.unitmis");
+  if (um) um.addEventListener("toggle", () => { unitMisOpen[String(game.id) + ":sheet"] = um.open; });
 }
 
 /* ---------- Injury math on the game sheet (Live vs Proposed trench shadow) ----------
@@ -5163,6 +5183,145 @@ function injuryMathHtml(game, ourLine) {
           <p><b>Proposed</b> = position value × snap weight × P(sits), front seven and OL only. Value: DL 0.9, EDGE/LB 0.7, T 1.0, G/C 0.8. Snap weight (last 4 team games): 75%+ 1.0, 60–75% 0.75, 45–60% 0.25, under 45% 0. P(sits): Out/Doubtful/IR 1.0; Questionable 0.45 DNP, 0.24 limited, 0.12 full, 0.27 unknown. +0.5 when 3+ starters in a unit are out. Caps: front seven 3.5, OL 3.5, team 6.0. Other positions stay on Live pricing.</p>
           <p class="injmath-src">${sourceNote}${practiceNote}Line if Proposed = B$ line + (home Proposed − home Live) − (away Proposed − away Live).</p>
         </div>
+      </div>
+    </details>`;
+}
+
+/* ---------- Unit mismatch (research only) ----------
+   Display only, Week 5+. Ranks and edges come from data/unit-mismatches-2026.json.
+   "With B$" / "against B$" is the favored side versus the current B$ line
+   (deskHomeSpread) and the current DraftKings number (marketFor). This block
+   does not call into the line formula and is not an input to eff(),
+   injuryTerm(), ourHomeSpread(), append_model_snapshot, or the DVOA blend. */
+const UNIT_LABELS = {
+  "Sacks GU": "sacks allowed",
+  "Sacks": "sacks",
+  "Run O": "run O",
+  "Run D": "run D",
+  "WR+TE": "WR+TE",
+  "DB+LB cov": "DB+LB coverage",
+  "OL pass-block": "OL pass-pro",
+  "DL pass-rush": "DL pass-rush",
+  "OL run-block": "OL run-block",
+  "DL+LB run D": "DL+LB run D",
+};
+const unitMisOpen = Object.create(null);
+
+function unitLabel(unit) {
+  return UNIT_LABELS[unit] || unit || "unit";
+}
+
+function unitRankText(adj, raw) {
+  const a = Number(adj);
+  const r = Number(raw);
+  if (!Number.isFinite(a)) return "—";
+  if (Number.isFinite(r) && r !== a) return "#" + a + " (raw #" + r + ")";
+  return "#" + a;
+}
+
+/** Home abbr, away abbr, or "" when B$ and DraftKings are within 0.25. Null if either line is missing. */
+function unitMismatchBsSide(game) {
+  const b = deskHomeSpread(game);
+  const mkt = marketFor(game);
+  const dk = mkt && mkt.parsed ? num(mkt.parsed.homeLine) : null;
+  if (b == null || dk == null || !Number.isFinite(b) || !Number.isFinite(dk)) return null;
+  const diff = dk - b;
+  if (diff > 0.25) return normAbbr(game.home);
+  if (diff < -0.25) return normAbbr(game.away);
+  return "";
+}
+
+function unitVsPhrase(favored, side) {
+  if (side == null) return "B$ side n/a";
+  if (!side) return "no B$ side";
+  return normAbbr(favored) === side ? "with B$" : "against B$";
+}
+
+function unitMismatchWeek(game) {
+  if (!unitMismatchData || !unitMismatchData.weeks || !game) return null;
+  return unitMismatchData.weeks[String(game.week)] || null;
+}
+
+function unitMismatchRow(game) {
+  const block = unitMismatchWeek(game);
+  if (!block || !Array.isArray(block.games)) return null;
+  const key = normAbbr(game.away) + "@" + normAbbr(game.home);
+  return block.games.find((g) => g.id === key || String(g.espn_id) === String(game.id)) || null;
+}
+
+function unitMismatchSentence(row) {
+  const off = unitRankText(row.off_rank_adj, row.off_rank_raw);
+  const def = unitRankText(row.def_rank_adj, row.def_rank_raw);
+  return row.offense + " " + unitLabel(row.off_unit) + " " + off
+    + " vs " + row.defense + " " + unitLabel(row.def_unit) + " " + def;
+}
+
+function unitEdgeRowHtml(row, game) {
+  const vs = unitVsPhrase(row.favored, unitMismatchBsSide(game));
+  const vsCls = vs === "against B$" ? " is-against" : vs === "with B$" ? " is-with" : "";
+  const edge = Math.abs(Number(row.edge_z));
+  const edgeText = Number.isFinite(edge) ? edge.toFixed(2) : "—";
+  const qb = row.qb_note ? `<small class="unitmis-qb">${esc(row.qb_note)}</small>` : "";
+  return `<li class="unitmis-row${vsCls}">
+      <p class="unitmis-flag">${esc(unitMismatchSentence(row))} <b>→ favors ${esc(row.favored)}</b></p>
+      <p class="unitmis-meta"><span class="mono">edge ${esc(edgeText)} z</span> · <span class="unitmis-vs">${esc(vs)}</span></p>
+      ${qb}
+    </li>`;
+}
+
+function unitMismatchHtml(game, where) {
+  if (!game || Number(game.week) < UNIT_MISMATCH_FROM_WEEK) return "";
+  if (unitMismatchState !== "ready" && unitMismatchState !== "missing") return "";
+  const tag = (unitMismatchData && unitMismatchData.tag) || "Research only — not in B$ line";
+  const foot = (unitMismatchData && unitMismatchData.footnote)
+    || "Sandmoney 2021–25 backtest found no ATS edge vs the close. Research panel only.";
+  const block = unitMismatchWeek(game);
+  const row = unitMismatchRow(game);
+  const flags = row && Array.isArray(row.flags) ? row.flags : [];
+  const near = row && Array.isArray(row.near) ? row.near : [];
+  const hasFlags = flags.length > 0;
+  const key = String(game.id) + ":" + where;
+  const open = Object.prototype.hasOwnProperty.call(unitMisOpen, key) ? unitMisOpen[key] : (where === "sheet" && hasFlags);
+  let head = "No unit flags this week";
+  if (!unitMismatchData) head = "File not loaded";
+  else if (!block) head = "Not built for Week " + Number(game.week);
+  else if (hasFlags) {
+    const top = flags[0];
+    const edge = Math.abs(Number(top.edge_z));
+    head = top.favored + (Number.isFinite(edge) ? " · " + edge.toFixed(2) + " z" : "");
+  }
+  let body = "";
+  if (!unitMismatchData) {
+    body = `<p class="unitmis-empty">Unit mismatch file did not load.</p>`;
+  } else if (!block) {
+    body = `<p class="unitmis-empty">No unit file for Week ${esc(Number(game.week))} yet.</p>`;
+  } else if (!row) {
+    body = `<p class="unitmis-empty">No unit flags this week.</p>`;
+  } else {
+    const side = unitMismatchBsSide(game);
+    const netVs = unitVsPhrase(row.net_favors, side);
+    const net = Number(row.net_edge_z);
+    const netHtml = Number.isFinite(net)
+      ? `<p class="unitmis-net">Net unit edge <span class="mono">${esc(net.toFixed(2))} z</span> favors ${esc(row.net_favors)} · ${esc(netVs)}.</p>`
+      : "";
+    const flagHtml = hasFlags
+      ? `<ul class="unitmis-list">${flags.map((r) => unitEdgeRowHtml(r, game)).join("")}</ul>`
+      : `<p class="unitmis-empty">No unit flags this week.</p>`;
+    const nearHtml = near.length
+      ? `<p class="unitmis-near-label">Near flags · top 10 vs bottom 10</p><ul class="unitmis-list is-near">${near.map((r) => unitEdgeRowHtml(r, game)).join("")}</ul>`
+      : "";
+    const through = block.plays_through_week != null ? `Ranks through Week ${esc(block.plays_through_week)}, injury-adjusted. ` : "";
+    body = `${netHtml}${flagHtml}${nearHtml}<p class="unitmis-method">${through}${esc(block.injury_note || "")}</p>`;
+  }
+  return `<details class="unitmis${where === "card" ? " unitmis-card" : ""}" data-game="${esc(game.id)}" data-where="${esc(where)}"${open ? " open" : ""}>
+      <summary>
+        <span class="unitmis-title">Unit mismatch</span>
+        <span class="unitmis-tag">${esc(tag)}</span>
+        <span class="unitmis-headnum mono">${esc(head)}</span>
+      </summary>
+      <div class="unitmis-body">
+        ${body}
+        <p class="unitmis-foot">${esc(foot)}</p>
       </div>
     </details>`;
 }
@@ -5988,6 +6147,7 @@ function renderSchedule() {
         <div class="sked-edge"><span class="lbl">Gap</span>${edgeHtml === "—" ? '<span class="val">—</span>' : edgeHtml}${coachChipHtml(g)}${prepChipHtml(g)}${atsChipHtml(g)}${matchupChipHtml(g)}</div>
         ${wxStripHtml(g, mkt)}
         ${(ourH != null && Number.isFinite(ourH)) ? coverHelperHtml(ourH, mkt.parsed.homeLine) : ""}
+        ${unitMismatchHtml(g, "card")}
       </article>`;
     }).join("");
     return `<section class="sked-group">
@@ -7383,6 +7543,11 @@ function bind() {
     mark.setAttribute("aria-expanded", open ? "false" : "true");
   });
 
+  document.getElementById("sked-board").addEventListener("toggle", (e) => {
+    const panel = e.target && e.target.closest ? e.target.closest("details.unitmis") : null;
+    if (!panel || panel.dataset.where !== "card") return;
+    unitMisOpen[String(panel.dataset.game) + ":card"] = panel.open;
+  }, true);
   document.getElementById("sked-board").addEventListener("click", (e) => {
     if (e.target.closest(".gd-mark")) return;
     if (e.target.closest("input, select, textarea, .sked-mkt, .sked-lines, .sked-line, .wx-strip, .hc-chip, .wx-chip, .sked-cover, .sked-our, .sked-edge")) {

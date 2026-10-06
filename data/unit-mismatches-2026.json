@@ -1,0 +1,505 @@
+{
+  "season": 2026,
+  "in_b_line": false,
+  "tag": "Research only \u2014 not in B$ line",
+  "footnote": "Sandmoney 2021\u201325 backtest found no ATS edge vs the close. Research panel only. Sandmoney lines PR #6 dropped unit mismatch as a line input; the market already prices it.",
+  "method": "10 units (OL, DL, Run O, Run D, WR, TE, DB, LB, Sacks, Sacks allowed). Score = 50% PFF snap-weighted grade + 50% nflverse per-play rate, z-scored across 32 teams. Injury Out/Doubtful/IR/PUP/NFI = out, Questionable = 0.5. A flag is a top-8 unit against a bottom-8 unit after that injury adjustment. Ranks use prior weeks only.",
+  "does_not_feed": [
+    "eff()",
+    "injuryTerm()",
+    "ourHomeSpread()",
+    "append_model_snapshot",
+    "shadow_dvoa_blend"
+  ],
+  "weeks": {
+    "5": {
+      "plays_through_week": 4,
+      "generated_et": "2026-10-06T16:20:00Z",
+      "injury_source": "data/injury-2026.json",
+      "injury_note": "Out/Doubtful/IR/PUP/NFI count as out. Questionable counts as 0.5. Ranks shown are injury-adjusted; raw rank is included when it moved.",
+      "flag_rule": "top-8 vs bottom-8 after injuries",
+      "near_rule": "top-10 vs bottom-10 after injuries",
+      "source": "data/unit-mismatches/source/2026-w05/",
+      "games": [
+        {
+          "espn_id": "401872980",
+          "id": "TB@DAL",
+          "away": "TB",
+          "home": "DAL",
+          "kick": "2026-10-09T00:15Z",
+          "net_edge_z": 3.46,
+          "net_favors": "DAL",
+          "flags": [],
+          "near": [
+            {
+              "pairing": "OL pass-block vs DL pass-rush",
+              "offense": "DAL",
+              "defense": "TB",
+              "off_unit": "OL pass-block",
+              "def_unit": "DL pass-rush",
+              "off_rank_raw": 9,
+              "off_rank_adj": 10,
+              "def_rank_raw": 30,
+              "def_rank_adj": 28,
+              "edge_z": 1.85,
+              "favored": "DAL",
+              "qb_note": ""
+            },
+            {
+              "pairing": "Sacks GU vs Sacks",
+              "offense": "DAL",
+              "defense": "TB",
+              "off_unit": "Sacks GU",
+              "def_unit": "Sacks",
+              "off_rank_raw": 8,
+              "off_rank_adj": 7,
+              "def_rank_raw": 25,
+              "def_rank_adj": 23,
+              "edge_z": 1.49,
+              "favored": "DAL",
+              "qb_note": ""
+            }
+          ]
+        },
+        {
+          "espn_id": "401872981",
+          "id": "PHI@JAX",
+          "away": "PHI",
+          "home": "JAX",
+          "kick": "2026-10-11T13:30Z",
+          "net_edge_z": 10.52,
+          "net_favors": "JAX",
+          "flags": [],
+          "near": [
+            {
+              "pairing": "Run O vs Run D",
+              "offense": "JAX",
+              "defense": "PHI",
+              "off_unit": "Run O",
+              "def_unit": "Run D",
+              "off_rank_raw": 10,
+              "off_rank_adj": 9,
+              "def_rank_raw": 24,
+              "def_rank_adj": 27,
+              "edge_z": 1.92,
+              "favored": "JAX",
+              "qb_note": ""
+            }
+          ]
+        },
+        {
+          "espn_id": "401872990",
+          "id": "CHI@GB",
+          "away": "CHI",
+          "home": "GB",
+          "kick": "2026-10-11T17:00Z",
+          "net_edge_z": 5.2,
+          "net_favors": "CHI",
+          "flags": [
+            {
+              "pairing": "OL pass-block vs DL pass-rush",
+              "offense": "CHI",
+              "defense": "GB",
+              "off_unit": "OL pass-block",
+              "def_unit": "DL pass-rush",
+              "off_rank_raw": 6,
+              "off_rank_adj": 7,
+              "def_rank_raw": 28,
+              "def_rank_adj": 27,
+              "edge_z": 2.07,
+              "favored": "CHI",
+              "qb_note": "CHI QB1 Caleb Williams OUT (Keenum W3, Bagent W4 started)"
+            }
+          ],
+          "near": []
+        },
+        {
+          "espn_id": "401872982",
+          "id": "CIN@MIA",
+          "away": "CIN",
+          "home": "MIA",
+          "kick": "2026-10-11T17:00Z",
+          "net_edge_z": 10.92,
+          "net_favors": "CIN",
+          "flags": [
+            {
+              "pairing": "OL pass-block vs DL pass-rush",
+              "offense": "MIA",
+              "defense": "CIN",
+              "off_unit": "OL pass-block",
+              "def_unit": "DL pass-rush",
+              "off_rank_raw": 26,
+              "off_rank_adj": 27,
+              "def_rank_raw": 7,
+              "def_rank_adj": 7,
+              "edge_z": 1.88,
+              "favored": "CIN",
+              "qb_note": ""
+            }
+          ],
+          "near": [
+            {
+              "pairing": "OL pass-block vs DL pass-rush",
+              "offense": "CIN",
+              "defense": "MIA",
+              "off_unit": "OL pass-block",
+              "def_unit": "DL pass-rush",
+              "off_rank_raw": 7,
+              "off_rank_adj": 4,
+              "def_rank_raw": 25,
+              "def_rank_adj": 24,
+              "edge_z": 1.98,
+              "favored": "CIN",
+              "qb_note": ""
+            },
+            {
+              "pairing": "Sacks GU vs Sacks",
+              "offense": "MIA",
+              "defense": "CIN",
+              "off_unit": "Sacks GU",
+              "def_unit": "Sacks",
+              "off_rank_raw": 23,
+              "off_rank_adj": 23,
+              "def_rank_raw": 5,
+              "def_rank_adj": 4,
+              "edge_z": 1.64,
+              "favored": "CIN",
+              "qb_note": ""
+            }
+          ]
+        },
+        {
+          "espn_id": "401872983",
+          "id": "CLE@NYJ",
+          "away": "CLE",
+          "home": "NYJ",
+          "kick": "2026-10-11T17:00Z",
+          "net_edge_z": 3.16,
+          "net_favors": "CLE",
+          "flags": [
+            {
+              "pairing": "Sacks GU vs Sacks",
+              "offense": "NYJ",
+              "defense": "CLE",
+              "off_unit": "Sacks GU",
+              "def_unit": "Sacks",
+              "off_rank_raw": 30,
+              "off_rank_adj": 30,
+              "def_rank_raw": 7,
+              "def_rank_adj": 6,
+              "edge_z": 2.81,
+              "favored": "CLE",
+              "qb_note": ""
+            }
+          ],
+          "near": []
+        },
+        {
+          "espn_id": "401872984",
+          "id": "HOU@TEN",
+          "away": "HOU",
+          "home": "TEN",
+          "kick": "2026-10-11T17:00Z",
+          "net_edge_z": 1.45,
+          "net_favors": "HOU",
+          "flags": [
+            {
+              "pairing": "WR+TE vs DB+LB cov",
+              "offense": "HOU",
+              "defense": "TEN",
+              "off_unit": "WR+TE",
+              "def_unit": "DB+LB cov",
+              "off_rank_raw": 10,
+              "off_rank_adj": 7,
+              "def_rank_raw": 28,
+              "def_rank_adj": 27,
+              "edge_z": 1.71,
+              "favored": "HOU",
+              "qb_note": ""
+            }
+          ],
+          "near": []
+        },
+        {
+          "espn_id": "401872985",
+          "id": "IND@PIT",
+          "away": "IND",
+          "home": "PIT",
+          "kick": "2026-10-11T17:00Z",
+          "net_edge_z": 1.55,
+          "net_favors": "PIT",
+          "flags": [],
+          "near": [
+            {
+              "pairing": "Run O vs Run D",
+              "offense": "PIT",
+              "defense": "IND",
+              "off_unit": "Run O",
+              "def_unit": "Run D",
+              "off_rank_raw": 12,
+              "off_rank_adj": 8,
+              "def_rank_raw": 26,
+              "def_rank_adj": 24,
+              "edge_z": 1.66,
+              "favored": "PIT",
+              "qb_note": ""
+            }
+          ]
+        },
+        {
+          "espn_id": "401872986",
+          "id": "LV@NE",
+          "away": "LV",
+          "home": "NE",
+          "kick": "2026-10-11T17:00Z",
+          "net_edge_z": 5.87,
+          "net_favors": "LV",
+          "flags": [
+            {
+              "pairing": "Sacks GU vs Sacks",
+              "offense": "LV",
+              "defense": "NE",
+              "off_unit": "Sacks GU",
+              "def_unit": "Sacks",
+              "off_rank_raw": 2,
+              "off_rank_adj": 5,
+              "def_rank_raw": 21,
+              "def_rank_adj": 25,
+              "edge_z": 1.84,
+              "favored": "LV",
+              "qb_note": ""
+            }
+          ],
+          "near": []
+        },
+        {
+          "espn_id": "401872987",
+          "id": "MIN@NO",
+          "away": "MIN",
+          "home": "NO",
+          "kick": "2026-10-11T17:00Z",
+          "net_edge_z": 8.92,
+          "net_favors": "MIN",
+          "flags": [
+            {
+              "pairing": "Run O vs Run D",
+              "offense": "NO",
+              "defense": "MIN",
+              "off_unit": "Run O",
+              "def_unit": "Run D",
+              "off_rank_raw": 30,
+              "off_rank_adj": 31,
+              "def_rank_raw": 4,
+              "def_rank_adj": 3,
+              "edge_z": 2.67,
+              "favored": "MIN",
+              "qb_note": ""
+            }
+          ],
+          "near": []
+        },
+        {
+          "espn_id": "401872988",
+          "id": "NYG@WSH",
+          "away": "NYG",
+          "home": "WSH",
+          "kick": "2026-10-11T17:00Z",
+          "net_edge_z": 0.26,
+          "net_favors": "WSH",
+          "flags": [
+            {
+              "pairing": "WR+TE vs DB+LB cov",
+              "offense": "WSH",
+              "defense": "NYG",
+              "off_unit": "WR+TE",
+              "def_unit": "DB+LB cov",
+              "off_rank_raw": 32,
+              "off_rank_adj": 31,
+              "def_rank_raw": 6,
+              "def_rank_adj": 6,
+              "edge_z": 2.6,
+              "favored": "NYG",
+              "qb_note": "WSH QB1 Daniels OUT, Mariota DOUBTFUL (Kaliakmanis threw most W4)"
+            }
+          ],
+          "near": [
+            {
+              "pairing": "Sacks GU vs Sacks",
+              "offense": "WSH",
+              "defense": "NYG",
+              "off_unit": "Sacks GU",
+              "def_unit": "Sacks",
+              "off_rank_raw": 6,
+              "off_rank_adj": 9,
+              "def_rank_raw": 31,
+              "def_rank_adj": 31,
+              "edge_z": 2.36,
+              "favored": "WSH",
+              "qb_note": "WSH QB1 Daniels OUT, Mariota DOUBTFUL (Kaliakmanis threw most W4)"
+            }
+          ]
+        },
+        {
+          "espn_id": "401872989",
+          "id": "DEN@LAC",
+          "away": "DEN",
+          "home": "LAC",
+          "kick": "2026-10-11T20:05Z",
+          "net_edge_z": 3.27,
+          "net_favors": "DEN",
+          "flags": [
+            {
+              "pairing": "OL pass-block vs DL pass-rush",
+              "offense": "LAC",
+              "defense": "DEN",
+              "off_unit": "OL pass-block",
+              "def_unit": "DL pass-rush",
+              "off_rank_raw": 27,
+              "off_rank_adj": 29,
+              "def_rank_raw": 6,
+              "def_rank_adj": 6,
+              "edge_z": 2.41,
+              "favored": "DEN",
+              "qb_note": ""
+            }
+          ],
+          "near": [
+            {
+              "pairing": "WR+TE vs DB+LB cov",
+              "offense": "LAC",
+              "defense": "DEN",
+              "off_unit": "WR+TE",
+              "def_unit": "DB+LB cov",
+              "off_rank_raw": 29,
+              "off_rank_adj": 29,
+              "def_rank_raw": 14,
+              "def_rank_adj": 10,
+              "edge_z": 2.08,
+              "favored": "DEN",
+              "qb_note": ""
+            }
+          ]
+        },
+        {
+          "espn_id": "401872991",
+          "id": "DET@ARI",
+          "away": "DET",
+          "home": "ARI",
+          "kick": "2026-10-11T20:25Z",
+          "net_edge_z": 7.59,
+          "net_favors": "DET",
+          "flags": [],
+          "near": [
+            {
+              "pairing": "WR+TE vs DB+LB cov",
+              "offense": "DET",
+              "defense": "ARI",
+              "off_unit": "WR+TE",
+              "def_unit": "DB+LB cov",
+              "off_rank_raw": 12,
+              "off_rank_adj": 9,
+              "def_rank_raw": 31,
+              "def_rank_adj": 32,
+              "edge_z": 2.64,
+              "favored": "DET",
+              "qb_note": ""
+            }
+          ]
+        },
+        {
+          "espn_id": "401872992",
+          "id": "SF@SEA",
+          "away": "SF",
+          "home": "SEA",
+          "kick": "2026-10-11T20:25Z",
+          "net_edge_z": 3.45,
+          "net_favors": "SEA",
+          "flags": [
+            {
+              "pairing": "Sacks GU vs Sacks",
+              "offense": "SEA",
+              "defense": "SF",
+              "off_unit": "Sacks GU",
+              "def_unit": "Sacks",
+              "off_rank_raw": 9,
+              "off_rank_adj": 6,
+              "def_rank_raw": 29,
+              "def_rank_adj": 29,
+              "edge_z": 2.32,
+              "favored": "SEA",
+              "qb_note": ""
+            }
+          ],
+          "near": []
+        },
+        {
+          "espn_id": "401872993",
+          "id": "BAL@ATL",
+          "away": "BAL",
+          "home": "ATL",
+          "kick": "2026-10-12T00:20Z",
+          "net_edge_z": 4.16,
+          "net_favors": "ATL",
+          "flags": [],
+          "near": [
+            {
+              "pairing": "OL pass-block vs DL pass-rush",
+              "offense": "ATL",
+              "defense": "BAL",
+              "off_unit": "OL pass-block",
+              "def_unit": "DL pass-rush",
+              "off_rank_raw": 2,
+              "off_rank_adj": 2,
+              "def_rank_raw": 20,
+              "def_rank_adj": 23,
+              "edge_z": 2.32,
+              "favored": "ATL",
+              "qb_note": ""
+            }
+          ]
+        },
+        {
+          "espn_id": "401872994",
+          "id": "BUF@LAR",
+          "away": "BUF",
+          "home": "LAR",
+          "kick": "2026-10-13T00:15Z",
+          "net_edge_z": 2.75,
+          "net_favors": "LAR",
+          "flags": [
+            {
+              "pairing": "Run O vs Run D",
+              "offense": "LAR",
+              "defense": "BUF",
+              "off_unit": "Run O",
+              "def_unit": "Run D",
+              "off_rank_raw": 6,
+              "off_rank_adj": 6,
+              "def_rank_raw": 27,
+              "def_rank_adj": 25,
+              "edge_z": 2.12,
+              "favored": "LAR",
+              "qb_note": ""
+            }
+          ],
+          "near": [
+            {
+              "pairing": "OL pass-block vs DL pass-rush",
+              "offense": "BUF",
+              "defense": "LAR",
+              "off_unit": "OL pass-block",
+              "def_unit": "DL pass-rush",
+              "off_rank_raw": 25,
+              "off_rank_adj": 25,
+              "def_rank_raw": 11,
+              "def_rank_adj": 10,
+              "edge_z": 1.0,
+              "favored": "LAR",
+              "qb_note": ""
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
