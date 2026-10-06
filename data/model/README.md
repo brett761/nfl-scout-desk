@@ -20,6 +20,8 @@ node data/model/append_model_snapshot.mjs --week 4
 
 The same B$ line and the same market spread and total are skipped. A change is version N+1. The script throws if it would modify or delete a version already in the file.
 
+`--week` skips games that are already played: FINAL in `data/nfl-2026.json` or `data/published/finals.json`, or past kickoff (in progress counts). It prints the skipped games. `--now <ISO>` pins the clock. `--backfill` and `--game-day` are unchanged, since they record pre-kick lines for finished games on purpose. Self-test: `node data/model/append_model_snapshot.mjs --self-test`.
+
 Rebuild the backfill only against an empty file. Once versions exist, `--backfill` refuses to rewrite them:
 
 ```bash
@@ -28,7 +30,7 @@ node data/model/append_model_snapshot.mjs --backfill
 
 ## Check
 
-Fails if any version that was in the previous commit was edited or deleted. A newly appended version is allowed. Also checks that version numbers run 1..n and `supersedes` points at the previous version.
+Fails if any version that was in the previous commit was edited or deleted, if a version has no `published_at`, or if any street snapshot in `data/lines/line-history-2026.json` has a missing, null, or non-ISO `at`. A newly appended version is allowed. Also checks that version numbers run 1..n and `supersedes` points at the previous version.
 
 ```bash
 node data/model/check_model_history.mjs

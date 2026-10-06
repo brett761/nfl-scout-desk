@@ -26,6 +26,8 @@ node data/lines/append_line_snapshot.mjs --tag close --week 4 --from data/closes
 
 The same tag is skipped when its latest spread is unchanged. `--force` appends anyway.
 
+Every snapshot gets a timestamp. From a file it is the row's own stamp, else the file's capture time (`pulled`, then `pulled_et` such as `2026-10-05 8:25 AM ET`), else `--at`, else the current time. A null `at` is never written, and `node data/model/check_model_history.mjs` fails if one is in this file. Self-test: `node data/lines/append_line_snapshot.mjs --self-test`.
+
 ## Backfill
 
 Weeks 1–4 were filled from openers, the line log, closes files, pre-kick locks, and `data/published/finals.json`:
