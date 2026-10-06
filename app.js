@@ -7688,7 +7688,7 @@ async function loadPublishedLines() {
 
 async function loadPowerRankings() {
   try {
-    const res = await fetch("./data/published/power-rankings.json?v=prank20260929T160844");
+    const res = await fetch("./data/published/power-rankings.json?v=prank20261006T112821");
     if (!res.ok) throw new Error(String(res.status));
     const data = await res.json();
     if (!data || !Array.isArray(data.weeks)) throw new Error("bad power rankings");
