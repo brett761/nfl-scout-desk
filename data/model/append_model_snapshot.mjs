@@ -4,7 +4,14 @@
  *
  *   node data/model/append_model_snapshot.mjs --backfill
  *   node data/model/append_model_snapshot.mjs --week 4
+ *   node data/model/append_model_snapshot.mjs --week 4 --now 2026-10-04T16:00:00Z   (pin the clock)
+ *   node data/model/append_model_snapshot.mjs --self-test
  *   node data/model/append_model_snapshot.mjs --game-day data/model/game-day-lines-2026-w02-w03.json
+ *
+ * --week skips games that are already played: FINAL in data/nfl-2026.json or
+ * data/published/finals.json, or past kickoff (in progress counts as played).
+ * Skipped games are logged. --backfill and --game-day are unchanged: they record
+ * pre-kick lines for finished games on purpose.
  *
  * A version already in the file is never edited or deleted.
  * A different line or a different market is a new version.
@@ -13,7 +20,12 @@
 import fs from "fs";
 import path from "path";
 import { execFileSync } from "child_process";
-import { init } from "../site_parity_harness.mjs";
+
+// Loaded on demand so --self-test and imports do not evaluate app.js.
+async function init() {
+  const mod = await import("../site_parity_harness.mjs");
+  return mod.init();
+}
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "../..");
 const OUT = path.join(ROOT, "data/model/bs-line-history-2026.json");
@@ -422,20 +434,54 @@ async function backfill(data) {
   return data;
 }
 
-async function appendWeek(data, week) {
+// Why a game must not get a new live version, or null when it is still upcoming.
+export function playedReason(game, nowMs, finalIds = new Set()) {
+  const status = String(game.status || game.state || "").toUpperCase();
+  if (status === "FINAL" || status.startsWith("FINAL") || finalIds.has(String(game.id))) return "FINAL";
+  if (status === "IN" || status === "IN_PROGRESS" || status === "LIVE") return "in progress";
+  const kick = Date.parse(String(game.date || game.kick || "").replace(/Z?$/, "Z").replace(/([+-]\d{2}:\d{2})Z$/, "$1"));
+  if (Number.isFinite(kick) && kick <= nowMs) return "kicked off " + new Date(kick).toISOString();
+  return null;
+}
+
+function finalIdsFromRepo(nfl) {
+  const ids = new Set();
+  for (const g of nfl.games || []) if (String(g.status || "").toUpperCase() === "FINAL") ids.add(String(g.id));
+  try {
+    const finals = readJson("data/published/finals.json");
+    for (const row of finals.board || []) if (String(row.status || "").toUpperCase() === "FINAL") ids.add(String(row.espn_id));
+  } catch { /* finals file optional */ }
+  return ids;
+}
+
+// deps lets the self-test run this without the site harness or the repo files.
+export async function appendWeek(data, week, deps = {}) {
   const before = JSON.parse(JSON.stringify(data.games));
-  const api = await init();
-  const history = loadLineHistory();
-  const head = git(["rev-parse", "HEAD"]).trim();
-  const nfl = readJson("data/nfl-2026.json");
-  const published_at = new Date().toISOString();
+  const nowMs = deps.now != null ? Number(deps.now) : Date.now();
+  const nfl = deps.nfl || readJson("data/nfl-2026.json");
+  const history = deps.history || loadLineHistory();
+  const head = deps.head || git(["rev-parse", "HEAD"]).trim();
+  const finalIds = deps.finalIds || finalIdsFromRepo(nfl);
+  const log = deps.log || console.log;
+  let lineFor = deps.lineFor;
+  if (!lineFor) {
+    const api = await init();
+    lineFor = (g) => api.ourHomeSpread(g, 2);
+  }
+  const published_at = new Date(nowMs).toISOString();
   let added = 0;
+  const skipped = [];
   for (const g of nfl.games || []) {
     if (Number(g.week) !== Number(week)) continue;
     const type = String(g.season_type || g.type || "REG").toUpperCase();
     if (type === "PRE" || type === "POST") continue;
     const gameId = normAbbr(g.away) + "@" + normAbbr(g.home);
-    const b_line = r2(api.ourHomeSpread(g, 2));
+    const played = playedReason(g, nowMs, finalIds);
+    if (played) {
+      skipped.push(gameId + " (" + played + ")");
+      continue;
+    }
+    const b_line = r2(lineFor(g));
     const row = history.get(String(g.id));
     const snaps = row ? [...(row.snapshots || [])].filter((s) => num(s.home_spread) != null) : [];
     snaps.sort((a, b) => String(a.at || "").localeCompare(String(b.at || "")));
@@ -473,14 +519,45 @@ async function appendWeek(data, week) {
     game.versions.push(shape(gameId, Number(week), event, version, version === 1 ? null : version - 1));
     added += 1;
   }
+  if (skipped.length) log("week " + week + " skipped " + skipped.length + " played: " + skipped.join(", "));
   guard(before, data.games);
   return added;
 }
 
-// Game-day lines: the B$ line the site showed at kickoff, computed by
-// data/model/game_day_harness.mjs against the commit that was live then.
-// Each event becomes a new version on top of whatever is already there.
-// Re-running is a no-op for an event already appended (same source + commit + line).
+async function selfTest() {
+  const now = Date.parse("2026-10-11T18:00:00Z"); // Sunday 2:00 PM ET, Week 5
+  const nfl = { games: [
+    { id: "1", week: 5, away: "TB", home: "DAL", date: "2026-10-09T00:15Z", status: "FINAL", odds: "DAL -10", ou: 47.5 },
+    { id: "2", week: 5, away: "NYG", home: "WSH", date: "2026-10-11T17:00Z", odds: "WSH -3", ou: 43.5 },
+    { id: "3", week: 5, away: "BUF", home: "LAR", date: "2026-10-13T00:15Z", odds: "LAR -2.5", ou: 53.5 },
+    { id: "4", week: 5, away: "DEN", home: "LAC", date: "2026-10-11T20:05Z", odds: "LAC -3.5", ou: 42.5 },
+    { id: "9", week: 4, away: "PIT", home: "CLE", date: "2026-10-02T00:15Z", odds: "CLE -1", ou: 40 },
+  ] };
+  const base = (gameId, espn, b) => ({
+    game_id: gameId, espn_id: espn, season: 2026, week: 5, away: gameId.split("@")[0], home: gameId.split("@")[1],
+    versions: [shape(gameId, 5, { b_line: b, published_at: "2026-10-05T14:59:32.522Z", source: "t", commit: "c", market_spread: -3, market_total: 40, market_spread_source: null, market_total_source: null }, 1, null)],
+  });
+  const data = { games: [base("TB@DAL", "1", -9.22), base("NYG@WSH", "2", 5.29), base("BUF@LAR", "3", -3.99)] };
+  const logs = [];
+  const deps = { now, nfl, history: new Map(), head: "selftest", finalIds: new Set(["4"]), lineFor: () => 1.23, log: (m) => logs.push(m) };
+  const added = await appendWeek(data, 5, deps);
+  const count = (id) => data.games.find((g) => g.game_id === id)?.versions.length || 0;
+  const fail = (m) => { throw new Error("self-test: " + m); };
+  if (count("TB@DAL") !== 1) fail("FINAL game TB@DAL got a new version");
+  if (count("NYG@WSH") !== 1) fail("kicked-off game NYG@WSH got a new version");
+  if (count("DEN@LAC") !== 0) fail("game FINAL in finals.json got a version");
+  if (count("BUF@LAR") !== 2) fail("upcoming game BUF@LAR did not get a new version");
+  if (added !== 1) fail("expected 1 added, got " + added);
+  if (count("PIT@CLE") !== 0) fail("--week 5 touched a week 4 game");
+  const msg = logs.join("\n");
+  for (const want of ["TB@DAL (FINAL)", "NYG@WSH (kicked off", "DEN@LAC (FINAL)"]) if (!msg.includes(want)) fail("skip log missing " + want);
+  if (playedReason({ date: "2026-10-13T00:15Z" }, now) !== null) fail("upcoming game reported played");
+  if (!playedReason({ date: "2026-10-11T17:00Z" }, now)) fail("in-progress game reported upcoming");
+  const again = await appendWeek(data, 5, deps);
+  if (again !== 0) fail("re-run should add nothing");
+  console.log("self-test ok: FINAL / kicked-off / finals.json games skipped, upcoming game appended (" + logs[0] + ")");
+}
+
 function appendGameDay(data, rel) {
   const before = JSON.parse(JSON.stringify(data.games));
   const doc = JSON.parse(fs.readFileSync(path.resolve(ROOT, rel), "utf8"));
@@ -524,6 +601,10 @@ function appendGameDay(data, rel) {
 }
 
 async function main() {
+  if (hasFlag("--self-test")) {
+    await selfTest();
+    return;
+  }
   const data = load();
   if (hasFlag("--backfill")) {
     await backfill(data);
@@ -545,13 +626,21 @@ async function main() {
     console.error("Pass --backfill or --week N");
     process.exit(1);
   }
-  const added = await appendWeek(data, Number(week));
+  const nowArg = arg("--now");
+  const now = nowArg ? Date.parse(nowArg) : undefined;
+  if (nowArg && !Number.isFinite(now)) {
+    console.error("--now must be an ISO timestamp");
+    process.exit(1);
+  }
+  const added = await appendWeek(data, Number(week), { now });
   if (added) save(data);
   console.log("week " + week + " appended " + added);
   if (added) console.log("wrote " + path.relative(ROOT, OUT));
 }
 
-main().catch((err) => {
-  console.error(err.message || err);
-  process.exit(1);
-});
+if (process.argv[1] && process.argv[1].endsWith("append_model_snapshot.mjs")) {
+  main().catch((err) => {
+    console.error(err.message || err);
+    process.exit(1);
+  });
+}

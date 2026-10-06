@@ -14,6 +14,12 @@
  * Rebuild Weeks 1–4 from files already in the repo:
  *   node data/lines/append_line_snapshot.mjs --backfill
  *
+ *   node data/lines/append_line_snapshot.mjs --self-test
+ *
+ * Every live append records an ISO timestamp: the row's stamp, else the source file's
+ * captured time (pulled, captured_at, fetched_at, then pulled_et like "2026-10-05 8:25 AM ET"),
+ * else --at, else the current time. A null "at" is never written.
+ *
  * A snapshot is skipped when the same tag, spread, source, and timestamp
  * are already stored. Pass --force to append anyway.
  * Spreads are home-centric. Negative means the home team is favored.
@@ -153,33 +159,73 @@ function ensureGame(data, game) {
   return row;
 }
 
-function toIso(value) {
+// Offset of America/New_York at a given UTC instant, as "-04:00" (EDT) or "-05:00" (EST).
+function nyOffset(utcMs) {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/New_York", hourCycle: "h23",
+    year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit",
+  }).formatToParts(new Date(utcMs));
+  const v = Object.fromEntries(parts.map((p) => [p.type, p.value]));
+  const asUtc = Date.UTC(Number(v.year), Number(v.month) - 1, Number(v.day), Number(v.hour) % 24, Number(v.minute), Number(v.second));
+  const mins = Math.round((asUtc - utcMs) / 60000);
+  const sign = mins < 0 ? "-" : "+";
+  const a = Math.abs(mins);
+  return `${sign}${String(Math.floor(a / 60)).padStart(2, "0")}:${String(a % 60).padStart(2, "0")}`;
+}
+
+// Accepts an ISO timestamp, or an Eastern wall-clock string like "2026-10-05 8:25 AM ET"
+// (also "~8:50 AM ET"). Returns UTC ISO ("...Z"), the format every snapshot in the file uses,
+// or null when the value cannot be read.
+export function toIso(value) {
   if (!value) return null;
   const s = String(value).trim();
   if (/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/.test(s)) {
     const d = new Date(s);
     return Number.isNaN(d.getTime()) ? null : d.toISOString();
   }
-  const m = s.match(/(\d{4}-\d{2}-\d{2})[ T](\d{1,2}):(\d{2})\s*(AM|PM)/i);
+  const m = s.match(/(\d{4}-\d{2}-\d{2})[ T]~?\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
   if (m) {
     let h = Number(m[2]);
     if (m[4].toUpperCase() === "PM" && h < 12) h += 12;
     if (m[4].toUpperCase() === "AM" && h === 12) h = 0;
-    // Weeks 1–4 of 2026 are in September, which is Eastern Daylight Time.
-    const d = new Date(`${m[1]}T${String(h).padStart(2, "0")}:${m[3]}:00-04:00`);
+    const wall = `${m[1]}T${String(h).padStart(2, "0")}:${m[3]}:00`;
+    // Eastern wall clock: EDT or EST depending on the date (DST ends Nov 1, 2026).
+    const guess = Date.parse(wall + "Z");
+    const d = new Date(wall + nyOffset(guess + 5 * 3600 * 1000));
     return Number.isNaN(d.getTime()) ? null : d.toISOString();
   }
   return null;
 }
 
-function addSnap(data, game, snap, force) {
+// Capture time for a file-sourced snapshot: the row's own stamp, then the file's
+// captured/fetched time (pulled, then pulled_et), then --at.
+export function captureTime(row, file, cliAt) {
+  const candidates = [
+    row && row.frozen_at, row && row.odds_updated_at, row && row.pulled,
+    file && file.pulled, file && file.captured_at, file && file.fetched_at, file && file.pulled_et,
+    cliAt,
+  ];
+  for (const c of candidates) {
+    const iso = toIso(c);
+    if (iso) return iso;
+  }
+  return null;
+}
+
+function addSnap(data, game, snap, force, opts = {}) {
   if (!game) return "skip";
   if (snap.home_spread == null || !Number.isFinite(Number(snap.home_spread))) return "skip";
   const row = ensureGame(data, game);
+  let at = toIso(snap.at);
+  if (!at && opts.nowFallback) {
+    // No usable source time: stamp the moment we recorded it rather than writing null.
+    at = new Date().toISOString();
+    console.warn(`no source time for ${normAbbr(game.away)}@${normAbbr(game.home)} (${snap.source}); using now ${at}`);
+  }
   const next = {
     tag: snap.tag,
     home_spread: Number(snap.home_spread),
-    at: toIso(snap.at),
+    at,
     source: snap.source,
   };
   if (snap.note) next.note = snap.note;
@@ -231,14 +277,14 @@ function appendFromFile(data, tag, week, from, force) {
     } else {
       spread = spreadFromBoardRow(row, game);
     }
-    const at = row.frozen_at || row.odds_updated_at || row.pulled || file.pulled || arg("--at") || null;
+    const at = captureTime(row, file, arg("--at"));
     const status = addSnap(data, game, {
       tag,
       home_spread: spread,
       at,
       source: relPath(path.isAbsolute(from) ? from : path.join(ROOT, from)),
       note: row.note || row.notes || file.source || null,
-    }, force);
+    }, force, { nowFallback: true });
     if (status === "add") added += 1;
     else skipped += 1;
   }
@@ -258,7 +304,7 @@ function appendFromSchedule(data, tag, week, force) {
       at: game.odds_updated_at || nfl.pulled || null,
       source: "data/nfl-2026.json",
       note: game.street_source || nfl.source || null,
-    }, force);
+    }, force, { nowFallback: true });
     if (status === "add") added += 1;
     else skipped += 1;
   }
@@ -409,7 +455,29 @@ function backfill(data) {
   return added;
 }
 
+function selfTest() {
+  const fail = (m) => { throw new Error("self-test: " + m); };
+  const w5 = { pulled_et: "2026-10-05 8:25 AM ET", games: [{ game: "TB @ DAL", when: "2026-10-09T00:15Z", street_home: -10 }] };
+  if (captureTime(w5.games[0], w5, null) !== "2026-10-05T12:25:00.000Z") fail("pulled_et-only file should give 12:25Z");
+  const w4 = { pulled: "2026-09-28T12:08:29Z", pulled_et: "2026-09-28 8:05 AM ET" };
+  if (captureTime({}, w4, null) !== "2026-09-28T12:08:29.000Z") fail("pulled should win over pulled_et");
+  if (toIso("2026-11-09 8:05 AM ET") !== "2026-11-09T13:05:00.000Z") fail("EST offset after Nov 1");
+  if (captureTime({}, {}, null) !== null) fail("no source time should be null before the now fallback");
+  const data = { games: [] };
+  const game = { id: "1", week: 5, away: "TB", home: "DAL" };
+  const origWarn = console.warn; console.warn = () => {};
+  try { addSnap(data, game, { tag: "open", home_spread: -10, at: null, source: "x" }, false, { nowFallback: true }); }
+  finally { console.warn = origWarn; }
+  const at = data.games[0].snapshots[0].at;
+  if (!at || Math.abs(Date.parse(at) - Date.now()) > 60000) fail("missing time should fall back to now, got " + at);
+  console.log("self-test ok");
+}
+
 function main() {
+  if (hasFlag("--self-test")) {
+    selfTest();
+    return;
+  }
   const back = hasFlag("--backfill");
   const force = hasFlag("--force");
   const data = back ? blankHistory() : loadHistory();
@@ -440,4 +508,4 @@ function main() {
   console.log("wrote " + path.relative(ROOT, OUT));
 }
 
-main();
+if (process.argv[1] && process.argv[1].endsWith("append_line_snapshot.mjs")) main();
