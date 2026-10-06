@@ -9,7 +9,7 @@
     "OUT": 1.0,
     "PUP": 1.0,
     "NFI": 1.0,
-    "DOUBTFUL": 0.75,
+    "DOUBTFUL": 1.0,
     "QUESTIONABLE": 0.35,
     "PROBABLE": 0.0
   },
@@ -31,5 +31,15 @@
     "K": 0.2,
     "DEPTH": 0.2
   },
-  "note": "Surplus vs replacement on a spread. Auto full-Out impact clamped to tier: QB1/QB 1.5; AP All-Pro 2023\u201325 0.5; else 0.25. QB tier wins over All-Pro. Manual overrides not clamped (Darnold 1.5 / Murray 0.5 / Burrow 0.5). Floor min(0.2, cap_tier). Team net cap_team 6.0. Status: IR/OUT/PUP/NFI 1.0, DOUBTFUL 0.75, QUESTIONABLE 0.35."
+  "note": "Surplus vs replacement on a spread. Auto full-Out impact clamped to tier: QB1/QB 1.5; AP All-Pro 2023–25 0.5; else 0.25. QB tier wins over All-Pro. Manual overrides not clamped (Darnold 1.5 / Murray 0.5 / Burrow 0.5). Floor min(0.2, cap_tier). Team net cap_team 6.0. Status: IR/OUT/PUP/NFI/DOUBTFUL 1.0, QUESTIONABLE 0.35. DOUBTFUL moved 0.75 -> 1.0 on 2026-10-06 (Brett approved; injury/trench study: 4 of 799 Doubtful players played 2021-25, 0 of 21 in 2026). Applies to current/future unlocked lines from Week 5. Week 1-4 locks, graded lines and frozen injury-trench files keep 0.75.",
+  "status_changes": [
+    {
+      "date": "2026-10-06",
+      "status": "DOUBTFUL",
+      "from": 0.75,
+      "to": 1.0,
+      "from_week": 5,
+      "frozen_weeks_keep": "Weeks 1-4 (locks, graded lines, freeze scripts pinned to 0.75)"
+    }
+  ]
 }

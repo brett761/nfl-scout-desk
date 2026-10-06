@@ -27,6 +27,9 @@ const pffYtdData = load("pff-2026-ytd.json");
 const sosData = load("sos-2025.json");
 const returnData = load("return-2026.json");
 const injuryScale = load("injury-scale.json");
+// Frozen-week pricing: these locks were priced with DOUBTFUL 0.75. The live scale moved to 1.0 on 2026-10-06 (from Week 5).
+// Pin it so a re-run cannot re-price a locked week.
+injuryScale.status = { ...injuryScale.status, DOUBTFUL: 0.75 };
 const injurySeed = load("injury-2026.json");
 const coachData = load("coaches-2026.json");
 const prepData = load("coach-prep-2026.json");

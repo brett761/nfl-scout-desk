@@ -1120,7 +1120,7 @@ function injuryStatusKeys() {
 }
 
 function injuryRowPts(pos, status, impact, opts) {
-  const mult = (injuryScale && injuryScale.status && num(injuryScale.status[status])) || 0;
+  const mult = (opts && opts.mult != null) ? opts.mult : ((injuryScale && injuryScale.status && num(injuryScale.status[status])) || 0);
   const imp = num(impact);
   const base = (imp != null) ? imp : injuryPosBase(pos);
   const raw = -round2(base * mult);
@@ -1138,6 +1138,51 @@ function injuryTerm(abbr) {
   }
   const cap = injuryCapTeam();
   return Math.max(-cap, Math.min(0, sum));
+}
+
+/**
+ * Status multiplier that applied to a given week. injury-scale.json status_changes lists each
+ * change ({status, from, to, from_week}); weeks before from_week keep the old number so locked
+ * and past weeks are not re-priced (DOUBTFUL 0.75 -> 1.0 from Week 5, 2026-10-06).
+ * week null = today's scale.
+ */
+function injuryStatusMultForWeek(status, week) {
+  const st = String(status || "").toUpperCase();
+  const cur = (injuryScale && injuryScale.status && num(injuryScale.status[st])) || 0;
+  const w = Number(week);
+  if (week == null || !Number.isFinite(w)) return cur;
+  const changes = injuryScale && Array.isArray(injuryScale.status_changes) ? injuryScale.status_changes : [];
+  let hit = null;
+  for (const c of changes) {
+    if (!c || String(c.status || "").toUpperCase() !== st) continue;
+    const from = Number(c.from_week);
+    if (!Number.isFinite(from) || w >= from) continue;
+    if (!hit || from < Number(hit.from_week)) hit = c;
+  }
+  return hit && num(hit.from) != null ? num(hit.from) : cur;
+}
+
+/** injuryTerm priced at that week's multipliers minus injuryTerm today. 0 for current and future weeks. */
+function injuryWeekAdj(abbr, week) {
+  const changes = injuryScale && Array.isArray(injuryScale.status_changes) ? injuryScale.status_changes : [];
+  const w = Number(week);
+  if (!changes.length || !Number.isFinite(w) || !changes.some((c) => c && w < Number(c.from_week))) return 0;
+  const p = getProfile(abbr);
+  let now = 0;
+  let then = 0;
+  for (const row of (p.injuries || [])) {
+    if (!row || !row.on) continue;
+    const pts = num(row.pts) || 0;
+    now += pts;
+    const mNow = injuryStatusMultForWeek(row.status, null);
+    const mWk = injuryStatusMultForWeek(row.status, w);
+    if (mNow === mWk) { then += pts; continue; }
+    if (row.custom) { then += mNow ? pts * (mWk / mNow) : 0; continue; }
+    then += injuryRowPts(row.pos, row.status, row.impact, { name: row.name, manual: row.impact_source === "manual", mult: mWk });
+  }
+  const cap = injuryCapTeam();
+  const clamp = (x) => Math.max(-cap, Math.min(0, x));
+  return clamp(then) - clamp(now);
 }
 
 function seedOnFlag(status, raw) {
@@ -1831,8 +1876,9 @@ function atsSheetNote(game) {
 
 function ourHomeSpread(game, hfaVal) {
   const pad = game && game.neutral ? 0 : (hfaVal ?? hfa);
-  const homeE = eff(game.home);
-  const awayE = eff(game.away);
+  // Past weeks keep the status multipliers they were priced with (0 for current/future weeks).
+  const homeE = eff(game.home) + injuryWeekAdj(game.home, game.week);
+  const awayE = eff(game.away) + injuryWeekAdj(game.away, game.week);
   return -(homeE - awayE + pad + coachTerm(game) + prepNet(game) + atsNet(game) + schedNet(game) + matchupNet(game));
 }
 
@@ -2486,7 +2532,7 @@ async function loadNfl() {
   const returnReq = fetch("./data/return-2026.json");
   const staffReq = fetch("./data/staff-2026.json");
   const staffAtsReq = fetch("./data/staff-ats-2026.json");
-  const scaleReq = fetch("./data/injury-scale.json?v=w3tue22");
+  const scaleReq = fetch("./data/injury-scale.json?v=dbt1w5tue06");
   const allProReq = fetch("./data/allpro-last3.json?v=w3tue22");
   const injReq = fetch("./data/injury-2026.json?v=w4mon05");
   const wxReq = fetch("./data/weather-scale.json");
@@ -2666,7 +2712,7 @@ async function loadNfl() {
       cap_player_allpro: 0.5,
       cap_player_other: 0.25,
       cap_team: 6.0,
-      status: { IR: 1.0, OUT: 1.0, PUP: 1.0, NFI: 1.0, DOUBTFUL: 0.75, QUESTIONABLE: 0.35, PROBABLE: 0.0 },
+      status: { IR: 1.0, OUT: 1.0, PUP: 1.0, NFI: 1.0, DOUBTFUL: 1.0, QUESTIONABLE: 0.35, PROBABLE: 0.0 },
       positions: {
         QB1: 1.5, LT: 0.25, RT: 0.25, EDGE1: 0.25, WR1: 0.25, CB1: 0.25, IDL: 0.25, C: 0.25,
         RB1: 0.25, TE1: 0.25, WR2: 0.25, S: 0.25, LB: 0.25, OG: 0.25, K: 0.2, DEPTH: 0.2,
@@ -4449,10 +4495,10 @@ function renderGameSheet() {
     ["PFF 22", pffTerm(away), pffTerm(home)],
     ["PFF YTD", pffYtdTerm(away), pffYtdTerm(home)],
     ["Last year SOS", sosTerm(away), sosTerm(home)],
-    ["Injuries", injuryTerm(away), injuryTerm(home)],
+    ["Injuries", injuryTerm(away) + injuryWeekAdj(away, game.week), injuryTerm(home) + injuryWeekAdj(home, game.week)],
     ["Manual", num(pA.user_adjust) || 0, num(pH.user_adjust) || 0],
     ["Extra notes", contextSum(pA), contextSum(pH)],
-    ["Our rating", eff(away), eff(home)],
+    ["Our rating", eff(away) + injuryWeekAdj(away, game.week), eff(home) + injuryWeekAdj(home, game.week)],
   ];
   const table = clubRows.map((r, i) => {
     const cls = i === clubRows.length - 1 ? " is-eff" : "";
@@ -4463,8 +4509,8 @@ function renderGameSheet() {
     </tr>`;
   }).join("");
 
-  const homeE = eff(home);
-  const awayE = eff(away);
+  const homeE = eff(home) + injuryWeekAdj(home, game.week);
+  const awayE = eff(away) + injuryWeekAdj(away, game.week);
   const diff = homeE - awayE;
   const hfaUsed = game.neutral ? 0 : hfa;
   const coach = coachTerm(game);
@@ -4706,7 +4752,7 @@ function trenchTeamMath(abbr, game, weekData) {
     const unit = (group && TRENCH.unitOf[group]) || "OTHER";
     const practice = (hit && hit.practice) || "unknown";
     const share = hit ? num(hit.share) : null;
-    const mult = (injuryScale && injuryScale.status && num(injuryScale.status[s.status])) ?? 0;
+    const mult = injuryStatusMultForWeek(s.status, game && game.week);
     const value = s.value != null ? s.value : injuryPosBase(s.pos);
     live[unit] += s.livePts;
     let p = null;
@@ -4875,7 +4921,7 @@ function injuryMathHtml(game, ourLine) {
         ${imTeamHtml(mA, "away")}
         ${imTeamHtml(mH, "home")}
         <div class="injmath-foot">
-          <p><b>Live</b> = impact × status (IR/Out 1.0, Doubtful 0.75, Questionable 0.35 when on). Auto impact is clamped: QB1 1.5, All-Pro 0.5, else 0.25, floor 0.2. Team cap 6.0. This is injuryTerm() in eff().</p>
+          <p><b>Live</b> = impact × status (IR/Out/Doubtful 1.0, Questionable 0.35 when on; Doubtful was 0.75 through Week 4, and locked weeks keep it). Auto impact is clamped: QB1 1.5, All-Pro 0.5, else 0.25, floor 0.2. Team cap 6.0. This is injuryTerm() in eff().</p>
           <p><b>Proposed</b> = position value × snap weight × P(sits), front seven and OL only. Value: DL 0.9, EDGE/LB 0.7, T 1.0, G/C 0.8. Snap weight (last 4 team games): 75%+ 1.0, 60–75% 0.75, 45–60% 0.25, under 45% 0. P(sits): Out/Doubtful/IR 1.0; Questionable 0.45 DNP, 0.24 limited, 0.12 full, 0.27 unknown. +0.5 when 3+ starters in a unit are out. Caps: front seven 3.5, OL 3.5, team 6.0. Other positions stay on Live pricing.</p>
           <p class="injmath-src">${sourceNote}${practiceNote}Line if Proposed = B$ line + (home Proposed − home Live) − (away Proposed − away Live).</p>
         </div>
