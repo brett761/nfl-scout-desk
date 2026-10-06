@@ -456,7 +456,7 @@ def build_week(week: int, rows_mode: str = "seed", refresh: bool = False, need_e
                 "share_source": "nflverse snap_counts trailing 4" if share is not None else "no nflverse match",
                 "live": {
                     "value": raw.get("impact") if raw.get("impact") not in (None, "") else None,
-                    "mult": T.LIVE_MULT.get(status, 0.0),
+                    "mult": float((scale.get("status") or {}).get(status, T.LIVE_MULT.get(status, 0.0))),
                     "on": on,
                     "pts": round(lp if on else 0.0, 3),
                     "manual": raw.get("impact_source") == "manual",
@@ -554,7 +554,7 @@ def build_week(week: int, rows_mode: str = "seed", refresh: bool = False, need_e
             "p_sits": {"OUT/DOUBTFUL/IR/PUP/NFI": 1.0, "Q+DNP": 0.45, "Q+LP": 0.24, "Q+FP": 0.12, "Q unknown": 0.27},
             "cluster": {"bonus": T.CLUSTER_BONUS, "min_starters": T.CLUSTER_MIN, "starter": "w_snap >= 0.75 and P(sits) >= 0.5"},
             "caps": {"front_seven": T.UNIT_CAP, "ol": T.UNIT_CAP, "team": T.TEAM_CAP},
-            "live": {"status": T.LIVE_MULT, "cap_player": {"QB1": 1.5, "All-Pro": 0.5, "other": 0.25}, "floor": 0.2, "team_cap": T.TEAM_CAP},
+            "live": {"status": dict(scale.get("status") or T.LIVE_MULT), "cap_player": {"QB1": 1.5, "All-Pro": 0.5, "other": 0.25}, "floor": 0.2, "team_cap": T.TEAM_CAP},
             "short_week": "no shading",
             "quality_adj": 1.0,
         },

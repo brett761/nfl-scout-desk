@@ -105,7 +105,7 @@ Base × status, then negative for that club.
 | Position | Base | Status | Multiplier |
 |---|---|---|---|
 | QB1 | 3.5 | IR / OUT / PUP / NFI | 100% |
-| LT | 2.0 | Doubtful | 75% |
+| LT | 2.0 | Doubtful | 100% (75% through Week 4; locked weeks keep it) |
 | EDGE1 | 1.5 | Questionable | 35% |
 | WR1 / CB1 | 1.2 | Probable | 0% |
 | RT | 1.0 | | |

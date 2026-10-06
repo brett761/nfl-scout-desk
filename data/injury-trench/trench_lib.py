@@ -12,7 +12,7 @@ Proposed (trench) row, front seven and OL only:
     cluster: +0.5 per unit when 3+ starters (w >= 0.75, P >= 0.5) are out
     caps: front seven 3.5, OL 3.5, team 6.0 (with non-trench rows priced as live)
 Live row (what is in the B$ line today, app.js injuryRowPts / injuryTerm):
-    pts = impact x status multiplier (IR/OUT/PUP/NFI 1.0, DOUBTFUL 0.75,
+    pts = impact x status multiplier (IR/OUT/PUP/NFI/DOUBTFUL 1.0 (DOUBTFUL 0.75 through W4),
     QUESTIONABLE 0.35 when on), auto impact clamped (QB1 1.5, All-Pro 0.5, else 0.25,
     floor 0.2), team cap 6.0.
 """
@@ -47,7 +47,7 @@ POS_GROUP = {
     "T": "T", "OT": "T", "LT": "T", "RT": "T",
     "G": "IOL", "OG": "IOL", "C": "IOL", "OL": "IOL", "LG": "IOL", "RG": "IOL",
 }
-LIVE_MULT = {"IR": 1.0, "OUT": 1.0, "PUP": 1.0, "NFI": 1.0, "DOUBTFUL": 0.75, "QUESTIONABLE": 0.35, "PROBABLE": 0.0}
+LIVE_MULT = {"IR": 1.0, "OUT": 1.0, "PUP": 1.0, "NFI": 1.0, "DOUBTFUL": 1.0, "QUESTIONABLE": 0.35, "PROBABLE": 0.0}
 SITS = {"IR", "OUT", "PUP", "NFI", "DOUBTFUL"}
 Q_BY_PRACTICE = {"DNP": 0.45, "LP": 0.24, "FP": 0.12}
 Q_UNKNOWN = 0.27
