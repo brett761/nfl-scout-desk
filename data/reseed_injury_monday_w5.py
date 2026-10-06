@@ -605,3 +605,15 @@ for want in [("SEA","Sam Darnold"),("MIN","Kyler Murray"),("CIN","Joe Burrow"),(
   rows = new_teams.get(want[0], [])
   hit = next((r for r in rows if r["name"]==want[1]), None)
   print("check", want, hit and (hit["status"], hit.get("impact"), hit.get("impact_source")) or "MISSING")
+
+# --- Shadow trench health index (display only; never changes the B$ line, never fails this reseed) ---
+try:
+  import runpy as _runpy
+  from pathlib import Path as _Path
+  _hook = _Path(__file__).resolve().parent / "injury-trench" / "after_reseed.py"
+  if _hook.exists():
+    _runpy.run_path(str(_hook), run_name="__main__")
+except SystemExit:
+  pass
+except Exception as _err:
+  print("[injury-trench] hook skipped:", _err)

@@ -3808,3 +3808,190 @@ body.is-viewer textarea:disabled {
   .book-extra { display: none; }
   .book-sheet div { grid-template-columns: 96px minmax(0, 1fr); }
 }
+
+/* ---------- Injury math (game sheet) · Live vs Proposed trench shadow ---------- */
+.injmath {
+  margin: 0 0 18px;
+  background: #0B0B0E;
+  border: 1px solid rgba(197, 108, 52, 0.45);
+  border-radius: 12px;
+}
+.injmath > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  padding: 12px 40px 12px 14px;
+  position: relative;
+}
+.injmath > summary::-webkit-details-marker { display: none; }
+.injmath > summary::after {
+  content: "";
+  position: absolute;
+  right: 16px;
+  top: 19px;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--copper);
+  border-bottom: 2px solid var(--copper);
+  transform: rotate(45deg);
+  transition: transform 0.15s ease;
+}
+.injmath[open] > summary::after { transform: rotate(225deg); top: 23px; }
+.injmath > summary:focus-visible { outline: 2px solid var(--copper); outline-offset: 2px; border-radius: 12px; }
+.injmath-title {
+  font-family: var(--display);
+  font-size: 22px;
+  letter-spacing: 0.04em;
+  color: var(--white);
+}
+.injmath-tag {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--copper);
+}
+.injmath-headnum {
+  margin-left: auto;
+  font-size: 13px;
+  color: var(--cloud);
+  font-variant-numeric: tabular-nums;
+}
+.injmath-body { padding: 0 14px 14px; }
+.injmath-compare {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 2px 0 10px;
+}
+.injmath-card {
+  border: 1px solid var(--slate-line);
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: rgba(60, 61, 64, 0.35);
+}
+.injmath-card.is-prop { border-color: rgba(197, 108, 52, 0.6); background: var(--copper-faint); }
+.injmath-kicker {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 18px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+.injmath-card.is-prop .injmath-kicker { color: var(--copper); }
+.injmath-sub {
+  margin: 0 0 8px;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--slate);
+}
+.im-kv {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 5px 0;
+  border-top: 1px solid rgba(149, 150, 150, 0.16);
+  font-size: 13px;
+  color: var(--cloud);
+}
+.im-kv b { font-weight: 600; color: var(--white); text-align: right; font-variant-numeric: tabular-nums; }
+.im-kv.is-line { border-top: 1px solid var(--copper); margin-top: 2px; padding-top: 7px; }
+.im-kv.is-line b { font-size: 15px; }
+.injmath-card.is-prop .im-kv.is-line b { color: var(--copper-hot); }
+.injmath-shift { margin: 0 0 12px; font-size: 13px; color: var(--cloud); }
+.injmath-team { margin: 14px 0 0; }
+.injmath-team h4 {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0 0 6px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--copper);
+  font-family: var(--display);
+  font-size: 18px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+.injmath-team h4 small {
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--slate);
+  font-variant-numeric: tabular-nums;
+}
+.im-grid { display: flex; flex-direction: column; }
+.im-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) minmax(0, 1.25fr);
+  gap: 8px;
+  align-items: start;
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(149, 150, 150, 0.16);
+}
+.im-head {
+  padding: 2px 0 6px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--copper);
+}
+.im-head .im-live { color: var(--slate); }
+.im-who b { display: block; font-size: 13px; font-weight: 600; color: var(--white); }
+.im-who small { display: block; margin-top: 2px; font-size: 11px; line-height: 1.35; color: var(--slate); }
+.im-cell {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--slate);
+  font-variant-numeric: tabular-nums;
+}
+.im-cell.im-prop { padding-left: 8px; border-left: 2px solid var(--copper-dim); }
+.im-head .im-cell { display: block; }
+.im-f { min-width: 0; line-height: 1.35; }
+.im-f em { font-style: normal; color: var(--slate); }
+.im-pts { flex-shrink: 0; font-size: 13px; font-weight: 600; color: var(--cloud); }
+.im-prop .im-pts { color: var(--copper-hot); }
+.im-sub .im-who b { font-weight: 500; color: var(--cloud); }
+.im-sub .im-f { font-size: 11px; }
+.im-row.is-total { border-bottom: 1px solid var(--copper); border-top: 1px solid var(--copper); margin-top: 4px; }
+.im-row.is-total .im-who b { font-weight: 700; color: var(--white); }
+.im-row.is-total .im-pts { font-size: 15px; color: var(--white); }
+.im-row.is-total .im-prop .im-pts { color: var(--copper); }
+.im-other { border-bottom: 1px solid rgba(149, 150, 150, 0.16); }
+.im-other > summary {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 0;
+  font-size: 13px;
+  color: var(--cloud);
+}
+.im-other > summary span:first-child::before { content: "+ "; color: var(--copper); }
+.im-other[open] > summary span:first-child::before { content: "− "; }
+.im-other .im-row { padding-left: 10px; }
+.im-empty, .im-zero { margin: 6px 0 0; font-size: 12px; color: var(--slate); }
+.injmath-foot { margin-top: 14px; padding-top: 10px; border-top: 1px solid var(--slate-line); }
+.injmath-foot p { margin: 0 0 6px; font-size: 12px; line-height: 1.5; color: var(--slate); }
+.injmath-foot b { color: var(--cloud); }
+.injmath-src { color: var(--slate); }
+@media (max-width: 560px) {
+  .injmath > summary { padding-right: 36px; }
+  .injmath-headnum { margin-left: 0; width: 100%; }
+  .injmath-compare { grid-template-columns: 1fr; }
+  .im-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 4px 10px; }
+  .im-row .im-who { grid-column: 1 / -1; }
+  .im-head .im-who { display: none; }
+  .im-cell.im-prop { padding-left: 8px; }
+}
