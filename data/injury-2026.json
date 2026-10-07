@@ -1,16 +1,44 @@
 {
-  "pulled": "2026-10-06b",
-  "pulled_et": "2026-10-06 10:08 AM ET (America/New_York)",
-  "phase": "WORKING-TUE",
+  "pulled": "2026-10-07a",
+  "pulled_et": "2026-10-07 10:13 AM ET (America/New_York)",
+  "phase": "WORKING-WED",
   "sources": [
     "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
     "https://www.nfl.com/injuries/",
     "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?seasontype=2&week=5&year=2026"
   ],
-  "note": "WORKING-TUE Tuesday refresh after Monday WORKING (2026-10-05a). Week 4 fully FINAL (incl. ATL@NO MNF). Week 5 board: TNF TB@DAL Thu, PHI vs JAX London Sun AM, 12 more Sunday, BAL@ATL SNF, BUF@LAR MNF; byes KC/CAR. No official NFL practice sheet yet (TNF clubs Wed ~4pm ET) \u2014 ESPN working list only, no rumor moves. Drop gameday inactive / ruled-out-for-remainder / coach's-decision noise; keep multi-week OUT + IR/PUP/NFI. Drop Aaron Donald retired ESPN quirk. Preserve manuals. Tier caps QB<=1.5 / All-Pro<=0.5 / other<=0.25 on auto; Madden-first else PFF; floor 0.2x status; Cap team 6.0. Desk manual 2026-10-06b: TB David Sills V (WR2, IR) impact 0, unproven backup. Standing manuals in this file win on the next ESPN reseed.",
-  "espn_timestamp": "2026-10-06T14:07:25Z",
+  "note": "WORKING-WED Wednesday 10am refresh after Tuesday WORKING (2026-10-06b). Week 4 fully FINAL. Week 5 board: TNF TB@DAL Thu, PHI vs JAX London Sun AM, 12 more Sunday, BAL@ATL SNF, BUF@LAR MNF; byes KC/CAR. No official NFL practice sheet yet (TNF clubs Wed ~4pm ET) \u2014 ESPN working list only, no rumor moves. Drop gameday inactive / ruled-out-for-remainder / coach's-decision noise; keep multi-week OUT + IR/PUP/NFI. Drop Aaron Donald retired ESPN quirk. Preserve manuals. Tier caps QB<=1.5 / All-Pro<=0.5 / other<=0.25 on auto; Madden-first else PFF; floor 0.2x status; Cap team 6.0. Desk manual 2026-10-06b: TB David Sills V (WR2, IR) impact 0, unproven backup. Standing manuals in this file win on the next ESPN reseed.",
+  "espn_timestamp": "2026-10-07T14:13:16Z",
   "teams": {
     "ARI": [
+      {
+        "name": "Paris Johnson Jr.",
+        "pos": "RT",
+        "status": "IR",
+        "note": "The Cardinals placed Johnson (biceps) on injured reserve Tuesday.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.25,
+        "impact_source": "madden"
+      },
+      {
+        "name": "Hunter Long",
+        "pos": "TE1",
+        "status": "IR",
+        "note": "The Cardinals placed Long (knee) on injured reserve Tuesday.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true
+      },
+      {
+        "name": "Dadrion Taylor-Demerson",
+        "pos": "S",
+        "status": "QUESTIONABLE",
+        "note": "Taylor-Demerson (back) has been ruled out ahead of Sunday's game against the Giants, Zach Gershman of the Cardinals' official site reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.2,
+        "impact_source": "pff"
+      },
       {
         "name": "Andrew Wingard",
         "pos": "S",
@@ -30,16 +58,6 @@
         "on": true,
         "impact": 0.25,
         "impact_source": "madden"
-      },
-      {
-        "name": "Dadrion Taylor-Demerson",
-        "pos": "S",
-        "status": "OUT",
-        "note": "Taylor-Demerson (back) has been ruled out ahead of Sunday's game against the Giants, Zach Gershman of the Cardinals' official site reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.2,
-        "impact_source": "pff"
       },
       {
         "name": "Isaiah Adams",
@@ -123,7 +141,9 @@
         "status": "IR",
         "note": "The Falcons placed Hand (quadriceps) on injured reserve Wednesday, William McFadden of the team's official site reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "on": true,
+        "impact": 0.2,
+        "impact_source": "pff"
       },
       {
         "name": "Cameron Williams",
@@ -149,7 +169,7 @@
         "name": "Lamar Jackson",
         "pos": "QB1",
         "status": "QUESTIONABLE",
-        "note": "Jackson (ankle) is not dealing with a long-term injury, but he has \"only an outside chance to play\" in Week 5 and \"could end up missing multiple games,\" Ian Rapoport of NFL Network reports.",
+        "note": "Jackson appears \"unlikely\" to play Sunday against the Falcons due to a \"rarer type of ankle sprain\" that could put him at risk of missing multiple games, Ian Rapoport of NFL Network reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 1.5,
@@ -158,12 +178,20 @@
       {
         "name": "Trey Hendrickson",
         "pos": "LB",
-        "status": "OUT",
+        "status": "QUESTIONABLE",
         "note": "Hendrickson (finger) is inactive for Sunday's game against the Titans.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.5,
         "impact_source": "madden"
+      },
+      {
+        "name": "Durham Smythe",
+        "pos": "TE1",
+        "status": "OUT",
+        "note": "Smythe was diagnosed with a torn Achilles tendon following an MRI on Monday and will require season-ending surgery, Ian Rapoport of NFL Network reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true
       },
       {
         "name": "Ronnie Stanley",
@@ -214,7 +242,7 @@
       {
         "name": "T.J. Sanders",
         "pos": "IDL",
-        "status": "OUT",
+        "status": "QUESTIONABLE",
         "note": "Sanders (appendix) is inactive for Sunday's game against the Patriots.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
@@ -222,7 +250,7 @@
       {
         "name": "Christian Benford",
         "pos": "CB1",
-        "status": "OUT",
+        "status": "QUESTIONABLE",
         "note": "Benford (toe) is inactive for Sunday's game against the Patriots.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
@@ -258,6 +286,34 @@
     ],
     "CAR": [
       {
+        "name": "Cam Jackson",
+        "pos": "IDL",
+        "status": "QUESTIONABLE",
+        "note": "Jackson (knee) is inactive for Sunday night's matchup with the Lions.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true
+      },
+      {
+        "name": "Damien Lewis",
+        "pos": "OG",
+        "status": "QUESTIONABLE",
+        "note": "Lewis (elbow) has been ruled out for Sunday's game against the Lions, Alex Zietlow of The Charlotte Observer reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.25,
+        "impact_source": "madden"
+      },
+      {
+        "name": "Jalen Coker",
+        "pos": "WR2",
+        "status": "QUESTIONABLE",
+        "note": "Coker (quadriceps) is inactive for Sunday's game against the Lions, Darin Gantt of the Panthers' official site reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.2,
+        "impact_source": "madden"
+      },
+      {
         "name": "Ikem Ekwonu",
         "pos": "LT",
         "status": "OUT",
@@ -271,7 +327,7 @@
         "name": "Monroe Freeling",
         "pos": "RT",
         "status": "QUESTIONABLE",
-        "note": "Freeling (knee) could return to the field as soon as the Panthers' Week 6 game against the Buccaneers, Mike Kaye of ESPN.com reported Monday.",
+        "note": "Freeling (knee) could return to the field as soon as the Panthers' Week 6 game against the Eagles on Sunday, Oct. 18, Mike Kaye of ESPN.com reported Monday.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
       },
@@ -279,7 +335,7 @@
         "name": "Jaelan Phillips",
         "pos": "LB",
         "status": "QUESTIONABLE",
-        "note": "Phillips (hamstring) could return to the Panthers' lineup as early as the Week 6 game against the Buccaneers, Mike Kaye of ESPN.com reported Monday.",
+        "note": "Phillips (hamstring) could return to the Panthers' lineup as early as the Week 6 game against the Eagles on Sunday, Oct. 18, Mike Kaye of ESPN.com reported Monday.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.25,
@@ -292,34 +348,6 @@
         "note": "Head coach Dave Canales said Etienne (ankle) will \"for sure\" be back following the Panthers' Week 5 bye, Mike Kaye of ESPN.com reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
-      },
-      {
-        "name": "Damien Lewis",
-        "pos": "OG",
-        "status": "OUT",
-        "note": "Lewis (elbow) has been ruled out for Sunday's game against the Lions, Alex Zietlow of The Charlotte Observer reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.25,
-        "impact_source": "madden"
-      },
-      {
-        "name": "Cam Jackson",
-        "pos": "IDL",
-        "status": "OUT",
-        "note": "Jackson (knee) is inactive for Sunday night's matchup with the Lions.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
-        "name": "Jalen Coker",
-        "pos": "WR2",
-        "status": "OUT",
-        "note": "Coker (quadriceps) is inactive for Sunday's game against the Lions, Darin Gantt of the Panthers' official site reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.2,
-        "impact_source": "madden"
       },
       {
         "name": "Xavier Legette",
@@ -398,6 +426,16 @@
     ],
     "CHI": [
       {
+        "name": "Cam Lewis",
+        "pos": "CB1",
+        "status": "QUESTIONABLE",
+        "note": "Lewis (hip) is inactive Week 4 against the Jets.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.2,
+        "impact_source": "pff"
+      },
+      {
         "name": "Caleb Williams",
         "pos": "QB1",
         "status": "OUT",
@@ -416,14 +454,6 @@
         "on": true,
         "impact": 0.2,
         "impact_source": "madden"
-      },
-      {
-        "name": "Cam Lewis",
-        "pos": "CB1",
-        "status": "OUT",
-        "note": "Lewis (hip) is inactive Week 4 against the Jets.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
       },
       {
         "name": "Braxton Jones",
@@ -470,19 +500,9 @@
     ],
     "CIN": [
       {
-        "name": "Tee Higgins",
-        "pos": "WR2",
-        "status": "QUESTIONABLE",
-        "note": "Higgins (adductor), per head coach Zac Taylor, is considered day-to-day, Ben Baby of ESPN.com reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.25,
-        "impact_source": "madden"
-      },
-      {
         "name": "Colbie Young",
         "pos": "WR2",
-        "status": "OUT",
+        "status": "QUESTIONABLE",
         "note": "Young (knee) is not expected to play in Week 4 against the Jaguars, Jay Morrison of SI.com reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
@@ -490,7 +510,7 @@
       {
         "name": "Bryan Cook",
         "pos": "S",
-        "status": "OUT",
+        "status": "QUESTIONABLE",
         "note": "Cook (ankle) is inactive for Sunday's Week 4 tilt against Jacksonville.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
@@ -500,7 +520,7 @@
       {
         "name": "Kyle Dugger",
         "pos": "S",
-        "status": "OUT",
+        "status": "QUESTIONABLE",
         "note": "Dugger (quadriceps) has been ruled out for Sunday's game against the Jaguars, Charlie Clifford of NBC 5 Cincinnati reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
@@ -510,7 +530,7 @@
       {
         "name": "B.J. Hill",
         "pos": "IDL",
-        "status": "OUT",
+        "status": "QUESTIONABLE",
         "note": "Hill (Achilles) is inactive for Sunday's clash against the Jaguars.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
@@ -520,10 +540,20 @@
       {
         "name": "Swayze Bozeman",
         "pos": "LB",
-        "status": "OUT",
+        "status": "QUESTIONABLE",
         "note": "Bozeman (groin) is inactive for Sunday's matchup against Jacksonville.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
+      },
+      {
+        "name": "Tee Higgins",
+        "pos": "WR2",
+        "status": "QUESTIONABLE",
+        "note": "Higgins (adductor), per head coach Zac Taylor, is considered day-to-day, Ben Baby of ESPN.com reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.25,
+        "impact_source": "madden"
       },
       {
         "name": "Jalen Davis",
@@ -564,9 +594,27 @@
     ],
     "CLE": [
       {
+        "name": "Kalia Davis",
+        "pos": "IDL",
+        "status": "IR",
+        "note": "The Browns opened Davis' (quadriceps) 21-day practice window Tuesday.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true
+      },
+      {
+        "name": "Dillon Gabriel",
+        "pos": "DEPTH",
+        "status": "IR",
+        "note": "The Browns opened Gabriel's (back) 21-day practice window Tuesday.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0,
+        "impact_source": "manual"
+      },
+      {
         "name": "Tylan Wallace",
         "pos": "WR2",
-        "status": "OUT",
+        "status": "QUESTIONABLE",
         "note": "Wallace (knee) has been ruled out for Thursday's game against the Steelers.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
@@ -577,7 +625,7 @@
       {
         "name": "Elgton Jenkins",
         "pos": "C",
-        "status": "OUT",
+        "status": "QUESTIONABLE",
         "note": "Jenkins (concussion) is officially listed as out for Thursday's game versus the Steelers.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
@@ -588,7 +636,7 @@
       {
         "name": "Teven Jenkins",
         "pos": "OG",
-        "status": "OUT",
+        "status": "QUESTIONABLE",
         "note": "Jenkins (back) is officially listed as out for Thursday's game versus Pittsburgh.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
@@ -617,16 +665,6 @@
         "impact_source": "madden"
       },
       {
-        "name": "Dillon Gabriel",
-        "pos": "DEPTH",
-        "status": "IR",
-        "note": "ir \u2014 Watson starter; null impact Explicit impact 0 \u2014 Watson is starter; do not apply QB1 pos_base.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0,
-        "impact_source": "manual"
-      },
-      {
         "name": "Kendrick Green",
         "pos": "OG",
         "status": "IR",
@@ -639,20 +677,18 @@
     ],
     "DAL": [
       {
-        "name": "Tyler Smith",
-        "pos": "OG",
-        "status": "IR",
-        "note": "Smith (thumb) was a limited participant in Monday's estimated practice, Jon Machota of The Athletic reports.",
+        "name": "Drew Shelton",
+        "pos": "RT",
+        "status": "DOUBTFUL",
+        "note": "Head coach Brian Schottenheimer told reporters Tuesday that Shelton is considered week-to-week due to a hamstring injury, Joe Hoyt of The Dallas Morning News reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.5,
-        "impact_source": "madden"
+        "on": true
       },
       {
         "name": "DeMarvion Overshown",
         "pos": "LB",
-        "status": "OUT",
-        "note": "Overshown (hamstring) was estimated as a non-participant on the Cowboys' official injury report Monday, Jon Machota of The Athletic reports.",
+        "status": "DOUBTFUL",
+        "note": "Cowboys head coach Brian Schottenheimer said Tuesday that Overshown (hamstring) is a \"long shot\" to play Thursday night against Tampa Bay, Joe Hoyt of The Dallas Morning News reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.2,
@@ -661,11 +697,21 @@
       {
         "name": "Cobie Durant",
         "pos": "CB1",
-        "status": "OUT",
-        "note": "Durant (hamstring) is expected to miss Thursday's game against the Bucs, Patrik Walker of the Cowboys' official site reports.",
+        "status": "DOUBTFUL",
+        "note": "doubtful",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.2,
+        "impact_source": "madden"
+      },
+      {
+        "name": "Tyler Smith",
+        "pos": "OG",
+        "status": "IR",
+        "note": "Smith (thumb) was a limited participant in Monday's estimated practice, Jon Machota of The Athletic reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.5,
         "impact_source": "madden"
       },
       {
@@ -705,6 +751,24 @@
     ],
     "DEN": [
       {
+        "name": "Dondrea Tillman",
+        "pos": "LB",
+        "status": "QUESTIONABLE",
+        "note": "Tillman (hamstring) has been ruled out for Sunday's game against the 49ers.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.2,
+        "impact_source": "pff"
+      },
+      {
+        "name": "Pat Bryant",
+        "pos": "WR2",
+        "status": "DOUBTFUL",
+        "note": "The Broncos are confident that Bryant avoided a long-term right ankle injury after an MRI on Monday yielded good news, Ian Rapoport of NFL Network reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true
+      },
+      {
         "name": "Riley Moss",
         "pos": "CB1",
         "status": "QUESTIONABLE",
@@ -715,16 +779,6 @@
         "impact_source": "madden"
       },
       {
-        "name": "Dondrea Tillman",
-        "pos": "LB",
-        "status": "OUT",
-        "note": "Tillman (hamstring) has been ruled out for Sunday's game against the 49ers.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.2,
-        "impact_source": "pff"
-      },
-      {
         "name": "Pat Surtain II",
         "pos": "CB1",
         "status": "DOUBTFUL",
@@ -733,14 +787,6 @@
         "on": true,
         "impact": 0.25,
         "impact_source": "madden"
-      },
-      {
-        "name": "Pat Bryant",
-        "pos": "WR2",
-        "status": "DOUBTFUL",
-        "note": "Bryant is expected to miss \"a few weeks\" after spraining his right ankle in Sunday's 24-14 loss to the 49ers, Adam Schefter of ESPN reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
       },
       {
         "name": "Jonah Coleman",
@@ -785,6 +831,16 @@
     ],
     "DET": [
       {
+        "name": "Ben Bartch",
+        "pos": "OG",
+        "status": "QUESTIONABLE",
+        "note": "Bartch (foot) has been ruled out for Sunday's game against the Panthers.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.25,
+        "impact_source": "pff"
+      },
+      {
         "name": "Rock Ya-Sin",
         "pos": "CB1",
         "status": "DOUBTFUL",
@@ -792,16 +848,6 @@
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.2,
-        "impact_source": "pff"
-      },
-      {
-        "name": "Ben Bartch",
-        "pos": "OG",
-        "status": "OUT",
-        "note": "Bartch (foot) has been ruled out for Sunday's game against the Panthers.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.25,
         "impact_source": "pff"
       },
       {
@@ -867,10 +913,56 @@
     ],
     "GB": [
       {
+        "name": "Edgerrin Cooper",
+        "pos": "LB",
+        "status": "IR",
+        "note": "Cooper (Achilles) was placed on injured reserve by the Packers on Tuesday.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.2,
+        "impact_source": "madden"
+      },
+      {
+        "name": "Chris Brooks",
+        "pos": "RB1",
+        "status": "QUESTIONABLE",
+        "note": "Brooks underwent further tests on his ankle Monday, Weston Hodkiewicz of the Packers' official site reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.2,
+        "impact_source": "pff"
+      },
+      {
+        "name": "Jacob Monk",
+        "pos": "C",
+        "status": "QUESTIONABLE",
+        "note": "Monk (quadriceps) has been ruled out ahead of Sunday's game against the Buccaneers, Wes Hodkiewicz of the Packers' official site reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true
+      },
+      {
+        "name": "Aaron Banks",
+        "pos": "OG",
+        "status": "QUESTIONABLE",
+        "note": "Banks (toe/knee) has been ruled out ahead of Sunday's game against the Buccaneers, Wes Hodkiewicz of the Packers' official site reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.4,
+        "impact_source": "manual"
+      },
+      {
+        "name": "Anthony Campbell",
+        "pos": "IDL",
+        "status": "QUESTIONABLE",
+        "note": "Campbell (ankle) has been ruled out ahead of Sunday's game against the Buccaneers, Wes Hodkiewicz of the Packers' official site reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true
+      },
+      {
         "name": "Brandon Cisse",
         "pos": "CB1",
         "status": "QUESTIONABLE",
-        "note": "Cisse (neck) was not placed in the league's concussion protocol following Sunday's 17-14 win over the Buccaneers, Weston Hodkiewicz of the Packers' official site reports.",
+        "note": "Packers head coach Matt LaFleur said that Cisse isn't in the concussion protocol but is tending to what is believed to be a short-term neck injury coming out of Sunday's 17-14 win over the Buccaneers, Weston Hodkiewicz of the team's official site reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
       },
@@ -883,52 +975,6 @@
         "on": true,
         "impact": 0.5,
         "impact_source": "madden"
-      },
-      {
-        "name": "Jacob Monk",
-        "pos": "C",
-        "status": "OUT",
-        "note": "Monk (quadriceps) has been ruled out ahead of Sunday's game against the Buccaneers, Wes Hodkiewicz of the Packers' official site reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
-        "name": "Aaron Banks",
-        "pos": "OG",
-        "status": "OUT",
-        "note": "Banks (toe/knee) has been ruled out ahead of Sunday's game against the Buccaneers, Wes Hodkiewicz of the Packers' official site reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.4,
-        "impact_source": "manual"
-      },
-      {
-        "name": "Anthony Campbell",
-        "pos": "IDL",
-        "status": "OUT",
-        "note": "Campbell (ankle) has been ruled out ahead of Sunday's game against the Buccaneers, Wes Hodkiewicz of the Packers' official site reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
-        "name": "Edgerrin Cooper",
-        "pos": "LB",
-        "status": "OUT",
-        "note": "Cooper suffered a torn Achilles during Sunday's 17-14 win at Tampa Bay and will miss the rest of the season, Ian Rapoport of NFL Network reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.2,
-        "impact_source": "madden"
-      },
-      {
-        "name": "Chris Brooks",
-        "pos": "RB1",
-        "status": "QUESTIONABLE",
-        "note": "Brooks is questionable to return to Sunday's Week 4 matchup against Tampa Bay due to an ankle injury, Rob Demovsky of ESPN.com reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.2,
-        "impact_source": "pff"
       },
       {
         "name": "Warren Brinson",
@@ -961,9 +1007,17 @@
     ],
     "HOU": [
       {
+        "name": "Jaylin Smith",
+        "pos": "CB1",
+        "status": "IR",
+        "note": "Smith (hamstring) was placed on injured reserve by the Texans on Tuesday.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true
+      },
+      {
         "name": "Azeez Al-Shaair",
         "pos": "LB",
-        "status": "OUT",
+        "status": "QUESTIONABLE",
         "note": "Al-Shaair (groin) is listed as out for Sunday's game against Dallas.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
@@ -985,14 +1039,6 @@
         "pos": "IDL",
         "status": "QUESTIONABLE",
         "note": "Crumedy suffered a shoulder injury during Sunday's 34-30 loss to the Cowboys.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
-        "name": "Jaylin Smith",
-        "pos": "CB1",
-        "status": "QUESTIONABLE",
-        "note": "Smith (hamstring) was unable to return to Sunday's game against Dallas.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
       },
@@ -1060,7 +1106,7 @@
         "name": "Arden Key",
         "pos": "EDGE1",
         "status": "OUT",
-        "note": "Key (hamstring) has been ruled out for the Colts' matchup with Pittsburgh in Week 5, James Boyd of The Athletic reports.",
+        "note": "Colts head coach Shane Steichen said Tuesday that Key is expected to miss three to four weeks with a hamstring injury, per Jeremy Fowler of ESPN.com.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.2,
@@ -1069,7 +1115,7 @@
       {
         "name": "Keenan Allen",
         "pos": "WR2",
-        "status": "OUT",
+        "status": "QUESTIONABLE",
         "note": "Allen (groin) has been downgraded to out for Sunday's game against Washington.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
@@ -1123,17 +1169,17 @@
     ],
     "JAX": [
       {
-        "name": "Christian Braswell",
-        "pos": "CB1",
-        "status": "OUT",
-        "note": "Braswell (knee) is inactive against the Bengals on Sunday.",
+        "name": "Caleb Ransaw",
+        "pos": "S",
+        "status": "IR",
+        "note": "The Jaguars placed Ransaw (knee) on their injured reserve list Tuesday.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
       },
       {
         "name": "Montaric Brown",
         "pos": "CB1",
-        "status": "OUT",
+        "status": "QUESTIONABLE",
         "note": "Brown (hamstring) is inactive for Sunday's game against the Bengals.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
@@ -1150,6 +1196,16 @@
       }
     ],
     "KC": [
+      {
+        "name": "Josh Simmons",
+        "pos": "RT",
+        "status": "QUESTIONABLE",
+        "note": "Simmons (back) has been ruled out for Sunday's game against the Raiders.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.2,
+        "impact_source": "madden"
+      },
       {
         "name": "Tyquan Thornton",
         "pos": "WR2",
@@ -1168,16 +1224,6 @@
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.25,
-        "impact_source": "madden"
-      },
-      {
-        "name": "Josh Simmons",
-        "pos": "RT",
-        "status": "OUT",
-        "note": "Simmons (back) has been ruled out for Sunday's game against the Raiders.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.2,
         "impact_source": "madden"
       },
       {
@@ -1207,24 +1253,66 @@
     ],
     "LAC": [
       {
-        "name": "Scott Matlock",
-        "pos": "DEPTH",
+        "name": "Branson Taylor",
+        "pos": "OG",
         "status": "IR",
-        "note": "The Chargers opened Matlock's (undisclosed) 21-day return window Monday, Alex Insdorf of BoltBeat.com reports.",
+        "note": "The Chargers designated Taylor (undisclosed) for return to practice from their injured reserve list Tuesday.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.2,
-        "impact_source": "pff"
+        "on": true
+      },
+      {
+        "name": "Brenen Thompson",
+        "pos": "WR2",
+        "status": "QUESTIONABLE",
+        "note": "Thompson (quadriceps) has been ruled out for Sunday's game against the Seahawks.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true
+      },
+      {
+        "name": "Dalvin Tomlinson",
+        "pos": "IDL",
+        "status": "QUESTIONABLE",
+        "note": "Tomlinson (hamstring) has been ruled out for Sunday's game against the Seahawks.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true
       },
       {
         "name": "Derwin James Jr.",
         "pos": "S",
-        "status": "OUT",
+        "status": "QUESTIONABLE",
         "note": "James (hamstring) is considered week-to-week ahead of the team's Week 5 matchup with Denver, Alex Insdorf of BoltBeat.com reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.5,
         "impact_source": "madden"
+      },
+      {
+        "name": "Charlie Kolar",
+        "pos": "TE1",
+        "status": "QUESTIONABLE",
+        "note": "Kolar (forearm) has been ruled out for Sunday's game against the Seahawks.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.25,
+        "impact_source": "pff"
+      },
+      {
+        "name": "Kayode Awosika",
+        "pos": "OG",
+        "status": "QUESTIONABLE",
+        "note": "Awosika (leg) is inactive for Sunday's game against Seattle.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true
+      },
+      {
+        "name": "Scott Matlock",
+        "pos": "DEPTH",
+        "status": "IR",
+        "note": "The Chargers opened Matlock's (undisclosed) 21-day practice window Monday, Alex Insdorf of BoltBeat.com reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.2,
+        "impact_source": "pff"
       },
       {
         "name": "Rashawn Slater",
@@ -1247,44 +1335,10 @@
         "impact_source": "madden"
       },
       {
-        "name": "Brenen Thompson",
-        "pos": "WR2",
-        "status": "OUT",
-        "note": "Thompson (quadriceps) has been ruled out for Sunday's game against the Seahawks.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
-        "name": "Dalvin Tomlinson",
-        "pos": "IDL",
-        "status": "OUT",
-        "note": "Tomlinson (hamstring) has been ruled out for Sunday's game against the Seahawks.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
-        "name": "Charlie Kolar",
-        "pos": "TE1",
-        "status": "OUT",
-        "note": "Kolar (forearm) has been ruled out for Sunday's game against the Seahawks.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.25,
-        "impact_source": "pff"
-      },
-      {
         "name": "Trevor Penning",
         "pos": "OG",
         "status": "QUESTIONABLE",
         "note": "Penning (head) exited Sunday's contest against Seattle in the fourth quarter.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
-        "name": "Kayode Awosika",
-        "pos": "OG",
-        "status": "OUT",
-        "note": "Awosika (leg) is inactive for Sunday's game against Seattle.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
       },
@@ -1329,12 +1383,22 @@
       {
         "name": "Jaylen Watson",
         "pos": "CB1",
-        "status": "OUT",
+        "status": "QUESTIONABLE",
         "note": "The Rams are hopeful that Watson (shoulder) will return to practice for Week 5 preparation, Adam Grosbard of The Orange County Register reported Monday.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.2,
         "impact_source": "madden"
+      },
+      {
+        "name": "Colby Parkinson",
+        "pos": "TE1",
+        "status": "QUESTIONABLE",
+        "note": "Parkinson (shoulder/knee) is inactive for Sunday's Week 4 matchup against the Eagles.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.25,
+        "impact_source": "pff"
       },
       {
         "name": "Konata Mumpfield",
@@ -1343,16 +1407,6 @@
         "note": "Mumpfield suffered a rotator cuff contusion during Sunday's 24-20 win over the Eagles, Adam Grosbard of The Orange County Register reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
-      },
-      {
-        "name": "Colby Parkinson",
-        "pos": "TE1",
-        "status": "OUT",
-        "note": "Parkinson (shoulder/knee) is inactive for Sunday's Week 4 matchup against the Eagles.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.25,
-        "impact_source": "pff"
       },
       {
         "name": "Terrance Ferguson",
@@ -1385,7 +1439,7 @@
       {
         "name": "Jackson Powers-Johnson",
         "pos": "OG",
-        "status": "OUT",
+        "status": "QUESTIONABLE",
         "note": "Powers-Johnson (groin) is inactive for Sunday's game against the Chiefs.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
@@ -1413,6 +1467,24 @@
     ],
     "MIA": [
       {
+        "name": "Caleb Douglas",
+        "pos": "WR2",
+        "status": "QUESTIONABLE",
+        "note": "Head coach Jeff Hafley said Monday that he's viewing Douglas (ankle) as day-to-day heading into the Dolphins' Week 5 game against the Bengals, Barry Jackson of the Miami Herald reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.2,
+        "impact_source": "madden"
+      },
+      {
+        "name": "Robert Beal Jr.",
+        "pos": "EDGE1",
+        "status": "QUESTIONABLE",
+        "note": "Beal (hamstring) has been ruled out ahead of Sunday's game against the Vikings, Marcel Louis-Jacques of ESPN.com reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true
+      },
+      {
         "name": "Reese Taylor",
         "pos": "CB1",
         "status": "OUT",
@@ -1429,24 +1501,6 @@
         "on": true,
         "impact": 0.2,
         "impact_source": "pff"
-      },
-      {
-        "name": "Caleb Douglas",
-        "pos": "WR2",
-        "status": "OUT",
-        "note": "Head coach Jeff Hafley said Monday that he's viewing Douglas (ankle) as day-to-day heading into the Dolphins' Week 5 game against the Bengals, Barry Jackson of the Miami Herald reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.2,
-        "impact_source": "madden"
-      },
-      {
-        "name": "Robert Beal Jr.",
-        "pos": "EDGE1",
-        "status": "OUT",
-        "note": "Beal (hamstring) has been ruled out ahead of Sunday's game against the Vikings, Marcel Louis-Jacques of ESPN.com reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
       },
       {
         "name": "Jackson Woodard",
@@ -1503,19 +1557,19 @@
     ],
     "MIN": [
       {
-        "name": "Christian Darrisaw",
-        "pos": "RT",
-        "status": "QUESTIONABLE",
-        "note": "Darrisaw is in concussion protocol following Sunday's game versus the Dolphins, Dane Mizutani of the St. Paul Pioneer Press reports.",
+        "name": "Donovan Jackson",
+        "pos": "OG",
+        "status": "IR",
+        "note": "Jackson (knee) was placed on injured reserve by the Vikings on Tuesday.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
-        "impact": 0.25,
+        "impact": 0.2,
         "impact_source": "madden"
       },
       {
         "name": "Brett Thorson",
         "pos": "DEPTH",
-        "status": "OUT",
+        "status": "QUESTIONABLE",
         "note": "Thorson (hamstring) has been ruled out ahead of Sunday's game against the Dolphins.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
@@ -1523,7 +1577,7 @@
       {
         "name": "Justin Jefferson",
         "pos": "WR1",
-        "status": "OUT",
+        "status": "QUESTIONABLE",
         "note": "Jefferson (ankle) has been already been ruled out for Sunday's game against the Dolphins, but the Vikings are hopeful that the superstar wide receiver will return for Week 5 against the Saints, Jeremy Fowler of ESPN reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
@@ -1533,10 +1587,20 @@
       {
         "name": "Charles Demmings",
         "pos": "CB1",
-        "status": "OUT",
+        "status": "QUESTIONABLE",
         "note": "Demmings (hamstring) has been ruled out ahead of Sunday's game against the Dolphins.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
+      },
+      {
+        "name": "Christian Darrisaw",
+        "pos": "RT",
+        "status": "QUESTIONABLE",
+        "note": "Darrisaw is in concussion protocol following Sunday's game versus the Dolphins, Dane Mizutani of the St. Paul Pioneer Press reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.25,
+        "impact_source": "madden"
       },
       {
         "name": "Josh Oliver",
@@ -1571,7 +1635,7 @@
       {
         "name": "Christian Gonzalez",
         "pos": "CB1",
-        "status": "OUT",
+        "status": "QUESTIONABLE",
         "note": "Gonzalez (shoulder) has been ruled out for Sunday's game against the Bills, Mike Reiss of ESPN.com reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
@@ -1581,7 +1645,7 @@
       {
         "name": "Christian Barmore",
         "pos": "IDL",
-        "status": "OUT",
+        "status": "QUESTIONABLE",
         "note": "Barmore (shoulder) has been ruled out for Sunday's game against the Bills, Mike Reiss of ESPN.com reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
@@ -1591,7 +1655,7 @@
       {
         "name": "Channing Canada",
         "pos": "CB1",
-        "status": "OUT",
+        "status": "QUESTIONABLE",
         "note": "Canada (hamstring) has been ruled out for Sunday's matchup against Buffalo.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
@@ -1618,9 +1682,7 @@
         "status": "IR",
         "note": "The Patriots placed Van Roten (thigh) on injured reserve Tuesday.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.2,
-        "impact_source": "pff"
+        "on": true
       },
       {
         "name": "A.J. Brown",
@@ -1669,17 +1731,9 @@
     ],
     "NO": [
       {
-        "name": "Noah Fant",
-        "pos": "TE1",
-        "status": "OUT",
-        "note": "Fant (abdomen) is listed as inactive for Monday's game against the Falcons.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
         "name": "Kaden Elliss",
         "pos": "LB",
-        "status": "OUT",
+        "status": "QUESTIONABLE",
         "note": "Elliss (calf) has been ruled out for Monday's game against the Falcons, Matthew Paras of The New Orleans Times-Picayune reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
@@ -1689,7 +1743,7 @@
       {
         "name": "Carl Granderson",
         "pos": "EDGE1",
-        "status": "OUT",
+        "status": "QUESTIONABLE",
         "note": "Granderson (ankle) has been ruled out for Monday's game against Atlanta, Matthew Paras of The New Orleans Times-Picayune reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
@@ -1699,12 +1753,20 @@
       {
         "name": "Anfernee Jennings",
         "pos": "LB",
-        "status": "OUT",
+        "status": "QUESTIONABLE",
         "note": "Jennings (knee) won't play Monday against the Falcons, Matthew Paras of The New Orleans Times-Picayune reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.2,
         "impact_source": "madden"
+      },
+      {
+        "name": "Noah Fant",
+        "pos": "TE1",
+        "status": "QUESTIONABLE",
+        "note": "Fant (abdomen) is listed as inactive for Monday's game against the Falcons.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true
       },
       {
         "name": "Jordyn Tyson",
@@ -1767,8 +1829,8 @@
       {
         "name": "Braxton Berrios",
         "pos": "WR2",
-        "status": "IR",
-        "note": "Giants head coach John Harbaugh confirmed Berrios is dealing with a foot/ankle injury, but a decision has yet to be made regarding whether the wideout will be placed on injured reserve, Paul Schwartz of the New York Post reports.",
+        "status": "OUT",
+        "note": "Berrios announced Tuesday that he will undergo foot surgery and be out for the rest of the 2026 season, Ryan Dunleavy of the New York Post reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
       },
@@ -1823,34 +1885,16 @@
       {
         "name": "Braiden McGregor",
         "pos": "EDGE1",
-        "status": "OUT",
-        "note": "McGregor (pectoral) suffered a season-ending injury during Sunday's loss to the Bears, Adam Schefter of ESPN reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
-        "name": "Jarvis Brownlee Jr.",
-        "pos": "CB1",
-        "status": "QUESTIONABLE",
-        "note": "Brownlee is in concussion protocol as Week 5 approaches, Antwan V. Staley of the New York Daily News reports.",
+        "status": "IR",
+        "note": "ir",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
       },
       {
         "name": "Mason Taylor",
         "pos": "TE1",
-        "status": "OUT",
-        "note": "Taylor (thumb) has been ruled out for Sunday's game against the Bears, Zack Rosenblatt of The Athletic reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.2,
-        "impact_source": "madden"
-      },
-      {
-        "name": "Dylan Parham",
-        "pos": "OG",
-        "status": "OUT",
-        "note": "Parham (knee) has been ruled out for Sunday's game against the Bears, Zack Rosenblatt of The Athletic reports.",
+        "status": "DOUBTFUL",
+        "note": "doubtful",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.2,
@@ -1859,7 +1903,7 @@
       {
         "name": "Kiko Mauigoa",
         "pos": "LB",
-        "status": "OUT",
+        "status": "QUESTIONABLE",
         "note": "Mauigoa (quadriceps) has been ruled out for Sunday's game against the Bears, Zack Rosenblatt of The Athletic reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
@@ -1867,8 +1911,18 @@
       {
         "name": "Adonai Mitchell",
         "pos": "WR2",
-        "status": "OUT",
-        "note": "Mitchell (finger) is out for Sunday's game against the Bears, Zack Rosenblatt reports.",
+        "status": "DOUBTFUL",
+        "note": "doubtful",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.2,
+        "impact_source": "madden"
+      },
+      {
+        "name": "Dylan Parham",
+        "pos": "OG",
+        "status": "QUESTIONABLE",
+        "note": "Parham (knee) has been ruled out for Sunday's game against the Bears, Zack Rosenblatt of The Athletic reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.2,
@@ -1877,22 +1931,28 @@
       {
         "name": "Kingsley Enagbare",
         "pos": "LB",
-        "status": "OUT",
+        "status": "QUESTIONABLE",
         "note": "Enagbare (knee) is inactive for Sunday's game against the Bears.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.2,
-        "impact_source": "pff"
+        "on": true
       },
       {
         "name": "Breece Hall",
         "pos": "RB1",
-        "status": "OUT",
-        "note": "Hall (quadriceps) is out for Sunday's game at Chicago, according to Zack Rosenblatt of The Athletic.",
+        "status": "DOUBTFUL",
+        "note": "doubtful",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.25,
         "impact_source": "madden"
+      },
+      {
+        "name": "Jarvis Brownlee Jr.",
+        "pos": "CB1",
+        "status": "QUESTIONABLE",
+        "note": "Brownlee is in concussion protocol as Week 5 approaches, Antwan V. Staley of the New York Daily News reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true
       },
       {
         "name": "Arian Smith",
@@ -1936,10 +1996,76 @@
         "status": "IR",
         "note": "The Jets placed Patrick (groin) on injured reserve Saturday, Zack Rosenblatt of The Athletic reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "on": true,
+        "impact": 0.2,
+        "impact_source": "pff"
       }
     ],
     "PHI": [
+      {
+        "name": "Tank Bigsby",
+        "pos": "RB1",
+        "status": "IR",
+        "note": "The Eagles placed Bigsby (abdomen) on injured reserve Tuesday, Zach Berman of The Athletic reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.2,
+        "impact_source": "madden"
+      },
+      {
+        "name": "DeVonta Smith",
+        "pos": "WR2",
+        "status": "QUESTIONABLE",
+        "note": "Smith (hamstring), who has been ruled out for Sunday's game against the Rams, is viewed \"at very best, questionable\" for the Eagles' Week 5 game versus the Jaguars in London, Mike Garafolo of NFL Network reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.25,
+        "impact_source": "madden"
+      },
+      {
+        "name": "Fred Johnson",
+        "pos": "RT",
+        "status": "QUESTIONABLE",
+        "note": "Johnson (knee) has been ruled out for Sunday's game against the Rams.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true
+      },
+      {
+        "name": "Marcus Epps",
+        "pos": "S",
+        "status": "QUESTIONABLE",
+        "note": "Epps (groin) is listed as out for Sunday's game against the Rams.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true
+      },
+      {
+        "name": "Dallas Goedert",
+        "pos": "TE1",
+        "status": "DOUBTFUL",
+        "note": "doubtful",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.25,
+        "impact_source": "madden"
+      },
+      {
+        "name": "Zack Baun",
+        "pos": "LB",
+        "status": "QUESTIONABLE",
+        "note": "Baun (concussion) won't play in Sunday's game against the Rams.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.5,
+        "impact_source": "madden"
+      },
+      {
+        "name": "Hollywood Brown",
+        "pos": "WR2",
+        "status": "QUESTIONABLE",
+        "note": "Brown (ankle) is listed as out ahead of Sunday's game against the Rams.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true
+      },
       {
         "name": "Cam Jurgens",
         "pos": "C",
@@ -1949,16 +2075,6 @@
         "on": true,
         "impact": 0.2,
         "impact_source": "pff"
-      },
-      {
-        "name": "Saquon Barkley",
-        "pos": "RB1",
-        "status": "QUESTIONABLE",
-        "note": "Barkley (hamstring) is considered week-to-week, though the Eagles don't view the injury as long term, Ian Rapoport of NFL Network reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.5,
-        "impact_source": "madden"
       },
       {
         "name": "Jonathan Greenard",
@@ -1971,78 +2087,14 @@
         "impact_source": "madden"
       },
       {
-        "name": "Tank Bigsby",
+        "name": "Saquon Barkley",
         "pos": "RB1",
-        "status": "IR",
-        "note": "Bigsby will undergo core muscle surgery and be placed on injured reserve, Ian Rapoport of NFL Network reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.2,
-        "impact_source": "madden"
-      },
-      {
-        "name": "DeVonta Smith",
-        "pos": "WR2",
-        "status": "OUT",
-        "note": "Smith (hamstring), who has been ruled out for Sunday's game against the Rams, is viewed \"at very best, questionable\" for the Eagles' Week 5 game versus the Jaguars in London, Mike Garafolo of NFL Network reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.25,
-        "impact_source": "madden"
-      },
-      {
-        "name": "Fred Johnson",
-        "pos": "RT",
-        "status": "OUT",
-        "note": "Johnson (knee) has been ruled out for Sunday's game against the Rams.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
-        "name": "Lane Johnson",
-        "pos": "RT",
-        "status": "OUT",
-        "note": "Johnson was inactive for Sunday's 24-20 loss to the Rams due to a personal issue, Zach Berman of The Athletic reports.",
+        "status": "QUESTIONABLE",
+        "note": "Eagles head coach Nick Sirianni didn't provide an update on Barkley's status Monday when asked about the hamstring injury the running back sustained during Sunday's loss to the Rams, Zach Berman of The Athletic reports. \"We'll have more answers Wednesday probably with that stuff,",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.5,
         "impact_source": "madden"
-      },
-      {
-        "name": "Marcus Epps",
-        "pos": "S",
-        "status": "OUT",
-        "note": "Epps (groin) is listed as out for Sunday's game against the Rams.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
-        "name": "Dallas Goedert",
-        "pos": "TE1",
-        "status": "OUT",
-        "note": "Goedert (knee) has been ruled out for Sunday's game against the Rams.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.25,
-        "impact_source": "madden"
-      },
-      {
-        "name": "Zack Baun",
-        "pos": "LB",
-        "status": "OUT",
-        "note": "Baun (concussion) won't play in Sunday's game against the Rams.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.5,
-        "impact_source": "madden"
-      },
-      {
-        "name": "Hollywood Brown",
-        "pos": "WR2",
-        "status": "OUT",
-        "note": "Brown (ankle) is listed as out ahead of Sunday's game against the Rams.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
       },
       {
         "name": "Quinyon Mitchell",
@@ -2075,6 +2127,17 @@
     ],
     "PIT": [
       {
+        "name": "Rico Dowdle",
+        "pos": "RB1",
+        "status": "QUESTIONABLE",
+        "note": "Head coach Mike McCarthy said that Dowdle (toe) had a positive workout Friday and is \"making progress\" in his recovery, but the Steelers aren't yet certain if he'll be available to play Week 5 versus the Colts, Nick Farabaugh of PennLive.com reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "injury": "Toe",
+        "impact": 0.25,
+        "impact_source": "madden"
+      },
+      {
         "name": "Derrick Harmon",
         "pos": "IDL",
         "status": "IR",
@@ -2082,17 +2145,6 @@
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.2,
-        "impact_source": "madden"
-      },
-      {
-        "name": "Rico Dowdle",
-        "pos": "RB1",
-        "status": "OUT",
-        "note": "Head coach Mike McCarthy said that Dowdle (toe) had a positive workout Friday and is \"making progress\" in his recovery, but the Steelers aren't yet certain if he'll be available to play Week 5 versus the Colts, Nick Farabaugh of PennLive.com reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "injury": "Toe",
-        "impact": 0.25,
         "impact_source": "madden"
       },
       {
@@ -2128,6 +2180,24 @@
     ],
     "SEA": [
       {
+        "name": "Chazz Surratt",
+        "pos": "LB",
+        "status": "QUESTIONABLE",
+        "note": "Surratt (calf) is inactive for Sunday's game against the Chargers, John Boyle of the Seahawks' official site reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true
+      },
+      {
+        "name": "Ty Okada",
+        "pos": "S",
+        "status": "QUESTIONABLE",
+        "note": "Okada (hamstring) is inactive against the Chargers on Sunday, John Boyle of the Seahawks' official site reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.25,
+        "impact_source": "pff"
+      },
+      {
         "name": "Leonard Williams",
         "pos": "IDL",
         "status": "QUESTIONABLE",
@@ -2136,24 +2206,6 @@
         "on": true,
         "impact": 0.5,
         "impact_source": "madden"
-      },
-      {
-        "name": "Ty Okada",
-        "pos": "S",
-        "status": "OUT",
-        "note": "Okada (hamstring) is inactive against the Chargers on Sunday, John Boyle of the Seahawks' official site reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.25,
-        "impact_source": "pff"
-      },
-      {
-        "name": "Chazz Surratt",
-        "pos": "LB",
-        "status": "OUT",
-        "note": "Surratt (calf) is inactive for Sunday's game against the Chargers, John Boyle of the Seahawks' official site reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
       },
       {
         "name": "Zach Charbonnet",
@@ -2188,16 +2240,16 @@
       {
         "name": "James Thompson Jr.",
         "pos": "IDL",
-        "status": "OUT",
-        "note": "Coach Kyle Shanahan said Monday that Thompson (ankle) is not expected back for Week 5, Cam Inman of The San Jose Mercury News reports.",
+        "status": "DOUBTFUL",
+        "note": "doubtful",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
       },
       {
         "name": "Nick Bosa",
         "pos": "EDGE1",
-        "status": "OUT",
-        "note": "Bosa (calf) is unlikely to be ready for the 49ers' Week 5 matchup against the Seahawks, Cam Inman of The San Jose Mercury News reports.",
+        "status": "DOUBTFUL",
+        "note": "doubtful",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.25,
@@ -2290,18 +2342,34 @@
     ],
     "TB": [
       {
-        "name": "SirVocea Dennis",
-        "pos": "LB",
+        "name": "Benjamin Morrison",
+        "pos": "CB1",
         "status": "QUESTIONABLE",
-        "note": "Dennis (ankle) underwent an MRI after the Buccaneers' Week 4 loss to the Packers, Jenna Laine of ESPN.com reported Monday.",
+        "note": "Morrison (quadriceps) did not participate in practice Tuesday.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
       },
       {
-        "name": "Josiah Trotter",
+        "name": "Ko Kieft",
+        "pos": "TE1",
+        "status": "QUESTIONABLE",
+        "note": "Kieft (elbow) was a limited participant in practice Tuesday.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true
+      },
+      {
+        "name": "Chase McLaughlin",
+        "pos": "K",
+        "status": "QUESTIONABLE",
+        "note": "McLaughlin didn't practice Tuesday due to a right groin/hip injury.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true
+      },
+      {
+        "name": "SirVocea Dennis",
         "pos": "LB",
         "status": "QUESTIONABLE",
-        "note": "Trotter (knee) was listed as a limited participant on the Buccaneers' estimated injury report Monday, Brianna Dix of the team's official site reports.",
+        "note": "Dennis (ankle) underwent an MRI after the Buccaneers' Week 4 loss to the Packers, Jenna Laine of ESPN.com reported Monday.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
       },
@@ -2314,22 +2382,6 @@
         "on": true,
         "impact": 0.5,
         "impact_source": "madden"
-      },
-      {
-        "name": "Benjamin Morrison",
-        "pos": "CB1",
-        "status": "OUT",
-        "note": "Morrison (quadriceps) has been ruled out for Sunday's game against the Packers, Scott Smith of the Buccaneers' official site reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
-        "name": "Ko Kieft",
-        "pos": "TE1",
-        "status": "OUT",
-        "note": "Kieft (elbow) has been ruled out for Sunday's game against the Packers, Scott Smith of the Buccaneers' official site reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
       },
       {
         "name": "Baker Mayfield",
@@ -2361,7 +2413,7 @@
         "name": "David Sills V",
         "pos": "WR2",
         "status": "IR",
-        "note": "Sills (undisclosed) was placed on injured reserve by the Buccaneers on Sunday with a designation to return, Scott Smith of the team's official website reports. Explicit impact 0 — unproven backup; no pos_base fallthrough.",
+        "note": "Sills (undisclosed) was placed on injured reserve by the Buccaneers on Sunday with a designation to return, Scott Smith of the team's official website reports. Explicit impact 0 \u2014 unproven backup; no pos_base fallthrough.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0,
@@ -2422,8 +2474,8 @@
       {
         "name": "Jaylin Lane",
         "pos": "WR2",
-        "status": "OUT",
-        "note": "Head coach Dan Quinn confirmed Monday that Lane (ankle) will miss the remainder of the season.",
+        "status": "IR",
+        "note": "The Commanders placed Lane (ankle) on injured reserve Tuesday.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.2,
@@ -2432,7 +2484,7 @@
       {
         "name": "Rachaad White",
         "pos": "RB1",
-        "status": "OUT",
+        "status": "QUESTIONABLE",
         "note": "Coach Dan Quinn said Monday that White (shoulder) \"should\" practice this week, Tashan Reed of The Washington Post reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
@@ -2442,7 +2494,7 @@
       {
         "name": "Terry McLaurin",
         "pos": "WR2",
-        "status": "OUT",
+        "status": "QUESTIONABLE",
         "note": "Coach Dan Quinn said Monday that the Commanders continue to assess what McLaurin (hamstring) may be able to do at Wednesday's practice, John Keim of ESPN.com reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
@@ -2450,29 +2502,9 @@
         "impact_source": "madden"
       },
       {
-        "name": "Jayden Daniels",
-        "pos": "QB1",
-        "status": "OUT",
-        "note": "Coach Dan Quinn said Monday that the Commanders are aiming for Daniels (left elbow) to have a full practice week and then start Sunday's game against the Giants, Zach Selby of the Commanders' official site reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 1.11,
-        "impact_source": "manual"
-      },
-      {
-        "name": "Marcus Mariota",
-        "pos": "QB1",
-        "status": "DOUBTFUL",
-        "note": "Coach Dan Quinn confirmed Monday that Mariota has been diagnosed with a sprained MCL in his right knee, and the quarterback's recovery timeline is to be determined, Ben Standig of The Team 980 Washington D.C. reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 1.49,
-        "impact_source": "pff"
-      },
-      {
         "name": "Sam Cosmi",
         "pos": "OG",
-        "status": "OUT",
+        "status": "QUESTIONABLE",
         "note": "inactive",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
@@ -2482,12 +2514,32 @@
       {
         "name": "Nick Cross",
         "pos": "S",
-        "status": "OUT",
+        "status": "QUESTIONABLE",
         "note": "inactive",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.2,
         "impact_source": "madden"
+      },
+      {
+        "name": "Jayden Daniels",
+        "pos": "QB1",
+        "status": "QUESTIONABLE",
+        "note": "Coach Dan Quinn said Monday that the Commanders are aiming for Daniels (left elbow) to have a full practice week and then start Sunday's game against the Giants, Zach Selby of the Commanders' official site reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 1.11,
+        "impact_source": "manual"
+      },
+      {
+        "name": "Marcus Mariota",
+        "pos": "DEPTH",
+        "status": "DOUBTFUL",
+        "note": "Mariota has been diagnosed with an MCL sprain in his right knee after he was forced out of Sunday's loss to the Colts in London, Nicki Jhabvala of The Athletic reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.25,
+        "impact_source": "pff"
       },
       {
         "name": "Charles Omenihu",
@@ -2547,5 +2599,5 @@
       }
     ]
   },
-  "stamp": "2026-10-06a"
+  "stamp": "2026-10-07a"
 }
