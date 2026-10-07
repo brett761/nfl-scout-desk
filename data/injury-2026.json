@@ -1,14 +1,15 @@
 {
-  "pulled": "2026-10-07a",
-  "pulled_et": "2026-10-07 10:13 AM ET (America/New_York)",
-  "phase": "WORKING-WED",
+  "pulled": "2026-10-07b",
+  "pulled_et": "2026-10-07 4:22 PM ET (America/New_York)",
+  "phase": "FINAL",
   "sources": [
-    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+    "https://www.dallascowboys.com/team/injury-report/",
     "https://www.nfl.com/injuries/",
-    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?seasontype=2&week=5&year=2026"
+    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872980"
   ],
-  "note": "WORKING-WED Wednesday 10am refresh after Tuesday WORKING (2026-10-06b). Week 4 fully FINAL. Week 5 board: TNF TB@DAL Thu, PHI vs JAX London Sun AM, 12 more Sunday, BAL@ATL SNF, BUF@LAR MNF; byes KC/CAR. No official NFL practice sheet yet (TNF clubs Wed ~4pm ET) \u2014 ESPN working list only, no rumor moves. Drop gameday inactive / ruled-out-for-remainder / coach's-decision noise; keep multi-week OUT + IR/PUP/NFI. Drop Aaron Donald retired ESPN quirk. Preserve manuals. Tier caps QB<=1.5 / All-Pro<=0.5 / other<=0.25 on auto; Madden-first else PFF; floor 0.2x status; Cap team 6.0. Desk manual 2026-10-06b: TB David Sills V (WR2, IR) impact 0, unproven backup. Standing manuals in this file win on the next ESPN reseed.",
-  "espn_timestamp": "2026-10-07T14:13:16Z",
+  "note": "FINAL 2026-10-07b Week 5 TNF TB@DAL after official Wed ~4pm ET Game Status (dallascowboys.com dual table / NFL.com). TB: Mayfield OUT (QB 1.5, Jalon Daniels 2nd start), Winfield OUT 0.5, Morrison OUT (manual 0.3, secondary cluster), Dennis OUT; Kieft/McLaughlin/Bain/Trotter/Nelson cleared off number; McMillan/Hayes/Kamara IR, Sills IR manual 0. DAL: Durant/Overshown/Shelton OUT; Tyler Smith Q but full Wed (OFF number; ESPN IR tag was wrong); Mingo Q illness (manual 0.15 soft on); Lamb/Porter/Hooker/Clark/Goodson/Houston cleared; Bullard/Thompson/Locke/Davis IR. TB/DAL rows are TNF-protected: later ESPN reseeds must not soften them. Sunday/MNF clubs unchanged from 2026-10-07a WORKING-WED (official sheet Friday). Madden-first else PFF; floor 0.2x status; Probable/cleared OFF; Q only with expected-impact judgment. Doubtful 1.0 from Week 5. Tier caps QB<=1.5 / All-Pro<=0.5 / other<=0.25 on auto; Cap team 6.0. Standing manuals preserved (Sills 0).",
+  "espn_timestamp": "2026-10-07T20:22:00Z",
   "teams": {
     "ARI": [
       {
@@ -279,7 +280,7 @@
         "name": "Dorian Strong",
         "pos": "DEPTH",
         "status": "NFI",
-        "note": "FINAL TNF. Neck \u2014 reserve/NFI. ESPN summary Out (NFI-R). Depth CB; on for completeness.",
+        "note": "FINAL TNF. Neck — reserve/NFI. ESPN summary Out (NFI-R). Depth CB; on for completeness.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872932",
         "on": true
       }
@@ -668,7 +669,7 @@
         "name": "Kendrick Green",
         "pos": "OG",
         "status": "IR",
-        "note": "ir Explicit impact 0 \u2014 depth IR; no pos_base fallthrough.",
+        "note": "ir Explicit impact 0 — depth IR; no pos_base fallthrough.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0,
@@ -679,40 +680,44 @@
       {
         "name": "Drew Shelton",
         "pos": "RT",
-        "status": "DOUBTFUL",
-        "note": "Head coach Brian Schottenheimer told reporters Tuesday that Shelton is considered week-to-week due to a hamstring injury, Joe Hoyt of The Dallas Morning News reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "status": "OUT",
+        "note": "Official Wed FINAL Out (DNP Mon-Wed). Auto tier.",
+        "source": "https://www.dallascowboys.com/team/injury-report/",
+        "on": true,
+        "injury": "Hamstring"
       },
       {
         "name": "DeMarvion Overshown",
         "pos": "LB",
-        "status": "DOUBTFUL",
-        "note": "Cowboys head coach Brian Schottenheimer said Tuesday that Overshown (hamstring) is a \"long shot\" to play Thursday night against Tampa Bay, Joe Hoyt of The Dallas Morning News reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "status": "OUT",
+        "note": "Official Wed FINAL Out (DNP Mon-Wed). PFF 0.2.",
+        "source": "https://www.dallascowboys.com/team/injury-report/",
         "on": true,
         "impact": 0.2,
-        "impact_source": "pff"
+        "impact_source": "pff",
+        "injury": "Hamstring"
       },
       {
         "name": "Cobie Durant",
         "pos": "CB1",
-        "status": "DOUBTFUL",
-        "note": "doubtful",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "status": "OUT",
+        "note": "Official Wed FINAL Out (DNP Mon-Wed). Madden 0.2.",
+        "source": "https://www.dallascowboys.com/team/injury-report/",
         "on": true,
         "impact": 0.2,
-        "impact_source": "madden"
+        "impact_source": "madden",
+        "injury": "Hamstring"
       },
       {
         "name": "Tyler Smith",
         "pos": "OG",
-        "status": "IR",
-        "note": "Smith (thumb) was a limited participant in Monday's estimated practice, Jon Machota of The Athletic reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
+        "status": "QUESTIONABLE",
+        "note": "Official Wed FINAL Questionable but LP/LP/FP (full Wed). ESPN had him on IR (wrong). Expected to play -> OFF number.",
+        "source": "https://www.dallascowboys.com/team/injury-report/",
+        "on": false,
         "impact": 0.5,
-        "impact_source": "madden"
+        "impact_source": "madden",
+        "injury": "Thumb"
       },
       {
         "name": "Jonathan Bullard",
@@ -747,6 +752,17 @@
         "note": "The Cowboys placed Davis (hip) on injured reserve Saturday, Adam Schefter of ESPN reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
+      },
+      {
+        "name": "Jonathan Mingo",
+        "pos": "WR2",
+        "status": "QUESTIONABLE",
+        "injury": "Illness",
+        "note": "Official Wed FINAL Questionable, illness (DNP Wed, added Wed). WR3 behind Lamb/Pickens. Q mult on; manual 0.15 (depth WR).",
+        "source": "https://www.dallascowboys.com/team/injury-report/",
+        "on": true,
+        "impact": 0.15,
+        "impact_source": "manual"
       }
     ],
     "DEN": [
@@ -2171,7 +2187,7 @@
         "name": "Gennings Dunker",
         "pos": "OG",
         "status": "IR",
-        "note": "The Steelers placed Dunker (knee) on injured reserve Saturday, Tom Pelissero of Netflix reports. Explicit impact 0 \u2014 depth IR; no pos_base fallthrough.",
+        "note": "The Steelers placed Dunker (knee) on injured reserve Saturday, Tom Pelissero of Netflix reports. Explicit impact 0 — depth IR; no pos_base fallthrough.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0,
@@ -2344,54 +2360,44 @@
       {
         "name": "Benjamin Morrison",
         "pos": "CB1",
-        "status": "QUESTIONABLE",
-        "note": "Morrison (quadriceps) did not participate in practice Tuesday.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
-        "name": "Ko Kieft",
-        "pos": "TE1",
-        "status": "QUESTIONABLE",
-        "note": "Kieft (elbow) was a limited participant in practice Tuesday.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
-        "name": "Chase McLaughlin",
-        "pos": "K",
-        "status": "QUESTIONABLE",
-        "note": "McLaughlin didn't practice Tuesday due to a right groin/hip injury.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "status": "OUT",
+        "note": "Official Wed FINAL Out (DNP Mon-Wed). Starting outside CB. Manual 0.3 (auto 0.25 + secondary cluster with Winfield Out / Hayes IR vs Lamb-Pickens).",
+        "source": "https://www.dallascowboys.com/team/injury-report/",
+        "on": true,
+        "injury": "Undisclosed (quadriceps)",
+        "impact": 0.3,
+        "impact_source": "manual"
       },
       {
         "name": "SirVocea Dennis",
         "pos": "LB",
-        "status": "QUESTIONABLE",
-        "note": "Dennis (ankle) underwent an MRI after the Buccaneers' Week 4 loss to the Packers, Jenna Laine of ESPN.com reported Monday.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "status": "OUT",
+        "note": "Official Wed FINAL Out (DNP Mon-Wed). Starting ILB; Trotter (FP Wed) cleared behind him. Auto tier.",
+        "source": "https://www.dallascowboys.com/team/injury-report/",
+        "on": true,
+        "injury": "Ankle/Foot"
       },
       {
         "name": "Antoine Winfield Jr.",
         "pos": "S",
         "status": "OUT",
-        "note": "Buccaneers head coach Todd Bowles said that Winfield was diagnosed Monday with a \"slight rib fracture\" and will miss 2-to-4 weeks, Jenna Laine of ESPN.com reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "note": "Official Wed FINAL Out (DNP Mon-Wed); slight rib fracture, 2-4 weeks. All-Pro tier 0.5.",
+        "source": "https://www.dallascowboys.com/team/injury-report/",
         "on": true,
         "impact": 0.5,
-        "impact_source": "madden"
+        "impact_source": "madden",
+        "injury": "Rib"
       },
       {
         "name": "Baker Mayfield",
         "pos": "QB1",
         "status": "OUT",
-        "note": "Mayfield's dislocated right thumb could keep him out anywhere from 3-to-6 weeks, depending on how quickly he's able to resume gripping the football without issue, Adam Schefter of ESPN reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "note": "Official Wed FINAL Out (DNP Mon-Wed). Rookie Jalon Daniels makes 2nd start. QB tier 1.5 kept: TB 2026 results/PFF YTD already carry the Week 4 Daniels start.",
+        "source": "https://www.dallascowboys.com/team/injury-report/",
         "on": true,
         "impact": 1.5,
-        "impact_source": "madden"
+        "impact_source": "madden",
+        "injury": "Right Thumb"
       },
       {
         "name": "Jalen McMillan",
@@ -2413,7 +2419,7 @@
         "name": "David Sills V",
         "pos": "WR2",
         "status": "IR",
-        "note": "Sills (undisclosed) was placed on injured reserve by the Buccaneers on Sunday with a designation to return, Scott Smith of the team's official website reports. Explicit impact 0 \u2014 unproven backup; no pos_base fallthrough.",
+        "note": "Sills (undisclosed) was placed on injured reserve by the Buccaneers on Sunday with a designation to return, Scott Smith of the team's official website reports. Explicit impact 0 — unproven backup; no pos_base fallthrough.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0,
@@ -2599,5 +2605,5 @@
       }
     ]
   },
-  "stamp": "2026-10-07a"
+  "stamp": "2026-10-07b"
 }

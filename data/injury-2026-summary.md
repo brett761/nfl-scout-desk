@@ -1,4 +1,23 @@
-# 2026 NFL injuries — Scout desk Week 5 WORKING-WED
+# 2026 NFL injuries — Scout desk Week 5 FINAL (TNF TB@DAL)
+
+Pulled 2026-10-07 4:22 PM ET (America/New_York). Stamp `injury_pulled=2026-10-07b` **FINAL** for TNF TB@DAL from the official Wed ~4pm ET Game Status (dallascowboys.com dual table, NFL.com). Every other club is unchanged from 2026-10-07a WORKING-WED below; the Sunday/MNF official sheet comes Friday.
+
+## TNF TB@DAL official FINAL
+
+- **TB Baker Mayfield** (QB1): OUT, impact 1.5 (QB tier; Jalon Daniels 2nd start)
+- **TB Antoine Winfield Jr.** (S): OUT, impact 0.5
+- **TB Benjamin Morrison** (CB1): Q → OUT, manual 0.3 (secondary cluster)
+- **TB SirVocea Dennis** (LB): Q → OUT, auto 0.25
+- **TB Ko Kieft / Chase McLaughlin**: Q → cleared, off the number
+- **DAL Drew Shelton** (RT): DOUBTFUL → OUT, auto 0.25
+- **DAL DeMarvion Overshown** (LB) / **Cobie Durant** (CB1): DOUBTFUL → OUT, 0.2 each (same 1.0 pricing)
+- **DAL Tyler Smith** (OG): ESPN IR (wrong) → official QUESTIONABLE, full Wed, off the number
+- **DAL Jonathan Mingo** (WR2): new QUESTIONABLE (illness), manual 0.15 soft on
+- Team terms: TB −3.09 → −3.30; DAL −2.15 → −1.70. B$ DAL −9.27 → −9.93 (rounds −10).
+
+---
+
+## Earlier: Week 5 WORKING-WED
 
 Pulled 2026-10-07 10:13 AM ET (America/New_York). Stamp `injury_pulled=2026-10-07a` **WORKING-WED** Wednesday ESPN refresh after Tuesday WORKING (prior seed 2026-10-06b). Week 4 fully FINAL; Week 5 board (byes KC/CAR), official practice sheet Wed ~4pm ET for TNF TB@DAL. Aaron Donald dropped. No rumor designations.
 

@@ -1,0 +1,285 @@
+{
+ "season": 2026,
+ "week": 5,
+ "window": "TNF",
+ "game": "TB@DAL",
+ "status": "FINAL",
+ "pulled": "2026-10-07T20:22:00Z",
+ "pulled_et": "2026-10-07 4:22 PM ET (America/New_York)",
+ "injury_pulled": "2026-10-07b",
+ "note": "FINAL after Wed ~4pm ET official Game Status. TB term -3.09 -> -3.30; DAL term -2.15 -> -1.70. B$ DAL -9.27 -> -9.93 (rounds -10).",
+ "source_url": "https://www.dallascowboys.com/team/injury-report/",
+ "source_urls": [
+  "https://www.dallascowboys.com/team/injury-report/",
+  "https://www.nfl.com/injuries/"
+ ],
+ "players": [
+  {
+   "team": "TB",
+   "name": "Baker Mayfield",
+   "pos": "QB1",
+   "injury": "right thumb (dislocated)",
+   "game_status": "OUT",
+   "p_play": 0.0,
+   "baseline_pos": 1.5,
+   "player_quality": "established starter (Madden-first auto at QB tier cap)",
+   "role": "every-down QB1",
+   "replacement": "Jalon Daniels (rookie, 2nd career start; started Week 4 vs GB)",
+   "replacement_quality": "rookie, unproven; one 2026 start",
+   "drop_off": "large in a vacuum (template prior 3-7 pts starter to backup)",
+   "scheme_sig": "high: whole passing game",
+   "opponent_sig": "DAL pass rush vs rookie on a short week",
+   "estimated_spread_impact_range": [
+    1.5,
+    3.5
+   ],
+   "desk_impact": 1.5,
+   "impact_source": "madden",
+   "status_mult": 1.0,
+   "desk_pts": -1.5,
+   "confidence": "Moderate",
+   "note": "Official Out. Desk keeps QB tier 1.5 (same as Darnold/Caleb manuals): TB 2026 results and PFF YTD already include the Week 4 Daniels start, and the market moved TB +3.5 lookahead to +10 open on the news. Raising it would double-count. Flag for postmortem."
+  },
+  {
+   "team": "TB",
+   "name": "Antoine Winfield Jr.",
+   "pos": "S",
+   "injury": "rib (slight fracture)",
+   "game_status": "OUT",
+   "p_play": 0.0,
+   "baseline_pos": 0.25,
+   "player_quality": "All-Pro-tier safety",
+   "role": "every-down S, disguise/blitz piece",
+   "replacement": "depth S",
+   "replacement_quality": "below average",
+   "drop_off": "moderate-large",
+   "scheme_sig": "moderate: Bowles pressure/disguise",
+   "opponent_sig": "vs Lamb/Pickens deep shots",
+   "estimated_spread_impact_range": [
+    0.4,
+    0.6
+   ],
+   "desk_impact": 0.5,
+   "impact_source": "madden",
+   "status_mult": 1.0,
+   "desk_pts": -0.5,
+   "confidence": "Moderate-High",
+   "note": "Official Out (DNP all week). All-Pro cap 0.5 holds."
+  },
+  {
+   "team": "TB",
+   "name": "Benjamin Morrison",
+   "pos": "CB1",
+   "injury": "quadriceps",
+   "game_status": "OUT",
+   "p_play": 0.0,
+   "baseline_pos": 0.25,
+   "player_quality": "starting outside CB (2nd-year)",
+   "role": "perimeter starter",
+   "replacement": "depth CB (Hayes also IR)",
+   "replacement_quality": "weak",
+   "drop_off": "moderate",
+   "scheme_sig": "moderate",
+   "opponent_sig": "DAL WR1/WR2 (Lamb, Pickens) both healthy",
+   "estimated_spread_impact_range": [
+    0.25,
+    0.35
+   ],
+   "desk_impact": 0.3,
+   "impact_source": "manual",
+   "status_mult": 1.0,
+   "desk_pts": -0.3,
+   "confidence": "Moderate",
+   "note": "Official Out. Manual 0.3 = auto 0.25 + 0.05 secondary-cluster interaction (Winfield Out, Hayes IR) rather than a separate unit term."
+  },
+  {
+   "team": "TB",
+   "name": "SirVocea Dennis",
+   "pos": "LB",
+   "injury": "ankle/foot",
+   "game_status": "OUT",
+   "p_play": 0.0,
+   "baseline_pos": 0.25,
+   "player_quality": "starting ILB",
+   "role": "early-down ILB",
+   "replacement": "Josiah Trotter (FP Wed) / depth",
+   "replacement_quality": "average-",
+   "drop_off": "small-moderate",
+   "estimated_spread_impact_range": [
+    0.15,
+    0.3
+   ],
+   "desk_impact": 0.25,
+   "impact_source": "auto pos_base",
+   "status_mult": 1.0,
+   "desk_pts": -0.25,
+   "confidence": "Moderate",
+   "note": "Official Out. Auto tier 0.25; Kamara IR thins LB depth."
+  },
+  {
+   "team": "TB",
+   "name": "Ko Kieft / Chase McLaughlin / Rueben Bain Jr. / Josiah Trotter / Anthony Nelson",
+   "pos": "various",
+   "game_status": "cleared (no designation)",
+   "p_play": 1.0,
+   "desk_impact": 0,
+   "desk_pts": 0.0,
+   "confidence": "High",
+   "note": "Full Wed / no game status -> OFF number (Kieft and McLaughlin removed from seed)."
+  },
+  {
+   "team": "DAL",
+   "name": "Drew Shelton",
+   "pos": "RT",
+   "injury": "hamstring",
+   "game_status": "OUT",
+   "p_play": 0.0,
+   "baseline_pos": 0.25,
+   "role": "tackle",
+   "replacement": "swing T",
+   "drop_off": "small-moderate",
+   "estimated_spread_impact_range": [
+    0.15,
+    0.3
+   ],
+   "desk_impact": 0.25,
+   "impact_source": "auto pos_base",
+   "status_mult": 1.0,
+   "desk_pts": -0.25,
+   "confidence": "Moderate",
+   "note": "Official Out (DNP all week)."
+  },
+  {
+   "team": "DAL",
+   "name": "DeMarvion Overshown",
+   "pos": "LB",
+   "injury": "hamstring",
+   "game_status": "OUT",
+   "p_play": 0.0,
+   "baseline_pos": 0.25,
+   "role": "starting LB",
+   "drop_off": "small",
+   "estimated_spread_impact_range": [
+    0.15,
+    0.25
+   ],
+   "desk_impact": 0.2,
+   "impact_source": "pff",
+   "status_mult": 1.0,
+   "desk_pts": -0.2,
+   "confidence": "Moderate-High",
+   "note": "Official Out (was Doubtful; same 1.0 pricing from Week 5)."
+  },
+  {
+   "team": "DAL",
+   "name": "Cobie Durant",
+   "pos": "CB1",
+   "injury": "hamstring",
+   "game_status": "OUT",
+   "p_play": 0.0,
+   "baseline_pos": 0.25,
+   "role": "CB",
+   "replacement": "Porter Jr. (FP) / depth",
+   "drop_off": "small",
+   "estimated_spread_impact_range": [
+    0.15,
+    0.25
+   ],
+   "desk_impact": 0.2,
+   "impact_source": "madden",
+   "status_mult": 1.0,
+   "desk_pts": -0.2,
+   "confidence": "Moderate-High",
+   "note": "Official Out (was Doubtful)."
+  },
+  {
+   "team": "DAL",
+   "name": "Tyler Smith",
+   "pos": "OG",
+   "injury": "thumb",
+   "game_status": "QUESTIONABLE",
+   "p_play": 0.9,
+   "baseline_pos": 0.25,
+   "player_quality": "elite LG",
+   "role": "every-down LG",
+   "drop_off": "large if he sat",
+   "estimated_spread_impact_range": [
+    0.0,
+    0.05
+   ],
+   "desk_impact": 0.5,
+   "impact_source": "madden",
+   "status_mult": 0.35,
+   "desk_pts": 0.0,
+   "confidence": "Moderate-High",
+   "note": "Official Q but LP/LP/FP, full Wednesday. ESPN feed had him on IR (wrong), which cost DAL 0.5. Expected to play -> OFF number (on:false)."
+  },
+  {
+   "team": "DAL",
+   "name": "Jonathan Mingo",
+   "pos": "WR2",
+   "injury": "illness",
+   "game_status": "QUESTIONABLE",
+   "p_play": 0.7,
+   "baseline_pos": 0.25,
+   "role": "WR3 behind Lamb/Pickens",
+   "drop_off": "small",
+   "estimated_spread_impact_range": [
+    0.0,
+    0.1
+   ],
+   "desk_impact": 0.15,
+   "impact_source": "manual",
+   "status_mult": 0.35,
+   "desk_pts": -0.05,
+   "confidence": "Moderate",
+   "note": "Official Q, illness DNP Wed (added Wed). Soft on at manual 0.15."
+  },
+  {
+   "team": "DAL",
+   "name": "CeeDee Lamb / Joey Porter Jr. / Malik Hooker / Alijah Clark / Tyler Goodson / James Houston",
+   "pos": "various",
+   "game_status": "cleared (no designation)",
+   "p_play": 1.0,
+   "desk_impact": 0,
+   "desk_pts": 0.0,
+   "confidence": "High",
+   "note": "Full all week, no game status -> OFF number."
+  }
+ ],
+ "team_rollup": {
+  "TB": {
+   "individual": {
+    "Mayfield": -1.5,
+    "Winfield": -0.5,
+    "Morrison": -0.3,
+    "Dennis": -0.25,
+    "IR McMillan/Hayes/Kamara": -0.75,
+    "Sills IR (manual 0)": 0
+   },
+   "unit_effects": "secondary cluster (Winfield, Morrison, Hayes IR) folded into Morrison manual +0.05; LB thin (Dennis Out, Kamara IR)",
+   "gross": -3.3,
+   "interaction": 0.0,
+   "final": -3.3,
+   "before": -3.09,
+   "confidence": "Moderate"
+  },
+  "DAL": {
+   "individual": {
+    "Shelton": -0.25,
+    "Overshown": -0.2,
+    "Durant": -0.2,
+    "Smith (off)": 0,
+    "Mingo Q": -0.05,
+    "IR Bullard/Thompson/Locke/Davis": -1.0
+   },
+   "unit_effects": "none compounding; OL holds with Smith expected to play",
+   "gross": -1.7,
+   "interaction": 0.0,
+   "final": -1.7,
+   "before": -2.15,
+   "confidence": "Moderate-High"
+  }
+ },
+ "net_line_effect": "DAL +0.45 / TB -0.21 -> B$ moves 0.66 toward DAL"
+}
