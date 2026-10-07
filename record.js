@@ -1,7 +1,8 @@
 /* Bet History and Overall Record. Both read data/record/canonical-2026.json.
-   Weeks 2–3 lines are the stored game-day numbers. They are not rounded here. */
+   Weeks 2–3 lines are the stored game-day numbers. They are not rounded here.
+   Week 4 on uses the rounded lock already stored on each row. */
 (function () {
-  const FILE = "./data/record/canonical-2026.json?v=record1003";
+  const FILE = "./data/record/canonical-2026.json?v=record1007";
   const EPS = 0.05;
 
   function esc(s) {
@@ -27,6 +28,26 @@
     const n = num(value);
     if (n == null) return false;
     return Math.abs(n * 2 - Math.round(n * 2)) < 1e-6;
+  }
+
+  function roundHalf(value) {
+    const n = num(value);
+    if (n == null) return null;
+    const sign = n < 0 ? -1 : 1;
+    const steps = Math.abs(n) / 0.5;
+    const lower = Math.floor(steps + 1e-9);
+    const frac = steps - lower;
+    const roundedSteps = frac > 0.5 - 1e-8 ? lower + 1 : lower;
+    const out = sign * roundedSteps * 0.5;
+    return out === 0 ? 0 : out;
+  }
+
+  function weekSpan(games) {
+    const weeks = games.map((g) => Number(g.week)).filter((n) => Number.isFinite(n));
+    if (!weeks.length) return "Week 2 on";
+    const lo = Math.min.apply(null, weeks);
+    const hi = Math.max.apply(null, weeks);
+    return lo === hi ? "Week " + lo : "Weeks " + lo + "–" + hi;
   }
 
   function atsGrade(bLine, close, row) {
@@ -119,14 +140,16 @@
       return ["The record file has no game list."];
     }
     const games = doc.games;
-    const locked = Array.isArray(doc.week4_locked) ? doc.week4_locked : [];
+    const locked = Array.isArray(doc.pending_locks)
+      ? doc.pending_locks
+      : (Array.isArray(doc.week4_locked) ? doc.week4_locked : []);
     if (games.some((g) => Number(g.week) === 1) || locked.some((g) => Number(g.week) === 1)) {
       errors.push("Week 1 is in the file.");
     }
     const official = games.filter((g) => g && g.in_official_record);
-    if (official.length !== 32) errors.push("Official games are " + official.length + ", not 32.");
-    if (official.some((g) => Number(g.week) !== 2 && Number(g.week) !== 3)) {
-      errors.push("An official game is outside Weeks 2 and 3.");
+    if (!official.length) errors.push("The record has no official games.");
+    if (official.some((g) => Number(g.week) < 2)) {
+      errors.push("An official game is before Week 2.");
     }
     const ids = new Set(official.map((g) => g.week + "|" + g.game_id));
     if (ids.size !== official.length) errors.push("A game appears twice.");
@@ -139,10 +162,13 @@
       else if (game.ats === "L") l += 1;
       else if (game.ats === "P") p += 1;
       else other += 1;
-      if (Number(game.week) < 4 && game.raw_b_line != null && game.official_b_line != null) {
-        if (Math.abs(game.raw_b_line - game.official_b_line) > 0.001) {
+      if (Number(game.week) < 4) {
+        if (game.raw_b_line != null && game.official_b_line != null && Math.abs(game.raw_b_line - game.official_b_line) > 0.001) {
           errors.push(game.game_id + " official line does not match the stored game-day line.");
         }
+        if (game.official_rounded) errors.push(game.game_id + " is marked rounded inside Weeks 2 and 3.");
+      } else if (game.official_b_line == null || !onHalf(game.official_b_line) || roundHalf(game.raw_b_line) !== game.official_b_line) {
+        errors.push(game.game_id + " official line is not the rounded lock.");
       }
       if (!game.sportsbook) errors.push(game.game_id + " has no sportsbook.");
       if (game.open_home_spread == null && !(game.review || []).some((r) => r.field === "open")) {
@@ -171,7 +197,7 @@
       }
     }
     if (other) errors.push(other + " games are not a win, loss, or push.");
-    if (w + l + p !== 32) errors.push("ATS " + w + "-" + l + "-" + p + " does not add to 32.");
+    if (w + l + p !== official.length) errors.push("ATS " + w + "-" + l + "-" + p + " does not add to " + official.length + ".");
     for (const game of locked) {
       if (Number(game.week) < 4) errors.push(game.game_id + " is listed with Week 4.");
       if (!onHalf(game.official_b_line)) errors.push(game.game_id + " official line is not a half-point line.");
@@ -281,9 +307,21 @@
     return games.map((game) => "W" + game.week + " " + pick(game)).join(" · ");
   }
 
+  function metric(value, label, definition) {
+    return `<button type="button" class="record-metric" aria-expanded="false">
+      <strong>${esc(value)}</strong>
+      <span>${label}</span>
+      <span class="record-def">${definition}</span>
+    </button>`;
+  }
+
   function dashboard(games, doc) {
     const s = rollup(games);
     const ats = s.ats.W + "-" + s.ats.L + "-" + s.ats.P;
+    const span = weekSpan(games);
+    const book = doc.sportsbook_of_record || "ESPN DraftKings";
+    const rules = doc.rules || {};
+    const source = "Counted from data/record/canonical-2026.json. Sportsbook of record: " + book + ".";
     const weeks = s.weeks.map(([week, rec]) => {
       const n = rec.W + rec.L + rec.P;
       return `<li>Week ${esc(week)}: ${esc(rec.W + "-" + rec.L + "-" + rec.P)} | ${esc(n)} games | ${esc(pctText(rec.W, rec.L))}</li>`;
@@ -298,33 +336,39 @@
     const fallback = fallbacks.length
       ? `<p class="prior-note">${esc(fallbacks.map((g) => "W" + g.week + " " + g.game_id).join(", "))}: the opening line is the line-log DraftKings number. Line history did not store a separate DraftKings open.</p>`
       : "";
+    const cards = [
+      metric(String(s.n), "Official games · " + esc(span), esc((rules.official_games || "Finished games from Week 2 on. Week 1 is excluded.") + " " + source)),
+      metric(ats, "ATS: " + esc(ats) + " | " + esc(s.n) + " games | " + esc(pctText(s.ats.W, s.ats.L)), esc((rules.ats || "The side the official B$ line liked against the DraftKings close.") + " Pushes stay in the record and out of the percentage. " + source)),
+      metric(fmtNum(s.clvAvg), "Avg CLV | " + esc(s.clvN) + " games", esc((rules.clv || "Points the DraftKings open beat the DraftKings close, on the side the official B$ line liked.") + " " + source)),
+      metric(String(s.upsets), "Outright upsets | " + esc(s.favorites) + " games with a favorite | " + esc(s.favorites ? pctText(s.upsets, s.favorites - s.upsets) : "—"), esc("The DraftKings closing underdog won outright. A closing pick’em is not an upset. " + source)),
+      metric(s.correct + "-" + callsWrong, "B$ upset calls: " + esc(callLine), esc("A B$ upset call means the official line had that closing underdog winning outright, not merely covering. The record is correct calls, then misses. " + source)),
+    ].join("");
     return `<div class="record-summary record-dash" data-official-rows="${esc(s.n)}">
-        <div><strong>${esc(s.n)}</strong><span>Official games · Weeks 2 and 3</span></div>
-        <div><strong>${esc(ats)}</strong><span>ATS: ${esc(ats)} | ${esc(s.n)} games | ${esc(pctText(s.ats.W, s.ats.L))}</span></div>
-        <div><strong>${esc(fmtNum(s.clvAvg))}</strong><span>Avg CLV | ${esc(s.clvN)} games</span></div>
-        <div><strong>${esc(s.beat)} of ${esc(s.clvN)}</strong><span>Beat the close | ${esc(s.clvN)} games | ${esc(s.clvN ? pctText(s.beat, s.clvN - s.beat) : "—")}</span></div>
-        <div><strong>${esc(s.upsets)}</strong><span>Outright upsets | ${esc(s.favorites)} games with a favorite | ${esc(s.favorites ? pctText(s.upsets, s.favorites - s.upsets) : "—")}</span></div>
-        <div><strong>${esc(s.correct + "-" + callsWrong)}</strong><span>B$ upset calls: ${esc(callLine)}</span></div>
+        ${cards}
       </div>
       <ul class="record-weeks">${weeks}</ul>
       <p class="record-names"><span>Outright upsets</span> ${esc(names(upsets, (g) => g.underdog))}</p>
       <p class="record-names"><span>B$ called the underdog to win</span> ${calls.length ? esc(names(calls, (g) => g.underdog + (g.b_upset_correct ? " won" : " lost"))) : "None"}</p>
       ${fallback}
-      <p class="prior-note">CLV is the points the DraftKings open beat the DraftKings close, on the side the official B$ line liked. An upset is a closing underdog winning outright. A B$ upset call means that same underdog was the team we had winning, not just covering.</p>`;
+      <p class="prior-note">CLV is the points the DraftKings open beat the DraftKings close, on the side the official B$ line liked. An upset is a closing underdog winning outright. A B$ upset call means that same underdog was the team we had winning, not just covering. Tap a card for the definition and the file it comes from.</p>`;
   }
 
   function week4Html(locked) {
     if (!locked || !locked.length) return "";
-    const rows = locked.map((game) => `<tr>
-      <td data-label="Game">${esc(game.away)} @ ${esc(game.home)}</td>
+    const rows = locked.map((game) => {
+      const why = (game.review || []).map((r) => `<div class="flag-note">${esc(r.reason)}</div>`).join("");
+      return `<tr>
+      <td data-label="Week">${esc(game.week)}</td>
+      <td data-label="Game">${esc(game.away)} @ ${esc(game.home)}${why}</td>
       <td class="num" data-label="Raw">${esc(fmtSpread(game.raw_b_line, game.home, game.away))}</td>
       <td class="num" data-label="Official">${esc(fmtSpread(game.official_b_line, game.home, game.away))}</td>
-    </tr>`).join("");
+    </tr>`;
+    }).join("");
     return `<details class="record-fold">
-      <summary>Week 4 locked lines · not in the 32</summary>
-      <p class="prior-note">The official line is the locked raw number rounded to the nearest half point. Halfway cases go away from zero. The lock file is unchanged. These games are not in the record above.</p>
+      <summary>Locked lines not in the record yet</summary>
+      <p class="prior-note">The official line is the locked raw number rounded to the nearest half point. Halfway cases go away from zero. The lock file is unchanged. A game moves into the record after its final score and DraftKings close are both on file.</p>
       <div class="table-wrap"><table class="ledger record-table">
-        <thead><tr><th>Game</th><th>Raw B$</th><th>Official B$</th></tr></thead>
+        <thead><tr><th>Week</th><th>Game</th><th>Raw B$</th><th>Official B$</th></tr></thead>
         <tbody>${rows}</tbody>
       </table></div>
     </details>`;
@@ -344,7 +388,20 @@
     const games = doc.games.filter((g) => g.in_official_record);
     const s = rollup(games);
     const ats = s.ats.W + "-" + s.ats.L + "-" + s.ats.P;
+    const span = weekSpan(games);
     const head = `<p class="record-ats">ATS: ${esc(ats)} | ${esc(s.n)} games | ${esc(pctText(s.ats.W, s.ats.L))}</p>`;
+    const historyLede = document.getElementById("history-lede");
+    const recordLede = document.getElementById("record-lede");
+    const historyEyebrow = document.getElementById("history-eyebrow");
+    const recordEyebrow = document.getElementById("record-eyebrow");
+    if (historyEyebrow) historyEyebrow.textContent = span + " · the line we published";
+    if (recordEyebrow) recordEyebrow.textContent = "Same " + s.n + " games · behind sign-in";
+    if (historyLede) {
+      historyLede.textContent = "What the B$ line was before the game, the final score, and the against-the-spread result. " + s.n + " games. The same games as Overall Record.";
+    }
+    if (recordLede) {
+      recordLede.textContent = "The record, the closing line value, and the outright upsets. Opening and closing lines are ESPN DraftKings. Week 1 is not in this record.";
+    }
     if (history) {
       history.innerHTML = head + historyTable(games);
       history.dataset.officialRows = String(games.length);
@@ -353,7 +410,8 @@
       overall.innerHTML = dashboard(games, doc) + overallTable(games);
       overall.dataset.officialRows = String(games.length);
     }
-    if (fold) fold.innerHTML = week4Html(doc.week4_locked);
+    const waiting = Array.isArray(doc.pending_locks) ? doc.pending_locks : doc.week4_locked;
+    if (fold) fold.innerHTML = week4Html(waiting);
   }
 
   let doc = null;
@@ -390,6 +448,13 @@
     started = true;
     load();
   }
+
+  document.addEventListener("click", (event) => {
+    const btn = event.target.closest(".record-metric");
+    if (!btn) return;
+    const open = btn.getAttribute("aria-expanded") === "true";
+    btn.setAttribute("aria-expanded", open ? "false" : "true");
+  });
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
   else start();
