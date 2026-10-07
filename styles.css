@@ -3374,10 +3374,18 @@ body.is-viewer textarea:disabled {
   gap: 10px;
   margin: 0 0 18px;
 }
-.record-summary div {
+.record-summary div,
+.record-summary .record-metric {
   background: var(--charcoal);
   padding: 12px 14px;
   min-width: 108px;
+}
+.record-summary .record-metric {
+  border: 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
 }
 .record-summary strong {
   display: block;
@@ -3490,8 +3498,23 @@ body.is-viewer textarea:disabled {
   letter-spacing: 0.02em;
   color: var(--white);
 }
-.record-dash div { min-width: 180px; flex: 1; }
+.record-dash div,
+.record-dash .record-metric { min-width: 180px; flex: 1; }
 .record-dash strong { color: var(--copper); }
+.record-metric .record-def {
+  display: none;
+  margin-top: 8px;
+  max-width: 36ch;
+  color: var(--cloud);
+  font-size: 12px;
+  line-height: 1.45;
+  white-space: normal;
+}
+.record-metric:hover .record-def,
+.record-metric:focus-visible .record-def,
+.record-metric[aria-expanded="true"] .record-def {
+  display: block;
+}
 .record-weeks {
   margin: 0 0 14px;
   padding: 0;
@@ -3543,7 +3566,8 @@ body.is-viewer textarea:disabled {
 }
 .record-fold .ticket-toolbar { margin-top: 12px; }
 @media (max-width: 720px) {
-  .record-summary div { min-width: calc(50% - 10px); flex: 1; }
+  .record-summary div,
+  .record-summary .record-metric { min-width: calc(50% - 10px); flex: 1; }
   .preset-row .btn, .sandbox-actions .btn { min-height: 44px; }
   #history .record-table thead,
   #record .record-table thead { display: none; }

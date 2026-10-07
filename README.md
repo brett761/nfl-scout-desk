@@ -25,7 +25,7 @@ No build step. Open the HTML file directly.
 
 ## Published B Lines
 
-Bet History and Overall Record read `data/record/canonical-2026.json`. Both stay behind sign-in. The official set is Weeks 2 and 3 (32 games). Week 1 is excluded. Those B$ lines are the game-day versions in `data/model/bs-line-history-2026.json` and are not rounded. From Week 4 the official line is the locked raw projection rounded to the nearest 0.5, stored beside the raw number. The lock files are not rewritten. Rebuild and check with:
+Bet History and Overall Record read `data/record/canonical-2026.json`. Both stay behind sign-in. The official set starts at Week 2. Week 1 is excluded. Weeks 2 and 3 B$ lines are the game-day versions in `data/model/bs-line-history-2026.json` and are not rounded. From Week 4 the official line is the locked raw projection rounded to the nearest 0.5, stored beside the raw number. The lock files are not rewritten. A finished week is added with `data/record/weekly.mjs` after the score and the DraftKings close are on file. See `data/record/README.md`. Rebuild and check with:
 
 ```bash
 node data/record/build_canonical.mjs
