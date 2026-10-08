@@ -6,7 +6,10 @@
  *   node data/model/check_model_history.mjs --self-test
  *
  * Compares data/model/bs-line-history-2026.json with the same path in HEAD.
- * A version that already existed must match byte for byte. New versions may be appended.
+ * A version that already existed must match. New versions may be appended.
+ * The one in-place edit allowed is filling official_b_line and official_rounded on a
+ * Week 4+ version whose raw b_line is unchanged. The official value must be that raw
+ * line rounded to the nearest 0.5 (.25 and .75 away from zero). Weeks 2–3 cannot gain one.
  *
  * Also checks data/lines/line-history-2026.json: every street snapshot must carry an
  * "at" that is an ISO timestamp with an offset (Z or +hh:mm). A null or missing "at"
@@ -20,6 +23,7 @@
 import fs from "fs";
 import path from "path";
 import { execFileSync } from "child_process";
+import { officialHomeSpread, roundHalfAwayFromZero as roundHalfAway } from "../record/round_half.mjs";
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "../..");
 const REL = "data/model/bs-line-history-2026.json";
@@ -54,15 +58,6 @@ export function checkPublishedAt(data) {
     }
   }
   return problems;
-}
-
-function roundHalfAway(value) {
-  const n = Number(value);
-  const sign = n < 0 ? -1 : 1;
-  const steps = Math.abs(n) / 0.5;
-  const lower = Math.floor(steps + 1e-9);
-  const out = sign * (steps - lower > 0.5 - 1e-8 ? lower + 1 : lower) * 0.5;
-  return out === 0 ? 0 : out;
 }
 
 // Stored shadow values must be well formed and never claim to be the B$ line.
@@ -104,27 +99,59 @@ function indexVersions(data) {
       if (v.supersedes !== expected) {
         throw new Error(g.game_id + " version " + v.version + " supersedes " + v.supersedes + ", expected " + expected);
       }
-      map.set(g.game_id + "#" + g.week + "#" + v.version, canon(v));
+      map.set(g.game_id + "#" + g.week + "#" + v.version, v);
     }
   }
   return map;
 }
 
+function withoutOfficial(version) {
+  const copy = { ...version };
+  delete copy.official_b_line;
+  delete copy.official_rounded;
+  return copy;
+}
+
+// Adding official_b_line beside an unchanged raw b_line is allowed once.
+// Any other edit, including a Week 2–3 stamp or a wrong rounded value, is not.
+function officialFillOk(prev, next) {
+  if (!prev || !next) return false;
+  if (canon(withoutOfficial(prev)) !== canon(withoutOfficial(next))) return false;
+  if ("official_b_line" in prev || "official_rounded" in prev) return false;
+  if (Number(next.week) < 4) return false;
+  if (next.official_rounded !== true) return false;
+  return next.official_b_line === officialHomeSpread(next.week, next.b_line);
+}
+
+export function checkOfficial(data) {
+  const problems = [];
+  for (const g of (data && data.games) || []) {
+    for (const v of g.versions || []) {
+      if (!("official_b_line" in v) && !("official_rounded" in v)) continue;
+      const label = g.game_id + " W" + g.week + " version " + v.version;
+      if (Number(g.week) < 4 || Number(v.week) < 4) {
+        problems.push(label + " has an official line before Week 4");
+        continue;
+      }
+      if (v.official_rounded !== true) problems.push(label + " official line is not marked rounded");
+      const expect = officialHomeSpread(v.week, v.b_line);
+      if (v.official_b_line !== expect) problems.push(label + " official " + v.official_b_line + " is not " + expect + " (raw " + v.b_line + ")");
+    }
+  }
+  return problems;
+}
+
 export function compare(previous, current) {
   const prior = indexVersions(previous);
   const next = indexVersions(current);
-  const shadowOf = (data) => {
-    const m = new Map();
-    for (const g of (data && data.games) || []) for (const v of g.versions || []) m.set(g.game_id + "#" + g.week + "#" + v.version, canon(v.shadow_dvoa_blend ?? null));
-    return m;
-  };
-  const priorShadow = shadowOf(previous);
-  const nextShadow = shadowOf(current);
   const problems = [];
-  for (const [key, fp] of prior) {
+  for (const [key, prevV] of prior) {
     if (!next.has(key)) problems.push("deleted " + key);
-    else if (next.get(key) !== fp) {
-      problems.push("modified " + key + (priorShadow.get(key) !== nextShadow.get(key) ? " (shadow_dvoa_blend changed)" : ""));
+    else if (canon(next.get(key)) !== canon(prevV)) {
+      const nxt = next.get(key);
+      if (officialFillOk(prevV, nxt)) continue;
+      const shadowChanged = canon(prevV.shadow_dvoa_blend ?? null) !== canon(nxt.shadow_dvoa_blend ?? null);
+      problems.push("modified " + key + (shadowChanged ? " (shadow_dvoa_blend changed)" : ""));
     }
   }
   return problems;
@@ -207,7 +234,23 @@ function selfTest() {
   const half = JSON.parse(JSON.stringify(prevS));
   half.games[0].versions[1].shadow_dvoa_blend = { ...sh, raw: 3.25, rounded: 3.5 };
   if (checkShadow(half).length) throw new Error(".25 away from zero should pass");
-  console.log("self-test ok (incl. shadow_dvoa_blend guard)");
+
+  const fill = JSON.parse(JSON.stringify(prevS));
+  fill.games[0].versions[1].official_b_line = -10;
+  fill.games[0].versions[1].official_rounded = true;
+  if (compare(prevS, fill).length || checkOfficial(fill).length) throw new Error("filling the Week 5 official line should pass");
+  const badFill = JSON.parse(JSON.stringify(fill));
+  badFill.games[0].versions[1].official_b_line = -9.5;
+  if (!compare(prevS, badFill).length || !checkOfficial(badFill).length) throw new Error("a wrong official line should fail");
+  const w3 = { games: [{ game_id: "TEN@NYG", week: 3, versions: [{ version: 1, game_id: "TEN@NYG", week: 3, b_line: -6.4, supersedes: null }] }] };
+  const w3f = JSON.parse(JSON.stringify(w3));
+  w3f.games[0].versions[0].official_b_line = -6.5;
+  w3f.games[0].versions[0].official_rounded = true;
+  if (!compare(w3, w3f).length) throw new Error("Week 3 must not gain a rounded official line");
+  const rawEdit = JSON.parse(JSON.stringify(fill));
+  rawEdit.games[0].versions[1].b_line = -10;
+  if (!compare(prevS, rawEdit).some((p) => p.startsWith("modified"))) throw new Error("overwriting the raw line should fail");
+  console.log("self-test ok (incl. shadow_dvoa_blend guard and official-line fill)");
 }
 
 function main() {
@@ -221,7 +264,7 @@ function main() {
   }
   const current = JSON.parse(fs.readFileSync(OUT, "utf8"));
   indexVersions(current);
-  const stampProblems = checkPublishedAt(current).concat(checkShadow(current));
+  const stampProblems = checkPublishedAt(current).concat(checkShadow(current), checkOfficial(current));
   if (fs.existsSync(LINES)) stampProblems.push(...checkLineHistory(JSON.parse(fs.readFileSync(LINES, "utf8"))));
   if (stampProblems.length) {
     console.error(stampProblems.join("\n"));

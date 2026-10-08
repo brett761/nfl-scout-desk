@@ -609,8 +609,11 @@ function normAbbr(abbr) {
      injury_term = clamp(sum of ON rows, −cap_team, 0)
    Effective = algorithm + FA + draft + madden + pff + pff_ytd + SOS + return + injury + adjust + context
    sos_term = sos-2025.json net, 0 from Week 5 (SOS_OUT_WITH_PRIOR + priorRetired()). Display only after.
-   deskHomeSpread(): game-day line → finals.json lock → Weeks 1-4 pin
-   (data/model/desk-pins-2026-w01-w04.json) → live ourHomeSpread.
+   deskHomeSpread(): Weeks 2–3 stay the game-day line, else the finals lock, else the
+   Weeks 1-4 pin, else live ourHomeSpread, and are not rounded. From Week 4 the
+   published line is the stored official line (canonical record, else the latest
+   pregame snapshot), else that same raw number rounded to the nearest 0.5
+   (.25/.75 away from zero) before it is shown.
    = algorithm_base + fa_term + draft_term + madden_term + pff_term + pff_pre_term + pff_ytd_term + sos_term + return_term + injury_term + user_adjust + sum of active (on) context.
    fa_term is 0 while INCLUDE_FA is false.
    pff_pre_term is 0 while INCLUDE_PFF_PRESEASON is false.
@@ -2024,15 +2027,9 @@ function dvoaBlendShadowHomeSpread(game, weight = DVOA_BLEND_SHADOW_WEIGHT) {
   return -(homeE - awayE + pad + coachTerm(game) + prepNet(game) + atsNet(game) + schedNet(game) + matchupNet(game));
 }
 
-/** Nearest 0.5, exact .25/.75 away from zero (same rule as the official B$ line from Week 4). */
+/** Nearest 0.5, exact .25/.75 away from zero (same helper as the official B$ line). */
 function dvoaBlendShadowRound(value) {
-  const n = num(value);
-  if (n == null) return null;
-  const sign = n < 0 ? -1 : 1;
-  const steps = Math.abs(n) / 0.5;
-  const lower = Math.floor(steps + 1e-9);
-  const out = sign * (steps - lower > 0.5 - 1e-8 ? lower + 1 : lower) * 0.5;
-  return out === 0 ? 0 : out;
+  return roundHalfAwayFromZero(value);
 }
 
 let shadowLogByEspn = {};
@@ -2087,6 +2084,63 @@ function publishedRecordFor(game) {
 let gameDayByEspn = {};
 let gameDayByPair = {};
 
+let publishedSnapByEspn = {};
+let publishedSnapByPair = {};
+let officialLineByEspn = {};
+let officialLineByPair = {};
+
+function rememberLine(espnMap, pairMap, row, line) {
+  if (line == null || !Number.isFinite(line)) return;
+  if (row.espn_id != null) espnMap[String(row.espn_id)] = line;
+  if (row.away && row.home) {
+    pairMap[normAbbr(row.away) + "@" + normAbbr(row.home) + "|w" + Number(row.week)] = line;
+  }
+}
+
+function indexPublishedSnapshots(data) {
+  publishedSnapByEspn = {};
+  publishedSnapByPair = {};
+  for (const g of (data && Array.isArray(data.games) ? data.games : [])) {
+    if (!g || Number(g.week) < OFFICIAL_ROUND_FROM_WEEK) continue;
+    const versions = g.versions || [];
+    const last = versions[versions.length - 1];
+    if (!last || num(last.b_line) == null) continue;
+    const line = num(last.official_b_line) != null
+      ? num(last.official_b_line)
+      : officialHomeSpread(g.week, last.b_line);
+    rememberLine(publishedSnapByEspn, publishedSnapByPair, g, line);
+  }
+}
+
+function publishedSnapshotLine(game) {
+  if (!game) return null;
+  if (game.id && publishedSnapByEspn[String(game.id)] != null) return publishedSnapByEspn[String(game.id)];
+  const key = normAbbr(game.away) + "@" + normAbbr(game.home) + "|w" + Number(game.week);
+  return publishedSnapByPair[key] != null ? publishedSnapByPair[key] : null;
+}
+
+function indexOfficialRecord(data) {
+  officialLineByEspn = {};
+  officialLineByPair = {};
+  const rows = []
+    .concat(data && Array.isArray(data.games) ? data.games : [])
+    .concat(data && Array.isArray(data.pending_locks) ? data.pending_locks : []);
+  for (const g of rows) {
+    if (!g || Number(g.week) < OFFICIAL_ROUND_FROM_WEEK || num(g.official_b_line) == null) continue;
+    const key = normAbbr(g.away) + "@" + normAbbr(g.home) + "|w" + Number(g.week);
+    if (g.espn_id != null && officialLineByEspn[String(g.espn_id)] != null) continue;
+    if (officialLineByPair[key] != null) continue;
+    rememberLine(officialLineByEspn, officialLineByPair, g, num(g.official_b_line));
+  }
+}
+
+function officialLineFor(game) {
+  if (!game) return null;
+  if (game.id && officialLineByEspn[String(game.id)] != null) return officialLineByEspn[String(game.id)];
+  const key = normAbbr(game.away) + "@" + normAbbr(game.home) + "|w" + Number(game.week);
+  return officialLineByPair[key] != null ? officialLineByPair[key] : null;
+}
+
 function indexGameDay(data) {
   gameDayByEspn = {};
   gameDayByPair = {};
@@ -2132,7 +2186,7 @@ function gameDayDiffers(game) {
 function gameDayMarkHtml(game) {
   if (!gameDayDiffers(game)) return "";
   const rec = publishedRecordFor(game);
-  const pinned = formatOurLine(rec.b_line_home_spread, game.home, game.away);
+  const pinned = formatOurLine(officialHomeSpread(game.week, rec.b_line_home_spread), game.home, game.away);
   return `<button type="button" class="gd-mark" aria-expanded="false" title="Pinned lock ${esc(pinned)}">game-day line<span class="gd-pin">Pinned lock ${esc(pinned)}</span></button>`;
 }
 
@@ -2158,7 +2212,30 @@ function deskPinFor(game) {
   return deskPinByPair[key] || null;
 }
 
-function deskHomeSpread(game) {
+// Same rule as data/record/round_half.mjs. Weeks before 4 are not rounded.
+// Exact .25 and .75 round away from zero. The sign stays, so the favorite does not flip.
+const OFFICIAL_ROUND_FROM_WEEK = 4;
+
+function roundHalfAwayFromZero(value) {
+  const n = num(value);
+  if (n == null) return null;
+  const sign = n < 0 ? -1 : 1;
+  const steps = Math.abs(n) / 0.5;
+  const lower = Math.floor(steps + 1e-9);
+  const frac = steps - lower;
+  const roundedSteps = frac > 0.5 - 1e-8 ? lower + 1 : lower;
+  const out = sign * roundedSteps * 0.5;
+  return out === 0 ? 0 : out;
+}
+
+function officialHomeSpread(week, raw) {
+  const n = num(raw);
+  if (n == null) return null;
+  if (Number(week) < OFFICIAL_ROUND_FROM_WEEK) return n;
+  return roundHalfAwayFromZero(n);
+}
+
+function deskHomeSpreadRaw(game) {
   if (gameIsFinished(game)) {
     const gd = gameDayVersionFor(game);
     if (gd && num(gd.b_line) != null) return num(gd.b_line);
@@ -2169,6 +2246,17 @@ function deskHomeSpread(game) {
   const pin = deskPinFor(game);
   if (pin) return pin.b_line;
   return ourHomeSpread(game, hfa);
+}
+
+function deskHomeSpread(game) {
+  if (!game || Number(game.week) < OFFICIAL_ROUND_FROM_WEEK) return deskHomeSpreadRaw(game);
+  const graded = officialLineFor(game);
+  if (graded != null) return graded;
+  if (!gameIsFinished(game)) {
+    const published = publishedSnapshotLine(game);
+    if (published != null) return published;
+  }
+  return officialHomeSpread(game.week, deskHomeSpreadRaw(game));
 }
 
 function parseMarket(details, homeAbbr, awayAbbr) {
@@ -4665,7 +4753,7 @@ function gameLeadCopy(game) {
     const day = gameDayVersionFor(game);
     if (day && num(day.b_line) != null && gameIsFinished(game)) {
       if (gameDayDiffers(game)) {
-        parts.push("The game-day B$ Line is " + ourLabel + ", the number the site showed at kickoff. The pinned lock was " + formatOurLine(pub.b_line_home_spread, game.home, game.away) + ".");
+        parts.push("The game-day B$ Line is " + ourLabel + ", the number the site showed at kickoff. The pinned lock was " + formatOurLine(officialHomeSpread(game.week, pub.b_line_home_spread), game.home, game.away) + ".");
       } else if (pub) {
         parts.push("The game-day B$ Line is " + ourLabel + ". It matches the pinned lock.");
       } else {
@@ -4802,7 +4890,7 @@ function renderGameSheet() {
   const showPublished = !!(pubLine && ourLine != null && Number.isFinite(ourLine));
   let bNote = "";
   if (usingDay && gameDayDiffers(game)) {
-    bNote = "Game-day line. Pinned lock " + formatOurLine(pubLine.b_line_home_spread, home, away) + ".";
+    bNote = "Game-day line. Pinned lock " + formatOurLine(officialHomeSpread(game.week, pubLine.b_line_home_spread), home, away) + ".";
   } else if (usingDay) {
     bNote = "Game-day line" + (pubLine ? ". Same as the pinned lock." : ".");
   } else if (showPublished) {
@@ -7119,12 +7207,12 @@ function renderLineLog() {
       if (!lineLogHasB(snap)) {
         return `<td class="linelog-day"><span class="linelog-num linelog-empty">—</span></td>`;
       }
-      const label = formatOurLine(Number(snap.b_money), g.home, g.away);
+      const label = formatOurLine(officialHomeSpread(data.week, snap.b_money), g.home, g.away);
       const ch = lineLogChangeFor(g, day);
       const prev = lineLogPrevFilled(g, day);
       const prevSnap = prev ? lineLogSnap(g, prev) : null;
       const moved = ch && Number.isFinite(Number(ch.delta)) && Math.abs(Number(ch.delta)) >= 0.05;
-      const looksDiff = prevSnap && lineLogHasB(prevSnap) && formatOurLine(Number(prevSnap.b_money), g.home, g.away) !== label;
+      const looksDiff = prevSnap && lineLogHasB(prevSnap) && formatOurLine(officialHomeSpread(data.week, prevSnap.b_money), g.home, g.away) !== label;
       const copper = moved || looksDiff;
       const deltaBtn = moved
         ? `<button type="button" class="linelog-delta" data-linelog-change="${esc(g.id)}|${esc(ch.from_day)}|${esc(ch.to_day)}" aria-haspopup="dialog" aria-controls="linelog-sheet">${esc("Δ " + fmtLineLogDelta(ch.delta))}</button>`
@@ -7197,8 +7285,8 @@ function renderLineLogSheet() {
   }
   const fromSnap = lineLogSnap(game, ch.from_day);
   const toSnap = lineLogSnap(game, ch.to_day);
-  const fromLine = formatOurLine(Number(ch.from), game.home, game.away);
-  const toLine = formatOurLine(Number(ch.to), game.home, game.away);
+  const fromLine = formatOurLine(officialHomeSpread(data.week, ch.from), game.home, game.away);
+  const toLine = formatOurLine(officialHomeSpread(data.week, ch.to), game.home, game.away);
   const toward = lineLogToward(ch.delta, game.home, game.away);
   const why = (ch.why || []).map(whyLineHtml).filter(Boolean).join("");
   const streetBits = [];
@@ -7997,14 +8085,17 @@ async function loadModelAts() {
 
 async function loadGameDayLines() {
   try {
-    const res = await fetch("./data/model/bs-line-history-2026.json?v=shadow1006");
+    const res = await fetch("./data/model/bs-line-history-2026.json?v=round1008");
     if (!res.ok) throw new Error(String(res.status));
     const history = await res.json();
     indexGameDay(history);
+    indexPublishedSnapshots(history);
     indexShadowLog(history);
   } catch (err) {
     gameDayByEspn = {};
     gameDayByPair = {};
+    publishedSnapByEspn = {};
+    publishedSnapByPair = {};
     shadowLogByEspn = {};
     console.warn("game-day lines", err);
   }
@@ -8057,11 +8148,24 @@ async function loadPowerRankings() {
   }
 }
 
+async function loadOfficialRecord() {
+  try {
+    const res = await fetch("./data/record/canonical-2026.json?v=record1008");
+    if (!res.ok) throw new Error(String(res.status));
+    indexOfficialRecord(await res.json());
+  } catch (err) {
+    officialLineByEspn = {};
+    officialLineByPair = {};
+    console.warn("official record", err);
+  }
+}
+
 async function bootNfl() {
   await loadNfl();
   await loadPublishedLines();
   await loadGameDayLines();
   await loadDeskPins();
+  await loadOfficialRecord();
   await loadModelAts();
   await loadPowerRankings();
   applyDefaultCurrentWeek();

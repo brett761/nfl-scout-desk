@@ -7,6 +7,9 @@
 import fs from "fs";
 import path from "path";
 import { atsGrade as gradeAts, indexGameDay, gameDayFor } from "../model/game_day_grade.mjs";
+import { officialHomeSpread, roundHalfAwayFromZero } from "./round_half.mjs";
+
+export { officialHomeSpread, roundHalfAwayFromZero };
 
 export const SPORTSBOOK = "ESPN DraftKings";
 export const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "../..");
@@ -23,19 +26,6 @@ export function num(v) {
 export function round2(n) {
   if (n == null || !Number.isFinite(Number(n))) return null;
   return Math.round(Number(n) * 100) / 100;
-}
-
-// Nearest 0.5. Exact .25 / .75 (halfway) rounds away from zero.
-export function roundHalfAwayFromZero(value) {
-  const n = num(value);
-  if (n == null) return null;
-  const sign = n < 0 ? -1 : 1;
-  const steps = Math.abs(n) / 0.5;
-  const lower = Math.floor(steps + 1e-9);
-  const frac = steps - lower;
-  const roundedSteps = frac > 0.5 - 1e-8 ? lower + 1 : lower;
-  const out = sign * roundedSteps * 0.5;
-  return out === 0 ? 0 : out;
 }
 
 export function onHalfStep(value) {
@@ -606,7 +596,7 @@ export function buildCanonical() {
     rules: {
       official_games: "Week 2 through the latest graded week. Week 1 is excluded from every official stat. A later week is added only after its locked line, final score, and DraftKings close are on file.",
       b_line_weeks_2_3: "The official B$ line is the latest game-day site compute version in bs-line-history. It is not rounded and it is not recomputed.",
-      b_line_week_4_on: "The official line is the locked raw projection rounded to the nearest 0.5. Exact .25 and .75 round away from zero. The raw number is kept. The lock file is not edited.",
+      b_line_week_4_on: "The official line is the locked raw projection rounded to the nearest 0.5. Exact .25 and .75 round away from zero. The raw number is kept. The lock file is not edited. The Games page and the B$ Daily use that same rounded line.",
       open: "Earliest ESPN DraftKings snapshot in line history before kickoff, excluding the closing snapshot. If that snapshot is missing, the earliest pre-kick line-log row that names DraftKings. Otherwise the open is blank and the game is flagged.",
       close: "Weeks 2 and 3: latest line-history snapshot tagged close whose source is ESPN DraftKings. Week 4 on: data/closes/2026-wNN.json, the post-final ESPN DraftKings pickcenter home close. A lock-time street is not the close. A missing close is flagged and the game stays out of the official record.",
       ats: "The side the official B$ line liked against the DraftKings close. Same rule as the game-day grade.",
@@ -740,11 +730,24 @@ export function roundingSelfTest() {
     [0, 0],
     [-0.25, -0.5],
     [0.25, 0.5],
+    [-9.93, -10],
+    [-11.7, -11.5],
+    [9.93, 10],
+    [11.7, 11.5],
+    [1.25, 1.5],
+    [-1.25, -1.5],
+    [1.75, 2],
+    [-1.75, -2],
   ];
   const errors = [];
   for (const [raw, want] of cases) {
     const got = roundHalfAwayFromZero(raw);
     if (got !== want) errors.push(raw + " rounded to " + got + ", expected " + want);
   }
+  if (officialHomeSpread(3, -6.4) !== -6.4) errors.push("Week 3 line was rounded");
+  if (officialHomeSpread(2, -9.93) !== -9.93) errors.push("Week 2 line was rounded");
+  if (officialHomeSpread(4, -9.93) !== -10) errors.push("Week 4 -9.93 did not round to -10");
+  if (officialHomeSpread(5, -11.7) !== -11.5) errors.push("Week 5 -11.7 did not round to -11.5");
+  if (officialHomeSpread(4, 5.63) !== 5.5) errors.push("Week 4 5.63 did not round to 5.5");
   return errors;
 }

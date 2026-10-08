@@ -2,7 +2,7 @@
    Weeks 2–3 lines are the stored game-day numbers. They are not rounded here.
    Week 4 on uses the rounded lock already stored on each row. */
 (function () {
-  const FILE = "./data/record/canonical-2026.json?v=record1007";
+  const FILE = "./data/record/canonical-2026.json?v=record1008";
   const EPS = 0.05;
 
   function esc(s) {

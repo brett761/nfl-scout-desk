@@ -22,6 +22,9 @@
 import fs from "fs";
 import path from "path";
 import { atsGrade } from "./game_day_grade.mjs";
+import { roundHalfAwayFromZero as roundHalfAway } from "../record/round_half.mjs";
+
+export { roundHalfAway };
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "../..");
 const OUT_REL = "data/model/shadow-dvoa-blend-grades-2026.json";
@@ -32,16 +35,6 @@ export function num(v) {
   if (v == null || v === "") return null;
   const n = Number(v);
   return Number.isFinite(n) ? n : null;
-}
-
-export function roundHalfAway(value) {
-  const n = num(value);
-  if (n == null) return null;
-  const sign = n < 0 ? -1 : 1;
-  const steps = Math.abs(n) / 0.5;
-  const lower = Math.floor(steps + 1e-9);
-  const out = sign * (steps - lower > 0.5 - 1e-8 ? lower + 1 : lower) * 0.5;
-  return out === 0 ? 0 : out;
 }
 
 function r2(n) {

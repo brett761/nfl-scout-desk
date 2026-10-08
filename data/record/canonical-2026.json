@@ -6,7 +6,7 @@
   "rules": {
     "official_games": "Week 2 through the latest graded week. Week 1 is excluded from every official stat. A later week is added only after its locked line, final score, and DraftKings close are on file.",
     "b_line_weeks_2_3": "The official B$ line is the latest game-day site compute version in bs-line-history. It is not rounded and it is not recomputed.",
-    "b_line_week_4_on": "The official line is the locked raw projection rounded to the nearest 0.5. Exact .25 and .75 round away from zero. The raw number is kept. The lock file is not edited.",
+    "b_line_week_4_on": "The official line is the locked raw projection rounded to the nearest 0.5. Exact .25 and .75 round away from zero. The raw number is kept. The lock file is not edited. The Games page and the B$ Daily use that same rounded line.",
     "open": "Earliest ESPN DraftKings snapshot in line history before kickoff, excluding the closing snapshot. If that snapshot is missing, the earliest pre-kick line-log row that names DraftKings. Otherwise the open is blank and the game is flagged.",
     "close": "Weeks 2 and 3: latest line-history snapshot tagged close whose source is ESPN DraftKings. Week 4 on: data/closes/2026-wNN.json, the post-final ESPN DraftKings pickcenter home close. A lock-time street is not the close. A missing close is flagged and the game stays out of the official record.",
     "ats": "The side the official B$ line liked against the DraftKings close. Same rule as the game-day grade.",
@@ -69,7 +69,23 @@
     }
   },
   "grading_changes": [],
-  "flagged": [],
+  "flagged": [
+    {
+      "game_id": "TB@DAL",
+      "week": 5,
+      "in_official_record": false,
+      "review": [
+        {
+          "field": "score",
+          "reason": "No final score on data/nfl-2026.json. The game stays out of the official record."
+        },
+        {
+          "field": "close",
+          "reason": "No data/closes/2026-w05.json is on file. The closing line was not taken from the lock."
+        }
+      ]
+    }
+  ],
   "open_fallbacks": [
     {
       "game_id": "IND@KC",
@@ -2129,7 +2145,61 @@
       "review": []
     }
   ],
-  "pending_locks": [],
+  "pending_locks": [
+    {
+      "season": 2026,
+      "week": 5,
+      "game_id": "TB@DAL",
+      "espn_id": "401872980",
+      "away": "TB",
+      "home": "DAL",
+      "kick": "2026-10-08T20:15:00-04:00",
+      "in_official_record": false,
+      "raw_b_line": -9.93,
+      "official_b_line": -10,
+      "official_rounded": true,
+      "b_line_source": "data/postmortem/locks/2026-w05-tb-dal.json#model_home_spread",
+      "b_line_version": null,
+      "published_at": "2026-10-07T20:27:13.235Z",
+      "b_line_commit": null,
+      "sportsbook": "ESPN DraftKings",
+      "open_home_spread": -10,
+      "open_source": "data/openers/2026-10-05-week5-monday.json",
+      "open_at": "2026-10-05T12:25:00.000Z",
+      "open_basis": "line-history",
+      "open_fallback": false,
+      "close_home_spread": null,
+      "close_source": null,
+      "close_at": null,
+      "lock_street_home_spread": -8.5,
+      "score_source": null,
+      "away_score": null,
+      "home_score": null,
+      "ats": null,
+      "ats_side": null,
+      "prior_ats": null,
+      "prior_close_home_spread": null,
+      "result_changed": false,
+      "clv": null,
+      "beat_close": null,
+      "pickem": null,
+      "favorite": null,
+      "underdog": null,
+      "upset": null,
+      "b_upset_call": null,
+      "b_upset_correct": null,
+      "review": [
+        {
+          "field": "score",
+          "reason": "No final score on data/nfl-2026.json. The game stays out of the official record."
+        },
+        {
+          "field": "close",
+          "reason": "No data/closes/2026-w05.json is on file. The closing line was not taken from the lock."
+        }
+      ]
+    }
+  ],
   "week4_locked": [],
   "validation": {
     "ok": true,

@@ -26,6 +26,9 @@
 import fs from "fs";
 import path from "path";
 import { execFileSync } from "child_process";
+import { officialHomeSpread, roundHalfAwayFromZero as roundHalfAway } from "../record/round_half.mjs";
+
+export { roundHalfAway };
 
 // Loaded on demand so --self-test and imports do not evaluate app.js.
 async function init() {
@@ -260,20 +263,12 @@ function shape(gameId, week, event, version, supersedes) {
     backfilled: event.backfilled === true,
     market_spread_source: event.market_spread_source,
     market_total_source: event.market_total_source,
+    ...(Number(week) >= 4 && event.b_line != null && Number.isFinite(Number(event.b_line))
+      ? { official_b_line: officialHomeSpread(week, event.b_line), official_rounded: true }
+      : {}),
     ...(event.shadow_dvoa_blend ? { shadow_dvoa_blend: event.shadow_dvoa_blend } : {}),
     ...(event.note ? { note: event.note } : {}),
   };
-}
-
-// Same rule as the official B$ line from Week 4 (data/record/lib.mjs): nearest 0.5, .25/.75 away from zero.
-export function roundHalfAway(value) {
-  const n = num(value);
-  if (n == null) return null;
-  const sign = n < 0 ? -1 : 1;
-  const steps = Math.abs(n) / 0.5;
-  const lower = Math.floor(steps + 1e-9);
-  const out = sign * (steps - lower > 0.5 - 1e-8 ? lower + 1 : lower) * 0.5;
-  return out === 0 ? 0 : out;
 }
 
 // Shadow record stored on a version. raw is 2 decimals; rounded is computed from that raw.
@@ -617,6 +612,7 @@ async function selfTest() {
   const top = lar[lar.length - 1];
   if (!top.shadow_dvoa_blend || top.shadow_dvoa_blend.raw !== -2.26 || top.shadow_dvoa_blend.rounded !== -2.5) fail("shadow not stored/rounded (-2.26 -> -2.5)");
   if (top.b_line !== 1.23 || top.shadow_dvoa_blend.in_b_line !== false) fail("shadow touched the B$ line");
+  if (top.official_b_line !== 1 || top.official_rounded !== true) fail("week 5 official line should be the raw rounded to 0.5, raw kept");
   if (await appendWeek(data, 5, sdeps) !== 0) fail("same shadow should add nothing");
   const sdeps2 = { ...deps, shadowFor: () => shadowRecord(-3.25, { weight: 0.5 }) };
   if (await appendWeek(data, 5, sdeps2) !== 1) fail("changed shadow should append");

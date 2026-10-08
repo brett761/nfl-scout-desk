@@ -4,6 +4,8 @@
 
 Each version has a game id, week, version number, `published_at`, source, commit, the B$ line, the market spread and total at that moment, and a `supersedes` pointer. Spreads are home-centric. Negative means the home team is favored.
 
+From Week 4, a version also stores `official_b_line` next to `b_line`. That official number is the raw line rounded to the nearest 0.5, with exact .25 and .75 rounding away from zero. `b_line` stays the raw model number. The Games page and the B$ Daily publish `official_b_line`. The daily formatter is `data/daily/lines.mjs`. It prints the board and does not send mail. Weeks 2 and 3 have no `official_b_line`.
+
 Backfilled rows are marked `backfilled: true`. The timestamp is the best one on the lock (`frozen_at`), otherwise the commit time. Week 4 has no lock file yet, so that version is the desk `ourHomeSpread` from `data/site_parity_harness.mjs` at backfill, with the latest street snapshot from `data/lines/line-history-2026.json`.
 
 Weeks 1–3 come from git history of `data/postmortem/locks/`. When a lock stores `model_home_spread_corrected` and it differs from the frozen number, that correction is the next version. The market is the line-history snapshot at or before `published_at`, then the number on the lock, then `data/nfl-2026.json` at that commit.
@@ -30,7 +32,7 @@ node data/model/append_model_snapshot.mjs --backfill
 
 ## Check
 
-Fails if any version that was in the previous commit was edited or deleted, if a version has no `published_at`, or if any street snapshot in `data/lines/line-history-2026.json` has a missing, null, or non-ISO `at`. A newly appended version is allowed. Also checks that version numbers run 1..n and `supersedes` points at the previous version.
+Fails if any version that was in the previous commit was edited or deleted, if a version has no `published_at`, or if any street snapshot in `data/lines/line-history-2026.json` has a missing, null, or non-ISO `at`. A newly appended version is allowed. Filling `official_b_line` on an existing Week 4+ version is allowed once, when `b_line` is unchanged and the official value matches the shared rounding helper. A Week 2–3 stamp, a wrong official value, or a raw overwrite still fails. Also checks that version numbers run 1..n and `supersedes` points at the previous version.
 
 ```bash
 node data/model/check_model_history.mjs

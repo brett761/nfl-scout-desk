@@ -3,6 +3,7 @@
   "season": 2026,
   "sign_convention": "Home-centric spreads and the B$ line. Negative means the home team is favored.",
   "immutability": "Each version is append-only. A correction is a new version. Existing versions are never edited or deleted.",
+  "publication": "From Week 4, official_b_line is b_line rounded to the nearest 0.5 before it is published. Exact .25 and .75 round away from zero. b_line stays the raw model number. Weeks 2 and 3 have no official_b_line. The Games page and the B$ Daily publish official_b_line.",
   "games": [
     {
       "game_id": "DEN@KC",
@@ -3561,7 +3562,9 @@
             "dvoa_plays_through_week": 4,
             "in_b_line": false,
             "method": "app.js dvoaBlendShadowHomeSpread: 2026-performance part (results + PFF YTD) = (1-w)*itself + w*B$ DVOA overall; other layers and HFA 2.0 unchanged"
-          }
+          },
+          "official_b_line": 1.5,
+          "official_rounded": true
         }
       ]
     },
@@ -3703,7 +3706,9 @@
             "dvoa_plays_through_week": 4,
             "in_b_line": false,
             "method": "app.js dvoaBlendShadowHomeSpread: 2026-performance part (results + PFF YTD) = (1-w)*itself + w*B$ DVOA overall; other layers and HFA 2.0 unchanged"
-          }
+          },
+          "official_b_line": -6,
+          "official_rounded": true
         }
       ]
     },
@@ -3884,7 +3889,9 @@
             "dvoa_plays_through_week": 4,
             "in_b_line": false,
             "method": "app.js dvoaBlendShadowHomeSpread: 2026-performance part (results + PFF YTD) = (1-w)*itself + w*B$ DVOA overall; other layers and HFA 2.0 unchanged"
-          }
+          },
+          "official_b_line": 11.5,
+          "official_rounded": true
         }
       ]
     },
@@ -4050,7 +4057,9 @@
             "dvoa_plays_through_week": 4,
             "in_b_line": false,
             "method": "app.js dvoaBlendShadowHomeSpread: 2026-performance part (results + PFF YTD) = (1-w)*itself + w*B$ DVOA overall; other layers and HFA 2.0 unchanged"
-          }
+          },
+          "official_b_line": 11.5,
+          "official_rounded": true
         }
       ]
     },
@@ -4207,7 +4216,9 @@
             "dvoa_plays_through_week": 4,
             "in_b_line": false,
             "method": "app.js dvoaBlendShadowHomeSpread: 2026-performance part (results + PFF YTD) = (1-w)*itself + w*B$ DVOA overall; other layers and HFA 2.0 unchanged"
-          }
+          },
+          "official_b_line": -5.5,
+          "official_rounded": true
         }
       ]
     },
@@ -4373,7 +4384,9 @@
             "dvoa_plays_through_week": 4,
             "in_b_line": false,
             "method": "app.js dvoaBlendShadowHomeSpread: 2026-performance part (results + PFF YTD) = (1-w)*itself + w*B$ DVOA overall; other layers and HFA 2.0 unchanged"
-          }
+          },
+          "official_b_line": 3,
+          "official_rounded": true
         }
       ]
     },
@@ -4539,7 +4552,9 @@
             "dvoa_plays_through_week": 4,
             "in_b_line": false,
             "method": "app.js dvoaBlendShadowHomeSpread: 2026-performance part (results + PFF YTD) = (1-w)*itself + w*B$ DVOA overall; other layers and HFA 2.0 unchanged"
-          }
+          },
+          "official_b_line": 7,
+          "official_rounded": true
         }
       ]
     },
@@ -4705,7 +4720,9 @@
             "dvoa_plays_through_week": 4,
             "in_b_line": false,
             "method": "app.js dvoaBlendShadowHomeSpread: 2026-performance part (results + PFF YTD) = (1-w)*itself + w*B$ DVOA overall; other layers and HFA 2.0 unchanged"
-          }
+          },
+          "official_b_line": 3,
+          "official_rounded": true
         }
       ]
     },
@@ -4823,7 +4840,9 @@
             "dvoa_plays_through_week": 4,
             "in_b_line": false,
             "method": "app.js dvoaBlendShadowHomeSpread: 2026-performance part (results + PFF YTD) = (1-w)*itself + w*B$ DVOA overall; other layers and HFA 2.0 unchanged"
-          }
+          },
+          "official_b_line": -5.5,
+          "official_rounded": true
         }
       ]
     },
@@ -4989,7 +5008,9 @@
             "dvoa_plays_through_week": 4,
             "in_b_line": false,
             "method": "app.js dvoaBlendShadowHomeSpread: 2026-performance part (results + PFF YTD) = (1-w)*itself + w*B$ DVOA overall; other layers and HFA 2.0 unchanged"
-          }
+          },
+          "official_b_line": 4.5,
+          "official_rounded": true
         }
       ]
     },
@@ -5155,7 +5176,9 @@
             "dvoa_plays_through_week": 4,
             "in_b_line": false,
             "method": "app.js dvoaBlendShadowHomeSpread: 2026-performance part (results + PFF YTD) = (1-w)*itself + w*B$ DVOA overall; other layers and HFA 2.0 unchanged"
-          }
+          },
+          "official_b_line": 8,
+          "official_rounded": true
         }
       ]
     },
@@ -5321,7 +5344,9 @@
             "dvoa_plays_through_week": 4,
             "in_b_line": false,
             "method": "app.js dvoaBlendShadowHomeSpread: 2026-performance part (results + PFF YTD) = (1-w)*itself + w*B$ DVOA overall; other layers and HFA 2.0 unchanged"
-          }
+          },
+          "official_b_line": 6,
+          "official_rounded": true
         }
       ]
     },
@@ -5502,7 +5527,9 @@
             "dvoa_plays_through_week": 4,
             "in_b_line": false,
             "method": "app.js dvoaBlendShadowHomeSpread: 2026-performance part (results + PFF YTD) = (1-w)*itself + w*B$ DVOA overall; other layers and HFA 2.0 unchanged"
-          }
+          },
+          "official_b_line": -11,
+          "official_rounded": true
         }
       ]
     },
@@ -5668,7 +5695,9 @@
             "dvoa_plays_through_week": 4,
             "in_b_line": false,
             "method": "app.js dvoaBlendShadowHomeSpread: 2026-performance part (results + PFF YTD) = (1-w)*itself + w*B$ DVOA overall; other layers and HFA 2.0 unchanged"
-          }
+          },
+          "official_b_line": -1,
+          "official_rounded": true
         }
       ]
     },
@@ -5849,7 +5878,9 @@
             "dvoa_plays_through_week": 4,
             "in_b_line": false,
             "method": "app.js dvoaBlendShadowHomeSpread: 2026-performance part (results + PFF YTD) = (1-w)*itself + w*B$ DVOA overall; other layers and HFA 2.0 unchanged"
-          }
+          },
+          "official_b_line": -10,
+          "official_rounded": true
         }
       ]
     }
