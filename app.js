@@ -2739,7 +2739,7 @@ async function loadOpenerSnaps() {
 
 async function loadNfl() {
   const openersReq = loadOpenerSnaps();
-  const nflReq = fetch("./data/nfl-2026.json?v=20261007s");
+  const nflReq = fetch("./data/nfl-2026.json?v=20261008s");
   const priorReq = fetch("./data/prior-2025.json?v=pffpre0924");
   const ytdStReq = fetch("./data/ytd-st-2026.json?v=w4fin1006");
   const ytdRankReq = fetch("./data/ytd-rankings-2026.json?v=w4fin1006");
