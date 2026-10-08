@@ -7,6 +7,7 @@
  */
 import fs from "fs"; import path from "path"; import { fileURLToPath } from "url";
 import { init } from "./site_parity_harness.mjs";
+import { officialHomeSpread, roundHalfAwayFromZero } from "./record/round_half.mjs";
 const DATA = path.dirname(fileURLToPath(import.meta.url));
 const LOCK = path.join(DATA, "postmortem/locks/2026-w05-tb-dal.json");
 const [streetArg, ouArg, streetNote] = process.argv.slice(2);
@@ -26,7 +27,8 @@ const away = team(g.away), home = team(g.home);
 const hfa = g.neutral ? 0 : api.getHfa();
 const coach = r2(api.coachTerm(g)), prep = r2(api.prepNet(g)), ats = r2(api.atsNet(g)), sched = r2(api.schedNet(g)), matchup = r2(api.matchupNet(g));
 const model = api.ourHomeSpread(g, api.getHfa());
-const roundHalf = (x) => { const s = Math.sign(x) || 1; return s * Math.round(Math.abs(x) * 2) / 2; };
+const rawModel = r2(-model) === 0 ? 0 : r2(model);
+const official = officialHomeSpread(5, rawModel);
 const shadowRaw = api.dvoaBlendShadowHomeSpread ? api.dvoaBlendShadowHomeSpread(g) : null;
 const street = Number(streetArg), ou = Number(ouArg);
 const layers = {}; for (const k of Object.keys(L)) layers[k] = r2(home[k] - away[k]);
@@ -35,15 +37,17 @@ const etStamp = now.toLocaleString("en-US", { timeZone: "America/New_York", date
 const lock = {
   week: 5, season: 2026, game_id: `${g.away}@${g.home}`, kick: "2026-10-08T20:15:00-04:00",
   away: g.away, home: g.home, espn_id: String(g.id), venue: g.venue, neutral: !!g.neutral, window: "TNF",
-  model_home_spread: r2(-model) === 0 ? 0 : r2(model),
-  model_home_spread_rounded: roundHalf(model),
+  model_home_spread: rawModel,
+  model_home_spread_rounded: official,
+  official_b_line: official,
+  official_rounded: true,
   model_home_spread_source: "desk_compute",
-  model_home_spread_method: "site_parity_harness.mjs → live app.js ourHomeSpread(game, hfa) (rounded official line = nearest 0.5)",
+  model_home_spread_method: "site_parity_harness.mjs → live app.js ourHomeSpread(game, hfa). official_b_line is that raw number rounded with data/record/round_half.mjs (nearest 0.5, .25/.75 away from zero).",
   street_home_spread: street, close_at_lock: street, ou_street: ou, street_note: streetNote,
-  edge_home: r2(street - model),
-  edge_home_rounded: r2(street - roundHalf(model)),
-  edge_note: `edgeHome = street − model = ${street} − (${r2(model)}) = ${r2(street - model)}; positive → home (${g.home}) value. Rounded B$ ${roundHalf(model)} vs ${street} = ${r2(street - roundHalf(model))}.`,
-  shadow_dvoa_blend: shadowRaw === null ? null : { raw: r2(shadowRaw), rounded: roundHalf(shadowRaw), weight: api.DVOA_BLEND_SHADOW_WEIGHT, in_b_line: false },
+  edge_home: r2(street - rawModel),
+  edge_home_rounded: r2(street - official),
+  edge_note: `edgeHome = street − model = ${street} − (${rawModel}) = ${r2(street - rawModel)}; positive → home (${g.home}) value. Rounded B$ ${official} vs ${street} = ${r2(street - official)}.`,
+  shadow_dvoa_blend: shadowRaw === null ? null : { raw: r2(shadowRaw), rounded: roundHalfAwayFromZero(shadowRaw), weight: api.DVOA_BLEND_SHADOW_WEIGHT, in_b_line: false },
   feature_stack: {
     formula: "ourHomeLine = -(eff(home) - eff(away) + HFA + coach + prep + ats + sched + matchup); eff = algorithmBase + fa + draft + madden + pff + pffPre + pffYtd + sos + return + injury (+ user adjust/context, none on default profile). 2025 prior locked at 0 from Week 5; Last-year SOS out.",
     injury_pulled: inj.pulled, injury_phase: inj.phase,
@@ -58,4 +62,4 @@ const lock = {
   tickets: [],
 };
 fs.writeFileSync(LOCK, JSON.stringify(lock, null, 2) + "\n");
-console.log(JSON.stringify({ model: lock.model_home_spread, rounded: lock.model_home_spread_rounded, street, edge: lock.edge_home, edge_r: lock.edge_home_rounded, shadow: lock.shadow_dvoa_blend, away, home, coach, prep, ats, sched, matchup }, null, 1));
+console.log(JSON.stringify({ model: lock.model_home_spread, rounded: lock.model_home_spread_rounded, official: lock.official_b_line, street, edge: lock.edge_home, edge_r: lock.edge_home_rounded, shadow: lock.shadow_dvoa_blend, away, home, coach, prep, ats, sched, matchup }, null, 1));

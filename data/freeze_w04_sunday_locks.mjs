@@ -7,6 +7,7 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { officialHomeSpread } from "./record/round_half.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DATA = __dirname;
@@ -887,6 +888,8 @@ for (const g of w4) {
     neutral,
     window: win,
     model_home_spread: model,
+    official_b_line: officialHomeSpread(4, model),
+    official_rounded: true,
     model_home_spread_source: "desk_compute",
     street_home_spread: street,
     close_at_lock: street,

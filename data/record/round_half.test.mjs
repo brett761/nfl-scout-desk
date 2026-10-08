@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import vm from "vm";
 import assert from "assert";
+import { spawnSync } from "node:child_process";
 import { officialHomeSpread, roundHalfAwayFromZero, formatFavoriteLine, favoriteTeam } from "./round_half.mjs";
 import { publishedHomeSpread, weekBoard } from "../daily/lines.mjs";
 import { api, init } from "../site_parity_harness.mjs";
@@ -151,9 +152,9 @@ const nfl = api.getNfl();
 const siteTb = nfl.games.find((g) => g.away === "TB" && g.home === "DAL" && Number(g.week) === 5);
 const siteJax = nfl.games.find((g) => g.away === "PHI" && g.home === "JAX" && Number(g.week) === 5);
 assert.strictEqual(api.deskHomeSpread(siteTb), -10);
-assert.strictEqual(api.deskHomeSpread(siteJax), -11.5);
+assert.strictEqual(api.deskHomeSpread(siteJax), -11);
 assert.strictEqual(api.formatOurLine(api.deskHomeSpread(siteTb), siteTb.home, siteTb.away), "DAL −10.0");
-assert.strictEqual(api.formatOurLine(api.deskHomeSpread(siteJax), siteJax.home, siteJax.away), "JAX −11.5");
+assert.strictEqual(api.formatOurLine(api.deskHomeSpread(siteJax), siteJax.home, siteJax.away), "JAX −11.0");
 
 const week3 = nfl.games.filter((g) => Number(g.week) === 3);
 assert.ok(week3.length);
@@ -167,5 +168,28 @@ for (const game of week3) {
   if (tenth && !half) sawUnrounded = true;
 }
 assert.ok(sawUnrounded, "a Week 3 line should still show a tenth that is not a half point");
+
+const pySamples = [-9.93, 9.93, -11.7, 11.7, -5.25, 5.25, 1.25, -1.25, 1.75, -1.75, 0.2, -0.2, 0, 5.63, -2.75, 2.75, -0.24];
+const pyRound = spawnSync("python3", ["data/daily/render_b_daily.py", "--round", ...pySamples.map(String)], { encoding: "utf8" });
+assert.strictEqual(pyRound.status, 0, pyRound.stderr);
+const pyGot = pyRound.stdout.trim().split("\n").map((line) => JSON.parse(line));
+pySamples.forEach((raw, i) => {
+  assert.strictEqual(pyGot[i], roundHalfAwayFromZero(raw), "python round " + raw);
+});
+const pyOfficial = spawnSync("python3", ["data/daily/render_b_daily.py", "--official", "3", "-6.4", "2", "-9.93", "4", "-9.93", "5", "-11.7", "5", "-5.25"], { encoding: "utf8" });
+assert.strictEqual(pyOfficial.status, 0, pyOfficial.stderr);
+const pyOff = pyOfficial.stdout.trim().split("\n").map((line) => JSON.parse(line));
+assert.deepStrictEqual(pyOff, [-6.4, -9.93, -10, -11.5, -5.5]);
+
+const tbLock = read("data/postmortem/locks/2026-w05-tb-dal.json");
+assert.strictEqual(tbLock.model_home_spread, -9.93);
+assert.strictEqual(tbLock.official_b_line, -10);
+assert.strictEqual(tbLock.official_rounded, true);
+const w3Lock = read("data/postmortem/locks/2026-w03-ten-nyg.json");
+assert.strictEqual(w3Lock.model_home_spread, -5.14);
+assert.ok(!("official_b_line" in w3Lock));
+const w4Lock = read("data/postmortem/locks/2026-w04-pit-cle.json");
+assert.strictEqual(w4Lock.model_home_spread, 5.63);
+assert.strictEqual(w4Lock.official_b_line, officialHomeSpread(4, w4Lock.model_home_spread));
 
 console.log("round_half.test.mjs ok");

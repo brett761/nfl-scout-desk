@@ -4,7 +4,7 @@
 
 Each version has a game id, week, version number, `published_at`, source, commit, the B$ line, the market spread and total at that moment, and a `supersedes` pointer. Spreads are home-centric. Negative means the home team is favored.
 
-From Week 4, a version also stores `official_b_line` next to `b_line`. That official number is the raw line rounded to the nearest 0.5, with exact .25 and .75 rounding away from zero. `b_line` stays the raw model number. The Games page and the B$ Daily publish `official_b_line`. The daily formatter is `data/daily/lines.mjs`. It prints the board and does not send mail. Weeks 2 and 3 have no `official_b_line`.
+From Week 4, a version also stores `official_b_line` next to `b_line`. That official number is the raw line rounded to the nearest 0.5, with exact .25 and .75 rounding away from zero. `b_line` stays the raw model number. The Games page and the B$ Daily publish `official_b_line`. The daily formatters are `data/daily/lines.mjs` and `data/daily/render_b_daily.py`. Both print the board and do not send mail. The Python rounder matches `round_half.mjs`, including .25 and .75 away from zero. Weeks 2 and 3 have no `official_b_line`.
 
 Backfilled rows are marked `backfilled: true`. The timestamp is the best one on the lock (`frozen_at`), otherwise the commit time. Week 4 has no lock file yet, so that version is the desk `ourHomeSpread` from `data/site_parity_harness.mjs` at backfill, with the latest street snapshot from `data/lines/line-history-2026.json`.
 

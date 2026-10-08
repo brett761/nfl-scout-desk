@@ -2,7 +2,7 @@
 
 Bet History and Overall Record both read `canonical-2026.json`. Week 1 is never in that file. Weeks 2 and 3 official lines are the game-day numbers already used for grading. They are not rounded, and `weeks-2-3-immutable.json` fails the check if one of them moves.
 
-From Week 4 the official line is the locked raw projection rounded to the nearest 0.5. Halfway cases (.25 and .75) go away from zero. The sign stays, so the favorite does not flip. A raw magnitude under 0.25 becomes a pick’em. The raw number stays on the row. Lock files are not edited. The same helper, `round_half.mjs`, is what grading, `weekly.mjs`, the Games page, and the B$ Daily use.
+From Week 4 the official line is the locked raw projection rounded to the nearest 0.5. Halfway cases (.25 and .75) go away from zero. The sign stays, so the favorite does not flip. A raw magnitude under 0.25 becomes a pick’em. The raw number stays on the row. The same helper, `round_half.mjs`, is what grading, `weekly.mjs`, the freeze scripts, the Games page, and the B$ Daily use. Week 4 and later lock files store that rounded line as `official_b_line` beside `model_home_spread`. Weeks 2 and 3 lock files stay as they were recorded.
 
 The sportsbook of record is ESPN DraftKings.
 
