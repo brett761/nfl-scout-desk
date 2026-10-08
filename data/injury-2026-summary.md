@@ -1,147 +1,121 @@
-# 2026 NFL injuries — Scout desk Week 5 FINAL (TNF TB@DAL)
+# 2026 NFL injuries — Scout desk Week 5 WORKING-THU
 
-Pulled 2026-10-07 4:22 PM ET (America/New_York). Stamp `injury_pulled=2026-10-07b` **FINAL** for TNF TB@DAL from the official Wed ~4pm ET Game Status (dallascowboys.com dual table, NFL.com). Every other club is unchanged from 2026-10-07a WORKING-WED below; the Sunday/MNF official sheet comes Friday.
+Pulled 2026-10-08 12:57 PM ET (America/New_York). Stamp `injury_pulled=2026-10-08a` **WORKING-THU** Thursday ESPN refresh (prior seed 2026-10-07b FINAL). TNF TB@DAL protected verbatim. Sunday-card official Game Status Friday.
 
-## TNF TB@DAL official FINAL
+## Material designation flips vs 2026-10-07b FINAL
 
-- **TB Baker Mayfield** (QB1): OUT, impact 1.5 (QB tier; Jalon Daniels 2nd start)
-- **TB Antoine Winfield Jr.** (S): OUT, impact 0.5
-- **TB Benjamin Morrison** (CB1): Q → OUT, manual 0.3 (secondary cluster)
-- **TB SirVocea Dennis** (LB): Q → OUT, auto 0.25
-- **TB Ko Kieft / Chase McLaughlin**: Q → cleared, off the number
-- **DAL Drew Shelton** (RT): DOUBTFUL → OUT, auto 0.25
-- **DAL DeMarvion Overshown** (LB) / **Cobie Durant** (CB1): DOUBTFUL → OUT, 0.2 each (same 1.0 pricing)
-- **DAL Tyler Smith** (OG): ESPN IR (wrong) → official QUESTIONABLE, full Wed, off the number
-- **DAL Jonathan Mingo** (WR2): new QUESTIONABLE (illness), manual 0.15 soft on
-- Team terms: TB −3.09 → −3.30; DAL −2.15 → −1.70. B$ DAL −9.27 → −9.93 (rounds −10).
-
----
-
-## Earlier: Week 5 WORKING-WED
-
-Pulled 2026-10-07 10:13 AM ET (America/New_York). Stamp `injury_pulled=2026-10-07a` **WORKING-WED** Wednesday ESPN refresh after Tuesday WORKING (prior seed 2026-10-06b). Week 4 fully FINAL; Week 5 board (byes KC/CAR), official practice sheet Wed ~4pm ET for TNF TB@DAL. Aaron Donald dropped. No rumor designations.
-
-## Material designation flips vs 2026-10-06b WORKING-TUE
-
-- **ARI Dadrion Taylor-Demerson** (S): OUT → QUESTIONABLE impact=0.2
-- **BAL Trey Hendrickson** (LB): OUT → QUESTIONABLE impact=0.5
-- **BUF T.J. Sanders** (IDL): OUT → QUESTIONABLE
-- **BUF Christian Benford** (CB1): OUT → QUESTIONABLE impact=0.2
-- **CAR Cam Jackson** (IDL): OUT → QUESTIONABLE
-- **CAR Damien Lewis** (OG): OUT → QUESTIONABLE impact=0.25
-- **CAR Jalen Coker** (WR2): OUT → QUESTIONABLE impact=0.2
-- **CHI Cam Lewis** (CB1): OUT → QUESTIONABLE impact=0.2
-- **CIN Colbie Young** (WR2): OUT → QUESTIONABLE
-- **CIN Bryan Cook** (S): OUT → QUESTIONABLE impact=0.2
-- **CIN Kyle Dugger** (S): OUT → QUESTIONABLE impact=0.2
-- **CIN B.J. Hill** (IDL): OUT → QUESTIONABLE impact=0.2
-- **CIN Swayze Bozeman** (LB): OUT → QUESTIONABLE
-- **CLE Tylan Wallace** (WR2): OUT → QUESTIONABLE impact=0.2
-- **CLE Elgton Jenkins** (C): OUT → QUESTIONABLE impact=0.45
-- **CLE Teven Jenkins** (OG): OUT → QUESTIONABLE impact=0.35
-- **DAL DeMarvion Overshown** (LB): OUT → DOUBTFUL impact=0.2
-- **DAL Cobie Durant** (CB1): OUT → DOUBTFUL impact=0.2
-- **DEN Dondrea Tillman** (LB): OUT → QUESTIONABLE impact=0.2
-- **DET Ben Bartch** (OG): OUT → QUESTIONABLE impact=0.25
-- **GB Edgerrin Cooper** (LB): OUT → IR impact=0.2
-- **GB Jacob Monk** (C): OUT → QUESTIONABLE
-- **GB Aaron Banks** (OG): OUT → QUESTIONABLE impact=0.4
-- **GB Anthony Campbell** (IDL): OUT → QUESTIONABLE
-- **HOU Jaylin Smith** (CB1): QUESTIONABLE → IR
-- **HOU Azeez Al-Shaair** (LB): OUT → QUESTIONABLE impact=0.25
-- **IND Keenan Allen** (WR2): OUT → QUESTIONABLE impact=0.25
-- **JAX Montaric Brown** (CB1): OUT → QUESTIONABLE impact=0.25
-- **KC Josh Simmons** (RT): OUT → QUESTIONABLE impact=0.2
-- **LAC Brenen Thompson** (WR2): OUT → QUESTIONABLE
-- **LAC Dalvin Tomlinson** (IDL): OUT → QUESTIONABLE
-- **LAC Derwin James Jr.** (S): OUT → QUESTIONABLE impact=0.5
-- **LAC Charlie Kolar** (TE1): OUT → QUESTIONABLE impact=0.25
-- **LAC Kayode Awosika** (OG): OUT → QUESTIONABLE
-- **LAR Jaylen Watson** (CB1): OUT → QUESTIONABLE impact=0.2
-- **LAR Colby Parkinson** (TE1): OUT → QUESTIONABLE impact=0.25
-- **LV Jackson Powers-Johnson** (OG): OUT → QUESTIONABLE impact=0.2
-- **MIA Caleb Douglas** (WR2): OUT → QUESTIONABLE impact=0.2
-- **MIA Robert Beal Jr.** (EDGE1): OUT → QUESTIONABLE
-- **MIN Justin Jefferson** (WR1): OUT → QUESTIONABLE impact=0.5
-- **MIN Charles Demmings** (CB1): OUT → QUESTIONABLE
-- **NE Christian Gonzalez** (CB1): OUT → QUESTIONABLE impact=0.5
-- **NE Christian Barmore** (IDL): OUT → QUESTIONABLE impact=0.2
-- **NE Channing Canada** (CB1): OUT → QUESTIONABLE
-- **NO Kaden Elliss** (LB): OUT → QUESTIONABLE impact=0.25
-- **NO Carl Granderson** (EDGE1): OUT → QUESTIONABLE impact=0.2
-- **NO Anfernee Jennings** (LB): OUT → QUESTIONABLE impact=0.2
-- **NO Noah Fant** (TE1): OUT → QUESTIONABLE
-- **NYG Braxton Berrios** (WR2): IR → OUT
-- **NYJ Braiden McGregor** (EDGE1): OUT → IR
-- **NYJ Mason Taylor** (TE1): OUT → DOUBTFUL impact=0.2
-- **NYJ Kiko Mauigoa** (LB): OUT → QUESTIONABLE
-- **NYJ Adonai Mitchell** (WR2): OUT → DOUBTFUL impact=0.2
-- **NYJ Dylan Parham** (OG): OUT → QUESTIONABLE impact=0.2
-- **NYJ Kingsley Enagbare** (LB): OUT → QUESTIONABLE
-- **NYJ Breece Hall** (RB1): OUT → DOUBTFUL impact=0.25
-- **PHI DeVonta Smith** (WR2): OUT → QUESTIONABLE impact=0.25
-- **PHI Fred Johnson** (RT): OUT → QUESTIONABLE
-- **PHI Marcus Epps** (S): OUT → QUESTIONABLE
-- **PHI Dallas Goedert** (TE1): OUT → DOUBTFUL impact=0.25
-- **PHI Zack Baun** (LB): OUT → QUESTIONABLE impact=0.5
-- **PHI Hollywood Brown** (WR2): OUT → QUESTIONABLE
-- **PIT Rico Dowdle** (RB1): OUT → QUESTIONABLE impact=0.25
-- **SEA Chazz Surratt** (LB): OUT → QUESTIONABLE
-- **SEA Ty Okada** (S): OUT → QUESTIONABLE impact=0.25
-- **SF James Thompson Jr.** (IDL): OUT → DOUBTFUL
-- **SF Nick Bosa** (EDGE1): OUT → DOUBTFUL impact=0.25
-- **TB Benjamin Morrison** (CB1): OUT → QUESTIONABLE
-- **TB Ko Kieft** (TE1): OUT → QUESTIONABLE
-- **WSH Jaylin Lane** (WR2): OUT → IR impact=0.2
-- **WSH Rachaad White** (RB1): OUT → QUESTIONABLE impact=0.2
-- **WSH Terry McLaurin** (WR2): OUT → QUESTIONABLE impact=0.5
-- **WSH Sam Cosmi** (OG): OUT → QUESTIONABLE impact=0.25
-- **WSH Nick Cross** (S): OUT → QUESTIONABLE impact=0.2
-- **WSH Jayden Daniels** (QB1): OUT → QUESTIONABLE impact=1.11
-- **BAL Durham Smythe** (TE1): NEW OUT
-- **DAL Drew Shelton** (RT): NEW DOUBTFUL
-- **JAX Christian Braswell** (CB1): CLEARED off sheet (was OUT)
-- **PHI Lane Johnson** (RT): CLEARED off sheet (was OUT) was impact=0.5
-- **TB Josiah Trotter** (LB): CLEARED off sheet (was QUESTIONABLE)
+- **ARI Isaiah Adams** (OG): QUESTIONABLE → OUT
+- **BAL Durham Smythe** (TE1): OUT → IR
+- **CLE Mason Graham** (IDL): QUESTIONABLE → DOUBTFUL impact=0.2
+- **DEN Pat Surtain II** (CB1): DOUBTFUL → IR impact=0.25
+- **NYG Chauncey Golston** (EDGE1): QUESTIONABLE → OUT
+- **NYG Braxton Berrios** (WR2): OUT → IR
+- **NYJ Dylan Parham** (OG): QUESTIONABLE → DOUBTFUL impact=0.2
+- **NYJ Kiko Mauigoa** (LB): QUESTIONABLE → DOUBTFUL
+- **PHI Dallas Goedert** (TE1): DOUBTFUL → QUESTIONABLE impact=0.25
+- **SF Marques Sigle** (S): DOUBTFUL → OUT impact=0.2
+- **SF Kyle Juszczyk** (DEPTH): DOUBTFUL → OUT impact=0.5
+- **WSH Deatrich Wise Jr.** (EDGE1): PUP → OUT
+- **BAL Rashod Bateman** (WR2): NEW QUESTIONABLE impact=0.2
+- **BAL Zay Flowers** (WR1): NEW QUESTIONABLE impact=0.25
+- **BAL Cam Jurgens** (C): NEW QUESTIONABLE impact=0.2
+- **CHI D'Andre Swift** (RB1): NEW QUESTIONABLE impact=0.25
+- **CIN Ja'Marr Chase** (WR2): NEW QUESTIONABLE impact=0.5
+- **CIN Barrett Carter** (LB): NEW QUESTIONABLE
+- **GB Lukas Van Ness** (EDGE1): NEW QUESTIONABLE impact=0.2
+- **HOU Will Anderson Jr.** (EDGE1): NEW QUESTIONABLE impact=0.5
+- **HOU Jadeveon Clowney** (EDGE1): NEW QUESTIONABLE impact=0.2
+- **IND Akeem Davis-Gaither** (LB): NEW QUESTIONABLE impact=0.2
+- **IND Ashton Dulin** (WR2): NEW QUESTIONABLE
+- **IND Jaylon Carlies** (LB): NEW QUESTIONABLE
+- **JAX Jourdan Lewis** (CB1): NEW QUESTIONABLE impact=0.25
+- **LAC Joe Alt** (RT): NEW QUESTIONABLE impact=0.25
+- **LAC Quentin Johnston** (WR2): NEW QUESTIONABLE impact=0.2
+- **LAC Donte Jackson** (CB1): NEW QUESTIONABLE impact=0.25
+- **LV Cody White** (WR2): NEW QUESTIONABLE
+- **LV Brock Bowers** (TE1): NEW QUESTIONABLE impact=0.5
+- **LV Jalen Nailor** (WR2): NEW QUESTIONABLE impact=0.2
+- **MIA Chris Bell** (WR2): NEW QUESTIONABLE
+- **MIN Jordan Addison** (WR2): NEW QUESTIONABLE impact=0.25
+- **NE Rhamondre Stevenson** (RB1): NEW QUESTIONABLE impact=0.2
+- **NO Julian Blackmon** (S): NEW QUESTIONABLE impact=0.2
+- **NO Tyler Shough** (QB1): NEW QUESTIONABLE impact=1.06
+- **NO Alvin Kamara** (RB1): NEW QUESTIONABLE impact=0.2
+- **NO Barion Brown** (WR2): NEW QUESTIONABLE
+- **NYG Isaiah Likely** (TE1): NEW QUESTIONABLE impact=0.2
+- **NYG Cam Skattebo** (RB1): NEW QUESTIONABLE impact=0.25
+- **NYG Malik Nabers** (WR2): NEW QUESTIONABLE impact=0.25
+- **PHI Jihaad Campbell** (LB): NEW QUESTIONABLE impact=0.2
+- **PIT Michael Pittman Jr.** (WR2): NEW OUT impact=0.2
+- **SEA George Holani** (RB1): NEW QUESTIONABLE
+- **SF Kaelon Black** (RB1): NEW QUESTIONABLE
+- **SF Mike Evans** (WR1): NEW QUESTIONABLE impact=0.5
+- **SF Upton Stout** (CB1): NEW QUESTIONABLE impact=0.2
+- **TEN Amani Hooker** (S): NEW QUESTIONABLE impact=0.2
+- **TEN Tony Pollard** (RB1): NEW QUESTIONABLE impact=0.25
+- **WSH Stefon Diggs** (WR2): NEW QUESTIONABLE impact=0.25
+- **WSH Sonny Styles** (LB): NEW QUESTIONABLE impact=0.2
+- **WSH Frankie Luvu** (LB): NEW QUESTIONABLE impact=0.2
+- **WSH Ben Sinnott** (TE1): NEW QUESTIONABLE impact=0.2
+- **WSH Chig Okonkwo** (TE1): NEW QUESTIONABLE
+- **WSH Jacory Croskey-Merritt** (RB1): NEW QUESTIONABLE impact=0.2
+- **CHI Cam Lewis** (CB1): CLEARED off sheet (was QUESTIONABLE) was impact=0.2
+- **CHI Shemar Turner** (IDL): CLEARED off sheet (was OUT)
+- **CHI Noah Sewell** (LB): CLEARED off sheet (was OUT)
+- **CIN B.J. Hill** (IDL): CLEARED off sheet (was QUESTIONABLE) was impact=0.2
+- **CLE Elgton Jenkins** (C): CLEARED off sheet (was QUESTIONABLE) was impact=0.45
+- **GB Brandon Cisse** (CB1): CLEARED off sheet (was QUESTIONABLE)
+- **HOU Jaden Crumedy** (IDL): CLEARED off sheet (was QUESTIONABLE)
+- **HOU Kenneth Murray Jr.** (LB): CLEARED off sheet (was QUESTIONABLE)
+- **NYJ Mason Taylor** (TE1): CLEARED off sheet (was DOUBTFUL) was impact=0.2
+- **PHI Cam Jurgens** (C): CLEARED off sheet (was QUESTIONABLE) was impact=0.2
+- **SEA Ty Okada** (S): CLEARED off sheet (was QUESTIONABLE) was impact=0.25
+- **WSH Nick Cross** (S): CLEARED off sheet (was QUESTIONABLE) was impact=0.2
+- **WSH Jayden Daniels** (QB1): CLEARED off sheet (was QUESTIONABLE) was impact=1.11
+- **WSH Charles Omenihu** (EDGE1): CLEARED off sheet (was QUESTIONABLE) was impact=0.2
 
 ## Team injury terms (auto Madden-first, capped −6)
 
 | Team | Term | Raw | Headliners |
 |------|-----:|----:|------------|
-| TB | -3.09 | -3.09 | Antoine Winfield Jr. OUT, Baker Mayfield OUT |
-| CHI | -2.89 | -2.89 | Caleb Williams OUT, Kyle Monangai QUESTIONABLE, Kyler Gordon OUT, Shemar Turner OUT, Noah Sewell OUT |
-| SF | -2.80 | -2.80 | James Thompson Jr. DOUBTFUL, Nick Bosa DOUBTFUL, Marques Sigle DOUBTFUL, Kyle Juszczyk DOUBTFUL |
+| TB | -3.30 | -3.30 | Benjamin Morrison OUT, SirVocea Dennis OUT, Antoine Winfield Jr. OUT, Baker Mayfield OUT |
+| SF | -3.13 | -3.13 | Kaelon Black QUESTIONABLE, Mike Evans QUESTIONABLE, Marques Sigle OUT, Kyle Juszczyk OUT, James Thompson Jr. DOUBTFUL, Nick Bosa DOUBTFUL |
 | CAR | -2.73 | -2.73 | Ikem Ekwonu OUT |
-| WSH | -2.51 | -2.51 | Rachaad White QUESTIONABLE, Jayden Daniels QUESTIONABLE, Marcus Mariota DOUBTFUL |
-| NYJ | -2.34 | -2.34 | Mason Taylor DOUBTFUL, Adonai Mitchell DOUBTFUL, Breece Hall DOUBTFUL |
-| LAC | -2.31 | -2.31 | Rashawn Slater OUT |
-| NE | -2.26 | -2.26 |  |
-| HOU | -2.17 | -2.17 |  |
-| DAL | -2.15 | -2.15 | Drew Shelton DOUBTFUL, DeMarvion Overshown DOUBTFUL, Cobie Durant DOUBTFUL |
-| BAL | -1.98 | -1.98 | Lamar Jackson QUESTIONABLE, Durham Smythe OUT |
-| PHI | -1.98 | -1.98 | Dallas Goedert DOUBTFUL, Saquon Barkley QUESTIONABLE |
-| DET | -1.94 | -1.94 | Rock Ya-Sin DOUBTFUL, Brian Branch OUT |
-| ARI | -1.92 | -1.92 | Jeremiyah Love QUESTIONABLE |
-| DEN | -1.89 | -1.89 | Pat Bryant DOUBTFUL, Pat Surtain II DOUBTFUL |
-| GB | -1.88 | -1.88 | Chris Brooks QUESTIONABLE, Micah Parsons OUT |
-| MIA | -1.77 | -1.77 | Reese Taylor OUT, Storm Duck OUT |
-| NYG | -1.69 | -1.69 | Braxton Berrios OUT |
-| NO | -1.62 | -1.62 |  |
-| IND | -1.49 | -1.49 | Arden Key OUT |
-| CIN | -1.38 | -1.38 |  |
-| MIN | -1.27 | -1.27 | Justin Jefferson QUESTIONABLE |
+| NO | -2.72 | -2.72 | Tyler Shough QUESTIONABLE, Alvin Kamara QUESTIONABLE |
+| WSH | -2.64 | -2.64 | Deatrich Wise Jr. OUT, Rachaad White QUESTIONABLE, Jacory Croskey-Merritt QUESTIONABLE, Marcus Mariota DOUBTFUL |
+| LAC | -2.56 | -2.56 | Rashawn Slater OUT |
+| HOU | -2.48 | -2.48 |  |
+| NYJ | -2.43 | -2.43 | Dylan Parham DOUBTFUL, Breece Hall DOUBTFUL, Kiko Mauigoa DOUBTFUL, Adonai Mitchell DOUBTFUL |
+| CHI | -2.41 | -2.41 | Caleb Williams OUT, Kyler Gordon OUT, D'Andre Swift QUESTIONABLE, Kyle Monangai QUESTIONABLE |
+| NE | -2.33 | -2.33 | Rhamondre Stevenson QUESTIONABLE |
+| BAL | -2.21 | -2.21 | Lamar Jackson QUESTIONABLE, Zay Flowers QUESTIONABLE |
+| GB | -2.11 | -2.11 | Chris Brooks QUESTIONABLE, Micah Parsons OUT |
+| NYG | -2.10 | -2.10 | Chauncey Golston OUT, Cam Skattebo QUESTIONABLE |
+| ARI | -2.08 | -2.08 | Isaiah Adams OUT, Jeremiyah Love QUESTIONABLE |
+| DET | -1.94 | -1.94 | Brian Branch OUT, Rock Ya-Sin DOUBTFUL |
+| DEN | -1.89 | -1.89 | Pat Bryant DOUBTFUL |
+| MIN | -1.86 | -1.86 | Justin Jefferson QUESTIONABLE |
+| MIA | -1.86 | -1.86 | Reese Taylor OUT, Storm Duck OUT |
+| PHI | -1.82 | -1.82 | Saquon Barkley QUESTIONABLE |
+| IND | -1.74 | -1.74 | Arden Key OUT |
+| DAL | -1.70 | -1.70 | Drew Shelton OUT, DeMarvion Overshown OUT, Cobie Durant OUT |
+| TEN | -1.61 | -1.61 | Tony Pollard QUESTIONABLE |
+| CIN | -1.57 | -1.57 |  |
+| SEA | -1.30 | -1.30 | George Holani QUESTIONABLE |
 | LAR | -1.25 | -1.25 |  |
-| TEN | -1.25 | -1.25 |  |
 | KC | -1.11 | -1.11 | Tyquan Thornton OUT |
-| SEA | -1.05 | -1.05 |  |
 | ATL | -0.99 | -0.99 |  |
-| CLE | -0.87 | -0.87 |  |
+| PIT | -0.94 | -0.94 | Rico Dowdle QUESTIONABLE, Michael Pittman Jr. OUT, Jamel Dean DOUBTFUL |
+| JAX | -0.93 | -0.93 |  |
+| LV | -0.85 | -0.85 |  |
+| CLE | -0.84 | -0.84 | Mason Graham DOUBTFUL |
 
 ## Notes
 
-- WORKING-WED Wednesday ESPN refresh: Week 5 board. ESPN API only; no invented rumor designations; official Week 5 practice sheet Wed ~4pm ET (TNF clubs), Thu/Fri for the rest.
+- WORKING-THU Thursday ESPN refresh after Wed FINAL 2026-10-07b. TNF TB@DAL rows protected verbatim. Official NFL.com Wed practice participation cross-checked (no Sunday game status until Friday). No invented rumor designations.
 - All Week 4 clubs finished: drop gameday inactive / ruled-out-for-remainder / coach's-decision noise; keep multi-week OUT + IR/PUP/NFI; one-game Q/D leftovers cleared when ESPN dropped them. Aaron Donald dropped (retired).
-- Manuals preserved when still listed: CHI Caleb Williams 1.5, CLE Dillon Gabriel 0, CLE Tylan Wallace 0.2, CLE Elgton Jenkins 0.45, CLE Teven Jenkins 0.35, CLE Kendrick Green 0 (reserve), GB Aaron Banks 0.4, PIT Gennings Dunker 0 (reserve), SF Nick Bosa 0.25, TB David Sills V 0 (reserve), WSH Jayden Daniels 1.11.
-- ESPN API timestamp 2026-10-07T14:13:16Z.
+- Manuals preserved when still listed: CHI Caleb Williams 1.5, CLE Tylan Wallace 0.2, CLE Dillon Gabriel 0, CLE Teven Jenkins 0.35, CLE Kendrick Green 0 (reserve), DAL Jonathan Mingo 0.15 (tnf-protect), GB Aaron Banks 0.4, PIT Gennings Dunker 0 (reserve), SF Nick Bosa 0.25, TB Benjamin Morrison 0.3 (tnf-protect), TB David Sills V 0 (tnf-protect).
+- Protects applied: DAL Drew Shelton (kept OUT); DAL DeMarvion Overshown (kept OUT); DAL Cobie Durant (kept OUT); DAL Tyler Smith (kept QUESTIONABLE); DAL Jonathan Bullard (kept IR); DAL Jalen Thompson (kept IR); DAL P.J. Locke (kept IR); DAL Malik Davis (kept IR); DAL Jonathan Mingo (kept QUESTIONABLE); TB Benjamin Morrison (kept OUT); TB SirVocea Dennis (kept OUT); TB Antoine Winfield Jr. (kept OUT); TB Baker Mayfield (kept OUT); TB Jalen McMillan (kept IR); TB Josh Hayes (kept IR); TB David Sills V (kept IR); TB Mohamed Kamara (kept IR).
+- ESPN API timestamp 2026-10-08T16:56:29Z.
 
 Sources: ESPN injuries API; nfl.com/injuries; Week 5 scoreboard.
