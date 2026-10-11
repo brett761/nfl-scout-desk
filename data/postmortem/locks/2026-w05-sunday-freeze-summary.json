@@ -1,14 +1,29 @@
 {
   "week": 5,
   "season": 2026,
-  "frozen_at": "2026-10-11T11:57:01.537Z",
-  "frozen_at_et": "Oct 11, 2026, 7:57 AM ET (America/New_York)",
-  "injury_pulled": "2026-10-10a",
-  "injury_phase": "WORKING-SAT",
+  "frozen_at": "2026-10-11T23:24:19.773Z",
+  "frozen_at_et": "Oct 11, 2026, 7:24 PM ET (America/New_York)",
+  "injury_pulled": "2026-10-11a",
+  "injury_phase": "WORKING-SUN",
   "street_source": "ESPN DraftKings scoreboard site.api.espn.com week=5 year=2026",
   "tnf": "TB@DAL FINAL TB 24, DAL 16 (lock DAL -10 vs street -8.5; not re-frozen)",
   "n": 14,
   "games": [
+    {
+      "slug": "2026-w05-bal-atl",
+      "game": "BAL@ATL",
+      "window": "SNF",
+      "kick": "2026-10-12T00:20Z",
+      "model": 0.52,
+      "official": 0.5,
+      "street": -3.5,
+      "ou": 44.5,
+      "edge_home": -4.02,
+      "edge_home_rounded": -4,
+      "shadow": -1.5,
+      "inj_away": -3.67,
+      "inj_home": -1.58
+    },
     {
       "slug": "2026-w05-phi-jax",
       "game": "PHI@JAX",
@@ -190,21 +205,6 @@
       "inj_home": -1.54
     },
     {
-      "slug": "2026-w05-bal-atl",
-      "game": "BAL@ATL",
-      "window": "SNF",
-      "kick": "2026-10-12T00:20Z",
-      "model": 0.45,
-      "official": 0.5,
-      "street": -3.5,
-      "ou": 43.5,
-      "edge_home": -3.95,
-      "edge_home_rounded": -4,
-      "shadow": -1.5,
-      "inj_away": -3.22,
-      "inj_home": -1.06
-    },
-    {
       "slug": "2026-w05-buf-lar",
       "game": "BUF@LAR",
       "window": "MNF",
@@ -220,5 +220,5 @@
       "inj_home": -1.34
     }
   ],
-  "note": "Sunday 8 AM refresh: SUN_AM/SUN_PM re-frozen at Oct 11, 2026, 7:57 AM ET (America/New_York); SNF/MNF entries kept from Friday FINAL freeze Oct 9, 2026, 4:23 PM ET (America/New_York)."
+  "note": "Sunday 8 AM refresh: SUN_AM/SUN_PM re-frozen at Oct 11, 2026, 7:57 AM ET (America/New_York); SNF/MNF entries kept from Friday FINAL freeze Oct 9, 2026, 4:23 PM ET (America/New_York). | SNF pre-kick refresh at Oct 11, 2026, 7:24 PM ET (America/New_York) (other entries kept)."
 }
