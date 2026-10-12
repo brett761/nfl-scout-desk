@@ -1,0 +1,587 @@
+{
+ "pulled_et": "2026-10-12 8:13 AM ET",
+ "week": 6,
+ "season": 2026,
+ "source": "ESPN public scoreboard API odds (DraftKings provider, book of record; open = DK lookahead open, current = live) 10/12 8:13 AM ET; VegasInsider Week 6 page multibook widget (bet365, BetMGM, DK, Caesars, FanDuel, HardRock, Fanatics, Rivers) pulled 10/12 ~8:13 AM ET; Sunday-night reopen notes from VegasInsider (Borgata/BetMGM quotes), SI, Covers; FOX Sports bet365 snapshot 10/11 10:27 PM ET",
+ "process": "Monday Week 6 board lock. Street only, no Week 6 B$ lines yet (Tuesday rebuild). PASS, no fires. Week 5 MNF BUF@LAR tonight; LAR and BUF Week 6 numbers exposed to tonight. Watch only: key-number shop spots and QB status (Lamar Jackson, Caleb Williams).",
+ "byes": [
+  "CIN",
+  "DET",
+  "MIA",
+  "MIN"
+ ],
+ "overnight_moves": [
+  "SEA@DEN SEA -2.5 -> -3 (onto 3; HardRock still -2.5 -125), tot 42/42.5 -> 41.5 (DK lookahead 43.5)",
+  "CHI@ATL CHI -1 -> -3 DK / -3.5 most books (through 3; Caleb Williams return talk), tot 47.5 flat",
+  "DAL@GB fav flip DAL -1 -> GB -1.5 DK (GB -1 MGM/CZR; Fanatics DAL -0.5, Rivers DAL -1), tot 50 -> 52.5",
+  "NO@NYG fav flip NYG -1.5 -> NO -1.5 (bet365/DK/CZR/FD; MGM NO -1; Fanatics NYG -0.5, Rivers NYG -1), tot 45.5 flat-ish",
+  "LAC@KC KC -7.5 -> -8.5, tot 45.5 -> 43.5",
+  "HOU@JAX JAX -2.5 -> -3 DK/CZR/Rivers (others -2.5), tot 42 -> 43.5/44",
+  "NYJ@NE NE -7 -> -7.5 -> -7 (FD/HR -7.5), tot 43 -> 44.5",
+  "BAL@CLE BAL -4 -> -4.5 most books; DK/CZR -3.5; tot 41 -> 40.5-41.5 (Lamar ankle, real chance Week 6)",
+  "PIT@TB PIT -3 -> -2.5 most books (DK still -3 -102)",
+  "TEN@IND IND -7 -> -6.5 -> -7 (FD/HR/Rivers -6.5), tot 44.5 -> 44"
+ ],
+ "games": [
+  {
+   "game": "SEA @ DEN",
+   "espn_id": "401872995",
+   "when": "2026-10-16T00:15Z",
+   "window": "TNF",
+   "spread": "SEA -3",
+   "spread_juice_fav": "-108",
+   "total": 41.5,
+   "street_home": 3.0,
+   "dk_lookahead_open": {
+    "home_spread": "+2.5",
+    "total": "o43.5"
+   },
+   "sunday_night_reopen": "SEA -2.5 / 42 (Borgata-BetMGM Sun night; tot to 42.5); SI open SEA -2.5 / 42.5",
+   "desk_prior": {
+    "odds": "SEA -1.5",
+    "ou": 42.5,
+    "at": "2026-10-11T14:22:12Z"
+   },
+   "books_spread": {
+    "bet365": "SEA -3 -108",
+    "BetMGM": "SEA -3 -108",
+    "DraftKings": "SEA -3 -108",
+    "Caesars": "SEA -3 -107",
+    "FanDuel": "SEA -3 -106",
+    "HardRock": "SEA -2.5 -125",
+    "Fanatics": "SEA -3 -110",
+    "Rivers": "SEA -3 -113"
+   },
+   "books_total": {
+    "bet365": "41.5",
+    "BetMGM": "41.5",
+    "DraftKings": "41.5",
+    "Caesars": "41.5",
+    "FanDuel": "41.5",
+    "HardRock": "41.5",
+    "Fanatics": "41.5",
+    "Rivers": "41"
+   }
+  },
+  {
+   "game": "HOU vs JAX (London)",
+   "espn_id": "401872996",
+   "when": "2026-10-18T13:30Z",
+   "window": "LON",
+   "spread": "JAX -3",
+   "spread_juice_fav": "-102",
+   "total": 43.5,
+   "street_home": -3.0,
+   "dk_lookahead_open": {
+    "home_spread": "+1.5",
+    "total": "o41.5"
+   },
+   "sunday_night_reopen": "JAX -2.5 (-115) / 42 (BetMGM Sun night)",
+   "desk_prior": {
+    "odds": "JAX -3",
+    "ou": 43.5,
+    "at": "2026-10-10T14:18:57Z"
+   },
+   "books_spread": {
+    "bet365": "JAX -2.5 -114",
+    "BetMGM": "JAX -2.5 -118",
+    "DraftKings": "JAX -3 -102",
+    "Caesars": "JAX -3 +101",
+    "FanDuel": "JAX -2.5 -122",
+    "HardRock": "JAX -2.5 -120",
+    "Fanatics": "JAX -2.5 -115",
+    "Rivers": "JAX -3 -104"
+   },
+   "books_total": {
+    "bet365": "43.5",
+    "BetMGM": "44",
+    "DraftKings": "43.5",
+    "Caesars": "43.5",
+    "FanDuel": "43.5",
+    "HardRock": "43.5",
+    "Fanatics": "43.5",
+    "Rivers": "42.5"
+   }
+  },
+  {
+   "game": "CHI @ ATL",
+   "espn_id": "401872999",
+   "when": "2026-10-18T17:00Z",
+   "window": "SUN_AM",
+   "spread": "CHI -3",
+   "spread_juice_fav": "-118",
+   "total": 47.5,
+   "street_home": 3.0,
+   "dk_lookahead_open": {
+    "home_spread": "+3",
+    "total": "o47.5"
+   },
+   "sunday_night_reopen": "CHI -1 / 47.5 (Borgata Sun night) -> CHI -2.5 on Caleb Williams comments",
+   "desk_prior": {
+    "odds": "CHI -1.5",
+    "ou": 47.5,
+    "at": "2026-10-11T14:22:12Z"
+   },
+   "books_spread": {
+    "bet365": "CHI -3.5 -106",
+    "BetMGM": "CHI -3.5 -102",
+    "DraftKings": "CHI -3 -118",
+    "Caesars": "CHI -3 -120",
+    "FanDuel": "CHI -3.5 -106",
+    "HardRock": "CHI -3.5 even",
+    "Fanatics": "CHI -3.5 -105",
+    "Rivers": "CHI -3 -114"
+   },
+   "books_total": {
+    "bet365": "47.5",
+    "BetMGM": "48",
+    "DraftKings": "47.5",
+    "Caesars": "47.5",
+    "FanDuel": "47.5",
+    "HardRock": "47.5",
+    "Fanatics": "47.5",
+    "Rivers": "47.5"
+   }
+  },
+  {
+   "game": "BAL @ CLE",
+   "espn_id": "401872997",
+   "when": "2026-10-18T17:00Z",
+   "window": "SUN_AM",
+   "spread": "BAL -3.5",
+   "spread_juice_fav": "-118",
+   "total": 40.5,
+   "street_home": 3.5,
+   "dk_lookahead_open": {
+    "home_spread": "+6.5",
+    "total": "o44.5"
+   },
+   "sunday_night_reopen": "BAL -4 / 41 (Borgata, posted during SNF) -> -4.5",
+   "desk_prior": {
+    "odds": "BAL -3.5",
+    "ou": 41.5,
+    "at": "2026-10-11T14:22:12Z"
+   },
+   "books_spread": {
+    "bet365": "BAL -4.5 -115",
+    "BetMGM": "BAL -4.5 -108",
+    "DraftKings": "BAL -3.5 -118",
+    "Caesars": "BAL -3.5 -120",
+    "FanDuel": "BAL -4.5 -115",
+    "HardRock": "BAL -4.5 -110",
+    "Fanatics": "BAL -4.5 -110",
+    "Rivers": "BAL -4.5 -107"
+   },
+   "books_total": {
+    "bet365": "41.5",
+    "BetMGM": "41.5",
+    "DraftKings": "40.5",
+    "Caesars": "40.5",
+    "FanDuel": "41.5",
+    "HardRock": "41.5",
+    "Fanatics": "41",
+    "Rivers": "40.5"
+   }
+  },
+  {
+   "game": "TEN @ IND",
+   "espn_id": "401873003",
+   "when": "2026-10-18T17:00Z",
+   "window": "SUN_AM",
+   "spread": "IND -7",
+   "spread_juice_fav": "-108",
+   "total": 44.5,
+   "street_home": -7.0,
+   "dk_lookahead_open": {
+    "home_spread": "-3.5",
+    "total": "o48.5"
+   },
+   "sunday_night_reopen": "IND -7 / 44.5 (BetMGM)",
+   "desk_prior": {
+    "odds": "IND -6.5",
+    "ou": 44.5,
+    "at": "2026-10-11T14:22:12Z"
+   },
+   "books_spread": {
+    "bet365": "IND -7 -106",
+    "BetMGM": "IND -7 -105",
+    "DraftKings": "IND -7 -108",
+    "Caesars": "IND -7 -106",
+    "FanDuel": "IND -6.5 -115",
+    "HardRock": "IND -6.5 -115",
+    "Fanatics": "IND -7 -105",
+    "Rivers": "IND -6.5 -115"
+   },
+   "books_total": {
+    "bet365": "44",
+    "BetMGM": "44",
+    "DraftKings": "44.5",
+    "Caesars": "44",
+    "FanDuel": "43.5",
+    "HardRock": "44.5",
+    "Fanatics": "44",
+    "Rivers": "43.5"
+   }
+  },
+  {
+   "game": "NYJ @ NE",
+   "espn_id": "401873001",
+   "when": "2026-10-18T17:00Z",
+   "window": "SUN_AM",
+   "spread": "NE -7",
+   "spread_juice_fav": "-110",
+   "total": 44.5,
+   "street_home": -7.0,
+   "dk_lookahead_open": {
+    "home_spread": "-9.5",
+    "total": "o42.5"
+   },
+   "sunday_night_reopen": "NE -7 / 43 (BetMGM)",
+   "desk_prior": {
+    "odds": "NE -7",
+    "ou": 43.5,
+    "at": "2026-10-11T14:22:12Z"
+   },
+   "books_spread": {
+    "bet365": "NE -7 -108",
+    "BetMGM": "NE -7 -112",
+    "DraftKings": "NE -7 -110",
+    "Caesars": "NE -7 -112",
+    "FanDuel": "NE -7.5 -105",
+    "HardRock": "NE -7.5 even",
+    "Fanatics": "NE -7 -110",
+    "Rivers": "NE -7 -115"
+   },
+   "books_total": {
+    "bet365": "44.5",
+    "BetMGM": "44.5",
+    "DraftKings": "44.5",
+    "Caesars": "44.5",
+    "FanDuel": "44.5",
+    "HardRock": "44.5",
+    "Fanatics": "44.5",
+    "Rivers": "44"
+   }
+  },
+  {
+   "game": "NO @ NYG",
+   "espn_id": "401873000",
+   "when": "2026-10-18T17:00Z",
+   "window": "SUN_AM",
+   "spread": "NO -1.5",
+   "spread_juice_fav": "+102",
+   "total": 45.5,
+   "street_home": 1.5,
+   "dk_lookahead_open": {
+    "home_spread": "-2.5",
+    "total": "o45.5"
+   },
+   "sunday_night_reopen": "NYG -1.5 / 45.5 (BetMGM; SI; bet365 per FOX 10/11 10:27 PM)",
+   "desk_prior": {
+    "odds": "NO -1.5",
+    "ou": 45.5,
+    "at": "2026-10-11T14:22:12Z"
+   },
+   "books_spread": {
+    "bet365": "NO -1.5 +101",
+    "BetMGM": "NO -1 -105",
+    "DraftKings": "NO -1.5 +102",
+    "Caesars": "NO -1.5 +101",
+    "FanDuel": "NO -1.5 -102",
+    "HardRock": "UNKNOWN (widget garbled)",
+    "Fanatics": "NYG -0.5 -105",
+    "Rivers": "NYG -1 -106"
+   },
+   "books_total": {
+    "bet365": "45.5",
+    "BetMGM": "45",
+    "DraftKings": "45.5",
+    "Caesars": "45",
+    "FanDuel": "44.5",
+    "HardRock": "45.5",
+    "Fanatics": "45",
+    "Rivers": "45"
+   }
+  },
+  {
+   "game": "CAR @ PHI",
+   "espn_id": "401872998",
+   "when": "2026-10-18T17:00Z",
+   "window": "SUN_AM",
+   "spread": "PHI -1.5",
+   "spread_juice_fav": "-105",
+   "total": 42.5,
+   "street_home": -1.5,
+   "dk_lookahead_open": {
+    "home_spread": "-6.5",
+    "total": "o43.5"
+   },
+   "sunday_night_reopen": "PHI -1.5 / 43.5 (BetMGM)",
+   "desk_prior": {
+    "odds": "PHI -2.5",
+    "ou": 43.5,
+    "at": "2026-10-10T14:18:57Z"
+   },
+   "books_spread": {
+    "bet365": "PHI -1.5 -108",
+    "BetMGM": "PHI -1 -110",
+    "DraftKings": "PHI -1.5 -105",
+    "Caesars": "PHI -1.5 -109",
+    "FanDuel": "PHI -1.5 -110",
+    "HardRock": "PHI -1.5 -105",
+    "Fanatics": "PHI -1 -110",
+    "Rivers": "PHI -1.5 -108"
+   },
+   "books_total": {
+    "bet365": "42.5",
+    "BetMGM": "42",
+    "DraftKings": "42.5",
+    "Caesars": "42.5",
+    "FanDuel": "42.5",
+    "HardRock": "42.5",
+    "Fanatics": "42",
+    "Rivers": "42.5"
+   }
+  },
+  {
+   "game": "PIT @ TB",
+   "espn_id": "401873002",
+   "when": "2026-10-18T17:00Z",
+   "window": "SUN_AM",
+   "spread": "PIT -3",
+   "spread_juice_fav": "-102",
+   "total": 40.5,
+   "street_home": 3.0,
+   "dk_lookahead_open": {
+    "home_spread": "-1.5",
+    "total": "o45.5"
+   },
+   "sunday_night_reopen": "PIT -3 (-102) / 40.5 (BetMGM)",
+   "desk_prior": {
+    "odds": "TB -1.5",
+    "ou": 45.5,
+    "at": "UNKNOWN"
+   },
+   "books_spread": {
+    "bet365": "PIT -2.5 -116",
+    "BetMGM": "PIT -2.5 -112",
+    "DraftKings": "PIT -3 -102",
+    "Caesars": "PIT -2.5 -115",
+    "FanDuel": "PIT -2.5 -115",
+    "HardRock": "PIT -2.5 -115",
+    "Fanatics": "PIT -2.5 -115",
+    "Rivers": "PIT -2.5 -114"
+   },
+   "books_total": {
+    "bet365": "40.5",
+    "BetMGM": "40.5",
+    "DraftKings": "40.5",
+    "Caesars": "40.5",
+    "FanDuel": "40.5",
+    "HardRock": "40.5",
+    "Fanatics": "40.5",
+    "Rivers": "40.5"
+   }
+  },
+  {
+   "game": "ARI @ LAR",
+   "espn_id": "401873004",
+   "when": "2026-10-18T20:05Z",
+   "window": "SUN_LATE",
+   "spread": "LAR -12.5",
+   "spread_juice_fav": "-110",
+   "total": 52.5,
+   "street_home": -12.5,
+   "dk_lookahead_open": {
+    "home_spread": "-13.5",
+    "total": "o46.5"
+   },
+   "sunday_night_reopen": "LAR -12.5 / 52.5 (BetMGM)",
+   "desk_prior": {
+    "odds": "LAR -10.5",
+    "ou": 51.5,
+    "at": "2026-10-11T14:22:12Z"
+   },
+   "books_spread": {
+    "bet365": "LAR -12.5 -111",
+    "BetMGM": "LAR -12.5 -110",
+    "DraftKings": "LAR -12.5 -110",
+    "Caesars": "LAR -12.5 -110",
+    "FanDuel": "LAR -12.5 -112",
+    "HardRock": "LAR -12.5 -110",
+    "Fanatics": "LAR -13 -110",
+    "Rivers": "LAR -12.5 -112"
+   },
+   "books_total": {
+    "bet365": "52.5",
+    "BetMGM": "52",
+    "DraftKings": "52.5",
+    "Caesars": "52",
+    "FanDuel": "51.5",
+    "HardRock": "52.5",
+    "Fanatics": "52",
+    "Rivers": "51.5"
+   }
+  },
+  {
+   "game": "LAC @ KC",
+   "espn_id": "401873006",
+   "when": "2026-10-18T20:25Z",
+   "window": "SUN_LATE",
+   "spread": "KC -8.5",
+   "spread_juice_fav": "-105",
+   "total": 43.5,
+   "street_home": -8.5,
+   "dk_lookahead_open": {
+    "home_spread": "-2.5",
+    "total": "o46.5"
+   },
+   "sunday_night_reopen": "KC -7.5 / 45.5 (Borgata)",
+   "desk_prior": {
+    "odds": "KC -7.5",
+    "ou": 45.5,
+    "at": "2026-10-11T14:22:12Z"
+   },
+   "books_spread": {
+    "bet365": "KC -8.5 -105",
+    "BetMGM": "KC -8 -110",
+    "DraftKings": "KC -8.5 -105",
+    "Caesars": "KC -8.5 -106",
+    "FanDuel": "KC -8.5 -105",
+    "HardRock": "KC -8.5 -105",
+    "Fanatics": "KC -8.5 -110",
+    "Rivers": "KC -8 -114"
+   },
+   "books_total": {
+    "bet365": "43.5",
+    "BetMGM": "43.5",
+    "DraftKings": "43.5",
+    "Caesars": "43.5",
+    "FanDuel": "43.5",
+    "HardRock": "43.5",
+    "Fanatics": "43",
+    "Rivers": "43.5"
+   }
+  },
+  {
+   "game": "BUF @ LV",
+   "espn_id": "401873005",
+   "when": "2026-10-18T20:25Z",
+   "window": "SUN_LATE",
+   "spread": "BUF -6",
+   "spread_juice_fav": "-110",
+   "total": 52.5,
+   "street_home": 6.0,
+   "dk_lookahead_open": {
+    "home_spread": "+6.5",
+    "total": "o47.5"
+   },
+   "sunday_night_reopen": "BUF -6 / 53 (Borgata)",
+   "desk_prior": {
+    "odds": "BUF -4.5",
+    "ou": 51.5,
+    "at": "2026-10-11T14:22:12Z"
+   },
+   "books_spread": {
+    "bet365": "BUF -6 -110",
+    "BetMGM": "BUF -6 -108",
+    "DraftKings": "BUF -6 -110",
+    "Caesars": "BUF -6 -107",
+    "FanDuel": "BUF -5.5 -115",
+    "HardRock": "BUF -5.5 -115",
+    "Fanatics": "BUF -6 -110",
+    "Rivers": "BUF -6 -109"
+   },
+   "books_total": {
+    "bet365": "52.5",
+    "BetMGM": "53",
+    "DraftKings": "52.5",
+    "Caesars": "52.5",
+    "FanDuel": "52.5",
+    "HardRock": "52.5",
+    "Fanatics": "53.5",
+    "Rivers": "52.5"
+   }
+  },
+  {
+   "game": "DAL @ GB",
+   "espn_id": "401873007",
+   "when": "2026-10-19T00:20Z",
+   "window": "SNF",
+   "spread": "GB -1.5",
+   "spread_juice_fav": "+102",
+   "total": 52.5,
+   "street_home": -1.5,
+   "dk_lookahead_open": {
+    "home_spread": "-3",
+    "total": "o51.5"
+   },
+   "sunday_night_reopen": "DAL -1 / 50 (Borgata); Covers open DAL -1.5 / 50.5",
+   "desk_prior": {
+    "odds": "GB -3",
+    "ou": 51.5,
+    "at": "UNKNOWN"
+   },
+   "books_spread": {
+    "bet365": "GB -1.5 +101",
+    "BetMGM": "GB -1 -105",
+    "DraftKings": "GB -1.5 +102",
+    "Caesars": "GB -1 -104",
+    "FanDuel": "GB -1.5 -100",
+    "HardRock": "GB -1.5 even",
+    "Fanatics": "DAL -0.5 -105",
+    "Rivers": "DAL -1 -110"
+   },
+   "books_total": {
+    "bet365": "52.5",
+    "BetMGM": "52.5",
+    "DraftKings": "52.5",
+    "Caesars": "52.5",
+    "FanDuel": "52.5",
+    "HardRock": "52.5",
+    "Fanatics": "52.5",
+    "Rivers": "52.5"
+   }
+  },
+  {
+   "game": "WSH @ SF",
+   "espn_id": "401873008",
+   "when": "2026-10-20T00:15Z",
+   "window": "MNF",
+   "spread": "SF -7.5",
+   "spread_juice_fav": "-108",
+   "total": 50.5,
+   "street_home": -7.5,
+   "dk_lookahead_open": {
+    "home_spread": "-5.5",
+    "total": "o50.5"
+   },
+   "sunday_night_reopen": "SF -7.5 / 50.5 (Borgata)",
+   "desk_prior": {
+    "odds": "SF -7.5",
+    "ou": 50.5,
+    "at": "2026-10-11T14:22:12Z"
+   },
+   "books_spread": {
+    "bet365": "SF -7.5 -106",
+    "BetMGM": "SF -7.5 -108",
+    "DraftKings": "SF -7.5 -108",
+    "Caesars": "SF -7.5 -105",
+    "FanDuel": "SF -7.5 -105",
+    "HardRock": "SF -7.5 -105",
+    "Fanatics": "SF -7.5 -110",
+    "Rivers": "SF -7.5 -106"
+   },
+   "books_total": {
+    "bet365": "50.5",
+    "BetMGM": "50.5",
+    "DraftKings": "50.5",
+    "Caesars": "51",
+    "FanDuel": "50.5",
+    "HardRock": "50.5",
+    "Fanatics": "50.5",
+    "Rivers": "51"
+   }
+  }
+ ]
+}
