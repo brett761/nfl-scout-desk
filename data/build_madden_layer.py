@@ -13,7 +13,7 @@ OVR_PER_POINT = 4.0  # 4 OVR ≈ 1 desk point
 CAP = 2.0
 
 OFF = {"QB", "HB", "RB", "FB", "WR", "TE", "LT", "LG", "C", "RG", "RT", "OL"}
-DEF = {"LE", "RE", "DT", "DL", "EDGE", "LOLB", "MLB", "ROLB", "LB", "CB", "FS", "SS", "S", "DB"}
+DEF = {"LE", "RE", "DT", "DL", "EDGE", "LOLB", "MLB", "ROLB", "LB", "CB", "FS", "SS", "S", "DB", "LEDG", "REDG", "MIKE", "WILL", "SAM", "ILB", "OLB", "NT"}
 ST = {"K", "P", "LS"}
 
 NICK = {
