@@ -2829,8 +2829,8 @@ async function loadNfl() {
   const openersReq = loadOpenerSnaps();
   const nflReq = fetch("./data/nfl-2026.json?v=20261013a");
   const priorReq = fetch("./data/prior-2025.json?v=pffpre0924");
-  const ytdStReq = fetch("./data/ytd-st-2026.json?v=w4fin1006");
-  const ytdRankReq = fetch("./data/ytd-rankings-2026.json?v=w4fin1006");
+  const ytdStReq = fetch("./data/ytd-st-2026.json?v=w5fin1013");
+  const ytdRankReq = fetch("./data/ytd-rankings-2026.json?v=w5fin1013");
   const faReq = fetch("./data/fa-2026.json");
   const draftReq = fetch("./data/draft-2026.json");
   const maddenReq = fetch("./data/madden-2026.json");
@@ -8137,7 +8137,7 @@ async function loadPublishedLines() {
 
 async function loadPowerRankings() {
   try {
-    const res = await fetch("./data/published/power-rankings.json?v=prank20261006T112821");
+    const res = await fetch("./data/published/power-rankings.json?v=prank20261013T113307");
     if (!res.ok) throw new Error(String(res.status));
     const data = await res.json();
     if (!data || !Array.isArray(data.weeks)) throw new Error("bad power rankings");
