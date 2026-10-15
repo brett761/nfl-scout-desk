@@ -1,14 +1,14 @@
 {
-  "pulled": "2026-10-14a",
-  "pulled_et": "2026-10-14 10:14 AM ET (America/New_York)",
-  "phase": "WORKING-WED",
+  "pulled": "2026-10-14b",
+  "pulled_et": "2026-10-14 9:20 PM ET (America/New_York)",
+  "phase": "FINAL",
   "sources": [
-    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+    "https://www.denverbroncos.com/team/injury-report/",
+    "https://www.seahawks.com/team/injury-report/",
     "https://www.nfl.com/injuries/",
-    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?seasontype=2&week=5&year=2026",
-    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?seasontype=2&week=6&year=2026"
+    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
   ],
-  "note": "WORKING-WED Wednesday 10 AM refresh after Tuesday WORKING (2026-10-13a). Week 5 fully FINAL (incl. BUF@LAR MNF). Week 6 board: TNF SEA@DEN Thu 8:15 PM ET, HOU@JAX London Sun 9:30 AM ET, Sunday slate, DAL@GB SNF, WSH@SF MNF; byes MIA/CIN/DET/MIN. No official NFL practice sheet yet (TNF clubs today ~4pm ET) \u2014 ESPN working list only, no rumor moves. All 32 clubs finished Week 5: drop gameday inactive / ruled-out-for-remainder / coach's-decision / Monday inactive noise; keep multi-week OUT + IR/PUP/NFI; a gameday inactive stub does not upgrade a prior Q/D to OUT. Drop Aaron Donald retired ESPN quirk. Doubtful = 1.0 out. Preserve manuals (Sills 0 etc.). Tier caps QB<=1.5 / All-Pro<=0.5 / other<=0.25 on auto; Madden-first else PFF; floor 0.2x status; Cap team 6.0.",
+  "note": "FINAL 2026-10-14b Week 6 TNF SEA@DEN after official Wed ~4pm ET Game Status (denverbroncos.com / seahawks.com dual table). SEA: Charbonnet, Surratt, Drake Thomas OUT; JSN (FP Wed) and Drew Lock cleared off number; Holani/L. Williams/Stephens/Charles no status. DEN: Surtain OUT (was Doubtful), Hufanga OUT (was Q), Moss Q (LP all week, soft on); B. Jones/S. Jones/Powers cleared. SEA/DEN rows are TNF-protected: later ESPN reseeds must not soften them. Sunday/MNF clubs unchanged from 2026-10-14a WORKING-WED (official sheet Friday). Madden-first else PFF; Probable/cleared OFF; Q only with expected-impact judgment. Doubtful 1.0. Standing manuals preserved.",
   "espn_timestamp": "2026-10-14T14:14:30Z",
   "teams": {
     "ARI": [
@@ -312,7 +312,7 @@
         "name": "Dorian Strong",
         "pos": "DEPTH",
         "status": "NFI",
-        "note": "FINAL TNF. Neck \u2014 reserve/NFI. ESPN summary Out (NFI-R). Depth CB; on for completeness.",
+        "note": "FINAL TNF. Neck — reserve/NFI. ESPN summary Out (NFI-R). Depth CB; on for completeness.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872932",
         "on": true
       }
@@ -720,7 +720,7 @@
         "name": "Kendrick Green",
         "pos": "OG",
         "status": "IR",
-        "note": "ir Explicit impact 0 \u2014 depth IR; no pos_base fallthrough.",
+        "note": "ir Explicit impact 0 — depth IR; no pos_base fallthrough.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0,
@@ -809,32 +809,35 @@
       {
         "name": "Pat Surtain II",
         "pos": "CB1",
-        "status": "DOUBTFUL",
-        "note": "doubtful",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "status": "OUT",
+        "note": "Official Wed FINAL Out (DNP Mon-Wed). Was Doubtful (same price).",
+        "source": "https://www.denverbroncos.com/team/injury-report/",
         "on": true,
         "impact": 0.25,
-        "impact_source": "madden"
+        "impact_source": "madden",
+        "injury": "Ankle"
       },
       {
         "name": "Riley Moss",
         "pos": "CB1",
         "status": "QUESTIONABLE",
-        "note": "Moss (ribs) was listed as a limited participant on the Broncos' estimated practice report Monday, Aric DiLalla of the team's official website reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "note": "Official Wed FINAL Questionable, LP Mon-Wed. With Surtain Out, CB room thin -> Q kept soft on (auto).",
+        "source": "https://www.denverbroncos.com/team/injury-report/",
         "on": true,
         "impact": 0.2,
-        "impact_source": "madden"
+        "impact_source": "madden",
+        "injury": "Ribs"
       },
       {
         "name": "Talanoa Hufanga",
         "pos": "S",
-        "status": "QUESTIONABLE",
-        "note": "Hufanga (ankle) was listed as a non-participant on the Broncos' estimated injury report Monday, Aric DiLalla of the team's official website reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "status": "OUT",
+        "note": "Official Wed FINAL Out (DNP Mon-Wed). Madden 0.5.",
+        "source": "https://www.denverbroncos.com/team/injury-report/",
         "on": true,
         "impact": 0.5,
-        "impact_source": "madden"
+        "impact_source": "madden",
+        "injury": "Ankle"
       },
       {
         "name": "Pat Bryant",
@@ -2331,7 +2334,7 @@
         "name": "Gennings Dunker",
         "pos": "OG",
         "status": "IR",
-        "note": "The Steelers placed Dunker (knee) on injured reserve Saturday, Tom Pelissero of Netflix reports. Explicit impact 0 \u2014 depth IR; no pos_base fallthrough.",
+        "note": "The Steelers placed Dunker (knee) on injured reserve Saturday, Tom Pelissero of Netflix reports. Explicit impact 0 — depth IR; no pos_base fallthrough.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0,
@@ -2340,50 +2343,35 @@
     ],
     "SEA": [
       {
-        "name": "Drew Lock",
-        "pos": "DEPTH",
-        "status": "QUESTIONABLE",
-        "note": "The Seahawks listed Lock (forearm) as a limited practice participant on Tuesday's estimated report, Curtis Crabtree of Fox 13 Seattle reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
         "name": "Zach Charbonnet",
         "pos": "RB1",
         "status": "OUT",
-        "note": "Charbonnet (knee) was estimated as a limited practice participant Tuesday, Curtis Crabtree of Fox 13 Seattle reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "note": "Official Wed FINAL Out (LP Mon-Wed). Auto tier.",
+        "source": "https://www.seahawks.com/team/injury-report/",
         "on": true,
         "impact": 0.25,
-        "impact_source": "madden"
-      },
-      {
-        "name": "Jaxon Smith-Njigba",
-        "pos": "WR2",
-        "status": "QUESTIONABLE",
-        "note": "Smith-Njigba (ankle) was listed as a limited participant on Tuesday's estimated practice report, Curtis Crabtree of Fox 13 Seattle reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.5,
-        "impact_source": "madden"
+        "impact_source": "madden",
+        "injury": "Knee"
       },
       {
         "name": "Chazz Surratt",
         "pos": "LB",
-        "status": "QUESTIONABLE",
-        "note": "Surratt (calf) has been ruled out ahead of Sunday's game against the 49ers, Bob Condotta of The Seattle Times reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "status": "OUT",
+        "note": "Official Wed FINAL Out (DNP Mon-Wed). Auto tier.",
+        "source": "https://www.seahawks.com/team/injury-report/",
+        "on": true,
+        "injury": "Calf"
       },
       {
         "name": "Drake Thomas",
         "pos": "LB",
-        "status": "QUESTIONABLE",
-        "note": "Thomas (ankle) was listed as a non-participant on Monday's estimated injury report, John Boyle of the Seahawks' official site reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "status": "OUT",
+        "note": "Official Wed FINAL Out (DNP Mon-Wed). Starting LB. Auto tier.",
+        "source": "https://www.seahawks.com/team/injury-report/",
         "on": true,
         "impact": 0.2,
-        "impact_source": "madden"
+        "impact_source": "madden",
+        "injury": "Ankle"
       },
       {
         "name": "Julian Neal",
@@ -2825,5 +2813,5 @@
       }
     ]
   },
-  "stamp": "2026-10-14a"
+  "stamp": "2026-10-14b"
 }

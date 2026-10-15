@@ -1,3 +1,11 @@
+# Week 6 TNF SEA@DEN FINAL (2026-10-14b)
+
+Official Wed ~4pm ET Game Status (denverbroncos.com / seahawks.com), pulled 2026-10-14 9:20 PM ET. Only SEA/DEN rows changed; everyone else stays 2026-10-14a WORKING-WED.
+
+- **SEA**: Charbonnet OUT (knee), Chazz Surratt OUT (calf), Drake Thomas OUT (ankle). JSN (FP Wed) and Drew Lock off the number. Team injury −1.61 → −1.65.
+- **DEN**: Surtain OUT (was Doubtful), Hufanga OUT (was Q 0.5), Riley Moss Q (LP all week, soft on). Team injury −2.00 → −2.32.
+- B$ line SEA −5.40 → −5.68 raw (SEA −5.5 published, unchanged) vs DraftKings SEA −2.5, O/U 40.5.
+
 # 2026 NFL injuries — Scout desk Week 6 WORKING-WED
 
 Pulled 2026-10-14 10:14 AM ET (America/New_York). Stamp `injury_pulled=2026-10-14a` **WORKING-WED** Wednesday ESPN refresh after Tuesday WORKING (prior seed 2026-10-13a). Week 5 fully FINAL; Week 6 board (TNF SEA@DEN Thu; byes MIA/CIN/DET/MIN), official practice sheet Wed ~4pm ET for TNF clubs. Aaron Donald dropped. No rumor designations.
