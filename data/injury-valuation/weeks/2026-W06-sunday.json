@@ -1,0 +1,419 @@
+{
+  "week": 6,
+  "season": 2026,
+  "window": "Sunday AM (London) / Sunday PM / SNF / MNF",
+  "phase": "FINAL",
+  "injury_pulled": "2026-10-16b",
+  "pulled_et": "2026-10-16 4:21 PM ET (America/New_York)",
+  "method": "skill nfl-injury-spread-valuation: base position value x quality x role, replacement drop-off, status probability (Out/Doubtful 1.0, Q 0.35), unit interactions; desk auto Madden-first prior compared with full valuation.",
+  "material_flips_vs_2026_10_16a": [
+    {
+      "team": "ARI",
+      "player": "Jeremiyah Love",
+      "pos": "RB1",
+      "change": "QUESTIONABLE → OUT impact=0.25"
+    },
+    {
+      "team": "BAL",
+      "player": "Lamar Jackson",
+      "pos": "QB1",
+      "change": "QUESTIONABLE → OUT impact=1.5"
+    },
+    {
+      "team": "CAR",
+      "player": "Monroe Freeling",
+      "pos": "RT",
+      "change": "QUESTIONABLE → DOUBTFUL"
+    },
+    {
+      "team": "CHI",
+      "player": "Kyle Monangai",
+      "pos": "RB1",
+      "change": "QUESTIONABLE → OUT impact=0.2"
+    },
+    {
+      "team": "IND",
+      "player": "Ashton Dulin",
+      "pos": "WR2",
+      "change": "QUESTIONABLE → OUT"
+    },
+    {
+      "team": "KC",
+      "player": "Rashee Rice",
+      "pos": "WR2",
+      "change": "QUESTIONABLE → OUT impact=0.25"
+    },
+    {
+      "team": "LAC",
+      "player": "Tre' Harris",
+      "pos": "WR2",
+      "change": "DOUBTFUL → OUT impact=0.2"
+    },
+    {
+      "team": "NYJ",
+      "player": "Adonai Mitchell",
+      "pos": "WR2",
+      "change": "DOUBTFUL → OUT impact=0.2"
+    },
+    {
+      "team": "NYJ",
+      "player": "Breece Hall",
+      "pos": "RB1",
+      "change": "DOUBTFUL → OUT impact=0.25"
+    },
+    {
+      "team": "PHI",
+      "player": "Will Shipley",
+      "pos": "RB1",
+      "change": "DOUBTFUL → IR"
+    },
+    {
+      "team": "TB",
+      "player": "Benjamin Morrison",
+      "pos": "CB1",
+      "change": "QUESTIONABLE → DOUBTFUL impact=0.3"
+    },
+    {
+      "team": "TB",
+      "player": "Baker Mayfield",
+      "pos": "QB1",
+      "change": "DOUBTFUL → OUT impact=1.3"
+    },
+    {
+      "team": "IND",
+      "player": "Tyler Warren",
+      "pos": "TE1",
+      "change": "NEW QUESTIONABLE impact=0.25"
+    },
+    {
+      "team": "PIT",
+      "player": "DK Metcalf",
+      "pos": "WR2",
+      "change": "NEW QUESTIONABLE impact=0.25"
+    },
+    {
+      "team": "PIT",
+      "player": "Rico Dowdle",
+      "pos": "RB1",
+      "change": "NEW QUESTIONABLE impact=0.25"
+    },
+    {
+      "team": "BAL",
+      "player": "Zay Flowers",
+      "pos": "WR1",
+      "change": "CLEARED off sheet (was QUESTIONABLE) was impact=0.25"
+    },
+    {
+      "team": "CAR",
+      "player": "Darren Waller",
+      "pos": "TE1",
+      "change": "CLEARED off sheet (was QUESTIONABLE) was impact=0.2"
+    },
+    {
+      "team": "CAR",
+      "player": "Tommy Tremble",
+      "pos": "TE1",
+      "change": "CLEARED off sheet (was QUESTIONABLE)"
+    },
+    {
+      "team": "CLE",
+      "player": "KC Concepcion",
+      "pos": "WR2",
+      "change": "CLEARED off sheet (was QUESTIONABLE)"
+    },
+    {
+      "team": "JAX",
+      "player": "Nate Boerkircher",
+      "pos": "TE1",
+      "change": "CLEARED off sheet (was QUESTIONABLE)"
+    },
+    {
+      "team": "JAX",
+      "player": "Eric Murray",
+      "pos": "S",
+      "change": "CLEARED off sheet (was QUESTIONABLE) was impact=0.2"
+    },
+    {
+      "team": "LAC",
+      "player": "Quentin Johnston",
+      "pos": "WR2",
+      "change": "CLEARED off sheet (was QUESTIONABLE) was impact=0.2"
+    },
+    {
+      "team": "LAC",
+      "player": "Ladd McConkey",
+      "pos": "WR2",
+      "change": "CLEARED off sheet (was QUESTIONABLE) was impact=0.25"
+    },
+    {
+      "team": "NO",
+      "player": "Vernon Broughton",
+      "pos": "IDL",
+      "change": "CLEARED off sheet (was QUESTIONABLE)"
+    }
+  ],
+  "report_cards": {
+    "BAL Lamar Jackson": {
+      "injury": "Ankle",
+      "status": "OUT",
+      "p_play": 0.0,
+      "replacement": "Tyler Huntley (ESPN depth QB2; started Week 5 SNF at ATL)",
+      "replacement_quality": "Replacement-level backup; some rush value, limited downfield",
+      "drop_off": "Very large (elite dual-threat QB1 to backup)",
+      "desk_impact": 1.5,
+      "full_valuation_range": [
+        4.0,
+        7.0
+      ],
+      "confidence": "Moderate",
+      "note": "Ruled out Friday by Jesse Minter. Desk QB cap 1.5 is standing convention, so BAL still carries Lamar's 2026 production in team layers; full valuation says desk under-prices by ~3-5 pts (second straight week). Not overridden (no unilateral cap break); flagged for Brett. B$ home 8 vs DK 3 — B$ BAL -8 is a cap artifact, not an edge."
+    },
+    "TB Baker Mayfield": {
+      "injury": "Thumb",
+      "status": "OUT",
+      "p_play": 0.0,
+      "replacement": "Jalon Daniels (ESPN depth QB2; started Week 4 vs GB)",
+      "replacement_quality": "Low; small sample",
+      "drop_off": "Large",
+      "desk_impact": 1.3,
+      "full_valuation_range": [
+        3.0,
+        5.0
+      ],
+      "confidence": "Moderate",
+      "note": "Madden auto 1.3 under the 1.5 QB cap; market already moved TB open -1.5 to PIT -2.5. Desk likely still under-prices by ~2 pts, which only strengthens the PIT side already ticketed Thursday. B$ home 4.5 vs DK 2.5."
+    },
+    "PHI Jalen Hurts": {
+      "injury": "Calf (blood clot movement)",
+      "status": "OUT",
+      "p_play": 0.0,
+      "replacement": "Tanner McKee (ESPN depth QB2)",
+      "replacement_quality": "Below-average backup; pocket passer",
+      "drop_off": "Large",
+      "desk_impact": 1.3,
+      "full_valuation_range": [
+        3.0,
+        5.0
+      ],
+      "confidence": "Moderate",
+      "note": "Ruled out Thursday. Plus Saquon Barkley QUESTIONABLE (DNP Friday per PhillyVoice) and Jalyx Hunt DOUBTFUL. PHI term -3.55 (largest on card). Market flipped PHI -1.5 to CAR -3.5, already past desk cap pricing. B$ home 3.5 vs DK 3.5."
+    },
+    "PHI Saquon Barkley": {
+      "injury": "Hamstring",
+      "status": "QUESTIONABLE",
+      "p_play": 0.45,
+      "replacement": "PHI RB2",
+      "drop_off": "Moderate",
+      "desk_impact": 0.175,
+      "full_valuation_range": [
+        0.2,
+        0.6
+      ],
+      "confidence": "Low",
+      "note": "Not spotted at Friday practice (DNP on NFL.com). Lean sits; desk Q 0.35 x 0.5. Watch 11:30 AM inactives."
+    },
+    "CHI Caleb Williams": {
+      "injury": "Hamstring",
+      "status": "QUESTIONABLE",
+      "p_play": 0.75,
+      "replacement": "Tyson Bagent",
+      "drop_off": "Large if he sits",
+      "desk_impact": 0.525,
+      "full_valuation_range": [
+        0.3,
+        0.8
+      ],
+      "confidence": "Low-Moderate",
+      "note": "Q, but NFL.com shows full practice participation. Q 0.35 x 1.5 manual = 0.53 in line; left at desk convention. A scratch moves CHI ~1 pt worse on the desk scale. B$ home -2.5 vs DK 1.5."
+    },
+    "CAR OT cluster (Taylor Moton OUT, Ikem Ekwonu OUT, Monroe Freeling DOUBTFUL)": {
+      "injury": "Illness / Knee / Knee",
+      "status": "OUT/OUT/DOUBTFUL",
+      "p_play": 0.0,
+      "replacement": "CAR depth tackles",
+      "replacement_quality": "Poor/unknown",
+      "drop_off": "Large at unit level (both bookends plus the swing tackle)",
+      "desk_impact": 0.95,
+      "full_valuation_range": [
+        1.0,
+        1.75
+      ],
+      "confidence": "Moderate",
+      "note": "Auto had Freeling unrated (no Madden/PFF row, default 0.25). Unit interaction: third tackle down compounds pass pro. Manual Freeling 0.5 (impact_source manual). CAR term -3.07 -> -3.32; B$ CAR -3.74 -> -3.49 raw (official stays PHI +3.5). PHI edge also thin (Hunt D, Greenard Q) which softens the matchup bump."
+    },
+    "WSH Marcus Mariota": {
+      "injury": "Knee - MCL",
+      "status": "DOUBTFUL",
+      "p_play": 0.0,
+      "replacement": "Athan Kaliakmanis as QB2",
+      "drop_off": "None (backup; Jayden Daniels healthy, full practice)",
+      "desk_impact": 0.0,
+      "full_valuation_range": [
+        0.0,
+        0.1
+      ],
+      "confidence": "High",
+      "note": "QB-depth rule had him DEPTH 0.25 pff; set standing manual 0. WSH term -2.34 -> -2.09; MNF B$ SF -19 -> -18.5."
+    },
+    "CHI EDGE cluster (Montez Sweat suspended, Dayo Odeyingbo OUT)": {
+      "injury": "Suspension / Quad",
+      "status": "OUT/DOUBTFUL(ESPN Out)",
+      "p_play": 0.0,
+      "replacement": "CHI depth EDGE",
+      "drop_off": "Moderate",
+      "desk_impact": 0.45,
+      "full_valuation_range": [
+        0.4,
+        0.8
+      ],
+      "confidence": "Low-Moderate",
+      "note": "Odeyingbo was unrated (default 0.25); manual 0.25 documents it, no line change. ATL OL vs thin CHI rush is a mild matchup plus for ATL; no extra bump without clearer mechanism."
+    },
+    "GB Micah Parsons / Javon Hargrave / Josh Jacobs": {
+      "injury": "ACL / Achilles / Exempt list",
+      "status": "OUT",
+      "p_play": 0.0,
+      "replacement": "GB depth",
+      "drop_off": "Large on DL (elite EDGE + IDL starter)",
+      "desk_impact": 0.95,
+      "full_valuation_range": [
+        1.0,
+        1.75
+      ],
+      "confidence": "Moderate",
+      "note": "Parsons at All-Pro cap 0.5; full valuation slightly higher but team layers since injury partly absorb it. No override. Jacobs returns Week 7. B$ home 1 vs DK -1.5."
+    },
+    "SF cluster (Deebo Samuel OUT, Mike Evans Q, Nick Bosa Q, Dre Greenlaw susp, Marques Sigle D)": {
+      "injury": "Hamstring / Ribs-Achilles / Calf / Susp / Ankle",
+      "status": "mixed",
+      "p_play": null,
+      "drop_off": "Moderate",
+      "desk_impact": 1.35,
+      "full_valuation_range": [
+        1.0,
+        2.0
+      ],
+      "confidence": "Low-Moderate",
+      "note": "Evans and Bosa DNP Thursday — lean sits. Within range; no override. MNF line is a model cliff (B$ SF -18.5 vs -7.5), not a fire."
+    },
+    "KC Rashee Rice": {
+      "injury": "Hamstring/knee",
+      "status": "OUT",
+      "p_play": 0.0,
+      "desk_impact": 0.25,
+      "full_valuation_range": [
+        0.2,
+        0.5
+      ],
+      "confidence": "Moderate",
+      "note": "Within range. B$ home -21 vs DK -7.5 (model cliff)."
+    },
+    "ARI Jeremiyah Love": {
+      "injury": "Ankle",
+      "status": "OUT",
+      "p_play": 0.0,
+      "desk_impact": 0.25,
+      "full_valuation_range": [
+        0.2,
+        0.4
+      ],
+      "confidence": "Moderate",
+      "note": "Rookie RB1. Within range."
+    },
+    "NE TreVeyon Henderson": {
+      "injury": "High-ankle sprain",
+      "status": "QUESTIONABLE",
+      "p_play": 0.4,
+      "desk_impact": 0.09,
+      "full_valuation_range": [
+        0.05,
+        0.2
+      ],
+      "confidence": "Low",
+      "note": "MRI showed high-ankle sprain; 'hoping to play'."
+    },
+    "NYJ Breece Hall / Adonai Mitchell / Joseph Ossai / Dylan Parham": {
+      "injury": "Quad / - / Ankle / Knee",
+      "status": "OUT",
+      "p_play": 0.0,
+      "desk_impact": 0.85,
+      "full_valuation_range": [
+        0.6,
+        1.1
+      ],
+      "confidence": "Moderate",
+      "note": "Within range; no override."
+    },
+    "HOU David Montgomery / Jalen Pitre": {
+      "injury": "Groin / Shoulder",
+      "status": "OUT",
+      "p_play": 0.0,
+      "desk_impact": 0.5,
+      "full_valuation_range": [
+        0.4,
+        0.7
+      ],
+      "confidence": "Moderate",
+      "note": "London. Within range."
+    }
+  },
+  "team_injury_terms": {
+    "PHI": -3.55,
+    "CAR": -3.32,
+    "BAL": -3.11,
+    "NE": -3.09,
+    "SF": -3.07,
+    "GB": -3.03,
+    "TB": -3.03,
+    "HOU": -2.9,
+    "LAC": -2.82,
+    "CHI": -2.53,
+    "ARI": -2.42,
+    "DET": -2.31,
+    "NYJ": -2.27,
+    "NYG": -2.16,
+    "WSH": -2.09,
+    "DEN": -2.0,
+    "TEN": -1.88,
+    "NO": -1.86,
+    "IND": -1.83,
+    "LAR": -1.61,
+    "CLE": -1.59,
+    "CIN": -1.56,
+    "MIA": -1.54,
+    "SEA": -1.4,
+    "PIT": -1.37,
+    "ATL": -1.31,
+    "KC": -1.27,
+    "MIN": -1.21,
+    "DAL": -1.14,
+    "JAX": -1.04,
+    "LV": -1.0,
+    "BUF": -0.88
+  },
+  "manual_overrides_applied": [
+    {
+      "team": "CAR",
+      "player": "Monroe Freeling",
+      "from": null,
+      "to": 0.5,
+      "why": "third OT down, unit interaction"
+    },
+    {
+      "team": "WSH",
+      "player": "Marcus Mariota",
+      "from": 0.25,
+      "to": 0.0,
+      "why": "backup QB, standing zero"
+    },
+    {
+      "team": "CHI",
+      "player": "Dayo Odeyingbo",
+      "from": null,
+      "to": 0.25,
+      "why": "fills unrated row (no line change)"
+    }
+  ],
+  "overrides_note": "QB cap (1.5) left at desk convention for BAL Lamar, TB Mayfield, PHI Hurts; full valuation says each is under-priced by ~2-5 pts — flagged for Brett, not overridden. Standing manuals preserved.",
+  "tnf": "SEA@DEN FINAL DEN 17, SEA 14 (B$ DEN +5.5, street DEN +2.5)"
+}
