@@ -9,7 +9,7 @@
   "venue": "MetLife Stadium",
   "neutral": false,
   "window": "SUN_PM",
-  "model_home_spread": -8.45,
+  "model_home_spread": -8.32,
   "model_home_spread_rounded": -8.5,
   "official_b_line": -8.5,
   "official_rounded": true,
@@ -18,20 +18,20 @@
   "street_home_spread": 1.5,
   "close_at_lock": 1.5,
   "ou_street": 46.5,
-  "street_note": "Working pre-kick freeze Oct 16, 2026, 4:21 PM ET (America/New_York) after Friday FINAL Game Status. ESPN DraftKings scoreboard: NO -1.5 / ou 46.5. Refresh pre-kick if street or model moves materially.",
-  "edge_home": 9.95,
+  "street_note": "Working pre-kick freeze Oct 18, 2026, 8:01 AM ET (America/New_York) Sunday AM public-window refresh (injuries 2026-10-17a). ESPN DraftKings scoreboard: NO -1.5 / ou 46.5. Refresh pre-kick if street or model moves materially.",
+  "edge_home": 9.82,
   "edge_home_rounded": 10,
-  "edge_note": "edgeHome = street − model = 1.5 − (-8.45) = 9.95; positive → home (NYG) value. Rounded B$ -8.5 vs 1.5 = 10.",
+  "edge_note": "edgeHome = street − model = 1.5 − (-8.32) = 9.82; positive → home (NYG) value. Rounded B$ -8.5 vs 1.5 = 10.",
   "shadow_dvoa_blend": {
-    "raw": -5.65,
+    "raw": -5.52,
     "rounded": -5.5,
     "weight": 0.5,
     "in_b_line": false
   },
   "feature_stack": {
-    "formula": "ourHomeLine = -(eff(home) - eff(away) + HFA + coach + prep + ats + sched + matchup); eff = algorithmBase + fa + draft + madden + pff + pffPre + pffYtd + sos + return + injury. 2025 prior locked at 0 from Week 5; Last-year SOS out.",
-    "injury_pulled": "2026-10-16b",
-    "injury_phase": "FINAL",
+    "formula": "ourHomeLine = -(eff(home) - eff(away) + HFA + coach + prep + ats + sched + matchup); eff = algorithmBase + fa + draft + madden + pff + pffPre + pffYtd + sos + return + injury. 2025 prior locked at 0 from Week 6; Last-year SOS out.",
+    "injury_pulled": "2026-10-17a",
+    "injury_phase": "WORKING-SAT",
     "away_NO": {
       "prior": -4.7,
       "fa": 0,
@@ -42,8 +42,8 @@
       "pff_ytd": -0.7,
       "sos": 0,
       "return": 0,
-      "injury": -1.87,
-      "eff": -8.23,
+      "injury": -2.16,
+      "eff": -8.52,
       "taper": {
         "N": 3,
         "n": 3,
@@ -63,8 +63,8 @@
       "pff_ytd": -0.33,
       "sos": 0,
       "return": 0,
-      "injury": -2.16,
-      "eff": -1.78,
+      "injury": -2.58,
+      "eff": -2.2,
       "taper": {
         "N": 3,
         "n": 3,
@@ -84,19 +84,19 @@
       "pff_ytd": 0.37,
       "sos": 0,
       "return": 0,
-      "injury": -0.29
+      "injury": -0.42
     },
-    "rating_diff_home_minus_away": 6.45,
+    "rating_diff_home_minus_away": 6.32,
     "hfa": 2,
     "coach": 0,
     "prep": 0,
     "ats": 0,
     "travel": 0,
     "matchup": 0,
-    "gap": -8.45
+    "gap": -8.32
   },
   "injury_valuation": "data/injury-valuation/weeks/2026-W06-sunday.json",
-  "frozen_at": "2026-10-16T20:21:20.528Z",
-  "frozen_at_et": "Oct 16, 2026, 4:21 PM ET (America/New_York)",
+  "frozen_at": "2026-10-18T12:01:33.256Z",
+  "frozen_at_et": "Oct 18, 2026, 8:01 AM ET (America/New_York)",
   "tickets": []
 }
