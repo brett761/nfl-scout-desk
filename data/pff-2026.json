@@ -1,14 +1,14 @@
 {
   "season": 2026,
   "source_season": 2025,
-  "pulled": "2026-10-13",
+  "pulled": "2026-10-20",
   "source": "PFF+ Premium Stats CSV export (2025 REG), official download",
   "player_pool": 1994,
   "roster": {
-    "teams_as_of": "2026-10-13T11:02:53-04:00",
+    "teams_as_of": "2026-10-20T10:51:12-04:00",
     "map": "data/pff-roster-map-2026.json",
-    "moved": 278,
-    "dropped_no_2026_club": 110,
+    "moved": 275,
+    "dropped_no_2026_club": 114,
     "note": "2025 grades, counted for each player's current 2026 club (team_2025 shown on movers). Free agents, retired players and practice-squad players are left out; IR players stay in (debited through the injury sheet)."
   },
   "scoring": {
@@ -18,7 +18,7 @@
     "min_snaps": 200,
     "grade_per_point": 5.0,
     "cap": 1.5,
-    "league_grade": 71.03,
+    "league_grade": 71.02,
     "note": "Same 22 per club (11 OFF + 11 DEF by 2025 PFF grade, min snaps, on the 2026 roster). Surplus vs league mean of those 22. 5 grade \u2248 1 point, cap \u00b11.5. Does not rewrite the 2025 prior. Raw CSVs stay off the public desk."
   },
   "teams": {
@@ -329,8 +329,8 @@
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "grade": 71.32,
-      "off_grade": 67.95,
+      "grade": 71.3,
+      "off_grade": 67.91,
       "def_grade": 74.69,
       "off": [
         {
@@ -397,11 +397,10 @@
           "team_2025": "NYJ"
         },
         {
-          "name": "Chris Moore",
+          "name": "Rashod Bateman",
           "pos": "WR",
-          "grade": 55.9,
-          "snaps": 429,
-          "team_2025": "WSH"
+          "grade": 55.5,
+          "snaps": 550
         }
       ],
       "def": [
@@ -1817,7 +1816,7 @@
           "snaps": 724
         }
       ],
-      "net": 0.47
+      "net": 0.48
     },
     "HOU": {
       "n": 22,
@@ -3303,8 +3302,8 @@
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "grade": 69.35,
-      "off_grade": 69.95,
+      "grade": 69.28,
+      "off_grade": 69.82,
       "def_grade": 68.74,
       "off": [
         {
@@ -3370,10 +3369,11 @@
           "snaps": 814
         },
         {
-          "name": "Kevin Austin Jr.",
-          "pos": "WR",
-          "grade": 57.9,
-          "snaps": 242
+          "name": "Noah Fant",
+          "pos": "TE",
+          "grade": 56.4,
+          "snaps": 379,
+          "team_2025": "CIN"
         }
       ],
       "def": [
@@ -3445,7 +3445,7 @@
           "snaps": 695
         }
       ],
-      "net": -0.34
+      "net": -0.35
     },
     "NYG": {
       "n": 22,
