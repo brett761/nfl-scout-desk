@@ -1,13 +1,15 @@
 {
-  "pulled": "2026-10-21a",
-  "pulled_et": "2026-10-21 9:59 AM ET (America/New_York)",
-  "phase": "WORKING-WED",
+  "pulled": "2026-10-21b",
+  "pulled_et": "2026-10-21 4:25 PM ET (America/New_York)",
+  "phase": "FINAL",
   "sources": [
-    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+    "https://www.chicagobears.com/team/injury-report/",
+    "https://www.patriots.com/news/injury-report-analysis-patriots-rule-out-five-players-for-thursday-night-football-vs-the-bears",
+    "https://www.patriots.com/team/injury-report/",
     "https://www.nfl.com/injuries/",
-    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?seasontype=2&week=7&year=2026"
+    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
   ],
-  "note": "WORKING-WED Wednesday AM ESPN refresh (Week 7 board; prior seed 2026-10-20a WORKING-TUE). Week 6 fully FINAL incl. MNF WSH@SF \u2014 no protects. Week 7 official practice sheet not out yet (TNF NE@CHI Thu 8:15 PM ET; designations Wed ~4pm ET) \u2014 ESPN working list only. Byes Week 7 BUF/LAC/WSH/JAX. Finished clubs: drop gameday inactive / ruled-out-for-remainder / coach's-decision noise; keep multi-week OUT + IR/PUP/NFI. ESPN designations authoritative, cross-checked vs NFL.com. Doubtful = 1.0 out. Preserve manuals (Sills 0 etc.). Tier caps QB<=1.5 / All-Pro<=0.5 / other<=0.25 on auto; Madden-first else PFF; floor 0.2x status; Cap team 6.0. No rumor moves.",
+  "note": "FINAL 2026-10-21b Week 7 TNF NE@CHI after official Wed ~4pm ET Game Status (chicagobears.com table; patriots.com game-status article). NE: Vera-Tucker, Ben Brown (both guards), Carlton Davis, Prunty, Canada OUT; Moses Q (soft on); Byard/Woodson/Elliss Q but FP all week (off); A.J. Brown cleared off. CHI: Monangai, Sanborn OUT; T.J. Edwards DOUBTFUL (1.0); Stevenson Q FP all week (off); Jonah Jackson cleared off. NE/CHI rows are TNF-protected: later ESPN reseeds must not soften them. Sunday/MNF clubs unchanged from 2026-10-21a WORKING-WED (official sheet Friday). Madden-first else PFF; Probable/cleared OFF; Q only with expected-impact judgment. Doubtful 1.0. Standing manuals preserved.",
   "espn_timestamp": "2026-10-21T13:59:39Z",
   "teams": {
     "ARI": [
@@ -301,7 +303,7 @@
         "name": "Dorian Strong",
         "pos": "DEPTH",
         "status": "NFI",
-        "note": "FINAL TNF. Neck \u2014 reserve/NFI. ESPN summary Out (NFI-R). Depth CB; on for completeness.",
+        "note": "FINAL TNF. Neck — reserve/NFI. ESPN summary Out (NFI-R). Depth CB; on for completeness.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872932",
         "on": true
       }
@@ -316,7 +318,7 @@
         "on": true,
         "impact": 0.5,
         "impact_source": "manual",
-        "valuation_note": "W6 FINAL valuation: third CAR tackle down (Moton OUT, Ekwonu OUT, Freeling DOUBTFUL) \u2014 unit interaction, depth tackles vs PHI front. Fills missing auto (no Madden/PFF row) plus cluster bump."
+        "valuation_note": "W6 FINAL valuation: third CAR tackle down (Moton OUT, Ekwonu OUT, Freeling DOUBTFUL) — unit interaction, depth tackles vs PHI front. Fills missing auto (no Madden/PFF row) plus cluster bump."
       },
       {
         "name": "AJ Dillon",
@@ -403,40 +405,33 @@
       {
         "name": "Jack Sanborn",
         "pos": "LB",
-        "status": "QUESTIONABLE",
-        "note": "Sanborn (concussion) was estimated as a nonparticipant on the Bears' official injury report Tuesday.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "status": "OUT",
+        "note": "Official Wed FINAL Out (DNP Mon-Wed). Auto tier.",
+        "source": "https://www.chicagobears.com/team/injury-report/",
+        "on": true,
+        "injury": "Concussion"
       },
       {
         "name": "Kyle Monangai",
         "pos": "RB1",
-        "status": "QUESTIONABLE",
-        "note": "Monangai (thumb/toe) was listed as a non-participant in Tuesday's walk-through.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "status": "OUT",
+        "note": "Official Wed FINAL Out (DNP Mon-Wed). RB1. Auto tier.",
+        "source": "https://www.chicagobears.com/team/injury-report/",
         "on": true,
         "impact": 0.2,
-        "impact_source": "madden"
-      },
-      {
-        "name": "Jonah Jackson",
-        "pos": "OG",
-        "status": "QUESTIONABLE",
-        "note": "Jackson is dealing with a hip flexor, Jeremy Fowler of ESPN.com reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.25,
-        "impact_source": "madden"
+        "impact_source": "madden",
+        "injury": "Thumb/Toe"
       },
       {
         "name": "T.J. Edwards",
         "pos": "LB",
-        "status": "QUESTIONABLE",
-        "note": "Edwards (hamstring) was estimated as a non-participant on the Bears' official injury report Monday.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "status": "DOUBTFUL",
+        "note": "Official Wed FINAL Doubtful (DNP/DNP/LP) -> 1.0 out. Starting LB; LB room down Edwards + Sanborn.",
+        "source": "https://www.chicagobears.com/team/injury-report/",
         "on": true,
         "impact": 0.2,
-        "impact_source": "madden"
+        "impact_source": "madden",
+        "injury": "Hamstring"
       },
       {
         "name": "Dayo Odeyingbo",
@@ -447,7 +442,7 @@
         "on": true,
         "impact": 0.25,
         "impact_source": "manual",
-        "valuation_note": "W6 FINAL valuation: ESPN Out; with Montez Sweat suspended both starting EDGEs are gone \u2014 fills missing auto at tier cap."
+        "valuation_note": "W6 FINAL valuation: ESPN Out; with Montez Sweat suspended both starting EDGEs are gone — fills missing auto at tier cap."
       },
       {
         "name": "Montez Sweat",
@@ -628,7 +623,7 @@
         "name": "Kendrick Green",
         "pos": "OG",
         "status": "IR",
-        "note": "ir Explicit impact 0 \u2014 depth IR; no pos_base fallthrough.",
+        "note": "ir Explicit impact 0 — depth IR; no pos_base fallthrough.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0,
@@ -1751,65 +1746,61 @@
         "name": "Morgan Moses",
         "pos": "RT",
         "status": "QUESTIONABLE",
-        "note": "Moses (ankle) was a limited participant at the Patriots' practice Tuesday.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "note": "Official Wed FINAL Questionable (LP Mon/Tue). Real miss risk on short week; Caleb Lomu (59 good snaps at RT Wk6) replaces. Q kept soft on (auto).",
+        "source": "https://www.patriots.com/news/injury-report-analysis-patriots-rule-out-five-players-for-thursday-night-football-vs-the-bears",
         "on": true,
         "impact": 0.25,
-        "impact_source": "madden"
+        "impact_source": "madden",
+        "injury": "Foot"
       },
       {
         "name": "Alijah Vera-Tucker",
         "pos": "OG",
-        "status": "DOUBTFUL",
-        "note": "Coach Mike Vrabel said Tuesday that Vera-Tucker (hamstring) is unlikely to be available for Thursday's game at Chicago, Mike Reiss of ESPN.com reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "status": "OUT",
+        "note": "Official Wed FINAL Out (DNP all week). Starting LG; Walter Rouse starts. Was Doubtful (same price).",
+        "source": "https://www.patriots.com/news/injury-report-analysis-patriots-rule-out-five-players-for-thursday-night-football-vs-the-bears",
         "on": true,
         "impact": 0.25,
-        "impact_source": "madden"
+        "impact_source": "madden",
+        "injury": "Hamstring"
       },
       {
         "name": "Ben Brown",
         "pos": "C",
-        "status": "DOUBTFUL",
-        "note": "Coach Mike Vrabel said Tuesday that Brown (knee) probably won't be available for Thursday's game against the Bears, Mike Reiss of ESPN.com reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "status": "OUT",
+        "note": "Official Wed FINAL Out (DNP all week). Starting RG; Matt Pryor starts. Was Doubtful (same price).",
+        "source": "https://www.patriots.com/news/injury-report-analysis-patriots-rule-out-five-players-for-thursday-night-football-vs-the-bears",
+        "on": true,
+        "injury": "Knee"
       },
       {
         "name": "Carlton Davis III",
         "pos": "CB1",
-        "status": "QUESTIONABLE",
-        "note": "Davis (neck) was a limited participant in Tuesday's practice.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "status": "OUT",
+        "note": "Official Wed FINAL Out (DNP/LP). Third straight missed game; same CB group as Week 6 vs NYJ.",
+        "source": "https://www.patriots.com/news/injury-report-analysis-patriots-rule-out-five-players-for-thursday-night-football-vs-the-bears",
         "on": true,
         "impact": 0.25,
-        "impact_source": "madden"
-      },
-      {
-        "name": "A.J. Brown",
-        "pos": "WR1",
-        "status": "QUESTIONABLE",
-        "note": "Brown (ankle) was listed as a limited participant on Tuesday's practice report.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.5,
-        "impact_source": "madden"
+        "impact_source": "madden",
+        "injury": "Neck"
       },
       {
         "name": "Karon Prunty",
         "pos": "CB1",
-        "status": "QUESTIONABLE",
-        "note": "Prunty (hamstring) has been ruled out ahead of Sunday's game against the Jets.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "status": "OUT",
+        "note": "Official Wed FINAL Out. Rookie depth CB. Auto tier.",
+        "source": "https://www.patriots.com/news/injury-report-analysis-patriots-rule-out-five-players-for-thursday-night-football-vs-the-bears",
+        "on": true,
+        "injury": "Hamstring"
       },
       {
         "name": "Channing Canada",
         "pos": "CB1",
-        "status": "QUESTIONABLE",
-        "note": "Canada (hamstring) has been ruled out for Sunday's game against the Raiders.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "status": "OUT",
+        "note": "Official Wed FINAL Out. Rookie depth CB. Auto tier.",
+        "source": "https://www.patriots.com/news/injury-report-analysis-patriots-rule-out-five-players-for-thursday-night-football-vs-the-bears",
+        "on": true,
+        "injury": "Hamstring"
       },
       {
         "name": "Romeo Doubs",
@@ -2313,7 +2304,7 @@
         "name": "Gennings Dunker",
         "pos": "OG",
         "status": "IR",
-        "note": "The Steelers placed Dunker (knee) on injured reserve Saturday, Tom Pelissero of Netflix reports. Explicit impact 0 \u2014 depth IR; no pos_base fallthrough.",
+        "note": "The Steelers placed Dunker (knee) on injured reserve Saturday, Tom Pelissero of Netflix reports. Explicit impact 0 — depth IR; no pos_base fallthrough.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0,
@@ -2685,7 +2676,7 @@
         "on": true,
         "impact": 0.0,
         "impact_source": "manual",
-        "valuation_note": "W6 FINAL valuation: backup QB (Jayden Daniels healthy, full practice) \u2014 no starter drop-off; standing zero."
+        "valuation_note": "W6 FINAL valuation: backup QB (Jayden Daniels healthy, full practice) — no starter drop-off; standing zero."
       },
       {
         "name": "Javontae Jean-Baptiste",
@@ -2765,5 +2756,5 @@
       }
     ]
   },
-  "stamp": "2026-10-21a"
+  "stamp": "2026-10-21b"
 }

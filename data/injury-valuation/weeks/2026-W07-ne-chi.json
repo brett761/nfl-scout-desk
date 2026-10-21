@@ -1,0 +1,34 @@
+{
+  "week": 7, "season": 2026, "game": "NE@CHI", "window": "TNF", "stamp": "2026-10-21b", "phase": "FINAL",
+  "sources": ["https://www.chicagobears.com/team/injury-report/", "https://www.patriots.com/news/injury-report-analysis-patriots-rule-out-five-players-for-thursday-night-football-vs-the-bears", "https://www.nfl.com/injuries/"],
+  "pulled_et": "2026-10-21 4:25 PM ET",
+  "official": {
+    "NE": [
+      {"name": "Alijah Vera-Tucker", "pos": "LG", "injury": "Hamstring", "practice": "DNP/DNP", "status": "OUT", "on": true, "replacement": "Walter Rouse", "valuation": "Was Doubtful (already priced as out). Madden 0.25. Below-average replacement."},
+      {"name": "Ben Brown", "pos": "RG/C", "injury": "Knee", "practice": "DNP/DNP", "status": "OUT", "on": true, "replacement": "Matt Pryor", "valuation": "Was Doubtful (already priced). Auto tier."},
+      {"name": "Carlton Davis III", "pos": "CB", "injury": "Neck", "practice": "DNP/LP", "status": "OUT", "on": true, "replacement": "Marcus Jones / Charles Woods", "valuation": "Was Q 0.25 soft; now full out. Third straight miss, same CB group that played NYJ."},
+      {"name": "Karon Prunty", "pos": "CB", "injury": "Hamstring", "practice": "LP/LP", "status": "OUT", "on": true, "valuation": "Rookie depth, auto tier."},
+      {"name": "Channing Canada", "pos": "CB", "injury": "Hamstring", "practice": "LP/LP", "status": "OUT", "on": true, "valuation": "Rookie depth, auto tier."},
+      {"name": "Morgan Moses", "pos": "RT", "injury": "Foot", "practice": "LP/LP", "status": "QUESTIONABLE", "on": true, "replacement": "Caleb Lomu", "valuation": "Real miss risk on short week; Lomu played 59 snaps at RT Wk6. Q soft on (auto 0.25 Madden x Q weight)."},
+      {"name": "Kevin Byard III", "pos": "S", "injury": "Chest", "practice": "FP/FP", "status": "QUESTIONABLE", "on": false, "valuation": "Full all week -> P(miss) small, off the number."},
+      {"name": "Craig Woodson", "pos": "S", "injury": "Shoulder", "practice": "FP/FP", "status": "QUESTIONABLE", "on": false, "valuation": "Full all week -> off."},
+      {"name": "Christian Elliss", "pos": "LB", "injury": "Chest", "practice": "FP/FP", "status": "QUESTIONABLE", "on": false, "valuation": "Full all week -> off."},
+      {"name": "A.J. Brown", "pos": "WR", "injury": "Ankle", "practice": "LP/LP", "status": "none", "on": false, "valuation": "Off the report, plays -> off the number (was Q 0.5 soft)."}
+    ],
+    "CHI": [
+      {"name": "Kyle Monangai", "pos": "RB", "injury": "Thumb/Toe", "practice": "DNP/DNP/DNP", "status": "OUT", "on": true, "valuation": "RB1, Madden 0.2, now full out."},
+      {"name": "Jack Sanborn", "pos": "LB", "injury": "Concussion", "practice": "DNP/DNP/DNP", "status": "OUT", "on": true, "valuation": "Auto tier."},
+      {"name": "T.J. Edwards", "pos": "LB", "injury": "Hamstring", "practice": "DNP/DNP/LP", "status": "DOUBTFUL", "on": true, "valuation": "Doubtful = 1.0 out. Starting LB, Madden 0.2."},
+      {"name": "Tyrique Stevenson", "pos": "CB", "injury": "Hip", "practice": "FP/FP/FP", "status": "QUESTIONABLE", "on": false, "valuation": "Full all week -> off."},
+      {"name": "Jonah Jackson", "pos": "OG", "injury": "Hip/Quad", "practice": "DNP/LP/FP", "status": "none", "on": false, "valuation": "No game status -> off (was Q 0.25 soft)."}
+    ]
+  },
+  "unit_effects": {
+    "NE_OL": "Both starting guards out plus Onwenu/Van Roten on IR, RT Moses Q. Compounding is real, but NE term already -3.54 and the market had the Doubtfuls since Tuesday; no manual add.",
+    "NE_CB": "Davis/Prunty/Canada out = same group as Week 6. Matchup mechanism: CHI is #2 in multi-TE usage, which blunts a thin nickel; no extra bump.",
+    "CHI_LB": "Edwards + Sanborn both out; LB room thin vs NE play-action plan. Small, inside auto."
+  },
+  "team_injury_term": {"NE": {"before": -3.24, "after": -3.54}, "CHI": {"before": -1.52, "after": -1.85}},
+  "b_line_home_spread": {"before_raw": -1.59, "after_raw": -1.56, "published": -1.5, "street_dk": -3, "shadow_dvoa_blend": -2.73},
+  "confidence": "Moderate"
+}

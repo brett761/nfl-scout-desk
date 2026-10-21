@@ -1,3 +1,11 @@
+# Week 7 TNF NE@CHI FINAL (2026-10-21b)
+
+Official Wed ~4pm ET Game Status (chicagobears.com table, patriots.com game-status article), pulled 2026-10-21 4:25 PM ET. Only NE/CHI rows changed; everyone else stays 2026-10-21a WORKING-WED.
+
+- **NE**: Vera-Tucker and Ben Brown OUT (both were Doubtful), Carlton Davis OUT (was Q), Prunty and Canada OUT, Moses Q (LP, soft on). Byard/Woodson/Elliss Q but full all week (off). A.J. Brown off the report. Team injury −3.24 → −3.54.
+- **CHI**: Monangai OUT, Sanborn OUT, T.J. Edwards Doubtful (1.0). Stevenson Q full all week (off), Jonah Jackson cleared. Team injury −1.52 → −1.85.
+- B$ line CHI −1.59 → −1.56 raw (CHI −1.5 published) vs DraftKings CHI −3, O/U 50.5. DVOA-blend shadow CHI −2.73.
+
 # 2026 NFL injuries — Scout desk Week 7 WORKING-WED
 
 Pulled 2026-10-21 9:59 AM ET (America/New_York). Stamp `injury_pulled=2026-10-21a` **WORKING-WED** Wednesday AM ESPN refresh (prior seed 2026-10-20a WORKING-TUE). Week 6 fully FINAL (no protects); Week 7 board, byes BUF/LAC/WSH/JAX. Aaron Donald dropped. No rumor designations.
