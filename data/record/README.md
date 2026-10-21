@@ -15,7 +15,8 @@ The live model is a separate step. This workflow does not recompute it.
 3. Pull the post-final DraftKings close, append it, grade, and rebuild:
 
 ```bash
-node data/record/weekly.mjs --week 5
+python3 scripts/fold_week_record.py      # latest all-final week; or pass a week number
+# same as: node data/record/weekly.mjs --week N, then grade_shadow_blend.mjs and validate_record.mjs
 ```
 
 That command:
