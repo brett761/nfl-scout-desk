@@ -76,7 +76,10 @@ expect("3|CAR@CLE", (g) => g.upset === true && g.underdog === "CLE" && g.b_upset
 const week4 = fresh.games.filter((g) => g.week === 4 && g.in_official_record);
 if (week4.length !== 16) fail("expected 16 official Week 4 games, got " + week4.length);
 if (fresh.week4_locked.length) fail("Week 4 still has " + fresh.week4_locked.length + " ungraded locks");
-if (fresh.summary.games !== 48) fail("expected 48 official games, got " + fresh.summary.games);
+const wk24 = fresh.games.filter((g) => g.week >= 2 && g.week <= 4 && g.in_official_record).length;
+if (wk24 !== 48) fail("expected 48 official Weeks 2-4 games, got " + wk24);
+if (fresh.summary.games !== fresh.games.filter((g) => g.in_official_record).length) fail("summary games " + fresh.summary.games + " does not match the official rows");
+if ((fresh.pending_locks || []).length) fail((fresh.pending_locks || []).length + " locked games are still pending");
 
 const pit = week4.find((g) => g.game_id === "PIT@CLE");
 if (!pit) fail("Week 4 PIT@CLE missing from the official record");

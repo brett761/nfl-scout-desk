@@ -3193,6 +3193,7 @@ async function loadNfl() {
     lineHistory = null;
     console.warn("line-history-2026.json", err);
   }
+  loadShadowGrades();
   unitMismatchState = "loading";
   try {
     const res = await fetch("./data/unit-mismatches-2026.json?v=unitmis1006");
@@ -6288,7 +6289,6 @@ function renderSchedule() {
             <span class="lbl">B$ Line</span>
             <span class="val">${esc(ourHtml)}</span>
             ${gameDayDiffers(g) ? gameDayMarkHtml(g) : (pubRow ? `<span class="when">${esc(pubRow.published_at || (pubRow.lock_quality === "null_line" ? "No pre-kick B Line" : "Frozen lock"))}</span>` : "")}
-            ${dvoaBlendShadowHtml(g)}
           </div>
         </div>
         <div class="sked-edge"><span class="lbl">Gap</span>${edgeHtml === "—" ? '<span class="val">—</span>' : edgeHtml}${coachChipHtml(g)}${prepChipHtml(g)}${atsChipHtml(g)}${matchupChipHtml(g)}</div>
@@ -6717,6 +6717,68 @@ function renderPowerRank(opts) {
 }
 
 
+/* ---------- DVOA Blend tab (shadow line, moved off Games 2026-10-21 per Matt) ---------- */
+let shadowGradesData = null;
+async function loadShadowGrades() {
+  try {
+    const res = await fetch("./data/model/shadow-dvoa-blend-grades-2026.json?v=" + Date.now());
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    shadowGradesData = await res.json();
+  } catch (err) {
+    shadowGradesData = null;
+    console.warn("shadow-dvoa-blend-grades-2026.json", err);
+  }
+  renderDvoaBlend();
+}
+
+function fmtHomeLine(game, v) {
+  if (v == null || !Number.isFinite(Number(v))) return "—";
+  const n = Number(v);
+  if (Math.abs(n) < 1e-9) return "PK";
+  return n < 0 ? game.home + " " + n : game.away + " " + (-n);
+}
+
+function renderDvoaBlend() {
+  const board = document.getElementById("dvoablend-board");
+  const gradesEl = document.getElementById("dvoablend-grades");
+  if (!board) return;
+  if (!nflData || !Array.isArray(nflData.games)) {
+    board.innerHTML = `<p class="table-empty">Schedule is not loaded.</p>`;
+  } else if (Number(currentWeek) < DVOA_BLEND_SHADOW_FROM_WEEK) {
+    board.innerHTML = `<p class="table-empty">The shadow line starts in Week ${DVOA_BLEND_SHADOW_FROM_WEEK}.</p>`;
+  } else {
+    const games = nflData.games.filter((g) => Number(g.week) === Number(currentWeek))
+      .slice().sort((a, b) => String(a.date).localeCompare(String(b.date)) || String(a.id).localeCompare(String(b.id)));
+    const rows = games.map((g) => {
+      const sh = dvoaBlendShadowFor(g);
+      let bs = null;
+      try { bs = deskHomeSpread(g); } catch (e) { bs = null; }
+      const bsRounded = bs == null || !Number.isFinite(Number(bs)) ? null : roundHalfAwayFromZero(Number(bs));
+      const diff = sh && bsRounded != null ? Math.round((sh.rounded - bsRounded) * 10) / 10 : null;
+      return `<tr>
+        <td>${esc(g.away)} @ ${esc(g.home)}</td>
+        <td class="mono">${esc(fmtHomeLine(g, bsRounded))}</td>
+        <td class="mono">${sh ? esc(fmtHomeLine(g, sh.rounded)) : "—"}</td>
+        <td class="mono">${sh ? esc(String(sh.raw)) : "—"}</td>
+        <td class="mono">${diff == null ? "—" : esc((diff > 0 ? "+" : "") + diff)}</td>
+        <td>${sh ? (sh.locked ? "Locked pre-kick" : "Live") : "No pre-kick log"}</td>
+      </tr>`;
+    }).join("");
+    board.innerHTML = `<h2>Week ${esc(currentWeek)}</h2><div class="table-wrap"><table class="ledger">
+      <thead><tr><th>Game</th><th>B$ line</th><th>DVOA blend (shadow)</th><th>Shadow raw (home)</th><th>Shadow − B$</th><th>Status</th></tr></thead>
+      <tbody>${rows || `<tr><td colspan="6">No games this week.</td></tr>`}</tbody></table></div>`;
+  }
+  if (!gradesEl) return;
+  const gd = shadowGradesData;
+  if (!gd || !gd.cumulative) { gradesEl.innerHTML = `<p class="table-empty">No graded shadow weeks yet.</p>`; return; }
+  const c = gd.cumulative;
+  const wk = Array.isArray(gd.by_week) ? gd.by_week : Object.entries(gd.by_week || {}).map(([w, v]) => ({ week: w, ...v }));
+  const wkRows = wk.map((w) => `<tr><td>${esc(w.week)}</td><td>${esc(w.n)}</td><td class="mono">${esc(w.mae_shadow)}</td><td class="mono">${esc(w.mae_official)}</td><td class="mono">${esc(w.mae_close)}</td><td>${esc((w.ats_shadow && w.ats_shadow.record) || "—")}</td><td>${esc((w.ats_official && w.ats_official.record) || "—")}</td></tr>`).join("");
+  gradesEl.innerHTML = `<h2>Graded through Week ${esc(gd.through_week)}</h2>
+    <p class="lede">Miss vs final margin: shadow ${esc(c.mae_shadow)}, B$ ${esc(c.mae_official)}, close ${esc(c.mae_close)}. Shadow ATS vs close ${esc((c.ats_shadow && c.ats_shadow.record) || "—")}${c.ats_official ? ", B$ " + esc(c.ats_official.record) : ""}.</p>
+    <div class="table-wrap"><table class="ledger"><thead><tr><th>Week</th><th>Games</th><th>Shadow miss</th><th>B$ miss</th><th>Close miss</th><th>Shadow ATS</th><th>B$ ATS</th></tr></thead><tbody>${wkRows}</tbody></table></div>`;
+}
+
 /* ---------- ATS shadow board (not in the B$ line) ---------- */
 
 function dvoaWeek(week) {
@@ -6954,6 +7016,7 @@ function render() {
   renderStaff();
   renderLineLog();
   renderAts();
+  renderDvoaBlend();
   syncSharpBookInputs();
   if (gameSheetId) renderGameSheet();
   if (lineLogChange) renderLineLogSheet();
@@ -7368,7 +7431,7 @@ function parseHash() {
 
 function fromHash() {
   const { view, team, game } = parseHash();
-  const known = ["desk", "teams", "staff", "schedule", "ats", "linelog", "residuals", "keys", "clock", "playbook", "tickets", "users", "outcomes", "history", "record", "methodology", "sandbox"];
+  const known = ["desk", "teams", "staff", "schedule", "ats", "dvoablend", "linelog", "residuals", "keys", "clock", "playbook", "tickets", "users", "outcomes", "history", "record", "methodology", "sandbox"];
   let name = known.includes(view) ? view : "desk";
   if (view === "tickets" || view === "outcomes" || view === "bets") name = "record";
   if ((name === "users" || name === "sandbox") && !canEdit()) name = "desk";
