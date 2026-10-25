@@ -1,0 +1,786 @@
+{
+ "date": "2026-10-11",
+ "week_id": "reg-6",
+ "label": "Week 6",
+ "pulled": "2026-10-12T01:25:38Z",
+ "tz": "America/New_York",
+ "source": "X",
+ "method": "search_news 24h max_results=10; get_posts_counts_recent 24h (day granularity, from 2026-10-11T01:07Z; total_tweet_count)",
+ "filtered": true,
+ "filter_note": {
+  "pulled": 320,
+  "kept": 72,
+  "dropped": 248,
+  "volume_missing": [
+   "LV",
+   "LAC",
+   "LAR",
+   "MIA",
+   "MIN",
+   "NE",
+   "NO",
+   "NYG",
+   "NYJ",
+   "PHI",
+   "PIT",
+   "SEA",
+   "SF",
+   "TB",
+   "TEN",
+   "WSH"
+  ],
+  "note": "Sunday of NFL Week 5 games (stamped vibe week reg-6 per weeks.json). Shared X access threw repeated 429s; news pulls completed for all 32 clubs, but post-count volume only landed for 16 clubs (ARI through KC) before throttling, so the other 16 have volume null and loud-room ranking is partial. Loudest measured rooms: GB and CHI (31-7 rout, Mack reunion talk, Ditka death), ARI (Harrison traded to HOU), JAX (London walk-off over PHI), DET, HOU, CLE, BAL. Status-heavy: Lamar out (Huntley started SNF), Bills without Palmer/Oliver with DJ Moore questionable for MNF, Pittman IR, Dowdle unlikely, Deebo Samuel injured, Trey Lance IR, Slater/Alt/James out, Jefferson active/Addison out, Chase/Higgins active, Jeanty active, Eagles without Barkley/Smith/Brown/Greenard, Thornton/Rice hurt (KC hosting Justin Watson). CAR and TB fully quiet (both rooms only returned other clubs' stories). Dropped mostly college football (Red River, Tennessee-Arkansas, Boise State, BYU-Notre Dame), NHL/NBA/MLB/F1/IMSA, Packers alternate uniforms, Patriots 2001 throwback nostalgia, all-time-team and Brady memes, parlay/fantasy posts, GTA VI stadium ads, coach and lineman memes, and cross-club near-dupes."
+ },
+ "clubs": [
+  {
+   "abbr": "ARI",
+   "volume": 8249,
+   "items": [
+    {
+     "title": "Cardinals trade Marvin Harrison Jr. to Houston",
+     "one_line": "Arizona sends Harrison and a 2027 seventh to the Texans for a 2027 second and a sixth after his role shrank to five catches in four games.",
+     "url": "https://x.com/i/trending/2109087239850324386",
+     "id": "2109087239850324386"
+    },
+    {
+     "title": "Fans call for Carson Beck over Brissett",
+     "one_line": "Brissett threw for 292 and three TDs in the loss, but a 2-15 record as starter has fans pushing the rookie; LaFleur defended him.",
+     "url": "https://x.com/i/trending/2109432292099625151",
+     "id": "2109432292099625151"
+    },
+    {
+     "title": "Lions roll Cardinals 45-21",
+     "one_line": "Detroit scored 31 straight after an early 7-0 hole; Arizona falls to 1-4.",
+     "url": "https://x.com/i/trending/2109407884652032331",
+     "id": "2109407884652032331"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "ATL",
+   "volume": 2566,
+   "items": [
+    {
+     "title": "Falcons host Lamar-less Ravens on SNF",
+     "one_line": "Tyler Huntley starts for Baltimore with Jackson out (ankle) and Trey Hendrickson inactive.",
+     "url": "https://x.com/i/trending/2109040294411088305",
+     "id": "2109040294411088305"
+    },
+    {
+     "title": "Gervon Dexter expected to play through eye infection",
+     "one_line": "The recently extended DT was set to suit up Sunday night despite a morning infection.",
+     "url": "https://x.com/i/trending/2109326515913794030",
+     "id": "2109326515913794030"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "BAL",
+   "volume": 4521,
+   "items": [
+    {
+     "title": "Lamar Jackson out with ankle sprain",
+     "one_line": "Jackson missed all week after spraining the ankle late in Week 4; Huntley starts at Atlanta.",
+     "url": "https://x.com/i/trending/2109130049890709719",
+     "id": "2109130049890709719"
+    },
+    {
+     "title": "Huntley starts SNF at Atlanta, Hendrickson inactive",
+     "one_line": "Baltimore's depth thinned for the Battle of the Birds prime-time game.",
+     "url": "https://x.com/i/trending/2109040294411088305",
+     "id": "2109040294411088305"
+    },
+    {
+     "title": "Mark Andrews drop frustrates Ravens fans",
+     "one_line": "An early first-quarter drop on a Huntley target drew criticism of his consistency.",
+     "url": "https://x.com/i/trending/2109444096788168745",
+     "id": "2109444096788168745"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "BUF",
+   "volume": 1678,
+   "items": [
+    {
+     "title": "Palmer and Oliver out for MNF at Rams; Skyler Bell to debut",
+     "one_line": "Buffalo rules out WR Joshua Palmer and DL Ed Oliver; DJ Moore is questionable.",
+     "url": "https://x.com/i/trending/2109083121480278236",
+     "id": "2109083121480278236"
+    },
+    {
+     "title": "Bills fans uneasy as Patriots surge",
+     "one_line": "After New England's Week 4 upset of Buffalo, the Pats routed Las Vegas 45-17.",
+     "url": "https://x.com/i/trending/2109397171892346927",
+     "id": "2109397171892346927"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "CAR",
+   "volume": 633,
+   "items": [],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "CHI",
+   "volume": 13719,
+   "items": [
+    {
+     "title": "Khalil Mack reunion trade talk heats up",
+     "one_line": "Sources say a Mack trade from the winless Chargers back to Chicago makes sense if both paths hold.",
+     "url": "https://x.com/i/trending/2108919691599098113",
+     "id": "2108919691599098113"
+    },
+    {
+     "title": "Packers rout Bears 31-7 without Caleb Williams",
+     "one_line": "Jordan Love threw for 367 and two TDs; Chicago drops to 3-2 and fans blast the secondary.",
+     "url": "https://x.com/i/trending/2109055559924429194",
+     "id": "2109055559924429194"
+    },
+    {
+     "title": "Mike Ditka dies at 86",
+     "one_line": "The Hall of Famer who coached Chicago's lone Super Bowl team was honored around Sunday's game.",
+     "url": "https://x.com/i/trending/2108577502121652449",
+     "id": "2108577502121652449"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "CIN",
+   "volume": 1471,
+   "items": [
+    {
+     "title": "Bengals beat Dolphins 31-24",
+     "one_line": "Chase's acrobatic TD and two Jordan Battle picks snap the skid.",
+     "url": "https://x.com/i/trending/2109331932060475525",
+     "id": "2109331932060475525"
+    },
+    {
+     "title": "Chase and Higgins cleared and active",
+     "one_line": "Chase cleared concussion protocol and Higgins shook off groin and neck issues after full Friday practices.",
+     "url": "https://x.com/i/trending/2109329119465124049",
+     "id": "2109329119465124049"
+    },
+    {
+     "title": "Chase Brown under fire as Perine outplays him",
+     "one_line": "Brown had 39 yards on 13 carries and a fumble; Perine had 68 and a TD.",
+     "url": "https://x.com/i/trending/2109385971598762309",
+     "id": "2109385971598762309"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "CLE",
+   "volume": 6027,
+   "items": [
+    {
+     "title": "Jets beat Browns 17-12, sack Watson eight times",
+     "one_line": "Cleveland's three-game win streak ends in the rain at MetLife.",
+     "url": "https://x.com/i/trending/2109448796736221305",
+     "id": "2109448796736221305"
+    },
+    {
+     "title": "Browns would extend Watson if he makes the playoffs",
+     "one_line": "Mary Kay Cabot reports an extension is on the table in the final year of his deal.",
+     "url": "https://x.com/i/trending/2109053161000271975",
+     "id": "2109053161000271975"
+    },
+    {
+     "title": "Watson, Judkins, Barber fined for TD celebration",
+     "one_line": "League fines total about $36K for an unsportsmanlike post-score gesture.",
+     "url": "https://x.com/i/trending/2109026291810709751",
+     "id": "2109026291810709751"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "DAL",
+   "volume": 3911,
+   "items": [
+    {
+     "title": "Dak contractor confrontation keeps spreading",
+     "one_line": "Fake fired-worker videos followed Prescott's Thursday stare-down of a contractor during the loss to Tampa Bay.",
+     "url": "https://x.com/i/trending/2108966096409878586",
+     "id": "2108966096409878586"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "DEN",
+   "volume": 3993,
+   "items": [
+    {
+     "title": "Broncos edge Chargers 23-17",
+     "one_line": "Denver gets its first AFC West win and moves to 3-2 at SoFi.",
+     "url": "https://x.com/i/trending/2109372048292372754",
+     "id": "2109372048292372754"
+    },
+    {
+     "title": "Bo Nix struggles despite win",
+     "one_line": "Analysts called it one of his worst games: hesitation, fumbles and no run threat.",
+     "url": "https://x.com/i/trending/2109413050512199698",
+     "id": "2109413050512199698"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "DET",
+   "volume": 6202,
+   "items": [
+    {
+     "title": "Lions crush Cardinals 45-21",
+     "one_line": "Goff threw three TDs and Gibbs set a record, passing Barry Sanders before turning 25.",
+     "url": "https://x.com/i/trending/2109407884652032331",
+     "id": "2109407884652032331"
+    },
+    {
+     "title": "Lions honor broadcaster Dan Miller's late wife",
+     "one_line": "Cynthia Miller died Oct. 10 after a cancer battle.",
+     "url": "https://x.com/i/trending/2109297101683470570",
+     "id": "2109297101683470570"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "GB",
+   "volume": 13987,
+   "items": [
+    {
+     "title": "Packers rout Bears 31-7",
+     "one_line": "Love throws for 367 and two long TDs to Christian Watson; Green Bay moves to 3-2.",
+     "url": "https://x.com/i/trending/2109055559924429194",
+     "id": "2109055559924429194"
+    },
+    {
+     "title": "Bears kicker trip attempt sparks sideline clash",
+     "one_line": "Santos stuck out a leg as Golden drifted into the Chicago bench on a punt return.",
+     "url": "https://x.com/i/trending/2109444094498103798",
+     "id": "2109444094498103798"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "HOU",
+   "volume": 6157,
+   "items": [
+    {
+     "title": "Texans land Marvin Harrison Jr.",
+     "one_line": "Houston gives a 2027 second and sixth for Harrison and a seventh.",
+     "url": "https://x.com/i/trending/2109087239850324386",
+     "id": "2109087239850324386"
+    },
+    {
+     "title": "Texans crush Titans 26-3 for first win",
+     "one_line": "Stroud went 26 of 34 for 261 and a TD plus a rushing score; Houston is 1-4.",
+     "url": "https://x.com/i/trending/2109366227604815979",
+     "id": "2109366227604815979"
+    },
+    {
+     "title": "Rookie TE Marlin Klein inactive again",
+     "one_line": "The second-rounder was a healthy scratch at Tennessee.",
+     "url": "https://x.com/i/trending/2109321403099165024",
+     "id": "2109321403099165024"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "IND",
+   "volume": 1702,
+   "items": [
+    {
+     "title": "Steichen takes blame after loss at Pittsburgh",
+     "one_line": "One TD on three red-zone trips and five Shrader field goals in a 34-22 defeat; Colts fall to 2-3.",
+     "url": "https://x.com/i/trending/2109366229148336245",
+     "id": "2109366229148336245"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "JAX",
+   "volume": 7304,
+   "items": [
+    {
+     "title": "Jaguars stun Eagles on last-second 57-yard FG in London",
+     "one_line": "Jacksonville wins 19-17 over an injury-hit Philadelphia.",
+     "url": "https://x.com/i/trending/2108736243605365235",
+     "id": "2108736243605365235"
+    },
+    {
+     "title": "LeSean McCoy calls Trevor Lawrence above average at best",
+     "one_line": "McCoy credited yards after catch, not Lawrence, after the win.",
+     "url": "https://x.com/i/trending/2109427371300598192",
+     "id": "2109427371300598192"
+    },
+    {
+     "title": "Rookie Bryan Thomas Jr. ejected early",
+     "one_line": "The DE was tossed after a kickoff scuffle; WR Brian Thomas Jr. had zero catches.",
+     "url": "https://x.com/i/trending/2109311068829020531",
+     "id": "2109311068829020531"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "KC",
+   "volume": 648,
+   "items": [
+    {
+     "title": "Chiefs bring in Justin Watson on bye",
+     "one_line": "4-0 KC hosts the WR Monday after Tyquan Thornton's dislocated ankle and Rashee Rice's hamstring.",
+     "url": "https://x.com/i/trending/2109352018171330761",
+     "id": "2109352018171330761"
+    },
+    {
+     "title": "NFL won't fine Stukes for Thornton tackle",
+     "one_line": "The league ruled it was not an illegal hip-drop.",
+     "url": "https://x.com/i/trending/2109048043429576824",
+     "id": "2109048043429576824"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "LV",
+   "volume": null,
+   "items": [
+    {
+     "title": "Patriots crush Raiders 45-17",
+     "one_line": "Drake Maye had five total TDs at Gillette.",
+     "url": "https://x.com/i/trending/2109329119448289599",
+     "id": "2109329119448289599"
+    },
+    {
+     "title": "Ashton Jeanty active",
+     "one_line": "He shook off ankle and plantar fasciitis issues to play.",
+     "url": "https://x.com/i/trending/2109020112397140003",
+     "id": "2109020112397140003"
+    },
+    {
+     "title": "Rookie Stukes not fined for Thornton tackle",
+     "one_line": "NFL ruled the hit on the Chiefs WR legal.",
+     "url": "https://x.com/i/trending/2109048043429576824",
+     "id": "2109048043429576824"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "LAC",
+   "volume": null,
+   "items": [
+    {
+     "title": "Chargers 0-5 for first time since 2003",
+     "one_line": "Herbert went 14 of 24 for 121 with a pick and a lost fumble in a 23-17 loss to Denver.",
+     "url": "https://x.com/i/trending/2109444097438310761",
+     "id": "2109444097438310761"
+    },
+    {
+     "title": "Slater, Alt, James, Johnston all out",
+     "one_line": "Four rookies started on the offensive line against Denver.",
+     "url": "https://x.com/i/trending/2108669506390528471",
+     "id": "2108669506390528471"
+    },
+    {
+     "title": "Trey Lance to IR, Matlock and Taylor activated",
+     "one_line": "Lance is out at least four games with a groin injury.",
+     "url": "https://x.com/i/trending/2109020111474454793",
+     "id": "2109020111474454793"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "LAR",
+   "volume": null,
+   "items": [
+    {
+     "title": "Bills without Palmer and Oliver for MNF at SoFi",
+     "one_line": "DJ Moore questionable; rookie Skyler Bell set to debut against the Rams.",
+     "url": "https://x.com/i/trending/2109083121480278236",
+     "id": "2109083121480278236"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "MIA",
+   "volume": null,
+   "items": [
+    {
+     "title": "Dolphins 0-5 after loss to Cincinnati",
+     "one_line": "Malik Willis had two picks and a lost fumble; fans eye Jeremiah Smith in the 2027 draft.",
+     "url": "https://x.com/i/trending/2109439486115369093",
+     "id": "2109439486115369093"
+    },
+    {
+     "title": "Special teams blunders sink Miami",
+     "one_line": "Kick return and coverage mistakes gave the Bengals short fields.",
+     "url": "https://x.com/i/trending/2109399919974875577",
+     "id": "2109399919974875577"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "MIN",
+   "volume": null,
+   "items": [
+    {
+     "title": "Vikings 5-0 after beating Saints 23-13",
+     "one_line": "Jefferson's third-quarter catch flipped momentum; Kyler Murray threw for 229 and a TD.",
+     "url": "https://x.com/i/trending/2108799357273444811",
+     "id": "2108799357273444811"
+    },
+    {
+     "title": "Jefferson active, Addison out",
+     "one_line": "Jefferson played through the ankle; Jordan Addison sat with a hamstring.",
+     "url": "https://x.com/i/trending/2109372049991012555",
+     "id": "2109372049991012555"
+    },
+    {
+     "title": "OBJ elevated for New Orleans homecoming but sits",
+     "one_line": "Beckham Jr. came up from the practice squad but did not play.",
+     "url": "https://x.com/i/trending/2108649973957157159",
+     "id": "2108649973957157159"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "NE",
+   "volume": null,
+   "items": [
+    {
+     "title": "Patriots crush Raiders 45-17",
+     "one_line": "Maye completed 26 of 34 with five total TDs a week after upsetting Buffalo.",
+     "url": "https://x.com/i/trending/2109329119448289599",
+     "id": "2109329119448289599"
+    },
+    {
+     "title": "Patriots down Gonzalez and other corners",
+     "one_line": "New England's secondary was short multiple CBs for Las Vegas.",
+     "url": "https://x.com/i/trending/2109020112397140003",
+     "id": "2109020112397140003"
+    },
+    {
+     "title": "Incognito rips Josh McDaniels before Raiders game",
+     "one_line": "Patriots fans fired back defending the coordinator.",
+     "url": "https://x.com/i/trending/2109109623802474808",
+     "id": "2109109623802474808"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "NO",
+   "volume": null,
+   "items": [
+    {
+     "title": "Saints fall 23-13 to Vikings, coach backlash grows",
+     "one_line": "Tyler Shough threw for 96 yards with two picks; New Orleans is 1-4 on a three-game skid.",
+     "url": "https://x.com/i/trending/2109388764871381002",
+     "id": "2109388764871381002"
+    },
+    {
+     "title": "Illness hits Saints locker room",
+     "one_line": "Nick Underhill reported a major sickness before the Vikings game.",
+     "url": "https://x.com/i/trending/2109297106502766983",
+     "id": "2109297106502766983"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "NYG",
+   "volume": null,
+   "items": [
+    {
+     "title": "Giants and Commanders tie 27-27",
+     "one_line": "Washington botched its final OT play with no timeouts; first tie of 2026.",
+     "url": "https://x.com/i/trending/2109247109920661814",
+     "id": "2109247109920661814"
+    },
+    {
+     "title": "Giants to work out Yannick Ngakoue Monday",
+     "one_line": "The edge rusher missed 2025 with a broken ankle.",
+     "url": "https://x.com/i/trending/2109429812431589634",
+     "id": "2109429812431589634"
+    },
+    {
+     "title": "Fans call for Winston to be benched",
+     "one_line": "Vocal frustration during the divisional game before his late rally.",
+     "url": "https://x.com/i/trending/2109366229118972119",
+     "id": "2109366229118972119"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "NYJ",
+   "volume": null,
+   "items": [
+    {
+     "title": "Jets snap skid 17-12 over Browns",
+     "one_line": "No. 2 pick David Bailey had three sacks in an eight-sack day; Braelon Allen sealed it.",
+     "url": "https://x.com/i/trending/2109448796736221305",
+     "id": "2109448796736221305"
+    },
+    {
+     "title": "Outrage over brutal hit on rookie",
+     "one_line": "The win was clouded by a hard hit fans called out.",
+     "url": "https://x.com/i/trending/2109334890407944283",
+     "id": "2109334890407944283"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "PHI",
+   "volume": null,
+   "items": [
+    {
+     "title": "Eagles without Barkley, Smith, Brown, Greenard in London",
+     "one_line": "Retired Lane Johnson kept on the roster for cap reasons.",
+     "url": "https://x.com/i/trending/2109253543790096676",
+     "id": "2109253543790096676"
+    },
+    {
+     "title": "Jaguars beat Eagles on 57-yard FG at the gun",
+     "one_line": "Philadelphia drops to 2-3, its third straight loss.",
+     "url": "https://x.com/i/trending/2108736243605365235",
+     "id": "2108736243605365235"
+    },
+    {
+     "title": "Fourth-and-one shotgun call blasted",
+     "one_line": "Fans slammed skipping the tush push for a Shipley inside zone read.",
+     "url": "https://x.com/i/trending/2109282453156446346",
+     "id": "2109282453156446346"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "PIT",
+   "volume": null,
+   "items": [
+    {
+     "title": "Steelers beat Colts 34-22",
+     "one_line": "Jaylen Warren had 188 scrimmage yards; Rodgers threw three TDs for a third straight game.",
+     "url": "https://x.com/i/trending/2109334889812447472",
+     "id": "2109334889812447472"
+    },
+    {
+     "title": "Michael Pittman Jr. to IR",
+     "one_line": "Aggravated plantar fasciitis sidelines him until at least Week 10.",
+     "url": "https://x.com/i/trending/2108653232704848201",
+     "id": "2108653232704848201"
+    },
+    {
+     "title": "Rico Dowdle unlikely with toe injury",
+     "one_line": "Practice-squad RB elevated behind Warren and Homer.",
+     "url": "https://x.com/i/trending/2109282451352863141",
+     "id": "2109282451352863141"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "SEA",
+   "volume": null,
+   "items": [
+    {
+     "title": "Seahawks fall 32-29 to 49ers",
+     "one_line": "Seattle's late comeback fell short; home win streak ends and they drop to 3-2.",
+     "url": "https://x.com/i/trending/2109385969640034538",
+     "id": "2109385969640034538"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "SF",
+   "volume": null,
+   "items": [
+    {
+     "title": "49ers edge Seahawks 32-29 to go 5-0",
+     "one_line": "Purdy threw two TDs; rookie Gracen Halton scored on a fumble return.",
+     "url": "https://x.com/i/trending/2109385969640034538",
+     "id": "2109385969640034538"
+    },
+    {
+     "title": "Deebo Samuel injured in first half",
+     "one_line": "Injury flagged at halftime with SF up 21-13.",
+     "url": "https://x.com/i/trending/2109422690142474714",
+     "id": "2109422690142474714"
+    },
+    {
+     "title": "Bosa and Juszczyk out, Mykel Williams debuts",
+     "one_line": "Evans cleared; Williams activated off PUP.",
+     "url": "https://x.com/i/trending/2108731498589548876",
+     "id": "2108731498589548876"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "TB",
+   "volume": null,
+   "items": [],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "TEN",
+   "volume": null,
+   "items": [
+    {
+     "title": "Titans fans hit breaking point at 0-5",
+     "one_line": "Tennessee managed 187 yards in a 26-3 home loss to Houston.",
+     "url": "https://x.com/i/trending/2109427376828608558",
+     "id": "2109427376828608558"
+    },
+    {
+     "title": "Failed 2020-23 drafts in spotlight",
+     "one_line": "Only Skoronski and Spears remain from those classes.",
+     "url": "https://x.com/i/trending/2109451015644917784",
+     "id": "2109451015644917784"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "WSH",
+   "volume": null,
+   "items": [
+    {
+     "title": "Commanders tie Giants 27-27 after OT clock blunder",
+     "one_line": "No timeouts and no spike or kick on the final play.",
+     "url": "https://x.com/i/trending/2109247109920661814",
+     "id": "2109247109920661814"
+    },
+    {
+     "title": "Daniels plays in elbow brace amid reinjury worry",
+     "one_line": "Schefter says doctors see reinjury as a matter of when; Daniels ran for two TDs.",
+     "url": "https://x.com/i/trending/2109391621804667122",
+     "id": "2109391621804667122"
+    },
+    {
+     "title": "McLaurin active on limited snaps",
+     "one_line": "He returned from a hamstring issue.",
+     "url": "https://x.com/i/trending/2109334890022146098",
+     "id": "2109334890022146098"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  }
+ ]
+}

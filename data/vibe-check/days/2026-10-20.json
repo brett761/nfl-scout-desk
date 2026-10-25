@@ -1,0 +1,720 @@
+{
+ "date": "2026-10-20",
+ "week_id": "reg-7",
+ "label": "Week 7",
+ "pulled": "2026-10-21T01:10:43Z",
+ "tz": "America/New_York",
+ "source": "X",
+ "method": "search_news 24h max_results=10; get_posts_counts_recent 24h (day granularity, from 2026-10-20T01:08Z; total_tweet_count)",
+ "filtered": true,
+ "filter_note": {
+  "pulled": 320,
+  "unique_stories": 178,
+  "kept": 63,
+  "dropped": 257,
+  "volume_missing": [],
+  "quiet": [
+   "CIN"
+  ],
+  "note": "Tuesday of Week 7. Loudest rooms: PHI, SF, WSH, CLE, NE, DAL, BUF, CHI, GB, IND. NE volume inflated by Knicks/NBA opening-night noise (count query has no exclusions; NE news pull was 9 of 10 Knicks/NBA). Dropped mostly other sports (Knicks banner night, NBA tip-off, LeBron Sixers debut, Rays ALCS, Brewers, Suns, Pacers, Hawks Prime deal, F1 US GP, NHL Heritage Classic, AFC Leopards, USL), college football (Texas/Arch Manning, Sarkisian, Tennessee-Alabama, Miami-FSU, Oregon-Nebraska, BYU-Utah, Big 12, Cal, Clemson, Iowa), fan memes (Tua trade graphic, McVay trade, DeVonta Smith trade pitches, Big Cat rankings, Tracy Wolfson pat, Herbert-McDaniel photo), Train anthem, Fehoko ref claims, Watson house party, Parsons Clash of Clans, Lions Den superchats, Mora rant anniversary, Tillman peanut punch, Redskins name push, Senate ratings, and many cross-club duplicates."
+ },
+ "clubs": [
+  {
+   "abbr": "ARI",
+   "volume": 509,
+   "items": [
+    {
+     "title": "Cardinals edge Rams 18-16 at SoFi",
+     "one_line": "Rams kicker Blake Grupe tore his ACL making a tackle in the loss, per X.",
+     "url": "https://x.com/i/trending/2111916389711913205",
+     "id": "2111916389711913205"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "ATL",
+   "volume": 870,
+   "items": [
+    {
+     "title": "Andy Dalton picks the Falcons over an Eagles return",
+     "one_line": "The veteran QB turned down Philly with Jalen Hurts out and landed in Atlanta.",
+     "url": "https://x.com/i/trending/2111988149677134300",
+     "id": "2111988149677134300"
+    },
+    {
+     "title": "Falcons sign edge Charles Snowden off Washington's practice squad",
+     "one_line": "Depth add with injuries piling up on the edge before the 49ers.",
+     "url": "https://x.com/i/trending/2112585545327288710",
+     "id": "2112585545327288710"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "BAL",
+   "volume": 765,
+   "items": [
+    {
+     "title": "Ravens wait on Lamar Jackson's ankle before the Bengals",
+     "one_line": "His left ankle sprain has cost him two games; fans want an update.",
+     "url": "https://x.com/i/trending/2112262737716036035",
+     "id": "2112262737716036035"
+    },
+    {
+     "title": "Ravens bring back Jake Moody for a kicker competition",
+     "one_line": "Added to the practice squad after Tyler Loop's missed 49-yarder in the Browns loss.",
+     "url": "https://x.com/i/trending/2112331789708521479",
+     "id": "2112331789708521479"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "BUF",
+   "volume": 2037,
+   "items": [
+    {
+     "title": "C.J. Gardner-Johnson suspended after the Raiders win",
+     "one_line": "Coach Joe Brady defended the ejected safety and drew heat for a James Cook comparison.",
+     "url": "https://x.com/i/trending/2112527508612788504",
+     "id": "2112527508612788504"
+    },
+    {
+     "title": "Tre'Davious White returns to the Bills practice squad",
+     "one_line": "Third stint in Buffalo for the veteran corner.",
+     "url": "https://x.com/i/trending/2112275126867669491",
+     "id": "2112275126867669491"
+    },
+    {
+     "title": "Bills try out linebackers including Jose Ramirez and Sheriff",
+     "one_line": "Edge and linebacker depth push.",
+     "url": "https://x.com/i/trending/2112706229676179839",
+     "id": "2112706229676179839"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "CAR",
+   "volume": 836,
+   "items": [
+    {
+     "title": "Bryce Young's hot start continues",
+     "one_line": "Panthers beat the Eagles 25-14 behind Young.",
+     "url": "https://x.com/i/trending/2112316613567627463",
+     "id": "2112316613567627463"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "CHI",
+   "volume": 1802,
+   "items": [
+    {
+     "title": "Bears and Patriots both banged up on the offensive line",
+     "one_line": "Backups in line before Thursday's game.",
+     "url": "https://x.com/i/trending/2112365271310860473",
+     "id": "2112365271310860473"
+    },
+    {
+     "title": "Caleb Williams and Drake Maye talk each other up before Thursday",
+     "one_line": "Williams calls Maye one of his closest friends from the 2024 class.",
+     "url": "https://x.com/i/trending/2112703755024298045",
+     "id": "2112703755024298045"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "CIN",
+   "volume": 280,
+   "items": [],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "CLE",
+   "volume": 2780,
+   "items": [
+    {
+     "title": "Browns lead the AFC North at 4-2",
+     "one_line": "First time atop the division since 2014, yet radio keeps circling Shedeur Sanders.",
+     "url": "https://x.com/i/trending/2112609509957058780",
+     "id": "2112609509957058780"
+    },
+    {
+     "title": "Rookie KC Concepcion keeps facing the mic through a stutter",
+     "one_line": "Postgame interviews from the rookie receiver are drawing praise.",
+     "url": "https://x.com/i/trending/2112666237717397568",
+     "id": "2112666237717397568"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "DAL",
+   "volume": 2227,
+   "items": [
+    {
+     "title": "DeMarvion Overshown cleared to return from his hamstring",
+     "one_line": "Back after five missed games.",
+     "url": "https://x.com/i/trending/2112637280225829065",
+     "id": "2112637280225829065"
+    },
+    {
+     "title": "Cowboys elevate Juanyeh Thomas for a banged-up secondary",
+     "one_line": "Practice squad call-up amid injuries.",
+     "url": "https://x.com/i/trending/2112650184911962226",
+     "id": "2112650184911962226"
+    },
+    {
+     "title": "Cowboys fans go quiet at 2-4 after the Packers loss",
+     "one_line": "The 23-13 defeat at Lambeau has the room tuning out.",
+     "url": "https://x.com/i/trending/2112248561954083132",
+     "id": "2112248561954083132"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "DEN",
+   "volume": 1093,
+   "items": [
+    {
+     "title": "Sean Payton sticks with Bo Nix",
+     "one_line": "Payton calls the offensive slump a team-wide problem, not a QB one.",
+     "url": "https://x.com/i/trending/2111858203021439448",
+     "id": "2111858203021439448"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "DET",
+   "volume": 892,
+   "items": [
+    {
+     "title": "Dan Campbell expects Kerby Joseph back this season",
+     "one_line": "The safety is making steady progress from his knee issues.",
+     "url": "https://x.com/i/trending/2112592162244440193",
+     "id": "2112592162244440193"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "GB",
+   "volume": 1454,
+   "items": [
+    {
+     "title": "Josh Jacobs back at practice after his exemption was lifted",
+     "one_line": "Ends a six-game absence for the lead back.",
+     "url": "https://x.com/i/trending/2112281280687882667",
+     "id": "2112281280687882667"
+    },
+    {
+     "title": "Packers sign Mazi Smith to the practice squad",
+     "one_line": "The former Cowboys first-rounder impressed in a Monday workout.",
+     "url": "https://x.com/i/trending/2112305666194866531",
+     "id": "2112305666194866531"
+    },
+    {
+     "title": "Packers beat the Cowboys 23-13",
+     "one_line": "Jordan Love scored twice; the defense had two picks.",
+     "url": "https://x.com/i/trending/2111863248953987113",
+     "id": "2111863248953987113"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "HOU",
+   "volume": 558,
+   "items": [
+    {
+     "title": "Texans edge the Jaguars 34-31 in London",
+     "one_line": "C.J. Stroud led the winning drive; Marvin Harrison Jr. debuted.",
+     "url": "https://x.com/i/trending/2112224878220697880",
+     "id": "2112224878220697880"
+    },
+    {
+     "title": "Tank Dell set to return after a two-year knee rehab",
+     "one_line": "First game action in nearly two years.",
+     "url": "https://x.com/i/trending/2112272184978919605",
+     "id": "2112272184978919605"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "IND",
+   "volume": 1444,
+   "items": [
+    {
+     "title": "Colts fire GM Chris Ballard",
+     "one_line": "Came the day after blowing a 13-0 halftime lead to the winless Titans.",
+     "url": "https://x.com/i/trending/2112588454857236771",
+     "id": "2112588454857236771"
+    },
+    {
+     "title": "Jonathan Taylor draws trade interest at 2-4",
+     "one_line": "Contenders like the Seahawks are named as fits.",
+     "url": "https://x.com/i/trending/2112575527882260830",
+     "id": "2112575527882260830"
+    },
+    {
+     "title": "Colts add Mecole Hardman and Thomas Morstead to the practice squad",
+     "one_line": "Punter hurt and receivers thin before the Vikings.",
+     "url": "https://x.com/i/trending/2112630068904329532",
+     "id": "2112630068904329532"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "JAX",
+   "volume": 671,
+   "items": [
+    {
+     "title": "Jaguars fall 34-31 to the Texans in London",
+     "one_line": "Stroud's last-second drive beat Jacksonville.",
+     "url": "https://x.com/i/trending/2112224878220697880",
+     "id": "2112224878220697880"
+    },
+    {
+     "title": "Commanders linked to Brian Thomas Jr.",
+     "one_line": "Washington is eyeing the Jaguars receiver after Terry McLaurin's knee injury.",
+     "url": "https://x.com/i/trending/2112585549081190870",
+     "id": "2112585549081190870"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "KC",
+   "volume": 1105,
+   "items": [
+    {
+     "title": "Chiefs beat the Chargers 22-6 to stay 5-0",
+     "one_line": "Xavier Worthy caught all seven targets with other receivers out.",
+     "url": "https://x.com/i/trending/2111995674829226135",
+     "id": "2111995674829226135"
+    },
+    {
+     "title": "Kenneth Walker III's record pace has MVP chatter going",
+     "one_line": "The back turned 26 on Tuesday.",
+     "url": "https://x.com/i/trending/2112190708052275230",
+     "id": "2112190708052275230"
+    },
+    {
+     "title": "Chiefs sign rookie LB Aiden Fisher to the practice squad",
+     "one_line": "He cleared waivers.",
+     "url": "https://x.com/i/trending/2112637280196423731",
+     "id": "2112637280196423731"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "LV",
+   "volume": 799,
+   "items": [
+    {
+     "title": "Raiders lose 33-30 to the Bills",
+     "one_line": "Josh Allen's no-look TD headlined a game with a controversial ejection.",
+     "url": "https://x.com/i/trending/2111782978430836866",
+     "id": "2111782978430836866"
+    },
+    {
+     "title": "Raiders release Evan Neal from the practice squad",
+     "one_line": "The former Giants first-rounder is a free agent again.",
+     "url": "https://x.com/i/trending/2112302141297889330",
+     "id": "2112302141297889330"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "LAC",
+   "volume": 320,
+   "items": [
+    {
+     "title": "Ladd McConkey leaves the 22-6 Chiefs loss with a concussion",
+     "one_line": "Thins out an already short receiver room.",
+     "url": "https://x.com/i/trending/2111966011645632681",
+     "id": "2111966011645632681"
+    },
+    {
+     "title": "Chargers sit 0-6 and Herbert's hit count is the talk",
+     "one_line": "He leads the NFL in hits and sacks taken since 2020.",
+     "url": "https://x.com/i/trending/2112394890831110634",
+     "id": "2112394890831110634"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "LAR",
+   "volume": 1096,
+   "items": [
+    {
+     "title": "Rams hit with several injuries after the Cardinals loss",
+     "one_line": "Davante Adams hobbled off after a non-contact route.",
+     "url": "https://x.com/i/trending/2112071981659017310",
+     "id": "2112071981659017310"
+    },
+    {
+     "title": "Kicker Blake Grupe tears his ACL in the 18-16 loss",
+     "one_line": "He made a 44-yarder in his debut, then got hurt on a tackle.",
+     "url": "https://x.com/i/trending/2111916389711913205",
+     "id": "2111916389711913205"
+    },
+    {
+     "title": "TE Terrance Ferguson faces a longer ankle recovery",
+     "one_line": "Extra weeks on the sideline.",
+     "url": "https://x.com/i/trending/2112666238409453655",
+     "id": "2112666238409453655"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "MIA",
+   "volume": 634,
+   "items": [
+    {
+     "title": "Dolphins cut kicker Riley Patterson, add Zane Gonzalez",
+     "one_line": "The 0-5 club picked Gonzalez over Justin Tucker for the practice squad.",
+     "url": "https://x.com/i/trending/2112566578453623000",
+     "id": "2112566578453623000"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "MIN",
+   "volume": 762,
+   "items": [
+    {
+     "title": "Vikings open Jordan Mason's practice window",
+     "one_line": "The back has been out since a Week 1 thumb fracture.",
+     "url": "https://x.com/i/trending/2112290592172699825",
+     "id": "2112290592172699825"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "NE",
+   "volume": 2384,
+   "items": [
+    {
+     "title": "Patriots and Bears both banged up on the offensive line",
+     "one_line": "Backups in line before Thursday's game.",
+     "url": "https://x.com/i/trending/2112365271310860473",
+     "id": "2112365271310860473"
+    },
+    {
+     "title": "Drake Maye and Caleb Williams trade praise before Thursday",
+     "one_line": "Close friends from the 2024 class meet on the field.",
+     "url": "https://x.com/i/trending/2112703755024298045",
+     "id": "2112703755024298045"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "NO",
+   "volume": 1226,
+   "items": [
+    {
+     "title": "NFL stays on for Steelers-Saints in Paris despite unrest",
+     "one_line": "The Oct. 25 Stade de France game is still on.",
+     "url": "https://x.com/i/trending/2112363184577191956",
+     "id": "2112363184577191956"
+    },
+    {
+     "title": "Saints hold off the Giants 34-27",
+     "one_line": "A fourth-down stop ended a late J.J. McCarthy rally.",
+     "url": "https://x.com/i/trending/2111807863194636680",
+     "id": "2111807863194636680"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "NYG",
+   "volume": 914,
+   "items": [
+    {
+     "title": "Giants face a QB call after J.J. McCarthy's late spark",
+     "one_line": "He cut a 24-point deficit to seven in the Saints loss.",
+     "url": "https://x.com/i/trending/2112552620598403133",
+     "id": "2112552620598403133"
+    },
+    {
+     "title": "Giants release Najee Harris",
+     "one_line": "Two days after he vented about the backfield rotation.",
+     "url": "https://x.com/i/trending/2112355017160053086",
+     "id": "2112355017160053086"
+    },
+    {
+     "title": "Giants release Jihad Ward again",
+     "one_line": "His second stint lasted two games.",
+     "url": "https://x.com/i/trending/2112555163802010059",
+     "id": "2112555163802010059"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "NYJ",
+   "volume": 1076,
+   "items": [
+    {
+     "title": "Garrett Wilson at the center of trade rumors",
+     "one_line": "Bears and Chiefs mentioned as landing spots after another loss.",
+     "url": "https://x.com/i/trending/2112616404600131758",
+     "id": "2112616404600131758"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "PHI",
+   "volume": 12549,
+   "items": [
+    {
+     "title": "Jalen Hurts out for the season with blood clots in his lungs",
+     "one_line": "Doctors say he is stable and expected to fully recover.",
+     "url": "https://x.com/i/trending/2112588458673983723",
+     "id": "2112588458673983723"
+    },
+    {
+     "title": "Andy Dalton turns down an Eagles reunion",
+     "one_line": "He chose Atlanta instead, leaving Philly's QB room unchanged.",
+     "url": "https://x.com/i/trending/2111988149677134300",
+     "id": "2111988149677134300"
+    },
+    {
+     "title": "Hollywood Brown on the trade block",
+     "one_line": "Two rushes and zero catches so far in Philly.",
+     "url": "https://x.com/i/trending/2112653361552204222",
+     "id": "2112653361552204222"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "PIT",
+   "volume": 1439,
+   "items": [
+    {
+     "title": "Steelers win 26-19 in overtime at Tampa",
+     "one_line": "Pittsburgh fans took over Raymond James Stadium.",
+     "url": "https://x.com/i/trending/2111873271922851848",
+     "id": "2111873271922851848"
+    },
+    {
+     "title": "Marquez Valdes-Scantling back on the practice squad",
+     "one_line": "Reunites with Aaron Rodgers amid receiver injuries.",
+     "url": "https://x.com/i/trending/2112350407490195856",
+     "id": "2112350407490195856"
+    },
+    {
+     "title": "Paris game against the Saints stays on despite unrest",
+     "one_line": "The NFL is staying with the Oct. 25 date.",
+     "url": "https://x.com/i/trending/2112363184577191956",
+     "id": "2112363184577191956"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "SEA",
+   "volume": 1006,
+   "items": [
+    {
+     "title": "Anthony Bradford and Zach Charbonnet return to practice",
+     "one_line": "Both were sidelined by injuries.",
+     "url": "https://x.com/i/trending/2112259389373743183",
+     "id": "2112259389373743183"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "SF",
+   "volume": 9928,
+   "items": [
+    {
+     "title": "All six of the 49ers' original starting receivers are hurt",
+     "one_line": "Mike Evans limped off after a 16-yard catch in the win.",
+     "url": "https://x.com/i/trending/2112563675127001228",
+     "id": "2112563675127001228"
+    },
+    {
+     "title": "Dre Greenlaw activated after his suspension",
+     "one_line": "Naquan Jones released to make room.",
+     "url": "https://x.com/i/trending/2112656499227099200",
+     "id": "2112656499227099200"
+    },
+    {
+     "title": "49ers edge the Commanders 23-17 to go 6-0",
+     "one_line": "Brock Purdy took over the top career passer rating.",
+     "url": "https://x.com/i/trending/2112616410350546982",
+     "id": "2112616410350546982"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "TB",
+   "volume": 251,
+   "items": [
+    {
+     "title": "Bucs lose 26-19 in overtime to the Steelers",
+     "one_line": "Pittsburgh fans outnumbered the home crowd.",
+     "url": "https://x.com/i/trending/2111873271922851848",
+     "id": "2111873271922851848"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "TEN",
+   "volume": 1039,
+   "items": [
+    {
+     "title": "Titans rally from 13-0 down to beat the Colts",
+     "one_line": "The comeback cost Indy GM Chris Ballard his job.",
+     "url": "https://x.com/i/trending/2111875838383984808",
+     "id": "2111875838383984808"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "WSH",
+   "volume": 4358,
+   "items": [
+    {
+     "title": "Terry McLaurin carted off with a left knee injury",
+     "one_line": "Washington is already eyeing receiver help like Brian Thomas Jr.",
+     "url": "https://x.com/i/trending/2112585549081190870",
+     "id": "2112585549081190870"
+    },
+    {
+     "title": "Jayden Daniels under fire after the 23-17 loss to the 49ers",
+     "one_line": "Rallied from 20 down, but a fourth-down stop sealed it.",
+     "url": "https://x.com/i/trending/2112569373152231656",
+     "id": "2112569373152231656"
+    },
+    {
+     "title": "Dan Quinn promises tweaks out of the bye",
+     "one_line": "Washington sits 1-4-1.",
+     "url": "https://x.com/i/trending/2112666241601278341",
+     "id": "2112666241601278341"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  }
+ ]
+}

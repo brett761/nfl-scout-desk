@@ -1,0 +1,662 @@
+{
+ "date": "2026-10-22",
+ "week_id": "reg-7",
+ "label": "Week 7",
+ "pulled": "2026-10-23T01:12:00Z",
+ "tz": "America/New_York",
+ "source": "X",
+ "method": "search_news 24h max_results=10; get_posts_counts_recent 24h (day granularity, from 2026-10-22T01:10Z; total_tweet_count)",
+ "filtered": true,
+ "filter_note": {
+  "pulled": 320,
+  "unique_stories": 147,
+  "kept": 64,
+  "dropped": 256,
+  "volume_missing": [],
+  "quiet": [
+   "HOU",
+   "MIA",
+   "TEN"
+  ],
+  "note": "Thursday of Week 7 (TNF NE@CHI live during pull). Loudest by count: CHI, NE, CIN (likely JD Vance visit noise; that story dropped), DAL, ATL, NO, SEA, PIT, PHI, HOU (HOU count inflated by college/other-Houston noise; no club items survived). Some club items were sourced from another club's pull when the story was about that club (ARI Jeremiyah Love, JAX Hunter, NE McDaniels/Vrabel, NYJ Breece Hall/Glenn, PHI Saquon/Sirianni). Dropped mostly other sports (World Series Brewers-Rays, NBA opening week, Knicks rings, WNBA Finals, NHL, F1 Austin, US Open Cup, Premier League), college football (Texas A&M-Alabama, Ole Miss-Texas, Georgia Tech, Miami throwbacks, Lobos uniforms, BYU, Vols, Arch Manning, Kincaid GameDay picker), uniform/meme items (Falcons throwback avatar, Browns brown pants, Herbert beer run, date-my-daughter tiers, Watson team party), JD Vance Bengals visit, Redskins name push, 2016 Mahomes-Mayfield nostalgia, broadcaster stories (Aikman-Buck, JJ Watt CBS), and many cross-club duplicates (49ers power rankings, Shipley OL list, primetime streaks, Colts sell-off)."
+ },
+ "clubs": [
+  {
+   "abbr": "ARI",
+   "volume": 401,
+   "items": [
+    {
+     "title": "Cardinals to Retire Larry Fitzgerald's No. 11 Jersey Sunday",
+     "one_line": "Fitzgerald goes into the Ring of Honor and his No. 11 is retired at halftime Sunday vs. Denver.",
+     "url": "https://x.com/i/trending/2113421680135573761"
+    },
+    {
+     "title": "Cardinals Rule Out Rookie RB Jeremiyah Love vs. Broncos",
+     "one_line": "Rookie RB Jeremiyah Love expected out Sunday vs. Denver with the lingering ankle.",
+     "url": "https://x.com/i/trending/2113301040317788517"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "ATL",
+   "volume": 3212,
+   "items": [
+    {
+     "title": "Falcons OC Tommy Rees Owns Slow Starts, Credits Madden for Prep",
+     "one_line": "OC Tommy Rees owns the slow starts and says fixing the run game is the identity.",
+     "url": "https://x.com/i/trending/2113344428911853786"
+    },
+    {
+     "title": "49ers Aim for 7-0 Against Falcons on Sunday",
+     "one_line": "Room is bracing for 6-0 San Francisco on Sunday; analysts near-unanimous on the Niners.",
+     "url": "https://x.com/i/trending/2113104205770571966"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "BAL",
+   "volume": 1025,
+   "items": [
+    {
+     "title": "Lamar Jackson Back Jogging at Ravens Practice After Ankle Injury",
+     "one_line": "Lamar Jackson back jogging at practice after the Oct. 4 ankle sprain cost him two games.",
+     "url": "https://x.com/i/trending/2112981240047677527"
+    },
+    {
+     "title": "Trey Hendrickson Returns to Face Bengals with Ravens",
+     "one_line": "Trey Hendrickson faces his old team when Cincinnati visits Sunday.",
+     "url": "https://x.com/i/trending/2113011794490880088"
+    },
+    {
+     "title": "Marlon Humphrey Wishes Fewer Matchups with Ja'Marr Chase",
+     "one_line": "Marlon Humphrey says he'd happily see less of Ja'Marr Chase.",
+     "url": "https://x.com/i/trending/2113357095437586644"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "BUF",
+   "volume": 1699,
+   "items": [
+    {
+     "title": "Bills DB Sam Franklin Jr. Suspended One Game for Alleged Spitting",
+     "one_line": "DB Sam Franklin Jr. suspended one game without pay for alleged spitting vs. Las Vegas.",
+     "url": "https://x.com/i/trending/2112527508612788504"
+    },
+    {
+     "title": "NFL Upholds C.J. Gardner-Johnson Suspension After Spitting Incident",
+     "one_line": "League upheld C.J. Gardner-Johnson's spitting suspension from the Raiders game.",
+     "url": "https://x.com/i/trending/2113295350257655873"
+    },
+    {
+     "title": "Bills Rookie Igbinosun Emerges as Top Pass Defender Early",
+     "one_line": "Rookie CB Igbinosun leads the team with seven pass breakups.",
+     "url": "https://x.com/i/trending/2113008451429572795"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "CAR",
+   "volume": 919,
+   "items": [
+    {
+     "title": "Panthers Beat Eagles 25-14 Amid Fangio's False Start Complaint",
+     "one_line": "Carolina's 25-14 win at Philly (399-222 yards) still the talk, with Fangio griping about a false start.",
+     "url": "https://x.com/i/trending/2113272740207571182"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "CHI",
+   "volume": 7356,
+   "items": [
+    {
+     "title": "Bears-Patriots Primetime Clash Hits Injury Snags",
+     "one_line": "TNF vs. New England framed around injury snags on both sides.",
+     "url": "https://x.com/i/trending/2112365271310860473"
+    },
+    {
+     "title": "Luther Burden III's 58-Yard Gain Ignites Bears' Early Lead Over Patriots",
+     "one_line": "Luther Burden III's 58-yard catch sparked the early lead on TNF.",
+     "url": "https://x.com/i/trending/2113433764592574869"
+    },
+    {
+     "title": "Kyler Gordon's Fourth-Down Sack Ignites Bears Defense vs. Patriots",
+     "one_line": "Kyler Gordon's fourth-down sack of Drake Maye forced a turnover on downs.",
+     "url": "https://x.com/i/trending/2113428903880798568"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "CIN",
+   "volume": 5158,
+   "items": [
+    {
+     "title": "Trey Hendrickson Returns to Face Bengals with Ravens",
+     "one_line": "Hendrickson returns to face his old club in Baltimore on Sunday.",
+     "url": "https://x.com/i/trending/2113011794490880088"
+    },
+    {
+     "title": "Marlon Humphrey Wishes Fewer Matchups with Ja'Marr Chase",
+     "one_line": "Ja'Marr Chase's production has Ravens CB Marlon Humphrey wishing for fewer matchups.",
+     "url": "https://x.com/i/trending/2113357095437586644"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "CLE",
+   "volume": 1540,
+   "items": [
+    {
+     "title": "Browns at 4-2, Deshaun Watson QB Debate Rages On",
+     "one_line": "4-2 and atop the AFC North after the 13-10 win over Baltimore; the Deshaun Watson debate keeps raging.",
+     "url": "https://x.com/i/trending/2113399003421475100"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "DAL",
+   "volume": 3496,
+   "items": [
+    {
+     "title": "Cowboys Get Key Defensive Players Back Before Eagles Clash",
+     "one_line": "LB DeMarvion Overshown cleared and CB Cobie Durant practiced fully ahead of the MNF trip to Philly.",
+     "url": "https://x.com/i/trending/2112637280225829065"
+    },
+    {
+     "title": "Cowboys Fans Demand Super Bowl or Bust from Coach Schottenheimer",
+     "one_line": "At 2-4 after the Green Bay loss, fans want Schottenheimer gone despite ownership's backing.",
+     "url": "https://x.com/i/trending/2113404450455142776"
+    },
+    {
+     "title": "Cowboys Fans Fiercely Oppose Trading CeeDee Lamb to 49ers",
+     "one_line": "Fans shoot down a pitch to trade CeeDee Lamb to San Francisco.",
+     "url": "https://x.com/i/trending/2113360226527355372"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "DEN",
+   "volume": 729,
+   "items": [
+    {
+     "title": "Broncos Welcome Back Coleman, Surtain, and Cooper from Injury",
+     "one_line": "Jonah Coleman designated to return from IR; Pat Surtain and Cooper back from injury.",
+     "url": "https://x.com/i/trending/2113023570293014952"
+    },
+    {
+     "title": "Bo Nix Owns Mental Hurdle in Broncos Offense Struggles",
+     "one_line": "Bo Nix takes the blame for the offense and admits a mental hurdle from his ankle.",
+     "url": "https://x.com/i/trending/2113026677693628492"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "DET",
+   "volume": 1148,
+   "items": [
+    {
+     "title": "Brian Branch Returns for Lions in Rivalry Clash with Packers",
+     "one_line": "S Brian Branch cleared for a full role Sunday vs. Green Bay after the Achilles.",
+     "url": "https://x.com/i/trending/2113328971102200201"
+    },
+    {
+     "title": "Lions' Sam LaPorta Frustrated Over Stalled Contract Extension",
+     "one_line": "TE Sam LaPorta frustrated his extension talks have stalled.",
+     "url": "https://x.com/i/trending/2112952160979931230"
+    },
+    {
+     "title": "Lions Promote DeAndre Carter as New Punt Returner After Injury",
+     "one_line": "WR DeAndre Carter promoted from the practice squad as the new punt returner.",
+     "url": "https://x.com/i/trending/2113341159376601238"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "GB",
+   "volume": 926,
+   "items": [
+    {
+     "title": "Jordan Love Assures Packers Fans He'll Play Through Sore Back vs. Lions",
+     "one_line": "Jordan Love limited with a sore back but says he'll play vs. Detroit; Watson and Golden also limited.",
+     "url": "https://x.com/i/trending/2113023573363224671"
+    },
+    {
+     "title": "Packers' Josh Jacobs Returns to Practice After Suspension",
+     "one_line": "Josh Jacobs back at practice after his commissioner's exempt list stint.",
+     "url": "https://x.com/i/trending/2113270293200285873"
+    },
+    {
+     "title": "Colts Veterans Nelson and Buckner Draw Trade Buzz After GM Firing",
+     "one_line": "Green Bay reportedly among teams calling about Indy's Quenton Nelson and DeForest Buckner.",
+     "url": "https://x.com/i/trending/2113026677752336788"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "HOU",
+   "volume": 1748,
+   "items": [],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "IND",
+   "volume": 327,
+   "items": [
+    {
+     "title": "Colts Eye Trade Deadline Sell-Off After Firing GM Chris Ballard",
+     "one_line": "GM Chris Ballard fired after a 2-4 start, with seller talk ahead of the Nov. 10 deadline.",
+     "url": "https://x.com/i/trending/2113335034757398682"
+    },
+    {
+     "title": "Colts Veterans Nelson and Buckner Draw Trade Buzz After GM Firing",
+     "one_line": "Quenton Nelson and DeForest Buckner drawing trade calls.",
+     "url": "https://x.com/i/trending/2113026677752336788"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "JAX",
+   "volume": 435,
+   "items": [
+    {
+     "title": "Travis Hunter Reveals Fake Stumble Trick That Fooled C.J. Stroud",
+     "one_line": "Travis Hunter explains the fake-stumble trick behind his end-zone pick of C.J. Stroud in the London loss.",
+     "url": "https://x.com/i/trending/2113001625602466112"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "KC",
+   "volume": 1443,
+   "items": [
+    {
+     "title": "Chiefs Place Rookie LT Josh Simmons on IR with Bulging Disc",
+     "one_line": "LT Josh Simmons to IR with a bulging disc, out at least four games.",
+     "url": "https://x.com/i/trending/2112998132866765159"
+    },
+    {
+     "title": "Chiefs Rookie Kahlil Benson and Mom's Heartfelt QB Protection Message Win Fans",
+     "one_line": "Undrafted rookie Kahlil Benson holding down left tackle in his place.",
+     "url": "https://x.com/i/trending/2113404446776639637"
+    },
+    {
+     "title": "Kenneth Walker III Returns to Seattle as NFL's Top Rusher with Chiefs",
+     "one_line": "Kenneth Walker III returns to Seattle Sunday as the league's top rusher.",
+     "url": "https://x.com/i/trending/2112961311071994264"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "LV",
+   "volume": 647,
+   "items": [
+    {
+     "title": "Raiders' $241 Million Free Agency Signings Divide Fans Midway Through 2026",
+     "one_line": "The $241 million free-agent class, Linderbaum and Paye included, is splitting the fan base at midseason.",
+     "url": "https://x.com/i/trending/2113331927172161559"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "LAC",
+   "volume": 260,
+   "items": [
+    {
+     "title": "Chargers' 0-6 Start Sparks Debate Over Justin Herbert's Role",
+     "one_line": "At 0-6, the debate over Justin Herbert's role and his $55 million deal is loud.",
+     "url": "https://x.com/i/trending/2113407072041922959"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "LAR",
+   "volume": 443,
+   "items": [
+    {
+     "title": "Rams Defense Hit by Turner Injury Reserve and Landman Concussion Protocol",
+     "one_line": "DE Kobie Turner to IR (groin) and LB Landman in concussion protocol.",
+     "url": "https://x.com/i/trending/2113026674594111527"
+    },
+    {
+     "title": "Rams Eye Wide Receiver Trade After Adams Hamstring Injury",
+     "one_line": "Davante Adams' ruptured hamstring (6-10 weeks, IR) has the Rams eyeing a WR trade.",
+     "url": "https://x.com/i/trending/2112920257598038215"
+    },
+    {
+     "title": "Rams' Puka Nacua Exits Practice with Calf Injury Amid Injury Wave",
+     "one_line": "Puka Nacua left practice with a calf issue and was listed limited.",
+     "url": "https://x.com/i/trending/2113396360267595956"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "MIA",
+   "volume": 744,
+   "items": [],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "MIN",
+   "volume": 632,
+   "items": [
+    {
+     "title": "Aaron Jones Powers Vikings Through MCL Injury and Heavy Workload",
+     "one_line": "Aaron Jones carrying a heavy load through an MCL sprain with Jordan Mason's thumb hurt.",
+     "url": "https://x.com/i/trending/2113295350161080811"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "NE",
+   "volume": 5992,
+   "items": [
+    {
+     "title": "Bears-Patriots Primetime Clash Hits Injury Snags",
+     "one_line": "TNF at Chicago framed around injury snags for both clubs.",
+     "url": "https://x.com/i/trending/2112365271310860473"
+    },
+    {
+     "title": "Patriots Fans Frustrated by McDaniels' Run Call on Third-and-6 vs. Bears",
+     "one_line": "Patriots fans fuming over McDaniels' third-and-6 handoff on the opening drive.",
+     "url": "https://x.com/i/trending/2113426533687660937"
+    },
+    {
+     "title": "NFL Fines Coaches $250K Each as Jalen Hurts Blood Clot Raises Health Alarms",
+     "one_line": "Mike Vrabel fined $250K for conduct toward officials.",
+     "url": "https://x.com/i/trending/2113074810108448930"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "NO",
+   "volume": 2554,
+   "items": [
+    {
+     "title": "NFL Proceeds with Paris Game Amid French Unrest",
+     "one_line": "The league is going ahead with Steelers-Saints in Paris despite unrest in France.",
+     "url": "https://x.com/i/trending/2113307172050497543"
+    },
+    {
+     "title": "A.Q. Shipley's Top 5 NFL Week 6 Offensive Lines",
+     "one_line": "A.Q. Shipley ranked New Orleans' line No. 1 for Week 6 combo blocking.",
+     "url": "https://x.com/i/trending/2113064644856172945"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "NYG",
+   "volume": 1080,
+   "items": [
+    {
+     "title": "Giants Name J.J. McCarthy Starting QB vs. Texans; Dell Returns from Injury",
+     "one_line": "Harbaugh names J.J. McCarthy the starter vs. Houston; Tank Dell back from injury.",
+     "url": "https://x.com/i/trending/2112946156770935052"
+    },
+    {
+     "title": "Giants Injury Report Shows Progress Ahead of Texans Clash",
+     "one_line": "Andrew Thomas, Eluemunor and Mbow back at practice; Jevon Holland in individual drills in protocol.",
+     "url": "https://x.com/i/trending/2113369508740043157"
+    },
+    {
+     "title": "Giants Eye Running Back Trade Before Deadline Amid Backfield Struggles",
+     "one_line": "Giants plan to add a running back before the deadline.",
+     "url": "https://x.com/i/trending/2113421682782228586"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "NYJ",
+   "volume": 1205,
+   "items": [
+    {
+     "title": "Breece Hall Returns to Limited Practice Ahead of Dolphins Game",
+     "one_line": "Breece Hall back at limited practice for the first time since his Week 3 quad injury, ahead of Miami.",
+     "url": "https://x.com/i/trending/2112946152157167946"
+    },
+    {
+     "title": "NFL Fines Coaches $250K Each as Jalen Hurts Blood Clot Raises Health Alarms",
+     "one_line": "Aaron Glenn fined $250K for conduct toward officials.",
+     "url": "https://x.com/i/trending/2113074810108448930"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "PHI",
+   "volume": 1844,
+   "items": [
+    {
+     "title": "Jalen Hurts Out for 2026 Season with Lung Blood Clots, Sparking Hall of Fame Debate",
+     "one_line": "Jalen Hurts out for the 2026 season with blood clots in his lungs.",
+     "url": "https://x.com/i/trending/2113417040899813635"
+    },
+    {
+     "title": "Saquon Barkley Returns to Practice Ahead of Eagles-Cowboys Clash",
+     "one_line": "Saquon Barkley limited with the hamstring but expected to play Monday vs. Dallas.",
+     "url": "https://x.com/i/trending/2113265800530268391"
+    },
+    {
+     "title": "NFL Fines Coaches $250K Each as Jalen Hurts Blood Clot Raises Health Alarms",
+     "one_line": "Nick Sirianni fined $250K for conduct toward officials.",
+     "url": "https://x.com/i/trending/2113074810108448930"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "PIT",
+   "volume": 1880,
+   "items": [
+    {
+     "title": "Steelers Place Sebastian Joseph-Day on Injured Reserve with Triceps Tear",
+     "one_line": "DL Sebastian Joseph-Day to IR with a triceps tear, out at least four games.",
+     "url": "https://x.com/i/trending/2113303842775519538"
+    },
+    {
+     "title": "NFL Proceeds with Paris Game Amid French Unrest",
+     "one_line": "Paris game vs. New Orleans is on despite unrest in France.",
+     "url": "https://x.com/i/trending/2113307172050497543"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "SEA",
+   "volume": 2157,
+   "items": [
+    {
+     "title": "Seahawks Activate Zach Charbonnet from PUP List Ahead of Chiefs Clash",
+     "one_line": "RB Zach Charbonnet activated off PUP ahead of Kansas City.",
+     "url": "https://x.com/i/trending/2113059268153012325"
+    },
+    {
+     "title": "Jaxon Smith-Njigba Leads NFL Receiving Yards by Huge Margin",
+     "one_line": "Jaxon Smith-Njigba leads the league in receiving yards by a wide margin (717).",
+     "url": "https://x.com/i/trending/2113050907755905118"
+    },
+    {
+     "title": "Kenneth Walker III Returns to Seattle as NFL's Top Rusher with Chiefs",
+     "one_line": "Kenneth Walker III comes back to Seattle with the Chiefs.",
+     "url": "https://x.com/i/trending/2112961311071994264"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "SF",
+   "volume": 1373,
+   "items": [
+    {
+     "title": "49ers Weigh Evans and Bosa Injury Decisions Before Falcons Game",
+     "one_line": "Mike Evans (Achilles tendinitis) is TBD for Atlanta and the team is weighing Bosa's status.",
+     "url": "https://x.com/i/trending/2113307165939355856"
+    },
+    {
+     "title": "49ers Face Massive Wide Receiver Injury Wave After 6-0 Start",
+     "one_line": "Receiver injury wave: Evans, Deebo, Stribling, Pearsall, Kirk and Robinson all banged up.",
+     "url": "https://x.com/i/trending/2112563675127001228"
+    },
+    {
+     "title": "Brock Purdy Tops PFF QB Rankings as 49ers Go 6-0",
+     "one_line": "Brock Purdy tops PFF's QB grades (90.2) at 6-0.",
+     "url": "https://x.com/i/trending/2113018478831477023"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "TB",
+   "volume": 259,
+   "items": [
+    {
+     "title": "Baker Mayfield Returns to Full Practice with Thumb Injury",
+     "one_line": "Baker Mayfield practiced fully with the thumb and feels ready for Carolina.",
+     "url": "https://x.com/i/trending/2112952160984187229"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "TEN",
+   "volume": 1235,
+   "items": [],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "WSH",
+   "volume": 385,
+   "items": [
+    {
+     "title": "Commanders Hire Steve Wilks as Part-Time Defensive Consultant",
+     "one_line": "Steve Wilks hired as a part-time defensive consultant.",
+     "url": "https://x.com/i/trending/2112981231256408300"
+    },
+    {
+     "title": "Kurt Warner Critiques Jayden Daniels' Pre-Snap Mentality in 49ers Loss",
+     "one_line": "Kurt Warner picks apart Jayden Daniels' pre-snap approach in the SF loss.",
+     "url": "https://x.com/i/trending/2113431235754434800"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  }
+ ]
+}

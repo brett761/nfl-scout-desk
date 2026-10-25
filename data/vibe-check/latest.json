@@ -1,28 +1,35 @@
 {
-  "date": "2026-09-26",
-  "week_id": "reg-3",
-  "label": "Week 3",
-  "pulled": "2026-09-27T01:25:00.000Z",
+  "date": "2026-10-24",
+  "week_id": "reg-7",
+  "label": "Week 7",
+  "pulled": "2026-10-25T01:10:36Z",
   "tz": "America/New_York",
   "source": "X",
-  "method": "search_news 24h max_results=10; get_posts_counts_recent 24h",
+  "method": "search_news 24h max_results=10; get_posts_counts_recent 24h (day granularity, from 2026-10-24T01:06Z; total_tweet_count)",
   "filtered": true,
   "filter_note": {
     "pulled": 320,
-    "kept": 65,
-    "dropped": 255,
-    "note": "Hand pass kept club-room injury/roster/staff/player/Week-3 status + TNF-aftermath. Dropped MLB/NBA/NHL/MLS/F1/college (esp HOU/TEN Vols-Texas-Neyland/Texas Tech spike, CHI Baylor, NE Knicks, NYJ Jets-NHL/MLS, ARI Diamondbacks/Coyotes), Swift/Kelce celebrity, nostalgia>2y (Gleason 2006, TO 2000, Fail Mary era, Bradshaw/Martin late hits), merch/fan contests/locker gags/Minecraft/trading cards/bettor fluff, near-dups, wrong-club leftovers. Quiet OK: TB/TEN empty (college bleed); ARI/HOU/JAX/KC/MIA/NO/NYJ thin."
+    "kept": 51,
+    "dropped": 269,
+    "volume_missing": [],
+    "quiet": [
+      "CAR",
+      "LAC",
+      "MIN",
+      "TB",
+      "WSH"
+    ],
+    "note": "Saturday of Week 7 (eve of Sunday slate incl. PIT-NO Paris). Loudest by count: DAL, ATL, CHI, PIT, BUF, SF, NE, DET, NO, SEA. ATL volume driven mostly by the throwback-logo meme (dropped). Cross-club items kept only where this club is a game participant or trade party (CIN via BAL Lamar out, HOU via MHJ and NYG outs, TEN via CLE, NO via PIT Paris, MIA/NYJ forecast). Dropped mostly college football (Miami-Pitt, Cincinnati-Texas Tech, Alabama, Tennessee-South Carolina, Michigan, Utah, Kentucky), NBA/NHL/F1/MLB/soccer (Knicks title, Flyers-Ducks, Hawks, Nuggets, Jets NHL, Austin GP, World Series), memes/stunts (Falcons logo, AI Trump/Falcons videos, 49ers fan tattoo, Bears fan chants, Patriots map banter, Bills-49ers fan clash), nostalgia (Hamlin 2023 game, Romo 2006 debut), politics ads, generic betting/OPOY markets, fan-uniform items (Steelers Paris uniforms), and many cross-club duplicates. MIN/WSH/LAC/TB/CAR had only suitor or passing mentions."
   },
   "clubs": [
     {
       "abbr": "ARI",
-      "volume": 371,
+      "volume": 302,
       "items": [
         {
-          "title": "Cardinals Rookie Jeremiyah Love Eyes Breakout vs. 49ers",
-          "one_line": "No. 3 pick 70 rush / 1 TD / 5 catches through 2; eyes Warner; 49ers miss Bosa calf.",
-          "url": "https://x.com/i/trending/2103653961991410133",
-          "id": "2103653961991410133"
+          "title": "Marvin Harrison Jr. Talks Arizona Exit After Texans Trade",
+          "one_line": "MHJ says QB uncertainty wore on him in Arizona; Ossenfort called the deal tough but necessary.",
+          "url": "https://x.com/i/trending/2113682279994401156"
         }
       ],
       "sentiment": {
@@ -32,25 +39,12 @@
     },
     {
       "abbr": "ATL",
-      "volume": 721,
+      "volume": 4454,
       "items": [
         {
-          "title": "Falcons Defensive Line Tops NFL Pass Rush Win Rate Despite Key Absences",
-          "one_line": "67.2% PFF win rate leads NFL; Pearce suspended, Walker ACL out; Dexter interior; 35-14 GB win.",
-          "url": "https://x.com/i/trending/2103876092062835062",
-          "id": "2103876092062835062"
-        },
-        {
-          "title": "Packers Fans Call for Change After 35-14 Falcons Blowout at Lambeau",
-          "one_line": "Bijan 194 rush / 2 TD; London 194 rec; GB 17 rush yds; LaFleur 'butt-whooping'; ATL 1-2.",
-          "url": "https://x.com/i/trending/2103927189859143956",
-          "id": "2103927189859143956"
-        },
-        {
-          "title": "Bijan Robinson's 194-Yard Explosion Sparks RB Supremacy Debate",
-          "one_line": "29 carries / 194 / 2 TD at Lambeau; fans split Bijan vs Gibbs; ATL 498 total yards.",
-          "url": "https://x.com/i/trending/2103345209740566956",
-          "id": "2103345209740566956"
+          "title": "49ers Visit Falcons in Possible Trap Game",
+          "one_line": "6-0 SF arrives thin at WR; chatter says lines are tightening toward Atlanta for Sunday 1 p.m. ET.",
+          "url": "https://x.com/i/trending/2113767795045421222"
         }
       ],
       "sentiment": {
@@ -60,25 +54,12 @@
     },
     {
       "abbr": "BAL",
-      "volume": 1331,
+      "volume": 872,
       "items": [
         {
-          "title": "Ravens' Zay Flowers Questionable for Brazil Clash with Cowboys",
-          "one_line": "Hamstring; pregame workout + pitch count if active; Bateman filled in; Maracan\u00e3 Sunday.",
-          "url": "https://x.com/i/trending/2103931931100697036",
-          "id": "2103931931100697036"
-        },
-        {
-          "title": "Ravens Get Key Defensive Boosts Ahead of Brazil Showdown with Cowboys",
-          "one_line": "Madubuike cleared post-neck; Buchanan good; Stanley OUT toe (Vinson starts); Flowers Q.",
-          "url": "https://x.com/i/trending/2103631509361963038",
-          "id": "2103631509361963038"
-        },
-        {
-          "title": "Ravens-Cowboys Game Faces Maracan\u00e3 Field Scrutiny Before Rio Kickoff",
-          "one_line": "NFLPA flagged patchy surface; synthetic reinforcement; league/union approved Saturday.",
-          "url": "https://x.com/i/trending/2103489523514585259",
-          "id": "2103489523514585259"
+          "title": "Lamar Jackson Out Again vs. Bengals",
+          "one_line": "High ankle sprain sidelines Lamar a third straight game; Tyler Huntley starts, Tavius Robinson out for the season.",
+          "url": "https://x.com/i/trending/2113665274373456140"
         }
       ],
       "sentiment": {
@@ -88,25 +69,12 @@
     },
     {
       "abbr": "BUF",
-      "volume": 2090,
+      "volume": 1416,
       "items": [
         {
-          "title": "Bills Sign Dortch, Elevate Couch After Hancock Injury",
-          "one_line": "Hancock IR hamstring (\u22654 games); Dortch to 53; Couch elevated; Moore/Coleman Q vs LAC.",
-          "url": "https://x.com/i/trending/2103631507449401554",
-          "id": "2103631507449401554"
-        },
-        {
-          "title": "Josh Allen's Historic 9-Touchdown, Zero-Turnover Start Fuels Elite QB Debate",
-          "one_line": "582 pass / 5 TD / 0 INT + 92 rush / 4 TD through 2; Bills 2-0; rare 9+ TD / 0 TO open.",
-          "url": "https://x.com/i/trending/2103996130141036916",
-          "id": "2103996130141036916"
-        },
-        {
-          "title": "Chargers Elevate Justin Herbert's Brother Patrick for NFL Debut vs. Bills",
-          "one_line": "Patrick Herbert elevated; Pipkins IR; Penning LG; 0-2 Chargers at Highmark vs 2-0 Bills.",
-          "url": "https://x.com/i/trending/2103611641606844666",
-          "id": "2103611641606844666"
+          "title": "Josh Allen Leads QBs in Rushing TDs Since 2025",
+          "one_line": "PFF chart has Allen at 22 rushing scores since last season, eight already in 2026.",
+          "url": "https://x.com/i/trending/2114076275337748782"
         }
       ],
       "sentiment": {
@@ -116,21 +84,8 @@
     },
     {
       "abbr": "CAR",
-      "volume": 673,
-      "items": [
-        {
-          "title": "Panthers Face Browns with Key Defensive Starters Out, Receivers Questionable",
-          "one_line": "Lloyd (calf) / Cherelus (shoulder) / Scott (rib) OUT; Coker Q ankle; Legette GTD knee.",
-          "url": "https://x.com/i/trending/2103215245313589414",
-          "id": "2103215245313589414"
-        },
-        {
-          "title": "Panthers Place Cherelus on IR, Sign Njongmeta and Elevate Moore, Tyus",
-          "one_line": "Cherelus IR shoulder (\u22654); Njongmeta signed; Moore/Tyus elevated for CLE road game.",
-          "url": "https://x.com/i/trending/2103936265338974215",
-          "id": "2103936265338974215"
-        }
-      ],
+      "volume": 493,
+      "items": [],
       "sentiment": {
         "pos": null,
         "neg": null
@@ -138,25 +93,22 @@
     },
     {
       "abbr": "CHI",
-      "volume": 1125,
+      "volume": 1995,
       "items": [
         {
-          "title": "Bears Rule Out Caleb Williams for Eagles Clash with Hamstring Injury",
-          "one_line": "Caleb OUT hamstring; Bagent Q concussion (practiced Sat); Keenum ready; MNF vs PHI.",
-          "url": "https://x.com/i/trending/2103891744832053260",
-          "id": "2103891744832053260"
+          "title": "Caleb Williams Leads Bears Past Patriots 30-24",
+          "one_line": "Williams threw for 308 and two TDs; Santos hit a 58-yard FG to seal the TNF win and move to 5-2.",
+          "url": "https://x.com/i/trending/2113759277101781343"
         },
         {
-          "title": "Eagles and Bears Battle Injuries Ahead of Monday Night Clash",
-          "one_line": "CHI: Caleb hamstring, Bagent concussion protocol. PHI: Goedert weeks knee; Barkley full.",
-          "url": "https://x.com/i/trending/2103191735056625768",
-          "id": "2103191735056625768"
+          "title": "Herbstreit 'Bucking Bronco' Comment Draws Backlash",
+          "one_line": "Herbstreit's TNF description of Williams' development was called racially coded by many viewers.",
+          "url": "https://x.com/i/trending/2113695268613079282"
         },
         {
-          "title": "Eagles Revive 'Doink Doink' Taunt Ahead of Bears Clash",
-          "one_line": "PHI social digs 2018 Parkey playoff miss; Bears cite Nov road win; series CHI 30-17-1.",
-          "url": "https://x.com/i/trending/2103958386001818039",
-          "id": "2103958386001818039"
+          "title": "Caleb Williams Fined $11,941 for Caddix Cleats",
+          "one_line": "League fined Williams for unauthorized cleats; Caddix offered to cover fines and he kept wearing them.",
+          "url": "https://x.com/i/trending/2113877904144617634"
         }
       ],
       "sentiment": {
@@ -166,25 +118,12 @@
     },
     {
       "abbr": "CIN",
-      "volume": 385,
+      "volume": 477,
       "items": [
         {
-          "title": "Bengals Place Iosivas on IR, Add Giles-Harris and Hudson Before Steelers Game",
-          "one_line": "Iosivas IR torn thumb (4\u20136 weeks); Giles-Harris signed; Hudson elevated; Chase/Higgins carry.",
-          "url": "https://x.com/i/trending/2103949615804354734",
-          "id": "2103949615804354734"
-        },
-        {
-          "title": "Joe Burrow Shares Catan Strategy on Gronk & Jules Show",
-          "one_line": "Burrow details ore/wheat hoard; wants locker-room Catan; chat amid Bengals 2-0 start.",
-          "url": "https://x.com/i/trending/2103646402496930102",
-          "id": "2103646402496930102"
-        },
-        {
-          "title": "Bengals-Steelers Rivalry Heats Up with Injury Wishes on Joe Burrow",
-          "one_line": "Fan injury wish draws backlash both sides; 2-0 CIN at Acrisure vs 1-1 PIT Sunday.",
-          "url": "https://x.com/i/trending/2103693888535826452",
-          "id": "2103693888535826452"
+          "title": "Bengals Draw Ravens Without Lamar",
+          "one_line": "Baltimore rules Lamar out a third straight week, so Cincinnati faces Tyler Huntley Sunday.",
+          "url": "https://x.com/i/trending/2113665274373456140"
         }
       ],
       "sentiment": {
@@ -194,19 +133,17 @@
     },
     {
       "abbr": "CLE",
-      "volume": 1485,
+      "volume": 971,
       "items": [
         {
-          "title": "Nick Chubb Returns to Cleveland to Retire as a Brown",
-          "one_line": "One-day ceremonial deal; 6,843 rush yds / 51 TD as Brown; honor Sunday home opener vs CAR.",
-          "url": "https://x.com/i/trending/2103210591141708235",
-          "id": "2103210591141708235"
+          "title": "Browns Activate Dylan Sampson, Clear Delpit",
+          "one_line": "Sampson back from IR for Titans game; Teven Jenkins to IR (back); Delpit out of concussion protocol.",
+          "url": "https://x.com/i/trending/2114034885908447451"
         },
         {
-          "title": "Shedeur Sanders Reunites with Jimmy Horn Jr. for Extra Browns Workouts",
-          "one_line": "Former Colorado teammates throw/run on off day; Horn on PS; Sanders Week 3 Community MVP.",
-          "url": "https://x.com/i/trending/2103635347125244242",
-          "id": "2103635347125244242"
+          "title": "Deshaun Watson's McLaren Hometown Visit Splits Fans",
+          "one_line": "Watson's car-show drive through his Gainesville neighborhood drew both criticism and defense.",
+          "url": "https://x.com/i/trending/2114097953824722978"
         }
       ],
       "sentiment": {
@@ -216,19 +153,22 @@
     },
     {
       "abbr": "DAL",
-      "volume": 2778,
+      "volume": 5179,
       "items": [
         {
-          "title": "Ravens' Zay Flowers Questionable for Brazil Clash with Cowboys",
-          "one_line": "Flowers Q hamstring vs DAL at Maracan\u00e3; pitch count if active; Bateman filled last week.",
-          "url": "https://x.com/i/trending/2103931931100697036",
-          "id": "2103931931100697036"
+          "title": "Schottenheimer Defends His Play-Calling",
+          "one_line": "At 2-4 he refused to give up calls and called out George Pickens' run blocking before MNF vs. PHI.",
+          "url": "https://x.com/i/trending/2113341165743554932"
         },
         {
-          "title": "Ravens-Cowboys Game Faces Maracan\u00e3 Field Scrutiny Before Rio Kickoff",
-          "one_line": "Patchy grass concerns; synthetic fibers added; league/union approved surface Saturday.",
-          "url": "https://x.com/i/trending/2103489523514585259",
-          "id": "2103489523514585259"
+          "title": "Cowboys Recognize Cheerleaders' Union",
+          "one_line": "Team formally recognized the DCC Association as the squad's bargaining group.",
+          "url": "https://x.com/i/trending/2113711353089400991"
+        },
+        {
+          "title": "Troy Aikman Open to Cowboys Front Office Role",
+          "one_line": "Aikman says he'd seriously consider a job under Jerry Jones; no offer exists yet.",
+          "url": "https://x.com/i/trending/2114054086446526891"
         }
       ],
       "sentiment": {
@@ -238,19 +178,12 @@
     },
     {
       "abbr": "DEN",
-      "volume": 744,
+      "volume": 819,
       "items": [
         {
-          "title": "Rams Debut All-White Uniforms Against Broncos' Navy Set on SNF",
-          "one_line": "Broncos all-midnight navy alternate at Mile High Sept 27 6:20 MT NBC; both 1-1.",
-          "url": "https://x.com/i/trending/2103599213816758477",
-          "id": "2103599213816758477"
-        },
-        {
-          "title": "Rams Face Broncos in Primetime Week 3 Clash at Mile High",
-          "one_line": "Both 1-1; Puka doubtful; Kyren/Corum run keys; Rams ~2.5-pt favorites SNF.",
-          "url": "https://x.com/i/trending/2103982131147886871",
-          "id": "2103982131147886871"
+          "title": "Broncos Activate Coleman and Cooper for Cardinals",
+          "one_line": "Rookie RB Jonah Coleman off IR, Jonathon Cooper off exempt list; Badie and Elliss to IR.",
+          "url": "https://x.com/i/trending/2114097952394523117"
         }
       ],
       "sentiment": {
@@ -260,25 +193,22 @@
     },
     {
       "abbr": "DET",
-      "volume": 743,
+      "volume": 1263,
       "items": [
         {
-          "title": "Lions Place Harper on IR, Thin Secondary for Jets Game",
-          "one_line": "Harper IR ankle (\u22654); Maddox IR; Joseph/Branch still PUP; Mills/Ogbongbemiga elevated.",
-          "url": "https://x.com/i/trending/2103958380427481253",
-          "id": "2103958380427481253"
+          "title": "Lions Activate Brian Branch and Cade Mays",
+          "one_line": "Branch back from torn Achilles and Mays from a broken wrist for Sunday vs. Green Bay; Mays starts at center.",
+          "url": "https://x.com/i/trending/2114159507093725456"
         },
         {
-          "title": "Lions Bring Back Silver Pants with Blue Jerseys for Jets Game",
-          "one_line": "Honolulu blue + silver pants Sunday Ford Field; Alumni Day nod to Silverdome era.",
-          "url": "https://x.com/i/trending/2103280812837748805",
-          "id": "2103280812837748805"
+          "title": "Sam LaPorta Clears Air on Contract",
+          "one_line": "LaPorta says he wants to stay long-term; Campbell sees no locker-room distraction.",
+          "url": "https://x.com/i/trending/2113674900061753617"
         },
         {
-          "title": "Lions Safety Kerby Joseph Hopeful for Late-Season Return",
-          "one_line": "Cartilage knee; Campbell cautious; All-Pro 9 picks 2024; Lions 1-1 waiting on clearance.",
-          "url": "https://x.com/i/trending/2103905159042773065",
-          "id": "2103905159042773065"
+          "title": "Hutchinson's Players-Only Meeting Credited for Defensive Turnaround",
+          "one_line": "Hutchinson's blunt talk after the Carolina loss sparked the defense ahead of the Packers.",
+          "url": "https://x.com/i/trending/2114067815472963855"
         }
       ],
       "sentiment": {
@@ -288,25 +218,22 @@
     },
     {
       "abbr": "GB",
-      "volume": 1385,
+      "volume": 1054,
       "items": [
         {
-          "title": "Packers Fans Call for Change After 35-14 Falcons Blowout at Lambeau",
-          "one_line": "GB 1-2; 17 rush yds; Love 312/2 TD under fire; LaFleur 'humbling'; fire LaFleur/Gutekunst talk.",
-          "url": "https://x.com/i/trending/2103927189859143956",
-          "id": "2103927189859143956"
+          "title": "Packers Activate Josh Jacobs for Lions Game",
+          "one_line": "Jacobs off the commissioner's exempt list for his 2026 debut; GB ranks last in rushing at 59.8 ypg.",
+          "url": "https://x.com/i/trending/2114149617197846635"
         },
         {
-          "title": "Packers Sign Veteran Guard Laken Tomlinson to Bolster Struggling Line",
-          "one_line": "Signed off DAL PS; Banks/Bako-Bewele injuries; 162 career starts; split on recent form.",
-          "url": "https://x.com/i/trending/2103905169457217816",
-          "id": "2103905169457217816"
+          "title": "Matthew Golden Fined $11,941 for Flex",
+          "one_line": "Golden's taunting flag in the Dallas win drew a fine amid the league's taunting crackdown.",
+          "url": "https://x.com/i/trending/2114153699845235089"
         },
         {
-          "title": "Packers Eye Veteran Guard Zeitler Amid O-Line Struggles",
-          "one_line": "1-2; last in pass-blocking; Bako-Bewele season-ending knee; Zeitler FA talk ~$10M.",
-          "url": "https://x.com/i/trending/2103996130107572604",
-          "id": "2103996130107572604"
+          "title": "Packers at Lions NFC North Showdown",
+          "one_line": "4-2 GB visits 3-2 DET Sunday 4:25 p.m. ET; Love vs. Goff with Detroit's 20-sack pass rush.",
+          "url": "https://x.com/i/trending/2114048676238950891"
         }
       ],
       "sentiment": {
@@ -316,13 +243,17 @@
     },
     {
       "abbr": "HOU",
-      "volume": 7829,
+      "volume": 476,
       "items": [
         {
-          "title": "Texans Rule Out Nico Collins for Colts Game Due to Hamstring",
-          "one_line": "Collins OUT 2nd straight; also OUT Ingram/Clowney/Hummel/Stewart; Brown Q; Stroud lean Hutchinson/Noel/Schultz.",
-          "url": "https://x.com/i/trending/2103173089953796174",
-          "id": "2103173089953796174"
+          "title": "Marvin Harrison Jr. Settles In With Texans",
+          "one_line": "MHJ calls reuniting with C.J. Stroud surreal after the trade from Arizona.",
+          "url": "https://x.com/i/trending/2113682279994401156"
+        },
+        {
+          "title": "Giants Arrive Depleted for Texans Game",
+          "one_line": "NYG downgraded Jevon Holland and Theo Johnson to out ahead of Sunday in Houston.",
+          "url": "https://x.com/i/trending/2114043311459652052"
         }
       ],
       "sentiment": {
@@ -332,19 +263,17 @@
     },
     {
       "abbr": "IND",
-      "volume": 273,
+      "volume": 348,
       "items": [
         {
-          "title": "Colts Place Alec Pierce on IR After Heel Injury Aggravation",
-          "one_line": "Pierce IR heel (post-$114M ext); Gould signed; Westbrook-Ikhine elevated; Steichen eyes Oct return.",
-          "url": "https://x.com/i/trending/2103887706824888368",
-          "id": "2103887706824888368"
+          "title": "Colts Field Trade Calls on Nelson, Buckner, Taylor",
+          "one_line": "Pelissero reports strong interest; nothing off-limits at 2-4 before the Nov. 10 deadline.",
+          "url": "https://x.com/i/trending/2113877905063153853"
         },
         {
-          "title": "Colts GM Chris Ballard Faces Win-or-Out Pressure in 2026",
-          "one_line": "Sources: make-or-break year; no playoffs since 2020; Irsay-Gordon urgency; Pierce injury compounds.",
-          "url": "https://x.com/i/trending/2103551692201709575",
-          "id": "2103551692201709575"
+          "title": "Seahawks Lead Race for Jonathan Taylor",
+          "one_line": "With Charbonnet out, Seattle is reported as the front-runner; interim GM Ed Dodds has Seattle ties.",
+          "url": "https://x.com/i/trending/2113671674419679332"
         }
       ],
       "sentiment": {
@@ -354,13 +283,12 @@
     },
     {
       "abbr": "JAX",
-      "volume": 526,
+      "volume": 277,
       "items": [
         {
-          "title": "Deion Sanders Questions Jaguars' Limited Use of Travis Hunter",
-          "one_line": "Hunter mostly defense (29/37 snaps) early; 4\u20136 offense snaps post-knee; Coen: safe buildup vs NE.",
-          "url": "https://x.com/i/trending/2103891744458715162",
-          "id": "2103891744458715162"
+          "title": "Jaguars Weighing Brian Thomas Jr. Trade",
+          "one_line": "ESPN's Fowler says JAX will seriously consider dealing BTJ (9 catches in 6 games) before the deadline.",
+          "url": "https://x.com/i/trending/2113987134348521845"
         }
       ],
       "sentiment": {
@@ -370,13 +298,22 @@
     },
     {
       "abbr": "KC",
-      "volume": 822,
+      "volume": 684,
       "items": [
         {
-          "title": "Chiefs Arrive in Miami for Week 3 Road Opener vs. Dolphins",
-          "one_line": "2-0 Chiefs land Friday for Hard Rock vs 0-2 MIA; Mahomes/Kelce deplane; CBS noon CT Sunday.",
-          "url": "https://x.com/i/trending/2103989348261617733",
-          "id": "2103989348261617733"
+          "title": "Chiefs Put Brashard Smith on IR, Sign Jaydn Ott",
+          "one_line": "Smith (hamstring) out at least four games; Cooper McDonald activated; Sneed travels despite Q knee.",
+          "url": "https://x.com/i/trending/2114076271843905980"
+        },
+        {
+          "title": "Josh Simmons to IR, Andrew Armstrong Promoted",
+          "one_line": "LT Simmons (herniated disk) to IR; WR Armstrong signed to the 53 with Rice and Thornton banged up.",
+          "url": "https://x.com/i/trending/2113791575113306564"
+        },
+        {
+          "title": "Kenneth Walker III Returns to Seattle for SNF",
+          "one_line": "5-0 KC visits 3-3 SEA; Walker leads the NFL with 665 rushing yards.",
+          "url": "https://x.com/i/trending/2114117538951172413"
         }
       ],
       "sentiment": {
@@ -386,19 +323,12 @@
     },
     {
       "abbr": "LV",
-      "volume": 1347,
+      "volume": 875,
       "items": [
         {
-          "title": "Raiders Elevate Cody White for Third Straight Week Before Saints Game",
-          "one_line": "White 2 TD vs LAC; last elevation without 53 add; skip Myarick hints Bowers return; LV 2-0.",
-          "url": "https://x.com/i/trending/2103949615867261224",
-          "id": "2103949615867261224"
-        },
-        {
-          "title": "Raiders Fans Clash with Saints Supporters Ahead of Week 3 Clash",
-          "one_line": "2-0 Raiders at Superdome vs 1-1 Saints; trash talk records/QBs; Crosby vs Shough pass game.",
-          "url": "https://x.com/i/trending/2103323160267592127",
-          "id": "2103323160267592127"
+          "title": "Raiders Legend Pete Banaszak Dies at 82",
+          "one_line": "The 13-season Raider and two-TD Super Bowl XI scorer has died; team sent condolences.",
+          "url": "https://x.com/i/trending/2114122370990682326"
         }
       ],
       "sentiment": {
@@ -408,21 +338,8 @@
     },
     {
       "abbr": "LAC",
-      "volume": 500,
-      "items": [
-        {
-          "title": "Chargers Elevate Justin Herbert's Brother Patrick for NFL Debut vs. Bills",
-          "one_line": "Patrick TE elevated; Pipkins IR; Uiagalelei signed; Penning LG; 0-2 at Highmark vs BUF.",
-          "url": "https://x.com/i/trending/2103611641606844666",
-          "id": "2103611641606844666"
-        },
-        {
-          "title": "Chargers Commit to Justin Herbert Amid 0-2 Start",
-          "one_line": "No trade plans; 59.3% / 401 / 2 TD / 3 INT; Pelissero: inquiries only if losses mount.",
-          "url": "https://x.com/i/trending/2103914106067759173",
-          "id": "2103914106067759173"
-        }
-      ],
+      "volume": 178,
+      "items": [],
       "sentiment": {
         "pos": null,
         "neg": null
@@ -430,25 +347,12 @@
     },
     {
       "abbr": "LAR",
-      "volume": 336,
+      "volume": 424,
       "items": [
         {
-          "title": "Puka Nacua Doubtful for Rams-Broncos Primetime Clash",
-          "one_line": "Hip/groin; missed 3 practices; McVay eyes Week 4 PHI; lean Adams/Ferguson; Coleman DEN OUT.",
-          "url": "https://x.com/i/trending/2103560633337749692",
-          "id": "2103560633337749692"
-        },
-        {
-          "title": "Rams Debut All-White Uniforms Against Broncos' Navy Set on SNF",
-          "one_line": "First full all-white since 2020 redesign; Mile High SNF Sept 27; both 1-1 sleek mono looks.",
-          "url": "https://x.com/i/trending/2103599213816758477",
-          "id": "2103599213816758477"
-        },
-        {
-          "title": "Rams Face Broncos in Primetime Week 3 Clash at Mile High",
-          "one_line": "Both 1-1; Puka doubtful; Kyren/Corum; Rams slight favorites NBC/Peacock.",
-          "url": "https://x.com/i/trending/2103982131147886871",
-          "id": "2103982131147886871"
+          "title": "Rams Legend Lawrence McCutcheon Dies at 76",
+          "one_line": "Five-time Pro Bowler and 32-year Rams front-office scout died after a Parkinson's battle.",
+          "url": "https://x.com/i/trending/2113759272651682173"
         }
       ],
       "sentiment": {
@@ -458,13 +362,12 @@
     },
     {
       "abbr": "MIA",
-      "volume": 815,
+      "volume": 600,
       "items": [
         {
-          "title": "Dolphins Fans Debate Drafting Jeremiah Smith or a Quarterback with Top 2027 Pick",
-          "one_line": "0-2 + Willis 58% fuels top-pick talk; Herald: trade-down for Smith; others: just take QB.",
-          "url": "https://x.com/i/trending/2103927192279187845",
-          "id": "2103927192279187845"
+          "title": "Clear Skies Forecast for Dolphins at Jets",
+          "one_line": "63 degrees, light wind, 2% rain at MetLife for 0-5 MIA vs. 2-4 NYJ.",
+          "url": "https://x.com/i/trending/2113998499775733924"
         }
       ],
       "sentiment": {
@@ -474,21 +377,8 @@
     },
     {
       "abbr": "MIN",
-      "volume": 530,
-      "items": [
-        {
-          "title": "Vikings Fans Debate Apology for Fired GM Kwesi Adofo-Mensah After 2-0 Start",
-          "one_line": "Fired Jan 2026; Turner/Cashman/Redmond/Jackson fueling 2-0 D under new GM Teasley.",
-          "url": "https://x.com/i/trending/2103954077457826276",
-          "id": "2103954077457826276"
-        },
-        {
-          "title": "NFL Fines Bears' Tyrique Stevenson $22,342 for Helmet Hit on Aaron Jones",
-          "one_line": "Unnecessary roughness on Jones in Week 2 9-3 MIN win; no live flag; post-game review.",
-          "url": "https://x.com/i/trending/2104006264867135730",
-          "id": "2104006264867135730"
-        }
-      ],
+      "volume": 761,
+      "items": [],
       "sentiment": {
         "pos": null,
         "neg": null
@@ -496,19 +386,22 @@
     },
     {
       "abbr": "NE",
-      "volume": 921,
+      "volume": 1278,
       "items": [
         {
-          "title": "Patriots Elevate Brown and Pharms Jr. for Jaguars Game",
-          "one_line": "S Mike Brown + DT Pharms Jr. from PS; Dre'Mont Jones OUT shoulder; Hutchins IR; vs JAX.",
-          "url": "https://x.com/i/trending/2103949615766667423",
-          "id": "2103949615766667423"
+          "title": "Patriots Fall 30-24 at Chicago",
+          "one_line": "Maye threw for 321 with three total TDs but an end-zone pick hurt; NE drops to 4-3.",
+          "url": "https://x.com/i/trending/2113759277101781343"
         },
         {
-          "title": "Patriots Fans Criticize Drake Maye After Rough Start to 2026 Season",
-          "one_line": "1-1; 386 yds / 1 TD / 4 INT; 53.7 PFF (28th); Week 3 test vs Lawrence/Jaguars.",
-          "url": "https://x.com/i/trending/2103891744894906756",
-          "id": "2103891744894906756"
+          "title": "A.J. Brown's Quiet Night Fuels Debate",
+          "one_line": "Brown had three catches for 48 yards on TNF, two games back from a high-ankle sprain.",
+          "url": "https://x.com/i/trending/2113516136092639672"
+        },
+        {
+          "title": "Bears Rookie's Effort on Stevenson TD Draws Probe Calls",
+          "one_line": "Malik Muhammad's play on Rhamondre Stevenson's 48-yard TD set off bettor complaints; others call it assignment football.",
+          "url": "https://x.com/i/trending/2113826647665520787"
         }
       ],
       "sentiment": {
@@ -518,13 +411,17 @@
     },
     {
       "abbr": "NO",
-      "volume": 3094,
+      "volume": 1247,
       "items": [
         {
-          "title": "Raiders Fans Clash with Saints Supporters Ahead of Week 3 Clash",
-          "one_line": "1-1 Saints home vs 2-0 Raiders; Shough pass game vs Crosby rush; Superdome hostile vibe.",
-          "url": "https://x.com/i/trending/2103323160267592127",
-          "id": "2103323160267592127"
+          "title": "Olave's French Tax Bill Sparks Debate",
+          "one_line": "Breakdown says Olave owes about $997K in French tax on the Paris game check.",
+          "url": "https://x.com/i/trending/2113833590039396416"
+        },
+        {
+          "title": "Steelers Activate DeShon Elliott for Paris vs. Saints",
+          "one_line": "PIT gets its safety back for the first regular-season game in France, Sunday 9:30 a.m. ET.",
+          "url": "https://x.com/i/trending/2114020377148203427"
         }
       ],
       "sentiment": {
@@ -534,25 +431,22 @@
     },
     {
       "abbr": "NYG",
-      "volume": 741,
+      "volume": 672,
       "items": [
         {
-          "title": "Giants Aggressively Seeking Trade for QB After Dart's Knee Injury",
-          "one_line": "Dart MCL/PCL/meniscus IR; Winston starts; Schoen eyes Minshew/Mac Jones/Fields; deal talk by Mon.",
-          "url": "https://x.com/i/trending/2103292395425316869",
-          "id": "2103292395425316869"
+          "title": "Giants Rule Out Holland and Theo Johnson",
+          "one_line": "Holland (concussion) and Johnson (neck) downgraded to out; Adebo activated; Nubin questionable.",
+          "url": "https://x.com/i/trending/2114043311459652052"
         },
         {
-          "title": "Giants Sign Jake Haener as Backup QB Behind Winston After Dart Injury",
-          "one_line": "Haener (ex-Saints) to active; Berrios/Harrison elevated; still shopping veteran arm.",
-          "url": "https://x.com/i/trending/2103970754962522506",
-          "id": "2103970754962522506"
+          "title": "Tremaine Edmunds Out for Season",
+          "one_line": "Torn chest muscle ends the green-dot LB's year; Micah McFadden takes over calls.",
+          "url": "https://x.com/i/trending/2113369508740043157"
         },
         {
-          "title": "Giants Injury Report Clears Thomas, Questions Burns for Titans Game",
-          "one_line": "Thomas full groin; Burns Q ankle; Banks/Nubin calf Q; Nabers shoulder cleared; vs TEN.",
-          "url": "https://x.com/i/trending/2103578096641139081",
-          "id": "2103578096641139081"
+          "title": "Giants Release Najee Harris",
+          "one_line": "Harris cut after two yards on four carries; Skattebo expected back in the mix Sunday.",
+          "url": "https://x.com/i/trending/2113698617399931239"
         }
       ],
       "sentiment": {
@@ -562,13 +456,12 @@
     },
     {
       "abbr": "NYJ",
-      "volume": 800,
+      "volume": 677,
       "items": [
         {
-          "title": "Jets Scramble for Receivers After Mitchell's Finger Injury Before Lions Game",
-          "one_line": "Adonai Mitchell Q finger (jersey snag); Pritchett signed; Shepard/Sanders elevated; Minkah OUT.",
-          "url": "https://x.com/i/trending/2103497058120540340",
-          "id": "2103497058120540340"
+          "title": "Clear Skies Forecast for Jets vs. Dolphins",
+          "one_line": "Rare dry MetLife Sunday forecast: 63 degrees, light winds, 2% rain.",
+          "url": "https://x.com/i/trending/2113998499775733924"
         }
       ],
       "sentiment": {
@@ -578,25 +471,22 @@
     },
     {
       "abbr": "PHI",
-      "volume": 1594,
+      "volume": 932,
       "items": [
         {
-          "title": "Zach Ertz Returns to Eagles Practice After Five Years",
-          "one_line": "Signed PS amid Goedert knee; walkthrough 'nervous'; knee strong 9.5 months post-surgery; MNF vs CHI.",
-          "url": "https://x.com/i/trending/2103219849212182980",
-          "id": "2103219849212182980"
+          "title": "Eagles Rule Out DeVonta Smith for MNF",
+          "one_line": "Smith, Wicks, Nolan Smith and Michael Carter out; Barkley, Greenard and Dickerson questionable.",
+          "url": "https://x.com/i/trending/2114034886730502226"
         },
         {
-          "title": "Eagles Revive 'Doink Doink' Taunt Ahead of Bears Clash",
-          "one_line": "Social digs 2018 Parkey miss; Bears fire back Nov road win; 2-0 PHI at Soldier Field MNF.",
-          "url": "https://x.com/i/trending/2103958386001818039",
-          "id": "2103958386001818039"
+          "title": "Saquon Barkley Back at Practice",
+          "one_line": "Barkley practiced Thursday and Friday after two missed games and is on track for Dallas.",
+          "url": "https://x.com/i/trending/2113265800530268391"
         },
         {
-          "title": "Debate Heats Up on Jalen Hurts' Hall of Fame Case at Age 28",
-          "one_line": "SB LIX, dual-threat records, 59-25 start; 2-0 2026; split on supporting cast vs longevity.",
-          "url": "https://x.com/i/trending/2103313451896459559",
-          "id": "2103313451896459559"
+          "title": "Barkley-to-Giants Trade Chatter",
+          "one_line": "Barkley's NYC comments fed deadline speculation; many Giants fans are cool on a reunion.",
+          "url": "https://x.com/i/trending/2113761952065569067"
         }
       ],
       "sentiment": {
@@ -606,25 +496,12 @@
     },
     {
       "abbr": "PIT",
-      "volume": 876,
+      "volume": 1718,
       "items": [
         {
-          "title": "Steelers Place Rookie Guard Dunker on IR with MCL Sprain",
-          "one_line": "Dunker IR 4\u20136 weeks no surgery; Homer signed; Nichols/Slaughter elevated; Dowdle OUT vs CIN.",
-          "url": "https://x.com/i/trending/2103949615833731407",
-          "id": "2103949615833731407"
-        },
-        {
-          "title": "Joey Porter Jr. Unlikely to Debut Against Bengals Amid Trade Buzz",
-          "one_line": "Q back; limited practice; Kaboly stunned if plays; contract/trade talk final rookie year.",
-          "url": "https://x.com/i/trending/2103954076908290431",
-          "id": "2103954076908290431"
-        },
-        {
-          "title": "Steelers Rule Out Dowdle, Warren Questionable for Bengals Clash",
-          "one_line": "Dowdle OUT toe; Warren Q shoulder; Pittman/Porter Jr/Dean Q; Heidenreich path vs Burrow.",
-          "url": "https://x.com/i/trending/2103578097316442216",
-          "id": "2103578097316442216"
+          "title": "Steelers Activate DeShon Elliott for Paris",
+          "one_line": "Elliott off IR after nearly a year; WRs Brandon Smith and Brandon Johnson elevated.",
+          "url": "https://x.com/i/trending/2114020377148203427"
         }
       ],
       "sentiment": {
@@ -634,19 +511,22 @@
     },
     {
       "abbr": "SEA",
-      "volume": 1171,
+      "volume": 1226,
       "items": [
         {
-          "title": "Seahawks' Darnold Cleared to Start vs. Commanders After Glute Injury",
-          "one_line": "Off injury report; Macdonald confirms ready; Lock covered Weeks 1\u20132; vs Mariota (Daniels out).",
-          "url": "https://x.com/i/trending/2103080733770133874",
-          "id": "2103080733770133874"
+          "title": "Charbonnet Out vs. Chiefs; Seattle Leads Taylor Race",
+          "one_line": "Macdonald ruled out Charbonnet despite full practices; SEA reported front-runner for Jonathan Taylor.",
+          "url": "https://x.com/i/trending/2113671674419679332"
         },
         {
-          "title": "Seahawks Face Winless Commanders in High-Stakes Home Opener",
-          "one_line": "2-0 SEA (3 pts allowed) vs 0-2 WSH; Darnold return; analysts lean comfortable SEA win.",
-          "url": "https://x.com/i/trending/2103922883684659587",
-          "id": "2103922883684659587"
+          "title": "Seahawks Release Trevon Diggs, Activate Bradford",
+          "one_line": "Diggs cut to activate G Anthony Bradford off IR, then re-signed to the practice squad and elevated.",
+          "url": "https://x.com/i/trending/2113742168112111970"
+        },
+        {
+          "title": "Walker Returns to Lumen Field With Chiefs",
+          "one_line": "Last year's Super Bowl MVP faces his old team on SNF as 3-3 SEA hosts 5-0 KC.",
+          "url": "https://x.com/i/trending/2114117538951172413"
         }
       ],
       "sentiment": {
@@ -656,25 +536,22 @@
     },
     {
       "abbr": "SF",
-      "volume": 953,
+      "volume": 1321,
       "items": [
         {
-          "title": "Nick Bosa Out Multiple Weeks with Calf Injury Amid 49ers Defensive Line Crisis",
-          "one_line": "Calf strain Thu practice; miss \u2265 few weeks incl. ARI; 6th DL lost in 2 weeks; no IR yet.",
-          "url": "https://x.com/i/trending/2103268391280599281",
-          "id": "2103268391280599281"
+          "title": "49ers Activate Christian Kirk for Falcons",
+          "one_line": "Kirk off IR for his SF debut with Evans and Samuel out; Kevin Givens released.",
+          "url": "https://x.com/i/trending/2114097953183072373"
         },
         {
-          "title": "49ers Place Robinson on IR, Promote Defensive Linemen for Cardinals Game",
-          "one_line": "Demarcus Robinson IR ankle; Fehoko Jr. promoted; Givens/Valdez elevated; Bosa stays off IR.",
-          "url": "https://x.com/i/trending/2104012351544668273",
-          "id": "2104012351544668273"
+          "title": "Fred Warner Fined $65,673",
+          "one_line": "Two fines for hits on Chig Okonkwo; one more helmet-use fine triggers an automatic suspension.",
+          "url": "https://x.com/i/trending/2114090227568390442"
         },
         {
-          "title": "Brock Purdy's Hot Start Fuels NFL QB Talk After 2-0 49ers Wins",
-          "one_line": "45/56 492 5 TD 1 INT; 125.6 rating; Shanahan praises command; vs ARI Week 3.",
-          "url": "https://x.com/i/trending/2103900608126234704",
-          "id": "2103900608126234704"
+          "title": "McCaffrey's Explosiveness and Workload Debated",
+          "one_line": "SF has kept CMC under 20 touches five straight games at a 69% snap share.",
+          "url": "https://x.com/i/trending/2114018006741451230"
         }
       ],
       "sentiment": {
@@ -684,7 +561,7 @@
     },
     {
       "abbr": "TB",
-      "volume": 275,
+      "volume": 342,
       "items": [],
       "sentiment": {
         "pos": null,
@@ -693,8 +570,14 @@
     },
     {
       "abbr": "TEN",
-      "volume": 639,
-      "items": [],
+      "volume": 493,
+      "items": [
+        {
+          "title": "Browns Bring Sampson Back for Titans Game",
+          "one_line": "CLE activates Dylan Sampson off IR and clears Delpit before Sunday in Nashville.",
+          "url": "https://x.com/i/trending/2114034885908447451"
+        }
+      ],
       "sentiment": {
         "pos": null,
         "neg": null
@@ -702,21 +585,8 @@
     },
     {
       "abbr": "WSH",
-      "volume": 325,
-      "items": [
-        {
-          "title": "Jayden Daniels Out for Commanders-Seahawks Clash with Elbow Injury",
-          "one_line": "Dislocated left elbow; no surgery/IR for now; week-to-week; Mariota starts vs 2-0 SEA.",
-          "url": "https://x.com/i/trending/2103642717578559582",
-          "id": "2103642717578559582"
-        },
-        {
-          "title": "Seahawks Face Winless Commanders in High-Stakes Home Opener",
-          "one_line": "0-2 WSH (Daniels out) vs 2-0 SEA; Mariota; long playoff odds; Northwest Stadium.",
-          "url": "https://x.com/i/trending/2103922883684659587",
-          "id": "2103922883684659587"
-        }
-      ],
+      "volume": 242,
+      "items": [],
       "sentiment": {
         "pos": null,
         "neg": null

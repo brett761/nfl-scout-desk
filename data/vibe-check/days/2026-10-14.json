@@ -1,0 +1,803 @@
+{
+ "date": "2026-10-14",
+ "week_id": "reg-6",
+ "label": "Week 6",
+ "pulled": "2026-10-15T01:12:30Z",
+ "tz": "America/New_York",
+ "source": "X",
+ "method": "search_news 24h max_results=10; get_posts_counts_recent 24h (day granularity, from 2026-10-14T01:08Z; total_tweet_count)",
+ "filtered": true,
+ "filter_note": {
+  "pulled": 320,
+  "kept": 77,
+  "dropped": 243,
+  "volume_missing": [],
+  "quiet": [
+   "CIN"
+  ],
+  "note": "Wednesday of Week 6, stamped vibe week reg-6. Volume landed for all 32 clubs. Loudest rooms by volume: HOU, NE, BUF, DAL, CHI, DEN, SF, CLE, SEA, ARI. HOU volume (~14k) is heavily inflated by #WeAreTexans / Texas noise in the count_query; NYJ and NE counts also include non-NFL #Jets/#Patriots bleed. CIN quiet after filter (pool was soccer/college/other clubs). Dropped mostly college football (Notre Dame-BYU, Red River/Arch Manning, Penn State recruiting pitch, Kentucky-Oklahoma, Colorado/Deion, Coastal/Kentucky uniforms, Alabama-Georgia, Vols QB), MLB/NBA/NHL/F1/NASCAR/MLS/eNASCAR, Hallmark Bears film, Hulu Browns drama, male cheerleader clip, Mevis Instagram scrutiny, Trump game-attendance rumor, Kordell Stewart HBO nostalgia, dating-rival fans thread, Madden TOTW card, Big Dom politics fundraiser, and heavy cross-club near-dupes (power rankings, fraud meter, undefeated schedules)."
+ },
+ "clubs": [
+  {
+   "abbr": "ARI",
+   "volume": 1782,
+   "items": [
+    {
+     "title": "Fans launch Billboards, #BidwillOut push",
+     "one_line": "Cardinals fans pooled ~$4k for Phoenix billboards screaming SELL THE TEAM / #BIDWILLOUT after a 1-4 start and a workplace discrimination lawsuit headed to NFL arbitration.",
+     "url": "https://x.com/i/trending/2109808363554935295",
+     "id": "2109808363554935295"
+    },
+    {
+     "title": "Beck stays inactive until late November",
+     "one_line": "LaFleur will keep rookie Carson Beck as the emergency third QB behind Jacoby Brissett; ESPN's Graziano says a real evaluation likely waits until after a brutal six-game stretch.",
+     "url": "https://x.com/i/trending/2110496421061566689",
+     "id": "2110496421061566689"
+    },
+    {
+     "title": "LaFleur wants Jeremiyah Love blocking more",
+     "one_line": "Coach said shaky pass protection has kept the No. 3 overall pick in five-man sets as a blocker, limiting routes despite receiving upside.",
+     "url": "https://x.com/i/trending/2110513165335245218",
+     "id": "2110513165335245218"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "ATL",
+   "volume": 627,
+   "items": [
+    {
+     "title": "Penix expects to start vs. Bears",
+     "one_line": "After rib injury and Tua entering late in the OT loss to Baltimore, Stefanski expects Michael Penix Jr. to start Sunday; imaging was positive and he took full first-team reps.",
+     "url": "https://x.com/i/trending/2110403754143162676",
+     "id": "2110403754143162676"
+    },
+    {
+     "title": "Bijan leads NFL at 580 rushing yards",
+     "one_line": "Bijan Robinson leads the league with 580 yards through Week 5, fueling Robinson-vs-Gibbs top-back talk heading into the Bears game.",
+     "url": "https://x.com/i/trending/2110531285001101577",
+     "id": "2110531285001101577"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "BAL",
+   "volume": 1356,
+   "items": [
+    {
+     "title": "Jackson, Lane returns eyed for Browns",
+     "one_line": "League source: Lamar (ankle) has a realistic shot Sunday; Ja'Kobi Lane's 21-day window is open after a full practice, with Moore/Guillory released to make room. Hendrickson and Cam Jurgens also back.",
+     "url": "https://x.com/i/trending/2110107089897140534",
+     "id": "2110107089897140534"
+    },
+    {
+     "title": "Fans defend Crosby-to-Hendrickson pivot",
+     "one_line": "Ravens nearly traded two firsts for Maxx Crosby, backed out on knee concerns, signed Hendrickson and drafted Vega Ioane \u2014 fans argue the package beats Crosby's early sack pace after the 4-1 start.",
+     "url": "https://x.com/i/trending/2110531284501954740",
+     "id": "2110531284501954740"
+    },
+    {
+     "title": "Huntley OT rally past Falcons still echoing",
+     "one_line": "Backup threw for 201 and scored the OT sneak; Hamilton's pick of Tua sealed 30-23 as Baltimore sits 4-1 atop the North.",
+     "url": "https://x.com/i/trending/2109750179440337214",
+     "id": "2109750179440337214"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "BUF",
+   "volume": 3216,
+   "items": [
+    {
+     "title": "Allen's 121-rush OT win still loud",
+     "one_line": "Josh Allen threw for 210 and ran for 121 in a 37-34 OT win at the Rams (first career OT win), Bills 4-1; dual-threat MVP talk and media-coverage debates dominate the room.",
+     "url": "https://x.com/i/trending/2110456222746898921",
+     "id": "2110456222746898921"
+    },
+    {
+     "title": "Waive CB Kendall, bring back Danna",
+     "one_line": "Buffalo waived practice-squad elevate Anthony Kendall (38% snaps vs. Rams) and re-signed OLB Mike Danna; Dee Alford expected back vs. Raiders.",
+     "url": "https://x.com/i/trending/2110151632222572853",
+     "id": "2110151632222572853"
+    },
+    {
+     "title": "Leonhard demands defensive fixes",
+     "one_line": "DC Jim Leonhard after the OT win: defense is 30th in yards and 28th in points, '1 out of 5 showing up,' and he'll review schemes before the Raiders game.",
+     "url": "https://x.com/i/trending/2110174788362932693",
+     "id": "2110174788362932693"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "CAR",
+   "volume": 720,
+   "items": [
+    {
+     "title": "Bryce Young topping early QB grades",
+     "one_line": "Through four games Young leads PFF at 88.6 and yards/game at 317 (9 TD, 2 INT); Rapoport called his step-up as big as anyone expected ahead of the Eagles.",
+     "url": "https://x.com/i/trending/2110448648190300329",
+     "id": "2110448648190300329"
+    },
+    {
+     "title": "Rested Panthers host jet-lagged Eagles",
+     "one_line": "Carolina (2-2, off bye) faces Philly (2-3) returning from London; rare rested-vs-international-traveler spot historically 4-0 for the road team.",
+     "url": "https://x.com/i/trending/2110463751082152396",
+     "id": "2110463751082152396"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "CHI",
+   "volume": 2302,
+   "items": [
+    {
+     "title": "Caleb Williams on track for Falcons",
+     "one_line": "Grade 2 hamstring sidelined him three games; Rapoport and Ben Johnson say he's close after full walk-through reps, with a good chance to start Sunday in Atlanta.",
+     "url": "https://x.com/i/trending/2110403754143162676",
+     "id": "2110403754143162676"
+    },
+    {
+     "title": "Williams John Wick IG return flex",
+     "one_line": "Williams swapped his Instagram to a John Wick look and 'I'm Inevitable' as the return timeline lined up with the three-to-four-week hamstring plan.",
+     "url": "https://x.com/i/trending/2110094700896031034",
+     "id": "2110094700896031034"
+    },
+    {
+     "title": "Love's 367-yard rout still stings",
+     "one_line": "Packers crushed Bears 31-7 on Oct 11; Love 25-of-31 for 367 and two scores with a 94.5 PFF grade, amplifying urgency around Williams' return.",
+     "url": "https://x.com/i/trending/2110012344462119334",
+     "id": "2110012344462119334"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "CIN",
+   "volume": 242,
+   "items": [],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "CLE",
+   "volume": 1871,
+   "items": [
+    {
+     "title": "Sign RB Estime; Sanders to IR",
+     "one_line": "Browns claimed Audric Estime off Minnesota's PS and put Raheim Sanders on IR (hip, 4+ weeks); also added TE Devin Culp and G Vershon Lee to the PS ahead of Baltimore.",
+     "url": "https://x.com/i/trending/2109780902326702121",
+     "id": "2109780902326702121"
+    },
+    {
+     "title": "Dylan Sampson designated for return",
+     "one_line": "Second-year RB opened a 21-day IR window; Monken said there's a chance he plays vs. the Ravens if practice goes well amid a thin backfield.",
+     "url": "https://x.com/i/trending/2109762855696277777",
+     "id": "2109762855696277777"
+    },
+    {
+     "title": "Shedeur Sanders signs first NFL agent",
+     "one_line": "Sitting behind Watson with one snap this year, Sanders joined Young Money APAA Sports; Browns say they still plan to develop him, but trade chatter rose with the timing.",
+     "url": "https://x.com/i/trending/2110384951577428400",
+     "id": "2110384951577428400"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "DAL",
+   "volume": 2541,
+   "items": [
+    {
+     "title": "Hire Mike Pettine as senior D assistant",
+     "one_line": "Dallas added Pettine to support first-year DC Christian Parker after a 2-3 start and 31st-ranked yards allowed; Parker may call from the booth.",
+     "url": "https://x.com/i/trending/2109746894498897968",
+     "id": "2109746894498897968"
+    },
+    {
+     "title": "Schottenheimer clarifies Parker's role",
+     "one_line": "HC said no final call yet on booth vs. sideline despite Jerry Jones comments, and affirmed backing for Parker ahead of Green Bay.",
+     "url": "https://x.com/i/trending/2110426019664441591",
+     "id": "2110426019664441591"
+    },
+    {
+     "title": "Bland back; Porter Jr. eyes full snaps",
+     "one_line": "DaRon Bland returned from illness; Joey Porter Jr. (ankle tweak, limited Wednesday) expects no snap count at Lambeau after a limited debut and a missed home game.",
+     "url": "https://x.com/i/trending/2110528297985835422",
+     "id": "2110528297985835422"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "DEN",
+   "volume": 2211,
+   "items": [
+    {
+     "title": "Hufanga out 2\u20133 weeks (ankle)",
+     "one_line": "Safety Talanoa Hufanga is out multiple weeks; secondary already missing PS2 with Riley Moss questionable (ribs) for TNF vs. Seattle.",
+     "url": "https://x.com/i/trending/2110422541739168165",
+     "id": "2110422541739168165"
+    },
+    {
+     "title": "TNF injury board vs. Seahawks",
+     "one_line": "Both 3-2 clubs limp into Empower Field: Denver without Surtain/Hufanga; Seattle's JSN limited (ankle) but plans to play, Charbonnet out.",
+     "url": "https://x.com/i/trending/2109792122274816420",
+     "id": "2109792122274816420"
+    },
+    {
+     "title": "Kareem Jackson retires as a Bronco",
+     "one_line": "Signed a one-day deal to end his 15-year career in orange and blue; will plant the alumni flag Thursday before the Seahawks game.",
+     "url": "https://x.com/i/trending/2110429717731922189",
+     "id": "2110429717731922189"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "DET",
+   "volume": 1159,
+   "items": [
+    {
+     "title": "Goff turns 32 with elite zero-INT start",
+     "one_line": "Through five games: 1,485 yards, 12 TD, 0 INT, 111.3 rating; Lions 3-2 after the 45-21 Cardinals rout, on bye this week.",
+     "url": "https://x.com/i/trending/2110388520397521214",
+     "id": "2110388520397521214"
+    },
+    {
+     "title": "Lions O-line tops PFF after Week 5",
+     "one_line": "Detroit claimed PFF's No. 1 offensive line spot after allowing just three pressures in Week 5 and fueling the 45-point explosion.",
+     "url": "https://x.com/i/trending/2110235143994749354",
+     "id": "2110235143994749354"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "GB",
+   "volume": 1175,
+   "items": [
+    {
+     "title": "Injury crunch before Cowboys SNF",
+     "one_line": "Wednesday DNP: Keisean Nixon (groin), Benjamin St-Juste (hamstring), Skyy Moore (ankle); Javon Hargrave headed to IR (torn Achilles). Banks limited; Jordon Riley practiced first time since Achilles tear.",
+     "url": "https://x.com/i/trending/2110485907384185291",
+     "id": "2110485907384185291"
+    },
+    {
+     "title": "Parsons explains cautious ACL timeline",
+     "one_line": "Still on PUP after Dec 2025 ACL/meniscus surgery; told his podcast he's game-ready but waiting to fix root issues so he won't overcompensate \u2014 misses the Cowboys rematch.",
+     "url": "https://x.com/i/trending/2110415225979867540",
+     "id": "2110415225979867540"
+    },
+    {
+     "title": "Love's 367-yard Bears torch still buzzing",
+     "one_line": "25-of-31, 367, 2 TD, 0 INT vs. Chicago; third in passing yards through five with 1,408/10 TD ahead of Dallas at Lambeau.",
+     "url": "https://x.com/i/trending/2110012344462119334",
+     "id": "2110012344462119334"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "HOU",
+   "volume": 13964,
+   "items": [
+    {
+     "title": "Trade for Marvin Harrison Jr.",
+     "one_line": "Texans sent 2027 2nd+7th to Arizona for MHJ and a 6th; reunites with C.J. Stroud. Practiced sharp and will debut Sunday in London vs. Jacksonville in a limited role.",
+     "url": "https://x.com/i/trending/2109810994302058844",
+     "id": "2109810994302058844"
+    },
+    {
+     "title": "Activate Braden Smith from IR",
+     "one_line": "OT Braden Smith (partially torn plantar fascia) activated; could challenge Trent Brown at RT. Also signed QB Mark Gronowski and WR Bryce Oliver to PS; Henry To'oTo'o designated for return.",
+     "url": "https://x.com/i/trending/2110403750955540581",
+     "id": "2110403750955540581"
+    },
+    {
+     "title": "MHJ London debut confirmed",
+     "one_line": "DeMeco Ryans praised Harrison's seamless practice debut and confirmed he'll play vs. the Jaguars, though not every snap, as Houston tries to climb from 1-4.",
+     "url": "https://x.com/i/trending/2110522296163078565",
+     "id": "2110522296163078565"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "IND",
+   "volume": 345,
+   "items": [
+    {
+     "title": "Quenton Nelson drawing trade interest",
+     "one_line": "Eight-time Pro Bowl guard in the final year of his extension; Eagles (post-Lane Johnson) and Vikings among clubs linked as possible destinations for premium picks.",
+     "url": "https://x.com/i/trending/2110052516843119003",
+     "id": "2110052516843119003"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "JAX",
+   "volume": 1007,
+   "items": [
+    {
+     "title": "SNF flex buzz: Jags-Colts as replacement",
+     "one_line": "NFL considering flexing Eagles-Commanders off Nov 1 SNF; Jaguars-Colts emerges as a top replacement option with Philly 2-3 and Washington 1-3-1.",
+     "url": "https://x.com/i/trending/2110038327953064096",
+     "id": "2110038327953064096"
+    },
+    {
+     "title": "Fans defend Boerkircher draft pick",
+     "one_line": "Analyst called the second-round TE a reach (44 receiving yards); Jags room points to his run-blocking in Coen's heavier packages amid the 4-1 start.",
+     "url": "https://x.com/i/trending/2110452545785339998",
+     "id": "2110452545785339998"
+    },
+    {
+     "title": "BTJ among trade-deadline WR names",
+     "one_line": "Graziano/Fowler listed Brian Thomas Jr. among WRs drawing interest before the Nov 10 deadline as his role has dipped behind teammates.",
+     "url": "https://x.com/i/trending/2110086626697503115",
+     "id": "2110086626697503115"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "KC",
+   "volume": 689,
+   "items": [
+    {
+     "title": "Kansas draws STAR Bonds stadium district",
+     "one_line": "New district spanning Wyandotte/Johnson counties will capture sales-tax increments for a ~$3B domed stadium and Olathe HQ/practice facility.",
+     "url": "https://x.com/i/trending/2110205374666256651",
+     "id": "2110205374666256651"
+    },
+    {
+     "title": "Josh Simmons back at limited practice",
+     "one_line": "2025 first-round LT returned Wednesday after missing the first four games (back); Rashee Rice (hamstring) sat and remains unlikely for the Chargers.",
+     "url": "https://x.com/i/trending/2110415220606923090",
+     "id": "2110415220606923090"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "LV",
+   "volume": 814,
+   "items": [
+    {
+     "title": "Jeanty playing through ankle/foot",
+     "one_line": "Internal rest talks for Ashton Jeanty; Kubiak grinned 'He's playing' as the 3-2 Raiders host Buffalo, with the bye not until Week 13.",
+     "url": "https://x.com/i/trending/2110395761561358605",
+     "id": "2110395761561358605"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "LAC",
+   "volume": 1169,
+   "items": [
+    {
+     "title": "Schefter: Herbert trade talk shut down",
+     "one_line": "High-level source: Chargers have never discussed trading Justin Herbert and won't, despite 0-5 start; contract through 2029 with no-trade clause.",
+     "url": "https://x.com/i/trending/2110247116379414893",
+     "id": "2110247116379414893"
+    },
+    {
+     "title": "Sign Jake Browning to practice squad",
+     "one_line": "Added Browning after Trey Lance went to IR (groin); joins Herbert and Uiagalelei. Also added WR Luke Grimm to the PS.",
+     "url": "https://x.com/i/trending/2110133876316401901",
+     "id": "2110133876316401901"
+    },
+    {
+     "title": "Reports: eye Adam Gase as interim OC",
+     "one_line": "0-5 offense near bottom in scoring/yards has buzz that Mike McDaniel could be replaced interim by Adam Gase; Harbaugh said to be safe for now ahead of Chiefs.",
+     "url": "https://x.com/i/trending/2110407517998063977",
+     "id": "2110407517998063977"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "LAR",
+   "volume": 736,
+   "items": [
+    {
+     "title": "Cut Mevis, sign Blake Grupe",
+     "one_line": "Released Harrison Mevis a day after 0-for-2 FGs (50 miss, 48 blocked) in the OT loss to Buffalo; signed Grupe off the Jets' practice squad.",
+     "url": "https://x.com/i/trending/2109803387898241282",
+     "id": "2109803387898241282"
+    },
+    {
+     "title": "Alaric Jackson suspension cut to one",
+     "one_line": "Appeal reduced two-game ban to one for punching Bradley Chubb after handshakes; misses only Cardinals, Quessenberry starts at LT.",
+     "url": "https://x.com/i/trending/2110522293826798077",
+     "id": "2110522293826798077"
+    },
+    {
+     "title": "Yardage kings still loud after OT loss",
+     "one_line": "Stafford threw for 383 in the 37-34 OT loss; Rams lead NFL in yardage differential since 1976 (139.2/game) ahead of the Cardinals home date.",
+     "url": "https://x.com/i/trending/2110482194405937290",
+     "id": "2110482194405937290"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "MIA",
+   "volume": 720,
+   "items": [
+    {
+     "title": "Claim WR Jared Wayne; waive Ryan Miller",
+     "one_line": "Bye-week roster shuffle: claimed Wayne off Houston waivers, waived Miller, signed DL Jordan Jefferson to PS, released Mazi Smith.",
+     "url": "https://x.com/i/trending/2110115207619961132",
+     "id": "2110115207619961132"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "MIN",
+   "volume": 1070,
+   "items": [
+    {
+     "title": "Murray 3-0 as starter for 5-0 Vikings",
+     "one_line": "On a one-year deal after Arizona released him: 69/101, 662 yards, 2 TD, 2 INT as starter; Cards sit 1-4 without him (3-28 in last 31 sans Murray).",
+     "url": "https://x.com/i/trending/2110144909353386073",
+     "id": "2110144909353386073"
+    },
+    {
+     "title": "Brandt questions Murray playoff ceiling",
+     "one_line": "First Take debate after Murray's 229 pass / 51 rush in the Saints win; fans counter with escape clips and Minnesota's defense.",
+     "url": "https://x.com/i/trending/2110478235100430702",
+     "id": "2110478235100430702"
+    },
+    {
+     "title": "NFC North all above .500 again",
+     "one_line": "Vikings 5-0, Bears/Lions/Packers all 3-2 \u2014 only division with every team over .500 through five weeks since 2002.",
+     "url": "https://x.com/i/trending/2109470324391817394",
+     "id": "2109470324391817394"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "NE",
+   "volume": 3235,
+   "items": [
+    {
+     "title": "Patriots surge into top-10 power rankings",
+     "one_line": "Rocketed from ~31st to as high as 10th after wins over Bills and Raiders; Drake Maye's yardage games fueled the climb at 3-2.",
+     "url": "https://x.com/i/trending/2110411778693967885",
+     "id": "2110411778693967885"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "NO",
+   "volume": 1320,
+   "items": [
+    {
+     "title": "Gayle Benson: 1-4 start unacceptable",
+     "one_line": "Owner publicly put Moore, Loomis, and players on notice after three straight home losses, vowing accountability ahead of Giants and Paris vs. Steelers.",
+     "url": "https://x.com/i/trending/2110115209100636494",
+     "id": "2110115209100636494"
+    },
+    {
+     "title": "Release Jayden Price after kickoff fumble",
+     "one_line": "Waived CB after costly second-half kickoff fumble in the 23-13 Vikings loss; also cut Brock Rechsteiner, Cal Adomitis, and re-signed Decamerion Richardson.",
+     "url": "https://x.com/i/trending/2110107092715806944",
+     "id": "2110107092715806944"
+    },
+    {
+     "title": "NFL confirms Steelers-Saints in Paris",
+     "one_line": "Oct 25 at Stade de France is on despite French education protests; league cites security coordination with local partners.",
+     "url": "https://x.com/i/trending/2110499790140407936",
+     "id": "2110499790140407936"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "NYG",
+   "volume": 830,
+   "items": [
+    {
+     "title": "Injury report: Carter calf tops list",
+     "one_line": "DNPs include Abdul Carter (calf), Andrew Thomas (groin), Jermaine Eluemunor (calf), Tyler Nubin (neck), Colton Hood (concussion) ahead of Saints at MetLife.",
+     "url": "https://x.com/i/trending/2110470986172899363",
+     "id": "2110470986172899363"
+    },
+    {
+     "title": "Winston reframes 'Experience' ahead of Saints",
+     "one_line": "Starting vs. his former club, Jameis leaned on faith language and daily 1% growth in a signature presser that the league account amplified.",
+     "url": "https://x.com/i/trending/2110470989071208888",
+     "id": "2110470989071208888"
+    },
+    {
+     "title": "OT tie with Commanders still debated",
+     "one_line": "Daniels' late OT scramble/sack that ran out the clock (27-27) keeps NFC East finger-pointing alive; Giants sit 3-1-1.",
+     "url": "https://x.com/i/trending/2109990094585450565",
+     "id": "2109990094585450565"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "NYJ",
+   "volume": 1420,
+   "items": [
+    {
+     "title": "Work out Matthew Judon",
+     "one_line": "Hosted 34-year-old edge (72 career sacks) Tuesday with Ossai nursing an ankle; also hosted Quinton Bell and Cam Sample, then signed Bell to the PS ahead of Patriots.",
+     "url": "https://x.com/i/trending/2110162330075930712",
+     "id": "2110162330075930712"
+    },
+    {
+     "title": "Garrett Wilson trade speculation rises",
+     "one_line": "31/374/3 through five with elite separation grades; 49ers WR injuries fueled rumor chatter, but Jets fans cite the $130M extension's dead-cap hit.",
+     "url": "https://x.com/i/trending/2110463750054490499",
+     "id": "2110463750054490499"
+    },
+    {
+     "title": "David Bailey leading DROY buzz",
+     "one_line": "Three sacks and seven tackles in the 17-12 Browns win put the Jets rookie atop Pepsi ROTW and DROY odds after five season sacks.",
+     "url": "https://x.com/i/trending/2110045108292972551",
+     "id": "2110045108292972551"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "PHI",
+   "volume": 1328,
+   "items": [
+    {
+     "title": "Open windows for Dickerson and three more",
+     "one_line": "21-day windows for Landon Dickerson, TEs Calcaterra/Stowers, and DB Jakorian Bennett; Dickerson was active at practice. Barkley (hamstring) missed media portion.",
+     "url": "https://x.com/i/trending/2110444480012931447",
+     "id": "2110444480012931447"
+    },
+    {
+     "title": "Wednesday report lists 24 names",
+     "one_line": "Barkley and DeVonta Smith missed again; Hurts practiced fully and is set to start vs. Carolina. Eleven limited, seven full.",
+     "url": "https://x.com/i/trending/2110496425721332210",
+     "id": "2110496425721332210"
+    },
+    {
+     "title": "Dead last in second-half yards/game",
+     "one_line": "Ari Meirov chart: Eagles at 99.4 second-half yards per game (32nd), trailing even Miami, as the 2-3 club returns from London to face rested Carolina.",
+     "url": "https://x.com/i/trending/2110144909340733594",
+     "id": "2110144909340733594"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "PIT",
+   "volume": 1044,
+   "items": [
+    {
+     "title": "Paris game vs. Saints confirmed",
+     "one_line": "NFL says Steelers-Saints on Oct 25 at Stade de France is proceeding amid French protests, with security coordination ongoing.",
+     "url": "https://x.com/i/trending/2110499790140407936",
+     "id": "2110499790140407936"
+    },
+    {
+     "title": "Germie Bernard career-high vs. Colts",
+     "one_line": "Rookie WR: six catches, 80 yards, nine targets after early drop; waiver-wire darling with 13/140 through five as Pittsburgh leans pass-heavy.",
+     "url": "https://x.com/i/trending/2110478229752643997",
+     "id": "2110478229752643997"
+    },
+    {
+     "title": "Tomlin: players-only meetings mean you're dead",
+     "one_line": "On New Heights, Tomlin said closed-door players-only meetings are a last resort and a bad sign \u2014 comments landing after Dallas's defense held one.",
+     "url": "https://x.com/i/trending/2110433200745189820",
+     "id": "2110433200745189820"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "SEA",
+   "volume": 1818,
+   "items": [
+    {
+     "title": "TNF injury board at Denver",
+     "one_line": "JSN limited (ankle) but plans to play vs. Denver's depleted secondary; Zach Charbonnet out. Broncos missing Surtain and Hufanga.",
+     "url": "https://x.com/i/trending/2109792122274816420",
+     "id": "2109792122274816420"
+    },
+    {
+     "title": "32-29 loss to 49ers still fueling rivalry talk",
+     "one_line": "Purdy's late TD to Cooks and Pineiro's kick kept SF perfect; Seahawks room points to turnovers/injuries and two more meetings this year.",
+     "url": "https://x.com/i/trending/2110470992254697702",
+     "id": "2110470992254697702"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "SF",
+   "volume": 2105,
+   "items": [
+    {
+     "title": "49ers No. 1 in power rankings at 5-0",
+     "one_line": "Top CBS/Kalshi lists after edging Seattle 32-29; 10-point favorites vs. Commanders on MNF Oct 19 at Levi's.",
+     "url": "https://x.com/i/trending/2110415225895915581",
+     "id": "2110415225895915581"
+    },
+    {
+     "title": "Eye WR help with Deebo sidelined",
+     "one_line": "Hamstring has Deebo out weeks; names like McLaurin, Jeudy, BTJ, Garrett Wilson, and a Jennings reunion floating before the Nov 10 deadline.",
+     "url": "https://x.com/i/trending/2109800586329927964",
+     "id": "2109800586329927964"
+    },
+    {
+     "title": "Purdy late drives beat Seahawks 32-29",
+     "one_line": "Survived seven turnovers and an ejection; Purdy 19/29, 189, 2 TD as SF capitalized on Seattle's four turnovers to stay atop the West.",
+     "url": "https://x.com/i/trending/2110267196417118493",
+     "id": "2110267196417118493"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "TB",
+   "volume": 295,
+   "items": [
+    {
+     "title": "Mayfield tests injured thumb at practice",
+     "one_line": "Out two games after Week 3 dislocation; plans to throw Wednesday. Bowles: must be fully healthy or he sits \u2014 no emergency backup role. Daniels has started in his place.",
+     "url": "https://x.com/i/trending/2110463747512827990",
+     "id": "2110463747512827990"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "TEN",
+   "volume": 1058,
+   "items": [
+    {
+     "title": "0-5 sting: Tate and Ward push back",
+     "one_line": "Rookie Carnell Tate after the 26-3 Texans loss: 'I ain't ever lose like this'; Ward rejected a 'used to losing' question \u2014 'No, I'm not a loser' \u2014 as Saleh affirms he stays the starter vs. Colts.",
+     "url": "https://x.com/i/trending/2110218421438984581",
+     "id": "2110218421438984581"
+    },
+    {
+     "title": "Ward stats under microscope at 0-5",
+     "one_line": "23/36, 170 yards, INT, four sacks in the Houston rout; Titans NFL-low 58 points through five with Ward at 896/3/3 and a 77.2 rating.",
+     "url": "https://x.com/i/trending/2109494472690286994",
+     "id": "2109494472690286994"
+    },
+    {
+     "title": "Slump since Vrabel firing still debated",
+     "one_line": "6-33 since Amy Adams Strunk fired Vrabel in Jan 2024; 0-5 under Saleh with the league's worst offense (~11.6 PPG) as Vrabel thrives in New England.",
+     "url": "https://x.com/i/trending/2110478235331150109",
+     "id": "2110478235331150109"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  },
+  {
+   "abbr": "WSH",
+   "volume": 417,
+   "items": [
+    {
+     "title": "Daniels OT clock blunder still loud",
+     "one_line": "With eight seconds at the Giants' 24, Daniels took a sack instead of spiking for a FG; 27-27 tie left Washington 1-3-1. Parsons blamed Daniels; Quinn and Daniels both owned it.",
+     "url": "https://x.com/i/trending/2109990094585450565",
+     "id": "2109990094585450565"
+    },
+    {
+     "title": "SNF flex threat for Eagles-Commanders",
+     "one_line": "NFL may pull the Nov 1 NBC game after slow starts; decision window to Oct 20 with Commanders visiting undefeated 49ers this week.",
+     "url": "https://x.com/i/trending/2110038327953064096",
+     "id": "2110038327953064096"
+    }
+   ],
+   "sentiment": {
+    "pos": null,
+    "neg": null
+   }
+  }
+ ]
+}
