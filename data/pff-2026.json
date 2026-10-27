@@ -1,14 +1,14 @@
 {
   "season": 2026,
   "source_season": 2025,
-  "pulled": "2026-10-20",
+  "pulled": "2026-10-27",
   "source": "PFF+ Premium Stats CSV export (2025 REG), official download",
   "player_pool": 1994,
   "roster": {
-    "teams_as_of": "2026-10-20T10:51:12-04:00",
+    "teams_as_of": "2026-10-27T10:48:04-04:00",
     "map": "data/pff-roster-map-2026.json",
-    "moved": 275,
-    "dropped_no_2026_club": 114,
+    "moved": 272,
+    "dropped_no_2026_club": 117,
     "note": "2025 grades, counted for each player's current 2026 club (team_2025 shown on movers). Free agents, retired players and practice-squad players are left out; IR players stay in (debited through the injury sheet)."
   },
   "scoring": {
@@ -18,7 +18,7 @@
     "min_snaps": 200,
     "grade_per_point": 5.0,
     "cap": 1.5,
-    "league_grade": 71.02,
+    "league_grade": 71.03,
     "note": "Same 22 per club (11 OFF + 11 DEF by 2025 PFF grade, min snaps, on the 2026 roster). Surplus vs league mean of those 22. 5 grade \u2248 1 point, cap \u00b11.5. Does not rewrite the 2025 prior. Raw CSVs stay off the public desk."
   },
   "teams": {
@@ -178,9 +178,9 @@
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "grade": 69.84,
+      "grade": 70.37,
       "off_grade": 72.76,
-      "def_grade": 66.91,
+      "def_grade": 67.98,
       "off": [
         {
           "name": "Chris Lindstrom",
@@ -277,6 +277,13 @@
           "snaps": 270
         },
         {
+          "name": "Charles Snowden",
+          "pos": "ED",
+          "grade": 70.5,
+          "snaps": 324,
+          "team_2025": "LV"
+        },
+        {
           "name": "Cameron Thomas",
           "pos": "ED",
           "grade": 67.6,
@@ -314,16 +321,9 @@
           "grade": 60.0,
           "snaps": 249,
           "team_2025": "PHI"
-        },
-        {
-          "name": "Da'Shawn Hand",
-          "pos": "DI",
-          "grade": 58.7,
-          "snaps": 451,
-          "team_2025": "LAC"
         }
       ],
-      "net": -0.24
+      "net": -0.13
     },
     "BAL": {
       "n": 22,
@@ -474,7 +474,7 @@
           "snaps": 1029
         }
       ],
-      "net": 0.06
+      "net": 0.05
     },
     "BUF": {
       "n": 22,
@@ -779,9 +779,9 @@
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "grade": 71.41,
+      "grade": 71.0,
       "off_grade": 75.15,
-      "def_grade": 67.66,
+      "def_grade": 66.85,
       "off": [
         {
           "name": "Darnell Wright",
@@ -878,13 +878,6 @@
           "snaps": 779
         },
         {
-          "name": "Xavier Woods",
-          "pos": "S",
-          "grade": 65.5,
-          "snaps": 526,
-          "team_2025": "TEN"
-        },
-        {
           "name": "Coby Bryant",
           "pos": "S",
           "grade": 65.4,
@@ -921,9 +914,16 @@
           "pos": "DI",
           "grade": 56.7,
           "snaps": 610
+        },
+        {
+          "name": "Neville Gallimore",
+          "pos": "DI",
+          "grade": 56.6,
+          "snaps": 467,
+          "team_2025": "IND"
         }
       ],
-      "net": 0.08
+      "net": -0.01
     },
     "CIN": {
       "n": 22,
@@ -1816,7 +1816,7 @@
           "snaps": 724
         }
       ],
-      "net": 0.48
+      "net": 0.47
     },
     "HOU": {
       "n": 22,
@@ -1971,9 +1971,9 @@
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "grade": 72.08,
+      "grade": 72.27,
       "off_grade": 76.39,
-      "def_grade": 67.77,
+      "def_grade": 68.15,
       "off": [
         {
           "name": "Quenton Nelson",
@@ -2082,6 +2082,12 @@
           "team_2025": "TEN"
         },
         {
+          "name": "Germaine Pratt",
+          "pos": "LB",
+          "grade": 62.6,
+          "snaps": 913
+        },
+        {
           "name": "JT Tuimoloau",
           "pos": "ED",
           "grade": 60.6,
@@ -2106,15 +2112,9 @@
           "grade": 59.9,
           "snaps": 578,
           "team_2025": "NYJ"
-        },
-        {
-          "name": "Cameron Mitchell",
-          "pos": "CB",
-          "grade": 58.4,
-          "snaps": 261
         }
       ],
-      "net": 0.21
+      "net": 0.25
     },
     "JAX": {
       "n": 22,
@@ -2410,7 +2410,7 @@
           "snaps": 1021
         }
       ],
-      "net": -0.08
+      "net": -0.09
     },
     "LAC": {
       "n": 22,
@@ -3145,7 +3145,7 @@
           "team_2025": "BAL"
         }
       ],
-      "net": -0.12
+      "net": -0.13
     },
     "NE": {
       "n": 22,
