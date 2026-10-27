@@ -8200,7 +8200,7 @@ async function loadPublishedLines() {
 
 async function loadPowerRankings() {
   try {
-    const res = await fetch("./data/published/power-rankings.json?v=prank20261020T112716");
+    const res = await fetch("./data/published/power-rankings.json?v=prank20261027T112612");
     if (!res.ok) throw new Error(String(res.status));
     const data = await res.json();
     if (!data || !Array.isArray(data.weeks)) throw new Error("bad power rankings");
