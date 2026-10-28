@@ -1,3 +1,11 @@
+# Week 8 TNF CAR@GB FINAL (2026-10-28b)
+
+Official Wed Game Status (packers.com game-status article with both clubs' tables, panthers.com table, nfl.com Week 8 report), pulled 2026-10-28 4:25 PM ET. Only CAR/GB rows changed; everyone else stays 2026-10-28a WORKING-WED.
+
+- **CAR**: Phillips OUT (was Q), Akayleb Evans OUT (was Q; manual 0.4 for CB cluster with Horn/M. Jackson on IR), Damien Lewis OUT (new, manual 0.3), Simpkins OUT (depth, manual 0.05). Bobby Brown Q but full Tue/Wed (off). Coker/Young/Fitzgerald no status. Team injury −2.53 → −3.35.
+- **GB**: Rhyan OUT, Franklin OUT (was Doubtful, same price), Glover OUT (new, manual 0.05, Zeitler replaces). Golden and Wyatt Q (LP, soft on). Campbell/Cox Q depth (off). Banks and St-Juste no status (Banks off the number). Team injury −2.68 → −2.64.
+- B$ line GB −1.76 → −2.62 raw (GB −2.5 published) vs DraftKings GB −3.5, O/U 47.5. DVOA-blend shadow GB −2.66.
+
 # 2026 NFL injuries — Scout desk Week 8 WORKING-WED
 
 Pulled 2026-10-28 10:10 AM ET (America/New_York). Stamp `injury_pulled=2026-10-28a` **WORKING-WED** Wednesday ESPN refresh (prior seed 2026-10-27a WORKING-TUE). Week 7 fully FINAL incl. MNF DAL@PHI; Week 8 board, byes HOU/NO/NYG/SF. Aaron Donald dropped. No rumor designations.

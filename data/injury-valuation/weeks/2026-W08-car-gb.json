@@ -1,0 +1,38 @@
+{
+  "week": 8, "season": 2026, "game": "CAR@GB", "window": "TNF", "stamp": "2026-10-28b", "phase": "FINAL",
+  "sources": ["https://www.packers.com/news/packers-list-four-questionable-rule-out-three-vs-panthers-week-8-injury-report", "https://www.panthers.com/team/injury-report/", "https://www.nfl.com/news/nfl-week-8-injury-report-2026-season"],
+  "pulled_et": "2026-10-28 4:25 PM ET",
+  "raw": "data/injury-valuation/weeks/2026-W08-car-gb-official-raw.md",
+  "official": {
+    "CAR": [
+      {"name": "Akayleb Evans", "pos": "CB", "injury": "Triceps/Knee", "practice": "DNP/DNP/DNP", "status": "OUT", "p_play": 0, "on": true, "impact": 0.4, "impact_source": "manual", "replacement": "Will Lee III / Chau Smith-Wade (PFF 58.1) + PS elevation", "replacement_quality": "poor", "range": [0.3, 0.6], "valuation": "Starting LCB, no Madden/PFF top-22 grade (individual ~0.2). Horn (IR) and Mike Jackson (IR) already out, leaving two healthy 53-man CBs. Cluster interaction ~0.2 vs Love (PFF 88.5) / Watson / Kraft. Was Q 0.25x0.35 auto."},
+      {"name": "Damien Lewis", "pos": "LG", "injury": "Knee", "practice": "DNP/DNP/DNP", "status": "OUT", "p_play": 0, "on": true, "impact": 0.3, "impact_source": "manual", "replacement": "Corey Bullock", "replacement_quality": "below average / unknown", "range": [0.2, 0.4], "valuation": "Madden 87 / PFF 75.7 every-down LG. Auto tier cap 0.25 understates drop to a reserve; OL already without Moton (IR) and Christensen (IR). New to the number."},
+      {"name": "Jaelan Phillips", "pos": "OLB/EDGE", "injury": "Hamstring", "practice": "DNP/DNP/DNP", "status": "OUT", "p_play": 0, "on": true, "impact": 0.25, "impact_source": "madden", "replacement": "Princely Umanmielen / Patrick Jones II", "range": [0.15, 0.3], "valuation": "Madden 82 / PFF 74.1 starter, missed Week 7 too (market already had him out). Auto 0.25 agrees. Was Q 0.25x0.35."},
+      {"name": "Torricelli Simpkins III", "pos": "G", "injury": "Ankle", "practice": "DNP/DNP/DNP", "status": "OUT", "p_play": 0, "on": true, "impact": 0.05, "impact_source": "manual", "range": [0, 0.1], "valuation": "Reserve OL (third on LG depth); depth only. Manual 0.05 vs 0.25 pos-base auto."},
+      {"name": "Bobby Brown III", "pos": "DT", "injury": "Hand", "practice": "DNP/FP/FP", "status": "QUESTIONABLE", "p_play": 0.9, "on": false, "valuation": "Full Tue/Wed, rotational DT -> expected impact ~0, off."},
+      {"name": "Jalen Coker", "pos": "WR", "injury": "Shoulder", "practice": "LP/FP/FP", "status": "none", "on": false, "valuation": "No game status, plays. Already cleared in 2026-10-28a."},
+      {"name": "Bryce Young", "pos": "QB", "injury": "Knee", "practice": "FP/FP/FP", "status": "none", "on": false, "valuation": "No game status, starts."}
+    ],
+    "GB": [
+      {"name": "Sean Rhyan", "pos": "C", "injury": "Ankle", "practice": "DNP/DNP/DNP", "status": "OUT", "p_play": 0, "on": true, "impact": 0.2, "impact_source": "pff", "replacement": "John Williams", "range": [0.1, 0.3], "valuation": "Starting C (PFF 58.5). Williams finished Week 7. Monk (C) on IR. Already OUT in 2026-10-28a; auto 0.2 kept."},
+      {"name": "Zaire Franklin", "pos": "LB", "injury": "Shin", "practice": "DNP/DNP/DNP", "status": "OUT", "p_play": 0, "on": true, "impact": 0.2, "impact_source": "madden", "replacement": "Ty'Ron Hopper / Isaiah McDuffie (Madden 78)", "range": [0.1, 0.2], "valuation": "Was Doubtful (1.0, same price). Replacement roughly equal on Madden; auto kept."},
+      {"name": "Travis Glover", "pos": "RG", "injury": "Knee", "practice": "DNP/DNP/DNP", "status": "OUT", "p_play": 0, "on": true, "impact": 0.05, "impact_source": "manual", "replacement": "Kevin Zeitler (Madden 85, PFF 74.5)", "replacement_quality": "at least equal", "range": [0, 0.15], "valuation": "Played all 67 RG snaps Week 7; vet Zeitler (healthy scratch) likely steps in. Manual 0.05 vs 0.25 pos-base auto. New to the number."},
+      {"name": "Matthew Golden", "pos": "WR", "injury": "Shoulder/Foot", "practice": "DNP/DNP/LP", "status": "QUESTIONABLE", "p_play": 0.65, "on": true, "impact": 0.2, "impact_source": "madden", "range": [0.05, 0.12], "valuation": "Team-high 36 catches; LaFleur 'hopeful'; upgraded to LP Wed. Q soft on auto 0.2x0.35 = 0.07."},
+      {"name": "Devonte Wyatt", "pos": "DT", "injury": "Ankle", "practice": "DNP/LP/LP", "status": "QUESTIONABLE", "p_play": 0.7, "on": true, "impact": 0.2, "impact_source": "madden", "range": [0.05, 0.1], "valuation": "Starting DT, DL thin (Hargrave/Ford/Brinson IR). Q soft on auto 0.07."},
+      {"name": "Anthony Campbell", "pos": "DT", "injury": "Ankle", "practice": "DNP/LP/LP", "status": "QUESTIONABLE", "p_play": 0.7, "on": false, "valuation": "Rotational DT, expected impact <0.05, off (noted in DL unit effect)."},
+      {"name": "Brenton Cox Jr.", "pos": "EDGE", "injury": "Quadricep", "practice": "-/LP/LP", "status": "QUESTIONABLE", "p_play": 0.75, "on": false, "valuation": "Rotational edge, off."},
+      {"name": "Aaron Banks", "pos": "LG", "injury": "Knee/Toe", "practice": "LP/LP/FP", "status": "none", "on": false, "valuation": "No game status, available. Was Q soft on (0.0875) in 2026-10-28a -> off. Returns to LG."},
+      {"name": "Benjamin St-Juste", "pos": "CB", "injury": "Hamstring", "practice": "FP/FP/FP", "status": "none", "on": false, "valuation": "No status, plays."}
+    ]
+  },
+  "unit_effects": {
+    "CAR_CB": "Evans + Horn (IR) + Mike Jackson (IR): three of the top four CBs out, two healthy 53-man corners. Real compounding vs a Love-led pass game. Priced via Evans manual 0.4 (~0.2 interaction); no further add to avoid double counting the IR rows.",
+    "CAR_OL": "LG Lewis out with RT Moton and G Christensen on IR. Lewis manual 0.3 captures the drop; Simpkins is depth. Matchup mechanism vs Parsons-led GB rush is real but GB DL interior is also banged up (Wyatt/Campbell Q).",
+    "GB_OL": "C Rhyan and RG Glover out, but Banks returns at LG and Zeitler is a strong RG fill. Net interior OL roughly flat vs Week 7 finish; no unit add.",
+    "GB_DL": "Wyatt + Campbell both Q (LP) with Hargrave/Ford/Brinson on IR. If both sit, rotation thins vs a CAR run game minus its LG; kept inside the Q soft-on, no extra add."
+  },
+  "team_injury_term": {"CAR": {"before": -2.53, "after": -3.35}, "GB": {"before": -2.68, "after": -2.64}},
+  "net_injury_swing_toward_GB": 0.86,
+  "b_line_home_spread": {"before_raw": -1.76, "after_raw": -2.62, "published": -2.5, "street_dk": -3.5, "ou_dk": 47.5, "shadow_dvoa_blend": -2.66},
+  "confidence": "Moderate"
+}

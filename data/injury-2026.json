@@ -1,14 +1,15 @@
 {
-  "pulled": "2026-10-28a",
-  "pulled_et": "2026-10-28 10:10 AM ET (America/New_York)",
-  "phase": "WORKING-WED",
+  "pulled": "2026-10-28b",
+  "pulled_et": "2026-10-28 4:25 PM ET (America/New_York)",
+  "phase": "FINAL",
   "sources": [
-    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-    "https://www.nfl.com/injuries/",
-    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?seasontype=2&week=7&year=2026",
-    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?seasontype=2&week=8&year=2026"
+    "https://www.packers.com/news/packers-list-four-questionable-rule-out-three-vs-panthers-week-8-injury-report",
+    "https://www.panthers.com/team/injury-report/",
+    "https://www.packers.com/team/injury-report/",
+    "https://www.nfl.com/news/nfl-week-8-injury-report-2026-season",
+    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
   ],
-  "note": "WORKING-WED Wednesday ESPN refresh (Week 8; prior seed 2026-10-27a WORKING-TUE). Week 7 fully FINAL incl. MNF DAL@PHI - no protects. Week 8 official practice sheet not out yet (TNF CAR@GB Wed ~4pm ET) - ESPN working list only. Byes Week 8 HOU/NO/NYG/SF. Finished clubs: drop gameday inactive / ruled-out-for-remainder / coach's-decision noise; keep multi-week OUT + IR/PUP/NFI. ESPN designations followed as-is. Doubtful = 1.0 out. Preserve manuals. Tier caps QB<=1.5 / All-Pro<=0.5 / other<=0.25 on auto; Madden-first else PFF; floor 0.2x status; Cap team 6.0. No rumor moves.",
+  "note": "FINAL 2026-10-28b Week 8 TNF CAR@GB after official Wed Game Status (packers.com game-status article + panthers.com table + nfl.com Week 8 report). CAR: Phillips, Akayleb Evans (manual 0.4 CB cluster), Damien Lewis (manual 0.3), Simpkins (manual 0.05) OUT; Bobby Brown Q FP (off); Coker/Young/Fitzgerald no status (off). GB: Rhyan, Franklin, Glover (manual 0.05, Zeitler replaces) OUT; Golden and Wyatt Q (soft on); Campbell/Cox Q depth (off); Banks/St-Juste no status (off). CAR/GB rows are TNF-protected: later ESPN reseeds must not soften them. Other clubs unchanged from 2026-10-28a WORKING-WED (ESPN working tags as-is; official sheet Friday). Madden-first else PFF; Probable/cleared OFF; Q only with expected-impact judgment. Doubtful 1.0. Standing manuals preserved.",
   "espn_timestamp": "2026-10-28T14:10:45Z",
   "teams": {
     "ARI": [
@@ -380,7 +381,7 @@
         "name": "Dorian Strong",
         "pos": "DEPTH",
         "status": "NFI",
-        "note": "FINAL TNF. Neck \u2014 reserve/NFI. ESPN summary Out (NFI-R). Depth CB; on for completeness.",
+        "note": "FINAL TNF. Neck — reserve/NFI. ESPN summary Out (NFI-R). Depth CB; on for completeness.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872932",
         "on": true
       }
@@ -399,20 +400,24 @@
       {
         "name": "Jaelan Phillips",
         "pos": "LB",
-        "status": "QUESTIONABLE",
-        "note": "Phillips (hamstring) was listed as a non-participant on Monday's practice estimate.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "status": "OUT",
+        "note": "Official Wed FINAL Out (DNP Mon-Wed). Starting OLB/edge (Madden 82, PFF 74.1); missed Week 7 too. Umanmielen/Jones replace. Auto 0.25 (cap) agrees.",
+        "source": "https://www.panthers.com/team/injury-report/",
         "on": true,
         "impact": 0.25,
-        "impact_source": "madden"
+        "impact_source": "madden",
+        "injury": "Hamstring"
       },
       {
         "name": "Akayleb Evans",
         "pos": "CB1",
-        "status": "QUESTIONABLE",
-        "note": "Evans (triceps/knee) was listed as a non-participant on Monday's practice estimate.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "status": "OUT",
+        "note": "Official Wed FINAL Out (DNP Mon-Wed). Starting LCB. With Horn and Mike Jackson on IR, CAR has two healthy 53-man CBs (Will Lee, Chau Smith-Wade PFF 58.1) plus PS elevations. Manual 0.4 = ~0.2 individual + ~0.2 CB-cluster interaction vs Love/Watson/Kraft (Horn/Jackson already priced on IR rows).",
+        "source": "https://www.panthers.com/team/injury-report/",
+        "on": true,
+        "injury": "Triceps/Knee",
+        "impact": 0.4,
+        "impact_source": "manual"
       },
       {
         "name": "Thomas Incoom",
@@ -493,6 +498,28 @@
         "on": true,
         "impact": 0.2,
         "impact_source": "madden"
+      },
+      {
+        "name": "Damien Lewis",
+        "pos": "OG",
+        "status": "OUT",
+        "injury": "Knee",
+        "source": "https://www.panthers.com/team/injury-report/",
+        "on": true,
+        "impact": 0.3,
+        "impact_source": "manual",
+        "note": "Official Wed FINAL Out (DNP Mon-Wed). Starting LG (Madden 87, PFF 75.7, 987 snaps 2025). Corey Bullock (backup, no Madden/PFF top-22 grade) starts. Manual 0.3: auto tier cap 0.25 understates drop from a top-10 guard to a reserve; OL already without RT Moton (IR) and Christensen (IR)."
+      },
+      {
+        "name": "Torricelli Simpkins III",
+        "pos": "OG",
+        "status": "OUT",
+        "injury": "Ankle",
+        "source": "https://www.panthers.com/team/injury-report/",
+        "on": true,
+        "impact": 0.05,
+        "impact_source": "manual",
+        "note": "Official Wed FINAL Out (DNP Mon-Wed). Reserve OL (third on ESPN LG depth). Depth only; manual 0.05 instead of pos-base 0.25 auto."
       }
     ],
     "CHI": [
@@ -545,7 +572,7 @@
         "on": true,
         "impact": 0.25,
         "impact_source": "manual",
-        "valuation_note": "W6 FINAL valuation: ESPN Out; with Montez Sweat suspended both starting EDGEs are gone \u2014 fills missing auto at tier cap."
+        "valuation_note": "W6 FINAL valuation: ESPN Out; with Montez Sweat suspended both starting EDGEs are gone — fills missing auto at tier cap."
       },
       {
         "name": "Noah Sewell",
@@ -696,7 +723,7 @@
         "name": "Kendrick Green",
         "pos": "OG",
         "status": "IR",
-        "note": "ir Explicit impact 0 \u2014 depth IR; no pos_base fallthrough.",
+        "note": "ir Explicit impact 0 — depth IR; no pos_base fallthrough.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0,
@@ -975,39 +1002,34 @@
         "name": "Devonte Wyatt",
         "pos": "IDL",
         "status": "QUESTIONABLE",
-        "note": "Wyatt (ankle) was a limited participant during Tuesday's walkthrough practice.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "note": "Official Wed FINAL Questionable (DNP/LP/LP est.). Starting DT; DL already without Hargrave/Ford/Brinson (IR). Q soft on at auto (0.2 x 0.35).",
+        "source": "https://www.packers.com/news/packers-list-four-questionable-rule-out-three-vs-panthers-week-8-injury-report",
         "on": true,
         "impact": 0.2,
-        "impact_source": "madden"
+        "impact_source": "madden",
+        "injury": "Ankle"
       },
       {
         "name": "Sean Rhyan",
         "pos": "OG",
         "status": "OUT",
-        "note": "Rhyan was diagnosed with a high ankle sprain and is expected to miss at least one month, Matt Zenitz of CBSSports.com reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "note": "Official Wed FINAL Out (DNP Mon-Wed est.). Starting C (PFF 58.5); John Williams finished Week 7 at C. Monk (C) on IR. Auto 0.2 kept.",
+        "source": "https://www.packers.com/news/packers-list-four-questionable-rule-out-three-vs-panthers-week-8-injury-report",
         "on": true,
         "impact": 0.2,
-        "impact_source": "pff"
+        "impact_source": "pff",
+        "injury": "Ankle"
       },
       {
         "name": "Matthew Golden",
         "pos": "WR2",
         "status": "QUESTIONABLE",
-        "note": "Golden (shoulder/foot) didn't participate in Tuesday's walkthrough practice.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "note": "Official Wed FINAL Questionable (DNP/DNP/LP est., walkthroughs). LaFleur 'hopeful.' WR1-type usage (team-high 36 catches). Q soft on at auto (0.2 x 0.35).",
+        "source": "https://www.packers.com/news/packers-list-four-questionable-rule-out-three-vs-panthers-week-8-injury-report",
         "on": true,
         "impact": 0.2,
-        "impact_source": "madden"
-      },
-      {
-        "name": "Aaron Banks",
-        "pos": "OG",
-        "status": "QUESTIONABLE",
-        "note": "questionable",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "impact_source": "madden",
+        "injury": "Shoulder/Foot"
       },
       {
         "name": "Jacob Monk",
@@ -1020,12 +1042,13 @@
       {
         "name": "Zaire Franklin",
         "pos": "LB",
-        "status": "DOUBTFUL",
-        "note": "Franklin suffered a hairline fracture in his shin during last Thursday's practice, Rob Demovsky of ESPN.com reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "status": "OUT",
+        "note": "Official Wed FINAL Out (DNP Mon-Wed est.). Was Doubtful (same 1.0 price). Hopper/McDuffie (Madden 78) cover; missed Week 7 too. Auto 0.2 kept.",
+        "source": "https://www.packers.com/news/packers-list-four-questionable-rule-out-three-vs-panthers-week-8-injury-report",
         "on": true,
         "impact": 0.2,
-        "impact_source": "madden"
+        "impact_source": "madden",
+        "injury": "Shin"
       },
       {
         "name": "Jonathan Ford",
@@ -1100,6 +1123,17 @@
         "on": true,
         "impact": 0.25,
         "impact_source": "madden"
+      },
+      {
+        "name": "Travis Glover",
+        "pos": "OG",
+        "status": "OUT",
+        "injury": "Knee",
+        "source": "https://www.packers.com/news/packers-list-four-questionable-rule-out-three-vs-panthers-week-8-injury-report",
+        "on": true,
+        "impact": 0.05,
+        "impact_source": "manual",
+        "note": "Official Wed FINAL Out (DNP Mon-Wed est.). Played all 67 RG snaps Week 7. Kevin Zeitler (Madden 85, PFF 74.5, healthy scratch Week 7) is the likely RG; replacement is at least as good. Manual 0.05 instead of pos-base 0.25 auto."
       }
     ],
     "HOU": [
@@ -2457,7 +2491,7 @@
         "name": "Gennings Dunker",
         "pos": "OG",
         "status": "IR",
-        "note": "The Steelers placed Dunker (knee) on injured reserve Saturday, Tom Pelissero of Netflix reports. Explicit impact 0 \u2014 depth IR; no pos_base fallthrough.",
+        "note": "The Steelers placed Dunker (knee) on injured reserve Saturday, Tom Pelissero of Netflix reports. Explicit impact 0 — depth IR; no pos_base fallthrough.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0,
@@ -2887,7 +2921,7 @@
         "on": true,
         "impact": 0.0,
         "impact_source": "manual",
-        "valuation_note": "W6 FINAL valuation: backup QB (Jayden Daniels healthy, full practice) \u2014 no starter drop-off; standing zero."
+        "valuation_note": "W6 FINAL valuation: backup QB (Jayden Daniels healthy, full practice) — no starter drop-off; standing zero."
       },
       {
         "name": "Jaylin Lane",
@@ -2987,5 +3021,5 @@
       }
     ]
   },
-  "stamp": "2026-10-28a"
+  "stamp": "2026-10-28b"
 }
