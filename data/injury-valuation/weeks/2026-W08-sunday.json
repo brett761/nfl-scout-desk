@@ -1,0 +1,330 @@
+{
+ "week": 8,
+ "season": 2026,
+ "window": "Sunday AM / Sunday PM / SNF / MNF (no international game Week 8)",
+ "phase": "FINAL",
+ "injury_pulled": "2026-10-30b",
+ "pulled_et": "2026-10-30 4:43 PM ET (America/New_York)",
+ "espn_timestamp": "2026-10-30T20:42:06Z",
+ "method": "skill nfl-injury-spread-valuation: base position value x quality x role, replacement drop-off, status probability (Out/Doubtful 1.0, Q 0.35), unit interactions; desk auto Madden-first prior compared with full valuation. ESPN tags followed as-is (Brett standing rule); official Friday club reports (NFL Game Status) used where ESPN still carried a pre-Friday tag.",
+ "sources": {
+  "espn": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+  "nfl_com": "https://www.nfl.com/injuries/league/2026/reg8 (Game Status column only populated for TNF and IND at pull; practice columns were Thursday)",
+  "club_reports": "<club>.com/team/injury-report (official NFL report) for 21 clubs; DAL, DEN Friday not posted at pull; ARI/ATL/WSH club pages stale but ESPN carried their Friday tags; CHI/SEA MNF status due Saturday"
+ },
+ "source_gaps": [
+  "DAL Friday Game Status not published by 4:45 PM ET (ESPN Thursday tags used as-is: Pickens, Q. Williams, Downs, Winters, Turpin, Schoonmaker, Shelton Q; coach expects Pickens/Williams/Downs to play).",
+  "DEN Friday Game Status not published by 4:45 PM ET (ESPN Thursday tags: Hufanga, Zach Allen, Waddle, Harvey, B. Jones, Bolles Q).",
+  "MNF CHI@SEA: official game status comes Saturday; Thursday-estimate tags used. JSN DNP Thursday was a rest day (not on report).",
+  "NFL.com Game Status column not populated for Sunday games at pull."
+ ],
+ "material_flips_vs_2026_10_30a": [
+  "('ARI', 'Walter Nolen III', 'IDL', 'QUESTIONABLE', 'OUT', 0.2)",
+  "('ARI', 'Jon Gaines II', 'OG', 'QUESTIONABLE', 'OUT', None)",
+  "('ATL', 'Brian Robinson Jr.', 'RB1', 'QUESTIONABLE', 'OUT', 0.2)",
+  "('BAL', 'Olaivavega Ioane', 'OG', 'QUESTIONABLE', 'OUT', None)",
+  "('BAL', 'T.J. Tampa', 'CB1', 'IR', 'QUESTIONABLE', None)",
+  "('BAL', 'Jaylinn Hawkins', 'S', 'QUESTIONABLE', 'OUT', 0.25)",
+  "('BAL', 'Adam Randall', 'RB1', 'IR', 'QUESTIONABLE', None)",
+  "('IND', 'Justin Walley', 'CB1', 'QUESTIONABLE', 'OUT', None)",
+  "('IND', 'Anthony Gould', 'WR2', 'QUESTIONABLE', 'OUT', None)",
+  "('JAX', 'Antonio Johnson', 'S', 'QUESTIONABLE', 'OUT', 0.2)",
+  "('LAC', 'Deane Leonard', 'CB1', 'QUESTIONABLE', 'OUT', None)",
+  "('LAC', 'Derwin James Jr.', 'S', 'DOUBTFUL', 'OUT', 0.5)",
+  "('LAC', 'Kayode Awosika', 'OG', 'QUESTIONABLE', 'OUT', None)",
+  "('LAC', 'Brenen Thompson', 'WR2', 'QUESTIONABLE', 'OUT', None)",
+  "('LV', 'Jack Bech', 'WR2', 'IR', 'QUESTIONABLE', None)",
+  "('LV', 'Patrick Johnson', 'EDGE1', 'QUESTIONABLE', 'OUT', None)",
+  "('LV', 'Carter Runyon', 'TE1', 'IR', 'OUT', None)",
+  "('MIA', 'Kadyn Proctor', 'RT', 'QUESTIONABLE', 'OUT', 0.2)",
+  "('NYJ', \"T'Vondre Sweat\", 'IDL', 'DOUBTFUL', 'OUT', 0.2)",
+  "('NYJ', 'Max Mitchell', 'RT', 'QUESTIONABLE', 'OUT', None)",
+  "('NYJ', 'Joseph Ossai', 'EDGE1', 'DOUBTFUL', 'OUT', 0.2)",
+  "('NYJ', 'David Bailey', 'LB', 'QUESTIONABLE', 'DOUBTFUL', 0.2)",
+  "('PHI', 'Dontayvion Wicks', 'WR2', 'QUESTIONABLE', 'OUT', 0.2)",
+  "('PHI', 'DeVonta Smith', 'WR2', 'QUESTIONABLE', 'OUT', 0.25)",
+  "('PHI', 'Jihaad Campbell', 'LB', 'QUESTIONABLE', 'OUT', 0.2)",
+  "('PIT', 'Brandin Echols', 'CB1', 'QUESTIONABLE', 'OUT', 0.25)",
+  "('SEA', 'Anthony Bradford', 'OG', 'IR', 'QUESTIONABLE', None)",
+  "('TB', 'Emeka Egbuka', 'WR2', 'QUESTIONABLE', 'OUT', 0.2)",
+  "('TEN', 'Tyjae Spears', 'RB1', 'QUESTIONABLE', 'OUT', 0.2)",
+  "('TEN', 'Carnell Tate', 'WR2', 'QUESTIONABLE', 'OUT', 0.2)",
+  "('TEN', 'Dorian Mausi', 'LB', 'IR', 'QUESTIONABLE', None)",
+  "('WSH', 'Javon Kinlaw', 'IDL', 'DOUBTFUL', 'OUT', None)"
+ ],
+ "material_added": [
+  "('ARI', 'Hjalte Froholdt', 'C', 'QUESTIONABLE', 0.25)",
+  "('ARI', 'Elijah Wilkinson', 'RT', 'QUESTIONABLE', 0.2)",
+  "('ATL', 'Charles Snowden', 'LB', 'QUESTIONABLE', 0.2)",
+  "('BUF', 'Greg Gaines', 'IDL', 'QUESTIONABLE', None)",
+  "('BUF', 'TJ Parker', 'LB', 'QUESTIONABLE', 0.2)",
+  "('BUF', 'Dee Alford', 'CB1', 'QUESTIONABLE', 0.2)",
+  "('BUF', 'Spencer Brown', 'RT', 'QUESTIONABLE', 0.25)",
+  "('CHI', 'Colston Loveland', 'TE1', 'QUESTIONABLE', 0.25)",
+  "('CHI', \"D'Marco Jackson\", 'LB', 'QUESTIONABLE', 0.25)",
+  "('CHI', 'Jack Sanborn', 'LB', 'QUESTIONABLE', None)",
+  "('CIN', 'Joe Giles-Harris', 'LB', 'QUESTIONABLE', None)",
+  "('CLE', 'Daniel Thomas', 'S', 'QUESTIONABLE', None)",
+  "('DAL', 'Luke Schoonmaker', 'TE1', 'QUESTIONABLE', None)",
+  "('DEN', 'Brandon Jones', 'S', 'QUESTIONABLE', 0.25)",
+  "('DEN', 'Garett Bolles', 'RT', 'QUESTIONABLE', 0.5)",
+  "('DET', 'Roger McCreary', 'CB1', 'QUESTIONABLE', 0.2)",
+  "('KC', 'R Mason Thomas', 'EDGE1', 'QUESTIONABLE', 0.2)",
+  "('KC', \"L'Jarius Sneed\", 'CB1', 'QUESTIONABLE', 0.2)",
+  "('LAR', 'Jordan Whittington', 'WR2', 'QUESTIONABLE', None)",
+  "('LAR', 'Coleman Shelton', 'C', 'QUESTIONABLE', 0.2)",
+  "('LV', 'Jackson Powers-Johnson', 'OG', 'QUESTIONABLE', 0.2)",
+  "('MIN', 'Jay Ward', 'S', 'QUESTIONABLE', 0.2)",
+  "('NE', 'Christian Elliss', 'LB', 'QUESTIONABLE', None)",
+  "('NE', 'Carlton Davis III', 'CB1', 'QUESTIONABLE', 0.25)",
+  "('NYG', 'Marcus Mbow', 'RT', 'QUESTIONABLE', None)",
+  "('PHI', 'Jonathan Jones', 'CB1', 'OUT', None)",
+  "('PHI', 'Britain Covey', 'WR2', 'OUT', None)",
+  "('PIT', 'Doneiko Slaughter', 'CB1', 'OUT', None)",
+  "('SEA', 'Uchenna Nwosu', 'LB', 'QUESTIONABLE', None)",
+  "('SEA', \"Patrick O'Connell\", 'LB', 'QUESTIONABLE', None)",
+  "('TEN', 'Jaylon Jones', 'CB1', 'QUESTIONABLE', None)",
+  "('TEN', 'John Franklin-Myers', 'EDGE1', 'QUESTIONABLE', 0.2)",
+  "('WSH', 'Nick Allegretti', 'OG', 'QUESTIONABLE', None)"
+ ],
+ "material_cleared": [
+  "('ATL', 'A.J. Terrell Jr.', 'CB1', 'QUESTIONABLE', 0.25)",
+  "('ATL', 'C.J. Henderson', 'CB1', 'QUESTIONABLE', None)",
+  "('ATL', 'Kendal Daniels', 'LB', 'QUESTIONABLE', None)",
+  "('BAL', 'Roquan Smith', 'LB', 'QUESTIONABLE', 0.5)",
+  "('BAL', 'Kyle Hamilton', 'S', 'QUESTIONABLE', 0.5)",
+  "('BAL', 'Lamar Jackson', 'QB1', 'QUESTIONABLE', 1.5)",
+  "('BUF', 'Ray Davis', 'RB1', 'QUESTIONABLE', None)",
+  "('CLE', 'Mike Hall Jr.', 'IDL', 'QUESTIONABLE', None)",
+  "('CLE', 'Jared Verse', 'EDGE1', 'QUESTIONABLE', 0.25)",
+  "('CLE', 'Carson Schwesinger', 'LB', 'QUESTIONABLE', 0.25)",
+  "('DET', 'Ennis Rakestraw Jr.', 'CB1', 'QUESTIONABLE', None)",
+  "('IND', 'Tyler Warren', 'TE1', 'QUESTIONABLE', 0.25)",
+  "('JAX', 'LeQuint Allen Jr.', 'RB1', 'QUESTIONABLE', None)",
+  "('KC', 'Rashee Rice', 'WR2', 'QUESTIONABLE', 0.25)",
+  "('KC', 'Travis Kelce', 'TE1', 'QUESTIONABLE', 0.25)",
+  "('KC', 'Jaylon Moore', 'RT', 'QUESTIONABLE', 0.2)",
+  "('LAC', \"Tre' Harris\", 'WR2', 'QUESTIONABLE', 0.2)",
+  "('LAC', 'Ladd McConkey', 'WR2', 'QUESTIONABLE', 0.25)",
+  "('LAR', 'Nate Landman', 'LB', 'QUESTIONABLE', 0.25)",
+  "('LV', 'Ian Thomas', 'TE1', 'QUESTIONABLE', 0.2)",
+  "('MIA', 'Jared Wayne', 'WR2', 'QUESTIONABLE', None)",
+  "('MIA', 'Will Kacmarek', 'TE1', 'QUESTIONABLE', None)",
+  "('MIA', 'Greg Dulcich', 'TE1', 'QUESTIONABLE', 0.25)",
+  "('MIA', 'Malik Washington', 'WR2', 'QUESTIONABLE', 0.2)",
+  "('MIN', 'Aaron Jones Sr.', 'RB1', 'QUESTIONABLE', 0.25)wrote data/injury-trench/health-2026-w08.json (28 teams, shadow only)",
+  "  CAR: live 3.18  proposed 1.97  F7HI 0.53  OLHI 0.00",
+  "  NE: live 2.89  proposed 1.69  F7HI 0.19  OLHI 0.20",
+  "  ATL: live 2.11  proposed 0.94  F7HI 0.24  OLHI 0.00",
+  "  LAC: live 3.18  proposed 2.03  F7HI 0.00  OLHI 0.25",
+  "  TEN: live 2.37  proposed 1.27  F7HI 0.06  OLHI 0.00",
+  "  WSH: live 3.14  proposed 2.15  F7HI 0.68  OLHI 0.00",
+  "",
+  "('PHI', 'Saquon Barkley', 'RB1', 'QUESTIONABLE', 0.5)",
+  "('PHI', 'Nolan Smith Jr.', 'LB', 'QUESTIONABLE', 0.25)",
+  "('PHI', 'Michael Carter II', 'CB1', 'QUESTIONABLE', None)",
+  "('PHI', 'Jonathan Greenard', 'EDGE1', 'QUESTIONABLE', 0.25)"
+ ],
+ "report_cards": {
+  "BAL Lamar Jackson": {
+   "status": "no designation (was Q)",
+   "p_play": 0.98,
+   "desk_impact": 1.5,
+   "note": "Full practice Thu/Fri; coach Jesse Minter confirmed Friday he will play at BUF. Q penalty (0.35 x 1.5 = 0.53) removed. Roquan Smith and Kyle Hamilton also cleared (0.18 each). BAL OUT: S Jaylinn Hawkins, G Olaivavega Ioane. Kill 1 no longer fires on BAL@BUF.",
+   "confidence": "High"
+  },
+  "PHI WR room (DeVonta Smith OUT, Wicks OUT, Covey OUT) + CB Jonathan Jones OUT, LB Jihaad Campbell OUT": {
+   "status": "OUT",
+   "replacement": "Marquise Brown (Madden 75) + depth; backup QB McKee already starting",
+   "desk_impact_auto": "Smith 0.25 (tier cap), Wicks 0.2, Covey pos-base",
+   "full_valuation": "Smith 0.5-0.8 as WR1 (Madden 92) with no WR2 behind him; Wicks 0.2-0.3; Covey ~0.1",
+   "manual": "DeVonta Smith 0.65 (impact_source manual)",
+   "unit_interaction": "WR room collapse with a backup QB; folded into the Smith manual rather than double-counted",
+   "confidence": "Moderate",
+   "note": "PHI term -3.12 -> -3.99 (cap 6). B$ WSH -1 -> -2; street WSH -6. Desk QB cap still under-prices the Hurts loss (standing flag); no ticket."
+  },
+  "PIT CB pair (Echols OUT, Slaughter OUT)": {
+   "status": "OUT",
+   "replacement": "depth CB; Jalen Ramsey (full practice, no designation) and Porter healthy",
+   "desk_impact_auto": "Echols 0.25 + Slaughter pos-base 0.25 = -0.41 term change",
+   "full_valuation": "0.3-0.6 combined (nickel/dime, not CB1/CB2)",
+   "manual": "none (auto inside range)",
+   "confidence": "Moderate",
+   "note": "PIT term -1.23 -> -1.64; B$ PIT -8.5 -> -8, shadow -7 -> -6. Thursday card trigger met: 2 of Ramsey/Slaughter/Echols out = PIT ticket FLAG-COUNT 1."
+  },
+  "NYJ front (Sweat OUT, Ossai OUT, Bailey DOUBTFUL, RT Max Mitchell OUT)": {
+   "status": "OUT/D",
+   "desk_impact_auto": "0.2 each (D = 1.0)",
+   "full_valuation": "Bailey 0.2-0.35 (rookie EDGE, Madden 81); Sweat/Ossai were already Doubtful = 1.0 so only Bailey and Mitchell are new",
+   "manual": "none (auto inside range; cluster bump would be <0.15)",
+   "confidence": "Moderate",
+   "note": "NYJ term -2.12 -> -2.41; B$ NYJ -6 -> -5.5, shadow -4.5 -> -4. NYJ ticket edge intact."
+  },
+  "LAC secondary/OL (Derwin James OUT, Deane Leonard OUT, Awosika OUT, Thompson OUT; D. Jackson, Shelley Q)": {
+   "status": "OUT/Q",
+   "desk_impact_auto": "James 0.5 (All-Pro cap)",
+   "full_valuation": "James 0.5-1.0, CB cluster 0.2-0.4",
+   "manual": "none; B$ LAR -16 is already a model cliff vs -6.5, no ticket",
+   "confidence": "Low"
+  },
+  "TEN (Spears OUT, Carnell Tate OUT, P Townsend OUT; Franklin-Myers, Ridley, Mausi, Jaylon Jones Q)": {
+   "note": "TEN term -1.98 -> -2.37. CIN -12.5 is outside the box (-10.5) regardless.",
+   "manual": "none",
+   "confidence": "Moderate"
+  },
+  "SEA (Cross D, L. Williams Q, Shaheed Q, Knight Q; MNF)": {
+   "note": "Thursday-estimate tags; official MNF status Saturday. SEA term unchanged at -2.3. JSN rest day only.",
+   "manual": "none",
+   "confidence": "Moderate"
+  },
+  "NE (A.J. Brown Q, TreVeyon Henderson Q illness DNP Fri, Carlton Davis Q)": {
+   "note": "NE term -2.67 -> -2.85. B$ NE -10 -> -9.5.",
+   "manual": "none",
+   "confidence": "Moderate"
+  }
+ },
+ "team_injury_terms_working_to_final": {
+  "ARI": {
+   "working": -2.72,
+   "final": -3.17,
+   "delta": -0.45
+  },
+  "ATL": {
+   "working": -2.18,
+   "final": -2.11,
+   "delta": 0.07
+  },
+  "BAL": {
+   "working": -2.51,
+   "final": -1.63,
+   "delta": 0.88
+  },
+  "BUF": {
+   "working": -1.17,
+   "final": -1.4,
+   "delta": -0.23
+  },
+  "CHI": {
+   "working": -1.47,
+   "final": -1.74,
+   "delta": -0.27
+  },
+  "CIN": {
+   "working": -1.85,
+   "final": -1.94,
+   "delta": -0.09
+  },
+  "CLE": {
+   "working": -1.28,
+   "final": -1.1,
+   "delta": 0.18
+  },
+  "DAL": {
+   "working": -1.84,
+   "final": -1.93,
+   "delta": -0.09
+  },
+  "DEN": {
+   "working": -2.27,
+   "final": -2.54,
+   "delta": -0.27
+  },
+  "DET": {
+   "working": -2.24,
+   "final": -2.22,
+   "delta": 0.02
+  },
+  "IND": {
+   "working": -2.05,
+   "final": -2.28,
+   "delta": -0.23
+  },
+  "JAX": {
+   "working": -1.27,
+   "final": -1.24,
+   "delta": 0.03
+  },
+  "KC": {
+   "working": -1.69,
+   "final": -1.58,
+   "delta": 0.11
+  },
+  "LAC": {
+   "working": -2.86,
+   "final": -3.18,
+   "delta": -0.32
+  },
+  "LAR": {
+   "working": -2.56,
+   "final": -2.83,
+   "delta": -0.27
+  },
+  "LV": {
+   "working": -0.91,
+   "final": -0.91,
+   "delta": 0.0
+  },
+  "MIA": {
+   "working": -1.47,
+   "final": -1.26,
+   "delta": 0.21
+  },
+  "MIN": {
+   "working": -0.94,
+   "final": -0.92,
+   "delta": 0.02
+  },
+  "NE": {
+   "working": -2.67,
+   "final": -2.85,
+   "delta": -0.18
+  },
+  "NYJ": {
+   "working": -2.12,
+   "final": -2.41,
+   "delta": -0.29
+  },
+  "PHI": {
+   "working": -3.12,
+   "final": -3.99,
+   "delta": -0.87
+  },
+  "PIT": {
+   "working": -1.23,
+   "final": -1.64,
+   "delta": -0.41
+  },
+  "SEA": {
+   "working": -2.29,
+   "final": -2.31,
+   "delta": -0.02
+  },
+  "TB": {
+   "working": -1.23,
+   "final": -1.36,
+   "delta": -0.13
+  },
+  "TEN": {
+   "working": -1.98,
+   "final": -2.37,
+   "delta": -0.39
+  },
+  "WSH": {
+   "working": -3.05,
+   "final": -3.14,
+   "delta": -0.09
+  }
+ },
+ "manual_overrides_applied": [
+  "PHI DeVonta Smith 0.25 -> 0.65 (manual)"
+ ],
+ "official_overrides_applied": [
+  "LV Carter Runyon NEW OUT",
+  "LV Jack Bech IR -> Q",
+  "TEN Dorian Mausi IR -> Q",
+  "BAL Adam Randall IR -> Q",
+  "BAL T.J. Tampa IR -> Q"
+ ],
+ "overrides_note": "One new manual (PHI DeVonta Smith). Standing manuals preserved. QB cap 1.5 unchanged. FINAL rules: stub-hold narrowed to bare 'inactive'; bare Week 8 ESPN O/D/Q stubs (dated 10/27 on) and Friday-dated rows are followed as-is instead of noise-dropped (this restored official Q tags such as TEN Franklin-Myers, KC Sneed, LV Powers-Johnson, LAR C. Shelton, BUF S. Brown).",
+ "tnf": "CAR@GB FINAL GB 27, CAR 19 (B$ GB -2.62 lock vs DK GB -3.5; GB covered both; no TNF ticket, Wed card PASS)"
+}
