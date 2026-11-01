@@ -18,7 +18,7 @@
   "street_home_spread": -6.5,
   "close_at_lock": -6.5,
   "ou_street": 45.5,
-  "street_note": "Working pre-kick freeze Oct 30, 2026, 4:45 PM ET (America/New_York) after Friday FINAL Game Status. ESPN DraftKings scoreboard: LAR -6.5 / ou 45.5. Refresh pre-kick if street or model moves materially.",
+  "street_note": "Working pre-kick freeze Nov 1, 2026, 8:01 AM ET (America/New_York) Sunday AM public-window refresh (injuries 2026-10-31a). ESPN DraftKings scoreboard: LAR -6.5 / ou 45.5. Refresh pre-kick if street or model moves materially.",
   "edge_home": 9.45,
   "edge_home_rounded": 9.5,
   "edge_note": "edgeHome = street − model = -6.5 − (-15.95) = 9.45; positive → home (LAR) value. Rounded B$ -16 vs -6.5 = 9.5.",
@@ -29,9 +29,9 @@
     "in_b_line": false
   },
   "feature_stack": {
-    "formula": "ourHomeLine = -(eff(home) - eff(away) + HFA + coach + prep + ats + sched + matchup); eff = algorithmBase + fa + draft + madden + pff + pffPre + pffYtd + sos + return + injury. 2025 prior locked at 0 from Week 5; Last-year SOS out.",
-    "injury_pulled": "2026-10-30b",
-    "injury_phase": "FINAL",
+    "formula": "ourHomeLine = -(eff(home) - eff(away) + HFA + coach + prep + ats + sched + matchup); eff = algorithmBase + fa + draft + madden + pff + pffPre + pffYtd + sos + return + injury. 2025 prior locked at 0 from Week 8; Last-year SOS out.",
+    "injury_pulled": "2026-10-31a",
+    "injury_phase": "WORKING-SAT",
     "away_LAC": {
       "prior": -5.75,
       "fa": 0,
@@ -96,8 +96,7 @@
     "gap": -15.95
   },
   "injury_valuation": "data/injury-valuation/weeks/2026-W08-sunday.json",
-  "frozen_at": "2026-10-30T20:45:07.594Z",
-  "frozen_at_et": "Oct 30, 2026, 4:45 PM ET (America/New_York)",
-  "tickets": [],
-  "card_tickets": []
+  "frozen_at": "2026-11-01T13:01:00.919Z",
+  "frozen_at_et": "Nov 1, 2026, 8:01 AM ET (America/New_York)",
+  "tickets": []
 }
