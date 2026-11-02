@@ -1,14 +1,29 @@
 {
   "week": 8,
   "season": 2026,
-  "frozen_at": "2026-11-01T13:01:00.919Z",
-  "frozen_at_et": "Nov 1, 2026, 8:01 AM ET (America/New_York)",
-  "injury_pulled": "2026-10-31a",
-  "injury_phase": "WORKING-SAT",
+  "frozen_at": "2026-11-02T00:25:18.621Z",
+  "frozen_at_et": "Nov 1, 2026, 7:25 PM ET (America/New_York)",
+  "injury_pulled": "2026-11-01a",
+  "injury_phase": "WORKING-SUN",
   "street_source": "ESPN DraftKings scoreboard site.api.espn.com week=8 year=2026",
   "tnf": "CAR@GB TNF FINAL GB 27, CAR 19 (frozen separately in 2026-w08-car-gb.json; not re-frozen)",
   "n": 13,
   "games": [
+    {
+      "slug": "2026-w08-phi-wsh",
+      "game": "PHI@WSH",
+      "window": "SNF",
+      "kick": "2026-11-02T01:20Z",
+      "model": -1.64,
+      "official": -1.5,
+      "street": -6,
+      "ou": 40.5,
+      "edge_home": -4.36,
+      "edge_home_rounded": -4.5,
+      "shadow": -1,
+      "inj_away": -3.99,
+      "inj_home": -3.3
+    },
     {
       "slug": "2026-w08-bal-buf",
       "game": "BAL@BUF",
@@ -190,22 +205,6 @@
       "card_tickets": []
     },
     {
-      "slug": "2026-w08-phi-wsh",
-      "game": "PHI@WSH",
-      "window": "SNF",
-      "kick": "2026-11-02T01:20Z",
-      "model": -1.8,
-      "official": -2,
-      "street": -6,
-      "ou": 40.5,
-      "edge_home": -4.2,
-      "edge_home_rounded": -4,
-      "shadow": -1,
-      "card_tickets": [],
-      "inj_away": -3.99,
-      "inj_home": -3.14
-    },
-    {
       "slug": "2026-w08-chi-sea",
       "game": "CHI@SEA",
       "window": "MNF",
@@ -224,5 +223,5 @@
       "inj_home": -2.31
     }
   ],
-  "note": "Sunday 8 AM refresh: SUN_AM/SUN_PM re-frozen at Nov 1, 2026, 8:01 AM ET (America/New_York); SNF/MNF entries kept from Friday FINAL freeze Oct 30, 2026, 4:45 PM ET (America/New_York)."
+  "note": "Sunday 8 AM refresh: SUN_AM/SUN_PM re-frozen at Nov 1, 2026, 8:01 AM ET (America/New_York); SNF/MNF entries kept from Friday FINAL freeze Oct 30, 2026, 4:45 PM ET (America/New_York). | SNF pre-kick refresh at Nov 1, 2026, 7:25 PM ET (America/New_York) (other entries kept)."
 }
