@@ -1,14 +1,14 @@
 {
   "season": 2026,
   "source_season": 2025,
-  "pulled": "2026-10-27",
+  "pulled": "2026-11-03",
   "source": "PFF+ Premium Stats CSV export (2025 REG), official download",
   "player_pool": 1994,
   "roster": {
-    "teams_as_of": "2026-10-27T10:48:04-04:00",
+    "teams_as_of": "2026-11-03T10:47:25-05:00",
     "map": "data/pff-roster-map-2026.json",
-    "moved": 272,
-    "dropped_no_2026_club": 117,
+    "moved": 279,
+    "dropped_no_2026_club": 115,
     "note": "2025 grades, counted for each player's current 2026 club (team_2025 shown on movers). Free agents, retired players and practice-squad players are left out; IR players stay in (debited through the injury sheet)."
   },
   "scoring": {
@@ -18,7 +18,7 @@
     "min_snaps": 200,
     "grade_per_point": 5.0,
     "cap": 1.5,
-    "league_grade": 71.03,
+    "league_grade": 71.04,
     "note": "Same 22 per club (11 OFF + 11 DEF by 2025 PFF grade, min snaps, on the 2026 roster). Surplus vs league mean of those 22. 5 grade \u2248 1 point, cap \u00b11.5. Does not rewrite the 2025 prior. Raw CSVs stay off the public desk."
   },
   "teams": {
@@ -480,9 +480,9 @@
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "grade": 68.03,
+      "grade": 68.28,
       "off_grade": 75.47,
-      "def_grade": 60.59,
+      "def_grade": 61.09,
       "off": [
         {
           "name": "Josh Allen",
@@ -604,6 +604,13 @@
           "snaps": 433
         },
         {
+          "name": "Geno Stone",
+          "pos": "S",
+          "grade": 54.3,
+          "snaps": 1014,
+          "team_2025": "CIN"
+        },
+        {
           "name": "Dee Alford",
           "pos": "CB",
           "grade": 52.9,
@@ -616,15 +623,9 @@
           "grade": 51.6,
           "snaps": 767,
           "team_2025": "CHI"
-        },
-        {
-          "name": "Terrel Bernard",
-          "pos": "LB",
-          "grade": 48.8,
-          "snaps": 623
         }
       ],
-      "net": -0.6
+      "net": -0.55
     },
     "CAR": {
       "n": 22,
@@ -779,9 +780,9 @@
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "grade": 71.0,
+      "grade": 72.45,
       "off_grade": 75.15,
-      "def_grade": 66.85,
+      "def_grade": 69.74,
       "off": [
         {
           "name": "Darnell Wright",
@@ -853,6 +854,13 @@
       ],
       "def": [
         {
+          "name": "Jeffery Simmons",
+          "pos": "DI",
+          "grade": 88.3,
+          "snaps": 764,
+          "team_2025": "TEN"
+        },
+        {
           "name": "Devin Bush",
           "pos": "LB",
           "grade": 87.6,
@@ -914,16 +922,9 @@
           "pos": "DI",
           "grade": 56.7,
           "snaps": 610
-        },
-        {
-          "name": "Neville Gallimore",
-          "pos": "DI",
-          "grade": 56.6,
-          "snaps": 467,
-          "team_2025": "IND"
         }
       ],
-      "net": -0.01
+      "net": 0.28
     },
     "CIN": {
       "n": 22,
@@ -1965,22 +1966,16 @@
           "team_2025": "TB"
         }
       ],
-      "net": 0.73
+      "net": 0.72
     },
     "IND": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "grade": 72.27,
-      "off_grade": 76.39,
-      "def_grade": 68.15,
+      "grade": 70.48,
+      "off_grade": 74.67,
+      "def_grade": 66.28,
       "off": [
-        {
-          "name": "Quenton Nelson",
-          "pos": "G",
-          "grade": 84.7,
-          "snaps": 1039
-        },
         {
           "name": "Tanor Bortolini",
           "pos": "C",
@@ -2041,6 +2036,12 @@
           "pos": "TE",
           "grade": 67.4,
           "snaps": 421
+        },
+        {
+          "name": "Matt Goncalves",
+          "pos": "G",
+          "grade": 65.8,
+          "snaps": 1008
         }
       ],
       "def": [
@@ -2063,12 +2064,6 @@
           "snaps": 606
         },
         {
-          "name": "DeForest Buckner",
-          "pos": "DI",
-          "grade": 74.0,
-          "snaps": 469
-        },
-        {
           "name": "Camryn Bynum",
           "pos": "S",
           "grade": 70.8,
@@ -2080,12 +2075,6 @@
           "grade": 63.7,
           "snaps": 449,
           "team_2025": "TEN"
-        },
-        {
-          "name": "Germaine Pratt",
-          "pos": "LB",
-          "grade": 62.6,
-          "snaps": 913
         },
         {
           "name": "JT Tuimoloau",
@@ -2112,9 +2101,22 @@
           "grade": 59.9,
           "snaps": 578,
           "team_2025": "NYJ"
+        },
+        {
+          "name": "Cameron Mitchell",
+          "pos": "CB",
+          "grade": 58.4,
+          "snaps": 261
+        },
+        {
+          "name": "Cam Taylor-Britt",
+          "pos": "CB",
+          "grade": 57.6,
+          "snaps": 348,
+          "team_2025": "CIN"
         }
       ],
-      "net": 0.25
+      "net": -0.11
     },
     "JAX": {
       "n": 22,
@@ -2557,7 +2559,7 @@
           "snaps": 640
         }
       ],
-      "net": -0.05
+      "net": -0.06
     },
     "LAR": {
       "n": 22,
@@ -4057,8 +4059,8 @@
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "grade": 75.98,
-      "off_grade": 75.07,
+      "grade": 76.88,
+      "off_grade": 76.88,
       "def_grade": 76.88,
       "off": [
         {
@@ -4072,6 +4074,13 @@
           "pos": "HB",
           "grade": 85.2,
           "snaps": 489
+        },
+        {
+          "name": "Quenton Nelson",
+          "pos": "G",
+          "grade": 84.7,
+          "snaps": 1039,
+          "team_2025": "IND"
         },
         {
           "name": "Sam Darnold",
@@ -4120,12 +4129,6 @@
           "pos": "WR",
           "grade": 66.1,
           "snaps": 705
-        },
-        {
-          "name": "Eric Saubert",
-          "pos": "TE",
-          "grade": 64.8,
-          "snaps": 276
         }
       ],
       "def": [
@@ -4197,15 +4200,15 @@
           "snaps": 765
         }
       ],
-      "net": 0.99
+      "net": 1.17
     },
     "SF": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "grade": 72.64,
+      "grade": 73.27,
       "off_grade": 79.51,
-      "def_grade": 65.77,
+      "def_grade": 67.03,
       "off": [
         {
           "name": "Trent Williams",
@@ -4290,6 +4293,13 @@
           "team_2025": "DEN"
         },
         {
+          "name": "DeForest Buckner",
+          "pos": "DI",
+          "grade": 74.0,
+          "snaps": 469,
+          "team_2025": "IND"
+        },
+        {
           "name": "Osa Odighizuwa",
           "pos": "DI",
           "grade": 65.9,
@@ -4334,20 +4344,13 @@
           "snaps": 1065
         },
         {
-          "name": "Jack Jones",
-          "pos": "CB",
-          "grade": 60.2,
-          "snaps": 980,
-          "team_2025": "MIA"
-        },
-        {
           "name": "Keion White",
           "pos": "ED",
           "grade": 58.3,
           "snaps": 441
         }
       ],
-      "net": 0.32
+      "net": 0.45
     },
     "TB": {
       "n": 22,
@@ -4498,15 +4501,15 @@
           "team_2025": "MIA"
         }
       ],
-      "net": -0.39
+      "net": -0.4
     },
     "TEN": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "grade": 67.96,
+      "grade": 66.66,
       "off_grade": 68.91,
-      "def_grade": 67.02,
+      "def_grade": 64.41,
       "off": [
         {
           "name": "Peter Skoronski",
@@ -4581,12 +4584,6 @@
       ],
       "def": [
         {
-          "name": "Jeffery Simmons",
-          "pos": "DI",
-          "grade": 88.3,
-          "snaps": 764
-        },
-        {
           "name": "Cedric Gray",
           "pos": "LB",
           "grade": 78.9,
@@ -4651,9 +4648,16 @@
           "grade": 60.0,
           "snaps": 322,
           "team_2025": "NYJ"
+        },
+        {
+          "name": "Solomon Thomas",
+          "pos": "DI",
+          "grade": 59.6,
+          "snaps": 417,
+          "team_2025": "DAL"
         }
       ],
-      "net": -0.61
+      "net": -0.88
     },
     "WSH": {
       "n": 22,
