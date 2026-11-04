@@ -70,3 +70,10 @@ Pulled 2026-11-04 10:10 AM ET (America/New_York). Stamp `injury_pulled=2026-11-0
 - ESPN API timestamp 2026-11-04T15:09:39Z.
 
 Sources: ESPN injuries API; nfl.com/injuries; Week 8 (final) and Week 9 scoreboards.
+
+## FINAL 2026-11-04b (Week 9 TNF JAX@BAL)
+
+- Official Wed Game Status (jaguars.com reg-9 table, nfl.com Week 9 report), pulled 4:25 PM ET.
+- JAX: Walker Q (DNP/LP/LP) and Tuten Q (DNP x3) soft on; Meyers, Rodriguez Jr., A. Johnson no status, off. Term -1.74 to -1.49.
+- BAL: Lamar (IR), Huntley, Hawkins OUT; Fagnano starts; Randall Q (IR activation) and Wiggins Q illness soft on. Term -4.49 to -4.58.
+- B$ BAL +11.40 raw (+11.5) vs DK JAX -10 / 39.5. Valuation: data/injury-valuation/weeks/2026-W09-jax-bal.json. JAX/BAL rows TNF-protected.

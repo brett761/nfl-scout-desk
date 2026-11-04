@@ -1,14 +1,15 @@
 {
-  "pulled": "2026-11-04a",
-  "pulled_et": "2026-11-04 10:10 AM ET (America/New_York)",
-  "phase": "WORKING-WED",
+  "pulled": "2026-11-04b",
+  "pulled_et": "2026-11-04 4:25 PM ET (America/New_York)",
+  "phase": "FINAL",
   "sources": [
-    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+    "https://www.jaguars.com/team/injury-report/week/reg-9",
+    "https://www.baltimoreravens.com/team/injury-report/",
+    "https://www.nfl.com/news/nfl-week-9-injury-report-2026-season",
     "https://www.nfl.com/injuries/",
-    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?seasontype=2&week=8&year=2026",
-    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?seasontype=2&week=9&year=2026"
+    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
   ],
-  "note": "WORKING-WED Wednesday ESPN refresh (Week 9; prior seed 2026-11-03a WORKING-TUE). Week 8 fully FINAL incl. MNF CHI@SEA - no protects. Week 9 official practice sheet not out yet (TNF JAX@BAL Wed ~4pm ET) - ESPN working list only. Byes Week 9 PIT/TEN. Finished clubs: drop gameday inactive / ruled-out-for-remainder / coach's-decision noise; keep multi-week OUT + IR/PUP/NFI. ESPN designations followed as-is. Doubtful = 1.0 out. Preserve manuals. Tier caps QB<=1.5 / All-Pro<=0.5 / other<=0.25 on auto; Madden-first else PFF; floor 0.2x status; Cap team 6.0. No rumor moves.",
+  "note": "FINAL 2026-11-04b Week 9 TNF JAX@BAL after official Wed Game Status (jaguars.com reg-9 table + nfl.com Week 9 report). JAX: Walker and Tuten Q (soft on); Meyers, Rodriguez Jr., A. Johnson no status (off); IR rows unchanged. BAL: Lamar (IR), Huntley, Hawkins OUT; Fagnano starts; Randall Q (IR activation needed) and Wiggins Q illness (soft on); Ioane and the OL no status (off). JAX/BAL rows are TNF-protected: later ESPN reseeds must not soften them. Other clubs unchanged from 2026-11-04a WORKING-WED (ESPN working tags as-is; official sheet Friday). Madden-first else PFF; Probable/cleared OFF; Q only with expected-impact judgment. Doubtful 1.0. Standing manuals preserved.",
   "espn_timestamp": "2026-11-04T15:09:39Z",
   "teams": {
     "ARI": [
@@ -254,9 +255,10 @@
         "name": "Tyler Huntley",
         "pos": "QB1",
         "status": "OUT",
-        "note": "Huntley (toe) has reportedly sustained a season-ending turf toe injury, Adam Schefter of ESPN reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "note": "Official Wed FINAL Out (DNP Mon-Wed), season-ending turf toe per Schefter; IR expected. Undrafted rookie Joe Fagnano (FP) starts; Brissett trade will not be in time for TNF. Auto QB1 1.5 kept as the Huntley-to-Fagnano step (Lamar row prices Lamar-to-Huntley).",
+        "source": "https://www.baltimoreravens.com/team/injury-report/",
+        "on": true,
+        "injury": "Toe"
       },
       {
         "name": "Tyler Loop",
@@ -269,19 +271,20 @@
       {
         "name": "Jaylinn Hawkins",
         "pos": "S",
-        "status": "QUESTIONABLE",
-        "note": "Hawkins (knee) was estimated as a non-participant on Monday's practice reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "status": "OUT",
+        "note": "Official Wed FINAL Out (DNP Mon-Wed). Starting S. Was Q soft; now full 0.25 (pff).",
+        "source": "https://www.baltimoreravens.com/team/injury-report/",
         "on": true,
         "impact": 0.25,
-        "impact_source": "pff"
+        "impact_source": "pff",
+        "injury": "Knee"
       },
       {
         "name": "Lamar Jackson",
         "pos": "QB1",
         "status": "IR",
-        "note": "Ravens head coach Jesse Minter said after Sunday's 36-10 loss to the Bills that Jackson will undergo surgery to address his right thumb injury and will be placed on injured reserve,  Brian Wacker of The Baltimore Sun reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "note": "Official Wed FINAL Out (DNP Mon-Wed), thumb surgery, IR. Madden 1.5 kept.",
+        "source": "https://www.baltimoreravens.com/team/injury-report/",
         "on": true,
         "impact": 1.5,
         "impact_source": "madden"
@@ -289,10 +292,11 @@
       {
         "name": "Adam Randall",
         "pos": "RB1",
-        "status": "IR",
-        "note": "Randall (neck) wasn't activated from injured reserve Saturday and won't be available for Sunday's game against the Bills, Jeff Zrebiec of The Athletic reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "status": "QUESTIONABLE",
+        "note": "Official Wed FINAL Questionable (FP Mon-Wed) but must be activated from IR to play. Justice Hill (FP, no status) available. Q soft on at auto.",
+        "source": "https://www.baltimoreravens.com/team/injury-report/",
+        "on": true,
+        "injury": "Neck"
       },
       {
         "name": "Tavius Robinson",
@@ -327,6 +331,15 @@
         "note": "The Ravens moved Gwyn (ankle) to injured reserve Saturday.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
+      },
+      {
+        "name": "Nate Wiggins",
+        "pos": "CB1",
+        "status": "QUESTIONABLE",
+        "injury": "Stinger/Illness",
+        "source": "https://www.baltimoreravens.com/team/injury-report/",
+        "on": true,
+        "note": "Official Wed FINAL Questionable (FP/FP/DNP, illness added Wed). Starting CB. Illness on a short week, P(play) ~0.65. Q soft on at auto (0.25 x 0.35)."
       }
     ],
     "BUF": [
@@ -388,7 +401,7 @@
         "name": "Dorian Strong",
         "pos": "DEPTH",
         "status": "NFI",
-        "note": "FINAL TNF. Neck \u2014 reserve/NFI. ESPN summary Out (NFI-R). Depth CB; on for completeness.",
+        "note": "FINAL TNF. Neck — reserve/NFI. ESPN summary Out (NFI-R). Depth CB; on for completeness.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872932",
         "on": true
       }
@@ -572,7 +585,7 @@
         "on": true,
         "impact": 0.25,
         "impact_source": "manual",
-        "valuation_note": "W6 FINAL valuation: ESPN Out; with Montez Sweat suspended both starting EDGEs are gone \u2014 fills missing auto at tier cap."
+        "valuation_note": "W6 FINAL valuation: ESPN Out; with Montez Sweat suspended both starting EDGEs are gone — fills missing auto at tier cap."
       },
       {
         "name": "Noah Sewell",
@@ -733,7 +746,7 @@
         "name": "Kendrick Green",
         "pos": "OG",
         "status": "IR",
-        "note": "ir Explicit impact 0 \u2014 depth IR; no pos_base fallthrough.",
+        "note": "ir Explicit impact 0 — depth IR; no pos_base fallthrough.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0,
@@ -1403,11 +1416,12 @@
         "name": "Travon Walker",
         "pos": "EDGE1",
         "status": "QUESTIONABLE",
-        "note": "Walker (ribs) was a limited participant at practice Tuesday.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "note": "Official Wed FINAL Questionable (DNP/LP/LP). Starting EDGE1; trending to play. Q soft on at auto (0.2 x 0.35 = 0.07).",
+        "source": "https://www.jaguars.com/team/injury-report/week/reg-9",
         "on": true,
         "impact": 0.2,
-        "impact_source": "madden"
+        "impact_source": "madden",
+        "injury": "Rib"
       },
       {
         "name": "Eric Murray",
@@ -1430,44 +1444,15 @@
         "impact_source": "madden"
       },
       {
-        "name": "Jakobi Meyers",
-        "pos": "WR2",
-        "status": "QUESTIONABLE",
-        "note": "Meyers (hamstring/ankle) was listed as a limited participant in Tuesday's practice.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.25,
-        "impact_source": "madden"
-      },
-      {
-        "name": "Chris Rodriguez Jr.",
-        "pos": "RB1",
-        "status": "QUESTIONABLE",
-        "note": "Rodriguez (hand) was listed as a limited participant in Tuesday's practice.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.25,
-        "impact_source": "pff"
-      },
-      {
         "name": "Bhayshul Tuten",
         "pos": "RB1",
         "status": "QUESTIONABLE",
-        "note": "The Jaguars listed Tuten (ankle/foot) as a non-participant in Tuesday's practice.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "note": "Official Wed FINAL Questionable (DNP/DNP/DNP), lean miss (P(play) ~0.25). Chris Rodriguez Jr. (LP all week, no status) carries the load. Q soft on at auto 0.07; full value small with a capable RB2.",
+        "source": "https://www.jaguars.com/team/injury-report/week/reg-9",
         "on": true,
         "impact": 0.2,
-        "impact_source": "madden"
-      },
-      {
-        "name": "Antonio Johnson",
-        "pos": "S",
-        "status": "QUESTIONABLE",
-        "note": "Johnson (ankle) has been ruled out for Sunday's game against the Colts.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.2,
-        "impact_source": "madden"
+        "impact_source": "madden",
+        "injury": "Ankle/Foot"
       },
       {
         "name": "Anton Harrison",
@@ -2554,7 +2539,7 @@
         "name": "Gennings Dunker",
         "pos": "OG",
         "status": "IR",
-        "note": "The Steelers placed Dunker (knee) on injured reserve Saturday, Tom Pelissero of Netflix reports. Explicit impact 0 \u2014 depth IR; no pos_base fallthrough.",
+        "note": "The Steelers placed Dunker (knee) on injured reserve Saturday, Tom Pelissero of Netflix reports. Explicit impact 0 — depth IR; no pos_base fallthrough.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0,
@@ -3066,5 +3051,5 @@
       }
     ]
   },
-  "stamp": "2026-11-04a"
+  "stamp": "2026-11-04b"
 }

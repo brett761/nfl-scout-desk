@@ -1,0 +1,35 @@
+{
+  "week": 9, "season": 2026, "game": "JAX@BAL", "window": "TNF", "stamp": "2026-11-04b", "phase": "FINAL",
+  "sources": ["https://www.jaguars.com/team/injury-report/week/reg-9", "https://www.nfl.com/news/nfl-week-9-injury-report-2026-season", "https://www.nfl.com/injuries/"],
+  "pulled_et": "2026-11-04 4:25 PM ET",
+  "raw": "data/injury-valuation/weeks/2026-W09-jax-bal-official-raw.md",
+  "official": {
+    "JAX": [
+      {"name": "Travon Walker", "pos": "EDGE", "injury": "Rib", "practice": "DNP/LP/LP", "status": "QUESTIONABLE", "p_play": 0.75, "on": true, "impact": 0.2, "impact_source": "madden", "range": [0.03, 0.1], "valuation": "Starting EDGE1, upgraded to LP Tue/Wed. Q soft on auto 0.07. Matchup vs a rookie QB raises his value if he plays; no extra add."},
+      {"name": "Bhayshul Tuten", "pos": "RB", "injury": "Ankle/Foot", "practice": "DNP/DNP/DNP", "status": "QUESTIONABLE", "p_play": 0.25, "on": true, "impact": 0.2, "impact_source": "madden", "replacement": "Chris Rodriguez Jr.", "replacement_quality": "average", "range": [0.05, 0.15], "valuation": "DNP all week, lean miss. RB drop-off small with Rodriguez healthy. Soft on auto 0.07 is at the low end; not worth a manual."},
+      {"name": "Jakobi Meyers", "pos": "WR", "injury": "Hamstring/Ankle", "practice": "LP/LP/LP", "status": "none", "on": false, "valuation": "No game status, plays. Was Q soft on in 2026-11-04a -> off."},
+      {"name": "Chris Rodriguez Jr.", "pos": "RB", "injury": "Hand", "practice": "LP/LP/LP", "status": "none", "on": false, "valuation": "No game status, plays and likely leads the backfield. Off."},
+      {"name": "Antonio Johnson", "pos": "S", "injury": "Ankle", "practice": "LP/LP/LP", "status": "none", "on": false, "valuation": "No game status, plays. Off."},
+      {"name": "Ezra Cleveland / Branson Combs / Jarrian Jones", "pos": "OG/LB/CB", "practice": "LP/LP/LP", "status": "none", "on": false, "valuation": "No status, play."},
+      {"name": "DaVon Hamilton / Eric Murray", "pos": "DT/S", "status": "IR", "on": true, "valuation": "IR rows unchanged (already priced)."}
+    ],
+    "BAL": [
+      {"name": "Lamar Jackson", "pos": "QB", "injury": "Right Thumb", "practice": "DNP/DNP/DNP", "status": "OUT (IR)", "p_play": 0, "on": true, "impact": 1.5, "impact_source": "madden", "valuation": "Thumb surgery. Lamar-to-backup step at QB1 cap 1.5. YTD ratings already include several non-Lamar games, so no manual raise."},
+      {"name": "Tyler Huntley", "pos": "QB", "injury": "Toe", "practice": "DNP/DNP/DNP", "status": "OUT", "p_play": 0, "on": true, "impact": 1.5, "impact_source": "auto (QB1 cap)", "replacement": "Joe Fagnano (undrafted rookie, first start)", "replacement_quality": "poor / unknown", "range": [1.0, 2.5], "valuation": "Huntley had been starting; season-ending turf toe. Huntley-to-Fagnano step kept at the 1.5 cap. Real downside could be larger (no NFL tape, short-week install), so the risk skews toward BAL being worse than priced. Market moved JAX -8.5 to -10 this week."},
+      {"name": "Jaylinn Hawkins", "pos": "S", "injury": "Knee", "practice": "DNP/DNP/DNP", "status": "OUT", "p_play": 0, "on": true, "impact": 0.25, "impact_source": "pff", "range": [0.15, 0.3], "valuation": "Starting S. Was Q soft (0.0875); now full 0.25."},
+      {"name": "Nate Wiggins", "pos": "CB", "injury": "Stinger/Illness", "practice": "FP/FP/DNP", "status": "QUESTIONABLE", "p_play": 0.65, "on": true, "impact_source": "auto", "range": [0.05, 0.15], "valuation": "Starting CB, illness added Wednesday. New to the number, soft on auto. Secondary already minus Hawkins; mild compounding vs JAX WRs, kept inside soft-on."},
+      {"name": "Adam Randall", "pos": "RB", "injury": "Neck", "practice": "FP/FP/FP", "status": "QUESTIONABLE", "p_play": 0.6, "on": true, "impact_source": "auto", "range": [0, 0.1], "valuation": "Needs IR activation. Was IR row (full); now Q soft on. Justice Hill available."},
+      {"name": "Olaivavega Ioane / Stanley / Rosengarten / Simpson", "pos": "OL", "status": "none", "on": false, "valuation": "No status, play. Ioane returns at RG (missed Week 8)."},
+      {"name": "Roquan Smith / Hendrickson / Andrews / Campbell / Jenkins / Hill", "status": "none", "on": false, "valuation": "No status, play."}
+    ]
+  },
+  "unit_effects": {
+    "BAL_QB": "Third-string undrafted rookie. Two QB rows at cap (3.0 total). Biggest uncertainty on the board; no extra add beyond caps, flagged as downside risk for BAL.",
+    "BAL_DB": "Hawkins out + Wiggins Q illness. Small compounding, priced via full Hawkins + soft Wiggins.",
+    "JAX": "Healthier than the working list: Meyers, Rodriguez, A. Johnson all practiced and carry no status."
+  },
+  "team_injury_term": {"JAX": {"before": -1.74, "after": -1.49}, "BAL": {"before": -4.49, "after": -4.58}},
+  "net_injury_swing_toward_JAX": 0.34,
+  "b_line_home_spread": {"before_raw": 11.06, "after_raw": 11.40, "published": 11.5, "street_dk": 10, "ou_dk": 39.5, "shadow_dvoa_blend": 7.43},
+  "confidence": "Moderate (Low on the QB step)"
+}
