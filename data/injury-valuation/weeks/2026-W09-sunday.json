@@ -1,0 +1,337 @@
+{
+ "week": 9,
+ "season": 2026,
+ "window": "Sunday AM Madrid / Sunday PM / SNF / MNF",
+ "phase": "FINAL",
+ "injury_pulled": "2026-11-06b",
+ "pulled_et": "2026-11-06 4:44 PM ET (America/New_York)",
+ "espn_timestamp": "2026-11-06T21:25:59Z",
+ "method": "skill nfl-injury-spread-valuation: base position value x quality x role, replacement drop-off, status probability (Out/Doubtful 1.0, Q 0.35), unit interactions; desk auto Madden-first prior compared with full valuation. ESPN tags followed as-is (Brett standing rule); official Friday club reports (NFL Game Status) used where ESPN still carried a pre-Friday tag.",
+ "sources": {
+  "espn": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+  "nfl_com": "https://www.nfl.com/injuries/ (Game Status column only populated for TNF leftovers at pull; practice columns were Thursday/Friday)",
+  "club_reports": "<club>.com/team/injury-report chrome headless dump 2026-11-06 ~4:30-5:00 PM ET for 28 clubs"
+ },
+ "source_gaps": [
+  "ARI/ATL/BUF/CIN/HOU/LAC/LAR/LV/SEA/SF/WSH/MIN club Game Status still UNSPECIFIED at pull (ESPN Friday tags used as-is).",
+  "MNF BUF@MIN: Friday designations used; official MNF game status may refresh Saturday.",
+  "NFL.com Game Status column not populated for Sunday games at pull (TNF leftovers only)."
+ ],
+ "material_flips_vs_2026_11_06a": [
+  "ARI Bam Knight Q\u2192OUT",
+  "ARI Jayden Williams Q\u2192OUT",
+  "ARI Jon Gaines II Q\u2192OUT",
+  "CAR Damien Lewis Q\u2192OUT (club)",
+  "CAR Bobby Okereke Q\u2192OUT (club)",
+  "CAR Jaelan Phillips Q\u2192OUT (club)",
+  "CAR Will Lee III Q\u2192OUT (club)",
+  "CAR Brady Christensen IR\u2192Q (club 21-day)",
+  "CIN Kyle Dugger Q\u2192OUT",
+  "DAL KaVontae Turpin Q\u2192OUT",
+  "DAL Malachi Lawrence Q\u2192OUT",
+  "DAL Jonathan Bullard IR\u2192Q (club)",
+  "DET Jack Campbell D\u2192OUT (club)",
+  "DET Cade Mays Q\u2192OUT (club)",
+  "DET D.J. Reed Q\u2192OUT (club)",
+  "DET DJ Wonnum NEW OUT (club)",
+  "GB Travis Glover Q\u2192OUT (club)",
+  "GB Sean Rhyan Q\u2192OUT (club)",
+  "GB Josh Whyle Q\u2192OUT (club)",
+  "GB Zaire Franklin Q\u2192OUT (club)",
+  "GB Chris Brooks IR\u2192Q (club)",
+  "IND Akeem Davis-Gaither Q\u2192OUT",
+  "IND Justin Walley Q\u2192OUT",
+  "KC Mansoor Delane Q\u2192OUT",
+  "NE A.J. Brown Q\u2192OUT (manual 0.55)",
+  "NE TreVeyon Henderson Q\u2192OUT",
+  "NE Greg Van Roten IR\u2192Q (club)",
+  "NO CJ Donaldson Q\u2192OUT",
+  "NO Jordyn Tyson IR\u2192Q (club)",
+  "NO Kelvin Banks Jr. IR\u2192Q (club)",
+  "NYG Cam Skattebo Q\u2192DOUBTFUL",
+  "NYJ Garrett Wilson Q\u2192OUT (manual 0.35)",
+  "NYJ VJ Payne IR\u2192Q (club)",
+  "PHI DeVonta Smith Q\u2192OUT (manual 0.65 held)",
+  "PHI Dontayvion Wicks Q\u2192OUT",
+  "PHI Britain Covey Q\u2192OUT",
+  "PHI Jihaad Campbell Q\u2192OUT (club)",
+  "PHI Jonathan Jones Q\u2192OUT (club)",
+  "PHI Michael Carter II NEW OUT (club)",
+  "WSH Dyami Brown Q\u2192OUT",
+  "WSH Treylon Burks Q\u2192OUT"
+ ],
+ "material_cleared": [
+  "CLE Quincy Williams Q cleared (was 0.5)",
+  "CLE Denzel Boston / Harold Fannin Jr. / Carson Schwesinger Q cleared",
+  "DAL Tyler Smith Q cleared (was 0.5)",
+  "DAL Caleb Downs / P.J. Locke Q cleared",
+  "GB Christian Watson Q cleared",
+  "IND Drew Ogletree / Anthony Gould Q cleared",
+  "MIA Kadyn Proctor / Will Kacmarek Q cleared",
+  "NO Alvin Kamara Q cleared",
+  "PHI Saquon Barkley Q cleared (was 0.5)",
+  "TB Tristan Wirfs Q cleared (was 0.5)",
+  "TB Tykee Smith Q cleared"
+ ],
+ "report_cards": {
+  "PHI WR room (DeVonta Smith OUT, Wicks OUT, Covey OUT) + LB Jihaad Campbell OUT, CB Jonathan Jones OUT, CB Michael Carter II OUT; Barkley cleared; McKee Q": {
+   "status": "OUT",
+   "replacement": "Marquise Brown (Madden ~75) + depth; backup QB McKee already starting (Q ribs)",
+   "desk_impact_auto": "Smith 0.25 tier cap, Wicks 0.2, Covey pos-base",
+   "full_valuation": "Smith 0.5-0.8 as WR1 with no WR2; Wicks 0.2-0.3; Covey ~0.1; CB/LB adds 0.2-0.4 combined",
+   "manual": "DeVonta Smith 0.65 (impact_source manual) held from W8",
+   "unit_interaction": "WR room collapse with backup QB; folded into Smith manual",
+   "confidence": "Moderate",
+   "note": "PHI term -3.83 -> -4.93 (delta -1.1). Barkley cleared removes ~0.18 Q mass but WR outs dominate."
+  },
+  "NE (A.J. Brown OUT, TreVeyon Henderson OUT; Hunter Henry Q, Carlton Davis Q, Morgan Moses Q)": {
+   "status": "OUT/Q",
+   "replacement": "Diggs/Hollins/Bourne depth for Brown; Rhamondre + committee for Henderson",
+   "desk_impact_auto": "Brown 0.5 All-Pro/WR1 cap; Henderson 0.2",
+   "full_valuation": "Brown WR1 0.45-0.65; Henderson 0.15-0.25",
+   "manual": "A.J. Brown 0.55",
+   "confidence": "Moderate",
+   "note": "NE term -2.78 -> -3.31. Key for GB@NE (street NE -3)."
+  },
+  "NYJ (Garrett Wilson OUT concussion; Trevin Wallace OUT; Ossai/Phillips/Wright Q)": {
+   "status": "OUT/Q",
+   "replacement": "depth WR; Breece Hall healthy",
+   "desk_impact_auto": "Wilson 0.25",
+   "full_valuation": "Wilson every-down WR1 0.3-0.45",
+   "manual": "Garrett Wilson 0.35",
+   "confidence": "Moderate",
+   "note": "NYJ term -2.26 -> -2.75. Softens dog NYJ +10.5 case vs KC -9.5."
+  },
+  "SEA (Sam Darnold OUT 1.5; Lock Q/starting; L. Williams / Ernest Jones / Quenton Nelson Q 0.5 each)": {
+   "status": "OUT/Q",
+   "manual": "Sam Darnold 1.5 held",
+   "confidence": "High",
+   "note": "SEA term -3.89 -> -4.05. Market already SEA -12.5\u2192-8.5. ARI@SEA passed on PRELIM (stale B$). Club GS still UNSPECIFIED."
+  },
+  "DET (Jack Campbell OUT, Kerby Joseph OUT, Cade Mays OUT, D.J. Reed OUT, DJ Wonnum OUT; Amon-Ra St. Brown Q ribs)": {
+   "status": "OUT/Q",
+   "desk_impact_auto": "Campbell 0.5, Joseph 0.5 already OUT; Mays/Reed/Wonnum new OUTs",
+   "full_valuation": "Campbell was already Doubtful=1.0 so D\u2192OUT is designation-only; secondary/OL adds 0.3-0.5; St. Brown Q 0.35\u00d70.5\u22480.18",
+   "manual": "none (auto inside range)",
+   "confidence": "Moderate",
+   "note": "DET term -3.19 -> -3.65. PRELIM DET -6.5 still on (B$ still large fav)."
+  },
+  "GB OL/EDGE (Micah Parsons OUT held; Travis Glover OUT, Sean Rhyan OUT, Josh Whyle OUT, Zaire Franklin OUT; Aaron Banks Q)": {
+   "status": "OUT/Q",
+   "manual": "Travis Glover 0.05 standing manual",
+   "confidence": "Moderate",
+   "note": "GB term -3.05 -> -3.37. Parsons already priced."
+  },
+  "CAR front/OL (Damien Lewis OUT, Bobby Okereke OUT, Jaelan Phillips OUT, Will Lee III OUT)": {
+   "status": "OUT",
+   "confidence": "Moderate",
+   "note": "CAR term -3.11 -> -3.62."
+  },
+  "SF (Mike Evans Q Achilles, CMC Q hamstring, Deebo Q; Nick Bosa Q manual 0.25) \u2014 PRELIM SF -9.5 contingent": {
+   "status": "QUESTIONABLE",
+   "p_play_evans_cmc": "UNKNOWN until inactive; both practiced Fri open portion per ESPN notes",
+   "confidence": "Low",
+   "note": "SF term -2.79 -> -2.88. Club GS UNSPECIFIED. Contingent ticket: only if Evans/CMC not ruled out."
+  },
+  "MIN (Kyler Murray Q 0.28; Van Ginkel Q) \u2014 MNF dog MIN +3.5 waits": {
+   "status": "QUESTIONABLE",
+   "kill_1": "Starting QB Questionable within 24h of kick on FINAL would fire; MNF is Monday so wait Saturday status",
+   "confidence": "Low",
+   "note": "MIN term -1.28 -> -1.62. Club GS UNSPECIFIED (Thu/Fri/Sat sheet)."
+  },
+  "Clears that help": {
+   "note": "Barkley cleared (PHI), Wirfs cleared (TB), Tyler Smith cleared (DAL), Quincy Williams cleared (CLE), Kamara cleared (NO), Christian Watson cleared (GB)."
+  }
+ },
+ "team_injury_terms_working_to_final": {
+  "ARI": {
+   "working": -2.71,
+   "final": -3.23,
+   "delta": -0.52
+  },
+  "ATL": {
+   "working": -2.42,
+   "final": -2.49,
+   "delta": -0.07
+  },
+  "BAL": {
+   "working": -4.74,
+   "final": -4.74,
+   "delta": 0.0
+  },
+  "BUF": {
+   "working": -1.31,
+   "final": -1.49,
+   "delta": -0.18
+  },
+  "CAR": {
+   "working": -3.11,
+   "final": -3.62,
+   "delta": -0.51
+  },
+  "CHI": {
+   "working": -1.81,
+   "final": -1.88,
+   "delta": -0.07
+  },
+  "CIN": {
+   "working": -1.92,
+   "final": -2.05,
+   "delta": -0.13
+  },
+  "CLE": {
+   "working": -1.77,
+   "final": -1.57,
+   "delta": 0.2
+  },
+  "DAL": {
+   "working": -1.87,
+   "final": -1.73,
+   "delta": 0.14
+  },
+  "DEN": {
+   "working": -2.21,
+   "final": -2.3,
+   "delta": -0.09
+  },
+  "DET": {
+   "working": -3.19,
+   "final": -3.65,
+   "delta": -0.46
+  },
+  "GB": {
+   "working": -3.05,
+   "final": -3.37,
+   "delta": -0.32
+  },
+  "HOU": {
+   "working": -2.92,
+   "final": -2.92,
+   "delta": 0.0
+  },
+  "IND": {
+   "working": -1.94,
+   "final": -2.21,
+   "delta": -0.27
+  },
+  "JAX": {
+   "working": -1.35,
+   "final": -1.35,
+   "delta": 0.0
+  },
+  "KC": {
+   "working": -1.64,
+   "final": -2.05,
+   "delta": -0.41
+  },
+  "LAC": {
+   "working": -2.86,
+   "final": -2.95,
+   "delta": -0.09
+  },
+  "LAR": {
+   "working": -3.25,
+   "final": -3.25,
+   "delta": 0.0
+  },
+  "LV": {
+   "working": -0.59,
+   "final": -0.68,
+   "delta": -0.09
+  },
+  "MIA": {
+   "working": -1.56,
+   "final": -1.4,
+   "delta": 0.16
+  },
+  "MIN": {
+   "working": -1.28,
+   "final": -1.62,
+   "delta": -0.34
+  },
+  "NE": {
+   "working": -2.78,
+   "final": -3.31,
+   "delta": -0.53
+  },
+  "NO": {
+   "working": -1.38,
+   "final": -1.37,
+   "delta": 0.01
+  },
+  "NYG": {
+   "working": -2.25,
+   "final": -2.68,
+   "delta": -0.43
+  },
+  "NYJ": {
+   "working": -2.26,
+   "final": -2.75,
+   "delta": -0.49
+  },
+  "PHI": {
+   "working": -3.83,
+   "final": -4.93,
+   "delta": -1.1
+  },
+  "PIT": {
+   "working": -1.8,
+   "final": -1.8,
+   "delta": 0.0
+  },
+  "SEA": {
+   "working": -3.89,
+   "final": -4.05,
+   "delta": -0.16
+  },
+  "SF": {
+   "working": -2.79,
+   "final": -2.88,
+   "delta": -0.09
+  },
+  "TB": {
+   "working": -1.44,
+   "final": -1.27,
+   "delta": 0.17
+  },
+  "TEN": {
+   "working": -2.39,
+   "final": -2.55,
+   "delta": -0.16
+  },
+  "WSH": {
+   "working": -3.23,
+   "final": -3.82,
+   "delta": -0.59
+  }
+ },
+ "manual_overrides_applied": [
+  "PHI DeVonta Smith 0.65 (manual held)",
+  "NE A.J. Brown 0.5 -> 0.55 (manual)",
+  "NYJ Garrett Wilson 0.25 -> 0.35 (manual)",
+  "SEA Sam Darnold 1.5 (manual held)",
+  "SF Nick Bosa 0.25 (standing)",
+  "CHI Dayo Odeyingbo 0.25 (standing)"
+ ],
+ "official_overrides_applied": [
+  "CAR Damien Lewis/Bobby Okereke/Jaelan Phillips/Will Lee III Q\u2192OUT",
+  "CAR Brady Christensen IR\u2192Q",
+  "DET Jack Campbell D\u2192OUT; Cade Mays/D.J. Reed Q\u2192OUT; DJ Wonnum NEW OUT",
+  "GB Travis Glover/Sean Rhyan/Josh Whyle/Zaire Franklin Q\u2192OUT; Chris Brooks IR\u2192Q",
+  "NE Greg Van Roten IR\u2192Q",
+  "PHI Jihaad Campbell/Jonathan Jones Q\u2192OUT; Michael Carter II NEW OUT",
+  "DAL Jonathan Bullard IR\u2192Q",
+  "NO Jordyn Tyson/Kelvin Banks Jr. IR\u2192Q",
+  "NYJ VJ Payne IR\u2192Q"
+ ],
+ "overrides_note": "FINAL rules: stub-hold narrowed to bare 'inactive'; bare Week 9 ESPN O/D/Q stubs (dated 11/03 on) and Friday-dated rows followed as-is. Club Game Status overrides applied where ESPN was stale. Doubtful=1.0. QB cap 1.5 unchanged.",
+ "tnf": "JAX@BAL FINAL JAX 33, BAL 10 (ticket JAX -9.5 HIT; lock 2026-w09-jax-bal.json; not re-frozen)",
+ "key_number_notes": [
+  "GB@NE street NE -3 (was -3.5): key 3; NE worsens on Brown/Henderson OUT",
+  "BUF@MIN street BUF -3: key 3; Murray Q \u2014 dog MIN +3.5 waits",
+  "DET@MIA street DET -6.5: key 7 nearby; ticket DET -6.5 already on",
+  "LAR@WSH street LAR -4.5: ticket on; WSH term worse on Dyami/Burks OUT",
+  "NYJ@KC street KC -9.5: dog NYJ +10.5 waits; Wilson OUT softens",
+  "LV@SF street SF -10: outside box at -10.5 boundary; contingent SF -9.5 only if Evans/CMC play"
+ ]
+}
