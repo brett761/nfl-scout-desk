@@ -1,54 +1,94 @@
-# 2026 NFL injuries — Scout desk Week 9 WORKING-THU
+# 2026 NFL injuries — Scout desk Week 9 WORKING-FRI
 
-Pulled 2026-11-05 10:05 AM ET (America/New_York). Stamp `injury_pulled=2026-11-05a` **WORKING-THU** Thursday ESPN refresh (prior seed 2026-11-04b; JAX/BAL TNF FINAL held verbatim); Week 9 board, byes PIT/TEN. Aaron Donald dropped. No rumor designations.
+Pulled 2026-11-06 10:25 AM ET (America/New_York). Stamp `injury_pulled=2026-11-06a` **WORKING-FRI** Friday AM ESPN refresh (prior seed 2026-11-05a; TNF JAX@BAL FINAL, no protect); Week 9 board, byes PIT/TEN. Aaron Donald dropped. No rumor designations.
 
-## Material designation flips vs 2026-11-02a WORKING-MON
+## Material designation flips vs 2026-11-05a WORKING-THU
 
-- None flagged as starter/impact≥0.5.
+- **ATL Brian Robinson Jr.** (RB1): QUESTIONABLE → OUT impact=0.2
+- **BAL Tyler Huntley** (QB1): OUT → IR
+- **BAL Adam Randall** (RB1): QUESTIONABLE → IR
+- **LV Dont'e Thornton Jr.** (WR2): IR → QUESTIONABLE
+- **ARI Jayden Williams** (RT): NEW QUESTIONABLE
+- **BUF Ty Johnson** (RB1): NEW QUESTIONABLE
+- **BUF Keon Coleman** (WR2): NEW QUESTIONABLE impact=0.2
+- **BUF Joshua Palmer** (WR2): NEW QUESTIONABLE
+- **BUF Dalton Kincaid** (TE1): NEW QUESTIONABLE impact=0.25
+- **CAR Damien Lewis** (OG): NEW QUESTIONABLE impact=0.25
+- **CLE Harold Fannin Jr.** (TE1): NEW QUESTIONABLE impact=0.2
+- **CLE Carson Schwesinger** (LB): NEW QUESTIONABLE impact=0.25
+- **DAL Tyler Smith** (OG): NEW QUESTIONABLE impact=0.5
+- **DAL DeMarvion Overshown** (LB): NEW QUESTIONABLE impact=0.2
+- **GB MarShawn Lloyd** (RB1): NEW QUESTIONABLE
+- **IND Akeem Davis-Gaither** (LB): NEW QUESTIONABLE impact=0.2
+- **MIN Andrew Van Ginkel** (LB): NEW QUESTIONABLE impact=0.5
+- **MIN Jauan Jennings** (WR2): NEW QUESTIONABLE impact=0.2
+- **NYG Andrew Thomas** (RT): NEW QUESTIONABLE impact=0.25
+- **NYG Malik Nabers** (WR2): NEW QUESTIONABLE impact=0.25
+- **PHI Tanner McKee** (QB1): NEW QUESTIONABLE
+- **SEA Quenton Nelson** (OG): NEW QUESTIONABLE impact=0.5
+- **SEA Leonard Williams** (IDL): NEW QUESTIONABLE impact=0.5
+- **SEA Ernest Jones IV** (LB): NEW QUESTIONABLE impact=0.5
+- **TB Tristan Wirfs** (RT): NEW QUESTIONABLE impact=0.5
+- **WSH Dyami Brown** (WR2): NEW QUESTIONABLE
+- **BUF Dee Alford** (CB1): CLEARED off sheet (was QUESTIONABLE) was impact=0.2
+- **CAR Corey Bullock** (C): CLEARED off sheet (was QUESTIONABLE)
+- **CIN DJ Turner II** (CB1): CLEARED off sheet (was QUESTIONABLE) was impact=0.25
+- **DAL Dee Winters** (LB): CLEARED off sheet (was QUESTIONABLE)
+- **HOU Azeez Al-Shaair** (LB): CLEARED off sheet (was QUESTIONABLE) was impact=0.25
+- **JAX Travon Walker** (EDGE1): CLEARED off sheet (was QUESTIONABLE) was impact=0.2
+- **JAX Bhayshul Tuten** (RB1): CLEARED off sheet (was QUESTIONABLE) was impact=0.2
+- **KC Nikko Remigio** (WR2): CLEARED off sheet (was QUESTIONABLE)
+- **KC Rashee Rice** (WR2): CLEARED off sheet (was QUESTIONABLE) was impact=0.25
+- **KC Travis Kelce** (TE1): CLEARED off sheet (was QUESTIONABLE) was impact=0.25
+- **LAC Daiyan Henley** (LB): CLEARED off sheet (was QUESTIONABLE) was impact=0.2
+- **NYJ Mason Taylor** (TE1): CLEARED off sheet (was QUESTIONABLE)
+- **NYJ David Bailey** (LB): CLEARED off sheet (was QUESTIONABLE) was impact=0.2
+- **NYJ Breece Hall** (RB1): CLEARED off sheet (was QUESTIONABLE) was impact=0.25
+- **TB Kenny Gainwell** (RB1): CLEARED off sheet (was QUESTIONABLE) was impact=0.2
+- **TB Emeka Egbuka** (WR2): CLEARED off sheet (was QUESTIONABLE) was impact=0.2
 
 ## Team injury terms (auto Madden-first, capped −6)
 
 | Team | Term | Raw | Headliners |
 |------|-----:|----:|------------|
-| BAL | -4.58 | -4.58 | Tyler Huntley OUT, Jaylinn Hawkins OUT, Adam Randall QUESTIONABLE |
-| SEA | -3.38 | -3.38 | Drew Lock QUESTIONABLE, Sam Darnold OUT, Velus Jones Jr. QUESTIONABLE |
-| PHI | -3.31 | -3.31 | Saquon Barkley QUESTIONABLE |
+| BAL | -4.74 | -4.74 | Jaylinn Hawkins OUT |
+| SEA | -3.89 | -3.89 | Drew Lock QUESTIONABLE, Sam Darnold OUT, Velus Jones Jr. QUESTIONABLE |
+| PHI | -3.83 | -3.83 | Tanner McKee QUESTIONABLE, Saquon Barkley QUESTIONABLE |
 | LAR | -3.25 | -3.25 | Jaylen Watson OUT |
+| WSH | -3.23 | -3.23 |  |
 | DET | -3.19 | -3.19 | Kerby Joseph OUT, Jack Campbell DOUBTFUL, Jacob Saylors QUESTIONABLE |
-| WSH | -3.14 | -3.14 |  |
 | CAR | -3.11 | -3.11 |  |
-| HOU | -3.01 | -3.01 | David Montgomery OUT |
-| GB | -2.96 | -2.96 | Micah Parsons OUT |
-| LAC | -2.93 | -2.93 | Brenen Thompson DOUBTFUL |
-| SF | -2.79 | -2.79 | Mike Evans QUESTIONABLE, Christian McCaffrey QUESTIONABLE, Brandon Aiyuk OUT |
+| GB | -3.05 | -3.05 | MarShawn Lloyd QUESTIONABLE, Micah Parsons OUT |
+| HOU | -2.92 | -2.92 | David Montgomery OUT |
+| LAC | -2.86 | -2.86 | Brenen Thompson DOUBTFUL |
+| SF | -2.79 | -2.79 | Brandon Aiyuk OUT, Mike Evans QUESTIONABLE, Christian McCaffrey QUESTIONABLE |
 | NE | -2.78 | -2.78 | TreVeyon Henderson QUESTIONABLE, A.J. Brown QUESTIONABLE |
-| ARI | -2.62 | -2.62 | Bam Knight QUESTIONABLE |
-| NYJ | -2.51 | -2.51 | Breece Hall QUESTIONABLE |
+| ARI | -2.71 | -2.71 | Bam Knight QUESTIONABLE |
+| ATL | -2.42 | -2.42 | Brian Robinson Jr. OUT, Zachariah Branch OUT, Anterio Thompson OUT |
 | TEN | -2.39 | -2.39 | Tommy Townsend OUT, Tyjae Spears OUT, Carnell Tate OUT |
-| ATL | -2.29 | -2.29 | Brian Robinson Jr. QUESTIONABLE, Zachariah Branch OUT, Anterio Thompson OUT |
+| NYJ | -2.26 | -2.26 |  |
+| NYG | -2.25 | -2.25 | Cam Skattebo QUESTIONABLE |
 | DEN | -2.21 | -2.21 |  |
-| NYG | -2.07 | -2.07 | Cam Skattebo QUESTIONABLE |
-| CIN | -2.01 | -2.01 |  |
-| KC | -1.91 | -1.91 | Omarr Norman-Lott OUT |
-| IND | -1.87 | -1.87 |  |
+| IND | -1.94 | -1.94 |  |
+| CIN | -1.92 | -1.92 |  |
+| DAL | -1.87 | -1.87 |  |
+| CHI | -1.81 | -1.81 | Kyle Monangai QUESTIONABLE |
 | PIT | -1.80 | -1.80 | Doneiko Slaughter OUT, Ben Skowronek OUT, Brandin Echols OUT |
-| DAL | -1.72 | -1.72 |  |
-| CLE | -1.61 | -1.61 | Deshaun Watson QUESTIONABLE |
-| MIA | -1.56 | -1.56 | Kaytron Allen QUESTIONABLE, Darrell Baker Jr. OUT, Jaylen Wright QUESTIONABLE |
-| CHI | -1.56 | -1.56 | Kyle Monangai QUESTIONABLE |
-| JAX | -1.49 | -1.49 | Bhayshul Tuten QUESTIONABLE |
-| TB | -1.41 | -1.41 | Kenny Gainwell QUESTIONABLE, Yaya Diaby OUT |
+| CLE | -1.77 | -1.77 | Deshaun Watson QUESTIONABLE |
+| KC | -1.64 | -1.64 | Omarr Norman-Lott OUT |
+| MIA | -1.56 | -1.56 | Jaylen Wright QUESTIONABLE, Kaytron Allen QUESTIONABLE, Darrell Baker Jr. OUT |
+| TB | -1.44 | -1.44 | Yaya Diaby OUT |
 | NO | -1.38 | -1.38 | CJ Donaldson QUESTIONABLE, Alvin Kamara QUESTIONABLE |
-| BUF | -1.04 | -1.04 | DJ Moore QUESTIONABLE |
-| MIN | -1.04 | -1.04 | Kyler Murray QUESTIONABLE |
-| LV | -0.75 | -0.75 |  |
+| JAX | -1.35 | -1.35 |  |
+| BUF | -1.31 | -1.31 | Ty Johnson QUESTIONABLE, DJ Moore QUESTIONABLE |
+| MIN | -1.28 | -1.28 | Kyler Murray QUESTIONABLE |
 
 ## Notes
 
-- WORKING-THU Thursday ESPN refresh: Week 9 board. JAX/BAL verbatim from Wed FINAL 2026-11-04b. ESPN API only; no invented rumor designations; Sunday official Game Status Friday ~4pm ET.
-- No protects. All Week 8 clubs finished: drop gameday inactive / ruled-out-for-remainder / coach's-decision noise; keep multi-week OUT + IR/PUP/NFI; inactive stubs do not upgrade a prior Q/D. Aaron Donald dropped (retired). Byes Week 9 PIT/TEN.
+- WORKING-FRI Friday AM ESPN refresh: Week 9 board. TNF JAX@BAL FINAL, no protect. ESPN API only; no invented rumor designations; Sunday official Game Status Friday ~4pm ET.
+- No protects (TNF JAX@BAL FINAL). Drop JAX/BAL Thursday gameday leftovers; keep multi-week OUT + IR/PUP/NFI; inactive stubs do not upgrade a prior Q/D. Aaron Donald dropped (retired). Byes Week 9 PIT/TEN.
 - Manuals preserved when still listed: CAR Akayleb Evans 0.4, CHI Dayo Odeyingbo 0.25 (reserve), CLE Teven Jenkins 0.35 (reserve), CLE Dillon Gabriel 0 (reserve), CLE Kendrick Green 0 (reserve), GB Travis Glover 0.05, PHI DeVonta Smith 0.65, PIT Gennings Dunker 0 (reserve), SF Nick Bosa 0.25, TB David Sills V 0 (reserve), CHI Dayo Odeyingbo 0.25 (W6 FINAL valuation).
-- Protects applied: BAL Tyler Huntley (kept OUT); BAL Tyler Loop (kept IR); BAL Jaylinn Hawkins (kept OUT); BAL Lamar Jackson (kept IR); BAL Adam Randall (kept QUESTIONABLE); BAL Tavius Robinson (kept IR); BAL Durham Smythe (kept IR); BAL Ethan Pocic (kept IR); BAL Jovaughn Gwyn (kept IR); BAL Nate Wiggins (kept QUESTIONABLE); JAX Travon Walker (kept QUESTIONABLE); JAX Eric Murray (kept IR); JAX DaVon Hamilton (kept IR); JAX Bhayshul Tuten (kept QUESTIONABLE); JAX Anton Harrison (kept IR); JAX Christian Braswell (kept IR); JAX Caleb Ransaw (kept IR); JAX B.J. Green II (kept IR); TEN Jaylon Jones (kept QUESTIONABLE).
-- ESPN API timestamp 2026-11-05T15:05:06Z.
+- Protects applied: BAL Nate Wiggins (kept QUESTIONABLE); TEN Jaylon Jones (kept QUESTIONABLE).
+- ESPN API timestamp 2026-11-06T15:21:41Z.
 
 Sources: ESPN injuries API; nfl.com/injuries; Week 8 (final) and Week 9 scoreboards.
