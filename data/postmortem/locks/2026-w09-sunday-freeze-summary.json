@@ -1,10 +1,10 @@
 {
   "week": 9,
   "season": 2026,
-  "frozen_at": "2026-11-06T21:45:25.842Z",
-  "frozen_at_et": "Nov 6, 2026, 4:45 PM ET (America/New_York)",
-  "injury_pulled": "2026-11-06b",
-  "injury_phase": "FINAL",
+  "frozen_at": "2026-11-08T13:10:32.432Z",
+  "frozen_at_et": "Nov 8, 2026, 8:10 AM ET (America/New_York)",
+  "injury_pulled": "2026-11-07a",
+  "injury_phase": "WORKING-SAT",
   "street_source": "ESPN DraftKings scoreboard site.api.espn.com week=9 year=2026",
   "tnf": "JAX@BAL TNF FINAL JAX 33, BAL 10 (frozen separately in 2026-w09-jax-bal.json; ticket JAX -9.5 HIT; not re-frozen)",
   "n": 14,
@@ -14,18 +14,19 @@
       "game": "CIN@ATL",
       "window": "SUN_AM",
       "kick": "2026-11-08T14:30Z",
-      "model": 6.97,
+      "model": 6.88,
       "official": 7,
       "street": 3,
       "ou": 52.5,
-      "edge_home": -3.97,
+      "edge_home": -3.88,
       "edge_home_rounded": -4,
       "shadow": 4.5,
       "card_tickets": [
         "2026-11-05 Thu PRELIM pending: CIN -3 CZR Sat lock (B$ -7)"
       ],
-      "inj_away": -2.05,
-      "inj_home": -2.49
+      "inj_away": -2.14,
+      "inj_home": -2.49,
+      "gap_note": null
     },
     {
       "slug": "2026-w09-dal-ind",
@@ -34,32 +35,34 @@
       "kick": "2026-11-08T18:00Z",
       "model": 6.65,
       "official": 6.5,
-      "street": 5.5,
+      "street": 4.5,
       "ou": 51.5,
-      "edge_home": -1.15,
-      "edge_home_rounded": -1,
+      "edge_home": -2.15,
+      "edge_home_rounded": -2,
       "shadow": 3.5,
       "card_tickets": [],
       "inj_away": -1.74,
-      "inj_home": -2.21
+      "inj_home": -2.21,
+      "gap_note": "ESPN Sun AM vs 2026-11-07a: IND A.J. Haulcy Q→OUT; DAL Marist Liufau IR→Q (activated Sat). Model still uses Saturday seed."
     },
     {
       "slug": "2026-w09-nyj-kc",
       "game": "NYJ@KC",
       "window": "SUN_PM",
       "kick": "2026-11-08T18:00Z",
-      "model": -8.3,
-      "official": -8.5,
+      "model": -8.21,
+      "official": -8,
       "street": -9.5,
       "ou": 48.5,
-      "edge_home": -1.2,
-      "edge_home_rounded": -1,
+      "edge_home": -1.29,
+      "edge_home_rounded": -1.5,
       "shadow": -9,
       "card_tickets": [
         "2026-11-05 Thu PRELIM dog wait: NYJ +10.5"
       ],
       "inj_away": -2.75,
-      "inj_home": -2.05
+      "inj_home": -2.14,
+      "gap_note": "ESPN Sun AM vs 2026-11-07a: NYJ Nahshon Wright Q→OUT, Joseph Ossai Q→OUT, VJ Payne Q→IR. Model still uses Saturday seed."
     },
     {
       "slug": "2026-w09-det-mia",
@@ -77,139 +80,148 @@
         "2026-11-05 Thu PRELIM: DET -6.5 b365 -122 $150 (B$ DET -12)"
       ],
       "inj_away": -3.66,
-      "inj_home": -1.35
+      "inj_home": -1.35,
+      "gap_note": "ESPN Sun AM: Amon-Ra St. Brown remains QUESTIONABLE (same as 2026-11-07a; Pelissero: slated to play)."
     },
     {
       "slug": "2026-w09-cle-no",
       "game": "CLE@NO",
       "window": "SUN_PM",
       "kick": "2026-11-08T18:00Z",
-      "model": -1.23,
-      "official": -1,
-      "street": -3.5,
+      "model": -1.3,
+      "official": -1.5,
+      "street": -3,
       "ou": 42.5,
-      "edge_home": -2.27,
-      "edge_home_rounded": -2.5,
+      "edge_home": -1.7,
+      "edge_home_rounded": -1.5,
       "shadow": -1,
       "card_tickets": [],
       "inj_away": -1.57,
-      "inj_home": -1.37
+      "inj_home": -1.3,
+      "gap_note": "ESPN Sun AM: Deshaun Watson remains QUESTIONABLE (same as 2026-11-07a; Rapoport: expected inactive). Seed already noted Shedeur starts even if Watson is active."
     },
     {
       "slug": "2026-w09-nyg-phi",
       "game": "NYG@PHI",
       "window": "SUN_PM",
       "kick": "2026-11-08T18:00Z",
-      "model": 5.88,
+      "model": 6.01,
       "official": 6,
       "street": 3,
       "ou": 38.5,
-      "edge_home": -2.88,
+      "edge_home": -3.01,
       "edge_home_rounded": -3,
       "shadow": 3,
       "card_tickets": [],
-      "inj_away": -2.68,
-      "inj_home": -4.98
+      "inj_away": -2.32,
+      "inj_home": -4.75,
+      "gap_note": null
     },
     {
       "slug": "2026-w09-lar-wsh",
       "game": "LAR@WSH",
       "window": "SUN_PM",
       "kick": "2026-11-08T18:00Z",
-      "model": 8.03,
-      "official": 8,
+      "model": 7.63,
+      "official": 7.5,
       "street": 4.5,
       "ou": 47.5,
-      "edge_home": -3.53,
-      "edge_home_rounded": -3.5,
-      "shadow": 11,
+      "edge_home": -3.13,
+      "edge_home_rounded": -3,
+      "shadow": 10.5,
       "card_tickets": [
-        "2026-11-05 Thu PRELIM: LAR -4.5 -110 FD/MGM/b365/CZR $150 (B$ LAR -7.5)"
+        "2026-11-05 Thu PRELIM: LAR -4.5 -110 FD/MGM/b365/CZR $150 (B$ LAR -8)"
       ],
-      "inj_away": -3.26,
-      "inj_home": -3.82
+      "inj_away": -3.39,
+      "inj_home": -3.55,
+      "gap_note": "ESPN Sun AM vs 2026-11-07a: WSH Jer'Zhan Newton IR→Q (activated Sat). Model still uses Saturday seed."
     },
     {
       "slug": "2026-w09-den-car",
       "game": "DEN@CAR",
       "window": "SUN_PM",
       "kick": "2026-11-08T18:00Z",
-      "model": 2.81,
-      "official": 3,
+      "model": 2.35,
+      "official": 2.5,
       "street": 2.5,
       "ou": 44.5,
-      "edge_home": -0.31,
-      "edge_home_rounded": -0.5,
-      "shadow": 3,
+      "edge_home": 0.15,
+      "edge_home_rounded": 0,
+      "shadow": 2.5,
       "card_tickets": [],
-      "inj_away": -2.31,
-      "inj_home": -3.62
+      "inj_away": -2.95,
+      "inj_home": -3.8,
+      "gap_note": "ESPN Sun AM vs 2026-11-07a: DEN Pat Bryant IR→Q (activated Sat). Uwazurike already OUT in seed (now IR). Model still uses Saturday seed."
     },
     {
       "slug": "2026-w09-hou-lac",
       "game": "HOU@LAC",
       "window": "SUN_PM",
       "kick": "2026-11-08T21:05Z",
-      "model": 7.91,
+      "model": 8.08,
       "official": 8,
       "street": 6,
       "ou": 40.5,
-      "edge_home": -1.91,
+      "edge_home": -2.08,
       "edge_home_rounded": -2,
-      "shadow": 5.5,
+      "shadow": 6,
       "card_tickets": [],
-      "inj_away": -2.92,
-      "inj_home": -2.95
+      "inj_away": -3.05,
+      "inj_home": -3.25,
+      "gap_note": null
     },
     {
       "slug": "2026-w09-gb-ne",
       "game": "GB@NE",
       "window": "SUN_PM",
       "kick": "2026-11-08T21:25Z",
-      "model": -5.13,
+      "model": -5.04,
       "official": -5,
       "street": -3,
       "ou": 44.5,
-      "edge_home": 2.13,
+      "edge_home": 2.04,
       "edge_home_rounded": 2,
       "shadow": -4.5,
       "card_tickets": [],
-      "inj_away": -3.37,
-      "inj_home": -3.26
+      "inj_away": -3.28,
+      "inj_home": -3.26,
+      "gap_note": "ESPN Sun AM vs 2026-11-07a: NE Mack Hollins IR→Q (activated Sat); Greg Van Roten Q→IR (not activated). Model still uses Saturday seed."
     },
     {
       "slug": "2026-w09-lv-sf",
       "game": "LV@SF",
       "window": "SUN_PM",
       "kick": "2026-11-08T21:05Z",
-      "model": -11.93,
+      "model": -12.01,
       "official": -12,
-      "street": -10,
+      "street": -9.5,
       "ou": 51.5,
-      "edge_home": 1.93,
-      "edge_home_rounded": 2,
+      "edge_home": 2.51,
+      "edge_home_rounded": 2.5,
       "shadow": -12.5,
       "card_tickets": [
         "2026-11-05 Thu PRELIM contingent: SF -9.5 if Evans/CMC play"
       ],
-      "inj_away": -0.68,
-      "inj_home": -2.9
+      "inj_away": -0.82,
+      "inj_home": -2.96,
+      "gap_note": "ESPN Sun AM vs 2026-11-07a: Christian Kirk OUT→IR (already OUT in seed). Mike Evans still OUT; CMC no designation / Active. Model still uses Saturday seed."
     },
     {
       "slug": "2026-w09-ari-sea",
       "game": "ARI@SEA",
       "window": "SUN_PM",
       "kick": "2026-11-08T21:25Z",
-      "model": -12.11,
-      "official": -12,
+      "model": -11.66,
+      "official": -11.5,
       "street": -8.5,
       "ou": 39.5,
-      "edge_home": 3.61,
-      "edge_home_rounded": 3.5,
-      "shadow": -11,
+      "edge_home": 3.16,
+      "edge_home_rounded": 3,
+      "shadow": -10.5,
       "card_tickets": [],
-      "inj_away": -3.23,
-      "inj_home": -4.08
+      "inj_away": -3.14,
+      "inj_home": -4.44,
+      "gap_note": "ESPN Sun AM vs 2026-11-07a: ARI Isaiah Adams IR→Q (activated Sat). Darnold still OUT. Model still uses Saturday seed."
     },
     {
       "slug": "2026-w09-tb-chi",
@@ -245,5 +257,6 @@
       "inj_away": -1.49,
       "inj_home": -1.63
     }
-  ]
+  ],
+  "note": "Sunday 8 AM refresh: SUN_AM/SUN_PM re-frozen at Nov 8, 2026, 8:10 AM ET (America/New_York); SNF/MNF entries kept from Friday FINAL freeze Nov 6, 2026, 4:45 PM ET (America/New_York)."
 }

@@ -9,7 +9,7 @@
   "venue": "Santiago Bernabéu",
   "neutral": true,
   "window": "SUN_AM",
-  "model_home_spread": 6.97,
+  "model_home_spread": 6.88,
   "model_home_spread_rounded": 7,
   "official_b_line": 7,
   "official_rounded": true,
@@ -18,20 +18,20 @@
   "street_home_spread": 3,
   "close_at_lock": 3,
   "ou_street": 52.5,
-  "street_note": "Working pre-kick freeze Nov 6, 2026, 4:45 PM ET (America/New_York) after Friday FINAL Game Status. ESPN DraftKings scoreboard: CIN -3 / ou 52.5. Refresh pre-kick if street or model moves materially.",
-  "edge_home": -3.97,
+  "street_note": "Working pre-kick freeze Nov 8, 2026, 8:10 AM ET (America/New_York) Sunday AM public-window refresh (injuries 2026-11-07a WORKING-SAT). ESPN DraftKings scoreboard: CIN -3 / ou 52.5. Refresh pre-kick if street or model moves materially.",
+  "edge_home": -3.88,
   "edge_home_rounded": -4,
-  "edge_note": "edgeHome = street − model = 3 − (6.97) = -3.97; positive → home (ATL) value. Rounded B$ 7 vs 3 = -4.",
+  "edge_note": "edgeHome = street − model = 3 − (6.88) = -3.88; positive → home (ATL) value. Rounded B$ 7 vs 3 = -4.",
   "shadow_dvoa_blend": {
-    "raw": 4.72,
+    "raw": 4.63,
     "rounded": 4.5,
     "weight": 0.5,
     "in_b_line": false
   },
   "feature_stack": {
     "formula": "ourHomeLine = -(eff(home) - eff(away) + HFA + coach + prep + ats + sched + matchup); eff = algorithmBase + fa + draft + madden + pff + pffPre + pffYtd + sos + return + injury. 2025 prior locked at 0 from Week 5; Last-year SOS out.",
-    "injury_pulled": "2026-11-06b",
-    "injury_phase": "FINAL",
+    "injury_pulled": "2026-11-07a",
+    "injury_phase": "WORKING-SAT",
     "away_CIN": {
       "prior": 4.76,
       "fa": 0,
@@ -42,8 +42,8 @@
       "pff_ytd": 2,
       "sos": 0,
       "return": 0,
-      "injury": -2.05,
-      "eff": 4.32,
+      "injury": -2.14,
+      "eff": 4.23,
       "taper": {
         "N": 3,
         "n": 3,
@@ -84,20 +84,20 @@
       "pff_ytd": -0.92,
       "sos": 0,
       "return": 0,
-      "injury": -0.44
+      "injury": -0.35
     },
-    "rating_diff_home_minus_away": -6.96,
+    "rating_diff_home_minus_away": -6.87,
     "hfa": 0,
     "coach": 0,
     "prep": 0,
     "ats": -0.26,
     "travel": 0.25,
     "matchup": 0,
-    "gap": 6.97
+    "gap": 6.88
   },
   "injury_valuation": "data/injury-valuation/weeks/2026-W09-sunday.json",
-  "frozen_at": "2026-11-06T21:45:25.842Z",
-  "frozen_at_et": "Nov 6, 2026, 4:45 PM ET (America/New_York)",
+  "frozen_at": "2026-11-08T13:10:32.432Z",
+  "frozen_at_et": "Nov 8, 2026, 8:10 AM ET (America/New_York)",
   "tickets": [],
   "card_tickets": [
     "2026-11-05 Thu PRELIM pending: CIN -3 CZR Sat lock (B$ -7)"
