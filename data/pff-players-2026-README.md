@@ -6,11 +6,11 @@ Durable player store for the nfl-scout desk.
 |--|--|
 | DB | `pff-players-2026.sqlite` |
 | Index | `pff-players-2026-index.json` |
-| Season | 2026 REG weeks 1,2,3,4,5,6,7,8 |
-| Pulled | 2026-11-03 10:03 ET |
-| Players | 1841 |
+| Season | 2026 REG weeks 1,2,3,4,5,6,7,8,9 |
+| Pulled | 2026-11-10 09:59 ET |
+| Players | 1868 |
 | Teams | 32 |
-| With unit grade | 1724 |
+| With unit grade | 1771 |
 
 ## Schema (`players`)
 
