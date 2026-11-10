@@ -1,14 +1,33 @@
 {
   "week": 9,
   "season": 2026,
-  "frozen_at": "2026-11-09T00:21:44.335Z",
-  "frozen_at_et": "Nov 8, 2026, 7:21 PM ET (America/New_York)",
-  "injury_pulled": "2026-11-08a",
-  "injury_phase": "WORKING-SUN",
+  "frozen_at": "2026-11-10T00:11:35.145Z",
+  "frozen_at_et": "Nov 9, 2026, 7:11 PM ET (America/New_York)",
+  "injury_pulled": "2026-11-09a",
+  "injury_phase": "WORKING-MON",
   "street_source": "ESPN DraftKings scoreboard site.api.espn.com week=9 year=2026",
   "tnf": "JAX@BAL TNF FINAL JAX 33, BAL 10 (frozen separately in 2026-w09-jax-bal.json; ticket JAX -9.5 HIT; not re-frozen)",
   "n": 14,
   "games": [
+    {
+      "slug": "2026-w09-buf-min",
+      "game": "BUF@MIN",
+      "window": "MNF",
+      "kick": "2026-11-10T01:15Z",
+      "model": -4.71,
+      "official": -4.5,
+      "street": 3.5,
+      "ou": 45.5,
+      "edge_home": 8.21,
+      "edge_home_rounded": 8,
+      "shadow": -3,
+      "card_tickets": [
+        "2026-11-05 Thu PRELIM dog wait: MIN +3.5 after Murray status"
+      ],
+      "inj_away": -1.22,
+      "inj_home": -1.65,
+      "gap_note": null
+    },
     {
       "slug": "2026-w09-tb-chi",
       "game": "TB@CHI",
@@ -239,25 +258,7 @@
       "inj_away": -3.14,
       "inj_home": -4.44,
       "gap_note": "ESPN Sun AM vs 2026-11-07a: ARI Isaiah Adams IR→Q (activated Sat). Darnold still OUT. Model still uses Saturday seed."
-    },
-    {
-      "slug": "2026-w09-buf-min",
-      "game": "BUF@MIN",
-      "window": "MNF",
-      "kick": "2026-11-10T01:15Z",
-      "model": -5,
-      "official": -5,
-      "street": 3,
-      "ou": 43.5,
-      "edge_home": 8,
-      "edge_home_rounded": 8,
-      "shadow": -3.5,
-      "card_tickets": [
-        "2026-11-05 Thu PRELIM dog wait: MIN +3.5 after Murray status"
-      ],
-      "inj_away": -1.49,
-      "inj_home": -1.63
     }
   ],
-  "note": "Sunday 8 AM refresh: SUN_AM/SUN_PM re-frozen at Nov 8, 2026, 8:10 AM ET (America/New_York); SNF/MNF entries kept from Friday FINAL freeze Nov 6, 2026, 4:45 PM ET (America/New_York). | SNF pre-kick refresh at Nov 8, 2026, 7:21 PM ET (America/New_York) (other entries kept)."
+  "note": "Sunday 8 AM refresh: SUN_AM/SUN_PM re-frozen at Nov 8, 2026, 8:10 AM ET (America/New_York); SNF/MNF entries kept from Friday FINAL freeze Nov 6, 2026, 4:45 PM ET (America/New_York). | SNF pre-kick refresh at Nov 8, 2026, 7:21 PM ET (America/New_York) (other entries kept). | MNF pre-kick refresh at Nov 9, 2026, 7:11 PM ET (America/New_York) (other entries kept)."
 }
