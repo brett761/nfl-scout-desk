@@ -2834,7 +2834,7 @@ async function loadNfl() {
   const faReq = fetch("./data/fa-2026.json");
   const draftReq = fetch("./data/draft-2026.json");
   const maddenReq = fetch("./data/madden-2026.json");
-  const pffReq = fetch("./data/pff-2026.json?v=pffroster1103");
+  const pffReq = fetch("./data/pff-2026.json?v=pffroster1110");
   const pffPreReq = fetch("./data/pff-pre-2026.json?v=pffpre0924");
   const pffYtdReq = fetch("./data/pff-2026-ytd.json?v=pff12");
   const pffMatchReq = fetch("./data/pff-matchups-2026.json?v=pff2");

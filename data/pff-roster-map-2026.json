@@ -1,20 +1,20 @@
 {
  "season": 2026,
- "built_at": "2026-11-03T10:47:25-05:00",
- "built_et": "2026-11-03 10:47 AM ET",
+ "built_at": "2026-11-10T10:49:44-05:00",
+ "built_et": "2026-11-10 10:49 AM ET",
  "pool": "2025 PFF REG CSVs (data/pff-raw), players with a grade and >= 200 snaps",
  "sources": [
-  "PFF 2026 rosters by player_id: data/pff-players-2026.sqlite (pulled 2026-11-03 10:03 ET)",
+  "PFF 2026 rosters by player_id: data/pff-players-2026.sqlite (pulled 2026-11-10 09:59 ET)",
   "https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/<id>/roster (live)",
   "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries (live)",
   "data/injury-2026.json (season-ending reserve players ESPN drops from rosters)"
  ],
  "counts": {
-  "active": 937,
-  "moved": 279,
+  "active": 928,
+  "moved": 284,
   "practice_squad": 31,
-  "reserve": 126,
-  "unrostered": 84
+  "reserve": 134,
+  "unrostered": 85
  },
  "conflicts": [
   {
@@ -464,11 +464,11 @@
    "name": "Andre Cisco",
    "pos": "S",
    "team_2025": "NYJ",
-   "team_2026": "NYJ",
+   "team_2026": "DET",
    "roster_status": "active",
    "source": "pff_id+espn",
-   "pff_team": "NYJ",
-   "espn_team": "NYJ"
+   "pff_team": "DET",
+   "espn_team": "DET"
   },
   "109811": {
    "name": "Andrei Iosivas",
@@ -1504,11 +1504,11 @@
    "name": "C.J. Gardner-Johnson",
    "pos": "S",
    "team_2025": "CHI",
-   "team_2026": "BUF",
-   "roster_status": "active",
-   "source": "pff_id+espn",
+   "team_2026": null,
+   "roster_status": "unrostered",
+   "source": "pff_id BUF only, not on ESPN roster/injuries/Madden: treated as released",
    "pff_team": "BUF",
-   "espn_team": "BUF"
+   "espn_team": null
   },
   "169780": {
    "name": "C.J. Okoye",
@@ -2215,7 +2215,7 @@
    "pos": "WR",
    "team_2025": "HOU",
    "team_2026": "SF",
-   "roster_status": "active",
+   "roster_status": "reserve",
    "source": "pff_id+espn",
    "pff_team": "SF",
    "espn_team": "SF"
@@ -2695,7 +2695,7 @@
    "pos": "DI",
    "team_2025": "JAX",
    "team_2026": "JAX",
-   "roster_status": "active",
+   "roster_status": "reserve",
    "source": "pff_id+espn",
    "pff_team": "JAX",
    "espn_team": "JAX"
@@ -3055,7 +3055,7 @@
    "pos": "DI",
    "team_2025": "WSH",
    "team_2026": "WSH",
-   "roster_status": "active",
+   "roster_status": "reserve",
    "source": "pff_id+espn",
    "pff_team": "WSH",
    "espn_team": "WSH"
@@ -3174,11 +3174,11 @@
    "name": "Davon Godchaux",
    "pos": "DI",
    "team_2025": "NO",
-   "team_2026": "NO",
+   "team_2026": "JAX",
    "roster_status": "active",
    "source": "pff_id+espn",
-   "pff_team": "NO",
-   "espn_team": "NO"
+   "pff_team": "JAX",
+   "espn_team": "JAX"
   },
   "35883": {
    "name": "Dawson Knox",
@@ -3195,9 +3195,9 @@
    "pos": "ED",
    "team_2025": "JAX",
    "team_2026": "NYG",
-   "roster_status": "practice_squad",
-   "source": "espn_roster",
-   "pff_team": null,
+   "roster_status": "active",
+   "source": "pff_id+espn",
+   "pff_team": "NYG",
    "espn_team": "NYG"
   },
   "97519": {
@@ -3325,7 +3325,7 @@
    "pos": "WR",
    "team_2025": "SF",
    "team_2026": "SF",
-   "roster_status": "reserve",
+   "roster_status": "active",
    "source": "pff_id+espn",
    "pff_team": "SF",
    "espn_team": "SF"
@@ -3895,7 +3895,7 @@
    "pos": "WR",
    "team_2025": "JAX",
    "team_2026": "WSH",
-   "roster_status": "active",
+   "roster_status": "reserve",
    "source": "pff_id+espn",
    "pff_team": "WSH",
    "espn_team": "WSH"
@@ -4125,7 +4125,7 @@
    "pos": "S",
    "team_2025": "JAX",
    "team_2026": "JAX",
-   "roster_status": "active",
+   "roster_status": "reserve",
    "source": "pff_id+espn",
    "pff_team": "JAX",
    "espn_team": "JAX"
@@ -4235,7 +4235,7 @@
    "pos": "DI",
    "team_2025": "DEN",
    "team_2026": "DEN",
-   "roster_status": "active",
+   "roster_status": "reserve",
    "source": "pff_id+espn",
    "pff_team": "DEN",
    "espn_team": "DEN"
@@ -4935,7 +4935,7 @@
    "pos": "LB",
    "team_2025": "DET",
    "team_2026": "DET",
-   "roster_status": "active",
+   "roster_status": "reserve",
    "source": "pff_id+espn",
    "pff_team": "DET",
    "espn_team": "DET"
@@ -5054,11 +5054,11 @@
    "name": "Jacoby Brissett",
    "pos": "QB",
    "team_2025": "ARI",
-   "team_2026": "ARI",
+   "team_2026": "BAL",
    "roster_status": "active",
    "source": "pff_id+espn",
-   "pff_team": "ARI",
-   "espn_team": "ARI"
+   "pff_team": "BAL",
+   "espn_team": "BAL"
   },
   "102382": {
    "name": "Jacory Croskey-Merritt",
@@ -5354,11 +5354,11 @@
    "name": "Jalyn Armour-Davis",
    "pos": "CB",
    "team_2025": "TEN",
-   "team_2026": null,
-   "roster_status": "unrostered",
-   "source": null,
+   "team_2026": "LAC",
+   "roster_status": "practice_squad",
+   "source": "espn_roster",
    "pff_team": null,
-   "espn_team": null
+   "espn_team": "LAC"
   },
   "48400": {
    "name": "Jalyn Holmes",
@@ -5635,7 +5635,7 @@
    "pos": "DI",
    "team_2025": "WSH",
    "team_2026": "WSH",
-   "roster_status": "active",
+   "roster_status": "reserve",
    "source": "pff_id+espn",
    "pff_team": "WSH",
    "espn_team": "WSH"
@@ -5775,7 +5775,7 @@
    "pos": "CB",
    "team_2025": "KC",
    "team_2026": "LAR",
-   "roster_status": "active",
+   "roster_status": "reserve",
    "source": "pff_id+espn",
    "pff_team": "LAR",
    "espn_team": "LAR"
@@ -5855,9 +5855,9 @@
    "pos": "DI",
    "team_2025": "WSH",
    "team_2026": "WSH",
-   "roster_status": "reserve",
-   "source": "espn_roster",
-   "pff_team": null,
+   "roster_status": "active",
+   "source": "pff_id+espn",
+   "pff_team": "WSH",
    "espn_team": "WSH"
   },
   "43179": {
@@ -5935,7 +5935,7 @@
    "pos": "HB",
    "team_2025": "CLE",
    "team_2026": "ARI",
-   "roster_status": "practice_squad",
+   "roster_status": "active",
    "source": "espn_roster",
    "pff_team": null,
    "espn_team": "ARI"
@@ -5964,11 +5964,11 @@
    "name": "Jessie Bates III",
    "pos": "S",
    "team_2025": "ATL",
-   "team_2026": "ATL",
+   "team_2026": "JAX",
    "roster_status": "active",
    "source": "pff_id+espn",
-   "pff_team": "ATL",
-   "espn_team": "ATL"
+   "pff_team": "JAX",
+   "espn_team": "JAX"
   },
   "83873": {
    "name": "Jevon Holland",
@@ -6384,11 +6384,11 @@
    "name": "Jordan Davis",
    "pos": "DI",
    "team_2025": "PHI",
-   "team_2026": "PHI",
+   "team_2026": "JAX",
    "roster_status": "active",
    "source": "pff_id+espn",
-   "pff_team": "PHI",
-   "espn_team": "PHI"
+   "pff_team": "JAX",
+   "espn_team": "JAX"
   },
   "56734": {
    "name": "Jordan Elliott",
@@ -6445,7 +6445,7 @@
    "pos": "HB",
    "team_2025": "MIN",
    "team_2026": "MIN",
-   "roster_status": "reserve",
+   "roster_status": "active",
    "source": "pff_id+espn",
    "pff_team": "MIN",
    "espn_team": "MIN"
@@ -6715,7 +6715,7 @@
    "pos": "WR",
    "team_2025": "BUF",
    "team_2026": "BUF",
-   "roster_status": "active",
+   "roster_status": "reserve",
    "source": "pff_id+espn",
    "pff_team": "BUF",
    "espn_team": "BUF"
@@ -6955,7 +6955,7 @@
    "pos": "CB",
    "team_2025": "TEN",
    "team_2026": "LAC",
-   "roster_status": "active",
+   "roster_status": "practice_squad",
    "source": "espn_roster",
    "pff_team": null,
    "espn_team": "LAC"
@@ -7125,7 +7125,7 @@
    "pos": "T",
    "team_2025": "NO",
    "team_2026": "NO",
-   "roster_status": "reserve",
+   "roster_status": "active",
    "source": "pff_id+espn",
    "pff_team": "NO",
    "espn_team": "NO"
@@ -7145,7 +7145,7 @@
    "pos": "WR",
    "team_2025": "SF",
    "team_2026": "ARI",
-   "roster_status": "active",
+   "roster_status": "reserve",
    "source": "pff_id+espn",
    "pff_team": "ARI",
    "espn_team": "ARI"
@@ -7215,7 +7215,7 @@
    "pos": "DI",
    "team_2025": "ATL",
    "team_2026": "CHI",
-   "roster_status": "active",
+   "roster_status": "reserve",
    "source": "pff_id+espn",
    "pff_team": "CHI",
    "espn_team": "CHI"
@@ -7615,7 +7615,7 @@
    "pos": "QB",
    "team_2025": "BAL",
    "team_2026": "BAL",
-   "roster_status": "active",
+   "roster_status": "reserve",
    "source": "pff_id+espn",
    "pff_team": "BAL",
    "espn_team": "BAL"
@@ -7834,11 +7834,11 @@
    "name": "Luke Haggard",
    "pos": "G",
    "team_2025": "TB",
-   "team_2026": "TB",
-   "roster_status": "active",
-   "source": "pff_id+espn",
+   "team_2026": null,
+   "roster_status": "unrostered",
+   "source": "pff_id TB only, not on ESPN roster/injuries/Madden: treated as released",
    "pff_team": "TB",
-   "espn_team": "TB"
+   "espn_team": null
   },
   "98499": {
    "name": "Luke Musgrave",
@@ -7925,7 +7925,7 @@
    "pos": "WR",
    "team_2025": "NE",
    "team_2026": "NE",
-   "roster_status": "reserve",
+   "roster_status": "active",
    "source": "pff_id+espn",
    "pff_team": "NE",
    "espn_team": "NE"
@@ -8125,9 +8125,9 @@
    "pos": "LB",
    "team_2025": "DAL",
    "team_2026": "DAL",
-   "roster_status": "reserve",
-   "source": "espn_roster",
-   "pff_team": null,
+   "roster_status": "active",
+   "source": "pff_id+espn",
+   "pff_team": "DAL",
    "espn_team": "DAL"
   },
   "47436": {
@@ -8465,7 +8465,7 @@
    "pos": "WR",
    "team_2025": "ARI",
    "team_2026": "ARI",
-   "roster_status": "active",
+   "roster_status": "reserve",
    "source": "pff_id+espn",
    "pff_team": "ARI",
    "espn_team": "ARI"
@@ -8715,7 +8715,7 @@
    "pos": "ED",
    "team_2025": "CLE",
    "team_2026": "LAR",
-   "roster_status": "reserve",
+   "roster_status": "active",
    "source": "pff_id+espn",
    "pff_team": "LAR",
    "espn_team": "LAR"
@@ -9985,7 +9985,7 @@
    "pos": "ED",
    "team_2025": "IND",
    "team_2026": "ATL",
-   "roster_status": "active",
+   "roster_status": "reserve",
    "source": "pff_id+espn",
    "pff_team": "ATL",
    "espn_team": "ATL"

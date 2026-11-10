@@ -1,14 +1,14 @@
 {
   "season": 2026,
   "source_season": 2025,
-  "pulled": "2026-11-03",
+  "pulled": "2026-11-10",
   "source": "PFF+ Premium Stats CSV export (2025 REG), official download",
   "player_pool": 1994,
   "roster": {
-    "teams_as_of": "2026-11-03T10:47:25-05:00",
+    "teams_as_of": "2026-11-10T10:49:44-05:00",
     "map": "data/pff-roster-map-2026.json",
-    "moved": 279,
-    "dropped_no_2026_club": 115,
+    "moved": 284,
+    "dropped_no_2026_club": 116,
     "note": "2025 grades, counted for each player's current 2026 club (team_2025 shown on movers). Free agents, retired players and practice-squad players are left out; IR players stay in (debited through the injury sheet)."
   },
   "scoring": {
@@ -26,8 +26,8 @@
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "grade": 66.9,
-      "off_grade": 70.84,
+      "grade": 66.4,
+      "off_grade": 69.85,
       "def_grade": 62.95,
       "off": [
         {
@@ -63,12 +63,6 @@
           "team_2025": "ATL"
         },
         {
-          "name": "Jacoby Brissett",
-          "pos": "QB",
-          "grade": 71.1,
-          "snaps": 812
-        },
-        {
           "name": "Bam Knight",
           "pos": "HB",
           "grade": 69.5,
@@ -99,6 +93,12 @@
           "pos": "TE",
           "grade": 61.5,
           "snaps": 476
+        },
+        {
+          "name": "Jon Gaines II",
+          "pos": "G",
+          "grade": 60.3,
+          "snaps": 339
         }
       ],
       "def": [
@@ -172,15 +172,15 @@
           "snaps": 201
         }
       ],
-      "net": -0.83
+      "net": -0.93
     },
     "ATL": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "grade": 70.37,
+      "grade": 70.11,
       "off_grade": 72.76,
-      "def_grade": 67.98,
+      "def_grade": 67.45,
       "off": [
         {
           "name": "Chris Lindstrom",
@@ -297,12 +297,6 @@
           "snaps": 239
         },
         {
-          "name": "Jessie Bates III",
-          "pos": "S",
-          "grade": 64.5,
-          "snaps": 1091
-        },
-        {
           "name": "Samson Ebukam",
           "pos": "ED",
           "grade": 64.1,
@@ -321,16 +315,23 @@
           "grade": 60.0,
           "snaps": 249,
           "team_2025": "PHI"
+        },
+        {
+          "name": "Da'Shawn Hand",
+          "pos": "DI",
+          "grade": 58.7,
+          "snaps": 451,
+          "team_2025": "LAC"
         }
       ],
-      "net": -0.13
+      "net": -0.19
     },
     "BAL": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "grade": 71.3,
-      "off_grade": 67.91,
+      "grade": 72.01,
+      "off_grade": 69.33,
       "def_grade": 74.69,
       "off": [
         {
@@ -356,6 +357,13 @@
           "pos": "QB",
           "grade": 74.0,
           "snaps": 702
+        },
+        {
+          "name": "Jacoby Brissett",
+          "pos": "QB",
+          "grade": 71.1,
+          "snaps": 812,
+          "team_2025": "ARI"
         },
         {
           "name": "Ronnie Stanley",
@@ -395,12 +403,6 @@
           "grade": 56.9,
           "snaps": 1014,
           "team_2025": "NYJ"
-        },
-        {
-          "name": "Rashod Bateman",
-          "pos": "WR",
-          "grade": 55.5,
-          "snaps": 550
         }
       ],
       "def": [
@@ -474,15 +476,15 @@
           "snaps": 1029
         }
       ],
-      "net": 0.05
+      "net": 0.19
     },
     "BUF": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "grade": 68.28,
+      "grade": 68.15,
       "off_grade": 75.47,
-      "def_grade": 61.09,
+      "def_grade": 60.84,
       "off": [
         {
           "name": "Josh Allen",
@@ -618,14 +620,13 @@
           "team_2025": "ATL"
         },
         {
-          "name": "C.J. Gardner-Johnson",
-          "pos": "S",
-          "grade": 51.6,
-          "snaps": 767,
-          "team_2025": "CHI"
+          "name": "Terrel Bernard",
+          "pos": "LB",
+          "grade": 48.8,
+          "snaps": 623
         }
       ],
-      "net": -0.55
+      "net": -0.58
     },
     "CAR": {
       "n": 22,
@@ -2122,9 +2123,9 @@
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "grade": 72.99,
+      "grade": 73.7,
       "off_grade": 73.62,
-      "def_grade": 72.36,
+      "def_grade": 73.78,
       "off": [
         {
           "name": "Trevor Lawrence",
@@ -2226,6 +2227,13 @@
           "snaps": 736
         },
         {
+          "name": "Jordan Davis",
+          "pos": "DI",
+          "grade": 72.7,
+          "snaps": 686,
+          "team_2025": "PHI"
+        },
+        {
           "name": "Ventrell Miller",
           "pos": "LB",
           "grade": 72.6,
@@ -2251,19 +2259,14 @@
           "snaps": 612
         },
         {
-          "name": "Eric Murray",
+          "name": "Jessie Bates III",
           "pos": "S",
-          "grade": 61.3,
-          "snaps": 603
-        },
-        {
-          "name": "Arik Armstead",
-          "pos": "DI",
-          "grade": 60.3,
-          "snaps": 620
+          "grade": 64.5,
+          "snaps": 1091,
+          "team_2025": "ATL"
         }
       ],
-      "net": 0.39
+      "net": 0.53
     },
     "KC": {
       "n": 22,
@@ -3759,9 +3762,9 @@
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "grade": 72.69,
+      "grade": 72.16,
       "off_grade": 71.89,
-      "def_grade": 73.48,
+      "def_grade": 72.44,
       "off": [
         {
           "name": "Jordan Mailata",
@@ -3878,12 +3881,6 @@
           "snaps": 741
         },
         {
-          "name": "Jordan Davis",
-          "pos": "DI",
-          "grade": 72.7,
-          "snaps": 686
-        },
-        {
           "name": "Jalyx Hunt",
           "pos": "ED",
           "grade": 68.6,
@@ -3901,9 +3898,16 @@
           "grade": 66.7,
           "snaps": 715,
           "team_2025": "IND"
+        },
+        {
+          "name": "Tariq Woolen",
+          "pos": "CB",
+          "grade": 61.2,
+          "snaps": 817,
+          "team_2025": "SEA"
         }
       ],
-      "net": 0.33
+      "net": 0.23
     },
     "PIT": {
       "n": 22,
