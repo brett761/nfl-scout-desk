@@ -121,3 +121,10 @@ Pulled 2026-11-11 10:09 AM ET (America/New_York). Stamp `injury_pulled=2026-11-1
 - ESPN API timestamp 2026-11-11T15:08:50Z.
 
 Sources: ESPN injuries API; nfl.com/injuries; Week 9 (MNF tonight) and Week 10 scoreboards.
+
+## 2026-11-11b FINAL (Week 10 TNF WSH@NYG)
+
+- Official Wed Game Status (giants.com / commanders.com reg-10 + nfl.com Week 10 report), pulled ~4:25 PM ET.
+- WSH: Colson Yankoff (knee) OUT, Lucas Patrick (concussion) OUT; Treylon Burks no status (off, was ESPN OUT); Daniels full. Term -3.64 to -3.55.
+- NYG: Malik Harrison Q groin (soft on); Cam Skattebo and J.J. McCarthy no status (off). Term -2.30 to -2.05.
+- B$ NYG -7.39 raw (-7.5) vs DK NYG -2.5 / 40.5. Valuation data/injury-valuation/weeks/2026-W10-wsh-nyg.json. WSH/NYG rows TNF-protected.

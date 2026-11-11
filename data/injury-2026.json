@@ -1,14 +1,15 @@
 {
-  "pulled": "2026-11-11a",
-  "pulled_et": "2026-11-11 10:09 AM ET (America/New_York)",
-  "phase": "WORKING-WED",
+  "pulled": "2026-11-11b",
+  "pulled_et": "2026-11-11 4:25 PM ET (America/New_York)",
+  "phase": "FINAL",
   "sources": [
-    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-    "https://www.nfl.com/injuries/",
-    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?seasontype=2&week=8&year=2026",
-    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?seasontype=2&week=9&year=2026"
+    "https://www.giants.com/team/injury-report/week/reg-10",
+    "https://www.commanders.com/team/injury-report/week/reg-10",
+    "https://www.nfl.com/news/nfl-week-10-injury-report-2026-season",
+    "https://www.nfl.com/injuries/league/2026/reg10",
+    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
   ],
-  "note": "WORKING-WED Tuesday ESPN refresh (Week 9 FINAL incl. BUF@MIN MNF / Week 10 board; prior seed 2026-11-10a WORKING-TUE). Week 9 Sunday slate FINAL incl. TB@CHI SNF; Week 9 fully FINAL; no protects. Week 10 official practice sheet ~4pm ET Wed (TNF Thu) - ESPN working list only. Byes Week 10 (see schedule). Finished clubs: drop gameday inactive / ruled-out-for-remainder / coach's-decision noise; keep multi-week OUT + IR/PUP/NFI. ESPN designations authoritative, cross-checked vs NFL.com. Doubtful = 1.0 out. Preserve manuals (Sills 0 etc.). Tier caps QB<=1.5 / All-Pro<=0.5 / other<=0.25 on auto; Madden-first else PFF; floor 0.2x status; Cap team 6.0. No rumor moves.",
+  "note": "FINAL 2026-11-11b Week 10 TNF WSH@NYG after official Wed Game Status (giants.com/commanders.com reg-10 tables + nfl.com Week 10 report). WSH: Yankoff (knee) and Patrick (concussion) OUT; Burks no status (off, was ESPN OUT); Daniels FP. IR rows unchanged. NYG: Malik Harrison Q groin (soft on); Skattebo and McCarthy no status (off, Skattebo was ESPN OUT); IR rows unchanged. WSH/NYG rows are TNF-protected: later ESPN reseeds must not soften them. Other clubs unchanged from 2026-11-11a WORKING-WED (ESPN working tags as-is; official sheet Friday). Madden-first else PFF; Probable/cleared OFF; Q only with expected-impact judgment. Doubtful 1.0. Standing manuals preserved.",
   "espn_timestamp": "2026-11-11T15:08:50Z",
   "teams": {
     "ARI": [
@@ -402,7 +403,7 @@
         "name": "Dorian Strong",
         "pos": "DEPTH",
         "status": "NFI",
-        "note": "FINAL TNF. Neck \u2014 reserve/NFI. ESPN summary Out (NFI-R). Depth CB; on for completeness.",
+        "note": "FINAL TNF. Neck — reserve/NFI. ESPN summary Out (NFI-R). Depth CB; on for completeness.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872932",
         "on": true
       }
@@ -632,7 +633,7 @@
         "on": true,
         "impact": 0.25,
         "impact_source": "manual",
-        "valuation_note": "W6 FINAL valuation: ESPN Out; with Montez Sweat suspended both starting EDGEs are gone \u2014 fills missing auto at tier cap."
+        "valuation_note": "W6 FINAL valuation: ESPN Out; with Montez Sweat suspended both starting EDGEs are gone — fills missing auto at tier cap."
       },
       {
         "name": "Noah Sewell",
@@ -785,7 +786,7 @@
         "name": "Kendrick Green",
         "pos": "OG",
         "status": "IR",
-        "note": "ir Explicit impact 0 \u2014 depth IR; no pos_base fallthrough.",
+        "note": "ir Explicit impact 0 — depth IR; no pos_base fallthrough.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0,
@@ -2291,26 +2292,6 @@
     ],
     "NYG": [
       {
-        "name": "J.J. McCarthy",
-        "pos": "DEPTH",
-        "status": "QUESTIONABLE",
-        "note": "McCarthy (hip) was listed as a full participant in Tuesday's practice, Dan Salomone of the Giants' official site reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.2,
-        "impact_source": "pff"
-      },
-      {
-        "name": "Cam Skattebo",
-        "pos": "RB1",
-        "status": "OUT",
-        "note": "Skattebo (hamstring) was listed as a full participant in Tuesday's practice, Dan Salomone of the Giants' official site reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.25,
-        "impact_source": "madden"
-      },
-      {
         "name": "Tyrone Tracy Jr.",
         "pos": "RB1",
         "status": "IR",
@@ -2365,6 +2346,15 @@
         "on": true,
         "impact": 0.5,
         "impact_source": "madden"
+      },
+      {
+        "name": "Malik Harrison",
+        "pos": "LB",
+        "status": "QUESTIONABLE",
+        "injury": "Groin",
+        "source": "https://www.giants.com/team/injury-report/week/reg-10",
+        "on": true,
+        "note": "Official Wed FINAL Questionable (LP/LP/LP). Starting MIKE with Edmunds on IR (Madden 73). P(play) ~0.6. Q soft on at auto."
       }
     ],
     "NYJ": [
@@ -2692,7 +2682,7 @@
         "name": "Gennings Dunker",
         "pos": "OG",
         "status": "IR",
-        "note": "The Steelers placed Dunker (knee) on injured reserve Saturday, Tom Pelissero of Netflix reports. Explicit impact 0 \u2014 depth IR; no pos_base fallthrough.",
+        "note": "The Steelers placed Dunker (knee) on injured reserve Saturday, Tom Pelissero of Netflix reports. Explicit impact 0 — depth IR; no pos_base fallthrough.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0,
@@ -3103,26 +3093,20 @@
       {
         "name": "Colson Yankoff",
         "pos": "TE1",
-        "status": "QUESTIONABLE",
-        "note": "Yankoff (knee) did not participate in Tuesday's walkthrough practice.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
-        "name": "Treylon Burks",
-        "pos": "WR2",
         "status": "OUT",
-        "note": "Burks (foot) was a limited participant in Tuesday's walkthrough practice.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "note": "Official Wed FINAL Out (DNP Tue/Wed). Was Q soft on WORKING; now full at auto. TE depth (Bates/Okonkwo FP) covers.",
+        "source": "https://www.commanders.com/team/injury-report/week/reg-10",
+        "on": true,
+        "injury": "Knee"
       },
       {
         "name": "Lucas Patrick",
         "pos": "OG",
-        "status": "DOUBTFUL",
-        "note": "doubtful",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "status": "OUT",
+        "note": "Official Wed FINAL Out (DNP Tue/Wed), concussion. Was Doubtful (already 1.0), no point change. Gulbin (FP) at C.",
+        "source": "https://www.commanders.com/team/injury-report/week/reg-10",
+        "on": true,
+        "injury": "Concussion"
       },
       {
         "name": "Dyami Brown",
@@ -3238,5 +3222,5 @@
       }
     ]
   },
-  "stamp": "2026-11-11a"
+  "stamp": "2026-11-11b"
 }

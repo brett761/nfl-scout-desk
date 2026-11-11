@@ -1,0 +1,32 @@
+{
+  "week": 10, "season": 2026, "game": "WSH@NYG", "window": "TNF", "stamp": "2026-11-11b", "phase": "FINAL",
+  "sources": ["https://www.giants.com/team/injury-report/week/reg-10", "https://www.commanders.com/team/injury-report/week/reg-10", "https://www.nfl.com/news/nfl-week-10-injury-report-2026-season", "https://www.nfl.com/injuries/league/2026/reg10"],
+  "pulled_et": "2026-11-11 4:25 PM ET",
+  "raw": "data/injury-valuation/weeks/2026-W10-wsh-nyg-official-raw.md",
+  "official": {
+    "WSH": [
+      {"name": "Colson Yankoff", "pos": "TE", "injury": "Knee", "practice": "DNP/DNP", "status": "OUT", "p_play": 0, "on": true, "impact_source": "auto", "replacement": "John Bates / Chig Okonkwo (both FP)", "replacement_quality": "average", "range": [0.05, 0.2], "valuation": "Was Q soft on in WORKING; now full at auto. TE room has two healthy vets, small drop-off. Auto agrees with full valuation; no manual."},
+      {"name": "Lucas Patrick", "pos": "C/G", "injury": "Concussion", "practice": "DNP/DNP", "status": "OUT", "p_play": 0, "on": true, "impact_source": "auto", "replacement": "Matt Gulbin (FP)", "replacement_quality": "below average", "range": [0.1, 0.25], "valuation": "Was Doubtful (already 1.0). No point change. Interior OL depth thin with Tunsil on IR; small unit compounding, no extra add."},
+      {"name": "Treylon Burks", "pos": "WR", "injury": "Foot", "practice": "DNP/LP", "status": "none", "on": false, "valuation": "ESPN had OUT; official sheet carries no game status after LP Wed -> plays, off. Small WSH upgrade."},
+      {"name": "Jayden Daniels", "pos": "QB", "practice": "FP/FP", "status": "none", "on": false, "valuation": "Full both days, no status. Starts."},
+      {"name": "Bates / Gulbin / Okonkwo / Robertson / Tuttle", "pos": "TE/C/TE/CB/DT", "status": "none", "on": false, "valuation": "No status, play."},
+      {"name": "IR rows (McLaurin, Tunsil, Payne, Amos, Chenal, Croskey-Merritt, McNichols, Lane, etc.)", "status": "IR", "on": true, "valuation": "Unchanged (already priced)."}
+    ],
+    "NYG": [
+      {"name": "Malik Harrison", "pos": "LB (MIKE)", "injury": "Groin", "practice": "LP/LP/LP", "status": "QUESTIONABLE", "p_play": 0.6, "on": true, "impact_source": "auto", "replacement": "LB depth (Edmunds on IR)", "replacement_quality": "below average", "range": [0.03, 0.1], "valuation": "Starting MIKE with Edmunds out, Madden 73, PFF 2025 57.6 (PIT). Limited all week. Q soft on at auto; no manual."},
+      {"name": "Cam Skattebo", "pos": "RB", "injury": "Hamstring", "practice": "LP/FP/FP", "status": "none", "on": false, "valuation": "ESPN had OUT; full Tue/Wed and no status -> plays, off. NYG upgrade."},
+      {"name": "J.J. McCarthy", "pos": "QB", "injury": "Hip", "practice": "LP/FP/FP", "status": "none", "on": false, "valuation": "No status, expected to play (NFL.com). Was Q soft on 0.2 -> off."},
+      {"name": "Carter / Hood / C. Jones / Mooney / Eluemunor / T. Johnson / Nabers / A. Thomas", "status": "none", "on": false, "valuation": "No status, play."},
+      {"name": "IR rows (Dart, Burns, Edmunds, Tracy, Berrios, Golston)", "status": "IR", "on": true, "valuation": "Unchanged (already priced)."}
+    ]
+  },
+  "unit_effects": {
+    "WSH_OL": "Patrick out with Tunsil on IR; Gulbin at C. Mild interior compounding vs the NYG front (Carter healthy). Not added beyond auto.",
+    "WSH_TE": "Yankoff out, two FP vets cover. Negligible.",
+    "NYG": "Healthier than the working list: Skattebo and McCarthy have no status. Only Harrison Q."
+  },
+  "team_injury_term": {"WSH": {"before": -3.64, "after": -3.55}, "NYG": {"before": -2.30, "after": -2.05}},
+  "net_injury_swing_toward_NYG": 0.16,
+  "b_line_home_spread": {"before_raw": -7.23, "after_raw": -7.39, "published": -7.5, "street_dk": -2.5, "ou_dk": 40.5, "shadow_dvoa_blend": -6.83},
+  "confidence": "Moderate"
+}
