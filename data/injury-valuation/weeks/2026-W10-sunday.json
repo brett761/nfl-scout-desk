@@ -1,0 +1,333 @@
+{
+  "week": 10,
+  "season": 2026,
+  "window": "Sunday AM (NE vs DET international) / Sunday PM / SNF / MNF",
+  "phase": "FINAL",
+  "injury_pulled": "2026-11-13b",
+  "pulled_et": "2026-11-13 4:27 PM ET (America/New_York)",
+  "espn_timestamp": "2026-11-13T21:24:00Z",
+  "method": "skill nfl-injury-spread-valuation: base position value x quality x role, replacement drop-off, status probability (Out/Doubtful 1.0, Q shaded by practice), unit interactions; desk auto Madden-first prior compared with full valuation. ESPN tags followed as-is (Brett standing rule); official Friday club reports used where ESPN differed.",
+  "sources": {
+    "espn": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+    "nfl_com": "https://www.nfl.com/injuries/league/2026/reg10 (Game Status populated only for NE/DET/IND + TNF leftovers at pull)",
+    "club_reports": "<club>.com/team/injury-report via curl 2026-11-13 ~4:25-4:35 PM ET (home club page carries both teams)"
+  },
+  "source_gaps": [
+    "GB, ARI/LAR, SEA/LV, SF/DAL club Friday Game Status still UNSPECIFIED at pull (Thu practice only) - ESPN Friday tags used as-is.",
+    "MNF LAC@BAL: both clubs UNSPECIFIED (Thu-Sat schedule); ESPN tags used; refresh before Monday kick.",
+    "CIN partially posted (Dugger OUT; Davis/Iosivas/Parker D); PIT listed Harmon Q only."
+  ],
+  "material_flips_vs_2026_11_13a": [
+    "('ARI', 'Jon Gaines II', 'OG', 'QUESTIONABLE', 'OUT', 0.2)",
+    "('ARI', 'Hjalte Froholdt', 'C', 'QUESTIONABLE', 'OUT', 0.25)",
+    "('ATL', 'Zachariah Branch', 'WR2', 'DOUBTFUL', 'OUT', None)",
+    "('BUF', 'Jordan Hancock', 'CB1', 'IR', 'QUESTIONABLE', None)",
+    "('CAR', 'Xavier Legette', 'WR2', 'IR', 'QUESTIONABLE', None)",
+    "('CAR', 'Jonathon Brooks', 'RB1', 'IR', 'DOUBTFUL', None)",
+    "('CAR', 'Bobby Okereke', 'LB', 'QUESTIONABLE', 'OUT', 0.25)",
+    "('CAR', 'Mike Jackson', 'CB1', 'IR', 'DOUBTFUL', 0.2)",
+    "('CAR', 'Brady Christensen', 'OG', 'IR', 'QUESTIONABLE', 0.2)",
+    "('CIN', 'Andrei Iosivas', 'WR2', 'IR', 'DOUBTFUL', 0.2)",
+    "('CIN', 'Kyle Dugger', 'S', 'QUESTIONABLE', 'OUT', 0.2)",
+    "('CIN', 'Brian Parker II', 'RT', 'IR', 'DOUBTFUL', None)",
+    "('CIN', 'Jalen Davis', 'CB1', 'IR', 'DOUBTFUL', 0.2)",
+    "('CLE', 'Ronnie Hickman', 'S', 'QUESTIONABLE', 'OUT', None)",
+    "('DEN', 'Talanoa Hufanga', 'S', 'QUESTIONABLE', 'OUT', 0.5)",
+    "('HOU', 'Marvin Harrison Jr.', 'WR2', 'QUESTIONABLE', 'OUT', None)",
+    "('HOU', 'Brevin Jordan', 'TE1', 'QUESTIONABLE', 'OUT', None)",
+    "('HOU', 'Azeez Al-Shaair', 'LB', 'QUESTIONABLE', 'OUT', 0.25)",
+    "('HOU', 'Danielle Hunter', 'EDGE1', 'QUESTIONABLE', 'OUT', 0.5)",
+    "('HOU', 'Jaylin Smith', 'CB1', 'IR', 'QUESTIONABLE', None)",
+    "('IND', 'Jalen Travis', 'RT', 'DOUBTFUL', 'OUT', 0.25)",
+    "('IND', 'Mo Alie-Cox', 'TE1', 'QUESTIONABLE', 'OUT', 0.2)",
+    "('IND', 'Akeem Davis-Gaither', 'LB', 'QUESTIONABLE', 'OUT', 0.2)",
+    "('IND', 'Arden Key', 'EDGE1', 'IR', 'QUESTIONABLE', 0.2)",
+    "('IND', 'Will Mallory', 'TE1', 'IR', 'QUESTIONABLE', None)",
+    "('JAX', 'B.J. Green II', 'EDGE1', 'IR', 'OUT', None)",
+    "('KC', 'Peter Woods', 'IDL', 'QUESTIONABLE', 'OUT', None)",
+    "('KC', 'Jaylon Moore', 'RT', 'QUESTIONABLE', 'OUT', 0.2)",
+    "('MIA', 'Chris Bell', 'WR2', 'QUESTIONABLE', 'DOUBTFUL', None)",
+    "('MIA', 'Darrell Baker Jr.', 'CB1', 'PUP', 'QUESTIONABLE', 0.2)",
+    "('MIN', 'T.J. Hockenson', 'TE1', 'QUESTIONABLE', 'OUT', 0.25)",
+    "('MIN', 'Kyler Murray', 'QB1', 'DOUBTFUL', 'OUT', 0.28)",
+    "('MIN', 'Blake Cashman', 'LB', 'QUESTIONABLE', 'OUT', 0.25)",
+    "('MIN', 'Jauan Jennings', 'WR2', 'QUESTIONABLE', 'OUT', 0.2)",
+    "('NE', 'Reggie Gilliam', 'DEPTH', 'IR', 'QUESTIONABLE', 0.25)",
+    "('NE', 'Greg Van Roten', 'OG', 'IR', 'QUESTIONABLE', None)",
+    "('NO', 'CJ Donaldson', 'RB1', 'QUESTIONABLE', 'OUT', None)",
+    "('NO', 'Travis Etienne Jr.', 'RB1', 'IR', 'QUESTIONABLE', 0.25)",
+    "('NO', 'Erik McCoy', 'C', 'DOUBTFUL', 'OUT', 0.25)",
+    "('NO', 'Taliese Fuaga', 'RT', 'QUESTIONABLE', 'OUT', 0.2)",
+    "('NYJ', 'Trevin Wallace', 'LB', 'QUESTIONABLE', 'OUT', None)",
+    "('NYJ', 'VJ Payne', 'S', 'IR', 'QUESTIONABLE', None)",
+    "('PIT', 'Derrick Harmon', 'IDL', 'IR', 'QUESTIONABLE', 0.2)",
+    "('TEN', 'Anthony Hill Jr.', 'LB', 'QUESTIONABLE', 'OUT', None)",
+    "('TEN', 'Cody Barton', 'LB', 'QUESTIONABLE', 'OUT', 0.2)",
+    "('TEN', 'Carnell Tate', 'WR2', 'QUESTIONABLE', 'OUT', 0.2)"
+  ],
+  "report_cards": {
+    "MIN QB Kyler Murray OUT (hamstring, DNP x3; was Doubtful in AM working - same 1.0 weight)": {
+      "replacement": "Carson Wentz (cleared, full Friday) - started W9 MNF",
+      "desk_impact_auto": "0.28 Madden drop-off vs Wentz",
+      "full_valuation": "QB-specific: market already priced Wentz since W9 MNF (GB -3); auto kept, Low-Moderate confidence that it under-prices",
+      "manual": "none (auto held)",
+      "unit_interaction": "Hockenson/Jennings OUT + Addison Q thins pass game around backup QB; Cashman/Ingram-Dawkins OUT on D. MIN term -2.22 -> -2.52."
+    },
+    "HOU defense + WR: Danielle Hunter OUT, Azeez Al-Shaair OUT, Will Anderson Jr. Q (DNP Fri), Marvin Harrison Jr. OUT, Brevin Jordan OUT, Keylan Rutledge OUT": {
+      "replacement": "rotational EDGE/LB depth; WR3 into WR2 role",
+      "desk_impact_auto": "Hunter 0.5 (All-Pro cap), Al-Shaair 0.25, MHJ pos-base",
+      "full_valuation": "EDGE pair risk if Anderson sits: 0.6-0.9 combined; auto in range at Q weight",
+      "manual": "none",
+      "unit_interaction": "HOU term -3.22 -> -4.19 (biggest Friday mover with TEN); B$ HOU -3.5 now under street -4.5"
+    },
+    "TEN: Carnell Tate, Peter Skoronski, Cody Barton, Anthony Hill Jr., Jaylon Jones, Tommy Townsend OUT; Spears Q": {
+      "desk_impact_auto": "each 0.2-0.25 tier cap",
+      "full_valuation": "OL + LB cluster vs JAX; auto sum reasonable",
+      "manual": "none",
+      "unit_interaction": "TEN term -2.34 -> -3.32; B$ JAX -18 is an outlier vs street -10.5 (box/cliff, not a ticket)"
+    },
+    "SEA QB Sam Darnold OUT (manual 1.5 held); Drew Lock Q (elbow/oblique, LP/LP); Cross/Nelson D on ESPN": {
+      "replacement": "Drew Lock starts if active; club Game Status unposted",
+      "manual": "Darnold 1.5 held",
+      "unit_interaction": "If Lock is also out, SEA goes to QB3 - not priced; re-check before Sunday 4:05 ET."
+    },
+    "NE WR A.J. Brown Q (LP x3; was OUT W9)": {
+      "manual": "0.55 held as full-out value; Q weight applies",
+      "note": "NE term improves +0.18; club report clears Hunter Henry/Moses (no status)."
+    },
+    "BUF OT Spencer Brown Doubtful (official; ESPN Q)": {
+      "desk_impact_auto": "0.25",
+      "note": "BUF improves overall (+0.34) as Dawkins/McGovern/Shavers clear."
+    },
+    "KC: Jaylon Moore RT OUT, Peter Woods/Omarr Norman-Lott DL OUT, Kenneth Walker III Q; Mahomes UNSPECIFIED (knee/elbow, FP x3)": {
+      "note": "KC term -1.46 -> -2.22; Mahomes full practice all week - no QB move."
+    },
+    "MIA: Aaron Brewer C OUT, Jared Wayne OUT, Chris Bell D": {
+      "note": "MIA term -3.08 -> -3.77"
+    }
+  },
+  "team_injury_terms_working_to_final": {
+    "ARI": {
+      "working": -3.14,
+      "final": -3.61,
+      "delta": -0.47
+    },
+    "ATL": {
+      "working": -2.14,
+      "final": -2.48,
+      "delta": -0.34
+    },
+    "BAL": {
+      "working": -4.56,
+      "final": -4.65,
+      "delta": -0.09
+    },
+    "BUF": {
+      "working": -1.29,
+      "final": -0.95,
+      "delta": 0.34
+    },
+    "CAR": {
+      "working": -2.84,
+      "final": -2.89,
+      "delta": -0.05
+    },
+    "CHI": {
+      "working": -1.9,
+      "final": -1.9,
+      "delta": 0.0
+    },
+    "CIN": {
+      "working": -1.92,
+      "final": -2.05,
+      "delta": -0.13
+    },
+    "CLE": {
+      "working": -1.57,
+      "final": -1.37,
+      "delta": 0.2
+    },
+    "DAL": {
+      "working": -2.39,
+      "final": -2.57,
+      "delta": -0.18
+    },
+    "DEN": {
+      "working": -2.62,
+      "final": -2.95,
+      "delta": -0.33
+    },
+    "DET": {
+      "working": -3.43,
+      "final": -3.36,
+      "delta": 0.07
+    },
+    "GB": {
+      "working": -3.68,
+      "final": -3.85,
+      "delta": -0.17
+    },
+    "HOU": {
+      "working": -3.22,
+      "final": -4.19,
+      "delta": -0.97
+    },
+    "IND": {
+      "working": -1.99,
+      "final": -2.66,
+      "delta": -0.67
+    },
+    "JAX": {
+      "working": -1.74,
+      "final": -2.17,
+      "delta": -0.43
+    },
+    "KC": {
+      "working": -1.46,
+      "final": -2.22,
+      "delta": -0.76
+    },
+    "LAC": {
+      "working": -2.84,
+      "final": -3.18,
+      "delta": -0.34
+    },
+    "LAR": {
+      "working": -3.9,
+      "final": -3.9,
+      "delta": 0.0
+    },
+    "LV": {
+      "working": null,
+      "final": -0.77,
+      "delta": -0.77
+    },
+    "MIA": {
+      "working": -3.08,
+      "final": -3.77,
+      "delta": -0.69
+    },
+    "MIN": {
+      "working": -2.22,
+      "final": -2.52,
+      "delta": -0.3
+    },
+    "NE": {
+      "working": -3.57,
+      "final": -3.39,
+      "delta": 0.18
+    },
+    "NO": {
+      "working": -1.3,
+      "final": -1.61,
+      "delta": -0.31
+    },
+    "NYG": {
+      "working": -2.05,
+      "final": -2.05,
+      "delta": 0.0
+    },
+    "NYJ": {
+      "working": -2.59,
+      "final": -2.73,
+      "delta": -0.14
+    },
+    "PHI": {
+      "working": -4.23,
+      "final": -4.23,
+      "delta": 0.0
+    },
+    "SEA": {
+      "working": -4.14,
+      "final": -4.41,
+      "delta": -0.27
+    },
+    "SF": {
+      "working": -3.01,
+      "final": -3.17,
+      "delta": -0.16
+    },
+    "TB": {
+      "working": -1.2,
+      "final": -1.2,
+      "delta": 0.0
+    },
+    "TEN": {
+      "working": -2.34,
+      "final": -3.32,
+      "delta": -0.98
+    },
+    "WSH": {
+      "working": -3.55,
+      "final": -3.55,
+      "delta": 0.0
+    }
+  },
+  "manual_overrides_applied": [
+    "SEA Sam Darnold 1.5 (held)",
+    "NE A.J. Brown 0.55 (held; Q weight)",
+    "NYJ Garrett Wilson 0.35 (held; Q weight)",
+    "PHI DeVonta Smith 0.65 (bye)",
+    "CHI Dayo Odeyingbo 0.25 (bye)"
+  ],
+  "official_overrides_applied": [
+    "CIN Jalen Davis IR->DOUBTFUL (official Fri)",
+    "CIN Andrei Iosivas IR->DOUBTFUL (official Fri)",
+    "CIN Brian Parker II IR->DOUBTFUL (official Fri)",
+    "PIT Derrick Harmon IR->QUESTIONABLE (official Fri)",
+    "KC Omarr Norman-Lott NEW OUT (official Fri)",
+    "CLE Austin Barber QUESTIONABLE->cleared (official Fri)",
+    "CLE Maliek Collins QUESTIONABLE->cleared (official Fri)",
+    "CLE Harold Fannin Jr. QUESTIONABLE->cleared (official Fri)",
+    "CLE Tytus Howard QUESTIONABLE->cleared (official Fri)",
+    "CLE Elgton Jenkins QUESTIONABLE->cleared (official Fri)",
+    "CLE Carson Schwesinger QUESTIONABLE->cleared (official Fri)",
+    "CLE Denzel Ward QUESTIONABLE->cleared (official Fri)",
+    "CLE Quincy Williams QUESTIONABLE->cleared (official Fri)",
+    "HOU Trent Brown NEW QUESTIONABLE (official Fri)",
+    "HOU Keylan Rutledge QUESTIONABLE->OUT (official Fri)",
+    "HOU Wyatt Teller NEW QUESTIONABLE (official Fri)",
+    "HOU Reed Blankenship QUESTIONABLE->cleared (official Fri)",
+    "HOU Jacob Hummel NEW QUESTIONABLE (official Fri)",
+    "HOU Jaylin Smith IR->QUESTIONABLE (official Fri)",
+    "IND Arden Key IR->QUESTIONABLE (official Fri)",
+    "IND Will Mallory NEW QUESTIONABLE (official Fri)",
+    "MIA Tucker Addington QUESTIONABLE->cleared (official Fri)",
+    "MIA Darrell Baker Jr. PUP->QUESTIONABLE (official Fri)",
+    "MIA Malik Herring QUESTIONABLE->cleared (official Fri)",
+    "MIA Will Kacmarek QUESTIONABLE->cleared (official Fri)",
+    "MIA Jared Wayne QUESTIONABLE->OUT (official Fri)",
+    "NE Brenden Schooler NEW QUESTIONABLE (official Fri)",
+    "NE Reggie Gilliam IR->QUESTIONABLE (official Fri)",
+    "NE Greg Van Roten NEW QUESTIONABLE (official Fri)",
+    "NO Travis Etienne Jr. IR->QUESTIONABLE (official Fri)",
+    "CAR Brady Christensen NEW QUESTIONABLE (official Fri)",
+    "CAR Mike Jackson IR->DOUBTFUL (official Fri)",
+    "CAR Jonathon Brooks IR->DOUBTFUL (official Fri)",
+    "CAR Xavier Legette IR->QUESTIONABLE (official Fri)",
+    "NYJ Jarvis Brownlee Jr. NEW QUESTIONABLE (official Fri)",
+    "NYJ VJ Payne IR->QUESTIONABLE (official Fri)",
+    "BUF Alec Anderson QUESTIONABLE->cleared (official Fri)",
+    "BUF Spencer Brown QUESTIONABLE->DOUBTFUL (official Fri)",
+    "BUF Dion Dawkins QUESTIONABLE->cleared (official Fri)",
+    "BUF Jordan Hancock NEW QUESTIONABLE (official Fri)",
+    "BUF Connor McGovern QUESTIONABLE->cleared (official Fri)",
+    "BUF Tyrell Shavers OUT->cleared (official Fri)",
+    "MIN Blake Cashman QUESTIONABLE->OUT (official Fri)",
+    "MIN Tyrion Ingram-Dawkins NEW OUT (official Fri)",
+    "MIN Jay Ward QUESTIONABLE->cleared (official Fri)",
+    "MIN Carson Wentz QUESTIONABLE->cleared (official Fri)",
+    "MIN Josh Metellus NEW QUESTIONABLE (official Fri)",
+    "TEN Jaylon Jones NEW OUT (official Fri)",
+    "JAX Ezra Cleveland QUESTIONABLE->cleared (official Fri)",
+    "JAX Antonio Johnson QUESTIONABLE->cleared (official Fri)",
+    "JAX Chris Rodriguez Jr. QUESTIONABLE->cleared (official Fri)",
+    "JAX Travon Walker QUESTIONABLE->cleared (official Fri)",
+    "JAX Branson Combs QUESTIONABLE->cleared (official Fri)",
+    "JAX Jordan Davis NEW OUT (official Fri)",
+    "JAX B.J. Green II IR->OUT (official Fri)"
+  ],
+  "overrides_note": "FINAL rules: stub-hold narrowed to bare 'inactive'; Friday-dated ESPN O/D/Q rows and bare Week 10 stubs followed as-is; club Friday Game Status applied where ESPN differed (None = no status on club report -> cleared). Doubtful=1.0. No new manuals: full valuation landed inside the auto range for every material case this week.",
+  "tnf": "WSH@NYG FINAL WSH 24, NYG 21 (call NYG -2/-2.5 LOST; lock 2026-w10-wsh-nyg.json; not re-frozen)",
+  "locks": "data/postmortem/locks/2026-w10-sunday-freeze-summary.json"
+}
