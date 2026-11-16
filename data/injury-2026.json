@@ -1,7 +1,7 @@
 {
-  "pulled": "2026-11-15a",
-  "pulled_et": "2026-11-15 10:09 AM ET (America/New_York)",
-  "phase": "WORKING-SUN",
+  "pulled": "2026-11-16a",
+  "pulled_et": "2026-11-16 10:08 AM ET (America/New_York)",
+  "phase": "WORKING-MON",
   "sources": [
     "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
     "https://www.nfl.com/injuries/",
@@ -9,7 +9,7 @@
     "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?seasontype=2&week=9&year=2026"
   ],
   "note": "WORKING Sunday 2026-11-15a (ESPN refreshed Sun 10 AM ET before 1 PM kicks; NE@DET Munich in progress held verbatim from 2026-11-14a; club Friday overrides kept) (Week 10 Sunday/SNF/MNF card; prior seed 2026-11-13a WORKING-FRI). ESPN injuries API after the official ~4 PM ET Friday report; club injury reports (<club>.com/team/injury-report, curl ~4:35 PM ET) override ESPN where it differed. TNF WSH@NYG FINAL (WSH 24-NYG 21) - no protect. Byes Week 10 CHI/DEN/PHI/TB. Gaps: GB/ARI/LAR/SEA/LV/SF/DAL/BAL/LAC club Friday Game Status UNSPECIFIED at pull, CIN partial, PIT bare (ESPN Friday tags followed as-is). MNF LAC@BAL: Friday designations used; refresh Saturday/Monday if status moves. Finished clubs: drop gameday inactive / ruled-out-for-remainder / coach's-decision noise; keep multi-week OUT + IR/PUP/NFI. Doubtful = 1.0 out. Preserve manuals. Tier caps QB<=1.5 / All-Pro<=0.5 / other<=0.25 on auto; Madden-first else PFF; floor 0.2x status; Cap team 6.0. No rumor moves.",
-  "espn_timestamp": "2026-11-15T15:08:52Z",
+  "espn_timestamp": "2026-11-16T15:07:37Z",
   "teams": {
     "ARI": [
       {
@@ -431,7 +431,7 @@
         "name": "Dorian Strong",
         "pos": "DEPTH",
         "status": "NFI",
-        "note": "FINAL TNF. Neck \u2014 reserve/NFI. ESPN summary Out (NFI-R). Depth CB; on for completeness.",
+        "note": "FINAL TNF. Neck — reserve/NFI. ESPN summary Out (NFI-R). Depth CB; on for completeness.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872932",
         "on": true
       }
@@ -451,7 +451,7 @@
         "name": "Brady Christensen",
         "pos": "OG",
         "status": "QUESTIONABLE",
-        "note": "Brady Christensen \u2014 official Friday Game Status QUESTIONABLE (club injury report 11/13); ESPN showed IR at pull. Christensen (hamstring) has been downgraded to out for Sunday's game against the Saints, Joe Person of The Athletic reports.",
+        "note": "Brady Christensen — official Friday Game Status QUESTIONABLE (club injury report 11/13); ESPN showed IR at pull. Christensen (hamstring) has been downgraded to out for Sunday's game against the Saints, Joe Person of The Athletic reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.2,
@@ -461,7 +461,7 @@
         "name": "Mike Jackson",
         "pos": "CB1",
         "status": "DOUBTFUL",
-        "note": "Mike Jackson \u2014 official Friday Game Status DOUBTFUL (club injury report 11/13); ESPN showed IR at pull. Jackson (groin) has been downgraded from doubtful to out for Sunday's game against the Saints, Joe Person of The Athletic reports.",
+        "note": "Mike Jackson — official Friday Game Status DOUBTFUL (club injury report 11/13); ESPN showed IR at pull. Jackson (groin) has been downgraded from doubtful to out for Sunday's game against the Saints, Joe Person of The Athletic reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.2,
@@ -471,7 +471,7 @@
         "name": "Jonathon Brooks",
         "pos": "RB1",
         "status": "DOUBTFUL",
-        "note": "Jonathon Brooks \u2014 official Friday Game Status DOUBTFUL (club injury report 11/13); ESPN showed IR at pull. Brooks (groin) has been downgraded from doubtful to out for Sunday's game against the Saints, Joe Person of The Athletic reports.",
+        "note": "Jonathon Brooks — official Friday Game Status DOUBTFUL (club injury report 11/13); ESPN showed IR at pull. Brooks (groin) has been downgraded from doubtful to out for Sunday's game against the Saints, Joe Person of The Athletic reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
       },
@@ -650,7 +650,7 @@
         "on": true,
         "impact": 0.25,
         "impact_source": "manual",
-        "valuation_note": "W6 FINAL valuation: ESPN Out; with Montez Sweat suspended both starting EDGEs are gone \u2014 fills missing auto at tier cap."
+        "valuation_note": "W6 FINAL valuation: ESPN Out; with Montez Sweat suspended both starting EDGEs are gone — fills missing auto at tier cap."
       },
       {
         "name": "Noah Sewell",
@@ -666,7 +666,7 @@
         "name": "Andrei Iosivas",
         "pos": "WR2",
         "status": "DOUBTFUL",
-        "note": "Andrei Iosivas \u2014 official Friday Game Status DOUBTFUL (club injury report 11/13); ESPN showed IR at pull. Iosivas (thumb) has been downgraded from doubtful to out for Sunday's game against the Steelers.",
+        "note": "Andrei Iosivas — official Friday Game Status DOUBTFUL (club injury report 11/13); ESPN showed IR at pull. Iosivas (thumb) has been downgraded from doubtful to out for Sunday's game against the Steelers.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.2,
@@ -686,7 +686,7 @@
         "name": "Brian Parker II",
         "pos": "RT",
         "status": "DOUBTFUL",
-        "note": "Brian Parker II \u2014 official Friday Game Status DOUBTFUL (club injury report 11/13); ESPN showed IR at pull. The Bengals opened Parker's (undisclosed) 21-day practice window Thursday.",
+        "note": "Brian Parker II — official Friday Game Status DOUBTFUL (club injury report 11/13); ESPN showed IR at pull. The Bengals opened Parker's (undisclosed) 21-day practice window Thursday.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
       },
@@ -694,7 +694,7 @@
         "name": "Jalen Davis",
         "pos": "CB1",
         "status": "DOUBTFUL",
-        "note": "Jalen Davis \u2014 official Friday Game Status DOUBTFUL (club injury report 11/13); ESPN showed IR at pull. The Bengals designated Davis (hamstring) to return from injured reserve Thursday.",
+        "note": "Jalen Davis — official Friday Game Status DOUBTFUL (club injury report 11/13); ESPN showed IR at pull. The Bengals designated Davis (hamstring) to return from injured reserve Thursday.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.2,
@@ -811,7 +811,7 @@
         "name": "Kendrick Green",
         "pos": "OG",
         "status": "IR",
-        "note": "ir Explicit impact 0 \u2014 depth IR; no pos_base fallthrough.",
+        "note": "ir Explicit impact 0 — depth IR; no pos_base fallthrough.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0,
@@ -1431,7 +1431,7 @@
         "name": "Wyatt Teller",
         "pos": "OG",
         "status": "QUESTIONABLE",
-        "note": "Wyatt Teller \u2014 official Friday Game Status QUESTIONABLE (club injury report 11/13); not on ESPN list at pull.",
+        "note": "Wyatt Teller — official Friday Game Status QUESTIONABLE (club injury report 11/13); not on ESPN list at pull.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
       },
@@ -1439,7 +1439,7 @@
         "name": "Trent Brown",
         "pos": "RT",
         "status": "QUESTIONABLE",
-        "note": "Trent Brown \u2014 official Friday Game Status QUESTIONABLE (club injury report 11/13); not on ESPN list at pull.",
+        "note": "Trent Brown — official Friday Game Status QUESTIONABLE (club injury report 11/13); not on ESPN list at pull.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.2,
@@ -1457,7 +1457,7 @@
         "name": "Jaylin Smith",
         "pos": "CB1",
         "status": "QUESTIONABLE",
-        "note": "Jaylin Smith \u2014 official Friday Game Status QUESTIONABLE (club injury report 11/13); ESPN showed IR at pull. The Texans designated Smith (hamstring) to return from injured reserve Wednesday.",
+        "note": "Jaylin Smith — official Friday Game Status QUESTIONABLE (club injury report 11/13); ESPN showed IR at pull. The Texans designated Smith (hamstring) to return from injured reserve Wednesday.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
       },
@@ -1465,7 +1465,7 @@
         "name": "Jacob Hummel",
         "pos": "DEPTH",
         "status": "QUESTIONABLE",
-        "note": "Jacob Hummel \u2014 official Friday Game Status QUESTIONABLE (club injury report 11/13); not on ESPN list at pull.",
+        "note": "Jacob Hummel — official Friday Game Status QUESTIONABLE (club injury report 11/13); not on ESPN list at pull.",
         "source": "official club injury report (NFL) 2026-11-13",
         "on": true
       },
@@ -1555,7 +1555,7 @@
         "name": "Will Mallory",
         "pos": "TE1",
         "status": "QUESTIONABLE",
-        "note": "Will Mallory \u2014 official Friday Game Status QUESTIONABLE (club injury report 11/13); ESPN showed OUT at pull. Mallory (hamstring) has been downgraded from questionable to out for Sunday's game against the Dolphins.",
+        "note": "Will Mallory — official Friday Game Status QUESTIONABLE (club injury report 11/13); ESPN showed OUT at pull. Mallory (hamstring) has been downgraded from questionable to out for Sunday's game against the Dolphins.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
       },
@@ -1607,7 +1607,7 @@
         "name": "Arden Key",
         "pos": "EDGE1",
         "status": "QUESTIONABLE",
-        "note": "Arden Key \u2014 official Friday Game Status QUESTIONABLE (club injury report 11/13); not on ESPN list at pull.",
+        "note": "Arden Key — official Friday Game Status QUESTIONABLE (club injury report 11/13); not on ESPN list at pull.",
         "source": "official club injury report (NFL) 2026-11-13",
         "on": true,
         "impact": 0.2,
@@ -1655,7 +1655,7 @@
         "name": "B.J. Green II",
         "pos": "EDGE1",
         "status": "OUT",
-        "note": "B.J. Green II \u2014 official Friday Game Status OUT (club injury report 11/13); ESPN showed IR at pull. Green (forearm) has been ruled out ahead of Sunday's game against the Titans, Michael DiRocco of ESPN.com reports.",
+        "note": "B.J. Green II — official Friday Game Status OUT (club injury report 11/13); ESPN showed IR at pull. Green (forearm) has been ruled out ahead of Sunday's game against the Titans, Michael DiRocco of ESPN.com reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
       },
@@ -1673,7 +1673,7 @@
         "name": "Jordan Davis",
         "pos": "DEPTH",
         "status": "OUT",
-        "note": "Jordan Davis \u2014 official Friday Game Status OUT (club injury report 11/13); not on ESPN list at pull.",
+        "note": "Jordan Davis — official Friday Game Status OUT (club injury report 11/13); not on ESPN list at pull.",
         "source": "official club injury report (NFL) 2026-11-13",
         "on": true,
         "impact": 0.2,
@@ -1775,7 +1775,7 @@
         "name": "Omarr Norman-Lott",
         "pos": "DEPTH",
         "status": "OUT",
-        "note": "Omarr Norman-Lott \u2014 official Friday Game Status OUT (club injury report 11/13); not on ESPN list at pull.",
+        "note": "Omarr Norman-Lott — official Friday Game Status OUT (club injury report 11/13); not on ESPN list at pull.",
         "source": "official club injury report (NFL) 2026-11-13",
         "on": true
       },
@@ -1908,12 +1908,10 @@
       {
         "name": "Ladd McConkey",
         "pos": "WR2",
-        "status": "QUESTIONABLE",
-        "note": "McConkey (back) is listed as questionable for Monday night's game against the Ravens, Noah Furtado of The Athletic reports.",
+        "status": "OUT",
+        "note": "McConkey (back) won't travel to Baltimore with the Chargers for Monday's game against the Ravens (ESPN 2026-11-16).",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.25,
-        "impact_source": "madden"
+        "on": true
       },
       {
         "name": "Brenen Thompson",
@@ -2173,7 +2171,7 @@
         "name": "Darrell Baker Jr.",
         "pos": "CB1",
         "status": "QUESTIONABLE",
-        "note": "Darrell Baker Jr. \u2014 official Friday Game Status QUESTIONABLE (club injury report 11/13); ESPN showed OUT at pull. Baker (knee) was not activated from the reserve/PUP list ahead of Sunday's clash against Indianapolis.",
+        "note": "Darrell Baker Jr. — official Friday Game Status QUESTIONABLE (club injury report 11/13); ESPN showed OUT at pull. Baker (knee) was not activated from the reserve/PUP list ahead of Sunday's clash against Indianapolis.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.2,
@@ -2341,7 +2339,7 @@
         "name": "Josh Metellus",
         "pos": "DEPTH",
         "status": "QUESTIONABLE",
-        "note": "Josh Metellus \u2014 official Friday Game Status QUESTIONABLE (club injury report 11/13); not on ESPN list at pull.",
+        "note": "Josh Metellus — official Friday Game Status QUESTIONABLE (club injury report 11/13); not on ESPN list at pull.",
         "source": "official club injury report (NFL) 2026-11-13",
         "on": true,
         "impact": 0.23,
@@ -2490,7 +2488,7 @@
         "name": "Reggie Gilliam",
         "pos": "DEPTH",
         "status": "QUESTIONABLE",
-        "note": "Reggie Gilliam \u2014 official Friday Game Status QUESTIONABLE (club injury report 11/13); ESPN showed IR at pull. Gilliam (ankle) was designated for return from injured reserve Wednesday, Mike Reiss of ESPN.com reports.",
+        "note": "Reggie Gilliam — official Friday Game Status QUESTIONABLE (club injury report 11/13); ESPN showed IR at pull. Gilliam (ankle) was designated for return from injured reserve Wednesday, Mike Reiss of ESPN.com reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.25,
@@ -2500,7 +2498,7 @@
         "name": "Greg Van Roten",
         "pos": "OG",
         "status": "QUESTIONABLE",
-        "note": "Greg Van Roten \u2014 official Friday Game Status QUESTIONABLE (club injury report 11/13); not on ESPN list at pull.",
+        "note": "Greg Van Roten — official Friday Game Status QUESTIONABLE (club injury report 11/13); not on ESPN list at pull.",
         "source": "official club injury report (NFL) 2026-11-13",
         "on": true
       },
@@ -3050,7 +3048,7 @@
         "name": "Gennings Dunker",
         "pos": "OG",
         "status": "IR",
-        "note": "The Steelers placed Dunker (knee) on injured reserve Saturday, Tom Pelissero of Netflix reports. Explicit impact 0 \u2014 depth IR; no pos_base fallthrough.",
+        "note": "The Steelers placed Dunker (knee) on injured reserve Saturday, Tom Pelissero of Netflix reports. Explicit impact 0 — depth IR; no pos_base fallthrough.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0,
@@ -3407,7 +3405,7 @@
         "name": "Jaylon Jones",
         "pos": "DEPTH",
         "status": "OUT",
-        "note": "Jaylon Jones \u2014 official Friday Game Status OUT (club injury report 11/13); not on ESPN list at pull.",
+        "note": "Jaylon Jones — official Friday Game Status OUT (club injury report 11/13); not on ESPN list at pull.",
         "source": "official club injury report (NFL) 2026-11-13",
         "on": true
       },
@@ -3603,5 +3601,5 @@
       }
     ]
   },
-  "stamp": "2026-11-15a"
+  "stamp": "2026-11-16a"
 }
