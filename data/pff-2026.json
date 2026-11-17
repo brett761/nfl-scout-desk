@@ -1,14 +1,14 @@
 {
   "season": 2026,
   "source_season": 2025,
-  "pulled": "2026-11-10",
+  "pulled": "2026-11-17",
   "source": "PFF+ Premium Stats CSV export (2025 REG), official download",
   "player_pool": 1994,
   "roster": {
-    "teams_as_of": "2026-11-10T10:49:44-05:00",
+    "teams_as_of": "2026-11-17T10:42:02-05:00",
     "map": "data/pff-roster-map-2026.json",
-    "moved": 284,
-    "dropped_no_2026_club": 116,
+    "moved": 288,
+    "dropped_no_2026_club": 117,
     "note": "2025 grades, counted for each player's current 2026 club (team_2025 shown on movers). Free agents, retired players and practice-squad players are left out; IR players stay in (debited through the injury sheet)."
   },
   "scoring": {
@@ -18,7 +18,7 @@
     "min_snaps": 200,
     "grade_per_point": 5.0,
     "cap": 1.5,
-    "league_grade": 71.04,
+    "league_grade": 70.93,
     "note": "Same 22 per club (11 OFF + 11 DEF by 2025 PFF grade, min snaps, on the 2026 roster). Surplus vs league mean of those 22. 5 grade \u2248 1 point, cap \u00b11.5. Does not rewrite the 2025 prior. Raw CSVs stay off the public desk."
   },
   "teams": {
@@ -172,14 +172,14 @@
           "snaps": 201
         }
       ],
-      "net": -0.93
+      "net": -0.91
     },
     "ATL": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "grade": 70.11,
-      "off_grade": 72.76,
+      "grade": 69.11,
+      "off_grade": 70.76,
       "def_grade": 67.45,
       "off": [
         {
@@ -199,12 +199,6 @@
           "pos": "HB",
           "grade": 86.6,
           "snaps": 860
-        },
-        {
-          "name": "Ryan Neuzil",
-          "pos": "C",
-          "grade": 77.4,
-          "snaps": 1096
         },
         {
           "name": "Kyle Pitts",
@@ -249,6 +243,13 @@
           "pos": "TE",
           "grade": 56.4,
           "snaps": 565
+        },
+        {
+          "name": "Jahan Dotson",
+          "pos": "WR",
+          "grade": 55.4,
+          "snaps": 599,
+          "team_2025": "PHI"
         }
       ],
       "def": [
@@ -324,14 +325,14 @@
           "team_2025": "LAC"
         }
       ],
-      "net": -0.19
+      "net": -0.36
     },
     "BAL": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "grade": 72.01,
-      "off_grade": 69.33,
+      "grade": 72.94,
+      "off_grade": 71.19,
       "def_grade": 74.69,
       "off": [
         {
@@ -345,6 +346,13 @@
           "pos": "WR",
           "grade": 79.6,
           "snaps": 878
+        },
+        {
+          "name": "Ryan Neuzil",
+          "pos": "C",
+          "grade": 77.4,
+          "snaps": 1096,
+          "team_2025": "ATL"
         },
         {
           "name": "Roger Rosengarten",
@@ -396,13 +404,6 @@
           "grade": 63.4,
           "snaps": 800,
           "team_2025": "PHI"
-        },
-        {
-          "name": "John Simpson",
-          "pos": "G",
-          "grade": 56.9,
-          "snaps": 1014,
-          "team_2025": "NYJ"
         }
       ],
       "def": [
@@ -476,15 +477,15 @@
           "snaps": 1029
         }
       ],
-      "net": 0.19
+      "net": 0.4
     },
     "BUF": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "grade": 68.15,
+      "grade": 68.05,
       "off_grade": 75.47,
-      "def_grade": 60.84,
+      "def_grade": 60.62,
       "off": [
         {
           "name": "Josh Allen",
@@ -606,18 +607,18 @@
           "snaps": 433
         },
         {
-          "name": "Geno Stone",
-          "pos": "S",
-          "grade": 54.3,
-          "snaps": 1014,
-          "team_2025": "CIN"
-        },
-        {
           "name": "Dee Alford",
           "pos": "CB",
           "grade": 52.9,
           "snaps": 581,
           "team_2025": "ATL"
+        },
+        {
+          "name": "Amani Hooker",
+          "pos": "S",
+          "grade": 51.9,
+          "snaps": 918,
+          "team_2025": "TEN"
         },
         {
           "name": "Terrel Bernard",
@@ -632,9 +633,9 @@
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "grade": 70.93,
+      "grade": 70.86,
       "off_grade": 73.41,
-      "def_grade": 68.45,
+      "def_grade": 68.31,
       "off": [
         {
           "name": "Darren Waller",
@@ -757,12 +758,6 @@
           "snaps": 336
         },
         {
-          "name": "Claudin Cherelus",
-          "pos": "LB",
-          "grade": 59.2,
-          "snaps": 207
-        },
-        {
           "name": "Chau Smith-Wade",
           "pos": "CB",
           "grade": 58.1,
@@ -773,9 +768,15 @@
           "pos": "CB",
           "grade": 57.9,
           "snaps": 955
+        },
+        {
+          "name": "Trevis Gipson",
+          "pos": "ED",
+          "grade": 57.6,
+          "snaps": 244
         }
       ],
-      "net": -0.02
+      "net": -0.01
     },
     "CHI": {
       "n": 22,
@@ -925,7 +926,7 @@
           "snaps": 610
         }
       ],
-      "net": 0.28
+      "net": 0.3
     },
     "CIN": {
       "n": 22,
@@ -1073,7 +1074,7 @@
           "snaps": 498
         }
       ],
-      "net": -0.2
+      "net": -0.18
     },
     "CLE": {
       "n": 22,
@@ -1223,7 +1224,7 @@
           "snaps": 780
         }
       ],
-      "net": -0.95
+      "net": -0.93
     },
     "DAL": {
       "n": 22,
@@ -1373,7 +1374,7 @@
           "team_2025": "WSH"
         }
       ],
-      "net": 0.25
+      "net": 0.27
     },
     "DEN": {
       "n": 22,
@@ -1519,7 +1520,7 @@
           "snaps": 1089
         }
       ],
-      "net": 0.62
+      "net": 0.64
     },
     "DET": {
       "n": 22,
@@ -1669,7 +1670,7 @@
           "snaps": 446
         }
       ],
-      "net": 0.74
+      "net": 0.76
     },
     "GB": {
       "n": 22,
@@ -1818,7 +1819,7 @@
           "snaps": 724
         }
       ],
-      "net": 0.47
+      "net": 0.49
     },
     "HOU": {
       "n": 22,
@@ -1967,14 +1968,14 @@
           "team_2025": "TB"
         }
       ],
-      "net": 0.72
+      "net": 0.75
     },
     "IND": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "grade": 70.48,
-      "off_grade": 74.67,
+      "grade": 68.81,
+      "off_grade": 71.35,
       "def_grade": 66.28,
       "off": [
         {
@@ -2000,19 +2001,6 @@
           "pos": "HB",
           "grade": 78.1,
           "snaps": 883
-        },
-        {
-          "name": "Keenan Allen",
-          "pos": "WR",
-          "grade": 77.6,
-          "snaps": 630,
-          "team_2025": "LAC"
-        },
-        {
-          "name": "Josh Downs",
-          "pos": "WR",
-          "grade": 77.1,
-          "snaps": 595
         },
         {
           "name": "Jalen Travis",
@@ -2043,6 +2031,19 @@
           "pos": "G",
           "grade": 65.8,
           "snaps": 1008
+        },
+        {
+          "name": "Nick Westbrook-Ikhine",
+          "pos": "WR",
+          "grade": 60.0,
+          "snaps": 385,
+          "team_2025": "MIA"
+        },
+        {
+          "name": "Drew Ogletree",
+          "pos": "TE",
+          "grade": 58.1,
+          "snaps": 227
         }
       ],
       "def": [
@@ -2117,7 +2118,7 @@
           "team_2025": "CIN"
         }
       ],
-      "net": -0.11
+      "net": -0.42
     },
     "JAX": {
       "n": 22,
@@ -2266,14 +2267,14 @@
           "team_2025": "ATL"
         }
       ],
-      "net": 0.53
+      "net": 0.55
     },
     "KC": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "grade": 70.6,
-      "off_grade": 72.59,
+      "grade": 71.25,
+      "off_grade": 73.87,
       "def_grade": 68.62,
       "off": [
         {
@@ -2288,6 +2289,13 @@
           "grade": 88.4,
           "snaps": 497,
           "team_2025": "SEA"
+        },
+        {
+          "name": "Josh Downs",
+          "pos": "WR",
+          "grade": 77.1,
+          "snaps": 595,
+          "team_2025": "IND"
         },
         {
           "name": "Rashee Rice",
@@ -2337,12 +2345,6 @@
           "pos": "G",
           "grade": 64.9,
           "snaps": 1090
-        },
-        {
-          "name": "Jaylon Moore",
-          "pos": "T",
-          "grade": 63.0,
-          "snaps": 427
         }
       ],
       "def": [
@@ -2415,7 +2417,7 @@
           "snaps": 1021
         }
       ],
-      "net": -0.09
+      "net": 0.06
     },
     "LAC": {
       "n": 22,
@@ -2562,14 +2564,14 @@
           "snaps": 640
         }
       ],
-      "net": -0.06
+      "net": -0.03
     },
     "LAR": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "grade": 80.55,
-      "off_grade": 82.85,
+      "grade": 80.71,
+      "off_grade": 83.18,
       "def_grade": 78.24,
       "off": [
         {
@@ -2633,10 +2635,10 @@
           "snaps": 621
         },
         {
-          "name": "Coleman Shelton",
-          "pos": "C",
-          "grade": 70.1,
-          "snaps": 1119
+          "name": "Xavier Smith",
+          "pos": "WR",
+          "grade": 73.7,
+          "snaps": 231
         }
       ],
       "def": [
@@ -2716,8 +2718,8 @@
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "grade": 66.52,
-      "off_grade": 70.59,
+      "grade": 65.79,
+      "off_grade": 69.13,
       "def_grade": 62.45,
       "off": [
         {
@@ -2738,13 +2740,6 @@
           "pos": "TE",
           "grade": 78.8,
           "snaps": 606
-        },
-        {
-          "name": "Kirk Cousins",
-          "pos": "QB",
-          "grade": 76.0,
-          "snaps": 543,
-          "team_2025": "ATL"
         },
         {
           "name": "Ashton Jeanty",
@@ -2788,6 +2783,12 @@
           "pos": "T",
           "grade": 60.6,
           "snaps": 992
+        },
+        {
+          "name": "Jack Bech",
+          "pos": "WR",
+          "grade": 59.9,
+          "snaps": 344
         }
       ],
       "def": [
@@ -2862,14 +2863,14 @@
           "snaps": 684
         }
       ],
-      "net": -0.9
+      "net": -1.03
     },
     "MIA": {
-      "n": 20,
-      "n_off": 9,
+      "n": 21,
+      "n_off": 10,
       "n_def": 11,
-      "grade": 62.08,
-      "off_grade": 66.32,
+      "grade": 60.66,
+      "off_grade": 62.93,
       "def_grade": 58.6,
       "off": [
         {
@@ -2920,6 +2921,13 @@
           "grade": 60.4,
           "snaps": 464,
           "team_2025": "DAL"
+        },
+        {
+          "name": "Brady Cook",
+          "pos": "QB",
+          "grade": 32.4,
+          "snaps": 295,
+          "team_2025": "NYJ"
         },
         {
           "name": "Jonah Savaiinaea",
@@ -3005,8 +3013,8 @@
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "grade": 70.4,
-      "off_grade": 70.84,
+      "grade": 71.05,
+      "off_grade": 72.14,
       "def_grade": 69.97,
       "off": [
         {
@@ -3020,6 +3028,13 @@
           "pos": "WR",
           "grade": 80.5,
           "snaps": 941
+        },
+        {
+          "name": "Kirk Cousins",
+          "pos": "QB",
+          "grade": 76.0,
+          "snaps": 543,
+          "team_2025": "ATL"
         },
         {
           "name": "Jordan Mason",
@@ -3071,12 +3086,6 @@
           "pos": "WR",
           "grade": 64.9,
           "snaps": 714
-        },
-        {
-          "name": "Will Fries",
-          "pos": "G",
-          "grade": 61.7,
-          "snaps": 989
         }
       ],
       "def": [
@@ -3150,7 +3159,7 @@
           "team_2025": "BAL"
         }
       ],
-      "net": -0.13
+      "net": 0.02
     },
     "NE": {
       "n": 22,
@@ -3301,7 +3310,7 @@
           "snaps": 949
         }
       ],
-      "net": 0.38
+      "net": 0.4
     },
     "NO": {
       "n": 22,
@@ -3450,7 +3459,7 @@
           "snaps": 695
         }
       ],
-      "net": -0.35
+      "net": -0.33
     },
     "NYG": {
       "n": 22,
@@ -3601,7 +3610,7 @@
           "snaps": 811
         }
       ],
-      "net": -0.68
+      "net": -0.66
     },
     "NYJ": {
       "n": 22,
@@ -3756,14 +3765,14 @@
           "team_2025": "CIN"
         }
       ],
-      "net": -0.12
+      "net": -0.1
     },
     "PHI": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "grade": 72.16,
-      "off_grade": 71.89,
+      "grade": 71.4,
+      "off_grade": 70.37,
       "def_grade": 72.44,
       "off": [
         {
@@ -3777,12 +3786,6 @@
           "pos": "QB",
           "grade": 79.2,
           "snaps": 964
-        },
-        {
-          "name": "Lane Johnson",
-          "pos": "T",
-          "grade": 77.4,
-          "snaps": 449
         },
         {
           "name": "DeVonta Smith",
@@ -3833,6 +3836,13 @@
           "pos": "WR",
           "grade": 61.1,
           "snaps": 212
+        },
+        {
+          "name": "Zach Ertz",
+          "pos": "TE",
+          "grade": 60.7,
+          "snaps": 551,
+          "team_2025": "WSH"
         }
       ],
       "def": [
@@ -3907,7 +3917,7 @@
           "team_2025": "SEA"
         }
       ],
-      "net": 0.23
+      "net": 0.09
     },
     "PIT": {
       "n": 22,
@@ -4057,7 +4067,7 @@
           "team_2025": "CHI"
         }
       ],
-      "net": 0.32
+      "net": 0.34
     },
     "SEA": {
       "n": 22,
@@ -4204,14 +4214,14 @@
           "snaps": 765
         }
       ],
-      "net": 1.17
+      "net": 1.19
     },
     "SF": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "grade": 73.27,
-      "off_grade": 79.51,
+      "grade": 73.6,
+      "off_grade": 80.18,
       "def_grade": 67.03,
       "off": [
         {
@@ -4245,6 +4255,13 @@
           "snaps": 931
         },
         {
+          "name": "Keenan Allen",
+          "pos": "WR",
+          "grade": 77.6,
+          "snaps": 630,
+          "team_2025": "LAC"
+        },
+        {
           "name": "Mac Jones",
           "pos": "QB",
           "grade": 77.1,
@@ -4274,12 +4291,6 @@
           "pos": "C",
           "grade": 70.4,
           "snaps": 950
-        },
-        {
-          "name": "Dominick Puni",
-          "pos": "G",
-          "grade": 70.2,
-          "snaps": 1119
         }
       ],
       "def": [
@@ -4354,7 +4365,7 @@
           "snaps": 441
         }
       ],
-      "net": 0.45
+      "net": 0.53
     },
     "TB": {
       "n": 22,
@@ -4505,15 +4516,15 @@
           "team_2025": "MIA"
         }
       ],
-      "net": -0.4
+      "net": -0.37
     },
     "TEN": {
       "n": 22,
       "n_off": 11,
       "n_def": 11,
-      "grade": 66.66,
+      "grade": 66.67,
       "off_grade": 68.91,
-      "def_grade": 64.41,
+      "def_grade": 64.44,
       "off": [
         {
           "name": "Peter Skoronski",
@@ -4654,14 +4665,14 @@
           "team_2025": "NYJ"
         },
         {
-          "name": "Solomon Thomas",
-          "pos": "DI",
-          "grade": 59.6,
-          "snaps": 417,
-          "team_2025": "DAL"
+          "name": "Mohamoud Diabate",
+          "pos": "LB",
+          "grade": 59.9,
+          "snaps": 298,
+          "team_2025": "CLE"
         }
       ],
-      "net": -0.88
+      "net": -0.85
     },
     "WSH": {
       "n": 22,
@@ -4815,7 +4826,7 @@
           "snaps": 511
         }
       ],
-      "net": -0.04
+      "net": -0.02
     }
   },
   "missing": [
