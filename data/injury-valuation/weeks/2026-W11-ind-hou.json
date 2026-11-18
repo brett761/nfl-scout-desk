@@ -1,0 +1,40 @@
+{
+  "week": 11, "season": 2026, "game": "IND@HOU", "window": "TNF", "stamp": "2026-11-18b", "phase": "FINAL",
+  "sources": ["https://www.colts.com/team/injury-report/week/reg-11", "https://www.nfl.com/news/nfl-week-11-injury-report-2026-season", "https://www.nfl.com/injuries/league/2026/reg11"],
+  "pulled_et": "2026-11-18 4:30 PM ET",
+  "raw": "data/injury-valuation/weeks/2026-W11-ind-hou-official-raw.md",
+  "official": {
+    "IND": [
+      {"name": "Bernhard Raimann", "pos": "LT", "injury": "Concussion", "practice": "DNP/DNP/DNP", "status": "OUT", "p_play": 0, "on": true, "impact_source": "manual", "replacement": "Charlie Heck (Q, Madden 64)", "replacement_quality": "below average", "range": [0.4, 0.9], "desk_impact": 0.6, "valuation": "Madden 86 starting LT vs a 64-grade swing tackle who is himself Q. Auto cap 0.25 undersells; manual 0.6. Not on the working list, added from the official sheet."},
+      {"name": "Jalen Travis", "pos": "RT", "injury": "Knee", "practice": "DNP x3", "status": "OUT", "p_play": 0, "on": true, "impact_source": "auto", "range": [0.15, 0.35], "valuation": "Was Doubtful (already 1.0). Starting RT Madden 70. Auto 0.25 holds. OL compounding with Raimann: both tackles out, Heck Q. Unit note below, no extra add."},
+      {"name": "Charvarius Ward", "pos": "CB", "injury": "Knee", "practice": "DNP x3", "status": "OUT", "p_play": 0, "on": true, "impact_source": "manual", "replacement": "CB depth (Taylor-Britt on IR)", "replacement_quality": "below average", "range": [0.35, 0.7], "desk_impact": 0.5, "valuation": "Was Q auto 0.5 (clamped to 0.25 as non-All-Pro). Now Out; Madden 86; manual 0.5 uncapped."},
+      {"name": "Sauce Gardner", "pos": "CB", "injury": "Calf", "practice": "DNP x3", "status": "QUESTIONABLE", "p_play": 0.4, "on": true, "impact_source": "manual", "range": [0.15, 0.45], "desk_impact": 0.85, "valuation": "Madden 88. Three DNPs means P(miss) near 0.6 vs the 0.35 Q prior. Manual impact 0.85 x 0.35 = 0.30 expected. If he is also out, IND CB room is gutted (Ward out, TB on IR); flagged as upside risk to HOU."},
+      {"name": "Jerry Tillery", "pos": "DT", "injury": "Calf", "practice": "DNP x3", "status": "OUT", "p_play": 0, "on": true, "impact_source": "auto", "range": [0.05, 0.2], "valuation": "Rotational DT, Madden 71. Auto."},
+      {"name": "Will Mallory", "pos": "TE", "injury": "Hamstring", "practice": "DNP x3", "status": "OUT", "p_play": 0, "on": true, "impact_source": "auto", "range": [0.05, 0.2], "valuation": "TE1 Madden 65, Alie-Cox/Towt on IR. Small. Auto."},
+      {"name": "Charlie Heck", "pos": "T", "injury": "Personal (NIR)", "practice": "-/DNP/DNP", "status": "QUESTIONABLE", "p_play": 0.6, "on": true, "impact_source": "auto", "range": [0.03, 0.15], "valuation": "Not injury related. Matters only as the tackle replacement. Soft on at auto."},
+      {"name": "Anthony Gould", "pos": "WR", "injury": "Toe", "practice": "LP/LP/FP", "status": "QUESTIONABLE", "p_play": 0.85, "on": true, "impact_source": "auto", "range": [0.0, 0.1], "valuation": "Full Wed. Soft on at auto."},
+      {"name": "Luke Rhodes", "pos": "LS", "injury": "Hamstring", "practice": "DNP/LP/LP", "status": "QUESTIONABLE", "p_play": 0.75, "on": true, "impact_source": "auto", "range": [0.0, 0.05], "valuation": "Long snapper, soft on at auto."},
+      {"name": "Dalton Tucker", "pos": "G", "practice": "FP x3", "status": "none", "on": false, "valuation": "No status, plays."}
+    ],
+    "HOU": [
+      {"name": "Danielle Hunter", "pos": "EDGE", "injury": "Hamstring", "practice": "DNP", "status": "OUT", "p_play": 0, "on": true, "impact_source": "manual", "replacement": "EDGE depth", "replacement_quality": "below average", "range": [0.5, 1.0], "desk_impact": 0.7, "valuation": "Madden 90, elite rusher, was Q auto 0.5 (All-Pro cap). Now Out; manual 0.7 vs the IND OL missing both tackles is partly offset (Heck/backups face a lighter rush); not added as a matchup bump."},
+      {"name": "Marvin Harrison Jr.", "pos": "WR", "injury": "Hamstring", "practice": "DNP", "status": "OUT", "p_play": 0, "on": true, "impact_source": "auto", "range": [0.1, 0.3], "valuation": "Was Q. WR2 Madden 76. Collins healthy; Noel and Higgins on IR. Auto 0.25."},
+      {"name": "Woody Marks", "pos": "RB", "injury": "Concussion", "practice": "DNP", "status": "OUT", "p_play": 0, "on": true, "impact_source": "madden", "range": [0.05, 0.2], "valuation": "Was Doubtful (already 1.0). Montgomery full participant covers."},
+      {"name": "Brevin Jordan", "pos": "TE", "injury": "Foot/illness", "practice": "DNP", "status": "OUT", "p_play": 0, "on": true, "impact_source": "auto", "range": [0.03, 0.15], "valuation": "TE Madden 67. Auto."},
+      {"name": "Wyatt Teller", "pos": "G", "injury": "Back", "practice": "FP", "status": "QUESTIONABLE", "p_play": 0.9, "on": true, "impact_source": "manual", "range": [0.0, 0.1], "desk_impact": 0.1, "valuation": "Full practice, P(miss) about 0.1. Small manual (0.1 x 0.35)."},
+      {"name": "Jaylin Smith", "pos": "CB", "injury": "Hamstring", "practice": "FP", "status": "QUESTIONABLE", "p_play": 0.9, "on": true, "impact_source": "manual", "range": [0.0, 0.1], "desk_impact": 0.1, "valuation": "ESPN carried IR; official sheet lists Q and full practice, so priced as a likely player. Small manual."},
+      {"name": "Jake Hummel", "pos": "LB", "injury": "Groin", "practice": "LP", "status": "QUESTIONABLE", "p_play": 0.7, "on": true, "impact_source": "auto", "range": [0.0, 0.1], "valuation": "Soft on at auto."},
+      {"name": "Kamari Lassiter", "pos": "CB", "injury": "Wrist", "practice": "DNP", "status": "none", "on": false, "valuation": "DNP but no game status on the official sheet -> off. Watch Thursday; Madden 85, would be roughly 0.25 to 0.5 if he sits."},
+      {"name": "IR rows (Al-Shaair, Ingram, Stewart PUP, Brooks, Edwards, Higgins, Noel, To'oTo'o)", "status": "IR", "on": true, "valuation": "Unchanged (already priced)."}
+    ]
+  },
+  "unit_effects": {
+    "IND_OL": "Raimann and Travis both out, Heck Q: two starting tackles down with thin depth. Compounds vs HOU front only if Hunter plays; Hunter is out, so partly offset. No interaction add.",
+    "IND_CB": "Ward out, Gardner Q (DNP x3), Taylor-Britt IR. If Gardner sits, CB room is the weakest unit on the field. Upside risk to HOU, not priced beyond the 0.30 expected.",
+    "HOU_EDGE": "Hunter out; pass rush drops. HOU skill group: Harrison Jr., Jordan, Marks out; Collins and Montgomery healthy."
+  },
+  "team_injury_term": {"IND": {"before": -2.75, "after": -4.20}, "HOU": {"before": -2.89, "after": -3.45}},
+  "net_injury_swing_toward_HOU": 0.89,
+  "b_line_home_spread": {"before_raw": -14.23, "after_raw": -15.12, "published": -15, "street_dk": -12.5, "ou_dk": 44.5, "shadow_dvoa_blend": -10.96},
+  "confidence": "Moderate"
+}

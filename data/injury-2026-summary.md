@@ -63,3 +63,10 @@ Pulled 2026-11-18 10:08 AM ET (America/New_York). Stamp `injury_pulled=2026-11-1
 - ESPN API timestamp 2026-11-18T15:08:32Z.
 
 Sources: ESPN injuries API; nfl.com/injuries; Week 9 (MNF tonight) and Week 10 scoreboards.
+
+## 2026-11-18b FINAL (Week 11 TNF IND@HOU)
+
+- Official Wed Game Status (colts.com reg-11 table + nfl.com Week 11 report), pulled ~4:30 PM ET. HOU statuses from nfl.com article (houstontexans.com page served the Colts table).
+- IND: Mallory, Raimann (LT, manual 0.6), Travis, Tillery, C. Ward (manual 0.5) OUT; Gardner Q (DNP x3, manual 0.85), Gould, Heck, Rhodes Q. Term -2.75 to -4.20.
+- HOU: Marks, M. Harrison Jr., Jordan, Hunter (manual 0.7) OUT; Teller, J. Smith (manual 0.1), Hummel Q; Lassiter no status (off). Term -2.89 to -3.45.
+- B$ HOU -15.12 raw (-15) vs DK HOU -12.5 / 44.5. Shadow DVOA blend -10.96. Valuation data/injury-valuation/weeks/2026-W11-ind-hou.json. IND/HOU rows TNF-protected.

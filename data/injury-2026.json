@@ -1,14 +1,14 @@
 {
-  "pulled": "2026-11-18a",
-  "pulled_et": "2026-11-18 10:08 AM ET (America/New_York)",
-  "phase": "WORKING-WED",
+  "pulled": "2026-11-18b",
+  "pulled_et": "2026-11-18 4:30 PM ET (America/New_York)",
+  "phase": "FINAL",
   "sources": [
-    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-    "https://www.nfl.com/injuries/",
-    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?seasontype=2&week=10&year=2026",
-    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?seasontype=2&week=11&year=2026"
+    "https://www.colts.com/team/injury-report/week/reg-11",
+    "https://www.nfl.com/news/nfl-week-11-injury-report-2026-season",
+    "https://www.nfl.com/injuries/league/2026/reg11",
+    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
   ],
-  "note": "WORKING-WED Tuesday ESPN refresh (Week 10 FINAL incl. LAC@BAL MNF / Week 11 board; prior seed 2026-11-17a WORKING-TUE). Week 10 fully FINAL; no protects. Week 11 official practice sheet not out yet (TNF Wed ~4pm ET) - ESPN working list only. Byes Week 11 (see schedule). Finished clubs: drop gameday inactive / ruled-out-for-remainder / coach's-decision noise; keep multi-week OUT + IR/PUP/NFI. ESPN designations authoritative, cross-checked vs NFL.com. Doubtful = 1.0 out. Preserve manuals (Sills 0 etc.). Tier caps QB<=1.5 / All-Pro<=0.5 / other<=0.25 on auto; Madden-first else PFF; floor 0.2x status; Cap team 6.0. No rumor moves.",
+  "note": "FINAL 2026-11-18b Week 11 TNF IND@HOU after official Wed Game Status (colts.com reg-11 table + nfl.com Week 11 report). IND OUT: Mallory TE, Raimann LT (manual 0.6), Travis RT, Tillery DT, C. Ward CB (manual 0.5); Q: Gardner CB (DNP x3, manual 0.85), Gould, Heck, Rhodes. HOU OUT: Marks RB, M. Harrison Jr. WR, Jordan TE, Hunter EDGE (manual 0.7); Q: Teller (manual 0.1), J. Smith (manual 0.1, ESPN IR overridden by official Q/FP), Hummel; Lassiter no status (off). IND/HOU rows TNF-protected: later ESPN reseeds must not soften them. Other clubs unchanged from 2026-11-18a WORKING-WED. Doubtful 1.0. Standing manuals preserved.",
   "espn_timestamp": "2026-11-18T15:08:32Z",
   "teams": {
     "ARI": [
@@ -365,7 +365,7 @@
         "name": "Dorian Strong",
         "pos": "DEPTH",
         "status": "NFI",
-        "note": "FINAL TNF. Neck \u2014 reserve/NFI. ESPN summary Out (NFI-R). Depth CB; on for completeness.",
+        "note": "FINAL TNF. Neck — reserve/NFI. ESPN summary Out (NFI-R). Depth CB; on for completeness.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872932",
         "on": true
       }
@@ -564,7 +564,7 @@
         "on": true,
         "impact": 0.25,
         "impact_source": "manual",
-        "valuation_note": "W6 FINAL valuation: ESPN Out; with Montez Sweat suspended both starting EDGEs are gone \u2014 fills missing auto at tier cap."
+        "valuation_note": "W6 FINAL valuation: ESPN Out; with Montez Sweat suspended both starting EDGEs are gone — fills missing auto at tier cap."
       },
       {
         "name": "Noah Sewell",
@@ -715,7 +715,7 @@
         "name": "Kendrick Green",
         "pos": "OG",
         "status": "IR",
-        "note": "ir Explicit impact 0 \u2014 depth IR; no pos_base fallthrough.",
+        "note": "ir Explicit impact 0 — depth IR; no pos_base fallthrough.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0,
@@ -1193,56 +1193,53 @@
       {
         "name": "Jaylin Smith",
         "pos": "CB1",
-        "status": "IR",
-        "note": "Smith (hamstring) was a full participant at practice Tuesday.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "status": "QUESTIONABLE",
+        "note": "Official Wed FINAL Questionable (FP). ESPN had IR; official sheet lists Q and he practiced full -> plays likely. Manual 0.1 soft.",
+        "source": "https://www.nfl.com/news/nfl-week-11-injury-report-2026-season",
+        "on": true,
+        "injury": "Hamstring",
+        "impact": 0.1,
+        "impact_source": "manual"
       },
       {
         "name": "Brevin Jordan",
         "pos": "TE1",
-        "status": "QUESTIONABLE",
-        "note": "Jordan (foot/illness) did not participate at practice Tuesday.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "status": "OUT",
+        "note": "Official Wed FINAL Out (DNP). TE, auto.",
+        "source": "https://www.nfl.com/news/nfl-week-11-injury-report-2026-season",
+        "on": true,
+        "injury": "Foot/illness"
       },
       {
         "name": "Danielle Hunter",
         "pos": "EDGE1",
-        "status": "QUESTIONABLE",
-        "note": "Hunter (hamstring) did not participate at practice Tuesday.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "status": "OUT",
+        "note": "Official Wed FINAL Out (DNP). Was Q auto 0.5. EDGE1, Madden 90, elite rusher; manual 0.7 uncapped.",
+        "source": "https://www.nfl.com/news/nfl-week-11-injury-report-2026-season",
         "on": true,
-        "impact": 0.5,
-        "impact_source": "madden"
-      },
-      {
-        "name": "Kamari Lassiter",
-        "pos": "CB1",
-        "status": "QUESTIONABLE",
-        "note": "Lassiter (wrist) did not participate at practice Tuesday.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.25,
-        "impact_source": "madden"
+        "impact": 0.7,
+        "impact_source": "manual",
+        "injury": "Hamstring"
       },
       {
         "name": "Marvin Harrison Jr.",
         "pos": "WR2",
-        "status": "QUESTIONABLE",
-        "note": "Harrison (hamstring) was a non-participant in Tuesday's practice.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "status": "OUT",
+        "note": "Official Wed FINAL Out (DNP). Was Q. WR, Madden 76; Collins healthy, Noel/Higgins on IR; auto.",
+        "source": "https://www.nfl.com/news/nfl-week-11-injury-report-2026-season",
+        "on": true,
+        "injury": "Hamstring"
       },
       {
         "name": "Woody Marks",
         "pos": "RB1",
-        "status": "DOUBTFUL",
-        "note": "Marks (concussion) didn't practice Tuesday.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "status": "OUT",
+        "note": "Official Wed FINAL Out. Was Doubtful (already 1.0). Montgomery full participant covers; auto.",
+        "source": "https://www.nfl.com/news/nfl-week-11-injury-report-2026-season",
         "on": true,
         "impact": 0.2,
-        "impact_source": "madden"
+        "impact_source": "madden",
+        "injury": "Concussion"
       },
       {
         "name": "Azeez Al-Shaair",
@@ -1258,9 +1255,10 @@
         "name": "Jake Hummel",
         "pos": "LB",
         "status": "QUESTIONABLE",
-        "note": "The Texans activated Hummel (groin) from injured reserve Saturday.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "note": "Official Wed FINAL Questionable (LP). Soft on at auto.",
+        "source": "https://www.nfl.com/news/nfl-week-11-injury-report-2026-season",
+        "on": true,
+        "injury": "Groin"
       },
       {
         "name": "Jaylin Noel",
@@ -1321,16 +1319,28 @@
         "on": true,
         "impact": 0.2,
         "impact_source": "madden"
+      },
+      {
+        "name": "Wyatt Teller",
+        "pos": "OG",
+        "status": "QUESTIONABLE",
+        "injury": "Back",
+        "source": "https://www.nfl.com/news/nfl-week-11-injury-report-2026-season",
+        "on": true,
+        "note": "Official Wed FINAL Questionable (FP all week per nfl.com). P(miss) ~0.1. Manual 0.1 x 0.35 soft.",
+        "impact": 0.1,
+        "impact_source": "manual"
       }
     ],
     "IND": [
       {
         "name": "Will Mallory",
         "pos": "TE1",
-        "status": "QUESTIONABLE",
-        "note": "Mallory (hamstring) was estimated as a non-participant for Tuesday's practice walkthrough.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "status": "OUT",
+        "note": "Official Wed FINAL Out (DNP/DNP/DNP). TE depth thin (Alie-Cox, Towt IR); auto.",
+        "source": "https://www.colts.com/team/injury-report/week/reg-11",
+        "on": true,
+        "injury": "Hamstring"
       },
       {
         "name": "Jaylon Carlies",
@@ -1344,55 +1354,61 @@
         "name": "Anthony Gould",
         "pos": "WR2",
         "status": "QUESTIONABLE",
-        "note": "The Colts listed Gould (toe) as a limited participant in Tuesday's walk-through practice.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "note": "Official Wed FINAL Questionable (LP/LP/FP). Full Wed, P(play) ~0.85. Soft on at auto.",
+        "source": "https://www.colts.com/team/injury-report/week/reg-11",
+        "on": true,
+        "injury": "Toe"
       },
       {
         "name": "Luke Rhodes",
         "pos": "DEPTH",
         "status": "QUESTIONABLE",
-        "note": "Rhodes (hamstring) has been ruled out for Sunday's game against the Dolphins, Abby Halpin of the Colts' official site reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "note": "Official Wed FINAL Questionable (DNP/LP/LP). LS, soft on at auto.",
+        "source": "https://www.colts.com/team/injury-report/week/reg-11",
+        "on": true,
+        "injury": "Hamstring"
       },
       {
         "name": "Jerry Tillery",
         "pos": "IDL",
-        "status": "QUESTIONABLE",
-        "note": "Tillery (calf) has been ruled out for Sunday's game against Miami, Abby Halpin of the Colts' official site reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "status": "OUT",
+        "note": "Official Wed FINAL Out (DNP x3). Rotational DT, Madden 71; auto.",
+        "source": "https://www.colts.com/team/injury-report/week/reg-11",
+        "on": true,
+        "injury": "Calf"
       },
       {
         "name": "Jalen Travis",
         "pos": "RT",
-        "status": "DOUBTFUL",
-        "note": "doubtful",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "status": "OUT",
+        "note": "Official Wed FINAL Out (DNP x3). Was Doubtful (already 1.0). Starting RT, Madden 70; with Raimann out the OL is two tackles down. Auto 0.25.",
+        "source": "https://www.colts.com/team/injury-report/week/reg-11",
         "on": true,
         "impact": 0.25,
-        "impact_source": "pff"
+        "impact_source": "pff",
+        "injury": "Knee"
       },
       {
         "name": "Sauce Gardner",
         "pos": "CB1",
         "status": "QUESTIONABLE",
-        "note": "Gardner (calf) was listed as a DNP for Monday's walkthrough practice.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "note": "Official Wed FINAL Questionable (DNP Mon/Tue/Wed). Madden 88. P(play) ~0.4, P(miss) ~0.6 on three DNPs; Q 0.35 mult x manual 0.85 ~ 0.30 expected.",
+        "source": "https://www.colts.com/team/injury-report/week/reg-11",
         "on": true,
-        "impact": 0.5,
-        "impact_source": "madden"
+        "impact": 0.85,
+        "impact_source": "manual",
+        "injury": "Calf"
       },
       {
         "name": "Charvarius Ward",
         "pos": "CB1",
-        "status": "QUESTIONABLE",
-        "note": "Colts head coach Shane Steichen said that Ward (shin) is uncertain to be available for Thursday's game against the Texans after exiting Sunday's 24-22 win over the Dolphins, James Boyd of The Athletic reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "status": "OUT",
+        "note": "Official Wed FINAL Out (DNP x3). CB1/2, Madden 86. Was Q auto 0.5 (capped). Manual 0.5 uncapped; Taylor-Britt on IR so CB depth thin.",
+        "source": "https://www.colts.com/team/injury-report/week/reg-11",
         "on": true,
         "impact": 0.5,
-        "impact_source": "pff"
+        "impact_source": "manual",
+        "injury": "Knee"
       },
       {
         "name": "Akeem Davis-Gaither",
@@ -1459,6 +1475,26 @@
         "note": "Montgomery (abdomen) was placed on injured reserve by the Colts on Sunday, JJ Stankevitz of the team's official website reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
+      },
+      {
+        "name": "Bernhard Raimann",
+        "pos": "LT",
+        "status": "OUT",
+        "injury": "Concussion",
+        "source": "https://www.colts.com/team/injury-report/week/reg-11",
+        "on": true,
+        "note": "Official Wed FINAL Out (DNP/DNP/DNP), concussion. Starting LT, Madden 86. Replacement Charlie Heck (Q, Madden 64). Manual 0.6 vs auto cap 0.25.",
+        "impact": 0.6,
+        "impact_source": "manual"
+      },
+      {
+        "name": "Charlie Heck",
+        "pos": "RT",
+        "status": "QUESTIONABLE",
+        "injury": "Personal (NIR)",
+        "source": "https://www.colts.com/team/injury-report/week/reg-11",
+        "on": true,
+        "note": "Official Wed FINAL Questionable (not injury related, DNP Tue/Wed). Swing tackle Madden 64; matters because Raimann and Travis are Out. Soft on at auto."
       }
     ],
     "JAX": [
@@ -2706,7 +2742,7 @@
         "name": "Gennings Dunker",
         "pos": "OG",
         "status": "IR",
-        "note": "The Steelers placed Dunker (knee) on injured reserve Saturday, Tom Pelissero of Netflix reports. Explicit impact 0 \u2014 depth IR; no pos_base fallthrough.",
+        "note": "The Steelers placed Dunker (knee) on injured reserve Saturday, Tom Pelissero of Netflix reports. Explicit impact 0 — depth IR; no pos_base fallthrough.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0,
@@ -3218,5 +3254,5 @@
       }
     ]
   },
-  "stamp": "2026-11-18a"
+  "stamp": "2026-11-18b"
 }
