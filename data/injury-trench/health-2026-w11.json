@@ -2,7 +2,7 @@
  "schema": 1,
  "season": 2026,
  "week": 11,
- "generated_et": "2026-11-18 10:08 AM ET",
+ "generated_et": "2026-11-19 10:07 AM ET",
  "frozen": false,
  "shadow": true,
  "in_b_line": false,
@@ -71,8 +71,58 @@
    "espn_id": "401873067",
    "game_id": "2026_11_ARI_KC",
    "rows_source": "data/injury-2026.json",
-   "rows_pulled": "2026-11-18a",
+   "rows_pulled": "2026-11-19a",
    "rows": [
+    {
+     "name": "Walter Nolen III",
+     "pos_desk": "IDL",
+     "pos_nfl": "DL",
+     "group": "DL",
+     "unit": "F7",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.2875,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.2,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.07,
+      "manual": false
+     },
+     "p_sits": 0.27,
+     "pos_value": 0.9,
+     "w_snap": 0.0,
+     "pts": 0.0
+    },
+    {
+     "name": "James Conner",
+     "pos_desk": "RB1",
+     "pos_nfl": "RB",
+     "group": null,
+     "unit": "OTHER",
+     "status": "IR",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.0,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.2,
+      "mult": 1.0,
+      "on": true,
+      "pts": 0.2,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.2
+    },
     {
      "name": "Gardner Minshew II",
      "pos_desk": "DEPTH",
@@ -135,31 +185,6 @@
      "practice_days": {},
      "practice_source": "none yet",
      "share": 0.75,
-     "share_source": "nflverse snap_counts trailing 4",
-     "live": {
-      "value": 0.2,
-      "mult": 1.0,
-      "on": true,
-      "pts": 0.2,
-      "manual": false
-     },
-     "p_sits": null,
-     "pos_value": null,
-     "w_snap": null,
-     "pts": 0.2
-    },
-    {
-     "name": "James Conner",
-     "pos_desk": "RB1",
-     "pos_nfl": "RB",
-     "group": null,
-     "unit": "OTHER",
-     "status": "IR",
-     "nfl_final_status": "",
-     "practice": "unknown",
-     "practice_days": {},
-     "practice_source": "none yet",
-     "share": 0.0,
      "share_source": "nflverse snap_counts trailing 4",
      "live": {
       "value": 0.2,
@@ -475,13 +500,13 @@
     }
    ],
    "live": {
-    "front_seven": 0.75,
+    "front_seven": 0.82,
     "ol": 0.7,
     "other": 1.75,
-    "before_cap": 3.2,
+    "before_cap": 3.27,
     "cap": 6.0,
     "capped": false,
-    "total": 3.2
+    "total": 3.27
    },
    "proposed": {
     "front_seven": {
@@ -535,8 +560,33 @@
    "espn_id": "401873068",
    "game_id": "2026_11_BAL_CAR",
    "rows_source": "data/injury-2026.json",
-   "rows_pulled": "2026-11-18a",
+   "rows_pulled": "2026-11-19a",
    "rows": [
+    {
+     "name": "Olaivavega Ioane",
+     "pos_desk": "OG",
+     "pos_nfl": "G",
+     "group": "IOL",
+     "unit": "OL",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.44,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": null,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.09,
+      "manual": false
+     },
+     "p_sits": 0.27,
+     "pos_value": 0.8,
+     "w_snap": 0.0,
+     "pts": 0.0
+    },
     {
      "name": "Jaylinn Hawkins",
      "pos_desk": "S",
@@ -563,29 +613,29 @@
      "pts": 0.09
     },
     {
-     "name": "Adam Randall",
-     "pos_desk": "RB1",
-     "pos_nfl": "RB",
-     "group": null,
-     "unit": "OTHER",
-     "status": "IR",
+     "name": "Nnamdi Madubuike",
+     "pos_desk": "IDL",
+     "pos_nfl": "DL",
+     "group": "DL",
+     "unit": "F7",
+     "status": "QUESTIONABLE",
      "nfl_final_status": "",
      "practice": "unknown",
      "practice_days": {},
      "practice_source": "none yet",
-     "share": 0.0,
+     "share": 0.6625,
      "share_source": "nflverse snap_counts trailing 4",
      "live": {
-      "value": null,
-      "mult": 1.0,
+      "value": 0.25,
+      "mult": 0.35,
       "on": true,
-      "pts": 0.25,
+      "pts": 0.09,
       "manual": false
      },
-     "p_sits": null,
-     "pos_value": null,
-     "w_snap": null,
-     "pts": 0.25
+     "p_sits": 0.27,
+     "pos_value": 0.9,
+     "w_snap": 0.75,
+     "pts": 0.182
     },
     {
      "name": "Lamar Jackson",
@@ -611,6 +661,31 @@
      "pos_value": null,
      "w_snap": null,
      "pts": 1.5
+    },
+    {
+     "name": "Adam Randall",
+     "pos_desk": "RB1",
+     "pos_nfl": "RB",
+     "group": null,
+     "unit": "OTHER",
+     "status": "IR",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.0,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": null,
+      "mult": 1.0,
+      "on": true,
+      "pts": 0.25,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.25
     },
     {
      "name": "Tyler Huntley",
@@ -764,24 +839,24 @@
     }
    ],
    "live": {
-    "front_seven": 0.25,
-    "ol": 0.45,
+    "front_seven": 0.34,
+    "ol": 0.54,
     "other": 3.79,
-    "before_cap": 4.49,
+    "before_cap": 4.67,
     "cap": 6.0,
     "capped": false,
-    "total": 4.49
+    "total": 4.67
    },
    "proposed": {
     "front_seven": {
-     "rows": 0.0,
+     "rows": 0.182,
      "starters_out": 0,
      "cluster": false,
      "cluster_bonus": 0.0,
-     "before_cap": 0.0,
+     "before_cap": 0.182,
      "cap": 3.5,
      "capped": false,
-     "total": 0.0
+     "total": 0.182
     },
     "ol": {
      "rows": 0.0,
@@ -794,27 +869,27 @@
      "total": 0.0
     },
     "other": 3.79,
-    "before_cap": 3.79,
+    "before_cap": 3.972,
     "cap": 6.0,
     "capped": false,
-    "total": 3.79
+    "total": 3.972
    },
    "index": {
-    "f7_rush_epa_delta": 0.0,
-    "f7_pass_epa_delta": 0.0,
+    "f7_rush_epa_delta": 0.0085,
+    "f7_pass_epa_delta": 0.0049,
     "ol_rush_epa_delta": -0.0,
     "ol_pass_epa_delta": -0.0,
-    "f7_points_epa_form": 0.0,
+    "f7_points_epa_form": 0.401,
     "ol_points_epa_form": 0.0,
     "run_d_base": -0.054,
-    "RDA": -0.054,
+    "RDA": -0.0455,
     "pass_d_base": 0.0585,
-    "PDA": 0.0585,
+    "PDA": 0.0633,
     "run_o_base": -0.0589,
     "ORA": -0.0589,
     "pass_o_base": 0.041,
     "OPA": 0.041,
-    "F7HI": 0.0,
+    "F7HI": 0.182,
     "OLHI": 0.0
    }
   },
@@ -824,8 +899,233 @@
    "espn_id": "401873070",
    "game_id": "2026_11_MIA_BUF",
    "rows_source": "data/injury-2026.json",
-   "rows_pulled": "2026-11-18a",
+   "rows_pulled": "2026-11-19a",
    "rows": [
+    {
+     "name": "Dee Alford",
+     "pos_desk": "CB1",
+     "pos_nfl": "CB",
+     "group": null,
+     "unit": "OTHER",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.42,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.2,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.07,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.07
+    },
+    {
+     "name": "Dorian Williams",
+     "pos_desk": "LB",
+     "pos_nfl": "LB",
+     "group": "LB",
+     "unit": "F7",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.495,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.2,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.07,
+      "manual": false
+     },
+     "p_sits": 0.27,
+     "pos_value": 0.7,
+     "w_snap": 0.25,
+     "pts": 0.047
+    },
+    {
+     "name": "Christian Benford",
+     "pos_desk": "CB1",
+     "pos_nfl": "CB",
+     "group": null,
+     "unit": "OTHER",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.795,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.2,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.07,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.07
+    },
+    {
+     "name": "Jackson Hawes",
+     "pos_desk": "TE1",
+     "pos_nfl": "TE",
+     "group": null,
+     "unit": "OTHER",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.4475,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.25,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.09,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.09
+    },
+    {
+     "name": "Cole Bishop",
+     "pos_desk": "S",
+     "pos_nfl": "S",
+     "group": null,
+     "unit": "OTHER",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.96,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.2,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.07,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.07
+    },
+    {
+     "name": "Amani Hooker",
+     "pos_desk": "S",
+     "pos_nfl": "S",
+     "group": null,
+     "unit": "OTHER",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.25,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.25,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.09,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.09
+    },
+    {
+     "name": "Damar Hamlin",
+     "pos_desk": "S",
+     "pos_nfl": "S",
+     "group": null,
+     "unit": "OTHER",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.71,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": null,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.09,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.09
+    },
+    {
+     "name": "Ray Davis",
+     "pos_desk": "RB1",
+     "pos_nfl": "RB",
+     "group": null,
+     "unit": "OTHER",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.1725,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": null,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.09,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.09
+    },
+    {
+     "name": "Dalton Kincaid",
+     "pos_desk": "TE1",
+     "pos_nfl": "TE",
+     "group": null,
+     "unit": "OTHER",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.5625,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.25,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.09,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.09
+    },
     {
      "name": "Ar'maj Reed-Adams",
      "pos_desk": "OG",
@@ -928,24 +1228,24 @@
     }
    ],
    "live": {
-    "front_seven": 0.0,
+    "front_seven": 0.07,
     "ol": 0.25,
-    "other": 0.7,
-    "before_cap": 0.95,
+    "other": 1.36,
+    "before_cap": 1.68,
     "cap": 6.0,
     "capped": false,
-    "total": 0.95
+    "total": 1.68
    },
    "proposed": {
     "front_seven": {
-     "rows": 0.0,
+     "rows": 0.047,
      "starters_out": 0,
      "cluster": false,
      "cluster_bonus": 0.0,
-     "before_cap": 0.0,
+     "before_cap": 0.047,
      "cap": 3.5,
      "capped": false,
-     "total": 0.0
+     "total": 0.047
     },
     "ol": {
      "rows": 0.0,
@@ -957,28 +1257,28 @@
      "capped": false,
      "total": 0.0
     },
-    "other": 0.7,
-    "before_cap": 0.7,
+    "other": 1.36,
+    "before_cap": 1.407,
     "cap": 6.0,
     "capped": false,
-    "total": 0.7
+    "total": 1.407
    },
    "index": {
-    "f7_rush_epa_delta": 0.0,
-    "f7_pass_epa_delta": 0.0,
+    "f7_rush_epa_delta": 0.0001,
+    "f7_pass_epa_delta": 0.0016,
     "ol_rush_epa_delta": -0.0,
     "ol_pass_epa_delta": -0.0,
-    "f7_points_epa_form": 0.0,
+    "f7_points_epa_form": 0.062,
     "ol_points_epa_form": 0.0,
     "run_d_base": -0.0556,
     "RDA": -0.0556,
     "pass_d_base": 0.0311,
-    "PDA": 0.0311,
+    "PDA": 0.0327,
     "run_o_base": 0.0106,
     "ORA": 0.0106,
     "pass_o_base": 0.16,
     "OPA": 0.16,
-    "F7HI": 0.0,
+    "F7HI": 0.047,
     "OLHI": 0.0
    }
   },
@@ -988,33 +1288,8 @@
    "espn_id": "401873068",
    "game_id": "2026_11_BAL_CAR",
    "rows_source": "data/injury-2026.json",
-   "rows_pulled": "2026-11-18a",
+   "rows_pulled": "2026-11-19a",
    "rows": [
-    {
-     "name": "Will Lee III",
-     "pos_desk": "CB1",
-     "pos_nfl": "CB",
-     "group": null,
-     "unit": "OTHER",
-     "status": "QUESTIONABLE",
-     "nfl_final_status": "",
-     "practice": "unknown",
-     "practice_days": {},
-     "practice_source": "none yet",
-     "share": 0.325,
-     "share_source": "nflverse snap_counts trailing 4",
-     "live": {
-      "value": null,
-      "mult": 0.35,
-      "on": true,
-      "pts": 0.09,
-      "manual": false
-     },
-     "p_sits": null,
-     "pos_value": null,
-     "w_snap": null,
-     "pts": 0.09
-    },
     {
      "name": "Bobby Okereke",
      "pos_desk": "LB",
@@ -1039,6 +1314,81 @@
      "pos_value": 0.7,
      "w_snap": 0.25,
      "pts": 0.047
+    },
+    {
+     "name": "Tommy Tremble",
+     "pos_desk": "TE1",
+     "pos_nfl": "TE",
+     "group": null,
+     "unit": "OTHER",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.6125,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": null,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.09,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.09
+    },
+    {
+     "name": "Darren Waller",
+     "pos_desk": "TE1",
+     "pos_nfl": "TE",
+     "group": null,
+     "unit": "OTHER",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.5525,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.2,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.07,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.07
+    },
+    {
+     "name": "Jonathon Brooks",
+     "pos_desk": "RB1",
+     "pos_nfl": "RB",
+     "group": null,
+     "unit": "OTHER",
+     "status": "IR",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.0,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": null,
+      "mult": 1.0,
+      "on": true,
+      "pts": 0.25,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.25
     },
     {
      "name": "Brady Christensen",
@@ -1089,31 +1439,6 @@
      "pos_value": null,
      "w_snap": null,
      "pts": 0.2
-    },
-    {
-     "name": "Jonathon Brooks",
-     "pos_desk": "RB1",
-     "pos_nfl": "RB",
-     "group": null,
-     "unit": "OTHER",
-     "status": "IR",
-     "nfl_final_status": "",
-     "practice": "unknown",
-     "practice_days": {},
-     "practice_source": "none yet",
-     "share": 0.0,
-     "share_source": "nflverse snap_counts trailing 4",
-     "live": {
-      "value": null,
-      "mult": 1.0,
-      "on": true,
-      "pts": 0.25,
-      "manual": false
-     },
-     "p_sits": null,
-     "pos_value": null,
-     "w_snap": null,
-     "pts": 0.25
     },
     {
      "name": "Jaycee Horn",
@@ -1294,11 +1619,11 @@
    "live": {
     "front_seven": 1.09,
     "ol": 0.45,
-    "other": 1.19,
-    "before_cap": 2.73,
+    "other": 1.26,
+    "before_cap": 2.8,
     "cap": 6.0,
     "capped": false,
-    "total": 2.73
+    "total": 2.8
    },
    "proposed": {
     "front_seven": {
@@ -1321,11 +1646,11 @@
      "capped": false,
      "total": 0.0
     },
-    "other": 1.19,
-    "before_cap": 1.237,
+    "other": 1.26,
+    "before_cap": 1.307,
     "cap": 6.0,
     "capped": false,
-    "total": 1.237
+    "total": 1.307
    },
    "index": {
     "f7_rush_epa_delta": 0.0001,
@@ -1352,7 +1677,7 @@
    "espn_id": "401873071",
    "game_id": "2026_11_NO_CHI",
    "rows_source": "data/injury-2026.json",
-   "rows_pulled": "2026-11-18a",
+   "rows_pulled": "2026-11-19a",
    "rows": [
     {
      "name": "Kyler Gordon",
@@ -1380,54 +1705,29 @@
      "pts": 0.09
     },
     {
-     "name": "Kyle Monangai",
-     "pos_desk": "RB1",
-     "pos_nfl": "RB",
-     "group": null,
-     "unit": "OTHER",
+     "name": "Jeffery Simmons",
+     "pos_desk": "IDL",
+     "pos_nfl": "DT",
+     "group": "DL",
+     "unit": "F7",
      "status": "QUESTIONABLE",
      "nfl_final_status": "",
      "practice": "unknown",
      "practice_days": {},
      "practice_source": "none yet",
-     "share": 0.0,
+     "share": 0.46,
      "share_source": "nflverse snap_counts trailing 4",
      "live": {
-      "value": 0.2,
+      "value": 0.5,
       "mult": 0.35,
       "on": true,
-      "pts": 0.07,
+      "pts": 0.17,
       "manual": false
      },
-     "p_sits": null,
-     "pos_value": null,
-     "w_snap": null,
-     "pts": 0.07
-    },
-    {
-     "name": "Malik Muhammad II",
-     "pos_desk": "CB1",
-     "pos_nfl": "DB",
-     "group": null,
-     "unit": "OTHER",
-     "status": "QUESTIONABLE",
-     "nfl_final_status": "",
-     "practice": "unknown",
-     "practice_days": {},
-     "practice_source": "none yet",
-     "share": 0.2925,
-     "share_source": "nflverse snap_counts trailing 4",
-     "live": {
-      "value": null,
-      "mult": 0.35,
-      "on": true,
-      "pts": 0.09,
-      "manual": false
-     },
-     "p_sits": null,
-     "pos_value": null,
-     "w_snap": null,
-     "pts": 0.09
+     "p_sits": 0.27,
+     "pos_value": 0.9,
+     "w_snap": 0.25,
+     "pts": 0.061
     },
     {
      "name": "Zavier Scott",
@@ -1606,24 +1906,24 @@
     }
    ],
    "live": {
-    "front_seven": 0.75,
+    "front_seven": 0.92,
     "ol": 0.25,
-    "other": 0.9,
-    "before_cap": 1.9,
+    "other": 0.74,
+    "before_cap": 1.91,
     "cap": 6.0,
     "capped": false,
-    "total": 1.9
+    "total": 1.91
    },
    "proposed": {
     "front_seven": {
-     "rows": 0.0,
+     "rows": 0.061,
      "starters_out": 0,
      "cluster": false,
      "cluster_bonus": 0.0,
-     "before_cap": 0.0,
+     "before_cap": 0.061,
      "cap": 3.5,
      "capped": false,
-     "total": 0.0
+     "total": 0.061
     },
     "ol": {
      "rows": 0.0,
@@ -1635,28 +1935,28 @@
      "capped": false,
      "total": 0.0
     },
-    "other": 0.9,
-    "before_cap": 0.9,
+    "other": 0.74,
+    "before_cap": 0.801,
     "cap": 6.0,
     "capped": false,
-    "total": 0.9
+    "total": 0.801
    },
    "index": {
-    "f7_rush_epa_delta": 0.0,
-    "f7_pass_epa_delta": 0.0,
+    "f7_rush_epa_delta": 0.0028,
+    "f7_pass_epa_delta": 0.0016,
     "ol_rush_epa_delta": -0.0,
     "ol_pass_epa_delta": -0.0,
-    "f7_points_epa_form": 0.0,
+    "f7_points_epa_form": 0.134,
     "ol_points_epa_form": 0.0,
     "run_d_base": -0.0624,
-    "RDA": -0.0624,
+    "RDA": -0.0595,
     "pass_d_base": 0.0052,
-    "PDA": 0.0052,
+    "PDA": 0.0068,
     "run_o_base": -0.0345,
     "ORA": -0.0345,
     "pass_o_base": 0.0736,
     "OPA": 0.0736,
-    "F7HI": 0.0,
+    "F7HI": 0.061,
     "OLHI": 0.0
    }
   },
@@ -1666,7 +1966,7 @@
    "espn_id": "401873078",
    "game_id": "2026_11_CIN_WAS",
    "rows_source": "data/injury-2026.json",
-   "rows_pulled": "2026-11-18a",
+   "rows_pulled": "2026-11-19a",
    "rows": [
     {
      "name": "Kyle Dugger",
@@ -1955,8 +2255,58 @@
    "espn_id": "401873073",
    "game_id": "2026_11_TEN_DAL",
    "rows_source": "data/injury-2026.json",
-   "rows_pulled": "2026-11-18a",
+   "rows_pulled": "2026-11-19a",
    "rows": [
+    {
+     "name": "Jalen Thompson",
+     "pos_desk": "S",
+     "pos_nfl": "S",
+     "group": null,
+     "unit": "OTHER",
+     "status": "IR",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.0,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.25,
+      "mult": 1.0,
+      "on": true,
+      "pts": 0.25,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.25
+    },
+    {
+     "name": "Jake Ferguson",
+     "pos_desk": "TE1",
+     "pos_nfl": "TE",
+     "group": null,
+     "unit": "OTHER",
+     "status": "OUT",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.2375,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.2,
+      "mult": 1.0,
+      "on": true,
+      "pts": 0.2,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.2
+    },
     {
      "name": "Juanyeh Thomas",
      "pos_desk": "S",
@@ -2108,31 +2458,6 @@
      "pts": 0.8
     },
     {
-     "name": "Jake Ferguson",
-     "pos_desk": "TE1",
-     "pos_nfl": "TE",
-     "group": null,
-     "unit": "OTHER",
-     "status": "OUT",
-     "nfl_final_status": "",
-     "practice": "unknown",
-     "practice_days": {},
-     "practice_source": "none yet",
-     "share": 0.2375,
-     "share_source": "nflverse snap_counts trailing 4",
-     "live": {
-      "value": 0.2,
-      "mult": 1.0,
-      "on": true,
-      "pts": 0.2,
-      "manual": false
-     },
-     "p_sits": null,
-     "pos_value": null,
-     "w_snap": null,
-     "pts": 0.2
-    },
-    {
      "name": "Tyler Goodson",
      "pos_desk": "RB1",
      "pos_nfl": "RB",
@@ -2206,31 +2531,6 @@
      "pos_value": 0.7,
      "w_snap": 0.0,
      "pts": 0.0
-    },
-    {
-     "name": "Jalen Thompson",
-     "pos_desk": "S",
-     "pos_nfl": "S",
-     "group": null,
-     "unit": "OTHER",
-     "status": "IR",
-     "nfl_final_status": "",
-     "practice": "unknown",
-     "practice_days": {},
-     "practice_source": "none yet",
-     "share": 0.0,
-     "share_source": "nflverse snap_counts trailing 4",
-     "live": {
-      "value": 0.25,
-      "mult": 1.0,
-      "on": true,
-      "pts": 0.25,
-      "manual": false
-     },
-     "p_sits": null,
-     "pos_value": null,
-     "w_snap": null,
-     "pts": 0.25
     },
     {
      "name": "Malik Davis",
@@ -2319,12 +2619,12 @@
    "espn_id": "401873075",
    "game_id": "2026_11_LV_DEN",
    "rows_source": "data/injury-2026.json",
-   "rows_pulled": "2026-11-18a",
+   "rows_pulled": "2026-11-19a",
    "rows": [
     {
-     "name": "Talanoa Hufanga",
-     "pos_desk": "S",
-     "pos_nfl": "S",
+     "name": "Kris Abrams-Draine",
+     "pos_desk": "CB1",
+     "pos_nfl": "CB",
      "group": null,
      "unit": "OTHER",
      "status": "QUESTIONABLE",
@@ -2332,19 +2632,19 @@
      "practice": "unknown",
      "practice_days": {},
      "practice_source": "none yet",
-     "share": 0.0,
+     "share": 0.335,
      "share_source": "nflverse snap_counts trailing 4",
      "live": {
-      "value": 0.5,
+      "value": null,
       "mult": 0.35,
       "on": true,
-      "pts": 0.17,
+      "pts": 0.09,
       "manual": false
      },
      "p_sits": null,
      "pos_value": null,
      "w_snap": null,
-     "pts": 0.17
+     "pts": 0.09
     },
     {
      "name": "Brandon Jones",
@@ -2372,9 +2672,9 @@
      "pts": 0.09
     },
     {
-     "name": "Kris Abrams-Draine",
-     "pos_desk": "CB1",
-     "pos_nfl": "CB",
+     "name": "Talanoa Hufanga",
+     "pos_desk": "S",
+     "pos_nfl": "S",
      "group": null,
      "unit": "OTHER",
      "status": "QUESTIONABLE",
@@ -2382,10 +2682,35 @@
      "practice": "unknown",
      "practice_days": {},
      "practice_source": "none yet",
-     "share": 0.335,
+     "share": 0.0,
      "share_source": "nflverse snap_counts trailing 4",
      "live": {
-      "value": null,
+      "value": 0.5,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.17,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.17
+    },
+    {
+     "name": "Jaylen Waddle",
+     "pos_desk": "WR2",
+     "pos_nfl": "WR",
+     "group": null,
+     "unit": "OTHER",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.4625,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.25,
       "mult": 0.35,
       "on": true,
       "pts": 0.09,
@@ -2395,6 +2720,31 @@
      "pos_value": null,
      "w_snap": null,
      "pts": 0.09
+    },
+    {
+     "name": "Caleb Lohner",
+     "pos_desk": "TE1",
+     "pos_nfl": "TE",
+     "group": null,
+     "unit": "OTHER",
+     "status": "IR",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.0,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": null,
+      "mult": 1.0,
+      "on": true,
+      "pts": 0.25,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.25
     },
     {
      "name": "Eyioma Uwazurike",
@@ -2547,31 +2897,6 @@
      "pts": 0.0
     },
     {
-     "name": "Caleb Lohner",
-     "pos_desk": "TE1",
-     "pos_nfl": "TE",
-     "group": null,
-     "unit": "OTHER",
-     "status": "IR",
-     "nfl_final_status": "",
-     "practice": "unknown",
-     "practice_days": {},
-     "practice_source": "none yet",
-     "share": 0.0,
-     "share_source": "nflverse snap_counts trailing 4",
-     "live": {
-      "value": null,
-      "mult": 1.0,
-      "on": true,
-      "pts": 0.25,
-      "manual": false
-     },
-     "p_sits": null,
-     "pos_value": null,
-     "w_snap": null,
-     "pts": 0.25
-    },
-    {
      "name": "Levelle Bailey",
      "pos_desk": "LB",
      "pos_nfl": "LB",
@@ -2600,11 +2925,11 @@
    "live": {
     "front_seven": 0.75,
     "ol": 0.5,
-    "other": 1.05,
-    "before_cap": 2.3,
+    "other": 1.14,
+    "before_cap": 2.39,
     "cap": 6.0,
     "capped": false,
-    "total": 2.3
+    "total": 2.39
    },
    "proposed": {
     "front_seven": {
@@ -2627,11 +2952,11 @@
      "capped": false,
      "total": 0.0
     },
-    "other": 1.05,
-    "before_cap": 1.05,
+    "other": 1.14,
+    "before_cap": 1.14,
     "cap": 6.0,
     "capped": false,
-    "total": 1.05
+    "total": 1.14
    },
    "index": {
     "f7_rush_epa_delta": 0.0,
@@ -2658,58 +2983,8 @@
    "espn_id": "401873072",
    "game_id": "2026_11_TB_DET",
    "rows_source": "data/injury-2026.json",
-   "rows_pulled": "2026-11-18a",
+   "rows_pulled": "2026-11-19a",
    "rows": [
-    {
-     "name": "Cade Mays",
-     "pos_desk": "C",
-     "pos_nfl": "C",
-     "group": "IOL",
-     "unit": "OL",
-     "status": "DOUBTFUL",
-     "nfl_final_status": "",
-     "practice": "unknown",
-     "practice_days": {},
-     "practice_source": "none yet",
-     "share": 0.3275,
-     "share_source": "nflverse snap_counts trailing 4",
-     "live": {
-      "value": 0.2,
-      "mult": 1.0,
-      "on": true,
-      "pts": 0.2,
-      "manual": false
-     },
-     "p_sits": 1.0,
-     "pos_value": 0.8,
-     "w_snap": 0.0,
-     "pts": 0.0
-    },
-    {
-     "name": "Kerby Joseph",
-     "pos_desk": "S",
-     "pos_nfl": "S",
-     "group": null,
-     "unit": "OTHER",
-     "status": "OUT",
-     "nfl_final_status": "",
-     "practice": "unknown",
-     "practice_days": {},
-     "practice_source": "none yet",
-     "share": 0.0,
-     "share_source": "nflverse snap_counts trailing 4",
-     "live": {
-      "value": 0.5,
-      "mult": 1.0,
-      "on": true,
-      "pts": 0.5,
-      "manual": false
-     },
-     "p_sits": null,
-     "pos_value": null,
-     "w_snap": null,
-     "pts": 0.5
-    },
     {
      "name": "D.J. Reed",
      "pos_desk": "CB1",
@@ -2736,12 +3011,37 @@
      "pts": 0.07
     },
     {
+     "name": "Sione Vaki",
+     "pos_desk": "RB1",
+     "pos_nfl": "RB",
+     "group": null,
+     "unit": "OTHER",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.245,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": null,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.09,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.09
+    },
+    {
      "name": "Aidan Hutchinson",
      "pos_desk": "EDGE1",
      "pos_nfl": "DE",
      "group": "EDGE",
      "unit": "F7",
-     "status": "OUT",
+     "status": "IR",
      "nfl_final_status": "",
      "practice": "unknown",
      "practice_days": {},
@@ -2759,6 +3059,31 @@
      "pos_value": 0.7,
      "w_snap": 0.75,
      "pts": 0.525
+    },
+    {
+     "name": "Cade Mays",
+     "pos_desk": "C",
+     "pos_nfl": "C",
+     "group": "IOL",
+     "unit": "OL",
+     "status": "DOUBTFUL",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.3275,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.2,
+      "mult": 1.0,
+      "on": true,
+      "pts": 0.2,
+      "manual": false
+     },
+     "p_sits": 1.0,
+     "pos_value": 0.8,
+     "w_snap": 0.0,
+     "pts": 0.0
     },
     {
      "name": "Jack Campbell",
@@ -2964,11 +3289,11 @@
    "live": {
     "front_seven": 1.5,
     "ol": 0.45,
-    "other": 1.52,
-    "before_cap": 3.47,
+    "other": 1.11,
+    "before_cap": 3.06,
     "cap": 6.0,
     "capped": false,
-    "total": 3.47
+    "total": 3.06
    },
    "proposed": {
     "front_seven": {
@@ -2991,11 +3316,11 @@
      "capped": false,
      "total": 0.0
     },
-    "other": 1.52,
-    "before_cap": 2.045,
+    "other": 1.11,
+    "before_cap": 1.635,
     "cap": 6.0,
     "capped": false,
-    "total": 2.045
+    "total": 1.635
    },
    "index": {
     "f7_rush_epa_delta": 0.0083,
@@ -3022,20 +3347,95 @@
    "espn_id": "401873066",
    "game_id": "2026_11_IND_HOU",
    "rows_source": "data/injury-2026.json",
-   "rows_pulled": "2026-11-18a",
+   "rows_pulled": "2026-11-19a",
    "rows": [
+    {
+     "name": "Jake Hummel",
+     "pos_desk": "LB",
+     "pos_nfl": "LB",
+     "group": "LB",
+     "unit": "F7",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.0,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": null,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.09,
+      "manual": false
+     },
+     "p_sits": 0.27,
+     "pos_value": 0.7,
+     "w_snap": 0.0,
+     "pts": 0.0
+    },
     {
      "name": "Jaylin Smith",
      "pos_desk": "CB1",
      "pos_nfl": "CB",
      "group": null,
      "unit": "OTHER",
-     "status": "IR",
+     "status": "QUESTIONABLE",
      "nfl_final_status": "",
      "practice": "unknown",
      "practice_days": {},
      "practice_source": "none yet",
      "share": 0.0,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.1,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.03,
+      "manual": true
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.03
+    },
+    {
+     "name": "Danielle Hunter",
+     "pos_desk": "EDGE1",
+     "pos_nfl": "DE",
+     "group": "EDGE",
+     "unit": "F7",
+     "status": "OUT",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.5425,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.7,
+      "mult": 1.0,
+      "on": true,
+      "pts": 0.7,
+      "manual": true
+     },
+     "p_sits": 1.0,
+     "pos_value": 0.7,
+     "w_snap": 0.25,
+     "pts": 0.175
+    },
+    {
+     "name": "Brevin Jordan",
+     "pos_desk": "TE1",
+     "pos_nfl": "TE",
+     "group": null,
+     "unit": "OTHER",
+     "status": "OUT",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.0525,
      "share_source": "nflverse snap_counts trailing 4",
      "live": {
       "value": null,
@@ -3050,79 +3450,29 @@
      "pts": 0.25
     },
     {
-     "name": "Brevin Jordan",
-     "pos_desk": "TE1",
-     "pos_nfl": "TE",
-     "group": null,
-     "unit": "OTHER",
+     "name": "Wyatt Teller",
+     "pos_desk": "OG",
+     "pos_nfl": "G",
+     "group": "IOL",
+     "unit": "OL",
      "status": "QUESTIONABLE",
      "nfl_final_status": "",
      "practice": "unknown",
      "practice_days": {},
      "practice_source": "none yet",
-     "share": 0.0525,
+     "share": 0.0,
      "share_source": "nflverse snap_counts trailing 4",
      "live": {
-      "value": null,
+      "value": 0.1,
       "mult": 0.35,
       "on": true,
-      "pts": 0.09,
-      "manual": false
-     },
-     "p_sits": null,
-     "pos_value": null,
-     "w_snap": null,
-     "pts": 0.09
-    },
-    {
-     "name": "Danielle Hunter",
-     "pos_desk": "EDGE1",
-     "pos_nfl": "DE",
-     "group": "EDGE",
-     "unit": "F7",
-     "status": "QUESTIONABLE",
-     "nfl_final_status": "",
-     "practice": "unknown",
-     "practice_days": {},
-     "practice_source": "none yet",
-     "share": 0.5425,
-     "share_source": "nflverse snap_counts trailing 4",
-     "live": {
-      "value": 0.5,
-      "mult": 0.35,
-      "on": true,
-      "pts": 0.17,
-      "manual": false
+      "pts": 0.03,
+      "manual": true
      },
      "p_sits": 0.27,
-     "pos_value": 0.7,
-     "w_snap": 0.25,
-     "pts": 0.047
-    },
-    {
-     "name": "Kamari Lassiter",
-     "pos_desk": "CB1",
-     "pos_nfl": "CB",
-     "group": null,
-     "unit": "OTHER",
-     "status": "QUESTIONABLE",
-     "nfl_final_status": "",
-     "practice": "unknown",
-     "practice_days": {},
-     "practice_source": "none yet",
-     "share": 0.99,
-     "share_source": "nflverse snap_counts trailing 4",
-     "live": {
-      "value": 0.25,
-      "mult": 0.35,
-      "on": true,
-      "pts": 0.09,
-      "manual": false
-     },
-     "p_sits": null,
-     "pos_value": null,
-     "w_snap": null,
-     "pts": 0.09
+     "pos_value": 0.8,
+     "w_snap": 0.0,
+     "pts": 0.0
     },
     {
      "name": "Marvin Harrison Jr.",
@@ -3130,7 +3480,7 @@
      "pos_nfl": "WR",
      "group": null,
      "unit": "OTHER",
-     "status": "QUESTIONABLE",
+     "status": "OUT",
      "nfl_final_status": "",
      "practice": "unknown",
      "practice_days": {},
@@ -3139,15 +3489,15 @@
      "share_source": "nflverse snap_counts trailing 4",
      "live": {
       "value": null,
-      "mult": 0.35,
+      "mult": 1.0,
       "on": true,
-      "pts": 0.09,
+      "pts": 0.25,
       "manual": false
      },
      "p_sits": null,
      "pos_value": null,
      "w_snap": null,
-     "pts": 0.09
+     "pts": 0.25
     },
     {
      "name": "Woody Marks",
@@ -3155,7 +3505,7 @@
      "pos_nfl": "RB",
      "group": null,
      "unit": "OTHER",
-     "status": "DOUBTFUL",
+     "status": "OUT",
      "nfl_final_status": "",
      "practice": "unknown",
      "practice_days": {},
@@ -3198,31 +3548,6 @@
      "pos_value": 0.7,
      "w_snap": 0.75,
      "pts": 0.525
-    },
-    {
-     "name": "Jake Hummel",
-     "pos_desk": "LB",
-     "pos_nfl": "LB",
-     "group": "LB",
-     "unit": "F7",
-     "status": "QUESTIONABLE",
-     "nfl_final_status": "",
-     "practice": "unknown",
-     "practice_days": {},
-     "practice_source": "none yet",
-     "share": 0.0,
-     "share_source": "nflverse snap_counts trailing 4",
-     "live": {
-      "value": null,
-      "mult": 0.35,
-      "on": true,
-      "pts": 0.09,
-      "manual": false
-     },
-     "p_sits": 0.27,
-     "pos_value": 0.7,
-     "w_snap": 0.0,
-     "pts": 0.0
     },
     {
      "name": "Jaylin Noel",
@@ -3401,24 +3726,24 @@
     }
    ],
    "live": {
-    "front_seven": 1.01,
-    "ol": 0.0,
-    "other": 1.87,
-    "before_cap": 2.88,
+    "front_seven": 1.54,
+    "ol": 0.03,
+    "other": 1.88,
+    "before_cap": 3.45,
     "cap": 6.0,
     "capped": false,
-    "total": 2.88
+    "total": 3.45
    },
    "proposed": {
     "front_seven": {
-     "rows": 1.272,
+     "rows": 1.4,
      "starters_out": 2,
      "cluster": false,
      "cluster_bonus": 0.0,
-     "before_cap": 1.272,
+     "before_cap": 1.4,
      "cap": 3.5,
      "capped": false,
-     "total": 1.272
+     "total": 1.4
     },
     "ol": {
      "rows": 0.0,
@@ -3430,28 +3755,28 @@
      "capped": false,
      "total": 0.0
     },
-    "other": 1.87,
-    "before_cap": 3.142,
+    "other": 1.88,
+    "before_cap": 3.28,
     "cap": 6.0,
     "capped": false,
-    "total": 3.142
+    "total": 3.28
    },
    "index": {
-    "f7_rush_epa_delta": 0.0025,
-    "f7_pass_epa_delta": 0.0436,
+    "f7_rush_epa_delta": 0.0045,
+    "f7_pass_epa_delta": 0.048,
     "ol_rush_epa_delta": -0.0,
     "ol_pass_epa_delta": -0.0,
-    "f7_points_epa_form": 1.679,
+    "f7_points_epa_form": 1.893,
     "ol_points_epa_form": 0.0,
     "run_d_base": -0.0524,
-    "RDA": -0.05,
+    "RDA": -0.0479,
     "pass_d_base": 0.0451,
-    "PDA": 0.0887,
+    "PDA": 0.0931,
     "run_o_base": -0.0925,
     "ORA": -0.0925,
     "pass_o_base": 0.1134,
     "OPA": 0.1134,
-    "F7HI": 1.272,
+    "F7HI": 1.4,
     "OLHI": 0.0
    }
   },
@@ -3461,45 +3786,45 @@
    "espn_id": "401873066",
    "game_id": "2026_11_IND_HOU",
    "rows_source": "data/injury-2026.json",
-   "rows_pulled": "2026-11-18a",
+   "rows_pulled": "2026-11-19a",
    "rows": [
     {
-     "name": "Will Mallory",
-     "pos_desk": "TE1",
-     "pos_nfl": "TE",
-     "group": null,
-     "unit": "OTHER",
-     "status": "QUESTIONABLE",
+     "name": "Jalen Travis",
+     "pos_desk": "RT",
+     "pos_nfl": "T",
+     "group": "T",
+     "unit": "OL",
+     "status": "OUT",
      "nfl_final_status": "",
      "practice": "unknown",
      "practice_days": {},
      "practice_source": "none yet",
-     "share": 0.1225,
+     "share": 0.6025,
      "share_source": "nflverse snap_counts trailing 4",
      "live": {
-      "value": null,
-      "mult": 0.35,
+      "value": 0.25,
+      "mult": 1.0,
       "on": true,
-      "pts": 0.09,
+      "pts": 0.25,
       "manual": false
      },
-     "p_sits": null,
-     "pos_value": null,
-     "w_snap": null,
-     "pts": 0.09
+     "p_sits": 1.0,
+     "pos_value": 1.0,
+     "w_snap": 0.75,
+     "pts": 0.75
     },
     {
-     "name": "Jaylon Carlies",
-     "pos_desk": "LB",
-     "pos_nfl": "LB",
-     "group": "LB",
+     "name": "Jerry Tillery",
+     "pos_desk": "IDL",
+     "pos_nfl": "DL",
+     "group": "DL",
      "unit": "F7",
-     "status": "IR",
+     "status": "OUT",
      "nfl_final_status": "",
      "practice": "unknown",
      "practice_days": {},
      "practice_source": "none yet",
-     "share": 0.25,
+     "share": 0.2525,
      "share_source": "nflverse snap_counts trailing 4",
      "live": {
       "value": null,
@@ -3509,9 +3834,84 @@
       "manual": false
      },
      "p_sits": 1.0,
-     "pos_value": 0.7,
+     "pos_value": 0.9,
      "w_snap": 0.0,
      "pts": 0.0
+    },
+    {
+     "name": "Sauce Gardner",
+     "pos_desk": "CB1",
+     "pos_nfl": "CB",
+     "group": null,
+     "unit": "OTHER",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.6325,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.85,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.3,
+      "manual": true
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.3
+    },
+    {
+     "name": "Charvarius Ward",
+     "pos_desk": "CB1",
+     "pos_nfl": "CB",
+     "group": null,
+     "unit": "OTHER",
+     "status": "OUT",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.8375,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.5,
+      "mult": 1.0,
+      "on": true,
+      "pts": 0.5,
+      "manual": true
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.5
+    },
+    {
+     "name": "Will Mallory",
+     "pos_desk": "TE1",
+     "pos_nfl": "TE",
+     "group": null,
+     "unit": "OTHER",
+     "status": "OUT",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.1225,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": null,
+      "mult": 1.0,
+      "on": true,
+      "pts": 0.25,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.25
     },
     {
      "name": "Anthony Gould",
@@ -3539,6 +3939,56 @@
      "pts": 0.09
     },
     {
+     "name": "Bernhard Raimann",
+     "pos_desk": "LT",
+     "pos_nfl": "T",
+     "group": "T",
+     "unit": "OL",
+     "status": "OUT",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.7425,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.6,
+      "mult": 1.0,
+      "on": true,
+      "pts": 0.6,
+      "manual": true
+     },
+     "p_sits": 1.0,
+     "pos_value": 1.0,
+     "w_snap": 0.75,
+     "pts": 0.75
+    },
+    {
+     "name": "Jaylon Carlies",
+     "pos_desk": "LB",
+     "pos_nfl": "LB",
+     "group": "LB",
+     "unit": "F7",
+     "status": "IR",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.25,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": null,
+      "mult": 1.0,
+      "on": true,
+      "pts": 0.25,
+      "manual": false
+     },
+     "p_sits": 1.0,
+     "pos_value": 0.7,
+     "w_snap": 0.0,
+     "pts": 0.0
+    },
+    {
      "name": "Luke Rhodes",
      "pos_desk": "DEPTH",
      "pos_nfl": "LS",
@@ -3562,106 +4012,6 @@
      "pos_value": null,
      "w_snap": null,
      "pts": 0.07
-    },
-    {
-     "name": "Jerry Tillery",
-     "pos_desk": "IDL",
-     "pos_nfl": "DL",
-     "group": "DL",
-     "unit": "F7",
-     "status": "QUESTIONABLE",
-     "nfl_final_status": "",
-     "practice": "unknown",
-     "practice_days": {},
-     "practice_source": "none yet",
-     "share": 0.2525,
-     "share_source": "nflverse snap_counts trailing 4",
-     "live": {
-      "value": null,
-      "mult": 0.35,
-      "on": true,
-      "pts": 0.09,
-      "manual": false
-     },
-     "p_sits": 0.27,
-     "pos_value": 0.9,
-     "w_snap": 0.0,
-     "pts": 0.0
-    },
-    {
-     "name": "Jalen Travis",
-     "pos_desk": "RT",
-     "pos_nfl": "T",
-     "group": "T",
-     "unit": "OL",
-     "status": "DOUBTFUL",
-     "nfl_final_status": "",
-     "practice": "unknown",
-     "practice_days": {},
-     "practice_source": "none yet",
-     "share": 0.6025,
-     "share_source": "nflverse snap_counts trailing 4",
-     "live": {
-      "value": 0.25,
-      "mult": 1.0,
-      "on": true,
-      "pts": 0.25,
-      "manual": false
-     },
-     "p_sits": 1.0,
-     "pos_value": 1.0,
-     "w_snap": 0.75,
-     "pts": 0.75
-    },
-    {
-     "name": "Sauce Gardner",
-     "pos_desk": "CB1",
-     "pos_nfl": "CB",
-     "group": null,
-     "unit": "OTHER",
-     "status": "QUESTIONABLE",
-     "nfl_final_status": "",
-     "practice": "unknown",
-     "practice_days": {},
-     "practice_source": "none yet",
-     "share": 0.6325,
-     "share_source": "nflverse snap_counts trailing 4",
-     "live": {
-      "value": 0.5,
-      "mult": 0.35,
-      "on": true,
-      "pts": 0.17,
-      "manual": false
-     },
-     "p_sits": null,
-     "pos_value": null,
-     "w_snap": null,
-     "pts": 0.17
-    },
-    {
-     "name": "Charvarius Ward",
-     "pos_desk": "CB1",
-     "pos_nfl": "CB",
-     "group": null,
-     "unit": "OTHER",
-     "status": "QUESTIONABLE",
-     "nfl_final_status": "",
-     "practice": "unknown",
-     "practice_days": {},
-     "practice_source": "none yet",
-     "share": 0.8375,
-     "share_source": "nflverse snap_counts trailing 4",
-     "live": {
-      "value": 0.5,
-      "mult": 0.35,
-      "on": true,
-      "pts": 0.17,
-      "manual": false
-     },
-     "p_sits": null,
-     "pos_value": null,
-     "w_snap": null,
-     "pts": 0.17
     },
     {
      "name": "Akeem Davis-Gaither",
@@ -3837,16 +4187,41 @@
      "pos_value": null,
      "w_snap": null,
      "pts": 0.25
+    },
+    {
+     "name": "Charlie Heck",
+     "pos_desk": "RT",
+     "pos_nfl": "T",
+     "group": "T",
+     "unit": "OL",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.0,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": null,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.09,
+      "manual": false
+     },
+     "p_sits": 0.27,
+     "pos_value": 1.0,
+     "w_snap": 0.0,
+     "pts": 0.0
     }
    ],
    "live": {
-    "front_seven": 0.74,
-    "ol": 0.25,
-    "other": 1.74,
-    "before_cap": 2.73,
+    "front_seven": 0.9,
+    "ol": 0.94,
+    "other": 2.36,
+    "before_cap": 4.2,
     "cap": 6.0,
     "capped": false,
-    "total": 2.73
+    "total": 4.2
    },
    "proposed": {
     "front_seven": {
@@ -3860,38 +4235,38 @@
      "total": 0.0
     },
     "ol": {
-     "rows": 0.75,
-     "starters_out": 1,
+     "rows": 1.5,
+     "starters_out": 2,
      "cluster": false,
      "cluster_bonus": 0.0,
-     "before_cap": 0.75,
+     "before_cap": 1.5,
      "cap": 3.5,
      "capped": false,
-     "total": 0.75
+     "total": 1.5
     },
-    "other": 1.74,
-    "before_cap": 2.49,
+    "other": 2.36,
+    "before_cap": 3.86,
     "cap": 6.0,
     "capped": false,
-    "total": 2.49
+    "total": 3.86
    },
    "index": {
     "f7_rush_epa_delta": 0.0,
     "f7_pass_epa_delta": 0.0,
-    "ol_rush_epa_delta": -0.0037,
-    "ol_pass_epa_delta": -0.0232,
+    "ol_rush_epa_delta": -0.0075,
+    "ol_pass_epa_delta": -0.0465,
     "f7_points_epa_form": 0.0,
-    "ol_points_epa_form": 0.958,
+    "ol_points_epa_form": 1.915,
     "run_d_base": -0.0172,
     "RDA": -0.0172,
     "pass_d_base": 0.059,
     "PDA": 0.059,
     "run_o_base": -0.0095,
-    "ORA": -0.0133,
+    "ORA": -0.017,
     "pass_o_base": -0.1238,
-    "OPA": -0.147,
+    "OPA": -0.1703,
     "F7HI": 0.0,
-    "OLHI": 0.75
+    "OLHI": 1.5
    }
   },
   "JAX": {
@@ -3900,15 +4275,190 @@
    "espn_id": "401873069",
    "game_id": "2026_11_JAX_NYG",
    "rows_source": "data/injury-2026.json",
-   "rows_pulled": "2026-11-18a",
+   "rows_pulled": "2026-11-19a",
    "rows": [
+    {
+     "name": "Danny Striggow",
+     "pos_desk": "EDGE1",
+     "pos_nfl": "DL",
+     "group": "DL",
+     "unit": "F7",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.235,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": null,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.09,
+      "manual": false
+     },
+     "p_sits": 0.27,
+     "pos_value": 0.9,
+     "w_snap": 0.0,
+     "pts": 0.0
+    },
+    {
+     "name": "Antonio Johnson",
+     "pos_desk": "S",
+     "pos_nfl": "S",
+     "group": null,
+     "unit": "OTHER",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.555,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.2,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.07,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.07
+    },
+    {
+     "name": "Travon Walker",
+     "pos_desk": "EDGE1",
+     "pos_nfl": "DE",
+     "group": "EDGE",
+     "unit": "F7",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.74,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.2,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.07,
+      "manual": false
+     },
+     "p_sits": 0.27,
+     "pos_value": 0.7,
+     "w_snap": 0.75,
+     "pts": 0.142
+    },
+    {
+     "name": "LeQuint Allen Jr.",
+     "pos_desk": "RB1",
+     "pos_nfl": "RB",
+     "group": null,
+     "unit": "OTHER",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.1125,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": null,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.09,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.09
+    },
+    {
+     "name": "Chris Rodriguez Jr.",
+     "pos_desk": "RB1",
+     "pos_nfl": "RB",
+     "group": null,
+     "unit": "OTHER",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.2775,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.25,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.09,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.09
+    },
+    {
+     "name": "Bhayshul Tuten",
+     "pos_desk": "RB1",
+     "pos_nfl": "RB",
+     "group": null,
+     "unit": "OTHER",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.535,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.25,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.09,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.09
+    },
+    {
+     "name": "Jakobi Meyers",
+     "pos_desk": "WR2",
+     "pos_nfl": "WR",
+     "group": null,
+     "unit": "OTHER",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.695,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.25,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.09,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.09
+    },
     {
      "name": "Robert Hainsey",
      "pos_desk": "C",
      "pos_nfl": "OL",
      "group": "IOL",
      "unit": "OL",
-     "status": "DOUBTFUL",
+     "status": "OUT",
      "nfl_final_status": "",
      "practice": "unknown",
      "practice_days": {},
@@ -4079,24 +4629,24 @@
     }
    ],
    "live": {
-    "front_seven": 0.5,
+    "front_seven": 0.66,
     "ol": 0.4,
-    "other": 0.75,
-    "before_cap": 1.65,
+    "other": 1.18,
+    "before_cap": 2.24,
     "cap": 6.0,
     "capped": false,
-    "total": 1.65
+    "total": 2.24
    },
    "proposed": {
     "front_seven": {
-     "rows": 0.0,
+     "rows": 0.142,
      "starters_out": 0,
      "cluster": false,
      "cluster_bonus": 0.0,
-     "before_cap": 0.0,
+     "before_cap": 0.142,
      "cap": 3.5,
      "capped": false,
-     "total": 0.0
+     "total": 0.142
     },
     "ol": {
      "rows": 0.8,
@@ -4108,28 +4658,28 @@
      "capped": false,
      "total": 0.8
     },
-    "other": 0.75,
-    "before_cap": 1.55,
+    "other": 1.18,
+    "before_cap": 2.122,
     "cap": 6.0,
     "capped": false,
-    "total": 1.55
+    "total": 2.122
    },
    "index": {
-    "f7_rush_epa_delta": 0.0,
-    "f7_pass_epa_delta": 0.0,
+    "f7_rush_epa_delta": 0.0022,
+    "f7_pass_epa_delta": 0.0049,
     "ol_rush_epa_delta": -0.005,
     "ol_pass_epa_delta": -0.021,
-    "f7_points_epa_form": 0.0,
+    "f7_points_epa_form": 0.238,
     "ol_points_epa_form": 0.907,
     "run_d_base": -0.1012,
-    "RDA": -0.1012,
+    "RDA": -0.0989,
     "pass_d_base": -0.0302,
-    "PDA": -0.0302,
+    "PDA": -0.0253,
     "run_o_base": -0.028,
     "ORA": -0.033,
     "pass_o_base": 0.1987,
     "OPA": 0.1777,
-    "F7HI": 0.0,
+    "F7HI": 0.142,
     "OLHI": 0.8
    }
   },
@@ -4139,12 +4689,12 @@
    "espn_id": "401873067",
    "game_id": "2026_11_ARI_KC",
    "rows_source": "data/injury-2026.json",
-   "rows_pulled": "2026-11-18a",
+   "rows_pulled": "2026-11-19a",
    "rows": [
     {
-     "name": "Peter Woods",
+     "name": "Omarr Norman-Lott",
      "pos_desk": "IDL",
-     "pos_nfl": "DL",
+     "pos_nfl": "DT",
      "group": "DL",
      "unit": "F7",
      "status": "QUESTIONABLE",
@@ -4152,7 +4702,7 @@
      "practice": "unknown",
      "practice_days": {},
      "practice_source": "none yet",
-     "share": 0.1325,
+     "share": 0.0,
      "share_source": "nflverse snap_counts trailing 4",
      "live": {
       "value": null,
@@ -4167,17 +4717,17 @@
      "pts": 0.0
     },
     {
-     "name": "Kenneth Walker III",
-     "pos_desk": "RB1",
-     "pos_nfl": "RB",
-     "group": null,
-     "unit": "OTHER",
+     "name": "Trey Smith",
+     "pos_desk": "OG",
+     "pos_nfl": "G",
+     "group": "IOL",
+     "unit": "OL",
      "status": "QUESTIONABLE",
      "nfl_final_status": "",
      "practice": "unknown",
      "practice_days": {},
      "practice_source": "none yet",
-     "share": 0.55,
+     "share": 0.79,
      "share_source": "nflverse snap_counts trailing 4",
      "live": {
       "value": 0.25,
@@ -4186,10 +4736,10 @@
       "pts": 0.09,
       "manual": false
      },
-     "p_sits": null,
-     "pos_value": null,
-     "w_snap": null,
-     "pts": 0.09
+     "p_sits": 0.27,
+     "pos_value": 0.8,
+     "w_snap": 1.0,
+     "pts": 0.216
     },
     {
      "name": "Jaylon Moore",
@@ -4217,37 +4767,12 @@
      "pts": 0.0
     },
     {
-     "name": "Jaydn Ott",
-     "pos_desk": "RB1",
-     "pos_nfl": "RB",
-     "group": null,
-     "unit": "OTHER",
-     "status": "QUESTIONABLE",
-     "nfl_final_status": "",
-     "practice": "unknown",
-     "practice_days": {},
-     "practice_source": "none yet",
-     "share": 0.015,
-     "share_source": "nflverse snap_counts trailing 4",
-     "live": {
-      "value": null,
-      "mult": 0.35,
-      "on": true,
-      "pts": 0.09,
-      "manual": false
-     },
-     "p_sits": null,
-     "pos_value": null,
-     "w_snap": null,
-     "pts": 0.09
-    },
-    {
      "name": "Jared Wiley",
      "pos_desk": "TE1",
      "pos_nfl": "TE",
      "group": null,
      "unit": "OTHER",
-     "status": "OUT",
+     "status": "IR",
      "nfl_final_status": "",
      "practice": "unknown",
      "practice_days": {},
@@ -4265,6 +4790,56 @@
      "pos_value": null,
      "w_snap": null,
      "pts": 0.25
+    },
+    {
+     "name": "Nick Bolton",
+     "pos_desk": "LB",
+     "pos_nfl": "LB",
+     "group": "LB",
+     "unit": "F7",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.955,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.25,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.09,
+      "manual": false
+     },
+     "p_sits": 0.27,
+     "pos_value": 0.7,
+     "w_snap": 1.0,
+     "pts": 0.189
+    },
+    {
+     "name": "Kenneth Walker III",
+     "pos_desk": "RB1",
+     "pos_nfl": "RB",
+     "group": null,
+     "unit": "OTHER",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.55,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.25,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.09,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.09
     },
     {
      "name": "L'Jarius Sneed",
@@ -4418,58 +4993,58 @@
     }
    ],
    "live": {
-    "front_seven": 0.34,
-    "ol": 0.29,
-    "other": 1.33,
-    "before_cap": 1.96,
+    "front_seven": 0.43,
+    "ol": 0.38,
+    "other": 1.24,
+    "before_cap": 2.05,
     "cap": 6.0,
     "capped": false,
-    "total": 1.96
+    "total": 2.05
    },
    "proposed": {
     "front_seven": {
-     "rows": 0.0,
+     "rows": 0.189,
      "starters_out": 0,
      "cluster": false,
      "cluster_bonus": 0.0,
-     "before_cap": 0.0,
+     "before_cap": 0.189,
      "cap": 3.5,
      "capped": false,
-     "total": 0.0
+     "total": 0.189
     },
     "ol": {
-     "rows": 0.0,
+     "rows": 0.216,
      "starters_out": 0,
      "cluster": false,
      "cluster_bonus": 0.0,
-     "before_cap": 0.0,
+     "before_cap": 0.216,
      "cap": 3.5,
      "capped": false,
-     "total": 0.0
+     "total": 0.216
     },
-    "other": 1.33,
-    "before_cap": 1.33,
+    "other": 1.24,
+    "before_cap": 1.645,
     "cap": 6.0,
     "capped": false,
-    "total": 1.33
+    "total": 1.645
    },
    "index": {
-    "f7_rush_epa_delta": 0.0,
-    "f7_pass_epa_delta": 0.0,
-    "ol_rush_epa_delta": -0.0,
-    "ol_pass_epa_delta": -0.0,
-    "f7_points_epa_form": 0.0,
-    "ol_points_epa_form": 0.0,
+    "f7_rush_epa_delta": 0.0003,
+    "f7_pass_epa_delta": 0.0065,
+    "ol_rush_epa_delta": -0.0014,
+    "ol_pass_epa_delta": -0.0057,
+    "f7_points_epa_form": 0.247,
+    "ol_points_epa_form": 0.245,
     "run_d_base": -0.0973,
-    "RDA": -0.0973,
+    "RDA": -0.097,
     "pass_d_base": -0.028,
-    "PDA": -0.028,
+    "PDA": -0.0216,
     "run_o_base": 0.0155,
-    "ORA": 0.0155,
+    "ORA": 0.0141,
     "pass_o_base": 0.1297,
-    "OPA": 0.1297,
-    "F7HI": 0.0,
-    "OLHI": 0.0
+    "OPA": 0.1241,
+    "F7HI": 0.189,
+    "OLHI": 0.216
    }
   },
   "LAC": {
@@ -4478,8 +5053,83 @@
    "espn_id": "401873074",
    "game_id": "2026_11_NYJ_LAC",
    "rows_source": "data/injury-2026.json",
-   "rows_pulled": "2026-11-18a",
+   "rows_pulled": "2026-11-19a",
    "rows": [
+    {
+     "name": "Daiyan Henley",
+     "pos_desk": "LB",
+     "pos_nfl": "LB",
+     "group": "LB",
+     "unit": "F7",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.8425,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.25,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.09,
+      "manual": false
+     },
+     "p_sits": 0.27,
+     "pos_value": 0.7,
+     "w_snap": 1.0,
+     "pts": 0.189
+    },
+    {
+     "name": "Charlie Kolar",
+     "pos_desk": "TE1",
+     "pos_nfl": "TE",
+     "group": null,
+     "unit": "OTHER",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.6625,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.25,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.09,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.09
+    },
+    {
+     "name": "Ladd McConkey",
+     "pos_desk": "WR2",
+     "pos_nfl": "WR",
+     "group": null,
+     "unit": "OTHER",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.255,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.2,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.07,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.07
+    },
     {
      "name": "Kendall Williamson",
      "pos_desk": "S",
@@ -4529,31 +5179,6 @@
      "pos_value": null,
      "w_snap": null,
      "pts": 0.09
-    },
-    {
-     "name": "Ladd McConkey",
-     "pos_desk": "WR2",
-     "pos_nfl": "WR",
-     "group": null,
-     "unit": "OTHER",
-     "status": "QUESTIONABLE",
-     "nfl_final_status": "",
-     "practice": "unknown",
-     "practice_days": {},
-     "practice_source": "none yet",
-     "share": 0.255,
-     "share_source": "nflverse snap_counts trailing 4",
-     "live": {
-      "value": 0.2,
-      "mult": 0.35,
-      "on": true,
-      "pts": 0.07,
-      "manual": false
-     },
-     "p_sits": null,
-     "pos_value": null,
-     "w_snap": null,
-     "pts": 0.07
     },
     {
      "name": "Brenen Thompson",
@@ -4857,24 +5482,24 @@
     }
    ],
    "live": {
-    "front_seven": 0.29,
+    "front_seven": 0.38,
     "ol": 1.2,
-    "other": 1.44,
-    "before_cap": 2.93,
+    "other": 1.53,
+    "before_cap": 3.11,
     "cap": 6.0,
     "capped": false,
-    "total": 2.93
+    "total": 3.11
    },
    "proposed": {
     "front_seven": {
-     "rows": 0.0,
+     "rows": 0.189,
      "starters_out": 0,
      "cluster": false,
      "cluster_bonus": 0.0,
-     "before_cap": 0.0,
+     "before_cap": 0.189,
      "cap": 3.5,
      "capped": false,
-     "total": 0.0
+     "total": 0.189
     },
     "ol": {
      "rows": 0.0,
@@ -4886,28 +5511,28 @@
      "capped": false,
      "total": 0.0
     },
-    "other": 1.44,
-    "before_cap": 1.44,
+    "other": 1.53,
+    "before_cap": 1.719,
     "cap": 6.0,
     "capped": false,
-    "total": 1.44
+    "total": 1.719
    },
    "index": {
-    "f7_rush_epa_delta": 0.0,
-    "f7_pass_epa_delta": 0.0,
+    "f7_rush_epa_delta": 0.0003,
+    "f7_pass_epa_delta": 0.0065,
     "ol_rush_epa_delta": -0.0,
     "ol_pass_epa_delta": -0.0,
-    "f7_points_epa_form": 0.0,
+    "f7_points_epa_form": 0.247,
     "ol_points_epa_form": 0.0,
     "run_d_base": -0.0485,
-    "RDA": -0.0485,
+    "RDA": -0.0483,
     "pass_d_base": 0.0485,
-    "PDA": 0.0485,
+    "PDA": 0.055,
     "run_o_base": -0.129,
     "ORA": -0.129,
     "pass_o_base": -0.1028,
     "OPA": -0.1028,
-    "F7HI": 0.0,
+    "F7HI": 0.189,
     "OLHI": 0.0
    }
   },
@@ -4917,12 +5542,62 @@
    "espn_id": "401873075",
    "game_id": "2026_11_LV_DEN",
    "rows_source": "data/injury-2026.json",
-   "rows_pulled": "2026-11-18a",
+   "rows_pulled": "2026-11-19a",
    "rows": [
     {
-     "name": "Dont'e Thornton Jr.",
-     "pos_desk": "WR2",
-     "pos_nfl": "WR",
+     "name": "Tonka Hemingway",
+     "pos_desk": "IDL",
+     "pos_nfl": "DT",
+     "group": "DL",
+     "unit": "F7",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.3875,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": null,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.09,
+      "manual": false
+     },
+     "p_sits": 0.27,
+     "pos_value": 0.9,
+     "w_snap": 0.0,
+     "pts": 0.0
+    },
+    {
+     "name": "Folorunso Fatukasi",
+     "pos_desk": "IDL",
+     "pos_nfl": "DT",
+     "group": "DL",
+     "unit": "F7",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.4825,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": null,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.09,
+      "manual": false
+     },
+     "p_sits": 0.27,
+     "pos_value": 0.9,
+     "w_snap": 0.25,
+     "pts": 0.061
+    },
+    {
+     "name": "Matt Gay",
+     "pos_desk": "K",
+     "pos_nfl": "K",
      "group": null,
      "unit": "OTHER",
      "status": "QUESTIONABLE",
@@ -4936,38 +5611,13 @@
       "value": null,
       "mult": 0.35,
       "on": true,
-      "pts": 0.09,
+      "pts": 0.07,
       "manual": false
      },
      "p_sits": null,
      "pos_value": null,
      "w_snap": null,
-     "pts": 0.09
-    },
-    {
-     "name": "Thomas Booker IV",
-     "pos_desk": "IDL",
-     "pos_nfl": "DT",
-     "group": "DL",
-     "unit": "F7",
-     "status": "QUESTIONABLE",
-     "nfl_final_status": "",
-     "practice": "unknown",
-     "practice_days": {},
-     "practice_source": "none yet",
-     "share": 0.1125,
-     "share_source": "nflverse snap_counts trailing 4",
-     "live": {
-      "value": null,
-      "mult": 0.35,
-      "on": true,
-      "pts": 0.09,
-      "manual": false
-     },
-     "p_sits": 0.27,
-     "pos_value": 0.9,
-     "w_snap": 0.0,
-     "pts": 0.0
+     "pts": 0.07
     },
     {
      "name": "Brock Bowers",
@@ -5046,24 +5696,24 @@
     }
    ],
    "live": {
-    "front_seven": 0.34,
+    "front_seven": 0.43,
     "ol": 0.0,
-    "other": 0.51,
-    "before_cap": 0.85,
+    "other": 0.49,
+    "before_cap": 0.92,
     "cap": 6.0,
     "capped": false,
-    "total": 0.85
+    "total": 0.92
    },
    "proposed": {
     "front_seven": {
-     "rows": 0.0,
+     "rows": 0.061,
      "starters_out": 0,
      "cluster": false,
      "cluster_bonus": 0.0,
-     "before_cap": 0.0,
+     "before_cap": 0.061,
      "cap": 3.5,
      "capped": false,
-     "total": 0.0
+     "total": 0.061
     },
     "ol": {
      "rows": 0.0,
@@ -5075,28 +5725,28 @@
      "capped": false,
      "total": 0.0
     },
-    "other": 0.51,
-    "before_cap": 0.51,
+    "other": 0.49,
+    "before_cap": 0.551,
     "cap": 6.0,
     "capped": false,
-    "total": 0.51
+    "total": 0.551
    },
    "index": {
-    "f7_rush_epa_delta": 0.0,
-    "f7_pass_epa_delta": 0.0,
+    "f7_rush_epa_delta": 0.0028,
+    "f7_pass_epa_delta": 0.0016,
     "ol_rush_epa_delta": -0.0,
     "ol_pass_epa_delta": -0.0,
-    "f7_points_epa_form": 0.0,
+    "f7_points_epa_form": 0.134,
     "ol_points_epa_form": 0.0,
     "run_d_base": -0.0373,
-    "RDA": -0.0373,
+    "RDA": -0.0345,
     "pass_d_base": 0.1404,
-    "PDA": 0.1404,
+    "PDA": 0.142,
     "run_o_base": -0.1312,
     "ORA": -0.1312,
     "pass_o_base": 0.0698,
     "OPA": 0.0698,
-    "F7HI": 0.0,
+    "F7HI": 0.061,
     "OLHI": 0.0
    }
   },
@@ -5106,45 +5756,45 @@
    "espn_id": "401873070",
    "game_id": "2026_11_MIA_BUF",
    "rows_source": "data/injury-2026.json",
-   "rows_pulled": "2026-11-18a",
+   "rows_pulled": "2026-11-19a",
    "rows": [
     {
-     "name": "Zeek Biggers",
-     "pos_desk": "IDL",
-     "pos_nfl": "DT",
-     "group": "DL",
-     "unit": "F7",
-     "status": "IR",
+     "name": "Andrew Meyer",
+     "pos_desk": "C",
+     "pos_nfl": "C",
+     "group": "IOL",
+     "unit": "OL",
+     "status": "QUESTIONABLE",
      "nfl_final_status": "",
      "practice": "unknown",
      "practice_days": {},
      "practice_source": "none yet",
-     "share": 0.47,
+     "share": 0.2425,
      "share_source": "nflverse snap_counts trailing 4",
      "live": {
-      "value": 0.2,
-      "mult": 1.0,
+      "value": null,
+      "mult": 0.35,
       "on": true,
-      "pts": 0.2,
+      "pts": 0.09,
       "manual": false
      },
-     "p_sits": 1.0,
-     "pos_value": 0.9,
-     "w_snap": 0.25,
-     "pts": 0.225
+     "p_sits": 0.27,
+     "pos_value": 0.8,
+     "w_snap": 0.0,
+     "pts": 0.0
     },
     {
-     "name": "Jordan Phillips",
-     "pos_desk": "IDL",
-     "pos_nfl": "DT",
-     "group": "DL",
-     "unit": "F7",
-     "status": "IR",
+     "name": "Darrell Baker Jr.",
+     "pos_desk": "CB1",
+     "pos_nfl": "CB",
+     "group": null,
+     "unit": "OTHER",
+     "status": "OUT",
      "nfl_final_status": "",
      "practice": "unknown",
      "practice_days": {},
      "practice_source": "none yet",
-     "share": 0.5725,
+     "share": 0.0,
      "share_source": "nflverse snap_counts trailing 4",
      "live": {
       "value": 0.2,
@@ -5153,10 +5803,35 @@
       "pts": 0.2,
       "manual": false
      },
-     "p_sits": 1.0,
-     "pos_value": 0.9,
-     "w_snap": 0.25,
-     "pts": 0.225
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.2
+    },
+    {
+     "name": "Aaron Brewer",
+     "pos_desk": "C",
+     "pos_nfl": "OL",
+     "group": "IOL",
+     "unit": "OL",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.75,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.5,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.17,
+      "manual": false
+     },
+     "p_sits": 0.27,
+     "pos_value": 0.8,
+     "w_snap": 1.0,
+     "pts": 0.216
     },
     {
      "name": "Jared Wayne",
@@ -5184,6 +5859,56 @@
      "pts": 0.09
     },
     {
+     "name": "JuJu Brents",
+     "pos_desk": "CB1",
+     "pos_nfl": "",
+     "group": null,
+     "unit": "OTHER",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": null,
+     "share_source": "no nflverse match",
+     "live": {
+      "value": 0.2,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.07,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.07
+    },
+    {
+     "name": "Dante Trader Jr.",
+     "pos_desk": "S",
+     "pos_nfl": "S",
+     "group": null,
+     "unit": "OTHER",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.94,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.2,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.07,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.07
+    },
+    {
      "name": "Chris Bell",
      "pos_desk": "WR2",
      "pos_nfl": "WR",
@@ -5209,29 +5934,79 @@
      "pts": 0.09
     },
     {
-     "name": "Aaron Brewer",
-     "pos_desk": "C",
-     "pos_nfl": "OL",
-     "group": "IOL",
-     "unit": "OL",
+     "name": "Caleb Douglas",
+     "pos_desk": "WR2",
+     "pos_nfl": "WR",
+     "group": null,
+     "unit": "OTHER",
      "status": "QUESTIONABLE",
      "nfl_final_status": "",
      "practice": "unknown",
      "practice_days": {},
      "practice_source": "none yet",
-     "share": 0.75,
+     "share": 0.78,
      "share_source": "nflverse snap_counts trailing 4",
      "live": {
-      "value": 0.5,
+      "value": 0.2,
       "mult": 0.35,
       "on": true,
-      "pts": 0.17,
+      "pts": 0.07,
       "manual": false
      },
-     "p_sits": 0.27,
-     "pos_value": 0.8,
-     "w_snap": 1.0,
-     "pts": 0.216
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.07
+    },
+    {
+     "name": "Jordan Phillips",
+     "pos_desk": "IDL",
+     "pos_nfl": "DT",
+     "group": "DL",
+     "unit": "F7",
+     "status": "IR",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.5725,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.2,
+      "mult": 1.0,
+      "on": true,
+      "pts": 0.2,
+      "manual": false
+     },
+     "p_sits": 1.0,
+     "pos_value": 0.9,
+     "w_snap": 0.25,
+     "pts": 0.225
+    },
+    {
+     "name": "Zeek Biggers",
+     "pos_desk": "IDL",
+     "pos_nfl": "DT",
+     "group": "DL",
+     "unit": "F7",
+     "status": "IR",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.47,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.2,
+      "mult": 1.0,
+      "on": true,
+      "pts": 0.2,
+      "manual": false
+     },
+     "p_sits": 1.0,
+     "pos_value": 0.9,
+     "w_snap": 0.25,
+     "pts": 0.225
     },
     {
      "name": "Malik Willis",
@@ -5386,12 +6161,12 @@
    ],
    "live": {
     "front_seven": 1.35,
-    "ol": 0.17,
-    "other": 1.93,
-    "before_cap": 3.45,
+    "ol": 0.26,
+    "other": 2.34,
+    "before_cap": 3.95,
     "cap": 6.0,
     "capped": false,
-    "total": 3.45
+    "total": 3.95
    },
    "proposed": {
     "front_seven": {
@@ -5414,11 +6189,11 @@
      "capped": false,
      "total": 0.216
     },
-    "other": 1.93,
-    "before_cap": 3.046,
+    "other": 2.34,
+    "before_cap": 3.456,
     "cap": 6.0,
     "capped": false,
-    "total": 3.046
+    "total": 3.456
    },
    "index": {
     "f7_rush_epa_delta": 0.042,
@@ -5445,82 +6220,32 @@
    "espn_id": "401873077",
    "game_id": "2026_11_MIN_SF",
    "rows_source": "data/injury-2026.json",
-   "rows_pulled": "2026-11-18a",
+   "rows_pulled": "2026-11-19a",
    "rows": [
     {
-     "name": "Tyrion Ingram-Dawkins",
-     "pos_desk": "EDGE1",
-     "pos_nfl": "DL",
-     "group": "DL",
-     "unit": "F7",
-     "status": "QUESTIONABLE",
-     "nfl_final_status": "",
-     "practice": "unknown",
-     "practice_days": {},
-     "practice_source": "none yet",
-     "share": 0.495,
-     "share_source": "nflverse snap_counts trailing 4",
-     "live": {
-      "value": null,
-      "mult": 0.35,
-      "on": true,
-      "pts": 0.09,
-      "manual": false
-     },
-     "p_sits": 0.27,
-     "pos_value": 0.9,
-     "w_snap": 0.25,
-     "pts": 0.061
-    },
-    {
-     "name": "Jauan Jennings",
-     "pos_desk": "WR2",
-     "pos_nfl": "WR",
-     "group": null,
-     "unit": "OTHER",
-     "status": "QUESTIONABLE",
-     "nfl_final_status": "",
-     "practice": "unknown",
-     "practice_days": {},
-     "practice_source": "none yet",
-     "share": 0.2775,
-     "share_source": "nflverse snap_counts trailing 4",
-     "live": {
-      "value": 0.2,
-      "mult": 0.35,
-      "on": true,
-      "pts": 0.07,
-      "manual": false
-     },
-     "p_sits": null,
-     "pos_value": null,
-     "w_snap": null,
-     "pts": 0.07
-    },
-    {
-     "name": "Blake Cashman",
+     "name": "Bo Richter",
      "pos_desk": "LB",
      "pos_nfl": "LB",
      "group": "LB",
      "unit": "F7",
-     "status": "QUESTIONABLE",
+     "status": "IR",
      "nfl_final_status": "",
      "practice": "unknown",
      "practice_days": {},
      "practice_source": "none yet",
-     "share": 0.7,
+     "share": 0.015,
      "share_source": "nflverse snap_counts trailing 4",
      "live": {
-      "value": 0.25,
-      "mult": 0.35,
+      "value": null,
+      "mult": 1.0,
       "on": true,
-      "pts": 0.09,
+      "pts": 0.25,
       "manual": false
      },
-     "p_sits": 0.27,
+     "p_sits": 1.0,
      "pos_value": 0.7,
-     "w_snap": 0.75,
-     "pts": 0.142
+     "w_snap": 0.0,
+     "pts": 0.0
     },
     {
      "name": "Andrew Van Ginkel",
@@ -5548,29 +6273,54 @@
      "pts": 0.189
     },
     {
-     "name": "Jordan Addison",
-     "pos_desk": "WR2",
-     "pos_nfl": "WR",
-     "group": null,
-     "unit": "OTHER",
-     "status": "OUT",
+     "name": "Blake Cashman",
+     "pos_desk": "LB",
+     "pos_nfl": "LB",
+     "group": "LB",
+     "unit": "F7",
+     "status": "QUESTIONABLE",
      "nfl_final_status": "",
      "practice": "unknown",
      "practice_days": {},
      "practice_source": "none yet",
-     "share": 0.6925,
+     "share": 0.7,
      "share_source": "nflverse snap_counts trailing 4",
      "live": {
       "value": 0.25,
-      "mult": 1.0,
+      "mult": 0.35,
       "on": true,
-      "pts": 0.25,
+      "pts": 0.09,
+      "manual": false
+     },
+     "p_sits": 0.27,
+     "pos_value": 0.7,
+     "w_snap": 0.75,
+     "pts": 0.142
+    },
+    {
+     "name": "Jeshaun Jones",
+     "pos_desk": "WR2",
+     "pos_nfl": "WR",
+     "group": null,
+     "unit": "OTHER",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.0225,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": null,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.09,
       "manual": false
      },
      "p_sits": null,
      "pos_value": null,
      "w_snap": null,
-     "pts": 0.25
+     "pts": 0.09
     },
     {
      "name": "T.J. Hockenson",
@@ -5621,6 +6371,31 @@
      "pos_value": null,
      "w_snap": null,
      "pts": 1.5
+    },
+    {
+     "name": "Jordan Addison",
+     "pos_desk": "WR2",
+     "pos_nfl": "WR",
+     "group": null,
+     "unit": "OTHER",
+     "status": "OUT",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.6925,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.25,
+      "mult": 1.0,
+      "on": true,
+      "pts": 0.25,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.25
     },
     {
      "name": "Demond Claiborne",
@@ -5749,24 +6524,24 @@
     }
    ],
    "live": {
-    "front_seven": 0.35,
+    "front_seven": 0.51,
     "ol": 0.45,
-    "other": 2.56,
-    "before_cap": 3.36,
+    "other": 2.58,
+    "before_cap": 3.54,
     "cap": 6.0,
     "capped": false,
-    "total": 3.36
+    "total": 3.54
    },
    "proposed": {
     "front_seven": {
-     "rows": 0.392,
+     "rows": 0.331,
      "starters_out": 0,
      "cluster": false,
      "cluster_bonus": 0.0,
-     "before_cap": 0.392,
+     "before_cap": 0.331,
      "cap": 3.5,
      "capped": false,
-     "total": 0.392
+     "total": 0.331
     },
     "ol": {
      "rows": 0.0,
@@ -5778,28 +6553,28 @@
      "capped": false,
      "total": 0.0
     },
-    "other": 2.56,
-    "before_cap": 2.952,
+    "other": 2.58,
+    "before_cap": 2.911,
     "cap": 6.0,
     "capped": false,
-    "total": 2.952
+    "total": 2.911
    },
    "index": {
-    "f7_rush_epa_delta": 0.0033,
-    "f7_pass_epa_delta": 0.013,
+    "f7_rush_epa_delta": 0.0005,
+    "f7_pass_epa_delta": 0.0113,
     "ol_rush_epa_delta": -0.0,
     "ol_pass_epa_delta": -0.0,
-    "f7_points_epa_form": 0.566,
+    "f7_points_epa_form": 0.432,
     "ol_points_epa_form": 0.0,
     "run_d_base": -0.084,
-    "RDA": -0.0807,
+    "RDA": -0.0835,
     "pass_d_base": -0.0815,
-    "PDA": -0.0685,
+    "PDA": -0.0702,
     "run_o_base": -0.1091,
     "ORA": -0.1091,
     "pass_o_base": -0.0243,
     "OPA": -0.0243,
-    "F7HI": 0.392,
+    "F7HI": 0.331,
     "OLHI": 0.0
    }
   },
@@ -5809,8 +6584,83 @@
    "espn_id": "401873071",
    "game_id": "2026_11_NO_CHI",
    "rows_source": "data/injury-2026.json",
-   "rows_pulled": "2026-11-18a",
+   "rows_pulled": "2026-11-19a",
    "rows": [
+    {
+     "name": "Martin Emerson Jr.",
+     "pos_desk": "CB1",
+     "pos_nfl": "CB",
+     "group": null,
+     "unit": "OTHER",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.8125,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.2,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.07,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.07
+    },
+    {
+     "name": "Pete Werner",
+     "pos_desk": "LB",
+     "pos_nfl": "LB",
+     "group": "LB",
+     "unit": "F7",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.8025,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": null,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.09,
+      "manual": false
+     },
+     "p_sits": 0.27,
+     "pos_value": 0.7,
+     "w_snap": 1.0,
+     "pts": 0.189
+    },
+    {
+     "name": "Jordyn Tyson",
+     "pos_desk": "WR2",
+     "pos_nfl": "WR",
+     "group": null,
+     "unit": "OTHER",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.2375,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.2,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.07,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.07
+    },
     {
      "name": "Erik McCoy",
      "pos_desk": "C",
@@ -5835,31 +6685,6 @@
      "pos_value": 0.8,
      "w_snap": 0.75,
      "pts": 0.6
-    },
-    {
-     "name": "CJ Donaldson",
-     "pos_desk": "RB1",
-     "pos_nfl": "RB",
-     "group": null,
-     "unit": "OTHER",
-     "status": "QUESTIONABLE",
-     "nfl_final_status": "",
-     "practice": "unknown",
-     "practice_days": {},
-     "practice_source": "none yet",
-     "share": 0.1,
-     "share_source": "nflverse snap_counts trailing 4",
-     "live": {
-      "value": null,
-      "mult": 0.35,
-      "on": true,
-      "pts": 0.09,
-      "manual": false
-     },
-     "p_sits": null,
-     "pos_value": null,
-     "w_snap": null,
-     "pts": 0.09
     },
     {
      "name": "Taliese Fuaga",
@@ -5988,24 +6813,24 @@
     }
    ],
    "live": {
-    "front_seven": 0.4,
+    "front_seven": 0.49,
     "ol": 0.7,
-    "other": 0.34,
-    "before_cap": 1.44,
+    "other": 0.39,
+    "before_cap": 1.58,
     "cap": 6.0,
     "capped": false,
-    "total": 1.44
+    "total": 1.58
    },
    "proposed": {
     "front_seven": {
-     "rows": 0.0,
+     "rows": 0.189,
      "starters_out": 0,
      "cluster": false,
      "cluster_bonus": 0.0,
-     "before_cap": 0.0,
+     "before_cap": 0.189,
      "cap": 3.5,
      "capped": false,
-     "total": 0.0
+     "total": 0.189
     },
     "ol": {
      "rows": 2.2,
@@ -6017,28 +6842,28 @@
      "capped": false,
      "total": 2.7
     },
-    "other": 0.34,
-    "before_cap": 3.04,
+    "other": 0.39,
+    "before_cap": 3.279,
     "cap": 6.0,
     "capped": false,
-    "total": 3.04
+    "total": 3.279
    },
    "index": {
-    "f7_rush_epa_delta": 0.0,
-    "f7_pass_epa_delta": 0.0,
+    "f7_rush_epa_delta": 0.0003,
+    "f7_pass_epa_delta": 0.0065,
     "ol_rush_epa_delta": -0.0125,
     "ol_pass_epa_delta": -0.0625,
-    "f7_points_epa_form": 0.0,
+    "f7_points_epa_form": 0.247,
     "ol_points_epa_form": 2.638,
     "run_d_base": -0.0242,
-    "RDA": -0.0242,
+    "RDA": -0.0239,
     "pass_d_base": 0.0622,
-    "PDA": 0.0622,
+    "PDA": 0.0686,
     "run_o_base": -0.1184,
     "ORA": -0.1309,
     "pass_o_base": 0.0306,
     "OPA": -0.0319,
-    "F7HI": 0.0,
+    "F7HI": 0.189,
     "OLHI": 2.7
    }
   },
@@ -6048,33 +6873,8 @@
    "espn_id": "401873069",
    "game_id": "2026_11_JAX_NYG",
    "rows_source": "data/injury-2026.json",
-   "rows_pulled": "2026-11-18a",
+   "rows_pulled": "2026-11-19a",
    "rows": [
-    {
-     "name": "Malik Harrison",
-     "pos_desk": "LB",
-     "pos_nfl": "LB",
-     "group": "LB",
-     "unit": "F7",
-     "status": "QUESTIONABLE",
-     "nfl_final_status": "",
-     "practice": "unknown",
-     "practice_days": {},
-     "practice_source": "none yet",
-     "share": 0.02,
-     "share_source": "nflverse snap_counts trailing 4",
-     "live": {
-      "value": 0.2,
-      "mult": 0.35,
-      "on": true,
-      "pts": 0.07,
-      "manual": false
-     },
-     "p_sits": 0.27,
-     "pos_value": 0.7,
-     "w_snap": 0.0,
-     "pts": 0.0
-    },
     {
      "name": "Tyrone Tracy Jr.",
      "pos_desk": "RB1",
@@ -6099,6 +6899,31 @@
      "pos_value": null,
      "w_snap": null,
      "pts": 0.2
+    },
+    {
+     "name": "Malik Harrison",
+     "pos_desk": "LB",
+     "pos_nfl": "LB",
+     "group": "LB",
+     "unit": "F7",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.02,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.2,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.07,
+      "manual": false
+     },
+     "p_sits": 0.27,
+     "pos_value": 0.7,
+     "w_snap": 0.0,
+     "pts": 0.0
     },
     {
      "name": "Tremaine Edmunds",
@@ -6287,37 +7112,12 @@
    "espn_id": "401873074",
    "game_id": "2026_11_NYJ_LAC",
    "rows_source": "data/injury-2026.json",
-   "rows_pulled": "2026-11-18a",
+   "rows_pulled": "2026-11-19a",
    "rows": [
     {
-     "name": "Trevin Wallace",
-     "pos_desk": "LB",
-     "pos_nfl": "LB",
-     "group": "LB",
-     "unit": "F7",
-     "status": "QUESTIONABLE",
-     "nfl_final_status": "",
-     "practice": "unknown",
-     "practice_days": {},
-     "practice_source": "none yet",
-     "share": 0.0,
-     "share_source": "nflverse snap_counts trailing 4",
-     "live": {
-      "value": null,
-      "mult": 0.35,
-      "on": true,
-      "pts": 0.09,
-      "manual": false
-     },
-     "p_sits": 0.27,
-     "pos_value": 0.7,
-     "w_snap": 0.0,
-     "pts": 0.0
-    },
-    {
-     "name": "Jarvis Brownlee Jr.",
-     "pos_desk": "CB1",
-     "pos_nfl": "DB",
+     "name": "Geno Smith",
+     "pos_desk": "QB1",
+     "pos_nfl": "QB",
      "group": null,
      "unit": "OTHER",
      "status": "QUESTIONABLE",
@@ -6325,7 +7125,7 @@
      "practice": "unknown",
      "practice_days": {},
      "practice_source": "none yet",
-     "share": 0.115,
+     "share": 0.87,
      "share_source": "nflverse snap_counts trailing 4",
      "live": {
       "value": 0.2,
@@ -6340,34 +7140,34 @@
      "pts": 0.07
     },
     {
-     "name": "Dylan Parham",
-     "pos_desk": "OG",
-     "pos_nfl": "G",
-     "group": "IOL",
-     "unit": "OL",
-     "status": "QUESTIONABLE",
+     "name": "David Onyemata",
+     "pos_desk": "IDL",
+     "pos_nfl": "DL",
+     "group": "DL",
+     "unit": "F7",
+     "status": "IR",
      "nfl_final_status": "",
      "practice": "unknown",
      "practice_days": {},
      "practice_source": "none yet",
-     "share": 0.545,
+     "share": 0.0,
      "share_source": "nflverse snap_counts trailing 4",
      "live": {
       "value": 0.2,
-      "mult": 0.35,
+      "mult": 1.0,
       "on": true,
-      "pts": 0.07,
+      "pts": 0.2,
       "manual": false
      },
-     "p_sits": 0.27,
-     "pos_value": 0.8,
-     "w_snap": 0.25,
-     "pts": 0.054
+     "p_sits": 1.0,
+     "pos_value": 0.9,
+     "w_snap": 0.0,
+     "pts": 0.0
     },
     {
-     "name": "Geno Smith",
-     "pos_desk": "QB1",
-     "pos_nfl": "QB",
+     "name": "Isaiah Williams",
+     "pos_desk": "WR2",
+     "pos_nfl": "WR",
      "group": null,
      "unit": "OTHER",
      "status": "QUESTIONABLE",
@@ -6375,7 +7175,7 @@
      "practice": "unknown",
      "practice_days": {},
      "practice_source": "none yet",
-     "share": 0.87,
+     "share": 0.42,
      "share_source": "nflverse snap_counts trailing 4",
      "live": {
       "value": 0.2,
@@ -6413,6 +7213,81 @@
      "pos_value": null,
      "w_snap": null,
      "pts": 0.07
+    },
+    {
+     "name": "Harrison Phillips",
+     "pos_desk": "IDL",
+     "pos_nfl": "DL",
+     "group": "DL",
+     "unit": "F7",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.5625,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.2,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.07,
+      "manual": false
+     },
+     "p_sits": 0.27,
+     "pos_value": 0.9,
+     "w_snap": 0.25,
+     "pts": 0.061
+    },
+    {
+     "name": "Trevin Wallace",
+     "pos_desk": "LB",
+     "pos_nfl": "LB",
+     "group": "LB",
+     "unit": "F7",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.0,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": null,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.09,
+      "manual": false
+     },
+     "p_sits": 0.27,
+     "pos_value": 0.7,
+     "w_snap": 0.0,
+     "pts": 0.0
+    },
+    {
+     "name": "Dylan Parham",
+     "pos_desk": "OG",
+     "pos_nfl": "G",
+     "group": "IOL",
+     "unit": "OL",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.545,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.2,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.07,
+      "manual": false
+     },
+     "p_sits": 0.27,
+     "pos_value": 0.8,
+     "w_snap": 0.25,
+     "pts": 0.054
     },
     {
      "name": "Max Mitchell",
@@ -6565,31 +7440,6 @@
      "pts": 0.25
     },
     {
-     "name": "David Onyemata",
-     "pos_desk": "IDL",
-     "pos_nfl": "DL",
-     "group": "DL",
-     "unit": "F7",
-     "status": "IR",
-     "nfl_final_status": "",
-     "practice": "unknown",
-     "practice_days": {},
-     "practice_source": "none yet",
-     "share": 0.0,
-     "share_source": "nflverse snap_counts trailing 4",
-     "live": {
-      "value": 0.2,
-      "mult": 1.0,
-      "on": true,
-      "pts": 0.2,
-      "manual": false
-     },
-     "p_sits": 1.0,
-     "pos_value": 0.9,
-     "w_snap": 0.0,
-     "pts": 0.0
-    },
-    {
      "name": "Marcelino McCrary-Ball",
      "pos_desk": "LB",
      "pos_nfl": "LB",
@@ -6616,24 +7466,24 @@
     }
    ],
    "live": {
-    "front_seven": 1.24,
+    "front_seven": 1.31,
     "ol": 0.32,
     "other": 0.66,
-    "before_cap": 2.22,
+    "before_cap": 2.29,
     "cap": 6.0,
     "capped": false,
-    "total": 2.22
+    "total": 2.29
    },
    "proposed": {
     "front_seven": {
-     "rows": 0.0,
+     "rows": 0.061,
      "starters_out": 0,
      "cluster": false,
      "cluster_bonus": 0.0,
-     "before_cap": 0.0,
+     "before_cap": 0.061,
      "cap": 3.5,
      "capped": false,
-     "total": 0.0
+     "total": 0.061
     },
     "ol": {
      "rows": 0.054,
@@ -6646,27 +7496,27 @@
      "total": 0.054
     },
     "other": 0.66,
-    "before_cap": 0.714,
+    "before_cap": 0.775,
     "cap": 6.0,
     "capped": false,
-    "total": 0.714
+    "total": 0.775
    },
    "index": {
-    "f7_rush_epa_delta": 0.0,
-    "f7_pass_epa_delta": 0.0,
+    "f7_rush_epa_delta": 0.0028,
+    "f7_pass_epa_delta": 0.0016,
     "ol_rush_epa_delta": -0.0003,
     "ol_pass_epa_delta": -0.0014,
-    "f7_points_epa_form": 0.0,
+    "f7_points_epa_form": 0.134,
     "ol_points_epa_form": 0.061,
     "run_d_base": -0.0446,
-    "RDA": -0.0446,
+    "RDA": -0.0417,
     "pass_d_base": 0.1202,
-    "PDA": 0.1202,
+    "PDA": 0.1218,
     "run_o_base": -0.0728,
     "ORA": -0.0731,
     "pass_o_base": 0.0387,
     "OPA": 0.0373,
-    "F7HI": 0.0,
+    "F7HI": 0.061,
     "OLHI": 0.054
    }
   },
@@ -6676,8 +7526,83 @@
    "espn_id": "401873076",
    "game_id": "2026_11_PIT_PHI",
    "rows_source": "data/injury-2026.json",
-   "rows_pulled": "2026-11-18a",
+   "rows_pulled": "2026-11-19a",
    "rows": [
+    {
+     "name": "Nolan Smith Jr.",
+     "pos_desk": "LB",
+     "pos_nfl": "LB",
+     "group": "LB",
+     "unit": "F7",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.405,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.25,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.09,
+      "manual": false
+     },
+     "p_sits": 0.27,
+     "pos_value": 0.7,
+     "w_snap": 0.0,
+     "pts": 0.0
+    },
+    {
+     "name": "Zack Baun",
+     "pos_desk": "LB",
+     "pos_nfl": "LB",
+     "group": "LB",
+     "unit": "F7",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.87,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.5,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.17,
+      "manual": false
+     },
+     "p_sits": 0.27,
+     "pos_value": 0.7,
+     "w_snap": 1.0,
+     "pts": 0.189
+    },
+    {
+     "name": "Will Shipley",
+     "pos_desk": "RB1",
+     "pos_nfl": "RB",
+     "group": null,
+     "unit": "OTHER",
+     "status": "IR",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.0,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": null,
+      "mult": 1.0,
+      "on": true,
+      "pts": 0.25,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.25
+    },
     {
      "name": "Dontayvion Wicks",
      "pos_desk": "WR2",
@@ -6754,31 +7679,6 @@
      "pts": 0.09
     },
     {
-     "name": "Jihaad Campbell",
-     "pos_desk": "LB",
-     "pos_nfl": "LB",
-     "group": "LB",
-     "unit": "F7",
-     "status": "QUESTIONABLE",
-     "nfl_final_status": "",
-     "practice": "unknown",
-     "practice_days": {},
-     "practice_source": "none yet",
-     "share": 0.2875,
-     "share_source": "nflverse snap_counts trailing 4",
-     "live": {
-      "value": 0.2,
-      "mult": 0.35,
-      "on": true,
-      "pts": 0.07,
-      "manual": false
-     },
-     "p_sits": 0.27,
-     "pos_value": 0.7,
-     "w_snap": 0.0,
-     "pts": 0.0
-    },
-    {
      "name": "Michael Carter II",
      "pos_desk": "CB1",
      "pos_nfl": "CB",
@@ -6827,31 +7727,6 @@
      "pos_value": null,
      "w_snap": null,
      "pts": 0.09
-    },
-    {
-     "name": "Will Shipley",
-     "pos_desk": "RB1",
-     "pos_nfl": "RB",
-     "group": null,
-     "unit": "OTHER",
-     "status": "IR",
-     "nfl_final_status": "",
-     "practice": "unknown",
-     "practice_days": {},
-     "practice_source": "none yet",
-     "share": 0.0,
-     "share_source": "nflverse snap_counts trailing 4",
-     "live": {
-      "value": null,
-      "mult": 1.0,
-      "on": true,
-      "pts": 0.25,
-      "manual": false
-     },
-     "p_sits": null,
-     "pos_value": null,
-     "w_snap": null,
-     "pts": 0.25
     },
     {
      "name": "Jakorian Bennett",
@@ -7030,24 +7905,24 @@
     }
    ],
    "live": {
-    "front_seven": 0.07,
+    "front_seven": 0.26,
     "ol": 0.25,
     "other": 2.79,
-    "before_cap": 3.11,
+    "before_cap": 3.3,
     "cap": 6.0,
     "capped": false,
-    "total": 3.11
+    "total": 3.3
    },
    "proposed": {
     "front_seven": {
-     "rows": 0.0,
+     "rows": 0.189,
      "starters_out": 0,
      "cluster": false,
      "cluster_bonus": 0.0,
-     "before_cap": 0.0,
+     "before_cap": 0.189,
      "cap": 3.5,
      "capped": false,
-     "total": 0.0
+     "total": 0.189
     },
     "ol": {
      "rows": 0.8,
@@ -7060,27 +7935,27 @@
      "total": 0.8
     },
     "other": 2.79,
-    "before_cap": 3.59,
+    "before_cap": 3.779,
     "cap": 6.0,
     "capped": false,
-    "total": 3.59
+    "total": 3.779
    },
    "index": {
-    "f7_rush_epa_delta": 0.0,
-    "f7_pass_epa_delta": 0.0,
+    "f7_rush_epa_delta": 0.0003,
+    "f7_pass_epa_delta": 0.0065,
     "ol_rush_epa_delta": -0.005,
     "ol_pass_epa_delta": -0.021,
-    "f7_points_epa_form": 0.0,
+    "f7_points_epa_form": 0.247,
     "ol_points_epa_form": 0.907,
     "run_d_base": -0.0208,
-    "RDA": -0.0208,
+    "RDA": -0.0205,
     "pass_d_base": 0.109,
-    "PDA": 0.109,
+    "PDA": 0.1155,
     "run_o_base": -0.0995,
     "ORA": -0.1045,
     "pass_o_base": -0.0523,
     "OPA": -0.0733,
-    "F7HI": 0.0,
+    "F7HI": 0.189,
     "OLHI": 0.8
    }
   },
@@ -7090,15 +7965,65 @@
    "espn_id": "401873076",
    "game_id": "2026_11_PIT_PHI",
    "rows_source": "data/injury-2026.json",
-   "rows_pulled": "2026-11-18a",
+   "rows_pulled": "2026-11-19a",
    "rows": [
+    {
+     "name": "Nick Herbig",
+     "pos_desk": "LB",
+     "pos_nfl": "LB",
+     "group": "LB",
+     "unit": "F7",
+     "status": "DOUBTFUL",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.5225,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.2,
+      "mult": 1.0,
+      "on": true,
+      "pts": 0.2,
+      "manual": false
+     },
+     "p_sits": 1.0,
+     "pos_value": 0.7,
+     "w_snap": 0.25,
+     "pts": 0.175
+    },
+    {
+     "name": "Gennings Dunker",
+     "pos_desk": "OG",
+     "pos_nfl": "G",
+     "group": "IOL",
+     "unit": "OL",
+     "status": "IR",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.0,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0,
+      "mult": 1.0,
+      "on": true,
+      "pts": 0.0,
+      "manual": true
+     },
+     "p_sits": 1.0,
+     "pos_value": 0.8,
+     "w_snap": 0.0,
+     "pts": 0.0
+    },
     {
      "name": "Mason McCormick",
      "pos_desk": "OG",
      "pos_nfl": "G",
      "group": "IOL",
      "unit": "OL",
-     "status": "DOUBTFUL",
+     "status": "IR",
      "nfl_final_status": "",
      "practice": "unknown",
      "practice_days": {},
@@ -7118,29 +8043,54 @@
      "pts": 0.8
     },
     {
-     "name": "Michael Pittman Jr.",
-     "pos_desk": "WR2",
-     "pos_nfl": "WR",
-     "group": null,
-     "unit": "OTHER",
-     "status": "IR",
+     "name": "Patrick Queen",
+     "pos_desk": "LB",
+     "pos_nfl": "LB",
+     "group": "LB",
+     "unit": "F7",
+     "status": "QUESTIONABLE",
      "nfl_final_status": "",
      "practice": "unknown",
      "practice_days": {},
      "practice_source": "none yet",
-     "share": 0.0,
+     "share": 0.9975,
      "share_source": "nflverse snap_counts trailing 4",
      "live": {
       "value": 0.2,
-      "mult": 1.0,
+      "mult": 0.35,
       "on": true,
-      "pts": 0.2,
+      "pts": 0.07,
+      "manual": false
+     },
+     "p_sits": 0.27,
+     "pos_value": 0.7,
+     "w_snap": 1.0,
+     "pts": 0.189
+    },
+    {
+     "name": "DeShon Elliott",
+     "pos_desk": "S",
+     "pos_nfl": "S",
+     "group": null,
+     "unit": "OTHER",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.1675,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.2,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.07,
       "manual": false
      },
      "p_sits": null,
      "pos_value": null,
      "w_snap": null,
-     "pts": 0.2
+     "pts": 0.07
     },
     {
      "name": "Roman Wilson",
@@ -7168,6 +8118,31 @@
      "pts": 0.25
     },
     {
+     "name": "Michael Pittman Jr.",
+     "pos_desk": "WR2",
+     "pos_nfl": "WR",
+     "group": null,
+     "unit": "OTHER",
+     "status": "IR",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.0,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.2,
+      "mult": 1.0,
+      "on": true,
+      "pts": 0.2,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.2
+    },
+    {
      "name": "Sebastian Joseph-Day",
      "pos_desk": "IDL",
      "pos_nfl": "DE",
@@ -7191,52 +8166,27 @@
      "pos_value": 0.7,
      "w_snap": 0.0,
      "pts": 0.0
-    },
-    {
-     "name": "Gennings Dunker",
-     "pos_desk": "OG",
-     "pos_nfl": "G",
-     "group": "IOL",
-     "unit": "OL",
-     "status": "IR",
-     "nfl_final_status": "",
-     "practice": "unknown",
-     "practice_days": {},
-     "practice_source": "none yet",
-     "share": 0.0,
-     "share_source": "nflverse snap_counts trailing 4",
-     "live": {
-      "value": 0,
-      "mult": 1.0,
-      "on": true,
-      "pts": 0.0,
-      "manual": true
-     },
-     "p_sits": 1.0,
-     "pos_value": 0.8,
-     "w_snap": 0.0,
-     "pts": 0.0
     }
    ],
    "live": {
-    "front_seven": 0.2,
+    "front_seven": 0.47,
     "ol": 0.2,
-    "other": 0.45,
-    "before_cap": 0.85,
+    "other": 0.52,
+    "before_cap": 1.19,
     "cap": 6.0,
     "capped": false,
-    "total": 0.85
+    "total": 1.19
    },
    "proposed": {
     "front_seven": {
-     "rows": 0.0,
+     "rows": 0.364,
      "starters_out": 0,
      "cluster": false,
      "cluster_bonus": 0.0,
-     "before_cap": 0.0,
+     "before_cap": 0.364,
      "cap": 3.5,
      "capped": false,
-     "total": 0.0
+     "total": 0.364
     },
     "ol": {
      "rows": 0.8,
@@ -7248,28 +8198,28 @@
      "capped": false,
      "total": 0.8
     },
-    "other": 0.45,
-    "before_cap": 1.25,
+    "other": 0.52,
+    "before_cap": 1.684,
     "cap": 6.0,
     "capped": false,
-    "total": 1.25
+    "total": 1.684
    },
    "index": {
-    "f7_rush_epa_delta": 0.0,
-    "f7_pass_epa_delta": 0.0,
+    "f7_rush_epa_delta": 0.0005,
+    "f7_pass_epa_delta": 0.0125,
     "ol_rush_epa_delta": -0.005,
     "ol_pass_epa_delta": -0.021,
-    "f7_points_epa_form": 0.0,
+    "f7_points_epa_form": 0.475,
     "ol_points_epa_form": 0.907,
     "run_d_base": -0.0923,
-    "RDA": -0.0923,
+    "RDA": -0.0918,
     "pass_d_base": 0.0451,
-    "PDA": 0.0451,
+    "PDA": 0.0576,
     "run_o_base": 0.0278,
     "ORA": 0.0228,
     "pass_o_base": -0.037,
     "OPA": -0.058,
-    "F7HI": 0.0,
+    "F7HI": 0.364,
     "OLHI": 0.8
    }
   },
@@ -7279,8 +8229,58 @@
    "espn_id": "401873077",
    "game_id": "2026_11_MIN_SF",
    "rows_source": "data/injury-2026.json",
-   "rows_pulled": "2026-11-18a",
+   "rows_pulled": "2026-11-19a",
    "rows": [
+    {
+     "name": "Ji'Ayir Brown",
+     "pos_desk": "S",
+     "pos_nfl": "S",
+     "group": null,
+     "unit": "OTHER",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.8425,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.2,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.07,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.07
+    },
+    {
+     "name": "Mac Jones",
+     "pos_desk": "DEPTH",
+     "pos_nfl": "QB",
+     "group": null,
+     "unit": "OTHER",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.02,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.25,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.09,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.09
+    },
     {
      "name": "Renardo Green",
      "pos_desk": "CB1",
@@ -7307,6 +8307,56 @@
      "pts": 0.07
     },
     {
+     "name": "Dre Greenlaw",
+     "pos_desk": "LB",
+     "pos_nfl": "LB",
+     "group": "LB",
+     "unit": "F7",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.69,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.25,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.09,
+      "manual": false
+     },
+     "p_sits": 0.27,
+     "pos_value": 0.7,
+     "w_snap": 0.75,
+     "pts": 0.142
+    },
+    {
+     "name": "De'Zhaun Stribling",
+     "pos_desk": "WR2",
+     "pos_nfl": "WR",
+     "group": null,
+     "unit": "OTHER",
+     "status": "IR",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.0,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": null,
+      "mult": 1.0,
+      "on": true,
+      "pts": 0.25,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.25
+    },
+    {
      "name": "Mike Evans",
      "pos_desk": "WR1",
      "pos_nfl": "WR",
@@ -7330,6 +8380,31 @@
      "pos_value": null,
      "w_snap": null,
      "pts": 0.17
+    },
+    {
+     "name": "Brandon Aiyuk",
+     "pos_desk": "WR2",
+     "pos_nfl": "WR",
+     "group": null,
+     "unit": "OTHER",
+     "status": "OUT",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.0,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": null,
+      "mult": 1.0,
+      "on": true,
+      "pts": 0.25,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.25
     },
     {
      "name": "C.J. West",
@@ -7418,31 +8493,6 @@
      "practice_days": {},
      "practice_source": "none yet",
      "share": 0.075,
-     "share_source": "nflverse snap_counts trailing 4",
-     "live": {
-      "value": null,
-      "mult": 1.0,
-      "on": true,
-      "pts": 0.25,
-      "manual": false
-     },
-     "p_sits": null,
-     "pos_value": null,
-     "w_snap": null,
-     "pts": 0.25
-    },
-    {
-     "name": "De'Zhaun Stribling",
-     "pos_desk": "WR2",
-     "pos_nfl": "WR",
-     "group": null,
-     "unit": "OTHER",
-     "status": "IR",
-     "nfl_final_status": "",
-     "practice": "unknown",
-     "practice_days": {},
-     "practice_source": "none yet",
-     "share": 0.0,
      "share_source": "nflverse snap_counts trailing 4",
      "live": {
       "value": null,
@@ -7558,24 +8608,24 @@
     }
    ],
    "live": {
-    "front_seven": 0.75,
+    "front_seven": 0.84,
     "ol": 0.0,
-    "other": 1.64,
-    "before_cap": 2.39,
+    "other": 2.05,
+    "before_cap": 2.89,
     "cap": 6.0,
     "capped": false,
-    "total": 2.39
+    "total": 2.89
    },
    "proposed": {
     "front_seven": {
-     "rows": 0.0,
+     "rows": 0.142,
      "starters_out": 0,
      "cluster": false,
      "cluster_bonus": 0.0,
-     "before_cap": 0.0,
+     "before_cap": 0.142,
      "cap": 3.5,
      "capped": false,
-     "total": 0.0
+     "total": 0.142
     },
     "ol": {
      "rows": 0.0,
@@ -7587,28 +8637,28 @@
      "capped": false,
      "total": 0.0
     },
-    "other": 1.64,
-    "before_cap": 1.64,
+    "other": 2.05,
+    "before_cap": 2.192,
     "cap": 6.0,
     "capped": false,
-    "total": 1.64
+    "total": 2.192
    },
    "index": {
-    "f7_rush_epa_delta": 0.0,
-    "f7_pass_epa_delta": 0.0,
+    "f7_rush_epa_delta": 0.0002,
+    "f7_pass_epa_delta": 0.0049,
     "ol_rush_epa_delta": -0.0,
     "ol_pass_epa_delta": -0.0,
-    "f7_points_epa_form": 0.0,
+    "f7_points_epa_form": 0.185,
     "ol_points_epa_form": 0.0,
     "run_d_base": -0.0976,
-    "RDA": -0.0976,
+    "RDA": -0.0974,
     "pass_d_base": 0.0424,
-    "PDA": 0.0424,
+    "PDA": 0.0472,
     "run_o_base": 0.0018,
     "ORA": 0.0018,
     "pass_o_base": 0.2224,
     "OPA": 0.2224,
-    "F7HI": 0.0,
+    "F7HI": 0.142,
     "OLHI": 0.0
    }
   },
@@ -7618,8 +8668,83 @@
    "espn_id": "401873072",
    "game_id": "2026_11_TB_DET",
    "rows_source": "data/injury-2026.json",
-   "rows_pulled": "2026-11-18a",
+   "rows_pulled": "2026-11-19a",
    "rows": [
+    {
+     "name": "Josh Hayes",
+     "pos_desk": "CB1",
+     "pos_nfl": "CB",
+     "group": null,
+     "unit": "OTHER",
+     "status": "IR",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.0,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": null,
+      "mult": 1.0,
+      "on": true,
+      "pts": 0.25,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.25
+    },
+    {
+     "name": "Antoine Winfield Jr.",
+     "pos_desk": "S",
+     "pos_nfl": "S",
+     "group": null,
+     "unit": "OTHER",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.36,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.5,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.17,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.17
+    },
+    {
+     "name": "Yaya Diaby",
+     "pos_desk": "LB",
+     "pos_nfl": "LB",
+     "group": "LB",
+     "unit": "F7",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.2775,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.2,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.07,
+      "manual": false
+     },
+     "p_sits": 0.27,
+     "pos_value": 0.7,
+     "w_snap": 0.0,
+     "pts": 0.0
+    },
     {
      "name": "Baker Mayfield",
      "pos_desk": "QB1",
@@ -7646,59 +8771,9 @@
      "pts": 0.18
     },
     {
-     "name": "Yaya Diaby",
-     "pos_desk": "LB",
-     "pos_nfl": "LB",
-     "group": "LB",
-     "unit": "F7",
-     "status": "DOUBTFUL",
-     "nfl_final_status": "",
-     "practice": "unknown",
-     "practice_days": {},
-     "practice_source": "none yet",
-     "share": 0.2775,
-     "share_source": "nflverse snap_counts trailing 4",
-     "live": {
-      "value": 0.2,
-      "mult": 1.0,
-      "on": true,
-      "pts": 0.2,
-      "manual": false
-     },
-     "p_sits": 1.0,
-     "pos_value": 0.7,
-     "w_snap": 0.0,
-     "pts": 0.0
-    },
-    {
      "name": "Jalen McMillan",
      "pos_desk": "WR2",
      "pos_nfl": "WR",
-     "group": null,
-     "unit": "OTHER",
-     "status": "IR",
-     "nfl_final_status": "",
-     "practice": "unknown",
-     "practice_days": {},
-     "practice_source": "none yet",
-     "share": 0.0,
-     "share_source": "nflverse snap_counts trailing 4",
-     "live": {
-      "value": null,
-      "mult": 1.0,
-      "on": true,
-      "pts": 0.25,
-      "manual": false
-     },
-     "p_sits": null,
-     "pos_value": null,
-     "w_snap": null,
-     "pts": 0.25
-    },
-    {
-     "name": "Josh Hayes",
-     "pos_desk": "CB1",
-     "pos_nfl": "CB",
      "group": null,
      "unit": "OTHER",
      "status": "IR",
@@ -7797,13 +8872,13 @@
     }
    ],
    "live": {
-    "front_seven": 0.7,
+    "front_seven": 0.57,
     "ol": 0.0,
-    "other": 0.68,
-    "before_cap": 1.38,
+    "other": 0.85,
+    "before_cap": 1.42,
     "cap": 6.0,
     "capped": false,
-    "total": 1.38
+    "total": 1.42
    },
    "proposed": {
     "front_seven": {
@@ -7826,11 +8901,11 @@
      "capped": false,
      "total": 0.0
     },
-    "other": 0.68,
-    "before_cap": 0.68,
+    "other": 0.85,
+    "before_cap": 0.85,
     "cap": 6.0,
     "capped": false,
-    "total": 0.68
+    "total": 0.85
    },
    "index": {
     "f7_rush_epa_delta": 0.0,
@@ -7857,32 +8932,32 @@
    "espn_id": "401873073",
    "game_id": "2026_11_TEN_DAL",
    "rows_source": "data/injury-2026.json",
-   "rows_pulled": "2026-11-18a",
+   "rows_pulled": "2026-11-19a",
    "rows": [
     {
-     "name": "Wan'Dale Robinson",
-     "pos_desk": "WR2",
-     "pos_nfl": "WR",
-     "group": null,
-     "unit": "OTHER",
-     "status": "IR",
+     "name": "Cody Barton",
+     "pos_desk": "LB",
+     "pos_nfl": "LB",
+     "group": "LB",
+     "unit": "F7",
+     "status": "QUESTIONABLE",
      "nfl_final_status": "",
      "practice": "unknown",
      "practice_days": {},
      "practice_source": "none yet",
-     "share": 0.62,
+     "share": 0.405,
      "share_source": "nflverse snap_counts trailing 4",
      "live": {
-      "value": 0.25,
-      "mult": 1.0,
+      "value": 0.2,
+      "mult": 0.35,
       "on": true,
-      "pts": 0.25,
+      "pts": 0.07,
       "manual": false
      },
-     "p_sits": null,
-     "pos_value": null,
-     "w_snap": null,
-     "pts": 0.25
+     "p_sits": 0.27,
+     "pos_value": 0.7,
+     "w_snap": 0.0,
+     "pts": 0.0
     },
     {
      "name": "Anthony Hill Jr.",
@@ -7910,17 +8985,17 @@
      "pts": 0.142
     },
     {
-     "name": "Cody Barton",
-     "pos_desk": "LB",
-     "pos_nfl": "LB",
-     "group": "LB",
+     "name": "John Franklin-Myers",
+     "pos_desk": "EDGE1",
+     "pos_nfl": "DL",
+     "group": "DL",
      "unit": "F7",
      "status": "QUESTIONABLE",
      "nfl_final_status": "",
      "practice": "unknown",
      "practice_days": {},
      "practice_source": "none yet",
-     "share": 0.405,
+     "share": 0.5275,
      "share_source": "nflverse snap_counts trailing 4",
      "live": {
       "value": 0.2,
@@ -7930,9 +9005,84 @@
       "manual": false
      },
      "p_sits": 0.27,
-     "pos_value": 0.7,
+     "pos_value": 0.9,
+     "w_snap": 0.25,
+     "pts": 0.061
+    },
+    {
+     "name": "Tony Adams",
+     "pos_desk": "S",
+     "pos_nfl": "S",
+     "group": null,
+     "unit": "OTHER",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.53,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.2,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.07,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.07
+    },
+    {
+     "name": "Fernando Carmona",
+     "pos_desk": "OG",
+     "pos_nfl": "G",
+     "group": "IOL",
+     "unit": "OL",
+     "status": "IR",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.0,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": null,
+      "mult": 1.0,
+      "on": true,
+      "pts": 0.25,
+      "manual": false
+     },
+     "p_sits": 1.0,
+     "pos_value": 0.8,
      "w_snap": 0.0,
      "pts": 0.0
+    },
+    {
+     "name": "Tyjae Spears",
+     "pos_desk": "RB1",
+     "pos_nfl": "RB",
+     "group": null,
+     "unit": "OTHER",
+     "status": "QUESTIONABLE",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.13,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.2,
+      "mult": 0.35,
+      "on": true,
+      "pts": 0.07,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.07
     },
     {
      "name": "Carnell Tate",
@@ -7958,6 +9108,31 @@
      "pos_value": null,
      "w_snap": null,
      "pts": 0.07
+    },
+    {
+     "name": "Wan'Dale Robinson",
+     "pos_desk": "WR2",
+     "pos_nfl": "WR",
+     "group": null,
+     "unit": "OTHER",
+     "status": "IR",
+     "nfl_final_status": "",
+     "practice": "unknown",
+     "practice_days": {},
+     "practice_source": "none yet",
+     "share": 0.62,
+     "share_source": "nflverse snap_counts trailing 4",
+     "live": {
+      "value": 0.25,
+      "mult": 1.0,
+      "on": true,
+      "pts": 0.25,
+      "manual": false
+     },
+     "p_sits": null,
+     "pos_value": null,
+     "w_snap": null,
+     "pts": 0.25
     },
     {
      "name": "Tommy Townsend",
@@ -8110,31 +9285,6 @@
      "pts": 0.0
     },
     {
-     "name": "Fernando Carmona",
-     "pos_desk": "OG",
-     "pos_nfl": "G",
-     "group": "IOL",
-     "unit": "OL",
-     "status": "IR",
-     "nfl_final_status": "",
-     "practice": "unknown",
-     "practice_days": {},
-     "practice_source": "none yet",
-     "share": 0.0,
-     "share_source": "nflverse snap_counts trailing 4",
-     "live": {
-      "value": null,
-      "mult": 1.0,
-      "on": true,
-      "pts": 0.25,
-      "manual": false
-     },
-     "p_sits": 1.0,
-     "pos_value": 0.8,
-     "w_snap": 0.0,
-     "pts": 0.0
-    },
-    {
      "name": "Milo Eifler",
      "pos_desk": "LB",
      "pos_nfl": "ILB",
@@ -8211,24 +9361,24 @@
     }
    ],
    "live": {
-    "front_seven": 0.89,
+    "front_seven": 0.96,
     "ol": 1.0,
-    "other": 1.02,
-    "before_cap": 2.91,
+    "other": 1.16,
+    "before_cap": 3.12,
     "cap": 6.0,
     "capped": false,
-    "total": 2.91
+    "total": 3.12
    },
    "proposed": {
     "front_seven": {
-     "rows": 0.142,
+     "rows": 0.203,
      "starters_out": 0,
      "cluster": false,
      "cluster_bonus": 0.0,
-     "before_cap": 0.142,
+     "before_cap": 0.203,
      "cap": 3.5,
      "capped": false,
-     "total": 0.142
+     "total": 0.203
     },
     "ol": {
      "rows": 0.6,
@@ -8240,28 +9390,28 @@
      "capped": false,
      "total": 0.6
     },
-    "other": 1.02,
-    "before_cap": 1.762,
+    "other": 1.16,
+    "before_cap": 1.963,
     "cap": 6.0,
     "capped": false,
-    "total": 1.762
+    "total": 1.963
    },
    "index": {
-    "f7_rush_epa_delta": 0.0002,
-    "f7_pass_epa_delta": 0.0049,
+    "f7_rush_epa_delta": 0.003,
+    "f7_pass_epa_delta": 0.0065,
     "ol_rush_epa_delta": -0.0037,
     "ol_pass_epa_delta": -0.0158,
-    "f7_points_epa_form": 0.185,
+    "f7_points_epa_form": 0.319,
     "ol_points_epa_form": 0.68,
     "run_d_base": -0.0593,
-    "RDA": -0.0591,
+    "RDA": -0.0563,
     "pass_d_base": 0.1523,
-    "PDA": 0.1571,
+    "PDA": 0.1587,
     "run_o_base": -0.0635,
     "ORA": -0.0673,
     "pass_o_base": -0.0341,
     "OPA": -0.0498,
-    "F7HI": 0.142,
+    "F7HI": 0.203,
     "OLHI": 0.6
    }
   },
@@ -8271,7 +9421,7 @@
    "espn_id": "401873078",
    "game_id": "2026_11_CIN_WAS",
    "rows_source": "data/injury-2026.json",
-   "rows_pulled": "2026-11-18a",
+   "rows_pulled": "2026-11-19a",
    "rows": [
     {
      "name": "Jacory Croskey-Merritt",
