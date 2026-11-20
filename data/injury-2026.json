@@ -1,26 +1,34 @@
 {
-  "pulled": "2026-11-19a",
-  "pulled_et": "2026-11-19 10:07 AM ET (America/New_York)",
-  "phase": "WORKING-THU",
+  "pulled": "2026-11-20a",
+  "pulled_et": "2026-11-20 10:13 AM ET (America/New_York)",
+  "phase": "WORKING-FRI",
   "sources": [
     "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
     "https://www.nfl.com/injuries/",
     "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?seasontype=2&week=10&year=2026",
     "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?seasontype=2&week=11&year=2026"
   ],
-  "note": "WORKING-THU 2026-11-19a: ESPN refresh after official Wed designations flowed into ESPN; IND/HOU (TNF IND@HOU tonight) soft-protected so ESPN cannot soften official Wed FINAL 2026-11-18b. Prior: WORKING-WED Tuesday ESPN refresh (Week 10 FINAL incl. LAC@BAL MNF / Week 11 board; prior seed 2026-11-17a WORKING-TUE). Week 10 fully FINAL; no protects. Week 11 official practice sheet not out yet (TNF Wed ~4pm ET) - ESPN working list only. Byes Week 11 (see schedule). Finished clubs: drop gameday inactive / ruled-out-for-remainder / coach's-decision noise; keep multi-week OUT + IR/PUP/NFI. ESPN designations authoritative, cross-checked vs NFL.com. Doubtful = 1.0 out. Preserve manuals (Sills 0 etc.). Tier caps QB<=1.5 / All-Pro<=0.5 / other<=0.25 on auto; Madden-first else PFF; floor 0.2x status; Cap team 6.0. No rumor moves.",
-  "espn_timestamp": "2026-11-19T15:06:59Z",
+  "note": "WORKING-FRI 2026-11-20a: ESPN refresh after official Wed designations flowed into ESPN; TNF IND@HOU FINAL (no protect); official Friday Game Status ~4 PM ET, this AM run is ESPN working only. Prior: WORKING-WED Tuesday ESPN refresh (Week 10 FINAL incl. LAC@BAL MNF / Week 11 board; prior seed 2026-11-17a WORKING-TUE). Week 10 fully FINAL; no protects. Week 11 official practice sheet not out yet (TNF Wed ~4pm ET) - ESPN working list only. Byes Week 11 (see schedule). Finished clubs: drop gameday inactive / ruled-out-for-remainder / coach's-decision noise; keep multi-week OUT + IR/PUP/NFI. ESPN designations authoritative, cross-checked vs NFL.com. Doubtful = 1.0 out. Preserve manuals (Sills 0 etc.). Tier caps QB<=1.5 / All-Pro<=0.5 / other<=0.25 on auto; Madden-first else PFF; floor 0.2x status; Cap team 6.0. No rumor moves.",
+  "espn_timestamp": "2026-11-20T15:13:46Z",
   "teams": {
     "ARI": [
       {
-        "name": "Walter Nolen III",
-        "pos": "IDL",
+        "name": "Hjalte Froholdt",
+        "pos": "C",
         "status": "QUESTIONABLE",
-        "note": "Nolen (illness) didn't participate in Wednesday's practice, Zach Gershman of the Cardinals' official site reports.",
+        "note": "Froholdt (concussion) practiced fully Thursday.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
-        "impact": 0.2,
+        "impact": 0.25,
         "impact_source": "madden"
+      },
+      {
+        "name": "Carson Beck",
+        "pos": "DEPTH",
+        "status": "QUESTIONABLE",
+        "note": "Beck was listed as limited on Thursday's injury report due to a back issue, Dani Sureck of the Cardinals' official site reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true
       },
       {
         "name": "James Conner",
@@ -56,24 +64,6 @@
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.2,
-        "impact_source": "madden"
-      },
-      {
-        "name": "Jayden Williams",
-        "pos": "RT",
-        "status": "QUESTIONABLE",
-        "note": "Williams (knee) is listed as questionable for Sunday's game against the Rams, Zach Gershman of the Cardinals' official site reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
-        "name": "Hjalte Froholdt",
-        "pos": "C",
-        "status": "QUESTIONABLE",
-        "note": "Froholdt (concussion) has been ruled out ahead of Sunday's game against the Rams, Bo Brack of GoPHNX.com reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.25,
         "impact_source": "madden"
       },
       {
@@ -265,12 +255,24 @@
     ],
     "BAL": [
       {
-        "name": "Olaivavega Ioane",
-        "pos": "OG",
+        "name": "Nnamdi Madubuike",
+        "pos": "IDL",
         "status": "QUESTIONABLE",
-        "note": "Ioane (shoulder) was a limited participant in Wednesday's practice.",
+        "note": "Madubuike (hamstring) remained sidelined for Thursday's practice, Jonas Shaffer of TheBaltimoreBanner.com reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "on": true,
+        "impact": 0.25,
+        "impact_source": "madden"
+      },
+      {
+        "name": "Marlon Humphrey",
+        "pos": "CB1",
+        "status": "OUT",
+        "note": "Ravens head coach Jesse Minter said that Humphrey won't play Sunday against the Panthers after the defensive back made a derogatory comment about the city of Baltimore in an episode of his podcast released Wednesday, Jamison Hensley of ESPN.com reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.5,
+        "impact_source": "madden"
       },
       {
         "name": "Jaylinn Hawkins",
@@ -282,16 +284,6 @@
         "injury": "Knee",
         "impact": 0.25,
         "impact_source": "pff"
-      },
-      {
-        "name": "Nnamdi Madubuike",
-        "pos": "IDL",
-        "status": "QUESTIONABLE",
-        "note": "Madubuike (hamstring) did not participate at practice Wednesday, Jamison Hensley of ESPN.com reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.25,
-        "impact_source": "madden"
       },
       {
         "name": "Lamar Jackson",
@@ -366,34 +358,52 @@
     ],
     "BUF": [
       {
-        "name": "Dee Alford",
+        "name": "Christian Benford",
         "pos": "CB1",
         "status": "QUESTIONABLE",
-        "note": "Alford (concussion) did not participate in Wednesday's practice.",
+        "note": "Benford (groin) did not participate at practice Thursday.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.2,
+        "impact_source": "madden"
+      },
+      {
+        "name": "Dee Alford",
+        "pos": "CB1",
+        "status": "QUESTIONABLE",
+        "note": "Alford (concussion) was a limited participant at practice Thursday.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.2,
+        "impact_source": "madden"
+      },
+      {
+        "name": "Ray Davis",
+        "pos": "RB1",
+        "status": "QUESTIONABLE",
+        "note": "Davis (hamstring) remained limited in Thursday's practice.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true
+      },
+      {
+        "name": "Dalton Kincaid",
+        "pos": "TE1",
+        "status": "QUESTIONABLE",
+        "note": "Kincaid (thumb/ankle) wasn't spotted on the field for Thursday's practice, Joe Buscaglia of The Athletic reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.25,
         "impact_source": "madden"
       },
       {
         "name": "Dorian Williams",
         "pos": "LB",
         "status": "QUESTIONABLE",
-        "note": "Williams (calf) didn't participate in Buffalo's practice Wednesday.",
+        "note": "Williams (calf) didn't participate in Buffalo's walkthrough Wednesday.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.2,
         "impact_source": "pff"
-      },
-      {
-        "name": "Christian Benford",
-        "pos": "CB1",
-        "status": "QUESTIONABLE",
-        "note": "Benford (groin) did not participate in Wednesday's practice.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.2,
-        "impact_source": "madden"
       },
       {
         "name": "Jackson Hawes",
@@ -406,20 +416,10 @@
         "impact_source": "pff"
       },
       {
-        "name": "Cole Bishop",
-        "pos": "S",
-        "status": "QUESTIONABLE",
-        "note": "Hooker (knee) was a limited participant in Wednesday's practice.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.2,
-        "impact_source": "madden"
-      },
-      {
         "name": "Amani Hooker",
         "pos": "S",
         "status": "QUESTIONABLE",
-        "note": "Hooker (knee) was a limited participant in Wednesday's practice.",
+        "note": "Hooker (knee) was a limited participant in Wednesday's walkthrough.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.25,
@@ -432,24 +432,6 @@
         "note": "Hamlin (toe) was estimated to be a limited participant in Wednesday's walkthrough.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
-      },
-      {
-        "name": "Ray Davis",
-        "pos": "RB1",
-        "status": "QUESTIONABLE",
-        "note": "Davis was a limited participant in Wednesday's practice due to a hamstring injury.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
-        "name": "Dalton Kincaid",
-        "pos": "TE1",
-        "status": "QUESTIONABLE",
-        "note": "Kincaid (thumb/ankle) did not practice Wednesday, David Furones of the Sun Sentinel reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.25,
-        "impact_source": "madden"
       },
       {
         "name": "Ar'maj Reed-Adams",
@@ -486,6 +468,32 @@
     ],
     "CAR": [
       {
+        "name": "Tommy Tremble",
+        "pos": "TE1",
+        "status": "QUESTIONABLE",
+        "note": "Tremble (knee) was limited in Thursday's practice, Mike Kaye of ESPN.com reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true
+      },
+      {
+        "name": "Jonathon Brooks",
+        "pos": "RB1",
+        "status": "IR",
+        "note": "Brooks (groin) remained a full participant in Thursday's practice, Mike Kaye of ESPN.com reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true
+      },
+      {
+        "name": "Darren Waller",
+        "pos": "TE1",
+        "status": "QUESTIONABLE",
+        "note": "Waller (knee) was a limited participant in Thursday's practice, Mike Kaye of ESPN reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.2,
+        "impact_source": "madden"
+      },
+      {
         "name": "Bobby Okereke",
         "pos": "LB",
         "status": "QUESTIONABLE",
@@ -494,32 +502,6 @@
         "on": true,
         "impact": 0.25,
         "impact_source": "madden"
-      },
-      {
-        "name": "Tommy Tremble",
-        "pos": "TE1",
-        "status": "QUESTIONABLE",
-        "note": "Tremble didn't practice Wednesday due to a knee issue, with head coach Dave Canales noting after the session that the tight end's injury is a \"concern,\" Steve Reed of the Associated Press reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
-        "name": "Darren Waller",
-        "pos": "TE1",
-        "status": "QUESTIONABLE",
-        "note": "Waller didn't practice Wednesday due to a knee issue, and afterward head coach Dave Canales called the tight end's injury a \"concern,\" Steve Reed of the Associated Press reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.2,
-        "impact_source": "madden"
-      },
-      {
-        "name": "Jonathon Brooks",
-        "pos": "RB1",
-        "status": "IR",
-        "note": "Brooks (groin) was a full participant at Wednesday's walkthrough.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
       },
       {
         "name": "Brady Christensen",
@@ -692,10 +674,36 @@
     ],
     "CIN": [
       {
-        "name": "Kyle Dugger",
-        "pos": "S",
+        "name": "Dalton Risner",
+        "pos": "OG",
         "status": "QUESTIONABLE",
-        "note": "Dugger (quadriceps) has been ruled out ahead of Sunday's game against the Steelers.",
+        "note": "Risner (knees) did not practice Thursday.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.2,
+        "impact_source": "madden"
+      },
+      {
+        "name": "Swayze Bozeman",
+        "pos": "LB",
+        "status": "IR",
+        "note": "The Bengals designated Bozeman (forearm) for return from injured reserve Thursday.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true
+      },
+      {
+        "name": "Oren Burks",
+        "pos": "LB",
+        "status": "QUESTIONABLE",
+        "note": "Burks (groin) did not participate at practice Thursday, Paul Dehner Jr. of The Athletic reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true
+      },
+      {
+        "name": "Dax Hill",
+        "pos": "CB1",
+        "status": "QUESTIONABLE",
+        "note": "Hill (illness) did not participate in practice Thursday, Paul Dehner Jr. of The Athletic reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.2,
@@ -705,7 +713,17 @@
         "name": "Andrei Iosivas",
         "pos": "WR2",
         "status": "IR",
-        "note": "Iosivas (thumb) has been downgraded from doubtful to out for Sunday's game against the Steelers.",
+        "note": "Iosivas (thumb) practiced fully Thursday, Paul Dehner Jr. of The Athletic reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.2,
+        "impact_source": "madden"
+      },
+      {
+        "name": "Kyle Dugger",
+        "pos": "S",
+        "status": "QUESTIONABLE",
+        "note": "Dugger (quadriceps) has been ruled out ahead of Sunday's game against the Steelers.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.2,
@@ -752,14 +770,6 @@
         "pos": "TE1",
         "status": "IR",
         "note": "Hudson (pectoral) was placed on injured reserve by the Bengals on Monday.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
-        "name": "Swayze Bozeman",
-        "pos": "LB",
-        "status": "IR",
-        "note": "The Bengals placed Bozeman on injured reserve Monday due to a fractured forearm, Ben Baby of ESPN.com reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
       },
@@ -842,10 +852,20 @@
         "name": "Jalen Thompson",
         "pos": "S",
         "status": "IR",
-        "note": "The Cowboys designated Thompson (hamstring) for return to practice from injured reserve Wednesday.",
+        "note": "Thompson (hamstring) was a full participant in practice Thursday, Patrik Walker of the Cowboys' official site reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.25,
+        "impact_source": "madden"
+      },
+      {
+        "name": "Donovan Ezeiruaku",
+        "pos": "LB",
+        "status": "QUESTIONABLE",
+        "note": "Ezeiruaku (ankle) returned to practice on a limited basis Thursday, Patrik Walker of the Cowboys' official site reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.2,
         "impact_source": "madden"
       },
       {
@@ -857,14 +877,6 @@
         "on": true,
         "impact": 0.2,
         "impact_source": "madden"
-      },
-      {
-        "name": "Juanyeh Thomas",
-        "pos": "S",
-        "status": "QUESTIONABLE",
-        "note": "doubtful",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
       },
       {
         "name": "P.J. Locke",
@@ -881,16 +893,6 @@
         "note": "Mingo (ankle/foot) has been ruled out ahead of Sunday's game against the 49ers, Tommy Yarrish of the Cowboys' official site reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
-      },
-      {
-        "name": "Donovan Ezeiruaku",
-        "pos": "LB",
-        "status": "QUESTIONABLE",
-        "note": "Ezeiruaku (ankle) has been ruled out for Sunday's game against the 49ers, Tommy Yarrish of the Cowboys' official site reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.2,
-        "impact_source": "madden"
       },
       {
         "name": "DaRon Bland",
@@ -949,39 +951,30 @@
     ],
     "DEN": [
       {
-        "name": "Kris Abrams-Draine",
-        "pos": "CB1",
+        "name": "Jaylen Waddle",
+        "pos": "WR2",
         "status": "QUESTIONABLE",
-        "note": "Abrams-Draine (ankle) was a limited participant in Wednesday's practice.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
-        "name": "Brandon Jones",
-        "pos": "S",
-        "status": "QUESTIONABLE",
-        "note": "Jones (hamstring) was a limited participant in Wednesday's practice.",
+        "note": "Waddle (concussion) was a full practice participant Thursday.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.25,
         "impact_source": "madden"
       },
       {
-        "name": "Talanoa Hufanga",
-        "pos": "S",
+        "name": "Riley Moss",
+        "pos": "CB1",
         "status": "QUESTIONABLE",
-        "note": "Hufanga (ankle) was a full participant at practice Wednesday, Aric DiLalla of the Broncos' official site reports.",
+        "note": "Moss (concussion) signed a four-year contract extension with the Broncos on Thursday, Aric DiLalla of the team's official site reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
-        "injury": "Ankle",
-        "impact": 0.5,
+        "impact": 0.2,
         "impact_source": "madden"
       },
       {
-        "name": "Jaylen Waddle",
-        "pos": "WR2",
+        "name": "Brandon Jones",
+        "pos": "S",
         "status": "QUESTIONABLE",
-        "note": "Waddle (concussion) was present for Wednesday's practice, Chris Tomasson of the Denver Gazette reports.",
+        "note": "Jones (hamstring) was a limited participant in Wednesday's practice.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.25,
@@ -1058,6 +1051,14 @@
     ],
     "DET": [
       {
+        "name": "Sione Vaki",
+        "pos": "RB1",
+        "status": "QUESTIONABLE",
+        "note": "Vaki (ankle) was a limited participant in Thursday's practice.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true
+      },
+      {
         "name": "D.J. Reed",
         "pos": "CB1",
         "status": "QUESTIONABLE",
@@ -1066,14 +1067,6 @@
         "on": true,
         "impact": 0.2,
         "impact_source": "madden"
-      },
-      {
-        "name": "Sione Vaki",
-        "pos": "RB1",
-        "status": "QUESTIONABLE",
-        "note": "Vaki (ankle) was a limited participant in Wednesday's walkthrough practice.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
       },
       {
         "name": "Aidan Hutchinson",
@@ -1314,24 +1307,45 @@
     ],
     "HOU": [
       {
-        "name": "Jake Hummel",
-        "pos": "LB",
+        "name": "Kayshon Boutte",
+        "pos": "WR2",
         "status": "QUESTIONABLE",
-        "note": "Hummel (groin) is questionable for Houston's matchup against Indianapolis on Thursday.",
+        "note": "Boutte (hip) was deemed questionable to return to Thursday's Week 11 win over Indianapolis and didn't return to the game.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
-        "injury": "Groin"
+        "impact": 0.2,
+        "impact_source": "madden"
       },
       {
-        "name": "Jaylin Smith",
-        "pos": "CB1",
+        "name": "Wyatt Teller",
+        "pos": "OG",
         "status": "QUESTIONABLE",
-        "note": "Official Wed FINAL Questionable (FP). ESPN had IR; official sheet lists Q and he practiced full -> plays likely. Manual 0.1 soft.",
-        "source": "https://www.nfl.com/news/nfl-week-11-injury-report-2026-season",
+        "note": "Official Wed FINAL Questionable (FP all week per nfl.com). P(miss) ~0.1. Manual 0.1 x 0.35 soft.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
-        "injury": "Hamstring",
+        "injury": "Back",
         "impact": 0.1,
         "impact_source": "manual"
+      },
+      {
+        "name": "Woody Marks",
+        "pos": "RB1",
+        "status": "OUT",
+        "note": "Marks (concussion) has been ruled out for Thursday's game against the Colts.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "injury": "Concussion",
+        "impact": 0.2,
+        "impact_source": "madden"
+      },
+      {
+        "name": "Marvin Harrison Jr.",
+        "pos": "WR2",
+        "status": "OUT",
+        "note": "Harrison (hamstring) has been ruled out for Thursday night's game against the Colts.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "injury": "Hamstring"
       },
       {
         "name": "Danielle Hunter",
@@ -1352,37 +1366,6 @@
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "injury": "Foot/illness"
-      },
-      {
-        "name": "Wyatt Teller",
-        "pos": "OG",
-        "status": "QUESTIONABLE",
-        "note": "Official Wed FINAL Questionable (FP all week per nfl.com). P(miss) ~0.1. Manual 0.1 x 0.35 soft.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "injury": "Back",
-        "impact": 0.1,
-        "impact_source": "manual"
-      },
-      {
-        "name": "Marvin Harrison Jr.",
-        "pos": "WR2",
-        "status": "OUT",
-        "note": "Harrison (hamstring) has been ruled out for Thursday night's game against the Colts.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "injury": "Hamstring"
-      },
-      {
-        "name": "Woody Marks",
-        "pos": "RB1",
-        "status": "OUT",
-        "note": "Marks (concussion) has been ruled out for Thursday's game against the Colts.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "injury": "Concussion",
-        "impact": 0.2,
-        "impact_source": "madden"
       },
       {
         "name": "Azeez Al-Shaair",
@@ -1457,15 +1440,26 @@
     ],
     "IND": [
       {
-        "name": "Jalen Travis",
-        "pos": "RT",
-        "status": "OUT",
-        "note": "Travis (knee) has been ruled out for Thursday's game against the Texans.",
+        "name": "Sauce Gardner",
+        "pos": "CB1",
+        "status": "QUESTIONABLE",
+        "note": "Gardner (calf) is listed as questionable for Thursday's game against the Texans.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
-        "injury": "Knee",
-        "impact": 0.25,
-        "impact_source": "pff"
+        "injury": "Calf",
+        "impact": 0.85,
+        "impact_source": "manual"
+      },
+      {
+        "name": "Bernhard Raimann",
+        "pos": "LT",
+        "status": "OUT",
+        "note": "Official Wed FINAL Out (DNP/DNP/DNP), concussion. Starting LT, Madden 86. Replacement Charlie Heck (Q, Madden 64). Manual 0.6 vs auto cap 0.25.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "injury": "Concussion",
+        "impact": 0.6,
+        "impact_source": "manual"
       },
       {
         "name": "Jerry Tillery",
@@ -1477,15 +1471,15 @@
         "injury": "Calf"
       },
       {
-        "name": "Sauce Gardner",
-        "pos": "CB1",
-        "status": "QUESTIONABLE",
-        "note": "Gardner (calf) is listed as questionable for Thursday's game against the Texans.",
+        "name": "Jalen Travis",
+        "pos": "RT",
+        "status": "OUT",
+        "note": "Travis (knee) has been ruled out for Thursday's game against the Texans.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
-        "injury": "Calf",
-        "impact": 0.85,
-        "impact_source": "manual"
+        "injury": "Knee",
+        "impact": 0.25,
+        "impact_source": "pff"
       },
       {
         "name": "Charvarius Ward",
@@ -1508,41 +1502,12 @@
         "injury": "Hamstring"
       },
       {
-        "name": "Anthony Gould",
-        "pos": "WR2",
-        "status": "QUESTIONABLE",
-        "note": "Gould (toe) is listed as questionable for Thursday night's game against the Texans, Abby Halpin of the Colts' official site reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "injury": "Toe"
-      },
-      {
-        "name": "Bernhard Raimann",
-        "pos": "LT",
-        "status": "OUT",
-        "note": "Official Wed FINAL Out (DNP/DNP/DNP), concussion. Starting LT, Madden 86. Replacement Charlie Heck (Q, Madden 64). Manual 0.6 vs auto cap 0.25.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "injury": "Concussion",
-        "impact": 0.6,
-        "impact_source": "manual"
-      },
-      {
         "name": "Jaylon Carlies",
         "pos": "LB",
         "status": "IR",
         "note": "Indianapolis placed Carlies (neck) on injured reserve Tuesday.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
-      },
-      {
-        "name": "Luke Rhodes",
-        "pos": "DEPTH",
-        "status": "QUESTIONABLE",
-        "note": "Official Wed FINAL Questionable (DNP/LP/LP). LS, soft on at auto.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "injury": "Hamstring"
       },
       {
         "name": "Akeem Davis-Gaither",
@@ -1609,18 +1574,47 @@
         "note": "Montgomery (abdomen) was placed on injured reserve by the Colts on Sunday, JJ Stankevitz of the team's official website reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
-      },
-      {
-        "name": "Charlie Heck",
-        "pos": "RT",
-        "status": "QUESTIONABLE",
-        "injury": "Personal (NIR)",
-        "source": "https://www.colts.com/team/injury-report/week/reg-11",
-        "on": true,
-        "note": "Official Wed FINAL Questionable (not injury related, DNP Tue/Wed). Swing tackle Madden 64; matters because Raimann and Travis are Out. Soft on at auto."
       }
     ],
     "JAX": [
+      {
+        "name": "LeQuint Allen Jr.",
+        "pos": "RB1",
+        "status": "QUESTIONABLE",
+        "note": "Allen (hamstring) was a limited participant in Thursday's practice, Ryan O'Halloran of The Florida Times-Union reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true
+      },
+      {
+        "name": "Bhayshul Tuten",
+        "pos": "RB1",
+        "status": "QUESTIONABLE",
+        "note": "Tuten (ankle/foot) was listed as a non-participant in Thursday's practice, Ryan O'Halloran of The Florida Times-Union reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.25,
+        "impact_source": "madden"
+      },
+      {
+        "name": "Chris Rodriguez Jr.",
+        "pos": "RB1",
+        "status": "QUESTIONABLE",
+        "note": "Rodriguez (hand) was listed as a limited participant in Thursday's practice, Ryan O'Halloran of The Florida Times-Union reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.25,
+        "impact_source": "pff"
+      },
+      {
+        "name": "Jakobi Meyers",
+        "pos": "WR2",
+        "status": "QUESTIONABLE",
+        "note": "Meyers (ankle) was a limited participant in Thursday's practice, Ryan O'Halloran of The Florida Times-Union reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.25,
+        "impact_source": "madden"
+      },
       {
         "name": "Danny Striggow",
         "pos": "EDGE1",
@@ -1647,44 +1641,6 @@
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.2,
-        "impact_source": "madden"
-      },
-      {
-        "name": "LeQuint Allen Jr.",
-        "pos": "RB1",
-        "status": "QUESTIONABLE",
-        "note": "Allen (hamstring) was a limited participant at practice Wednesday, Mia O'Brien of 1010 XL 92.5 FM Jacksonville reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
-        "name": "Chris Rodriguez Jr.",
-        "pos": "RB1",
-        "status": "QUESTIONABLE",
-        "note": "Rodriguez (hand) was listed as a limited participant in Wednesday's practice.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.25,
-        "impact_source": "pff"
-      },
-      {
-        "name": "Bhayshul Tuten",
-        "pos": "RB1",
-        "status": "QUESTIONABLE",
-        "note": "Tuten (ankle/foot) was a limited participant in Wednesday's practice, Ryan O'Halloran of The Florida Times-Union reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.25,
-        "impact_source": "madden"
-      },
-      {
-        "name": "Jakobi Meyers",
-        "pos": "WR2",
-        "status": "QUESTIONABLE",
-        "note": "Meyers (ankle) was a limited participant in Wednesday's practice.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.25,
         "impact_source": "madden"
       },
       {
@@ -1750,6 +1706,16 @@
     ],
     "KC": [
       {
+        "name": "Kenneth Walker III",
+        "pos": "RB1",
+        "status": "QUESTIONABLE",
+        "note": "Walker (groin) did not practice Thursday.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.25,
+        "impact_source": "pff"
+      },
+      {
         "name": "Omarr Norman-Lott",
         "pos": "IDL",
         "status": "QUESTIONABLE",
@@ -1782,26 +1748,6 @@
         "note": "The Chiefs placed Wiley (ankle) on injured reserve Wednesday, Matt Derrick of ChiefsDigest.com reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
-      },
-      {
-        "name": "Nick Bolton",
-        "pos": "LB",
-        "status": "QUESTIONABLE",
-        "note": "Bolton (shin) was a limited participant in Wednesday's practice.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.25,
-        "impact_source": "madden"
-      },
-      {
-        "name": "Kenneth Walker III",
-        "pos": "RB1",
-        "status": "QUESTIONABLE",
-        "note": "Walker (groin) won't practice Wednesday, Sam McDowell of The Kansas City Star reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.25,
-        "impact_source": "pff"
       },
       {
         "name": "L'Jarius Sneed",
@@ -1860,20 +1806,10 @@
     ],
     "LAC": [
       {
-        "name": "Daiyan Henley",
-        "pos": "LB",
-        "status": "QUESTIONABLE",
-        "note": "Henley (knee) didn't participate in the Chargers' practice Wednesday.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.25,
-        "impact_source": "madden"
-      },
-      {
         "name": "Charlie Kolar",
         "pos": "TE1",
         "status": "QUESTIONABLE",
-        "note": "Kolar (concussion) did not participate at practice Wednesday.",
+        "note": "Kolar (concussion) remained sidelined for Thursday's practice.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.25,
@@ -1883,10 +1819,20 @@
         "name": "Ladd McConkey",
         "pos": "WR2",
         "status": "QUESTIONABLE",
-        "note": "McConkey (back) was a limited participant in Wednesday's practice.",
+        "note": "McConkey (back) was a limited participant in Thursday's practice.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.2,
+        "impact_source": "madden"
+      },
+      {
+        "name": "Daiyan Henley",
+        "pos": "LB",
+        "status": "QUESTIONABLE",
+        "note": "Henley (knee) didn't participate in the Chargers' practice Wednesday.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.25,
         "impact_source": "madden"
       },
       {
@@ -2014,6 +1960,16 @@
     ],
     "LAR": [
       {
+        "name": "Puka Nacua",
+        "pos": "WR1",
+        "status": "IR",
+        "note": "Nacua has been suspended three games for violating the NFL's personal conduct policy, Adam Schefter of ESPN reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.5,
+        "impact_source": "madden"
+      },
+      {
         "name": "Joe Cardona",
         "pos": "DEPTH",
         "status": "QUESTIONABLE",
@@ -2057,16 +2013,6 @@
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.25,
-        "impact_source": "madden"
-      },
-      {
-        "name": "Puka Nacua",
-        "pos": "WR1",
-        "status": "IR",
-        "note": "The Rams placed Nacua (knee) on injured reserve Thursday.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.5,
         "impact_source": "madden"
       },
       {
@@ -2150,6 +2096,16 @@
     ],
     "LV": [
       {
+        "name": "Brock Bowers",
+        "pos": "TE1",
+        "status": "QUESTIONABLE",
+        "note": "Bowers (ankle/quadriceps) was listed as a limited participant in Thursday's practice, Ryan McFadden of ESPN.com reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.5,
+        "impact_source": "madden"
+      },
+      {
         "name": "Tonka Hemingway",
         "pos": "IDL",
         "status": "QUESTIONABLE",
@@ -2174,16 +2130,6 @@
         "on": true
       },
       {
-        "name": "Brock Bowers",
-        "pos": "TE1",
-        "status": "QUESTIONABLE",
-        "note": "Coach Klint Kubiak said Wednesday that Bowers (ankle) doesn't need to practice this week to play Sunday Sunday against the Broncos, Sam Warren of The Athletic reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.5,
-        "impact_source": "madden"
-      },
-      {
         "name": "Patrick Johnson",
         "pos": "EDGE1",
         "status": "IR",
@@ -2201,6 +2147,24 @@
       }
     ],
     "MIA": [
+      {
+        "name": "Chris Bell",
+        "pos": "WR2",
+        "status": "QUESTIONABLE",
+        "note": "Bell (knee) remained a limited participant in Thursday's practice, David Furones of the South Florida Sun Sentinel reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true
+      },
+      {
+        "name": "Caleb Douglas",
+        "pos": "WR2",
+        "status": "QUESTIONABLE",
+        "note": "Douglas (shoulder) remained a limited practice participant Thursday, David Furones of the South Florida Sun Sentinel reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.2,
+        "impact_source": "madden"
+      },
       {
         "name": "Andrew Meyer",
         "pos": "C",
@@ -2256,24 +2220,6 @@
         "on": true,
         "impact": 0.2,
         "impact_source": "pff"
-      },
-      {
-        "name": "Chris Bell",
-        "pos": "WR2",
-        "status": "QUESTIONABLE",
-        "note": "Bell (knee) was a limited participant in Wednesday's practice, David Furones of the South Florida Sun Sentinel reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
-        "name": "Caleb Douglas",
-        "pos": "WR2",
-        "status": "QUESTIONABLE",
-        "note": "Douglas was a limited participant in Wednesday's practice due to a shoulder injury, David Furones of the South Florida Sun Sentinel reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.2,
-        "impact_source": "madden"
       },
       {
         "name": "Jordan Phillips",
@@ -2352,6 +2298,26 @@
     ],
     "MIN": [
       {
+        "name": "Blake Cashman",
+        "pos": "LB",
+        "status": "QUESTIONABLE",
+        "note": "Cashman (concussion) was a full participant at practice Thursday.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.25,
+        "impact_source": "madden"
+      },
+      {
+        "name": "T.J. Hockenson",
+        "pos": "TE1",
+        "status": "QUESTIONABLE",
+        "note": "Hockenson (wrist) practiced on a limited basis Thursday.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.25,
+        "impact_source": "madden"
+      },
+      {
         "name": "Bo Richter",
         "pos": "LB",
         "status": "IR",
@@ -2370,32 +2336,12 @@
         "impact_source": "madden"
       },
       {
-        "name": "Blake Cashman",
-        "pos": "LB",
-        "status": "QUESTIONABLE",
-        "note": "Cashman (concussion) was a full participant in Wednesday's practice.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.25,
-        "impact_source": "madden"
-      },
-      {
         "name": "Jeshaun Jones",
         "pos": "WR2",
         "status": "QUESTIONABLE",
         "note": "The Vikings signed Jones (shoulder) off the practice squad to the active roster Wednesday.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
-      },
-      {
-        "name": "T.J. Hockenson",
-        "pos": "TE1",
-        "status": "QUESTIONABLE",
-        "note": "Hockenson (wrist) practiced in a limited capacity Wednesday.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.25,
-        "impact_source": "madden"
       },
       {
         "name": "Kyler Murray",
@@ -2595,6 +2541,36 @@
     ],
     "NO": [
       {
+        "name": "Erik McCoy",
+        "pos": "C",
+        "status": "DOUBTFUL",
+        "note": "McCoy (biceps) did not participate at practice Thursday.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.25,
+        "impact_source": "madden"
+      },
+      {
+        "name": "Taliese Fuaga",
+        "pos": "RT",
+        "status": "DOUBTFUL",
+        "note": "Fuaga (knee) did not participate at practice Thursday.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.2,
+        "impact_source": "pff"
+      },
+      {
+        "name": "Jordyn Tyson",
+        "pos": "WR2",
+        "status": "QUESTIONABLE",
+        "note": "Tyson (chest) practiced in a limited capacity Thursday.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.2,
+        "impact_source": "madden"
+      },
+      {
         "name": "Martin Emerson Jr.",
         "pos": "CB1",
         "status": "QUESTIONABLE",
@@ -2611,36 +2587,6 @@
         "note": "Werner (hamstring) did not participate in Wednesday's practice.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
-      },
-      {
-        "name": "Jordyn Tyson",
-        "pos": "WR2",
-        "status": "QUESTIONABLE",
-        "note": "Head coach Kellen Moore said Tyson was limited at Wednesday's practice due to a chest injury, Nick Underhill of NewOrleans.Football reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.2,
-        "impact_source": "madden"
-      },
-      {
-        "name": "Erik McCoy",
-        "pos": "C",
-        "status": "DOUBTFUL",
-        "note": "doubtful",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.25,
-        "impact_source": "madden"
-      },
-      {
-        "name": "Taliese Fuaga",
-        "pos": "RT",
-        "status": "DOUBTFUL",
-        "note": "doubtful",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.2,
-        "impact_source": "pff"
       },
       {
         "name": "Asim Richards",
@@ -2691,17 +2637,6 @@
         "impact_source": "madden"
       },
       {
-        "name": "Malik Harrison",
-        "pos": "LB",
-        "status": "QUESTIONABLE",
-        "note": "Official Wed FINAL Questionable (LP/LP/LP). Starting MIKE with Edmunds on IR (Madden 73). P(play) ~0.6. Q soft on at auto.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "injury": "Groin",
-        "impact": 0.2,
-        "impact_source": "pff"
-      },
-      {
         "name": "Tremaine Edmunds",
         "pos": "LB",
         "status": "IR",
@@ -2750,10 +2685,40 @@
     ],
     "NYJ": [
       {
+        "name": "Harrison Phillips",
+        "pos": "IDL",
+        "status": "QUESTIONABLE",
+        "note": "Phillips (ankle) was a limited participant in practice Thursday.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.2,
+        "impact_source": "madden"
+      },
+      {
         "name": "Geno Smith",
         "pos": "QB1",
         "status": "QUESTIONABLE",
-        "note": "Smith (ankle), who was a limited participant in Wednesday's walkthrough practice, said afterward that he intends to play in Sunday's game against the Chargers, Rich Cimini of ESPN.com reports.",
+        "note": "Smith (ankle) was a limited participant in Thursday's practice.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.2,
+        "impact_source": "madden"
+      },
+      {
+        "name": "Isaiah Williams",
+        "pos": "WR2",
+        "status": "QUESTIONABLE",
+        "note": "Williams (ribs) was a non-participant in Thursday's practice.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.2,
+        "impact_source": "pff"
+      },
+      {
+        "name": "Omar Cooper Jr.",
+        "pos": "WR2",
+        "status": "QUESTIONABLE",
+        "note": "Cooper didn't practice Thursday due to ankle and hip injuries.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.2,
@@ -2764,36 +2729,6 @@
         "pos": "IDL",
         "status": "IR",
         "note": "The Jets designated Onyemata (groin) to return from the injured reserve list Wednesday, Eric Allen of the Jets' official site reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.2,
-        "impact_source": "madden"
-      },
-      {
-        "name": "Isaiah Williams",
-        "pos": "WR2",
-        "status": "QUESTIONABLE",
-        "note": "Jets head coach Aaron Glenn said that Williams won't practice Wednesday due to a rib injury, Eric Allen of the Jets' official site reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.2,
-        "impact_source": "pff"
-      },
-      {
-        "name": "Omar Cooper Jr.",
-        "pos": "WR2",
-        "status": "QUESTIONABLE",
-        "note": "Cooper (ankle) isn't practicing Wednesday, Brian Costello of the New York Post reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.2,
-        "impact_source": "madden"
-      },
-      {
-        "name": "Harrison Phillips",
-        "pos": "IDL",
-        "status": "QUESTIONABLE",
-        "note": "Phillips posted 10 tackles (four solo) Sunday in a Week 10 loss to Buffalo.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.2,
@@ -2880,6 +2815,24 @@
     ],
     "PHI": [
       {
+        "name": "Will Shipley",
+        "pos": "RB1",
+        "status": "IR",
+        "note": "Shipley (foot) remained limited in practice Thursday.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true
+      },
+      {
+        "name": "Dontayvion Wicks",
+        "pos": "WR2",
+        "status": "QUESTIONABLE",
+        "note": "Wicks (ankle) practiced in a limited capacity Thursday.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.2,
+        "impact_source": "madden"
+      },
+      {
         "name": "Nolan Smith Jr.",
         "pos": "LB",
         "status": "QUESTIONABLE",
@@ -2898,34 +2851,6 @@
         "on": true,
         "impact": 0.5,
         "impact_source": "madden"
-      },
-      {
-        "name": "Will Shipley",
-        "pos": "RB1",
-        "status": "IR",
-        "note": "Shipley (foot) was a limited practice participant Wednesday.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
-        "name": "Dontayvion Wicks",
-        "pos": "WR2",
-        "status": "QUESTIONABLE",
-        "note": "Wicks (ankle) practiced in a limited capacity Wednesday.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.2,
-        "impact_source": "madden"
-      },
-      {
-        "name": "DeVonta Smith",
-        "pos": "WR2",
-        "status": "QUESTIONABLE",
-        "note": "Smith (hamstring) was spotted practicing Wednesday, Tim McManus of ESPN.com reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.65,
-        "impact_source": "manual"
       },
       {
         "name": "Jonathan Jones",
@@ -3016,9 +2941,27 @@
     ],
     "PIT": [
       {
+        "name": "Roman Wilson",
+        "pos": "WR2",
+        "status": "IR",
+        "note": "Wilson (finger) was a full participant in Thursday's practice.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true
+      },
+      {
+        "name": "Michael Pittman Jr.",
+        "pos": "WR2",
+        "status": "IR",
+        "note": "Pittman (foot) participated in practice Thursday, Nick Farabaugh of PennLive.com reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.2,
+        "impact_source": "pff"
+      },
+      {
         "name": "Nick Herbig",
         "pos": "LB",
-        "status": "DOUBTFUL",
+        "status": "QUESTIONABLE",
         "note": "Herbig (hip) did not participate in Wednesday's practice, Teresa Varley of the Steelers' official site reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
@@ -3054,34 +2997,6 @@
         "on": true,
         "impact": 0.2,
         "impact_source": "madden"
-      },
-      {
-        "name": "DeShon Elliott",
-        "pos": "S",
-        "status": "QUESTIONABLE",
-        "note": "Elliott (knee) was a limited participant in Wednesday's practice, Teresa Varley of the Steelers' official site reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.2,
-        "impact_source": "madden"
-      },
-      {
-        "name": "Roman Wilson",
-        "pos": "WR2",
-        "status": "IR",
-        "note": "Wilson (finger), who was designated for return from injured reserve earlier Wednesday, was a full participant in his return to practice.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
-        "name": "Michael Pittman Jr.",
-        "pos": "WR2",
-        "status": "IR",
-        "note": "Pittman (foot) was limited in his return to practice Wednesday, Teresa Varley of the Steelers' official site reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.2,
-        "impact_source": "pff"
       },
       {
         "name": "Sebastian Joseph-Day",
@@ -3180,6 +3095,52 @@
     ],
     "SF": [
       {
+        "name": "Dre Greenlaw",
+        "pos": "LB",
+        "status": "QUESTIONABLE",
+        "note": "Greenlaw (neck) was a limited participant at practice Thursday.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.25,
+        "impact_source": "madden"
+      },
+      {
+        "name": "Mac Jones",
+        "pos": "DEPTH",
+        "status": "QUESTIONABLE",
+        "note": "Jones (illness) did not participate at practice Thursday.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.25,
+        "impact_source": "pff"
+      },
+      {
+        "name": "Isaac Guerendo",
+        "pos": "RB1",
+        "status": "OUT",
+        "note": "Guerendo (pectoral) was working off to the side during practice Thursday, Nick Wagoner of ESPN.com reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true
+      },
+      {
+        "name": "Mike Evans",
+        "pos": "WR1",
+        "status": "QUESTIONABLE",
+        "note": "Evans (Achilles) officially was limited at Thursday's practice, Nick Wagoner of ESPN reports.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.5,
+        "impact_source": "madden"
+      },
+      {
+        "name": "Christian Kirk",
+        "pos": "WR2",
+        "status": "IR",
+        "note": "Kirk announced Wednesday via his personal Instagram account that he recently underwent meniscus surgery.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true
+      },
+      {
         "name": "Ji'Ayir Brown",
         "pos": "S",
         "status": "QUESTIONABLE",
@@ -3190,52 +3151,12 @@
         "impact_source": "pff"
       },
       {
-        "name": "Mac Jones",
-        "pos": "DEPTH",
-        "status": "QUESTIONABLE",
-        "note": "Jones (illness) was a limited participant in Wednesday's practice, Cam Inman of The San Jose Mercury News reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.25,
-        "impact_source": "pff"
-      },
-      {
-        "name": "Renardo Green",
-        "pos": "CB1",
-        "status": "QUESTIONABLE",
-        "note": "Green (back) was a limited participant in Wednesday's practice, Nick Wagoner of ESPN.com reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.2,
-        "impact_source": "madden"
-      },
-      {
-        "name": "Dre Greenlaw",
-        "pos": "LB",
-        "status": "QUESTIONABLE",
-        "note": "Greenlaw (neck) did not participate in practice Wednesday, Nick Wagoner of ESPN.com reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.25,
-        "impact_source": "madden"
-      },
-      {
         "name": "De'Zhaun Stribling",
         "pos": "WR2",
         "status": "IR",
         "note": "Stribling (ankle) was doing some work on the side at Wednesday's practice, Nick Wagoner of ESPN.com reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
-      },
-      {
-        "name": "Mike Evans",
-        "pos": "WR1",
-        "status": "QUESTIONABLE",
-        "note": "Head coach Kyle Shanahan said Evans (Achilles) won't practice Wednesday, but Shanahan hopes the wide receiver will return to drills Thursday, Nick Wagoner of ESPN.com reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.5,
-        "impact_source": "madden"
       },
       {
         "name": "Brandon Aiyuk",
@@ -3268,14 +3189,6 @@
         "pos": "IDL",
         "status": "IR",
         "note": "Halton recently underwent surgery to repair a broken leg and dislocated ankle that he suffered during the 49ers' Week 9 win over the Raiders, Adam Schefter of ESPN reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
-        "name": "Christian Kirk",
-        "pos": "WR2",
-        "status": "IR",
-        "note": "The 49ers placed Kirk (knee) on injured reserve Saturday.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
       },
@@ -3318,6 +3231,16 @@
     ],
     "TB": [
       {
+        "name": "Baker Mayfield",
+        "pos": "QB1",
+        "status": "QUESTIONABLE",
+        "note": "Mayfield (foot/right thumb) officially was limited at Thursday's practice.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.52,
+        "impact_source": "madden"
+      },
+      {
         "name": "Josh Hayes",
         "pos": "CB1",
         "status": "IR",
@@ -3329,7 +3252,7 @@
         "name": "Antoine Winfield Jr.",
         "pos": "S",
         "status": "QUESTIONABLE",
-        "note": "Winfield (ankle) did not participate in practice Wednesday, Greg Auman of Fox Sports reports.",
+        "note": "Winfield (ankle) didn't participate in Wednesday's practice.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.5,
@@ -3343,16 +3266,6 @@
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.2,
-        "impact_source": "madden"
-      },
-      {
-        "name": "Baker Mayfield",
-        "pos": "QB1",
-        "status": "QUESTIONABLE",
-        "note": "Mayfield (foot) isn't practicing Wednesday, Greg Auman of Fox Sports reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.52,
         "impact_source": "madden"
       },
       {
@@ -3392,6 +3305,26 @@
     ],
     "TEN": [
       {
+        "name": "Tyjae Spears",
+        "pos": "RB1",
+        "status": "QUESTIONABLE",
+        "note": "Spears (knee) was limited in practice Thursday.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.2,
+        "impact_source": "madden"
+      },
+      {
+        "name": "Carnell Tate",
+        "pos": "WR2",
+        "status": "QUESTIONABLE",
+        "note": "Tate (shoulder) was a limited participant in Thursday's practice.",
+        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "on": true,
+        "impact": 0.2,
+        "impact_source": "madden"
+      },
+      {
         "name": "Cody Barton",
         "pos": "LB",
         "status": "QUESTIONABLE",
@@ -3406,16 +3339,6 @@
         "pos": "LB",
         "status": "QUESTIONABLE",
         "note": "Hill (shoulder) was a limited participant in Wednesday's practice, Paul Kuharsky of PaulKuharsky.com reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.2,
-        "impact_source": "madden"
-      },
-      {
-        "name": "John Franklin-Myers",
-        "pos": "EDGE1",
-        "status": "QUESTIONABLE",
-        "note": "Franklin-Myers (back) was limited in Wednesday's practice, Paul Kuharsky of PaulKuharsky.com reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.2,
@@ -3438,26 +3361,6 @@
         "note": "The Titans designated Carmona (ankle) for return from injured reserve Wednesday, Jim Wyatt of the team's official site reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
-      },
-      {
-        "name": "Tyjae Spears",
-        "pos": "RB1",
-        "status": "QUESTIONABLE",
-        "note": "Spears (knee) didn't practice Wednesday.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.2,
-        "impact_source": "madden"
-      },
-      {
-        "name": "Carnell Tate",
-        "pos": "WR2",
-        "status": "QUESTIONABLE",
-        "note": "Tate (shoulder) was a limited participant in Wednesday's practice.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.2,
-        "impact_source": "madden"
       },
       {
         "name": "Wan'Dale Robinson",
@@ -3546,32 +3449,24 @@
     ],
     "WSH": [
       {
-        "name": "Jacory Croskey-Merritt",
-        "pos": "RB1",
-        "status": "IR",
-        "note": "The Commanders designated Croskey-Merritt (groin) for return from injured reserve Tuesday.",
+        "name": "Quan Martin",
+        "pos": "S",
+        "status": "QUESTIONABLE",
+        "note": "Martin (shoulder) was a limited participant at practice Thursday.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.2,
         "impact_source": "madden"
       },
       {
-        "name": "Colson Yankoff",
-        "pos": "TE1",
-        "status": "QUESTIONABLE",
-        "note": "Commanders head coach Dan Quinn ruled out Yankoff (knee) for Thursday night's games against the Giants, Ben Standig of The Team 980 Washington D.C. reports.",
+        "name": "Jacory Croskey-Merritt",
+        "pos": "RB1",
+        "status": "IR",
+        "note": "Croskey-Merritt (groin) was a full participant in Thursday's practice.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
-        "injury": "Knee"
-      },
-      {
-        "name": "Lucas Patrick",
-        "pos": "OG",
-        "status": "QUESTIONABLE",
-        "note": "Patrick (concussion) is out for Thursday's game against the Giants, Zach Selby of the Commanders' official site reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "injury": "Concussion"
+        "impact": 0.2,
+        "impact_source": "madden"
       },
       {
         "name": "Laremy Tunsil",
@@ -3677,5 +3572,5 @@
       }
     ]
   },
-  "stamp": "2026-11-19a"
+  "stamp": "2026-11-20a"
 }
