@@ -2827,7 +2827,7 @@ async function loadOpenerSnaps() {
 
 async function loadNfl() {
   const openersReq = loadOpenerSnaps();
-  const nflReq = fetch("./data/nfl-2026.json?v=20261120a");
+  const nflReq = fetch("./data/nfl-2026.json?v=20261120b");
   const priorReq = fetch("./data/prior-2025.json?v=pffpre0924");
   const ytdStReq = fetch("./data/ytd-st-2026.json?v=w5fin1013");
   const ytdRankReq = fetch("./data/ytd-rankings-2026.json?v=w5fin1013");
@@ -2844,7 +2844,7 @@ async function loadNfl() {
   const staffAtsReq = fetch("./data/staff-ats-2026.json");
   const scaleReq = fetch("./data/injury-scale.json?v=dbt1w5tue06");
   const allProReq = fetch("./data/allpro-last3.json?v=w3tue22");
-  const injReq = fetch("./data/injury-2026.json?v=w11fri20a");
+  const injReq = fetch("./data/injury-2026.json?v=w11fri20b");
   const wxReq = fetch("./data/weather-scale.json");
   const coachReq = fetch("./data/coaches-2026.json");
   const prepReq = fetch("./data/coach-prep-2026.json");

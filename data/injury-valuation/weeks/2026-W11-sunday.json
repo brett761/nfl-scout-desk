@@ -1,0 +1,363 @@
+{
+  "week": 11,
+  "season": 2026,
+  "window": "Sunday PM (1:00 / 4:05 / 4:25 ET) / SNF MIN-SF (Mexico City, neutral) / MNF CIN@WSH",
+  "phase": "FINAL",
+  "injury_pulled": "2026-11-20b",
+  "pulled_et": "2026-11-20 4:21 PM ET (America/New_York)",
+  "espn_timestamp": "2026-11-20T21:17:17Z",
+  "method": "skill nfl-injury-spread-valuation: base position value x quality x role, replacement drop-off, status probability (Out/Doubtful 1.0, Q 0.35 shaded by practice via manual impact), unit interactions; desk auto Madden-first prior compared with full valuation. ESPN tags followed as-is (Brett standing rule); official Friday club Game Status applied where ESPN differed.",
+  "sources": {
+    "espn": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries (timestamp 2026-11-20T21:17:17Z)",
+    "nfl_com": "https://www.nfl.com/injuries/league/2026/reg11 (Game Status populated only for TNF IND/HOU at pull ~4:17 PM ET; Sunday clubs blank)",
+    "club_reports": "<club>.com/team/injury-report via curl 2026-11-20 ~4:17 PM ET (home club page carries both teams)"
+  },
+  "source_gaps": [
+    "nfl.com reg11 Game Status blank for all Sunday/SNF/MNF clubs at pull; club sites used.",
+    "DEN, LV, LAC, SF club Friday Game Status UNSPECIFIED at pull (Thu practice only) - ESPN Friday tags used as-is.",
+    "MNF CIN@WSH: both clubs UNSPECIFIED (Thu-Sat practice schedule); ESPN tags used; refresh before Monday kick.",
+    "DAL partial (8 UNSPECIFIED), PHI partial (11 UNSPECIFIED), NYJ Geno Smith UNSPECIFIED on club page (ESPN: no designation).",
+    "qb-depth-2026.json stale (built 2026-10-06; ARI still lists Jacoby Brissett, now BAL) - ARI Carson Beck valued by manual.",
+    "nfl-2026.json kick times for PIT@PHI and JAX@NYG were swapped vs ESPN/Action Network (PIT@PHI 1:00 PM ET, JAX@NYG 4:25 PM ET); corrected in this run."
+  ],
+  "material_flips_vs_2026_11_20a": [
+    "**ARI Jon Gaines II** (OG): QUESTIONABLE → OUT impact=0.2",
+    "**ARI Zachary Carter** (IDL): IR → OUT",
+    "**BAL Jaylinn Hawkins** (S): QUESTIONABLE → OUT impact=0.25",
+    "**BAL Nnamdi Madubuike** (IDL): QUESTIONABLE → OUT impact=0.25",
+    "**BUF Dorian Williams** (LB): QUESTIONABLE → OUT impact=0.2",
+    "**BUF Christian Benford** (CB1): QUESTIONABLE → OUT impact=0.2",
+    "**BUF Dalton Kincaid** (TE1): QUESTIONABLE → DOUBTFUL impact=0.25",
+    "**CAR Mike Jackson** (CB1): IR → QUESTIONABLE impact=0.2",
+    "**CAR Bobby Okereke** (LB): QUESTIONABLE → OUT impact=0.25",
+    "**CAR Jonathon Brooks** (RB1): IR → QUESTIONABLE",
+    "**CAR Brady Christensen** (OG): IR → QUESTIONABLE impact=0.2",
+    "**CHI Kyler Gordon** (CB1): QUESTIONABLE → OUT impact=0.25",
+    "**DAL P.J. Locke** (S): QUESTIONABLE → OUT",
+    "**DAL Jonathan Mingo** (WR2): QUESTIONABLE → OUT",
+    "**DAL Jalen Thompson** (S): IR → QUESTIONABLE impact=0.25",
+    "**DAL Devin Moore** (CB1): IR → QUESTIONABLE",
+    "**DET Cade Mays** (C): DOUBTFUL → OUT impact=0.2",
+    "**GB Kevin Zeitler** (OG): QUESTIONABLE → OUT impact=0.2",
+    "**GB Zaire Franklin** (LB): DOUBTFUL → OUT impact=0.2",
+    "**JAX B.J. Green II** (EDGE1): IR → OUT",
+    "**KC Trey Smith** (OG): QUESTIONABLE → OUT impact=0.25",
+    "**KC Jaylon Moore** (RT): QUESTIONABLE → OUT",
+    "**KC Kenneth Walker III** (RB1): QUESTIONABLE → OUT impact=0.25",
+    "**MIA Jared Wayne** (WR2): QUESTIONABLE → OUT",
+    "**MIA Dante Trader Jr.** (S): QUESTIONABLE → DOUBTFUL impact=0.2",
+    "**MIA Darrell Baker Jr.** (CB1): OUT → QUESTIONABLE impact=0.2",
+    "**NE A.J. Brown** (WR1): QUESTIONABLE → DOUBTFUL impact=0.55",
+    "**NE Drake Maye** (QB1): DOUBTFUL → OUT impact=1.5",
+    "**NE Brenden Schooler** (S): QUESTIONABLE → OUT",
+    "**NO Martin Emerson Jr.** (CB1): QUESTIONABLE → OUT impact=0.2",
+    "**NO Erik McCoy** (C): DOUBTFUL → OUT impact=0.25",
+    "**NO Taliese Fuaga** (RT): DOUBTFUL → OUT impact=0.2",
+    "**NYJ Isaiah Williams** (WR2): QUESTIONABLE → OUT impact=0.2",
+    "**NYJ Omar Cooper Jr.** (WR2): QUESTIONABLE → OUT impact=0.2",
+    "**NYJ David Onyemata** (IDL): IR → OUT impact=0.2",
+    "**PHI Dontayvion Wicks** (WR2): QUESTIONABLE → OUT impact=0.2",
+    "**PHI Will Shipley** (RB1): IR → QUESTIONABLE",
+    "**PHI Zack Baun** (LB): QUESTIONABLE → OUT impact=0.5",
+    "**PIT Roman Wilson** (WR2): IR → QUESTIONABLE",
+    "**PIT Gennings Dunker** (OG): IR → QUESTIONABLE impact=0",
+    "**TB Antoine Winfield Jr.** (S): QUESTIONABLE → OUT impact=0.5",
+    "**TB Josh Hayes** (CB1): IR → OUT",
+    "**TEN Fernando Carmona** (OG): IR → OUT",
+    "**BUF T.J. Sanders** (IDL): NEW QUESTIONABLE",
+    "**CAR Isaiah Simmons** (S): NEW OUT",
+    "**CHI Zavion Thomas** (WR2): NEW QUESTIONABLE",
+    "**CIN Dylan Fairchild** (OG): NEW QUESTIONABLE",
+    "**DAL Jaishawn Barham** (LB): NEW QUESTIONABLE",
+    "**DAL Luke Schoonmaker** (TE1): NEW QUESTIONABLE",
+    "**DET Tyler Lacy** (IDL): NEW QUESTIONABLE",
+    "**DET Ennis Rakestraw Jr.** (CB1): NEW QUESTIONABLE",
+    "**DET Khalil Dorsey** (CB1): NEW QUESTIONABLE",
+    "**DET Joe Bachie** (LB): NEW QUESTIONABLE",
+    "**IND Riley Leonard** (QB1): NEW OUT",
+    "**JAX Matt Dickerson** (EDGE1): NEW QUESTIONABLE",
+    "**KC Peter Woods** (IDL): NEW QUESTIONABLE",
+    "**LAC Donte Jackson** (CB1): NEW QUESTIONABLE impact=0.25",
+    "**LV Trey Zuhn III** (C): NEW QUESTIONABLE",
+    "**LV Ian Thomas** (TE1): NEW QUESTIONABLE impact=0.2",
+    "**MIA Jaylin Simpson** (S): NEW DOUBTFUL",
+    "**MIN Isaiah Rodgers** (CB1): NEW QUESTIONABLE impact=0.25",
+    "**MIN Jay Ward** (S): NEW QUESTIONABLE impact=0.2",
+    "**NO Decamerion Richardson** (CB1): NEW QUESTIONABLE",
+    "**NO Justin Reid** (S): NEW OUT impact=0.2",
+    "**NYJ Joseph Ossai** (EDGE1): NEW QUESTIONABLE impact=0.2",
+    "**PHI Smael Mondon Jr.** (LB): NEW DOUBTFUL",
+    "**PIT DeShon Elliott** (S): NEW QUESTIONABLE impact=0.2",
+    "**SF Jordan James** (RB1): NEW QUESTIONABLE",
+    "**SF Upton Stout** (CB1): NEW QUESTIONABLE impact=0.2",
+    "**SF Khalid Kareem** (EDGE1): NEW QUESTIONABLE",
+    "**SF Luke Gifford** (LB): NEW QUESTIONABLE",
+    "**WSH Rachaad White** (RB1): NEW QUESTIONABLE impact=0.2",
+    "**ARI Hjalte Froholdt** (C): CLEARED off sheet (was QUESTIONABLE) was impact=0.25",
+    "**BUF Dee Alford** (CB1): CLEARED off sheet (was QUESTIONABLE) was impact=0.2",
+    "**BUF Ray Davis** (RB1): CLEARED off sheet (was QUESTIONABLE)",
+    "**BUF Amani Hooker** (S): CLEARED off sheet (was QUESTIONABLE) was impact=0.25",
+    "**CHI Jeffery Simmons** (IDL): CLEARED off sheet (was QUESTIONABLE) was impact=0.5",
+    "**DAL Donovan Ezeiruaku** (LB): CLEARED off sheet (was QUESTIONABLE) was impact=0.2",
+    "**JAX LeQuint Allen Jr.** (RB1): CLEARED off sheet (was QUESTIONABLE)",
+    "**JAX Bhayshul Tuten** (RB1): CLEARED off sheet (was QUESTIONABLE) was impact=0.25",
+    "**JAX Chris Rodriguez Jr.** (RB1): CLEARED off sheet (was QUESTIONABLE) was impact=0.25",
+    "**JAX Jakobi Meyers** (WR2): CLEARED off sheet (was QUESTIONABLE) was impact=0.25",
+    "**JAX Antonio Johnson** (S): CLEARED off sheet (was QUESTIONABLE) was impact=0.2",
+    "**JAX Travon Walker** (EDGE1): CLEARED off sheet (was QUESTIONABLE) was impact=0.2",
+    "**MIA Chris Bell** (WR2): CLEARED off sheet (was QUESTIONABLE)",
+    "**MIA Caleb Douglas** (WR2): CLEARED off sheet (was QUESTIONABLE) was impact=0.2",
+    "**MIA Andrew Meyer** (C): CLEARED off sheet (was QUESTIONABLE)",
+    "**MIA JuJu Brents** (CB1): CLEARED off sheet (was QUESTIONABLE) was impact=0.2",
+    "**MIN Blake Cashman** (LB): CLEARED off sheet (was QUESTIONABLE) was impact=0.25",
+    "**MIN T.J. Hockenson** (TE1): CLEARED off sheet (was QUESTIONABLE) was impact=0.25",
+    "**MIN Andrew Van Ginkel** (LB): CLEARED off sheet (was QUESTIONABLE) was impact=0.5",
+    "**MIN Jeshaun Jones** (WR2): CLEARED off sheet (was QUESTIONABLE)",
+    "**NO Jordyn Tyson** (WR2): CLEARED off sheet (was QUESTIONABLE) was impact=0.2",
+    "**NYJ Geno Smith** (QB1): CLEARED off sheet (was QUESTIONABLE) was impact=0.2",
+    "**SF Ji'Ayir Brown** (S): CLEARED off sheet (was QUESTIONABLE) was impact=0.2",
+    "**TEN Cody Barton** (LB): CLEARED off sheet (was QUESTIONABLE) was impact=0.2"
+  ],
+  "report_cards": {
+    "MIN QB Kyler Murray OUT (hamstring, DNP x3)": {
+      "replacement": "Kirk Cousins (started W10, MIN 30-10 at GB)",
+      "replacement_quality": "Cousins PFF 76.0 / Madden 77 vs Murray PFF 72.2",
+      "desk_impact_auto": "1.5 (PFF fallback hit QB cap; Murray lost his Madden row in the 11-17 rebuild; W10 auto was 0.28 Madden)",
+      "full_valuation": "0.0-0.6, Moderate; market already priced Cousins",
+      "manual": "0.3",
+      "effect": "MIN term -3.55 -> -2.06; B$ MIN@SF SF -5.5 -> SF -4 (street SF -3)"
+    },
+    "TB QB Baker Mayfield QUESTIONABLE (foot/right thumb; DNP/LP/LP)": {
+      "replacement": "Jalon Daniels (no Madden/PFF row; took Wed first-team reps)",
+      "desk_impact_auto": "0.52 Madden x 0.35 = 0.18",
+      "full_valuation": "P(miss) ~0.35 x QB1 drop-off at desk cap 1.5 = ~0.53 (range 0.35-0.75), Low-Moderate",
+      "manual": "1.5 (x0.35 Q)",
+      "effect": "TB term -1.43 -> -2.09; B$ DET -6 holds (raw -6.0 -> -6.05). Kill rule 1 on any TB@DET side (QB Q inside 48h)."
+    },
+    "ARI QB Carson Beck QUESTIONABLE (back; LP/DNP); Josh Johnson expected to start (Arizona Republic)": {
+      "replacement": "Josh Johnson",
+      "desk_impact_auto": "none (tagged DEPTH by stale qb-depth file) -> 0.07",
+      "full_valuation": "P(miss) ~0.75 x ~0.45 drop-off = ~0.35, Low",
+      "manual": "1.0 (x0.35 Q)",
+      "effect": "ARI term -3.18 -> -3.50; ARI@KC outside the box anyway"
+    },
+    "BAL defense: Madubuike OUT (DNP x3), Humphrey OUT (NIR-personal), Hawkins OUT": {
+      "replacement": "rotational IDL / CB2-3 depth",
+      "desk_impact_auto": "Madubuike 0.25 tier cap, Humphrey 0.5, Hawkins 0.25",
+      "full_valuation": "Madubuike Madden 90 every-down IDL: 0.35-0.55; unit total 1.0-1.4 with Humphrey; no extra cluster bump (Brissett QB already priced)",
+      "manual": "Madubuike 0.45",
+      "effect": "BAL term -5.08 -> -5.60; B$ CAR -6.5 -> -7 (street CAR -3/-2.5)"
+    },
+    "PHI LB: Zack Baun OUT (back, DNP x3), Smael Mondon Jr. DOUBTFUL; Shipley Q; WR Wicks OUT": {
+      "desk_impact_auto": "Baun 0.5 (All-Pro cap, Madden 93), Mondon pos-base 0.2",
+      "full_valuation": "LB room two deep down vs PIT: 0.6-0.9 combined; auto in range",
+      "manual": "none",
+      "effect": "PHI term -3.08 -> -3.62; B$ PIT -10 -> -10.5 (street PIT -3.5)"
+    },
+    "KC OL: Trey Smith OUT (concussion), Jaylon Moore OUT; RB Kenneth Walker III OUT": {
+      "desk_impact_auto": "Smith 0.25 cap (Madden 93), Moore pos-base, Walker 0.25",
+      "full_valuation": "OL pair 0.5-0.8; auto ~0.7 in range",
+      "manual": "none",
+      "effect": "KC term -1.96 -> -2.53; game outside box"
+    },
+    "MIA secondary: Simpson D, Trader D, Baker Q, Dial Q; Wayne OUT; Brewer C Q": {
+      "desk_impact_auto": "pos-base each",
+      "full_valuation": "in auto range",
+      "manual": "none",
+      "effect": "MIA term -3.91 -> -4.27; outside box"
+    },
+    "NO: Justin Reid OUT (NIR personal, new on club report), McCoy/Fuaga/Richards/Emerson OUT": {
+      "desk_impact_auto": "Reid 0.2 Madden-capped; OL trio auto",
+      "full_valuation": "OL cluster (C + both RT options) 0.8-1.1; auto ~0.9 in range",
+      "manual": "none",
+      "effect": "NO term -1.58 -> -1.93; B$ CHI -9.5 -> -10 (street CHI -11.5, outside box)"
+    },
+    "JAX: 8 Questionables cleared on the Friday club report (Meyers, Tuten, Walker, Allen, Rodriguez, A. Johnson, McLeod, Monheim); Green II/Hainsey OUT": {
+      "effect": "JAX term -2.24 -> -1.83; B$ JAX -9 -> -9.5 (street JAX -6)"
+    },
+    "DAL: Bland, Booker, Ferguson, Locke, Mingo OUT; Thompson/Moore/Schoonmaker/Barham Q": {
+      "desk_impact_auto": "each 0.2-0.25",
+      "full_valuation": "secondary + RG; auto sum reasonable",
+      "manual": "none",
+      "effect": "DAL term -2.10 -> -2.21; B$ DAL -11 holds"
+    }
+  },
+  "team_injury_terms_working_to_final": {
+    "IND": {
+      "working": -3.95,
+      "final": -4.15,
+      "delta": -0.2
+    },
+    "HOU": {
+      "working": -3.4,
+      "final": -3.4,
+      "delta": 0.0
+    },
+    "MIA": {
+      "working": -3.91,
+      "final": -4.27,
+      "delta": -0.36
+    },
+    "BUF": {
+      "working": -1.61,
+      "final": -1.87,
+      "delta": -0.26
+    },
+    "NO": {
+      "working": -1.58,
+      "final": -1.93,
+      "delta": -0.35
+    },
+    "CHI": {
+      "working": -1.92,
+      "final": -1.99,
+      "delta": -0.07
+    },
+    "TEN": {
+      "working": -3.05,
+      "final": -3.05,
+      "delta": 0.0
+    },
+    "DAL": {
+      "working": -2.1,
+      "final": -2.21,
+      "delta": -0.11
+    },
+    "TB": {
+      "working": -1.43,
+      "final": -2.09,
+      "delta": -0.66
+    },
+    "DET": {
+      "working": -3.06,
+      "final": -3.42,
+      "delta": -0.36
+    },
+    "ARI": {
+      "working": -3.18,
+      "final": -3.5,
+      "delta": -0.32
+    },
+    "KC": {
+      "working": -1.96,
+      "final": -2.53,
+      "delta": -0.57
+    },
+    "JAX": {
+      "working": -2.24,
+      "final": -1.83,
+      "delta": 0.41
+    },
+    "NYG": {
+      "working": -1.97,
+      "final": -1.97,
+      "delta": 0.0
+    },
+    "BAL": {
+      "working": -5.08,
+      "final": -5.6,
+      "delta": -0.52
+    },
+    "CAR": {
+      "working": -2.8,
+      "final": -2.79,
+      "delta": 0.01
+    },
+    "NYJ": {
+      "working": -2.29,
+      "final": -2.55,
+      "delta": -0.26
+    },
+    "LAC": {
+      "working": -3.11,
+      "final": -3.2,
+      "delta": -0.09
+    },
+    "LV": {
+      "working": -0.93,
+      "final": -1.09,
+      "delta": -0.16
+    },
+    "DEN": {
+      "working": -2.2,
+      "final": -2.2,
+      "delta": 0.0
+    },
+    "PIT": {
+      "working": -0.99,
+      "final": -0.97,
+      "delta": 0.02
+    },
+    "PHI": {
+      "working": -3.08,
+      "final": -3.62,
+      "delta": -0.54
+    },
+    "MIN": {
+      "working": -3.55,
+      "final": -2.06,
+      "delta": 1.49
+    },
+    "SF": {
+      "working": -3.08,
+      "final": -3.35,
+      "delta": -0.27
+    },
+    "CIN": {
+      "working": -2.15,
+      "final": -2.24,
+      "delta": -0.09
+    },
+    "WSH": {
+      "working": -3.12,
+      "final": -3.19,
+      "delta": -0.07
+    }
+  },
+  "manual_overrides_applied": [
+    "MIN Kyler Murray 1.5 -> 0.3 (W11 FINAL)",
+    "TB Baker Mayfield 0.52 -> 1.5 at Q (W11 FINAL)",
+    "ARI Carson Beck none -> 1.0 at Q (W11 FINAL)",
+    "BAL Nnamdi Madubuike 0.25 -> 0.45 (W11 FINAL)",
+    "standing: SEA Darnold 1.5, NE A.J. Brown 0.55, IND Gardner/Raimann/Ward, HOU Hunter/Teller, CHI Odeyingbo 0.25, PIT Dunker 0"
+  ],
+  "official_overrides_applied": [
+    "ARI Hjalte Froholdt QUESTIONABLE->cleared (official Fri)",
+    "ARI Jon Gaines II QUESTIONABLE->OUT (official Fri)",
+    "ARI Roy Lopez QUESTIONABLE->cleared (official Fri)",
+    "ARI Zachary Carter NEW OUT (official Fri)",
+    "BUF Dee Alford QUESTIONABLE->cleared (official Fri)",
+    "CAR Brady Christensen IR->QUESTIONABLE (official Fri)",
+    "CAR Mike Jackson IR->QUESTIONABLE (official Fri)",
+    "CAR Jonathon Brooks IR->QUESTIONABLE (official Fri)",
+    "DAL Jalen Thompson IR->QUESTIONABLE (official Fri)",
+    "DAL Devin Moore NEW QUESTIONABLE (official Fri)",
+    "JAX LeQuint Allen Jr. QUESTIONABLE->cleared (official Fri)",
+    "JAX Antonio Johnson QUESTIONABLE->cleared (official Fri)",
+    "JAX Jakobi Meyers QUESTIONABLE->cleared (official Fri)",
+    "JAX Bhayshul Tuten QUESTIONABLE->cleared (official Fri)",
+    "JAX Chris Rodriguez Jr. QUESTIONABLE->cleared (official Fri)",
+    "JAX Jalen McLeod QUESTIONABLE->cleared (official Fri)",
+    "JAX Jonah Monheim QUESTIONABLE->cleared (official Fri)",
+    "JAX B.J. Green II IR->OUT (official Fri)",
+    "JAX Travon Walker QUESTIONABLE->cleared (official Fri)",
+    "MIA Darrell Baker Jr. OUT->QUESTIONABLE (official Fri)",
+    "MIA Marcellas Dial Jr. NEW QUESTIONABLE (official Fri)",
+    "NO Justin Reid NEW OUT (official Fri)",
+    "NYG Isaiah Likely QUESTIONABLE->cleared (official Fri)",
+    "NYG Nic Jones QUESTIONABLE->cleared (official Fri)",
+    "NYJ David Onyemata IR->OUT (official Fri)",
+    "PHI Zack Baun QUESTIONABLE->OUT (official Fri)",
+    "PHI Smael Mondon Jr. QUESTIONABLE->DOUBTFUL (official Fri)",
+    "PHI Will Shipley IR->QUESTIONABLE (official Fri)",
+    "PIT Michael Pittman NEW QUESTIONABLE (official Fri)",
+    "PIT Roman Wilson IR->QUESTIONABLE (official Fri)",
+    "PIT Gennings Dunker IR->QUESTIONABLE (official Fri)",
+    "TB Josh Hayes IR->OUT (official Fri)",
+    "TEN Fernando Carmona IR->OUT (official Fri)",
+    "TEN Micah Robinson NEW QUESTIONABLE (official Fri)"
+  ],
+  "overrides_note": "FINAL rules: stub-hold narrowed to bare 'inactive'; Friday-dated ESPN O/D/Q rows followed as-is; club Friday Game Status applied where ESPN differed (None = no status on club report -> cleared). Doubtful=1.0.",
+  "tnf": "IND@HOU FINAL HOU 26, IND 3 (B$ HOU -15 vs DK -12.5; Wednesday status PASS, no ticket; lock 2026-w11-ind-hou.json; not re-frozen)",
+  "locks": "data/postmortem/locks/2026-w11-sunday-freeze-summary.json"
+}
