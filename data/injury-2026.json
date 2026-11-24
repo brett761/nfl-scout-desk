@@ -1,15 +1,15 @@
 {
-  "pulled": "2026-11-22a",
-  "pulled_et": "2026-11-22 10:15 AM ET (America/New_York)",
-  "phase": "WORKING-SUN",
+  "pulled": "2026-11-23a",
+  "pulled_et": "2026-11-23 7:15 PM ET (America/New_York)",
+  "phase": "WORKING-MON",
   "sources": [
     "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
     "https://www.nfl.com/injuries/",
     "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?seasontype=2&week=10&year=2026",
     "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?seasontype=2&week=11&year=2026"
   ],
-  "note": "WORKING-SUN 2026-11-22a (Sunday ~10:15 AM ET pre-kick; ESPN tags followed as-is, official inactives ~90 min pre-kick; Friday club-report overrides retained; prior FINAL 2026-11-20b). Carried: FINAL Friday Game Status 2026-11-20b (Week 11 Sunday/SNF/MNF card; prior seed 2026-11-20a WORKING-FRI). ESPN injuries API after the official ~4 PM ET Friday report; club injury reports (<club>.com/team/injury-report, curl ~4:20 PM ET) override ESPN where it differed. nfl.com reg11 Game Status blank for Sunday clubs at pull. TNF IND@HOU FINAL - no protect. Byes Week 11 ATL/CLE/GB/LAR/NE/SEA. Gaps: CIN/WSH (MNF, Saturday report), DEN/LV/LAC/SF club Friday Game Status UNSPECIFIED at pull, DAL/PHI partial (ESPN Friday tags followed as-is). SNF MIN-SF (Mexico City) / MNF CIN@WSH: Friday designations used; refresh Saturday/Monday if status moves. Finished clubs: drop gameday inactive / ruled-out-for-remainder / coach's-decision noise; keep multi-week OUT + IR/PUP/NFI. Doubtful = 1.0 out. Preserve manuals. Tier caps QB<=1.5 / All-Pro<=0.5 / other<=0.25 on auto; Madden-first else PFF; floor 0.2x status; Cap team 6.0. No rumor moves.",
-  "espn_timestamp": "2026-11-22T15:14:28Z",
+  "note": "WORKING-MON 2026-11-23a (Monday ~7:15 PM ET pre-kick MNF inactives; ESPN tags followed as-is; prior seed 2026-11-22a WORKING-SUN). CIN@WSH MNF tonight 8:15 PM ET: applied official inactives / actives for CIN and WSH only; other clubs left at 2026-11-22a. CIN: Dugger Q->OUT (inactive); Hill Q->Active (cleared); Fairchild Q->Active (cleared); Bozeman IR->Active (activated); Parker II IR->Active (activated); Risner OUT held; Iosivas/Davis remain IR. WSH: Robertson Q->OUT (inactive); Patrick Q->Active (cleared); White Q->Active (cleared); Croskey-Merritt IR->Active (activated and active); remaining IR room held. Did not add depth-scratch inactives (no invented impacts). Finished Week 11 Sunday/SNF clubs unchanged. Doubtful = 1.0 out. Preserve manuals. Tier caps QB<=1.5 / All-Pro<=0.5 / other<=0.25 on auto; Madden-first else PFF; floor 0.2x status; Cap team 6.0. No rumor moves.",
+  "espn_timestamp": "2026-11-24T00:13:01Z",
   "teams": {
     "ARI": [
       {
@@ -666,8 +666,8 @@
       {
         "name": "Kyle Dugger",
         "pos": "S",
-        "status": "QUESTIONABLE",
-        "note": "Dugger (quadriceps) is questionable for Monday night's game against the Commanders.",
+        "status": "OUT",
+        "note": "Dugger (quadriceps) is inactive for Monday night's game against the Commanders (ESPN 2026-11-23).",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.2,
@@ -684,20 +684,10 @@
         "impact_source": "madden"
       },
       {
-        "name": "Dax Hill",
-        "pos": "CB1",
-        "status": "QUESTIONABLE",
-        "note": "Hill (illness) is listed as questionable for Monday's game against the Commanders.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.2,
-        "impact_source": "madden"
-      },
-      {
         "name": "Andrei Iosivas",
         "pos": "WR2",
         "status": "IR",
-        "note": "Iosivas (thumb) is listed as doubtful for Monday's game against the Commanders.",
+        "note": "Iosivas (thumb) was downgraded to out for Monday's game against the Commanders, Mike Petraglia of CLNSCincy.com reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.2,
@@ -712,34 +702,10 @@
         "on": true
       },
       {
-        "name": "Swayze Bozeman",
-        "pos": "LB",
-        "status": "IR",
-        "note": "The Bengals designated Bozeman (forearm) for return from injured reserve Thursday.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
-        "name": "Dylan Fairchild",
-        "pos": "OG",
-        "status": "QUESTIONABLE",
-        "note": "questionable",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
-        "name": "Brian Parker II",
-        "pos": "RT",
-        "status": "IR",
-        "note": "The Bengals opened Parker's (undisclosed) 21-day practice window Thursday.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
         "name": "Jalen Davis",
         "pos": "CB1",
         "status": "IR",
-        "note": "The Bengals designated Davis (hamstring) to return from injured reserve Thursday.",
+        "note": "Davis (hamstring) has been ruled out for Monday's game against the Commanders, Mike Petraglia of CLNSCincy.com reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.2,
@@ -3443,38 +3409,10 @@
     ],
     "WSH": [
       {
-        "name": "Lucas Patrick",
-        "pos": "OG",
-        "status": "QUESTIONABLE",
-        "note": "Patrick (concussion) is questionable for Monday's game against the Bengals.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
         "name": "Amik Robertson",
         "pos": "CB1",
-        "status": "QUESTIONABLE",
-        "note": "Robertson (ankle) is listed as questionable for Monday's game against the Bengals.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.2,
-        "impact_source": "madden"
-      },
-      {
-        "name": "Jacory Croskey-Merritt",
-        "pos": "RB1",
-        "status": "IR",
-        "note": "Croskey-Merritt (groin) is slated to be activated from IR in time to play in Monday's game against the Bengals, Matt Zenitz of CBS Sports reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.2,
-        "impact_source": "madden"
-      },
-      {
-        "name": "Rachaad White",
-        "pos": "RB1",
-        "status": "QUESTIONABLE",
-        "note": "White (heel) is listed as questionable for Monday's game versus the Bengals.",
+        "status": "OUT",
+        "note": "Robertson (ankle) is inactive for Monday's game against the Bengals (ESPN 2026-11-23).",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0.2,
@@ -3584,5 +3522,5 @@
       }
     ]
   },
-  "stamp": "2026-11-22a"
+  "stamp": "2026-11-23a"
 }
