@@ -2,6 +2,34 @@
 
 Track whether projected injury points improve margin error.
 
+## 2026-W11 — 2026-11-24
+
+**Games with injury stack at lock:** 13/13 (injuries 11-18b TNF; 11-20b Sunday at the Friday 4:25 PM freeze, five re-stamped Sun 7:47 AM on street moves; 11-22a SNF; 11-23a MNF). Non-zero term in all 13. The term reduced error in **4** of 13 live and **5** under the shrunk base. W11 MAE with injury 7.69, without 7.03. Shrunk base: 9.39 with, 9.10 without. W2–W11 pool (n=147): live 10.232 with vs 10.180 without (70/145 helped, 48%); 0.5× 10.186; shrunk 9.99 vs 10.01. Second straight week under 50%: the W10 falsify rule for "earns its keep" is met.
+
+### Findings
+- **Stacked IR-QB + defensive cluster terms over-adjusted, twice.** BAL@CAR: BAL −5.60 (Lamar IR 1.5 cap + Madubuike manual 0.45, Humphrey, Hawkins OUT) vs CAR −2.79, net +2.81; CAR won by only 2 (despite BAL's 4 TO) and the term hurt 2.81. PIT@PHI: PHI −3.62 (Hurts IR 0.77 + Baun OUT, Mondon D, Wicks OUT) vs PIT −0.97, net −2.65; PHI won 19–16 with Joe Milton and the term hurt 2.65. Big terms ≥1.5 pool 18/42 (43%). **Emerging signal** that stacked team terms run hot; it's a team-term scale question, not one position.
+- **QB1 OUT backups: 3/4 vs close.** PHI (Milton for Hurts, IR 0.77) won outright as a 3.5-pt dog; NYG (McCarthy for Dart, IR 0.52) won outright as a 6-pt dog; BAL (Brissett for Lamar, 1.5) covered +2.5; MIN (Cousins for Murray, manual 0.3) lost by 25 as a 3.5-pt dog. MIA (McCord, Willis IR, no live term) excluded. **W3–W11: 13/27.**
+- **Backup-QB disagreement games: model 0/6 ATS.** W9 MIN, W10 NYG, BAL had the model ≥5 more bullish than the close on the backup team; W11 PHI (−6.9), NYG (−3.4), BAL (+4.6) had it ≥3 more bearish. The market won all six. That points at rating noise around QB changes more than at the QB1 cap size. **Emerging signal** for a PASS / defer-to-close flag.
+- **QB1 OUT pricing rule:** Murray's auto jumped to 1.5 (he lost his Madden row in the 11-17 rebuild) and a manual set 0.3 because the market had priced Cousins. The 1.5 would have cut MIN@SF error by ~1.2. Three straight weeks of Murray pricing by exception; needs one written rule.
+- **QB Q:** Mayfield (TB, manual 1.5 ×0.35) played; Beck (ARI, manual 1.0 ×0.35) flipped OUT on 11-22a after the lock and Josh Johnson started (full price would have helped ~0.65).
+- **Q designations (0.35):** non-OL Q rows with impact ≥0.2 showed box stats in **20/36 (56%)**; four flipped OUT/IR on 11-22a after the lock (Beck, Henley, Herbig, Spears), so **20/32 (63%)** vs 65% implied. W6–W11 **120/181 (66%)**. **Emerging signal** that 0.35 is calibrated.
+- **Doubtful = 1.0:** Simpson, Trader Jr. (MIA), Kincaid (BUF), Mondon (PHI) no stats. **29/29** (W4, W6–W11). Keep.
+- **Confound:** home teams went 11–1. Terms that favored the road team hurt in 7 of 8 such games; home-favoring terms helped 3/5. Part of the W11 result is the home sweep, not valuation.
+- **Late pull after the lock, fourth straight week:** 11-22a (10:15 AM) after the 7:47 AM re-stamp.
+
+### Positional baselines
+- **No `historical_adjustments` written.** The multi-game evidence (stacked terms 18/42; injury layer 70/145) is about the size of the team term, not one position's baseline, and goes to a Sandmoney 0.5× / stacked-term cap test first. Q and Doubtful support the current status priors. `positional-values.json` got only a `last_postmortem_review` stamp.
+
+### Process recommendations (not weight edits)
+1. Write one QB1-OUT pricing rule (floor vs market-already-priced manual).
+2. Re-freeze Sunday locks after the late-morning pull when any priced row flips (four weeks running).
+3. Sandmoney: injury team term at 0.5×, and a cap on stacked IR-QB + cluster terms; replay the 27 QB1-OUT games with a defer-to-close flag at |gap|≥3.
+
+### What would confirm/falsify
+- **0.5× team term:** confirmed if the 2021–25 replay or W12–W13 blind beats live by ≥0.1/game; dropped if W12 helps ≥60% live.
+- **Stacked-term cap:** confirmed if big terms stay ≤45% helpful at n≥50.
+- **Q 0.35 too high:** >75% play rate at n≥200.
+
 ## 2026-W10 — 2026-11-17
 
 **Games with injury stack at lock:** 14/14 (injuries 11-11b TNF; 11-14a Munich + Sunday at the 7:53 AM freeze; 11-15a SNF; 11-16a MNF). Non-zero term in 13 (NE@DET netted 0). The term reduced error in **6** of 13 live and **6** under the shrunk base. W10 MAE with injury 10.14, without 10.18. Shrunk base: 12.77 with, 12.74 without. W2–W10 pool (n=134): live 10.478 with vs 10.485 without (66/132 helped); shrunk 10.05 vs 10.10. About neutral; the W9 "≥55% through W10" confirm rule was not met.

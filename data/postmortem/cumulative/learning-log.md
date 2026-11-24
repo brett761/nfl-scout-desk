@@ -2,6 +2,40 @@
 
 Beliefs about each input. Updated every Tuesday postmortem.
 
+## 2026-W11 (complete — MNF settled) — 2026-11-24
+
+**Headline:** Model MAE **7.69** (n=13; official rounded 7.69) vs market MAE **7.92**. Beat the close by 0.23 and won **7/13** head-to-head; third straight week at or under the market. Model ATS at close 8–5. Signed bias in the home frame −6.43 (market −6.23); home teams 11–1 non-neutral. Fav-frame overprojection **−0.38**.
+- Best: NYJ@LAC **0.64** (gap −6.6 confirmed), MIA@BUF 1.33, NO@CHI 1.82, ARI@KC 5.58 (gap +6.9, beat market by 6.9), TB@DET 3.95.
+- Worst: MIN@SF **21.24** (Mexico City, agreement game), JAX@NYG 14.44, PIT@PHI 13.44 (gap −6.9 falsified), CIN@WSH 10.78 (MNF), TEN@DAL 10.20 (beat market).
+- **Seventh blind test lost:** old standing shrink (rating 0.25×/pff_ytd 0) took W11 to **9.39** vs live 7.69. Third straight loss; seven-week net +2.0 against the shrink.
+- **Injury layer:** helped 4/13 (7.69 with vs 7.03 without). Second week under 50%, so the W10 falsify rule is met. Pool W2–W11 70/145, 10.23 vs 10.18. Now a Sandmoney 0.5× decrease candidate (blind W11 0.5× 7.28). No live change.
+- **Backup-QB games:** model 0/6 ATS when a QB1 is OUT/IR and |gap|≥3 (W9–W10 too bullish on the backup, W11 too bearish on PHI, NYG, BAL). Backup sides W3–W11 13/27.
+- **HFA:** home 11–1 swung W2–W11 home margin to +0.40 (n=139); back to Insufficient.
+- **Shadow (post-window, scratch-graded W11):** W11 7.42 vs official 7.69; W5–W11 9.92 vs 10.30 (ATS 39–51–9 vs 46–50–3). KEEP TESTING.
+- **Closes:** no repo closes/2026-w11.json yet; DK pickcenter post-final closes pulled directly and saved to desk closes/2026-w11.json (matches pull_closes.mjs).
+- **No numeric weight edits.**
+
+### Belief deltas
+| Feature | Prior (W10) | Now | Label |
+|---|---|---|---|
+| Team-rating shrink | Insufficient (two blind losses) | Third blind loss; net +2.0 against over seven | Insufficient evidence |
+| pff_ytd | Insufficient (decrease withdrawn) | W11 prefers 1.0 again | Insufficient evidence |
+| Extreme \|gap\|≥8 | Strong (3/17) | No W11 game; 3/17 | **Strong signal** |
+| Mid-gap (3–8) | Insufficient (29/60) | 32/66 | Insufficient evidence |
+| QB1 OUT / backup-QB games | Emerging (10/23; 0/3) | 13/27; model 0/6 ATS at \|gap\|≥3 | **Emerging signal** |
+| Injury layer | Emerging (on watch) | 4/13; falsify rule met; pool slightly negative | **Emerging signal (decrease candidate, Sandmoney 0.5×)** |
+| Stacked injury clusters | Insufficient | BAL@CAR, PIT@PHI hurt ~2.7 each; 18/42 | Emerging signal (over-weight) |
+| HFA 2.0 | Emerging (−0.57, n=127) | +0.40 (n=139) | Insufficient evidence (down) |
+| Q = 0.35 | Emerging (67%) | W6–W11 66% | Emerging signal |
+| Doubtful = 1.0 | Emerging (25/25) | 29/29 | Emerging signal |
+| DVOA blend shadow | KEEP TESTING | W5–W11 9.92 vs 10.30; ATS worse | KEEP TESTING |
+| Numeric weights / baselines | No edits | **No edits** | Strong (process) |
+
+### What would change minds
+- **Injury 0.5×:** promote to a Brett decision only if the 2021–25 Sandmoney replay or W12–W13 blind shows 0.5× at least 0.1/game better; drop the idea if W12 helps ≥60% live.
+- **Backup-QB flag:** confirm if deferring to the close / PASS at |gap|≥3 with a QB1 OUT/IR beats the live line by ≥0.5/game on the 27-game replay; falsify if the next three such games go the model's way.
+- **HFA:** promote a cut only if home margin is <1.0 at n≥150 and the backtest agrees.
+
 ## 2026-W10 (complete — MNF settled) — 2026-11-17
 
 **Headline:** Model MAE **10.14** (n=14; official rounded 10.18) vs market MAE **10.25**. Beat the close by 0.11 and won **8/14** head-to-head. Signed bias in the home frame +3.44 (market +3.75); home teams 3–10 non-neutral. Fav-frame overprojection **−2.30** (the model's big favorites were right again: JAX, KC, LAR).

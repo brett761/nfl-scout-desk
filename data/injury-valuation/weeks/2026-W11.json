@@ -1,0 +1,1059 @@
+{
+ "season": 2026,
+ "week": 11,
+ "reviewed": "2026-11-24",
+ "source_locks": "repo postmortem/locks 2026-w11-*; projections injury-valuation/weeks/2026-W11-sunday.json (FINAL 11-20b) + 2026-W11-ind-hou.json (11-18b); lock pulls 11-18b (TNF), 11-20b (Sunday, Fri 4:25 PM freeze; 5 re-stamped Sun 7:47 AM), 11-22a (SNF), 11-23a (MNF)",
+ "summary": {
+  "games": 13,
+  "games_with_nonzero_term": 13,
+  "helped_live": 4,
+  "helped_shrunk": 5,
+  "w11_mae_with": 7.694,
+  "w11_mae_without": 7.028,
+  "pool_w2_w11_mae_with": 10.232,
+  "pool_w2_w11_mae_without": 10.18,
+  "pool_w2_w11_mae_half": 10.186,
+  "pool_helped": "70/145",
+  "shrunk_base_note": "Under rating 0.25x / pff_ytd 0: W11 9.388 with vs 9.096 without (helped 5/13); pool W2\u2013W11 9.992 vs 10.012."
+ },
+ "qb1_out": [
+  {
+   "team": "PHI",
+   "qb": "Jalen Hurts IR (0.77) \u2192 Joe Milton (11/21)",
+   "market": "close PIT \u22123.5 (B$ PIT \u221210.5)",
+   "result": "PHI won 19\u201316",
+   "read": "backup side won outright; model 7 pts more bearish than the market on the backup team and wrong. PHI LB/WR cluster stacked on top (term \u22123.62)."
+  },
+  {
+   "team": "NYG",
+   "qb": "Jaxson Dart IR (0.52) \u2192 J.J. McCarthy (18/38)",
+   "market": "close JAX \u22126 (B$ JAX \u22129.5)",
+   "result": "NYG won 23\u201318",
+   "read": "backup side won outright; the rating (\u22128.49 JAX) did the damage, not the injury term (\u22120.14 net)."
+  },
+  {
+   "team": "BAL",
+   "qb": "Lamar Jackson IR (1.5 cap) \u2192 Jacoby Brissett (24/37)",
+   "market": "close CAR \u22122.5 (B$ CAR \u22127)",
+   "result": "CAR won 35\u201333 (BAL 4 TO)",
+   "read": "backup side covered +2.5 despite 4 turnovers; BAL term \u22125.6 (QB plus Madubuike/Humphrey/Hawkins) over-priced."
+  },
+  {
+   "team": "MIN",
+   "qb": "Kyler Murray OUT (auto 1.5, manual 0.3) \u2192 Kirk Cousins (26/38)",
+   "market": "close SF \u22123.5 neutral (B$ SF \u22124)",
+   "result": "SF won 35\u201310",
+   "read": "backup side lost by 25; the 1.5 auto would have helped ~1.2 here. Second Cousins start split 1\u20131."
+  },
+  {
+   "team": "MIA",
+   "qb": "Malik Willis IR (no priced term, absorbed) \u2192 Kyle McCord (12/33)",
+   "market": "close BUF \u221216.5",
+   "result": "BUF won 26\u20139",
+   "read": "excluded from count (no live term)"
+  },
+  {
+   "team": "ARI",
+   "qb": "Carson Beck Q (manual 1.0 \u00d70.35), flipped OUT on 11-22a \u2192 Josh Johnson (18/31)",
+   "market": "close KC \u221214.5 (B$ KC \u221221.5)",
+   "result": "KC won 34\u20137",
+   "read": "Q at lock, not counted as QB1 OUT; the full 1.0 would have helped ~0.65."
+  },
+  {
+   "team": "TB",
+   "qb": "Baker Mayfield Q (manual 1.5 \u00d70.35) played 20/33",
+   "market": "close DET \u22124.5 (B$ DET \u22126)",
+   "result": "DET won 31\u201321",
+   "read": "Q QB played; the 0.53 haircut was right in direction, but DET\u2019s own heavier term netted the game \u22121.33 toward TB and hurt."
+  }
+ ],
+ "qb1_out_cumulative": "W3\u2013W11 backup side covered 13/27 (W11 3/4). Model ATS 0/6 in backup-QB games with |gap|\u22653: W9 MIN, W10 NYG, BAL (model too bullish on the backup) and W11 PHI, NYG, BAL (model too bearish).",
+ "q_designations": {
+  "priced": 0.35,
+  "box_score_check": "Non-OL Q rows on, impact \u22650.2: 20/36 with box stats (56%) vs 65% implied. Flipped OUT/IR on 11-22a after the lock: Beck (ARI), Henley (LAC), Herbig (PIT), Spears (TEN); excluding them 20/32 (63%). Other no-stat Qs: Sauce Gardner (IND, TNF), Bowers (LV), Brandon Jones (DEN), Hawes (BUF), Elliott, Pittman (PIT), D.J. Reed (DET), Adams (TEN), Jalen Thompson (DAL), Rodgers, Ward (MIN), Greenlaw (SF). W6\u2013W11 120/181 (66%).",
+  "rows": [
+   {
+    "team": "IND",
+    "name": "Anthony Gould",
+    "pos": "WR2",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-18b",
+    "box_stats": true
+   },
+   {
+    "team": "IND",
+    "name": "Luke Rhodes",
+    "pos": "DEPTH",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-18b",
+    "box_stats": true
+   },
+   {
+    "team": "IND",
+    "name": "Sauce Gardner",
+    "pos": "CB1",
+    "status": "QUESTIONABLE",
+    "impact": 0.85,
+    "stamp": "2026-11-18b",
+    "box_stats": false
+   },
+   {
+    "team": "IND",
+    "name": "Charlie Heck",
+    "pos": "RT",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-18b",
+    "box_stats": false
+   },
+   {
+    "team": "HOU",
+    "name": "Jaylin Smith",
+    "pos": "CB1",
+    "status": "QUESTIONABLE",
+    "impact": 0.1,
+    "stamp": "2026-11-18b",
+    "box_stats": true
+   },
+   {
+    "team": "HOU",
+    "name": "Jake Hummel",
+    "pos": "LB",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-18b",
+    "box_stats": false
+   },
+   {
+    "team": "HOU",
+    "name": "Wyatt Teller",
+    "pos": "OG",
+    "status": "QUESTIONABLE",
+    "impact": 0.1,
+    "stamp": "2026-11-18b",
+    "box_stats": false
+   },
+   {
+    "team": "ARI",
+    "name": "Carson Beck",
+    "pos": "DEPTH",
+    "status": "QUESTIONABLE",
+    "impact": 1.0,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "KC",
+    "name": "Peter Woods",
+    "pos": "IDL",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "KC",
+    "name": "Omarr Norman-Lott",
+    "pos": "IDL",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "CAR",
+    "name": "Mike Jackson",
+    "pos": "CB1",
+    "status": "QUESTIONABLE",
+    "impact": 0.2,
+    "stamp": "2026-11-20b",
+    "box_stats": true
+   },
+   {
+    "team": "CAR",
+    "name": "Darren Waller",
+    "pos": "TE1",
+    "status": "QUESTIONABLE",
+    "impact": 0.2,
+    "stamp": "2026-11-20b",
+    "box_stats": true
+   },
+   {
+    "team": "CAR",
+    "name": "Jonathon Brooks",
+    "pos": "RB1",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "CAR",
+    "name": "Tommy Tremble",
+    "pos": "TE1",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": true
+   },
+   {
+    "team": "CAR",
+    "name": "Brady Christensen",
+    "pos": "OG",
+    "status": "QUESTIONABLE",
+    "impact": 0.2,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "JAX",
+    "name": "Danny Striggow",
+    "pos": "EDGE1",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "JAX",
+    "name": "Matt Dickerson",
+    "pos": "EDGE1",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "LV",
+    "name": "Brock Bowers",
+    "pos": "TE1",
+    "status": "QUESTIONABLE",
+    "impact": 0.5,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "LV",
+    "name": "Matt Gay",
+    "pos": "K",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": true
+   },
+   {
+    "team": "LV",
+    "name": "Trey Zuhn III",
+    "pos": "C",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "LV",
+    "name": "Ian Thomas",
+    "pos": "TE1",
+    "status": "QUESTIONABLE",
+    "impact": 0.2,
+    "stamp": "2026-11-20b",
+    "box_stats": true
+   },
+   {
+    "team": "LV",
+    "name": "Tonka Hemingway",
+    "pos": "IDL",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "LV",
+    "name": "Folorunso Fatukasi",
+    "pos": "IDL",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": true
+   },
+   {
+    "team": "DEN",
+    "name": "Jaylen Waddle",
+    "pos": "WR2",
+    "status": "QUESTIONABLE",
+    "impact": 0.25,
+    "stamp": "2026-11-20b",
+    "box_stats": true
+   },
+   {
+    "team": "DEN",
+    "name": "Riley Moss",
+    "pos": "CB1",
+    "status": "QUESTIONABLE",
+    "impact": 0.2,
+    "stamp": "2026-11-20b",
+    "box_stats": true
+   },
+   {
+    "team": "DEN",
+    "name": "Brandon Jones",
+    "pos": "S",
+    "status": "QUESTIONABLE",
+    "impact": 0.25,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "MIA",
+    "name": "Jaylin Simpson",
+    "pos": "S",
+    "status": "DOUBTFUL",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "MIA",
+    "name": "Dante Trader Jr.",
+    "pos": "S",
+    "status": "DOUBTFUL",
+    "impact": 0.2,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "MIA",
+    "name": "Darrell Baker Jr.",
+    "pos": "CB1",
+    "status": "QUESTIONABLE",
+    "impact": 0.2,
+    "stamp": "2026-11-20b",
+    "box_stats": true
+   },
+   {
+    "team": "MIA",
+    "name": "Aaron Brewer",
+    "pos": "C",
+    "status": "QUESTIONABLE",
+    "impact": 0.5,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "MIA",
+    "name": "Marcellas Dial Jr.",
+    "pos": "DEPTH",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "BUF",
+    "name": "Dalton Kincaid",
+    "pos": "TE1",
+    "status": "DOUBTFUL",
+    "impact": 0.25,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "BUF",
+    "name": "T.J. Sanders",
+    "pos": "IDL",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "BUF",
+    "name": "Jackson Hawes",
+    "pos": "TE1",
+    "status": "QUESTIONABLE",
+    "impact": 0.25,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "BUF",
+    "name": "Damar Hamlin",
+    "pos": "S",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": true
+   },
+   {
+    "team": "NO",
+    "name": "Pete Werner",
+    "pos": "LB",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "NO",
+    "name": "Decamerion Richardson",
+    "pos": "CB1",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "CHI",
+    "name": "Zavion Thomas",
+    "pos": "WR2",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": true
+   },
+   {
+    "team": "NYJ",
+    "name": "Harrison Phillips",
+    "pos": "IDL",
+    "status": "QUESTIONABLE",
+    "impact": 0.2,
+    "stamp": "2026-11-20b",
+    "box_stats": true
+   },
+   {
+    "team": "NYJ",
+    "name": "Joseph Ossai",
+    "pos": "EDGE1",
+    "status": "QUESTIONABLE",
+    "impact": 0.2,
+    "stamp": "2026-11-20b",
+    "box_stats": true
+   },
+   {
+    "team": "NYJ",
+    "name": "Trevin Wallace",
+    "pos": "LB",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "NYJ",
+    "name": "Dylan Parham",
+    "pos": "OG",
+    "status": "QUESTIONABLE",
+    "impact": 0.2,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "LAC",
+    "name": "Charlie Kolar",
+    "pos": "TE1",
+    "status": "QUESTIONABLE",
+    "impact": 0.25,
+    "stamp": "2026-11-20b",
+    "box_stats": true
+   },
+   {
+    "team": "LAC",
+    "name": "Ladd McConkey",
+    "pos": "WR2",
+    "status": "QUESTIONABLE",
+    "impact": 0.2,
+    "stamp": "2026-11-20b",
+    "box_stats": true
+   },
+   {
+    "team": "LAC",
+    "name": "Daiyan Henley",
+    "pos": "LB",
+    "status": "QUESTIONABLE",
+    "impact": 0.25,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "LAC",
+    "name": "Donte Jackson",
+    "pos": "CB1",
+    "status": "QUESTIONABLE",
+    "impact": 0.25,
+    "stamp": "2026-11-20b",
+    "box_stats": true
+   },
+   {
+    "team": "LAC",
+    "name": "Kendall Williamson",
+    "pos": "S",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "LAC",
+    "name": "Isas Waxter",
+    "pos": "CB1",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "LAC",
+    "name": "Brenen Thompson",
+    "pos": "WR2",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "LAC",
+    "name": "Justin Eboigbe",
+    "pos": "IDL",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": true
+   },
+   {
+    "team": "PIT",
+    "name": "Roman Wilson",
+    "pos": "WR2",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": true
+   },
+   {
+    "team": "PIT",
+    "name": "DeShon Elliott",
+    "pos": "S",
+    "status": "QUESTIONABLE",
+    "impact": 0.2,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "PIT",
+    "name": "Nick Herbig",
+    "pos": "LB",
+    "status": "QUESTIONABLE",
+    "impact": 0.2,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "PIT",
+    "name": "Gennings Dunker",
+    "pos": "OG",
+    "status": "QUESTIONABLE",
+    "impact": 0,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "PIT",
+    "name": "Patrick Queen",
+    "pos": "LB",
+    "status": "QUESTIONABLE",
+    "impact": 0.2,
+    "stamp": "2026-11-20b",
+    "box_stats": true
+   },
+   {
+    "team": "PIT",
+    "name": "Michael Pittman",
+    "pos": "DEPTH",
+    "status": "QUESTIONABLE",
+    "impact": 0.2,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "PHI",
+    "name": "Smael Mondon Jr.",
+    "pos": "LB",
+    "status": "DOUBTFUL",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "PHI",
+    "name": "Will Shipley",
+    "pos": "RB1",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": true
+   },
+   {
+    "team": "PHI",
+    "name": "Nolan Smith Jr.",
+    "pos": "LB",
+    "status": "QUESTIONABLE",
+    "impact": 0.25,
+    "stamp": "2026-11-20b",
+    "box_stats": true
+   },
+   {
+    "team": "PHI",
+    "name": "Jonathan Jones",
+    "pos": "CB1",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": true
+   },
+   {
+    "team": "PHI",
+    "name": "Michael Carter II",
+    "pos": "CB1",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": true
+   },
+   {
+    "team": "PHI",
+    "name": "Britain Covey",
+    "pos": "WR2",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": true
+   },
+   {
+    "team": "TB",
+    "name": "Baker Mayfield",
+    "pos": "QB1",
+    "status": "QUESTIONABLE",
+    "impact": 1.5,
+    "stamp": "2026-11-20b",
+    "box_stats": true
+   },
+   {
+    "team": "TB",
+    "name": "Yaya Diaby",
+    "pos": "LB",
+    "status": "QUESTIONABLE",
+    "impact": 0.2,
+    "stamp": "2026-11-20b",
+    "box_stats": true
+   },
+   {
+    "team": "DET",
+    "name": "Sione Vaki",
+    "pos": "RB1",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": true
+   },
+   {
+    "team": "DET",
+    "name": "D.J. Reed",
+    "pos": "CB1",
+    "status": "QUESTIONABLE",
+    "impact": 0.2,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "DET",
+    "name": "Tyler Lacy",
+    "pos": "IDL",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": true
+   },
+   {
+    "team": "DET",
+    "name": "Ennis Rakestraw Jr.",
+    "pos": "CB1",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "DET",
+    "name": "Khalil Dorsey",
+    "pos": "CB1",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": true
+   },
+   {
+    "team": "DET",
+    "name": "Joe Bachie",
+    "pos": "LB",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "TEN",
+    "name": "Tyjae Spears",
+    "pos": "RB1",
+    "status": "QUESTIONABLE",
+    "impact": 0.2,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "TEN",
+    "name": "Carnell Tate",
+    "pos": "WR2",
+    "status": "QUESTIONABLE",
+    "impact": 0.2,
+    "stamp": "2026-11-20b",
+    "box_stats": true
+   },
+   {
+    "team": "TEN",
+    "name": "Anthony Hill Jr.",
+    "pos": "LB",
+    "status": "QUESTIONABLE",
+    "impact": 0.2,
+    "stamp": "2026-11-20b",
+    "box_stats": true
+   },
+   {
+    "team": "TEN",
+    "name": "Tony Adams",
+    "pos": "S",
+    "status": "QUESTIONABLE",
+    "impact": 0.2,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "TEN",
+    "name": "Micah Robinson",
+    "pos": "DEPTH",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": true
+   },
+   {
+    "team": "DAL",
+    "name": "Jaishawn Barham",
+    "pos": "LB",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "DAL",
+    "name": "Jalen Thompson",
+    "pos": "S",
+    "status": "QUESTIONABLE",
+    "impact": 0.25,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "DAL",
+    "name": "Luke Schoonmaker",
+    "pos": "TE1",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": true
+   },
+   {
+    "team": "DAL",
+    "name": "Devin Moore",
+    "pos": "CB1",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-20b",
+    "box_stats": false
+   },
+   {
+    "team": "MIN",
+    "name": "Isaiah Rodgers",
+    "pos": "CB1",
+    "status": "QUESTIONABLE",
+    "impact": 0.25,
+    "stamp": "2026-11-22a",
+    "box_stats": false
+   },
+   {
+    "team": "MIN",
+    "name": "Jay Ward",
+    "pos": "S",
+    "status": "QUESTIONABLE",
+    "impact": 0.2,
+    "stamp": "2026-11-22a",
+    "box_stats": false
+   },
+   {
+    "team": "SF",
+    "name": "Mike Evans",
+    "pos": "WR1",
+    "status": "QUESTIONABLE",
+    "impact": 0.5,
+    "stamp": "2026-11-22a",
+    "box_stats": true
+   },
+   {
+    "team": "SF",
+    "name": "Dre Greenlaw",
+    "pos": "LB",
+    "status": "QUESTIONABLE",
+    "impact": 0.25,
+    "stamp": "2026-11-22a",
+    "box_stats": false
+   },
+   {
+    "team": "SF",
+    "name": "Jordan James",
+    "pos": "RB1",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-22a",
+    "box_stats": true
+   },
+   {
+    "team": "SF",
+    "name": "Mac Jones",
+    "pos": "DEPTH",
+    "status": "QUESTIONABLE",
+    "impact": 0.25,
+    "stamp": "2026-11-22a",
+    "box_stats": true
+   },
+   {
+    "team": "SF",
+    "name": "Upton Stout",
+    "pos": "CB1",
+    "status": "QUESTIONABLE",
+    "impact": 0.2,
+    "stamp": "2026-11-22a",
+    "box_stats": true
+   },
+   {
+    "team": "SF",
+    "name": "Khalid Kareem",
+    "pos": "EDGE1",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-22a",
+    "box_stats": false
+   },
+   {
+    "team": "SF",
+    "name": "Luke Gifford",
+    "pos": "LB",
+    "status": "QUESTIONABLE",
+    "impact": null,
+    "stamp": "2026-11-22a",
+    "box_stats": false
+   }
+  ]
+ },
+ "doubtful": {
+  "rows": "Jaylin Simpson, Dante Trader Jr. (MIA), Dalton Kincaid (BUF), Smael Mondon Jr. (PHI): no box stats (4/4)",
+  "read": "supports Doubtful = 1.0 (29/29 W4, W6\u2013W11)"
+ },
+ "clusters": [
+  {
+   "game": "BAL@CAR",
+   "term": 2.81,
+   "note": "BAL Lamar IR 1.5 + Madubuike (manual 0.45), Humphrey, Hawkins OUT; CAR won by only 2; hurt 2.81"
+  },
+  {
+   "game": "PIT@PHI",
+   "term": -2.65,
+   "note": "PHI Hurts IR 0.77 + Baun OUT, Mondon D, Wicks OUT; PHI won by 3 with Milton; hurt 2.65"
+  },
+  {
+   "game": "MIA@BUF",
+   "term": 2.4,
+   "note": "MIA secondary (Simpson/Trader D, Wayne OUT, Baker/Dial Q) + Brewer C Q; BUF won by 17; hurt 0.26"
+  },
+  {
+   "game": "TB@DET",
+   "term": -1.33,
+   "note": "DET more injured (\u22123.42: Mays OUT, Reed Q etc.) than TB (\u22122.09 incl. Mayfield Q 1.5\u00d70.35, who played); DET won by 10; hurt 1.33"
+  },
+  {
+   "game": "MIN@SF",
+   "term": -1.29,
+   "note": "SF Evans/Greenlaw/Stout Q vs MIN Murray 0.3; SF won by 25; hurt 1.29"
+  }
+ ],
+ "position_read": "Confound: terms favoring the road team hurt in 7 of 8 such games (home-favoring terms helped 3/5) in a week home teams went 11\u20131, so part of W11 is the home sweep, not valuation. QB1 IR terms stacked with defensive clusters over-adjusted in both W11 big misses (BAL +2.81, PHI \u22122.65). Backup-QB games are where the model and the market disagree most and the market keeps winning (0/6 ATS for the model). Q 0.35 on target after removing post-lock flips (63%; 66% W6\u2013W11). Doubtful 1.0 holds (29/29). No positional baseline moves: the over-adjustment is in stacked team terms, not in one position, and the 0.5\u00d7 question goes to Sandmoney first.",
+ "games": [
+  {
+   "game": "IND@HOU",
+   "injury_home_minus_away": 0.75,
+   "injury_pulled": "2026-11-18b",
+   "injury_away": -4.2,
+   "injury_home": -3.45,
+   "model_abs_error": 7.88,
+   "abs_error_without_injury": 8.63,
+   "injury_reduced_error": 0.75,
+   "shrunk_base_abs_error": 15.83,
+   "shrunk_base_without_injury": 16.58
+  },
+  {
+   "game": "ARI@KC",
+   "injury_home_minus_away": 0.97,
+   "injury_pulled": "2026-11-20b",
+   "injury_away": -3.5,
+   "injury_home": -2.53,
+   "model_abs_error": 5.58,
+   "abs_error_without_injury": 6.55,
+   "injury_reduced_error": 0.97,
+   "shrunk_base_abs_error": 18.62,
+   "shrunk_base_without_injury": 19.59
+  },
+  {
+   "game": "BAL@CAR",
+   "injury_home_minus_away": 2.81,
+   "injury_pulled": "2026-11-20b",
+   "injury_away": -5.6,
+   "injury_home": -2.79,
+   "model_abs_error": 5.06,
+   "abs_error_without_injury": 2.25,
+   "injury_reduced_error": -2.81,
+   "shrunk_base_abs_error": 2.29,
+   "shrunk_base_without_injury": 0.52
+  },
+  {
+   "game": "JAX@NYG",
+   "injury_home_minus_away": -0.14,
+   "injury_pulled": "2026-11-20b",
+   "injury_away": -1.83,
+   "injury_home": -1.97,
+   "model_abs_error": 14.44,
+   "abs_error_without_injury": 14.3,
+   "injury_reduced_error": -0.14,
+   "shrunk_base_abs_error": 6.1,
+   "shrunk_base_without_injury": 5.96
+  },
+  {
+   "game": "LV@DEN",
+   "injury_home_minus_away": -1.11,
+   "injury_pulled": "2026-11-20b",
+   "injury_away": -1.09,
+   "injury_home": -2.2,
+   "model_abs_error": 3.66,
+   "abs_error_without_injury": 2.55,
+   "injury_reduced_error": -1.11,
+   "shrunk_base_abs_error": 9.36,
+   "shrunk_base_without_injury": 8.25
+  },
+  {
+   "game": "MIA@BUF",
+   "injury_home_minus_away": 2.4,
+   "injury_pulled": "2026-11-20b",
+   "injury_away": -4.27,
+   "injury_home": -1.87,
+   "model_abs_error": 1.33,
+   "abs_error_without_injury": 1.07,
+   "injury_reduced_error": -0.26,
+   "shrunk_base_abs_error": 7.88,
+   "shrunk_base_without_injury": 10.28
+  },
+  {
+   "game": "NO@CHI",
+   "injury_home_minus_away": -0.06,
+   "injury_pulled": "2026-11-20b",
+   "injury_away": -1.93,
+   "injury_home": -1.99,
+   "model_abs_error": 1.82,
+   "abs_error_without_injury": 1.88,
+   "injury_reduced_error": 0.06,
+   "shrunk_base_abs_error": 2.87,
+   "shrunk_base_without_injury": 2.81
+  },
+  {
+   "game": "NYJ@LAC",
+   "injury_home_minus_away": -0.65,
+   "injury_pulled": "2026-11-20b",
+   "injury_away": -2.55,
+   "injury_home": -3.2,
+   "model_abs_error": 0.64,
+   "abs_error_without_injury": 0.01,
+   "injury_reduced_error": -0.63,
+   "shrunk_base_abs_error": 4.41,
+   "shrunk_base_without_injury": 5.06
+  },
+  {
+   "game": "PIT@PHI",
+   "injury_home_minus_away": -2.65,
+   "injury_pulled": "2026-11-20b",
+   "injury_away": -0.97,
+   "injury_home": -3.62,
+   "model_abs_error": 13.44,
+   "abs_error_without_injury": 10.79,
+   "injury_reduced_error": -2.65,
+   "shrunk_base_abs_error": 5.42,
+   "shrunk_base_without_injury": 2.77
+  },
+  {
+   "game": "TB@DET",
+   "injury_home_minus_away": -1.33,
+   "injury_pulled": "2026-11-20b",
+   "injury_away": -2.09,
+   "injury_home": -3.42,
+   "model_abs_error": 3.95,
+   "abs_error_without_injury": 2.62,
+   "injury_reduced_error": -1.33,
+   "shrunk_base_abs_error": 7.03,
+   "shrunk_base_without_injury": 5.7
+  },
+  {
+   "game": "TEN@DAL",
+   "injury_home_minus_away": 0.84,
+   "injury_pulled": "2026-11-20b",
+   "injury_away": -3.05,
+   "injury_home": -2.21,
+   "model_abs_error": 10.2,
+   "abs_error_without_injury": 11.04,
+   "injury_reduced_error": 0.84,
+   "shrunk_base_abs_error": 14.81,
+   "shrunk_base_without_injury": 15.65
+  },
+  {
+   "game": "MIN@SF",
+   "injury_home_minus_away": -1.29,
+   "injury_pulled": "2026-11-22a",
+   "injury_away": -2.06,
+   "injury_home": -3.35,
+   "model_abs_error": 21.24,
+   "abs_error_without_injury": 19.95,
+   "injury_reduced_error": -1.29,
+   "shrunk_base_abs_error": 24.68,
+   "shrunk_base_without_injury": 23.39
+  },
+  {
+   "game": "CIN@WSH",
+   "injury_home_minus_away": -1.05,
+   "injury_pulled": "2026-11-23a",
+   "injury_away": -2,
+   "injury_home": -3.05,
+   "model_abs_error": 10.78,
+   "abs_error_without_injury": 9.73,
+   "injury_reduced_error": -1.05,
+   "shrunk_base_abs_error": 2.72,
+   "shrunk_base_without_injury": 1.67
+  }
+ ]
+}

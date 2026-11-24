@@ -1,6 +1,6 @@
 {
  "season": 2026,
- "updated": "2026-11-17T15:15:02Z",
+ "updated": "2026-11-24T15:15:12Z",
  "primary_metric": "abs_error_projected_vs_actual_margin",
  "secondary": [
   "ats",
@@ -17,12 +17,13 @@
   "2026-W07",
   "2026-W08",
   "2026-W09",
-  "2026-W10"
+  "2026-W10",
+  "2026-W11"
  ],
- "notes": "W10 complete (14/14). Model MAE 10.142 vs market 10.25; beat market 8/14. Sixth blind test lost again (shrink 12.77 vs live 10.14): W9 falsify rule met, shrink downgraded to Insufficient. pff_ytd decrease withdrawn. HFA up to Emerging (home \u22120.57, n=127). Murray QB1 OUT priced 0.28 again. Injury term helped 6/13. No weight edits.",
+ "notes": "W11 complete (13/13). Model MAE 7.694 vs market 7.923; beat market 7/13; ATS at close 8-5-0. Seventh blind shrink test lost (9.39 vs 7.69), third straight. Injury layer helped 4/13, second week under 50%: W10 falsify rule met, now a Sandmoney 0.5\u00d7 decrease candidate. HFA back to Insufficient (home 11\u20131; W2\u2013W11 +0.40, n=139). Backup-QB disagreement games 0/6 for the model (both directions). No weight edits.",
  "features": {
   "fa": {
-   "games_with_model": 136,
+   "games_with_model": 149,
    "label": "Insufficient evidence",
    "trend": "Monitor",
    "notes": "Site INCLUDE_FA=false as of W3 (MNF fa=0). Sunday W3 locks still tapered FA w_prior=1/3. No numeric cut beyond site OFF.",
@@ -32,13 +33,14 @@
    "ablation_w2_w7_drop": 10.895,
    "ablation_w2_w8_drop": 11.059,
    "ablation_w2_w9_drop": 10.654,
-   "ablation_w2_w10_drop": 10.6
+   "ablation_w2_w10_drop": 10.6,
+   "ablation_w2_w11_drop": 10.343
   },
   "injury": {
-   "games_with_model": 136,
-   "label": "Emerging signal (on watch)",
-   "trend": "Unchanged",
-   "notes": "W10 helped 6/13 live and shrunk; W10 drop 10.14\u219210.18. Pool W2\u2013W10 66/132, 10.478 vs 10.485.",
+   "games_with_model": 149,
+   "label": "Emerging signal (decrease candidate)",
+   "trend": "Sandmoney test at 0.5\u00d7 (no live change)",
+   "notes": "W11 helped 4/13 (7.69 with vs 7.03 without); second straight week <50% meets the W10 falsify rule. Pool W2\u2013W11 70/145, 10.232 with vs 10.180 without; 0.5\u00d7 10.186. Blind W11 0.5\u00d7 7.28.",
    "ablation_w2_w4": {
     "drop": 10.156,
     "half": 10.136,
@@ -79,7 +81,13 @@
     "half": 10.468,
     "base": 10.478
    },
-   "w10_drop": 10.177
+   "w10_drop": 10.177,
+   "ablation_w2_w11": {
+    "drop": 10.18,
+    "half": 10.186,
+    "base": 10.232
+   },
+   "w11_drop": 7.028
   },
   "injury_freshness": {
    "games_with_model": 48,
@@ -88,10 +96,10 @@
    "notes": "W4 pulls 09-30b TNF; 10-03a Sun AM; 10-04a SNF; 10-05a MNF. Holding. Sun AM refresh landed in stale /workspace/nsd copy \u2014 copied to desk locks."
   },
   "pff_ytd": {
-   "games_with_model": 136,
+   "games_with_model": 149,
    "label": "Insufficient evidence",
-   "trend": "Unchanged (decrease candidate withdrawn)",
-   "notes": "W10 prefers 1.0 again (drop 10.14\u219210.52). Pool drop 9.90 is in-sample.",
+   "trend": "Unchanged",
+   "notes": "W11 prefers 1.0 (drop 7.69\u21928.02), third straight live week. Pool drop 9.74 is in-sample.",
    "ablation_w2_w4": {
     "drop": 9.201,
     "half": 9.603,
@@ -132,13 +140,19 @@
     "half": 10.121,
     "base": 10.478
    },
-   "w10_drop": 10.524
+   "w10_drop": 10.524,
+   "ablation_w2_w11": {
+    "drop": 9.738,
+    "half": 9.914,
+    "base": 10.232
+   },
+   "w11_drop": 8.022
   },
   "large_model_market_gap": {
-   "games_with_model": 136,
+   "games_with_model": 149,
    "label": "Strong signal",
    "trend": "PASS / minimum units (keep)",
-   "notes": "No W10 8+ game. 3/17."
+   "notes": "No W11 8+ game. 3/17."
   },
   "qb_doubtful_to_out": {
    "games_with_model": 1,
@@ -147,23 +161,24 @@
    "notes": "PHI@CHI Caleb D\u2192OUT (Keenum); lock underpriced full OUT vs inactives but CHI +20 anyway. Process checklist."
   },
   "hfa": {
-   "games_with_model": 136,
-   "label": "Emerging signal",
-   "trend": "Sandmoney test at 1.0\u20131.5 (priority up)",
+   "games_with_model": 149,
+   "label": "Insufficient evidence",
+   "trend": "Monitor; Sandmoney test at 1.0\u20131.5 (priority down)",
    "ablation_w2_w4_drop": 10.205,
-   "notes": "W10 home 3\u201310, drop-HFA 10.14\u21929.45. W2\u2013W10 home \u22120.57 (n=127).",
+   "notes": "W11 home 11\u20131, drop-HFA 7.69\u21928.75. W2\u2013W11 home +0.40 (n=139), up from \u22120.57.",
    "ablation_w2_w5_drop": 10.5,
    "ablation_w2_w6_drop": 10.127,
    "ablation_w2_w7_drop": 10.471,
    "ablation_w2_w8_drop": 10.788,
    "ablation_w2_w9_drop": 10.445,
-   "ablation_w2_w10_drop": 10.34
+   "ablation_w2_w10_drop": 10.34,
+   "ablation_w2_w11_drop": 10.199
   },
   "prior": {
-   "games_with_model": 136,
+   "games_with_model": 149,
    "label": "Insufficient evidence (shrink falsified out of sample)",
    "trend": "Keep live rating; shrink stays a Sandmoney-only idea",
-   "notes": "Blind W5 \u22120.7, W6 \u22122.3, W7 \u22122.1, W8 \u22120.8, W9 +3.6, W10 +2.6 (12.77 vs 10.14). W10 drop-rating 10.14\u219212.95: rating carried the week.",
+   "notes": "Blind W5 \u22120.7, W6 \u22122.3, W7 \u22122.1, W8 \u22120.8, W9 +3.6, W10 +2.6, W11 +1.7 (9.39 vs 7.69). W11 drop-rating 7.69\u21929.40. Rating carried the big favorites (KC, BUF, HOU, CHI) but drove the three falsified road-favorite gaps (PIT, JAX, CIN).",
    "ablation_w2_w4": {
     "drop": 9.223,
     "half": 9.337,
@@ -204,10 +219,16 @@
     "half": 10.116,
     "base": 10.478
    },
-   "w10_drop": 12.952
+   "w10_drop": 12.952,
+   "ablation_w2_w11": {
+    "drop": 10.266,
+    "half": 9.951,
+    "base": 10.232
+   },
+   "w11_drop": 9.4
   },
   "madden": {
-   "games_with_model": 136,
+   "games_with_model": 149,
    "label": "Insufficient evidence",
    "trend": "Unchanged",
    "ablation_w2_w4_drop": 10.038,
@@ -217,10 +238,11 @@
    "ablation_w2_w7_drop": 10.645,
    "ablation_w2_w8_drop": 10.798,
    "ablation_w2_w9_drop": 10.428,
-   "ablation_w2_w10_drop": 10.409
+   "ablation_w2_w10_drop": 10.409,
+   "ablation_w2_w11_drop": 10.193
   },
   "pff": {
-   "games_with_model": 136,
+   "games_with_model": 149,
    "label": "Insufficient evidence",
    "trend": "Monitor",
    "notes": "PFF 22 player grades re-teamed to 2026 rosters from W5 (PR #26). W5 drop hurts (11.81); pool neutral (10.511).",
@@ -230,10 +252,11 @@
    "ablation_w2_w7_drop": 10.68,
    "ablation_w2_w8_drop": 10.841,
    "ablation_w2_w9_drop": 10.488,
-   "ablation_w2_w10_drop": 10.453
+   "ablation_w2_w10_drop": 10.453,
+   "ablation_w2_w11_drop": 10.238
   },
   "sos": {
-   "games_with_model": 136,
+   "games_with_model": 149,
    "label": "Insufficient evidence",
    "trend": "Monitor",
    "ablation_w2_w4_drop": 9.877,
@@ -243,7 +266,8 @@
    "ablation_w2_w7_drop": 10.583,
    "ablation_w2_w8_drop": 10.788,
    "ablation_w2_w9_drop": 10.417,
-   "ablation_w2_w10_drop": 10.388
+   "ablation_w2_w10_drop": 10.388,
+   "ablation_w2_w11_drop": 10.15
   },
   "prep": {
    "games_with_model": 65,
@@ -251,7 +275,7 @@
    "trend": "Unchanged"
   },
   "ats_coach": {
-   "games_with_model": 136,
+   "games_with_model": 149,
    "label": "Insufficient evidence",
    "trend": "Unchanged",
    "ablation_w2_w4_drop": 10.116,
@@ -260,10 +284,11 @@
    "ablation_w2_w7_drop": 10.716,
    "ablation_w2_w8_drop": 10.904,
    "ablation_w2_w9_drop": 10.518,
-   "ablation_w2_w10_drop": 10.479
+   "ablation_w2_w10_drop": 10.479,
+   "ablation_w2_w11_drop": 10.236
   },
   "travel_sched": {
-   "games_with_model": 136,
+   "games_with_model": 149,
    "label": "Insufficient evidence",
    "trend": "Unchanged",
    "ablation_w2_w4_drop": 10.158,
@@ -272,7 +297,8 @@
    "ablation_w2_w7_drop": 10.734,
    "ablation_w2_w8_drop": 10.915,
    "ablation_w2_w9_drop": 10.517,
-   "ablation_w2_w10_drop": 10.467
+   "ablation_w2_w10_drop": 10.467,
+   "ablation_w2_w11_drop": 10.229
   },
   "matchup_chips": {
    "games_with_model": 65,
@@ -280,7 +306,7 @@
    "trend": "Unchanged"
   },
   "draft": {
-   "games_with_model": 136,
+   "games_with_model": 149,
    "label": "Insufficient evidence",
    "trend": "Unchanged",
    "ablation_w2_w4_drop": 10.175,
@@ -289,10 +315,11 @@
    "ablation_w2_w7_drop": 10.74,
    "ablation_w2_w8_drop": 10.925,
    "ablation_w2_w9_drop": 10.536,
-   "ablation_w2_w10_drop": 10.495
+   "ablation_w2_w10_drop": 10.495,
+   "ablation_w2_w11_drop": 10.247
   },
   "return": {
-   "games_with_model": 136,
+   "games_with_model": 149,
    "label": "Insufficient evidence",
    "trend": "Unchanged",
    "ablation_w2_w4_drop": 10.1,
@@ -301,7 +328,8 @@
    "ablation_w2_w7_drop": 10.7,
    "ablation_w2_w8_drop": 10.891,
    "ablation_w2_w9_drop": 10.506,
-   "ablation_w2_w10_drop": 10.468
+   "ablation_w2_w10_drop": 10.468,
+   "ablation_w2_w11_drop": 10.223
   },
   "late_injury_qb_process": {
    "games_with_model": 1,
@@ -310,10 +338,10 @@
    "notes": "W3 Caleb D\u2192OUT on MNF; keep inactive reconciliation at freeze."
   },
   "mid_gap_value": {
-   "games_with_model": 136,
+   "games_with_model": 149,
    "label": "Insufficient evidence",
    "trend": "Monitor",
-   "notes": "W10 3/7; cumulative 29/60 (48%), MAE 9.79 vs 9.39."
+   "notes": "W11 3/6; cumulative 32/66 (48%), MAE 9.65 vs 9.30."
   },
   "qb1_roster_map": {
    "games_with_model": 3,
@@ -322,22 +350,22 @@
    "notes": "W4 LAC 'Trey Lance QB1 Q' (Herbert played); LV O'Connell QB1 Q (Cousins started); NE A.J. Brown WR1 IR persists from W2. W5: LV Cousins and LAC Herbert started as tagged; no new QB1 mapping misses found."
   },
   "doubtful_full_out": {
-   "games_with_model": 136,
+   "games_with_model": 149,
    "label": "Emerging signal",
    "trend": "Unchanged (supported)",
-   "notes": "25/25 through W10 (W10 11/11)."
+   "notes": "29/29 through W11 (W11 4/4)."
   },
   "qb1_out_cap": {
-   "games_with_model": 136,
+   "games_with_model": 149,
    "label": "Emerging signal",
-   "trend": "Sandmoney replay (priority)",
-   "notes": "W10 backup sides 2/4 (SEA, MIN yes; NYG, BAL no); W3\u2013W10 10/23. Three straight games with the model \u22655 more bullish than close on a backup-QB team all lost outright (W9 MIN, W10 NYG, BAL). Murray OUT 0.28 again."
+   "trend": "Sandmoney replay + PASS flag (priority)",
+   "notes": "W11 backup sides 3/4 vs close (PHI, NYG, BAL yes; MIN no); W3\u2013W11 13/27. Model ATS 0/6 in backup-QB games with |gap|\u22653 (W9\u2013W10 too bullish on the backup, W11 too bearish)."
   },
   "qb_q_at_inactives": {
-   "games_with_model": 136,
+   "games_with_model": 149,
    "label": "Strong (process)",
    "trend": "Process fix",
-   "notes": "W10: 11-15a (10:09 AM) after the 7:53 AM freeze flipped Walker (KC) and Montgomery (HOU) Q\u2192OUT. Third straight week."
+   "notes": "W11: 11-22a (10:15 AM) after the 7:47 AM re-stamp flipped Beck (ARI), Henley (LAC), Herbig (PIT) to OUT. Fourth straight week."
   },
   "cb_cluster_terms": {
    "games_with_model": 79,
@@ -346,22 +374,22 @@
    "notes": "See non_qb_injury_clusters (W6)."
   },
   "shadow_dvoa_blend": {
-   "games_with_model": 136,
+   "games_with_model": 149,
    "label": "Insufficient evidence",
    "trend": "KEEP TESTING (post-window)",
-   "notes": "W10 shadow 10.64 vs official 10.18 (close 10.25); ATS 6-6-2 vs 7-6-1. W5\u2013W10 n=86 10.3 vs 10.69 (close 9.49); ATS 32-45-9 vs 38-45-3."
+   "notes": "W11 shadow 7.42 vs official 7.69 (close 7.92); ATS 7-6-0 vs 8-5-0. W5\u2013W11 n=99 9.92 vs 10.3 (close 9.29); ATS 39-51-9 vs 46-50-3."
   },
   "non_qb_injury_clusters": {
-   "label": "Insufficient evidence",
-   "trend": "Monitor",
-   "notes": "W10 HOU@CLE (HOU EDGE/LB/WR OUTs, +2.9) helped; JAX@TEN (TEN OL/LB, \u22121.4) helped; SEA@LV (+3.02 incl. QB) slightly hurt. Big terms 18/39.",
-   "games_with_model": 136
+   "label": "Emerging signal (over-weight when stacked on an IR QB term)",
+   "trend": "Monitor; part of the 0.5\u00d7 test",
+   "notes": "W11 BAL@CAR (+2.81: Lamar IR 1.5 + Madubuike/Humphrey/Hawkins) hurt 2.81; PIT@PHI (\u22122.65: Hurts IR 0.77 + Baun OUT/Mondon D/Wicks) hurt 2.65; MIA@BUF (+2.4) hurt 0.26. Big terms 18/42 live (43%).",
+   "games_with_model": 149
   },
   "q_designation_035": {
    "label": "Emerging signal",
    "trend": "Unchanged (supported)",
-   "notes": "W10 35/44 non-OL (80%); W6\u2013W10 100/149 (67%).",
-   "games_with_model": 136
+   "notes": "W11 20/36 non-OL (56%), 20/32 (63%) excluding 4 post-lock OUT/IR flips; W6\u2013W11 120/181 (66%).",
+   "games_with_model": 149
   },
   "data_rating_zero_check": {
    "label": "Process",
@@ -377,10 +405,10 @@
   "market_mae_w02": 11.75,
   "model_mae_w03": 9.129,
   "market_mae_w03": 8.25,
-  "model_mae_cumulative": 10.52,
-  "market_mae_cumulative_approx": 9.554,
-  "model_n": 136,
-  "market_n": 150,
+  "model_mae_cumulative": 10.273,
+  "market_mae_cumulative_approx": 9.424,
+  "model_n": 149,
+  "market_n": 163,
   "model_games_w03": [
    "ATL@GB",
    "LAC@BUF",
@@ -1739,6 +1767,288 @@
    },
    "fav_overproj_w10": -2.3,
    "fav_overproj_w2_w10": 3.26,
+   "caveat": "Descriptive. Layers correlated; single drops overstate each. Sandmoney decides weights, Brett approves."
+  },
+  "model_mae_w11": 7.694,
+  "official_rounded_mae_w11": 7.692,
+  "market_mae_w11": 7.923,
+  "model_games_w11": [
+   "IND@HOU",
+   "ARI@KC",
+   "BAL@CAR",
+   "JAX@NYG",
+   "LV@DEN",
+   "MIA@BUF",
+   "NO@CHI",
+   "NYJ@LAC",
+   "PIT@PHI",
+   "TB@DET",
+   "TEN@DAL",
+   "MIN@SF",
+   "CIN@WSH"
+  ],
+  "model_abs_errors_w11": {
+   "IND@HOU": 7.88,
+   "ARI@KC": 5.58,
+   "BAL@CAR": 5.06,
+   "JAX@NYG": 14.44,
+   "LV@DEN": 3.66,
+   "MIA@BUF": 1.33,
+   "NO@CHI": 1.82,
+   "NYJ@LAC": 0.64,
+   "PIT@PHI": 13.44,
+   "TB@DET": 3.95,
+   "TEN@DAL": 10.2,
+   "MIN@SF": 21.24,
+   "CIN@WSH": 10.78
+  },
+  "model_beat_market_w11": 7,
+  "extreme_gap_beat_w11": "0/0",
+  "extreme_gap_beat_cum_w2_w11": "3/17",
+  "mid_gap_beat_cum_w2_w11": "32/66",
+  "fav_frame_overprojection_w11": -0.38,
+  "fav_frame_overprojection_w2_w11": 2.94,
+  "model_signed_error_home_w11": -6.43,
+  "model_ats_at_close_w11": "8-5-0",
+  "light_ablation_w2_w11": {
+   "scope": "W2\u2013W11 locked games n=147 (W1 excluded: n=2)",
+   "base_model_mae": 10.232,
+   "market_mae": 9.218,
+   "drop_layer_mae": {
+    "prior": 10.266,
+    "fa": 10.343,
+    "draft": 10.247,
+    "madden": 10.193,
+    "pff": 10.238,
+    "pff_ytd": 9.738,
+    "sos": 10.15,
+    "return": 10.223,
+    "injury": 10.18,
+    "hfa": 10.199,
+    "coach": 10.236,
+    "prep": 10.232,
+    "ats": 10.242,
+    "travel": 10.229,
+    "matchup": 10.232,
+    "sched": 10.232
+   },
+   "half_layer_mae": {
+    "prior": 9.951,
+    "pff_ytd": 9.914,
+    "injury": 10.186,
+    "madden": 10.205,
+    "pff": 10.217
+   },
+   "w11_only_drop_mae": {
+    "prior": 9.4,
+    "pff_ytd": 8.022,
+    "injury": 7.028,
+    "madden": 7.971,
+    "pff": 8.017,
+    "hfa": 8.748,
+    "travel": 7.771
+   },
+   "w11_base": 7.694,
+   "whole_model_scale_ex_hfa_pool": {
+    "0.25": 10.203,
+    "0.4": 10.007,
+    "0.5": 9.933,
+    "0.6": 9.886,
+    "0.8": 9.928,
+    "1.0": 10.232
+   },
+   "whole_model_scale_ex_hfa_w11": {
+    "0.25": 9.855,
+    "0.4": 9.306,
+    "0.5": 8.94,
+    "0.6": 8.574,
+    "0.8": 7.882,
+    "1.0": 7.694
+   },
+   "whole_model_scale_ex_hfa_fit_w2_w10": {
+    "0.25": 10.237,
+    "0.4": 10.076,
+    "0.5": 10.03,
+    "0.6": 10.014,
+    "0.8": 10.127,
+    "1.0": 10.478
+   },
+   "grid_rating_x_pffytd": {
+    "0/0": {
+     "fit_w2_w10": 10.449,
+     "w11": 9.96
+    },
+    "0/0.5": {
+     "fit_w2_w10": 10.332,
+     "w11": 9.68
+    },
+    "0/1.0": {
+     "fit_w2_w10": 10.35,
+     "w11": 9.4
+    },
+    "0.25/0": {
+     "fit_w2_w10": 10.051,
+     "w11": 9.388
+    },
+    "0.25/0.5": {
+     "fit_w2_w10": 10.064,
+     "w11": 9.108
+    },
+    "0.25/1.0": {
+     "fit_w2_w10": 10.178,
+     "w11": 8.828
+    },
+    "0.5/0": {
+     "fit_w2_w10": 9.889,
+     "w11": 8.815
+    },
+    "0.5/0.5": {
+     "fit_w2_w10": 9.968,
+     "w11": 8.535
+    },
+    "0.5/1.0": {
+     "fit_w2_w10": 10.116,
+     "w11": 8.255
+    },
+    "1.0/0": {
+     "fit_w2_w10": 9.904,
+     "w11": 8.022
+    },
+    "1.0/0.5": {
+     "fit_w2_w10": 10.121,
+     "w11": 7.777
+    },
+    "1.0/1.0": {
+     "fit_w2_w10": 10.478,
+     "w11": 7.694
+    }
+   },
+   "out_of_sample_w11": {
+    "best_grid_on_fit": "0.5/0",
+    "best_grid_w11": 8.815,
+    "best_whole_on_fit": "0.6",
+    "best_whole_w11": 8.574,
+    "standing_pick_rating025_pffytd0_w11": 9.388,
+    "base": 7.694,
+    "market": 7.923,
+    "note": "Seventh blind week, third straight loss. The old standing pick (rating 0.25x, pff_ytd 0) took W11 from 7.69 to 9.39 (+1.69); the fit-best (0.5/0) gave 8.82; the best whole-model scale on fit (0.6x) gave 8.57. Hindsight best on the W11 grid was the live line (1.0/1.0) for the third straight week. Blind run: -0.7, -2.3, -2.1, -0.8, +3.6, +2.6, +1.7 (net +2.0 against the shrink)."
+   },
+   "injury_under_shrunk_base": {
+    "pool_w2_w11": {
+     "injury_x1": 9.992,
+     "injury_x0.5": 9.989,
+     "injury_x0": 10.012
+    },
+    "w11": {
+     "injury_x1": 9.388,
+     "injury_x0.5": 9.202,
+     "injury_x0": 9.096
+    },
+    "w11_helped_shrunk": "5/13",
+    "big_terms_ge_1_5_helped_shrunk": "19/42"
+   },
+   "injury_live_base": {
+    "w11_helped": "4/13",
+    "pool_helped": "70/145 (W2 7/16, W3 8/16, W4 8/15, W5 5/15, W6 7/14, W7 9/14, W8 8/14, W9 8/15, W10 6/13, W11 4/13)",
+    "big_terms_ge_1_5_helped": "18/42"
+   },
+   "injury_scale_blind_w11": {
+    "note": "Injury term scaled, fit W2\u2013W10 vs blind W11 (live base)",
+    "x1": {
+     "fit": 10.478,
+     "w11": 7.694,
+     "pool": 10.232
+    },
+    "x075": {
+     "fit": 10.472,
+     "w11": 7.486,
+     "pool": 10.208
+    },
+    "x05": {
+     "fit": 10.468,
+     "w11": 7.278,
+     "pool": 10.186
+    },
+    "x0": {
+     "fit": 10.485,
+     "w11": 7.028,
+     "pool": 10.18
+    },
+    "big_terms_only_x05": {
+     "fit": 10.473,
+     "w11": 7.392,
+     "pool": 10.201
+    }
+   },
+   "hfa_scan": {
+    "note": "HFA reset to h on non-neutral games, live base",
+    "h2": {
+     "fit": 10.478,
+     "w11": 7.694,
+     "pool": 10.232
+    },
+    "h15": {
+     "fit": 10.407,
+     "w11": 7.925,
+     "pool": 10.187
+    },
+    "h1": {
+     "fit": 10.366,
+     "w11": 8.155,
+     "pool": 10.171
+    },
+    "h05": {
+     "fit": 10.348,
+     "w11": 8.412,
+     "pool": 10.177
+    }
+   },
+   "gap_buckets_w11": {
+    "<3": {
+     "n": 7,
+     "beat": 4,
+     "model_mae": 7.24,
+     "mkt_mae": 7.57
+    },
+    "3-8": {
+     "n": 6,
+     "beat": 3,
+     "model_mae": 8.23,
+     "mkt_mae": 8.33
+    },
+    "8+": {
+     "n": 0,
+     "beat": 0,
+     "model_mae": null,
+     "mkt_mae": null
+    }
+   },
+   "gap_buckets_w2_w11": {
+    "<3": {
+     "n": 64,
+     "beat": 30,
+     "model_mae": 9.56,
+     "mkt_mae": 9.5
+    },
+    "3-8": {
+     "n": 66,
+     "beat": 32,
+     "model_mae": 9.65,
+     "mkt_mae": 9.3
+    },
+    "8+": {
+     "n": 17,
+     "beat": 3,
+     "model_mae": 15.02,
+     "mkt_mae": 7.85
+    }
+   },
+   "home_margin_nonneutral_w2_w11": {
+    "n": 139,
+    "mean": 0.4
+   },
+   "fav_overproj_w11": -0.38,
+   "fav_overproj_w2_w11": 2.94,
    "caveat": "Descriptive. Layers correlated; single drops overstate each. Sandmoney decides weights, Brett approves."
   }
  }
