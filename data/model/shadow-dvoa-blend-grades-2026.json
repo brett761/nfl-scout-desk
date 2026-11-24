@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "season": 2026,
-  "generated_at": "2026-11-24T15:16:52.072Z",
+  "generated_at": "2026-11-24T16:31:56.730Z",
   "what": "DVOA blend shadow line (50/50 B$ + DVOA on the 2026-performance part, from Week 5) vs the official B$ line and the close. Shadow only: not in the B$ line, the record, Bet History, Overall Record, ATS or the B$ Daily.",
   "method": {
     "shadow": "shadow_dvoa_blend.rounded on the last data/model/bs-line-history-2026.json version published before kick (app.js dvoaBlendShadowHomeSpread, weight DVOA_BLEND_SHADOW_WEIGHT).",
@@ -19,32 +19,33 @@
       7,
       8,
       9,
-      10
+      10,
+      11
     ],
     "decision_ready": true
   },
-  "through_week": 10,
+  "through_week": 11,
   "cumulative": {
-    "n": 86,
-    "mae_shadow": 10.3,
-    "mae_official": 10.69,
-    "mae_close": 9.49,
-    "shadow_minus_official": -0.39,
-    "shadow_minus_close": 0.81,
+    "n": 99,
+    "mae_shadow": 9.92,
+    "mae_official": 10.3,
+    "mae_close": 9.29,
+    "shadow_minus_official": -0.38,
+    "shadow_minus_close": 0.63,
     "ats_shadow": {
-      "record": "32-45-9",
-      "pct": 41.6
+      "record": "39-51-9",
+      "pct": 43.3
     },
     "by_gap_shadow": {
       "<3": {
-        "record": "18-26-9",
-        "n": 53,
-        "pct": 40.9
+        "record": "23-32-9",
+        "n": 64,
+        "pct": 41.8
       },
       "3-8": {
-        "record": "13-18-0",
-        "n": 31,
-        "pct": 41.9
+        "record": "15-18-0",
+        "n": 33,
+        "pct": 45.5
       },
       "8+": {
         "record": "1-1-0",
@@ -53,19 +54,19 @@
       }
     },
     "ats_official": {
-      "record": "38-45-3",
-      "pct": 45.8
+      "record": "46-50-3",
+      "pct": 47.9
     },
     "by_gap_official": {
       "<3": {
-        "record": "15-16-3",
-        "n": 34,
-        "pct": 48.4
+        "record": "20-17-3",
+        "n": 40,
+        "pct": 54.1
       },
       "3-8": {
-        "record": "20-22-0",
-        "n": 42,
-        "pct": 47.6
+        "record": "23-26-0",
+        "n": 49,
+        "pct": 46.9
       },
       "8+": {
         "record": "3-7-0",
@@ -74,8 +75,8 @@
       }
     },
     "sides_differ": {
-      "n": 8,
-      "shadow_record": "3-5-0",
+      "n": 9,
+      "shadow_record": "3-6-0",
       "games": [
         "W5 TB@DAL",
         "W5 CLE@NYJ",
@@ -84,13 +85,14 @@
         "W6 TEN@IND",
         "W9 JAX@BAL",
         "W9 DAL@IND",
-        "W9 NYJ@KC"
+        "W9 NYJ@KC",
+        "W11 IND@HOU"
       ]
     },
     "shadow_closer_to_result": {
-      "closer": 48,
-      "farther": 31,
-      "same": 7
+      "closer": 56,
+      "farther": 35,
+      "same": 8
     }
   },
   "by_week": [
@@ -468,6 +470,69 @@
       "shadow_closer_to_result": {
         "closer": 6,
         "farther": 7,
+        "same": 1
+      }
+    },
+    {
+      "week": 11,
+      "n": 13,
+      "mae_shadow": 7.42,
+      "mae_official": 7.69,
+      "mae_close": 7.92,
+      "shadow_minus_official": -0.27,
+      "shadow_minus_close": -0.5,
+      "ats_shadow": {
+        "record": "7-6-0",
+        "pct": 53.8
+      },
+      "by_gap_shadow": {
+        "<3": {
+          "record": "5-6-0",
+          "n": 11,
+          "pct": 45.5
+        },
+        "3-8": {
+          "record": "2-0-0",
+          "n": 2,
+          "pct": 100
+        },
+        "8+": {
+          "record": "0-0-0",
+          "n": 0,
+          "pct": null
+        }
+      },
+      "ats_official": {
+        "record": "8-5-0",
+        "pct": 61.5
+      },
+      "by_gap_official": {
+        "<3": {
+          "record": "5-1-0",
+          "n": 6,
+          "pct": 83.3
+        },
+        "3-8": {
+          "record": "3-4-0",
+          "n": 7,
+          "pct": 42.9
+        },
+        "8+": {
+          "record": "0-0-0",
+          "n": 0,
+          "pct": null
+        }
+      },
+      "sides_differ": {
+        "n": 1,
+        "shadow_record": "0-1-0",
+        "games": [
+          "W11 IND@HOU"
+        ]
+      },
+      "shadow_closer_to_result": {
+        "closer": 8,
+        "farther": 4,
         "same": 1
       }
     }
@@ -2763,6 +2828,344 @@
       "ats_shadow_side": "BAL",
       "ats_official": "L",
       "ats_official_side": "BAL"
+    },
+    {
+      "week": 11,
+      "game_id": "IND@HOU",
+      "espn_id": "401873066",
+      "kick": "2026-11-20T01:15:00.000Z",
+      "final_home_margin": 23,
+      "close": -12.5,
+      "close_source": "line-history close (data/closes/2026-w11.json)",
+      "official_b_line": -15,
+      "official_raw": -15.12,
+      "official_source": "data/postmortem/locks/2026-w11-ind-hou.json#model_home_spread",
+      "shadow_line": -11,
+      "shadow_raw": -10.96,
+      "shadow_version": 6,
+      "shadow_published_at": "2026-11-19T15:56:12.233Z",
+      "shadow_snapshot_b_line": -15.12,
+      "err_shadow": 12,
+      "err_official": 8,
+      "err_close": 10.5,
+      "gap_shadow": 1.5,
+      "gap_official": 2.5,
+      "ats_shadow": "L",
+      "ats_shadow_side": "IND",
+      "ats_official": "W",
+      "ats_official_side": "HOU"
+    },
+    {
+      "week": 11,
+      "game_id": "ARI@KC",
+      "espn_id": "401873067",
+      "kick": "2026-11-22T18:00:00.000Z",
+      "final_home_margin": 27,
+      "close": -14.5,
+      "close_source": "line-history close (data/closes/2026-w11.json)",
+      "official_b_line": -21.5,
+      "official_raw": -21.42,
+      "official_source": "data/postmortem/locks/2026-w11-ari-kc.json#model_home_spread",
+      "shadow_line": -17,
+      "shadow_raw": -16.78,
+      "shadow_version": 10,
+      "shadow_published_at": "2026-11-22T15:57:26.274Z",
+      "shadow_snapshot_b_line": -21.52,
+      "err_shadow": 10,
+      "err_official": 5.5,
+      "err_close": 12.5,
+      "gap_shadow": 2.5,
+      "gap_official": 7,
+      "ats_shadow": "W",
+      "ats_shadow_side": "KC",
+      "ats_official": "W",
+      "ats_official_side": "KC"
+    },
+    {
+      "week": 11,
+      "game_id": "BAL@CAR",
+      "espn_id": "401873068",
+      "kick": "2026-11-22T18:00:00.000Z",
+      "final_home_margin": 2,
+      "close": -2.5,
+      "close_source": "line-history close (data/closes/2026-w11.json)",
+      "official_b_line": -7,
+      "official_raw": -7.06,
+      "official_source": "data/postmortem/locks/2026-w11-bal-car.json#model_home_spread",
+      "shadow_line": -4.5,
+      "shadow_raw": -4.65,
+      "shadow_version": 10,
+      "shadow_published_at": "2026-11-22T15:57:26.274Z",
+      "shadow_snapshot_b_line": -7.06,
+      "err_shadow": 2.5,
+      "err_official": 5,
+      "err_close": 0.5,
+      "gap_shadow": 2,
+      "gap_official": 4.5,
+      "ats_shadow": "L",
+      "ats_shadow_side": "CAR",
+      "ats_official": "L",
+      "ats_official_side": "CAR"
+    },
+    {
+      "week": 11,
+      "game_id": "MIA@BUF",
+      "espn_id": "401873070",
+      "kick": "2026-11-22T18:00:00.000Z",
+      "final_home_margin": 17,
+      "close": -16.5,
+      "close_source": "line-history close (data/closes/2026-w11.json)",
+      "official_b_line": -18.5,
+      "official_raw": -18.33,
+      "official_source": "data/postmortem/locks/2026-w11-mia-buf.json#model_home_spread",
+      "shadow_line": -17,
+      "shadow_raw": -16.98,
+      "shadow_version": 9,
+      "shadow_published_at": "2026-11-22T15:57:26.274Z",
+      "shadow_snapshot_b_line": -18.28,
+      "err_shadow": 0,
+      "err_official": 1.5,
+      "err_close": 0.5,
+      "gap_shadow": 0.5,
+      "gap_official": 2,
+      "ats_shadow": "W",
+      "ats_shadow_side": "BUF",
+      "ats_official": "W",
+      "ats_official_side": "BUF"
+    },
+    {
+      "week": 11,
+      "game_id": "NO@CHI",
+      "espn_id": "401873071",
+      "kick": "2026-11-22T18:00:00.000Z",
+      "final_home_margin": 8,
+      "close": -12.5,
+      "close_source": "line-history close (data/closes/2026-w11.json)",
+      "official_b_line": -10,
+      "official_raw": -9.82,
+      "official_source": "data/postmortem/locks/2026-w11-no-chi.json#model_home_spread",
+      "shadow_line": -10.5,
+      "shadow_raw": -10.34,
+      "shadow_version": 9,
+      "shadow_published_at": "2026-11-22T15:57:26.274Z",
+      "shadow_snapshot_b_line": -9.82,
+      "err_shadow": 2.5,
+      "err_official": 2,
+      "err_close": 4.5,
+      "gap_shadow": 2,
+      "gap_official": 2.5,
+      "ats_shadow": "W",
+      "ats_shadow_side": "NO",
+      "ats_official": "W",
+      "ats_official_side": "NO"
+    },
+    {
+      "week": 11,
+      "game_id": "PIT@PHI",
+      "espn_id": "401873076",
+      "kick": "2026-11-22T18:00:00.000Z",
+      "final_home_margin": 3,
+      "close": 3.5,
+      "close_source": "line-history close (data/closes/2026-w11.json)",
+      "official_b_line": 10.5,
+      "official_raw": 10.44,
+      "official_source": "data/postmortem/locks/2026-w11-pit-phi.json#model_home_spread",
+      "shadow_line": 6,
+      "shadow_raw": 5.9,
+      "shadow_version": 11,
+      "shadow_published_at": "2026-11-22T15:57:26.274Z",
+      "shadow_snapshot_b_line": 9.95,
+      "err_shadow": 9,
+      "err_official": 13.5,
+      "err_close": 6.5,
+      "gap_shadow": 2.5,
+      "gap_official": 7,
+      "ats_shadow": "L",
+      "ats_shadow_side": "PIT",
+      "ats_official": "L",
+      "ats_official_side": "PIT"
+    },
+    {
+      "week": 11,
+      "game_id": "TB@DET",
+      "espn_id": "401873072",
+      "kick": "2026-11-22T18:00:00.000Z",
+      "final_home_margin": 10,
+      "close": -4.5,
+      "close_source": "line-history close (data/closes/2026-w11.json)",
+      "official_b_line": -6,
+      "official_raw": -6.05,
+      "official_source": "data/postmortem/locks/2026-w11-tb-det.json#model_home_spread",
+      "shadow_line": -6.5,
+      "shadow_raw": -6.62,
+      "shadow_version": 11,
+      "shadow_published_at": "2026-11-22T15:57:26.274Z",
+      "shadow_snapshot_b_line": -6.05,
+      "err_shadow": 3.5,
+      "err_official": 4,
+      "err_close": 5.5,
+      "gap_shadow": 2,
+      "gap_official": 1.5,
+      "ats_shadow": "W",
+      "ats_shadow_side": "DET",
+      "ats_official": "W",
+      "ats_official_side": "DET"
+    },
+    {
+      "week": 11,
+      "game_id": "TEN@DAL",
+      "espn_id": "401873073",
+      "kick": "2026-11-22T18:00:00.000Z",
+      "final_home_margin": 21,
+      "close": -7.5,
+      "close_source": "line-history close (data/closes/2026-w11.json)",
+      "official_b_line": -11,
+      "official_raw": -10.8,
+      "official_source": "data/postmortem/locks/2026-w11-ten-dal.json#model_home_spread",
+      "shadow_line": -12.5,
+      "shadow_raw": -12.3,
+      "shadow_version": 11,
+      "shadow_published_at": "2026-11-22T15:57:26.274Z",
+      "shadow_snapshot_b_line": -11.08,
+      "err_shadow": 8.5,
+      "err_official": 10,
+      "err_close": 13.5,
+      "gap_shadow": 5,
+      "gap_official": 3.5,
+      "ats_shadow": "W",
+      "ats_shadow_side": "DAL",
+      "ats_official": "W",
+      "ats_official_side": "DAL"
+    },
+    {
+      "week": 11,
+      "game_id": "NYJ@LAC",
+      "espn_id": "401873074",
+      "kick": "2026-11-22T21:05:00.000Z",
+      "final_home_margin": -3,
+      "close": -3,
+      "close_source": "line-history close (data/closes/2026-w11.json)",
+      "official_b_line": 3.5,
+      "official_raw": 3.64,
+      "official_source": "data/postmortem/locks/2026-w11-nyj-lac.json#model_home_spread",
+      "shadow_line": 0,
+      "shadow_raw": 0.12,
+      "shadow_version": 11,
+      "shadow_published_at": "2026-11-22T15:57:26.274Z",
+      "shadow_snapshot_b_line": 4.1,
+      "err_shadow": 3,
+      "err_official": 0.5,
+      "err_close": 6,
+      "gap_shadow": 3,
+      "gap_official": 6.5,
+      "ats_shadow": "W",
+      "ats_shadow_side": "NYJ",
+      "ats_official": "W",
+      "ats_official_side": "NYJ"
+    },
+    {
+      "week": 11,
+      "game_id": "JAX@NYG",
+      "espn_id": "401873069",
+      "kick": "2026-11-22T21:25:00.000Z",
+      "final_home_margin": 5,
+      "close": 6,
+      "close_source": "line-history close (data/closes/2026-w11.json)",
+      "official_b_line": 9.5,
+      "official_raw": 9.44,
+      "official_source": "data/postmortem/locks/2026-w11-jax-nyg.json#model_home_spread",
+      "shadow_line": 7.5,
+      "shadow_raw": 7.63,
+      "shadow_version": 10,
+      "shadow_published_at": "2026-11-22T15:57:26.274Z",
+      "shadow_snapshot_b_line": 9.28,
+      "err_shadow": 12.5,
+      "err_official": 14.5,
+      "err_close": 11,
+      "gap_shadow": 1.5,
+      "gap_official": 3.5,
+      "ats_shadow": "L",
+      "ats_shadow_side": "JAX",
+      "ats_official": "L",
+      "ats_official_side": "JAX"
+    },
+    {
+      "week": 11,
+      "game_id": "LV@DEN",
+      "espn_id": "401873075",
+      "kick": "2026-11-22T21:25:00.000Z",
+      "final_home_margin": 14,
+      "close": -11.5,
+      "close_source": "line-history close (data/closes/2026-w11.json)",
+      "official_b_line": -10.5,
+      "official_raw": -10.34,
+      "official_source": "data/postmortem/locks/2026-w11-lv-den.json#model_home_spread",
+      "shadow_line": -11,
+      "shadow_raw": -10.9,
+      "shadow_version": 9,
+      "shadow_published_at": "2026-11-22T15:57:26.274Z",
+      "shadow_snapshot_b_line": -10.5,
+      "err_shadow": 3,
+      "err_official": 3.5,
+      "err_close": 2.5,
+      "gap_shadow": 0.5,
+      "gap_official": 1,
+      "ats_shadow": "L",
+      "ats_shadow_side": "LV",
+      "ats_official": "L",
+      "ats_official_side": "LV"
+    },
+    {
+      "week": 11,
+      "game_id": "MIN@SF",
+      "espn_id": "401873077",
+      "kick": "2026-11-23T01:20:00.000Z",
+      "final_home_margin": 25,
+      "close": -3.5,
+      "close_source": "line-history close (data/closes/2026-w11.json)",
+      "official_b_line": -4,
+      "official_raw": -3.76,
+      "official_source": "data/postmortem/locks/2026-w11-min-sf.json#model_home_spread",
+      "shadow_line": -4,
+      "shadow_raw": -3.86,
+      "shadow_version": 10,
+      "shadow_published_at": "2026-11-23T00:10:51.317Z",
+      "shadow_snapshot_b_line": -3.76,
+      "err_shadow": 21,
+      "err_official": 21,
+      "err_close": 21.5,
+      "gap_shadow": 0.5,
+      "gap_official": 0.5,
+      "ats_shadow": "W",
+      "ats_shadow_side": "SF",
+      "ats_official": "W",
+      "ats_official_side": "SF"
+    },
+    {
+      "week": 11,
+      "game_id": "CIN@WSH",
+      "espn_id": "401873078",
+      "kick": "2026-11-24T01:15:00.000Z",
+      "final_home_margin": 2,
+      "close": 6,
+      "close_source": "line-history close (data/closes/2026-w11.json)",
+      "official_b_line": 9,
+      "official_raw": 8.78,
+      "official_source": "data/postmortem/locks/2026-w11-cin-wsh.json#model_home_spread",
+      "shadow_line": 7,
+      "shadow_raw": 7.06,
+      "shadow_version": 12,
+      "shadow_published_at": "2026-11-24T00:16:27.791Z",
+      "shadow_snapshot_b_line": 8.78,
+      "err_shadow": 9,
+      "err_official": 11,
+      "err_close": 8,
+      "gap_shadow": 1,
+      "gap_official": 3,
+      "ats_shadow": "L",
+      "ats_shadow_side": "CIN",
+      "ats_official": "L",
+      "ats_official_side": "CIN"
     }
   ],
   "not_graded": []
