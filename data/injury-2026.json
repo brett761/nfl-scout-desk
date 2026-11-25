@@ -1,14 +1,14 @@
 {
-  "pulled": "2026-11-24a",
-  "pulled_et": "2026-11-24 10:11 AM ET (America/New_York)",
-  "phase": "WORKING-TUE",
+  "pulled": "2026-11-25a",
+  "pulled_et": "2026-11-25 10:07 AM ET (America/New_York)",
+  "phase": "WORKING-WED",
   "sources": [
     "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
     "https://www.nfl.com/injuries/",
     "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?seasontype=2&week=11&year=2026",
-    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?seasontype=2&week=11&year=2026"
+    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?seasontype=2&week=12&year=2026"
   ],
-  "note": "WORKING-TUE Tuesday ESPN refresh (Week 11 FINAL incl. CIN@WSH MNF / Week 12 board; prior seed 2026-11-23a WORKING-MON). Week 11 fully FINAL (incl. CIN@WSH MNF); no protects. Week 12 official practice sheet not out yet (Thanksgiving Thu games; Wed ~4pm ET) - ESPN working list only. Byes Week 12 (see schedule). Finished clubs: drop gameday inactive / ruled-out-for-remainder / coach's-decision noise; keep multi-week OUT + IR/PUP/NFI. ESPN designations authoritative, cross-checked vs NFL.com. Doubtful = 1.0 out. Preserve manuals (Sills 0 etc.). Tier caps QB<=1.5 / All-Pro<=0.5 / other<=0.25 on auto; Madden-first else PFF; floor 0.2x status; Cap team 6.0. No rumor moves.",
+  "note": "WORKING-WED Wednesday ESPN refresh (Week 11 FINAL incl. CIN@WSH MNF / Week 12 board; prior seed 2026-11-24a WORKING-TUE). Week 11 fully FINAL (incl. CIN@WSH MNF); no protects. Week 12 official practice sheet not out yet (Thanksgiving Thu games; Wed ~4pm ET) - ESPN working list only. Byes Week 12 (see schedule). Finished clubs: drop gameday inactive / ruled-out-for-remainder / coach's-decision noise; keep multi-week OUT + IR/PUP/NFI. ESPN designations authoritative, cross-checked vs NFL.com. Doubtful = 1.0 out. Preserve manuals (Sills 0 etc.). Tier caps QB<=1.5 / All-Pro<=0.5 / other<=0.25 on auto; Madden-first else PFF; floor 0.2x status; Cap team 6.0. No rumor moves.",
   "espn_timestamp": "2026-11-24T15:11:06Z",
   "teams": {
     "ARI": [
@@ -3306,5 +3306,5 @@
       }
     ]
   },
-  "stamp": "2026-11-24a"
+  "stamp": "2026-11-25a"
 }
