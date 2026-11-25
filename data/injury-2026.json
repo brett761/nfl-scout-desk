@@ -1,14 +1,20 @@
 {
-  "pulled": "2026-11-25a",
-  "pulled_et": "2026-11-25 10:07 AM ET (America/New_York)",
-  "phase": "WORKING-WED",
+  "pulled": "2026-11-25b",
+  "pulled_et": "2026-11-25 4:25 PM ET (America/New_York)",
+  "phase": "FINAL",
   "sources": [
-    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-    "https://www.nfl.com/injuries/",
-    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?seasontype=2&week=11&year=2026",
-    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?seasontype=2&week=12&year=2026"
+    "https://www.nfl.com/news/nfl-week-12-injury-report-2026-season",
+    "https://www.packers.com/team/injury-report/week/reg-12",
+    "https://www.therams.com/team/injury-report/week/reg-12",
+    "https://www.chicagobears.com/team/injury-report/week/reg-12",
+    "https://www.detroitlions.com/team/injury-report/week/reg-12",
+    "https://www.philadelphiaeagles.com/team/injury-report/week/reg-12",
+    "https://www.dallascowboys.com/team/injury-report/week/reg-12",
+    "https://www.chiefs.com/team/injury-report/week/reg-12",
+    "https://www.nfl.com/injuries/league/2026/reg12",
+    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries"
   ],
-  "note": "WORKING-WED Wednesday ESPN refresh (Week 11 FINAL incl. CIN@WSH MNF / Week 12 board; prior seed 2026-11-24a WORKING-TUE). Week 11 fully FINAL (incl. CIN@WSH MNF); no protects. Week 12 official practice sheet not out yet (Thanksgiving Thu games; Wed ~4pm ET) - ESPN working list only. Byes Week 12 (see schedule). Finished clubs: drop gameday inactive / ruled-out-for-remainder / coach's-decision noise; keep multi-week OUT + IR/PUP/NFI. ESPN designations authoritative, cross-checked vs NFL.com. Doubtful = 1.0 out. Preserve manuals (Sills 0 etc.). Tier caps QB<=1.5 / All-Pro<=0.5 / other<=0.25 on auto; Madden-first else PFF; floor 0.2x status; Cap team 6.0. No rumor moves.",
+  "note": "FINAL 2026-11-25b Week 12 Wed GB@LAR + Thanksgiving CHI@DET, PHI@DAL, KC@BUF after official Game Status (club reg-12 tables + nfl.com Week 12 report). GB: Parsons OUT->Q (LP x3), Jacobs/Zeitler/Rhyan/Glover/Franklin/Melton/Moore Q. LAR OUT Avila (manual 0.3), Shelton (manual 0.4), T. Ferguson; Garrett/Curl no status off; Dedich/Turner stale IR dropped. CHI OUT Gordon (manual 0.45), R. Johnson, Hicks; Q Stevenson, D. Jackson (0.1). DET OUT Gill-Howard, Rakestraw; Q Clark, Wonnum; LaPorta off. PHI OUT Ebiketie, J. Jones; McKee/Barkley/Goedert/Shipley/Mondon off (no status). DAL OUT Booker (0.35), J. Ferguson (0.3), Locke, Mingo; Q Thompson (0.1), D. Moore (0.1). KC OUT Walker, J. Moore, Norman-Lott; Q Gray, Woods (0.1); T. Smith off. BUF Q Kincaid, Torrence, Sanders, D. Williams, Benford; Rousseau/Hamlin off. GB/LAR/CHI/DET/PHI/DAL/KC/BUF rows Wed/TNF-protected: later ESPN reseeds must not soften them. Other clubs unchanged from 2026-11-25a WORKING-WED. Doubtful 1.0. Standing manuals preserved.",
   "espn_timestamp": "2026-11-24T15:11:06Z",
   "teams": {
     "ARI": [
@@ -343,57 +349,43 @@
         "name": "T.J. Sanders",
         "pos": "IDL",
         "status": "QUESTIONABLE",
-        "note": "questionable",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "note": "Official FINAL Questionable (LP/LP). Auto soft.",
+        "source": "https://www.nfl.com/news/nfl-week-12-injury-report-2026-season",
+        "on": true,
+        "injury": "Shoulder"
       },
       {
         "name": "Dorian Williams",
         "pos": "LB",
         "status": "QUESTIONABLE",
-        "note": "Williams (calf) was listed as limited for Monday's estimated practice.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "note": "Official FINAL Questionable (LP/LP). Auto soft.",
+        "source": "https://www.nfl.com/news/nfl-week-12-injury-report-2026-season",
         "on": true,
         "impact": 0.2,
-        "impact_source": "pff"
-      },
-      {
-        "name": "Greg Rousseau",
-        "pos": "LB",
-        "status": "QUESTIONABLE",
-        "note": "Rousseau (back) was listed as limited for Monday's estimated practice.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.25,
-        "impact_source": "madden"
+        "impact_source": "pff",
+        "injury": "Calf"
       },
       {
         "name": "Christian Benford",
         "pos": "CB1",
         "status": "QUESTIONABLE",
-        "note": "Benford (groin) was listed as a non-participant on Monday's practice estimate.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "note": "Official FINAL Questionable (DNP/LP). CB1 Madden 80 vs KC passing game; P(miss) ~0.35. Auto soft. Full valuation manual 0.35 (CB1 Madden 80 vs KC passing game; DNP/LP so P(miss) ~0.35 -> ~0.12 expected).",
+        "source": "https://www.nfl.com/news/nfl-week-12-injury-report-2026-season",
         "on": true,
-        "impact": 0.2,
-        "impact_source": "madden"
-      },
-      {
-        "name": "Damar Hamlin",
-        "pos": "S",
-        "status": "QUESTIONABLE",
-        "note": "Hamlin (toe) is listed as questionable for Sunday's game against Miami.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "impact": 0.35,
+        "impact_source": "manual",
+        "injury": "Groin"
       },
       {
         "name": "Dalton Kincaid",
         "pos": "TE1",
         "status": "QUESTIONABLE",
-        "note": "Kincaid (thumb/ankle) was listed as a limited participant on Monday's practice estimate.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "note": "Official FINAL Questionable (LP/LP). TE1 Madden 83. Auto soft.",
+        "source": "https://www.nfl.com/news/nfl-week-12-injury-report-2026-season",
         "on": true,
         "impact": 0.25,
-        "impact_source": "madden"
+        "impact_source": "madden",
+        "injury": "Thumb/Ankle"
       },
       {
         "name": "Ar'maj Reed-Adams",
@@ -423,8 +415,17 @@
         "name": "Dorian Strong",
         "pos": "DEPTH",
         "status": "NFI",
-        "note": "FINAL TNF. Neck \u2014 reserve/NFI. ESPN summary Out (NFI-R). Depth CB; on for completeness.",
+        "note": "FINAL TNF. Neck — reserve/NFI. ESPN summary Out (NFI-R). Depth CB; on for completeness.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872932",
+        "on": true
+      },
+      {
+        "name": "O'Cyrus Torrence",
+        "pos": "OG",
+        "status": "QUESTIONABLE",
+        "injury": "Ankle",
+        "note": "Official FINAL Questionable (LP/LP). RG Madden 75. Auto soft.",
+        "source": "https://www.nfl.com/news/nfl-week-12-injury-report-2026-season",
         "on": true
       }
     ],
@@ -533,20 +534,24 @@
       {
         "name": "Kyler Gordon",
         "pos": "CB1",
-        "status": "QUESTIONABLE",
-        "note": "Gordon (shoulder) has been ruled out for Sunday's game against the Saints.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "status": "OUT",
+        "note": "Official FINAL Out (DNP x3). Slot CB Madden 82 vs DET slot-heavy passing game (St. Brown). Stevenson Q, so CB depth thin. Manual 0.45 vs auto 0.25 cap.",
+        "source": "https://www.chicagobears.com/team/injury-report/week/reg-12",
         "on": true,
-        "impact": 0.25,
-        "impact_source": "madden"
+        "impact": 0.45,
+        "impact_source": "manual",
+        "injury": "Shoulder"
       },
       {
         "name": "Roschon Johnson",
         "pos": "RB1",
-        "status": "QUESTIONABLE",
-        "note": "Johnson (ankle) was listed as a non-participant on Monday's estimated practice report.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "status": "OUT",
+        "note": "Official FINAL Out (DNP x3). Rotational RB Madden 72. Auto. Full valuation manual 0.1 (RB2 Madden 72, lead back healthy).",
+        "source": "https://www.chicagobears.com/team/injury-report/week/reg-12",
+        "on": true,
+        "injury": "Ankle",
+        "impact": 0.1,
+        "impact_source": "manual"
       },
       {
         "name": "Zavier Scott",
@@ -601,7 +606,7 @@
         "on": true,
         "impact": 0.25,
         "impact_source": "manual",
-        "valuation_note": "W6 FINAL valuation: ESPN Out; with Montez Sweat suspended both starting EDGEs are gone \u2014 fills missing auto at tier cap."
+        "valuation_note": "W6 FINAL valuation: ESPN Out; with Montez Sweat suspended both starting EDGEs are gone — fills missing auto at tier cap."
       },
       {
         "name": "Noah Sewell",
@@ -610,6 +615,37 @@
         "note": "Sewell (Achilles) was activated from the Bears' reserve/PUP list Saturday.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
+      },
+      {
+        "name": "Elijah Hicks",
+        "pos": "S",
+        "status": "OUT",
+        "injury": "Concussion",
+        "note": "Official FINAL Out (DNP/DNP). S Madden 67, Bryant on IR. Auto. Full valuation manual 0.15 (rotational S Madden 67).",
+        "source": "https://www.chicagobears.com/team/injury-report/week/reg-12",
+        "on": true,
+        "impact": 0.15,
+        "impact_source": "manual"
+      },
+      {
+        "name": "Tyrique Stevenson",
+        "pos": "CB1",
+        "status": "QUESTIONABLE",
+        "injury": "Groin",
+        "note": "Official FINAL Questionable (LP Wed, first listing). Outside CB; matters with Gordon out. Auto soft (0.35).",
+        "source": "https://www.chicagobears.com/team/injury-report/week/reg-12",
+        "on": true
+      },
+      {
+        "name": "D'Marco Jackson",
+        "pos": "LB",
+        "status": "QUESTIONABLE",
+        "injury": "Elbow",
+        "note": "Official FINAL Questionable (FP x3). P(miss) ~0.1. Manual 0.1 soft.",
+        "source": "https://www.chicagobears.com/team/injury-report/week/reg-12",
+        "on": true,
+        "impact": 0.1,
+        "impact_source": "manual"
       }
     ],
     "CIN": [
@@ -754,7 +790,7 @@
         "name": "Kendrick Green",
         "pos": "OG",
         "status": "IR",
-        "note": "ir Explicit impact 0 \u2014 depth IR; no pos_base fallthrough.",
+        "note": "ir Explicit impact 0 — depth IR; no pos_base fallthrough.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true,
         "impact": 0,
@@ -765,44 +801,35 @@
       {
         "name": "P.J. Locke",
         "pos": "S",
-        "status": "QUESTIONABLE",
-        "note": "Locke (concussion) has been ruled out for Sunday's game against the Titans, Tommy Yarrish of the Cowboys' official site reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "status": "OUT",
+        "note": "Official FINAL Out (LP x3, concussion). S Madden 74. Auto. Full valuation manual 0.2 (starting-ish S Madden 74).",
+        "source": "https://www.dallascowboys.com/team/injury-report/week/reg-12",
+        "on": true,
+        "injury": "Concussion",
+        "impact": 0.2,
+        "impact_source": "manual"
       },
       {
         "name": "Jonathan Mingo",
         "pos": "WR2",
-        "status": "QUESTIONABLE",
-        "note": "Mingo (ankle/foot) has been ruled out for Sunday's game against the Titans, Tommy Yarrish of the Cowboys' official site reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
-        "name": "Jaishawn Barham",
-        "pos": "LB",
-        "status": "QUESTIONABLE",
-        "note": "questionable",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
-        "name": "Dee Winters",
-        "pos": "LB",
-        "status": "QUESTIONABLE",
-        "note": "Winters (knee) was estimated as DNP on Monday's practice report, Tommy Yarrish of the Cowboys' official site reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "status": "OUT",
+        "note": "Official FINAL Out (LP/DNP/DNP). WR Madden 71. Auto. Full valuation manual 0.15 (WR3 Madden 71).",
+        "source": "https://www.dallascowboys.com/team/injury-report/week/reg-12",
+        "on": true,
+        "injury": "Ankle",
+        "impact": 0.15,
+        "impact_source": "manual"
       },
       {
         "name": "Jake Ferguson",
         "pos": "TE1",
-        "status": "QUESTIONABLE",
-        "note": "Ferguson (knee/ankle) was listed as a non-participant on Monday's practice estimate, Tommy Yarrish of the Cowboys' official site reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "status": "OUT",
+        "note": "Official FINAL Out (DNP x3). TE1 Madden 77, Prescott's chain mover. Manual 0.3.",
+        "source": "https://www.dallascowboys.com/team/injury-report/week/reg-12",
         "on": true,
-        "impact": 0.2,
-        "impact_source": "madden"
+        "impact": 0.3,
+        "impact_source": "manual",
+        "injury": "Knee/Ankle"
       },
       {
         "name": "DaRon Bland",
@@ -818,21 +845,23 @@
         "name": "Tyler Booker",
         "pos": "OG",
         "status": "OUT",
-        "note": "Booker suffered a high-ankle sprain in Sunday's 46-40 loss to the 49ers, Calvin Watkins of The Dallas Morning News  reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "note": "Official FINAL Out (DNP x3). RG Madden 85, high-ankle. Manual 0.35 vs auto 0.25.",
+        "source": "https://www.dallascowboys.com/team/injury-report/week/reg-12",
         "on": true,
-        "impact": 0.25,
-        "impact_source": "madden"
+        "impact": 0.35,
+        "impact_source": "manual",
+        "injury": "Ankle"
       },
       {
         "name": "Jalen Thompson",
         "pos": "S",
-        "status": "IR",
-        "note": "Thompson (hamstring) has been downgraded to out for Sunday's game against the Titans, Tommy Yarrish of the Cowboys' official site reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "status": "QUESTIONABLE",
+        "note": "Official FINAL Questionable (FP x3). ESPN had IR then Q; full practice -> likely plays. Manual 0.1 soft.",
+        "source": "https://www.dallascowboys.com/team/injury-report/week/reg-12",
         "on": true,
-        "impact": 0.25,
-        "impact_source": "madden"
+        "impact": 0.1,
+        "impact_source": "manual",
+        "injury": "Hamstring"
       },
       {
         "name": "Tyler Goodson",
@@ -859,6 +888,17 @@
         "note": "The Cowboys placed Davis (hip) on injured reserve Saturday, Adam Schefter of ESPN reports.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
+      },
+      {
+        "name": "Devin Moore",
+        "pos": "CB1",
+        "status": "QUESTIONABLE",
+        "injury": "Hip",
+        "note": "Official FINAL Questionable (FP x3). CB Madden 71 (Bland IR). Manual 0.1 soft.",
+        "source": "https://www.dallascowboys.com/team/injury-report/week/reg-12",
+        "on": true,
+        "impact": 0.1,
+        "impact_source": "manual"
       }
     ],
     "DEN": [
@@ -945,40 +985,35 @@
       {
         "name": "Ennis Rakestraw Jr.",
         "pos": "CB1",
-        "status": "QUESTIONABLE",
-        "note": "questionable",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "status": "OUT",
+        "note": "Official FINAL Out (DNP x3). Depth/rotational CB (Maddox IR). Auto. Full valuation manual 0.15 (depth CB).",
+        "source": "https://www.detroitlions.com/team/injury-report/week/reg-12",
+        "on": true,
+        "injury": "Shoulder",
+        "impact": 0.15,
+        "impact_source": "manual"
       },
       {
         "name": "DJ Wonnum",
         "pos": "LB",
         "status": "QUESTIONABLE",
-        "note": "Wonnum (back) did not participate at the Lions' walkthrough practice Monday.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "note": "Official FINAL Questionable (DNP/DNP/LP). EDGE with Hutchinson on IR. Auto soft.",
+        "source": "https://www.detroitlions.com/team/injury-report/week/reg-12",
         "on": true,
         "impact": 0.2,
-        "impact_source": "madden"
+        "impact_source": "madden",
+        "injury": "Back"
       },
       {
         "name": "Chuck Clark",
         "pos": "S",
         "status": "QUESTIONABLE",
-        "note": "Clark (hamstring) was considered to be a non-participant at the Lions' walkthrough practice Monday.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "note": "Official FINAL Questionable (DNP/LP/LP). S Madden 79 (Harper IR). Auto soft.",
+        "source": "https://www.detroitlions.com/team/injury-report/week/reg-12",
         "on": true,
         "impact": 0.2,
-        "impact_source": "madden"
-      },
-      {
-        "name": "Sam LaPorta",
-        "pos": "TE1",
-        "status": "QUESTIONABLE",
-        "note": "LaPorta (ankle) was limited at Monday's walkthrough, Nolan Bianchi of The Detroit News reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.5,
-        "impact_source": "madden"
+        "impact_source": "madden",
+        "injury": "Hamstring"
       },
       {
         "name": "Cade Mays",
@@ -1073,6 +1108,17 @@
         "on": true,
         "impact": 0.25,
         "impact_source": "pff"
+      },
+      {
+        "name": "Skyler Gill-Howard",
+        "pos": "IDL",
+        "status": "OUT",
+        "injury": "Knee",
+        "note": "Official FINAL Out (DNP x3). Rotational DT Madden 65. Auto. Full valuation manual 0.1 (rotational DT Madden 65).",
+        "source": "https://www.detroitlions.com/team/injury-report/week/reg-12",
+        "on": true,
+        "impact": 0.1,
+        "impact_source": "manual"
       }
     ],
     "GB": [
@@ -1080,18 +1126,19 @@
         "name": "Kevin Zeitler",
         "pos": "OG",
         "status": "QUESTIONABLE",
-        "note": "Zeitler (ankle/triceps) is questionable for Sunday's game against the Vikings, Wes Hodkiewicz of the Packers' official site reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "note": "Official FINAL Questionable (LP x3). RG Madden 81. Auto soft.",
+        "source": "https://www.packers.com/team/injury-report/week/reg-12",
         "on": true,
         "impact": 0.2,
-        "impact_source": "madden"
+        "impact_source": "madden",
+        "injury": "Triceps"
       },
       {
         "name": "Sean Rhyan",
         "pos": "OG",
         "status": "QUESTIONABLE",
-        "note": "Rhyan (ankle) has been ruled out for Sunday's game against the Vikings, Wes Hodkiewicz of the Packers' official site reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "note": "Official FINAL Questionable (LP x3). C/G Madden 70 (Monk on IR). Auto soft.",
+        "source": "https://www.packers.com/team/injury-report/week/reg-12",
         "on": true,
         "injury": "Ankle",
         "impact": 0.2,
@@ -1101,44 +1148,48 @@
         "name": "Skyy Moore",
         "pos": "WR2",
         "status": "QUESTIONABLE",
-        "note": "Moore (ankle) remained limited in Monday's practice.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "note": "Official FINAL Questionable (LP x3). Auto soft.",
+        "source": "https://www.packers.com/team/injury-report/week/reg-12",
+        "on": true,
+        "injury": "Ankle"
       },
       {
         "name": "Bo Melton",
         "pos": "WR2",
         "status": "QUESTIONABLE",
-        "note": "Melton (thigh) was limited in Monday's practice.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "note": "Official FINAL Questionable (LP x3). Auto soft.",
+        "source": "https://www.packers.com/team/injury-report/week/reg-12",
+        "on": true,
+        "injury": "Thigh"
       },
       {
         "name": "Micah Parsons",
         "pos": "EDGE1",
-        "status": "OUT",
-        "note": "Parsons (knee) remained a limited practice participant Monday, Matt Schneidman of The Athletic reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "status": "QUESTIONABLE",
+        "note": "Official FINAL Questionable (LP/LP/LP). Was OUT on the ESPN working list. NFL Network says medically cleared/set to play (news, not priced beyond Q). Madden 98 EDGE; auto 0.5 x Q 0.35 = 0.175 expected, about P(miss) 0.1-0.15 x full ~1.0 plus limited-snap mass.",
+        "source": "https://www.packers.com/team/injury-report/week/reg-12",
         "on": true,
         "impact": 0.5,
-        "impact_source": "madden"
+        "impact_source": "madden",
+        "injury": "Knee"
       },
       {
         "name": "Josh Jacobs",
         "pos": "RB1",
         "status": "QUESTIONABLE",
-        "note": "Jacobs (finger) was a limited participant in Monday's practice, Matt Schneidman of The Athletic reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "note": "Official FINAL Questionable (LP x3). Finger; expected to play. Auto soft.",
+        "source": "https://www.packers.com/team/injury-report/week/reg-12",
         "on": true,
         "impact": 0.25,
-        "impact_source": "madden"
+        "impact_source": "madden",
+        "injury": "Finger"
       },
       {
         "name": "Zaire Franklin",
         "pos": "LB",
         "status": "QUESTIONABLE",
-        "note": "Head coach Matt LaFleur said Monday that Franklin (shin) is progressing well, but the Packers haven't yet determined if he'll play Wednesday versus the Rams, Weston Hodkiewicz of the team's official site reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "note": "Official FINAL Questionable (LP x3). Auto soft.",
+        "source": "https://www.packers.com/team/injury-report/week/reg-12",
         "on": true,
         "injury": "Shin",
         "impact": 0.2,
@@ -1223,6 +1274,15 @@
         "on": true,
         "impact": 0.25,
         "impact_source": "madden"
+      },
+      {
+        "name": "Travis Glover",
+        "pos": "RT",
+        "status": "QUESTIONABLE",
+        "injury": "Shoulder",
+        "note": "Official FINAL Questionable (-/LP/LP). Swing T/G Madden 64; matters with Bako-Bewele on IR. Auto soft.",
+        "source": "https://www.packers.com/team/injury-report/week/reg-12",
+        "on": true
       }
     ],
     "HOU": [
@@ -1568,40 +1628,35 @@
     ],
     "KC": [
       {
-        "name": "Trey Smith",
-        "pos": "OG",
-        "status": "QUESTIONABLE",
-        "note": "Smith (concussion) has been ruled out for Sunday's game against the Cardinals.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.25,
-        "impact_source": "madden"
-      },
-      {
         "name": "Jaylon Moore",
         "pos": "RT",
-        "status": "QUESTIONABLE",
-        "note": "Moore (ankle) has been ruled out for Sunday's game against the Cardinals.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "status": "OUT",
+        "note": "Official FINAL Out (DNP x3). Swing/RT Madden 72 with Simmons on IR. Auto. Full valuation manual 0.3 (starting RT Madden 72 with Simmons on IR; next man is depth).",
+        "source": "https://www.chiefs.com/team/injury-report/week/reg-12",
+        "on": true,
+        "injury": "Ankle",
+        "impact": 0.3,
+        "impact_source": "manual"
       },
       {
         "name": "Noah Gray",
         "pos": "TE1",
         "status": "QUESTIONABLE",
-        "note": "Gray (ribs) was deemed a non-participant in Monday's practice walkthrough.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
+        "note": "Official FINAL Questionable (DNP/FP/FP). Likely plays. Auto soft.",
+        "source": "https://www.chiefs.com/team/injury-report/week/reg-12",
+        "on": true,
+        "injury": "Rib"
       },
       {
         "name": "Kenneth Walker III",
         "pos": "RB1",
-        "status": "QUESTIONABLE",
-        "note": "Walker (groin) was listed as a non-participant on Monday's practice estimate.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "status": "OUT",
+        "note": "Official FINAL Out (DNP/LP/DNP). RB1; B. Smith IR, so depth backs carry it. Auto 0.25 cap holds.",
+        "source": "https://www.chiefs.com/team/injury-report/week/reg-12",
         "on": true,
         "impact": 0.25,
-        "impact_source": "pff"
+        "impact_source": "pff",
+        "injury": "Groin"
       },
       {
         "name": "Jared Wiley",
@@ -1664,6 +1719,28 @@
         "note": "Holiday (undisclosed) was placed on injured reserve by the Chiefs on Sunday.",
         "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
         "on": true
+      },
+      {
+        "name": "Omarr Norman-Lott",
+        "pos": "IDL",
+        "status": "OUT",
+        "injury": "Knee",
+        "note": "Official FINAL Out (LP x3). Rotational DT Madden 71. Auto. Full valuation manual 0.1 (rotational DT Madden 71).",
+        "source": "https://www.chiefs.com/team/injury-report/week/reg-12",
+        "on": true,
+        "impact": 0.1,
+        "impact_source": "manual"
+      },
+      {
+        "name": "Peter Woods",
+        "pos": "IDL",
+        "status": "QUESTIONABLE",
+        "injury": "Neck",
+        "note": "Official FINAL Questionable (FP x3). Manual 0.1 soft.",
+        "source": "https://www.chiefs.com/team/injury-report/week/reg-12",
+        "on": true,
+        "impact": 0.1,
+        "impact_source": "manual"
       }
     ],
     "LAC": [
@@ -1816,60 +1893,24 @@
     ],
     "LAR": [
       {
-        "name": "Justin Dedich",
-        "pos": "OG",
-        "status": "IR",
-        "note": "Dedich (hand) was a full participant in Monday's practice.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
-        "name": "Kobie Turner",
-        "pos": "EDGE1",
-        "status": "IR",
-        "note": "Turner (groin) was a full participant in Monday's practice, Adam Grosbard of The Orange County Register reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.25,
-        "impact_source": "madden"
-      },
-      {
-        "name": "Myles Garrett",
-        "pos": "EDGE1",
-        "status": "QUESTIONABLE",
-        "note": "Garrett (knee/rest) did not participate in Monday's practice, Adam Grosbard of The Orange County Register reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.5,
-        "impact_source": "madden"
-      },
-      {
         "name": "Coleman Shelton",
         "pos": "C",
-        "status": "DOUBTFUL",
-        "note": "Shelton (hamstring) is set to miss several weeks due to injury, Greg Beacham of the Associated Press reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "status": "OUT",
+        "note": "Official FINAL Out (DNP x3). Was Doubtful (already 1.0). Starting C Madden 81; backup C McMahon on IR, so the snap goes to a guard/depth (Dedich 67). Manual 0.4 vs auto 0.2.",
+        "source": "https://www.therams.com/team/injury-report/week/reg-12",
         "on": true,
-        "impact": 0.2,
-        "impact_source": "madden"
+        "impact": 0.4,
+        "impact_source": "manual",
+        "injury": "Hamstring"
       },
       {
         "name": "Terrance Ferguson",
         "pos": "TE1",
-        "status": "IR",
-        "note": "Rams head coach Sean McVay said Monday that Ferguson (hamstring) won't be activated from injured reserve this season and will require surgery to address the ankle injury he aggravated in Week 3, Stu Jackson of the team's official site reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
-        "name": "Kam Curl",
-        "pos": "S",
-        "status": "QUESTIONABLE",
-        "note": "Curl (toe) did not practice Sunday, Adam Caplan of SiriusXM NFL Radio reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "status": "OUT",
+        "note": "Official FINAL Out (DNP x3); ESPN still IR. TE Madden 70; Higbee/Allen/Parkinson healthy. Auto.",
+        "source": "https://www.therams.com/team/injury-report/week/reg-12",
         "on": true,
-        "impact": 0.25,
-        "impact_source": "madden"
+        "injury": "Ankle/Hamstring"
       },
       {
         "name": "Davante Adams",
@@ -1895,11 +1936,12 @@
         "name": "Steve Avila",
         "pos": "OG",
         "status": "OUT",
-        "note": "Coach Sean McVay said Saturday that Avila (hamstring) will not play in Wednesday's game against the Packers, Adam Grosbard of The Orange County Register reports.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "note": "Official FINAL Out (DNP x3). LG Madden 83. Manual 0.3 (interior OL cluster with Shelton out, McMahon IR).",
+        "source": "https://www.therams.com/team/injury-report/week/reg-12",
         "on": true,
-        "impact": 0.25,
-        "impact_source": "madden"
+        "impact": 0.3,
+        "impact_source": "manual",
+        "injury": "Hamstring"
       },
       {
         "name": "Dylan McMahon",
@@ -2607,56 +2649,13 @@
     ],
     "PHI": [
       {
-        "name": "Smael Mondon Jr.",
-        "pos": "LB",
-        "status": "QUESTIONABLE",
-        "note": "doubtful",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
-        "name": "Will Shipley",
-        "pos": "RB1",
-        "status": "QUESTIONABLE",
-        "note": "Shipley (foot/illness) was estimated as a limited participant on Monday's injury report.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
-        "name": "Tanner McKee",
-        "pos": "QB1",
-        "status": "QUESTIONABLE",
-        "note": "McKee (ribs) was estimated as a limited participant on Monday's injury report.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
         "name": "Jonathan Jones",
         "pos": "CB1",
-        "status": "QUESTIONABLE",
-        "note": "Jones (ankle) was estimated as a DNP on Monday's injury report.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true
-      },
-      {
-        "name": "Dallas Goedert",
-        "pos": "TE1",
-        "status": "QUESTIONABLE",
-        "note": "Goedert was listed as a limited participant in Monday's practice estimate due to a shin injury.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+        "status": "OUT",
+        "note": "Official FINAL Out (DNP x3). CB Madden 72 (Bennett IR). Auto.",
+        "source": "https://www.philadelphiaeagles.com/team/injury-report/week/reg-12",
         "on": true,
-        "impact": 0.25,
-        "impact_source": "madden"
-      },
-      {
-        "name": "Saquon Barkley",
-        "pos": "RB1",
-        "status": "QUESTIONABLE",
-        "note": "Barkley was listed as a limited participant on Monday's estimated practice report due to a neck injury and an illness.",
-        "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
-        "on": true,
-        "impact": 0.5,
-        "impact_source": "madden"
+        "injury": "Ankle"
       },
       {
         "name": "Zack Baun",
@@ -2739,6 +2738,15 @@
         "on": true,
         "impact": 0.2,
         "impact_source": "madden"
+      },
+      {
+        "name": "Arnold Ebiketie",
+        "pos": "EDGE1",
+        "status": "OUT",
+        "injury": "Oblique",
+        "note": "Official FINAL Out (DNP x3). OLB Madden 76, rotational edge (Greenard full). Auto.",
+        "source": "https://www.philadelphiaeagles.com/team/injury-report/week/reg-12",
+        "on": true
       }
     ],
     "PIT": [
@@ -3306,5 +3314,5 @@
       }
     ]
   },
-  "stamp": "2026-11-25a"
+  "stamp": "2026-11-25b"
 }

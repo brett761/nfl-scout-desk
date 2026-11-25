@@ -52,3 +52,13 @@ Pulled 2026-11-25 10:07 AM ET (America/New_York). Stamp `injury_pulled=2026-11-2
 - ESPN API timestamp 2026-11-24T15:11:06Z.
 
 Sources: ESPN injuries API; nfl.com/injuries; Week 11 and Week 12 scoreboards.
+
+## 2026-11-25b FINAL (Week 12 Wed GB@LAR + Thanksgiving CHI@DET, PHI@DAL, KC@BUF)
+
+- Official Game Status (club reg-12 tables + nfl.com Week 12 report), pulled ~4:25 PM ET. BUF statuses from the nfl.com article (buffalobills.com table showed UNSPECIFIED). GB@LAR final report posted Tuesday (Wednesday game).
+- GB: Parsons OUT->Q (LP x3); Jacobs, Zeitler, Rhyan, Glover, Franklin, Melton, Moore Q. Term -3.08 to -2.85.
+- LAR: Avila (manual 0.3), Shelton (manual 0.4), T. Ferguson OUT; Garrett/Curl no status off; stale IR Turner/Dedich dropped. Term -4.12 to -3.60. B$ LAR -8.61 to -8.90 (-9) vs DK LAR -2.5 / 43.5.
+- CHI: Gordon (manual 0.45), R. Johnson (0.1), Hicks (0.15) OUT; Stevenson, D. Jackson (0.1) Q. Term -1.83 to -2.45. DET: Gill-Howard (0.1), Rakestraw (0.15) OUT; Clark, Wonnum Q; LaPorta off. Term -3.31 to -3.29. B$ DET -4.66 to -5.30 (-5.5) vs DK DET +1.5 / 55.5.
+- PHI: Ebiketie, J. Jones OUT; McKee/Barkley/Goedert/Shipley/Mondon off. Term -3.97 to -3.36. DAL: Booker (0.35), J. Ferguson (0.3), Locke (0.2), Mingo (0.15) OUT; Thompson, D. Moore Q (0.1). Term -1.83 to -1.96. B$ DAL -10.84 to -10.10 (-10) vs DK DAL -8.5 / 47.5.
+- KC: Walker, J. Moore (0.3), Norman-Lott (0.1) OUT; Gray, Woods (0.1) Q; T. Smith off. Term -1.96 to -2.37. BUF: Benford (manual 0.35), Kincaid, Torrence, Sanders, D. Williams Q; Rousseau/Hamlin off. Term -1.45 to -1.41. B$ BUF +1.20 to +0.75 (KC -1) vs DK BUF -3 / 46.5.
+- Valuations data/injury-valuation/weeks/2026-W12-{gb-lar,chi-det,phi-dal,kc-buf}.json. These eight clubs' rows are Wed/TNF-protected. Cache ?v=w12wed25f.

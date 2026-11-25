@@ -1,0 +1,217 @@
+{
+ "week": 12,
+ "season": 2026,
+ "game": "PHI@DAL",
+ "window": "THU 4:30 PM ET",
+ "stamp": "2026-11-25b",
+ "phase": "FINAL",
+ "sources": [
+  "https://www.philadelphiaeagles.com/team/injury-report/week/reg-12",
+  "https://www.dallascowboys.com/team/injury-report/week/reg-12",
+  "https://www.nfl.com/news/nfl-week-12-injury-report-2026-season"
+ ],
+ "pulled_et": "2026-11-25 4:25 PM ET",
+ "raw": "data/injury-valuation/weeks/2026-W12-thanksgiving-official-raw.md",
+ "official": {
+  "PHI": [
+   {
+    "name": "Arnold Ebiketie",
+    "pos": "EDGE",
+    "injury": "Oblique",
+    "practice": "DNP x3",
+    "status": "OUT",
+    "p_play": 0,
+    "on": true,
+    "impact_source": "madden",
+    "range": [
+     0.1,
+     0.25
+    ],
+    "valuation": "Rotational OLB Madden 76; Greenard full. Auto 0.2."
+   },
+   {
+    "name": "Jonathan Jones",
+    "pos": "CB",
+    "injury": "Ankle",
+    "practice": "DNP x3",
+    "status": "OUT",
+    "p_play": 0,
+    "on": true,
+    "impact_source": "auto",
+    "range": [
+     0.1,
+     0.25
+    ],
+    "valuation": "CB Madden 72 (Bennett IR); Mitchell full Wed. Pos-base 0.25."
+   },
+   {
+    "name": "Tanner McKee",
+    "pos": "QB",
+    "practice": "LP/FP/FP",
+    "status": "none",
+    "on": false,
+    "valuation": "Starting QB (Hurts IR). No game status -> off. Removes the 0.52 Q hit (+0.52 to PHI). Hurts IR 0.76 row unchanged and carries the QB downgrade."
+   },
+   {
+    "name": "Saquon Barkley / Dallas Goedert / Will Shipley / Smael Mondon Jr.",
+    "pos": "RB/TE/RB/LB",
+    "practice": "FP Wed (Shipley/Mondon LP)",
+    "status": "none",
+    "on": false,
+    "valuation": "No game status -> off (+0.45 combined)."
+   },
+   {
+    "name": "IR rows (Hurts 0.76, Baun 0.5, Dickerson, Wicks, Bennett, Pierce, Bigsby, Stowers, Calcaterra)",
+    "status": "IR",
+    "on": true,
+    "valuation": "Unchanged."
+   }
+  ],
+  "DAL": [
+   {
+    "name": "Tyler Booker",
+    "pos": "RG",
+    "injury": "Ankle",
+    "practice": "DNP x3",
+    "status": "OUT",
+    "p_play": 0,
+    "on": true,
+    "impact_source": "manual",
+    "range": [
+     0.25,
+     0.45
+    ],
+    "valuation": "Madden 85 RG, high-ankle. Manual 0.35 vs 0.25 cap.",
+    "desk_impact": 0.35,
+    "replacement": "depth guard",
+    "replacement_quality": "below average"
+   },
+   {
+    "name": "Jake Ferguson",
+    "pos": "TE",
+    "injury": "Knee/Ankle",
+    "practice": "DNP x3",
+    "status": "OUT",
+    "p_play": 0,
+    "on": true,
+    "impact_source": "manual",
+    "range": [
+     0.2,
+     0.4
+    ],
+    "valuation": "TE1 Madden 77, Prescott's chain-mover. Manual 0.3.",
+    "desk_impact": 0.3
+   },
+   {
+    "name": "P.J. Locke",
+    "pos": "S",
+    "injury": "Concussion",
+    "practice": "LP x3",
+    "status": "OUT",
+    "p_play": 0,
+    "on": true,
+    "impact_source": "manual",
+    "range": [
+     0.1,
+     0.25
+    ],
+    "valuation": "S Madden 74. Manual 0.2.",
+    "desk_impact": 0.2
+   },
+   {
+    "name": "Jonathan Mingo",
+    "pos": "WR",
+    "injury": "Ankle",
+    "practice": "LP/DNP/DNP",
+    "status": "OUT",
+    "p_play": 0,
+    "on": true,
+    "impact_source": "manual",
+    "range": [
+     0.05,
+     0.2
+    ],
+    "valuation": "WR3 Madden 71. Manual 0.15.",
+    "desk_impact": 0.15
+   },
+   {
+    "name": "Jalen Thompson",
+    "pos": "S",
+    "injury": "Hamstring",
+    "practice": "FP x3",
+    "status": "QUESTIONABLE",
+    "p_play": 0.9,
+    "on": true,
+    "impact_source": "manual",
+    "range": [
+     0.0,
+     0.1
+    ],
+    "valuation": "ESPN had IR then Q; full all week. Was IR 0.25 full (+0.22 to DAL). Manual 0.1 soft.",
+    "desk_impact": 0.1
+   },
+   {
+    "name": "Devin Moore",
+    "pos": "CB",
+    "injury": "Hip",
+    "practice": "FP x3",
+    "status": "QUESTIONABLE",
+    "p_play": 0.9,
+    "on": true,
+    "impact_source": "manual",
+    "range": [
+     0.0,
+     0.08
+    ],
+    "valuation": "Full all week. Manual 0.1 soft.",
+    "desk_impact": 0.1
+   },
+   {
+    "name": "Jaishawn Barham / Dee Winters",
+    "pos": "LB",
+    "practice": "DNP/LP/FP, DNP/LP",
+    "status": "none",
+    "on": false,
+    "valuation": "No game status -> off."
+   },
+   {
+    "name": "Dak Prescott",
+    "pos": "QB",
+    "practice": "FP x3 (left hand)",
+    "status": "none",
+    "on": false,
+    "valuation": "No status; plays."
+   },
+   {
+    "name": "IR rows (Bland, Lawrence, Goodson, M. Davis)",
+    "status": "IR",
+    "on": true,
+    "valuation": "Unchanged."
+   }
+  ]
+ },
+ "unit_effects": {
+  "DAL_offense": "Booker + Ferguson + Mingo out: interior OL and the TE/WR3 group thinned. Manuals carry it; no interaction add.",
+  "PHI_QB": "McKee cleared; QB downgrade from Hurts stays in the Hurts IR row (0.76)."
+ },
+ "team_injury_term": {
+  "PHI": {
+   "before": -3.97,
+   "after": -3.36
+  },
+  "DAL": {
+   "before": -1.83,
+   "after": -1.96
+  }
+ },
+ "b_line_home_spread": {
+  "before_raw": -10.84,
+  "after_raw": -10.1,
+  "published": -10,
+  "street_dk": -8.5,
+  "ou_dk": 47.5,
+  "shadow_dvoa_blend": -8.57,
+  "b_total": 49.7
+ },
+ "confidence": "Moderate"
+}

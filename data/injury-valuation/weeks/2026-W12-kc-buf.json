@@ -1,0 +1,237 @@
+{
+ "week": 12,
+ "season": 2026,
+ "game": "KC@BUF",
+ "window": "THU 8:20 PM ET",
+ "stamp": "2026-11-25b",
+ "phase": "FINAL",
+ "sources": [
+  "https://www.chiefs.com/team/injury-report/week/reg-12",
+  "https://www.buffalobills.com/team/injury-report/week/reg-12",
+  "https://www.nfl.com/news/nfl-week-12-injury-report-2026-season"
+ ],
+ "pulled_et": "2026-11-25 4:25 PM ET",
+ "raw": "data/injury-valuation/weeks/2026-W12-thanksgiving-official-raw.md",
+ "official": {
+  "KC": [
+   {
+    "name": "Kenneth Walker III",
+    "pos": "RB",
+    "injury": "Groin",
+    "practice": "DNP/LP/DNP",
+    "status": "OUT",
+    "p_play": 0,
+    "on": true,
+    "impact_source": "madden",
+    "range": [
+     0.15,
+     0.3
+    ],
+    "valuation": "RB1; B. Smith IR, depth backs carry. Auto 0.25 cap holds."
+   },
+   {
+    "name": "Jaylon Moore",
+    "pos": "RT",
+    "injury": "Ankle",
+    "practice": "DNP x3",
+    "status": "OUT",
+    "p_play": 0,
+    "on": true,
+    "impact_source": "manual",
+    "range": [
+     0.2,
+     0.4
+    ],
+    "valuation": "Starting RT Madden 72 with Simmons on IR; next man is depth vs a BUF edge group (Rousseau full). Manual 0.3.",
+    "desk_impact": 0.3,
+    "replacement": "depth tackle",
+    "replacement_quality": "below average"
+   },
+   {
+    "name": "Omarr Norman-Lott",
+    "pos": "DT",
+    "injury": "Knee",
+    "practice": "LP x3",
+    "status": "OUT",
+    "p_play": 0,
+    "on": true,
+    "impact_source": "manual",
+    "range": [
+     0.05,
+     0.15
+    ],
+    "valuation": "Rotational DT Madden 71. Manual 0.1.",
+    "desk_impact": 0.1
+   },
+   {
+    "name": "Noah Gray",
+    "pos": "TE",
+    "injury": "Rib",
+    "practice": "DNP/FP/FP",
+    "status": "QUESTIONABLE",
+    "p_play": 0.85,
+    "on": true,
+    "impact_source": "auto",
+    "range": [
+     0.0,
+     0.1
+    ],
+    "valuation": "Full Tue/Wed. Soft auto."
+   },
+   {
+    "name": "Peter Woods",
+    "pos": "DT",
+    "injury": "Neck",
+    "practice": "FP x3",
+    "status": "QUESTIONABLE",
+    "p_play": 0.92,
+    "on": true,
+    "impact_source": "manual",
+    "range": [
+     0.0,
+     0.05
+    ],
+    "valuation": "Full all week. Manual 0.1 soft.",
+    "desk_impact": 0.1
+   },
+   {
+    "name": "Trey Smith",
+    "pos": "OG",
+    "practice": "FP x3",
+    "status": "none",
+    "on": false,
+    "valuation": "No status -> off (+0.09)."
+   },
+   {
+    "name": "Patrick Mahomes / Rashee Rice / Mansoor Delane",
+    "pos": "QB/WR/CB",
+    "practice": "FP x3",
+    "status": "none",
+    "on": false,
+    "valuation": "No status; play."
+   },
+   {
+    "name": "IR rows (Sneed, Simmons, Thornton, Wiley, B. Smith, McDonald, Holiday)",
+    "status": "IR",
+    "on": true,
+    "valuation": "Unchanged."
+   }
+  ],
+  "BUF": [
+   {
+    "name": "Christian Benford",
+    "pos": "CB1",
+    "injury": "Groin",
+    "practice": "DNP/LP",
+    "status": "QUESTIONABLE",
+    "p_play": 0.65,
+    "on": true,
+    "impact_source": "manual",
+    "range": [
+     0.08,
+     0.18
+    ],
+    "valuation": "CB1 Madden 80 vs Mahomes/Rice. P(miss) ~0.35; full value ~0.35 -> manual 0.35 x 0.35 = 0.12 expected.",
+    "desk_impact": 0.35
+   },
+   {
+    "name": "Dalton Kincaid",
+    "pos": "TE",
+    "injury": "Thumb/Ankle",
+    "practice": "LP/LP",
+    "status": "QUESTIONABLE",
+    "p_play": 0.7,
+    "on": true,
+    "impact_source": "madden",
+    "range": [
+     0.03,
+     0.12
+    ],
+    "valuation": "TE1 Madden 83. Soft auto."
+   },
+   {
+    "name": "O'Cyrus Torrence",
+    "pos": "RG",
+    "injury": "Ankle",
+    "practice": "LP/LP",
+    "status": "QUESTIONABLE",
+    "p_play": 0.7,
+    "on": true,
+    "impact_source": "auto",
+    "range": [
+     0.03,
+     0.12
+    ],
+    "valuation": "Madden 75. Added from the official sheet. Soft auto."
+   },
+   {
+    "name": "T.J. Sanders",
+    "pos": "DT",
+    "injury": "Shoulder",
+    "practice": "LP/LP",
+    "status": "QUESTIONABLE",
+    "p_play": 0.7,
+    "on": true,
+    "impact_source": "auto",
+    "range": [
+     0.02,
+     0.1
+    ],
+    "valuation": "Soft auto."
+   },
+   {
+    "name": "Dorian Williams",
+    "pos": "LB",
+    "injury": "Calf",
+    "practice": "LP/LP",
+    "status": "QUESTIONABLE",
+    "p_play": 0.7,
+    "on": true,
+    "impact_source": "pff",
+    "range": [
+     0.02,
+     0.1
+    ],
+    "valuation": "Soft auto."
+   },
+   {
+    "name": "Greg Rousseau / Damar Hamlin",
+    "pos": "EDGE/S",
+    "practice": "LP/FP",
+    "status": "none",
+    "on": false,
+    "valuation": "No game status -> off (+0.18)."
+   },
+   {
+    "name": "IR/PUP/NFI rows (Reed-Adams, Palmer, Shavers PUP, Strong NFI)",
+    "status": "IR",
+    "on": true,
+    "valuation": "Unchanged."
+   }
+  ]
+ },
+ "unit_effects": {
+  "KC_OT": "J. Moore out with Simmons on IR: both RT options gone. Manual 0.3 carries it.",
+  "BUF": "Five Q, all limited; expected-impact only."
+ },
+ "team_injury_term": {
+  "KC": {
+   "before": -1.96,
+   "after": -2.37
+  },
+  "BUF": {
+   "before": -1.45,
+   "after": -1.41
+  }
+ },
+ "b_line_home_spread": {
+  "before_raw": 1.2,
+  "after_raw": 0.75,
+  "published": 1,
+  "street_dk": -3,
+  "ou_dk": 46.5,
+  "shadow_dvoa_blend": -0.32,
+  "b_total": 47.75
+ },
+ "confidence": "Moderate"
+}

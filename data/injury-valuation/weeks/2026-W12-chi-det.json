@@ -1,0 +1,224 @@
+{
+ "week": 12,
+ "season": 2026,
+ "game": "CHI@DET",
+ "window": "THU 1:00 PM ET",
+ "stamp": "2026-11-25b",
+ "phase": "FINAL",
+ "sources": [
+  "https://www.chicagobears.com/team/injury-report/week/reg-12",
+  "https://www.detroitlions.com/team/injury-report/week/reg-12",
+  "https://www.nfl.com/news/nfl-week-12-injury-report-2026-season"
+ ],
+ "pulled_et": "2026-11-25 4:25 PM ET",
+ "raw": "data/injury-valuation/weeks/2026-W12-thanksgiving-official-raw.md",
+ "official": {
+  "CHI": [
+   {
+    "name": "Kyler Gordon",
+    "pos": "CB (slot)",
+    "injury": "Shoulder",
+    "practice": "DNP x3",
+    "status": "OUT",
+    "p_play": 0,
+    "on": true,
+    "impact_source": "manual",
+    "range": [
+     0.3,
+     0.6
+    ],
+    "valuation": "Madden 82 slot CB vs a DET offense that lives in the slot (St. Brown). Stevenson Q and Hicks out thin the secondary. Scheme/matchup mechanism -> manual 0.45 vs 0.25 cap.",
+    "desk_impact": 0.45,
+    "replacement": "depth nickel",
+    "replacement_quality": "below average"
+   },
+   {
+    "name": "Elijah Hicks",
+    "pos": "S",
+    "injury": "Concussion",
+    "practice": "DNP/DNP",
+    "status": "OUT",
+    "p_play": 0,
+    "on": true,
+    "impact_source": "manual",
+    "range": [
+     0.1,
+     0.2
+    ],
+    "valuation": "Rotational S Madden 67 (Bryant IR). Manual 0.15 under the 0.25 pos-base default.",
+    "desk_impact": 0.15
+   },
+   {
+    "name": "Roschon Johnson",
+    "pos": "RB",
+    "injury": "Ankle",
+    "practice": "DNP x3",
+    "status": "OUT",
+    "p_play": 0,
+    "on": true,
+    "impact_source": "manual",
+    "range": [
+     0.05,
+     0.15
+    ],
+    "valuation": "RB2 Madden 72. Manual 0.1.",
+    "desk_impact": 0.1
+   },
+   {
+    "name": "Tyrique Stevenson",
+    "pos": "CB",
+    "injury": "Groin",
+    "practice": "LP (Wed only)",
+    "status": "QUESTIONABLE",
+    "p_play": 0.65,
+    "on": true,
+    "impact_source": "pff",
+    "range": [
+     0.05,
+     0.15
+    ],
+    "valuation": "First listing Wed, limited. Matters more with Gordon out. Soft auto 0.2 x 0.35."
+   },
+   {
+    "name": "D'Marco Jackson",
+    "pos": "LB",
+    "injury": "Elbow",
+    "practice": "FP x3",
+    "status": "QUESTIONABLE",
+    "p_play": 0.92,
+    "on": true,
+    "impact_source": "manual",
+    "range": [
+     0.0,
+     0.05
+    ],
+    "valuation": "Full all week. Manual 0.1 soft.",
+    "desk_impact": 0.1
+   },
+   {
+    "name": "Theo Benedet",
+    "pos": "OT",
+    "practice": "DNP/FP/FP",
+    "status": "none",
+    "on": false,
+    "valuation": "No status, plays."
+   },
+   {
+    "name": "IR/PUP rows (Odeyingbo manual 0.25, Kmet, Bryant, B. Jones, Street, Scott, Sewell PUP)",
+    "status": "IR",
+    "on": true,
+    "valuation": "Unchanged."
+   }
+  ],
+  "DET": [
+   {
+    "name": "Skyler Gill-Howard",
+    "pos": "DT",
+    "injury": "Knee",
+    "practice": "DNP x3",
+    "status": "OUT",
+    "p_play": 0,
+    "on": true,
+    "impact_source": "manual",
+    "range": [
+     0.05,
+     0.15
+    ],
+    "valuation": "Rotational DT Madden 65. Manual 0.1.",
+    "desk_impact": 0.1
+   },
+   {
+    "name": "Ennis Rakestraw Jr.",
+    "pos": "CB",
+    "injury": "Shoulder",
+    "practice": "DNP x3",
+    "status": "OUT",
+    "p_play": 0,
+    "on": true,
+    "impact_source": "manual",
+    "range": [
+     0.1,
+     0.2
+    ],
+    "valuation": "Depth CB (Maddox IR, Reed/Dorsey full). Manual 0.15.",
+    "desk_impact": 0.15
+   },
+   {
+    "name": "Chuck Clark",
+    "pos": "S",
+    "injury": "Hamstring",
+    "practice": "DNP/LP/LP",
+    "status": "QUESTIONABLE",
+    "p_play": 0.65,
+    "on": true,
+    "impact_source": "madden",
+    "range": [
+     0.03,
+     0.12
+    ],
+    "valuation": "S Madden 79 with Harper on IR. Soft auto."
+   },
+   {
+    "name": "DJ Wonnum",
+    "pos": "EDGE",
+    "injury": "Back",
+    "practice": "DNP/DNP/LP",
+    "status": "QUESTIONABLE",
+    "p_play": 0.6,
+    "on": true,
+    "impact_source": "seed",
+    "range": [
+     0.03,
+     0.12
+    ],
+    "valuation": "Edge depth with Hutchinson on IR. Soft at seed 0.2."
+   },
+   {
+    "name": "Sam LaPorta",
+    "pos": "TE",
+    "practice": "LP/FP/FP",
+    "status": "none",
+    "on": false,
+    "valuation": "No status -> off (+0.18 to DET)."
+   },
+   {
+    "name": "Khalil Dorsey / D.J. Reed",
+    "pos": "CB",
+    "practice": "FP x3",
+    "status": "none",
+    "on": false,
+    "valuation": "No status."
+   },
+   {
+    "name": "IR rows (Hutchinson 0.5, Campbell 0.5, Mays, Bartch, Pacheco, Harper, Maddox, White, Rolder, Kennedy)",
+    "status": "IR",
+    "on": true,
+    "valuation": "Unchanged."
+   }
+  ]
+ },
+ "unit_effects": {
+  "CHI_DB": "Gordon + Hicks out, Stevenson Q: CHI secondary is the most compromised unit in the game vs Goff/St. Brown. Gordon manual carries the scheme bump; no further add.",
+  "DET_front": "Hutchinson/Campbell IR already priced; Gill-Howard rotational."
+ },
+ "team_injury_term": {
+  "CHI": {
+   "before": -1.83,
+   "after": -2.45
+  },
+  "DET": {
+   "before": -3.31,
+   "after": -3.29
+  }
+ },
+ "b_line_home_spread": {
+  "before_raw": -4.66,
+  "after_raw": -5.3,
+  "published": -5.5,
+  "street_dk": 1.5,
+  "ou_dk": 55.5,
+  "shadow_dvoa_blend": -4.01,
+  "b_total": 48.35
+ },
+ "confidence": "Moderate"
+}

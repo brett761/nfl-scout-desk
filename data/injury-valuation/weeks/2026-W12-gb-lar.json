@@ -1,0 +1,258 @@
+{
+ "week": 12,
+ "season": 2026,
+ "game": "GB@LAR",
+ "window": "WED (Netflix 8:00 PM ET)",
+ "stamp": "2026-11-25b",
+ "phase": "FINAL",
+ "sources": [
+  "https://www.packers.com/team/injury-report/week/reg-12",
+  "https://www.therams.com/team/injury-report/week/reg-12",
+  "https://www.nfl.com/news/nfl-week-12-injury-report-2026-season"
+ ],
+ "pulled_et": "2026-11-25 4:25 PM ET",
+ "raw": "data/injury-valuation/weeks/2026-W12-thanksgiving-official-raw.md",
+ "official": {
+  "GB": [
+   {
+    "name": "Micah Parsons",
+    "pos": "EDGE",
+    "injury": "Knee",
+    "practice": "LP/LP/LP",
+    "status": "QUESTIONABLE",
+    "p_play": 0.88,
+    "on": true,
+    "impact_source": "madden",
+    "range": [
+     0.1,
+     0.25
+    ],
+    "valuation": "Madden 98, elite rusher. ESPN working list had OUT; official sheet is Q and NFL Network reports him medically cleared. P(miss) ~0.1-0.15 plus some snap limitation. Auto 0.5 x 0.35 = 0.175 sits in the range; no manual. Upgrade OUT->Q worth +0.32 to GB."
+   },
+   {
+    "name": "Josh Jacobs",
+    "pos": "RB",
+    "injury": "Finger",
+    "practice": "LP x3",
+    "status": "QUESTIONABLE",
+    "p_play": 0.9,
+    "on": true,
+    "impact_source": "madden",
+    "range": [
+     0.0,
+     0.12
+    ],
+    "valuation": "Finger, limited all week; expected to play. Soft auto."
+   },
+   {
+    "name": "Kevin Zeitler",
+    "pos": "RG",
+    "injury": "Triceps",
+    "practice": "LP x3",
+    "status": "QUESTIONABLE",
+    "p_play": 0.75,
+    "on": true,
+    "impact_source": "madden",
+    "range": [
+     0.03,
+     0.12
+    ],
+    "valuation": "Madden 81 RG. Soft auto."
+   },
+   {
+    "name": "Sean Rhyan",
+    "pos": "C/G",
+    "injury": "Ankle",
+    "practice": "LP x3",
+    "status": "QUESTIONABLE",
+    "p_play": 0.75,
+    "on": true,
+    "impact_source": "pff",
+    "range": [
+     0.03,
+     0.12
+    ],
+    "valuation": "Madden 70; Monk (C) on IR so center depth is thin. Soft auto."
+   },
+   {
+    "name": "Travis Glover",
+    "pos": "T/G",
+    "injury": "Shoulder",
+    "practice": "-/LP/LP",
+    "status": "QUESTIONABLE",
+    "p_play": 0.75,
+    "on": true,
+    "impact_source": "auto",
+    "range": [
+     0.02,
+     0.1
+    ],
+    "valuation": "Swing OL Madden 64, added from the official sheet. Soft auto."
+   },
+   {
+    "name": "Zaire Franklin",
+    "pos": "LB",
+    "injury": "Shin",
+    "practice": "LP x3",
+    "status": "QUESTIONABLE",
+    "p_play": 0.7,
+    "on": true,
+    "impact_source": "madden",
+    "range": [
+     0.02,
+     0.1
+    ],
+    "valuation": "Soft auto."
+   },
+   {
+    "name": "Bo Melton",
+    "pos": "WR",
+    "injury": "Thigh",
+    "practice": "LP x3",
+    "status": "QUESTIONABLE",
+    "p_play": 0.75,
+    "on": true,
+    "impact_source": "auto",
+    "range": [
+     0.0,
+     0.08
+    ],
+    "valuation": "Depth WR. Soft auto."
+   },
+   {
+    "name": "Skyy Moore",
+    "pos": "WR",
+    "injury": "Ankle",
+    "practice": "LP x3",
+    "status": "QUESTIONABLE",
+    "p_play": 0.75,
+    "on": true,
+    "impact_source": "auto",
+    "range": [
+     0.0,
+     0.08
+    ],
+    "valuation": "Depth WR. Soft auto."
+   },
+   {
+    "name": "Luke Musgrave",
+    "status": "OUT (PUP)",
+    "on": true,
+    "valuation": "Reserve/PUP per ESPN, not on the active-roster report; unchanged."
+   },
+   {
+    "name": "IR rows (Reed, Hargrave, Cooper, Bako-Bewele, Monk, Ford, Brinson, Whyle)",
+    "status": "IR",
+    "on": true,
+    "valuation": "Unchanged."
+   }
+  ],
+  "LAR": [
+   {
+    "name": "Coleman Shelton",
+    "pos": "C",
+    "injury": "Hamstring",
+    "practice": "DNP x3",
+    "status": "OUT",
+    "p_play": 0,
+    "on": true,
+    "impact_source": "manual",
+    "range": [
+     0.3,
+     0.5
+    ],
+    "valuation": "Starting C Madden 81; McMahon (C) on IR, so the snap goes to a converted guard/depth. Auto 0.2 undersells; manual 0.4.",
+    "desk_impact": 0.4,
+    "replacement": "Justin Dedich / depth",
+    "replacement_quality": "below average"
+   },
+   {
+    "name": "Steve Avila",
+    "pos": "LG",
+    "injury": "Hamstring",
+    "practice": "DNP x3",
+    "status": "OUT",
+    "p_play": 0,
+    "on": true,
+    "impact_source": "manual",
+    "range": [
+     0.2,
+     0.4
+    ],
+    "valuation": "Madden 83 LG. Two interior starters out vs a GB front with Parsons likely active. Manual 0.3.",
+    "desk_impact": 0.3,
+    "replacement": "depth guard",
+    "replacement_quality": "below average"
+   },
+   {
+    "name": "Terrance Ferguson",
+    "pos": "TE",
+    "injury": "Ankle/Hamstring",
+    "practice": "DNP x3",
+    "status": "OUT",
+    "p_play": 0,
+    "on": true,
+    "impact_source": "auto",
+    "range": [
+     0.05,
+     0.2
+    ],
+    "valuation": "TE Madden 70; Higbee, Allen, Parkinson all full. Pos-base 0.25 is a touch rich but left at default."
+   },
+   {
+    "name": "Myles Garrett",
+    "pos": "EDGE",
+    "practice": "LP/DNP/LP",
+    "status": "none",
+    "on": false,
+    "valuation": "No game status -> plays. Was Q 0.18 on the working list; off (+0.18 to LAR)."
+   },
+   {
+    "name": "Kam Curl",
+    "pos": "S",
+    "practice": "DNP/LP/LP",
+    "status": "none",
+    "on": false,
+    "valuation": "No game status -> off (+0.09)."
+   },
+   {
+    "name": "Kobie Turner / Justin Dedich",
+    "pos": "DT/OG",
+    "practice": "FP x3",
+    "status": "none",
+    "on": false,
+    "valuation": "Stale IR rows (ESPN now Active; full practice, no status). Dropped (+0.50)."
+   },
+   {
+    "name": "IR rows (Nacua, Adams, Watson, P. Ford, McMahon, others)",
+    "status": "IR",
+    "on": true,
+    "valuation": "Unchanged."
+   }
+  ]
+ },
+ "unit_effects": {
+  "LAR_IOL": "Avila + Shelton out with McMahon on IR: interior OL is the weak unit. Manuals carry it (0.7 total vs 0.45 auto); no extra interaction add.",
+  "GB_OL": "Zeitler, Rhyan, Glover all Q (LP); expected-impact only. If two sit, GB interior is equally thin."
+ },
+ "team_injury_term": {
+  "GB": {
+   "before": -3.08,
+   "after": -2.85
+  },
+  "LAR": {
+   "before": -4.12,
+   "after": -3.6
+  }
+ },
+ "b_line_home_spread": {
+  "before_raw": -8.61,
+  "after_raw": -8.9,
+  "published": -9,
+  "street_dk": -2.5,
+  "ou_dk": 43.5,
+  "shadow_dvoa_blend": -10.47,
+  "b_total": 44.1
+ },
+ "confidence": "Moderate"
+}
