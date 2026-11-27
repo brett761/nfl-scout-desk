@@ -1,0 +1,1048 @@
+{
+  "week": 12,
+  "season": 2026,
+  "window": "Sunday 1:00 / 4:05 / 4:25 ET; SNF LV@CLE; MNF CAR@TB (no Sunday international game)",
+  "phase": "FINAL",
+  "injury_pulled": "2026-11-27b",
+  "pulled_et": "2026-11-27 4:35 PM ET (America/New_York)",
+  "espn_timestamp": "2026-11-27T21:34:25Z",
+  "method": "skill nfl-injury-spread-valuation: base position value x quality x role, replacement drop-off, status probability (Out/Doubtful 1.0, Q 0.35 shaded by practice via manual impact), unit interactions; desk auto Madden-first prior compared with full valuation. ESPN tags followed as-is (Brett standing rule); official Friday club Game Status applied where ESPN differed.",
+  "sources": {
+    "espn": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries (timestamp 2026-11-27T21:34:25Z)",
+    "nfl_com": "https://www.nfl.com/injuries/league/2026/reg12 (Game Status populated only for the Wed/Thanksgiving/Black Friday clubs at pull ~4:32 PM ET; Sunday/SNF/MNF clubs blank)",
+    "club_reports": "<club>.com/team/injury-report via curl 2026-11-27 ~4:20 and ~4:32 PM ET (home club page carries both teams)"
+  },
+  "source_gaps": [
+    "nfl.com reg12 Game Status blank for all Sunday/SNF/MNF clubs at pull; club sites used.",
+    "Club Friday Game Status UNSPECIFIED at pull: CLE/LV (SNF), SF/SEA, LAC, BAL, NO, CAR/TB (MNF, Thu-Sat practice schedule, Saturday report). Partial: CIN (4 posted), HOU (5 posted), WSH (1 posted), NYJ (4 posted). ESPN Friday tags used as-is.",
+    "SF Brock Purdy (ankle; DNP Wed/Thu, not seen Fri) and LAC Justin Herbert (concussion; DNP Wed/Thu, not seen Fri) still ESPN Questionable; official Friday status not posted at pull. Refresh Saturday/Sunday AM.",
+    "qb-depth-2026.json stale for ARI (lists Brissett, now BAL): Carson Beck OUT retagged DEPTH; standing manual 0.45 kept; Josh Johnson starts (ESPN, LaFleur Friday).",
+    "nfl-2026.json kick times for LV@CLE / NE@LAC / TEN@JAX were swapped vs ESPN scoreboard (LV@CLE is SNF 8:20 PM ET, NE@LAC 4:05 PM ET, TEN@JAX 1:00 PM ET); corrected in this run.",
+    "DEN@PIT (Black Friday) in progress at pull (PIT 24-5 at half); DEN/PIT soft-protect held, not valued here."
+  ],
+  "material_flips_vs_2026_11_27a": [
+    "**ARI Jon Gaines II** (OG): QUESTIONABLE → OUT impact=0.2",
+    "**ARI Carson Beck** (QB1): QUESTIONABLE → OUT impact=0.45",
+    "**ARI Zachary Carter** (IDL): IR → OUT",
+    "**ATL Zachariah Branch** (WR2): QUESTIONABLE → OUT",
+    "**ATL Jahan Dotson** (WR2): QUESTIONABLE → OUT impact=0.2",
+    "**ATL Billy Bowman Jr.** (CB1): QUESTIONABLE → OUT",
+    "**BAL Nnamdi Madubuike** (IDL): QUESTIONABLE → OUT impact=0.45",
+    "**BAL Jaylinn Hawkins** (S): QUESTIONABLE → OUT impact=0.25",
+    "**CHI Colston Loveland** (TE1): QUESTIONABLE → DOUBTFUL impact=0.25",
+    "**CIN Dalton Risner** (OG): QUESTIONABLE → OUT impact=0.2",
+    "**CIN Jalen Davis** (CB1): IR → DOUBTFUL impact=0.2",
+    "**CIN Andrei Iosivas** (WR2): IR → QUESTIONABLE impact=0.2",
+    "**HOU Danielle Hunter** (EDGE1): QUESTIONABLE → OUT impact=0.5",
+    "**HOU Kayshon Boutte** (WR2): QUESTIONABLE → OUT impact=0.2",
+    "**IND Jerry Tillery** (IDL): QUESTIONABLE → OUT",
+    "**IND Jalen Travis** (RT): QUESTIONABLE → OUT impact=0.25",
+    "**IND Charvarius Ward** (CB1): QUESTIONABLE → OUT impact=0.5",
+    "**IND Will Mallory** (TE1): QUESTIONABLE → OUT",
+    "**IND Cam Taylor-Britt** (CB1): IR → QUESTIONABLE impact=0.2",
+    "**JAX Bhayshul Tuten** (RB1): QUESTIONABLE → OUT impact=0.25",
+    "**JAX Parker Washington** (WR2): QUESTIONABLE → OUT impact=0.25",
+    "**JAX Patrick Mekari** (OG): IR → OUT",
+    "**MIA JuJu Brents** (CB1): QUESTIONABLE → OUT impact=0.2",
+    "**MIA Jared Wayne** (WR2): QUESTIONABLE → OUT",
+    "**MIA Ronnie Harrison Jr.** (LB): IR → QUESTIONABLE",
+    "**MIN Isaiah Rodgers** (CB1): QUESTIONABLE → OUT impact=0.25",
+    "**MIN Jordan Addison** (WR2): DOUBTFUL → OUT impact=0.25",
+    "**NE Romeo Doubs** (WR2): IR → OUT impact=0.25",
+    "**NE Carlton Davis III** (CB1): QUESTIONABLE → OUT impact=0.25",
+    "**NE A.J. Brown** (WR1): DOUBTFUL → OUT impact=0.55",
+    "**NE Alijah Vera-Tucker** (OG): IR → QUESTIONABLE impact=0.25",
+    "**NO Juwan Johnson** (TE1): QUESTIONABLE → OUT impact=0.2",
+    "**NYJ Omar Cooper Jr.** (WR2): QUESTIONABLE → OUT impact=0.2",
+    "**NYJ David Onyemata** (IDL): IR → QUESTIONABLE impact=0.2",
+    "**NYJ T'Vondre Sweat** (IDL): IR → QUESTIONABLE impact=0.2",
+    "**PIT Cole Holcomb** (LB): QUESTIONABLE → OUT",
+    "**TEN Cor'Dale Flott** (CB1): QUESTIONABLE → OUT impact=0.2",
+    "**WSH Amik Robertson** (CB1): QUESTIONABLE → OUT impact=0.2",
+    "**ARI Karson Sharar** (LB): NEW QUESTIONABLE",
+    "**ARI Hunter Long** (TE1): NEW QUESTIONABLE",
+    "**ATL DeMarcco Hellams** (S): NEW OUT",
+    "**ATL Matthew Bergeron** (OG): NEW OUT impact=0.2",
+    "**BAL Olaivavega Ioane** (OG): NEW OUT",
+    "**CAR Jaelan Phillips** (LB): NEW QUESTIONABLE impact=0.25",
+    "**CAR Feleipe Franks** (TE1): NEW QUESTIONABLE",
+    "**CAR Jackson Kuwatch** (LB): NEW QUESTIONABLE",
+    "**CAR Patrick Jones II** (LB): NEW QUESTIONABLE",
+    "**CIN Tee Higgins** (WR2): NEW QUESTIONABLE impact=0.25",
+    "**CLE Derek Barnett** (EDGE1): NEW OUT impact=0.2",
+    "**CLE Elgton Jenkins** (C): NEW QUESTIONABLE impact=0.25",
+    "**CLE Austin Barber** (RT): NEW QUESTIONABLE impact=0.2",
+    "**DEN Sam Ehlinger** (QB1): NEW OUT",
+    "**DEN Gavin Ortega** (RT): NEW OUT",
+    "**DEN Kage Casey** (RT): NEW OUT",
+    "**DEN Lil'Jordan Humphrey** (WR2): NEW OUT",
+    "**DEN Dallen Bentley** (TE1): NEW OUT",
+    "**HOU Keylan Rutledge** (OG): NEW OUT",
+    "**HOU Jake Hummel** (LB): NEW QUESTIONABLE",
+    "**HOU Brevin Jordan** (TE1): NEW OUT",
+    "**IND Drew Ogletree** (TE1): NEW QUESTIONABLE impact=0.2",
+    "**LAR Davis Allen** (TE1): NEW DOUBTFUL",
+    "**LAR Tyler Higbee** (TE1): NEW QUESTIONABLE impact=0.2",
+    "**MIN Christian Darrisaw** (RT): NEW OUT impact=0.25",
+    "**NE Reggie Gilliam** (DEPTH): NEW QUESTIONABLE impact=0.25",
+    "**NO Noah Fant** (TE1): NEW QUESTIONABLE impact=0.2",
+    "**NYG Shelby Harris** (IDL): NEW OUT impact=0.2",
+    "**PIT Kaden Wetjen** (WR2): NEW OUT",
+    "**PIT Drew Allar** (QB1): NEW OUT",
+    "**PIT Gabriel Rubio** (EDGE1): NEW OUT",
+    "**PIT Sean Murphy-Bunting** (CB1): NEW OUT",
+    "**PIT Eli Heidenreich** (RB1): NEW OUT",
+    "**SEA Uchenna Nwosu** (LB): NEW QUESTIONABLE impact=0.2",
+    "**SEA Patrick O'Connell** (LB): NEW QUESTIONABLE",
+    "**SEA DeMarcus Lawrence** (LB): NEW QUESTIONABLE impact=0.25",
+    "**SEA Jalen Milroe** (QB1): NEW QUESTIONABLE",
+    "**SF Carver Willis** (RT): NEW QUESTIONABLE",
+    "**SF Upton Stout** (CB1): NEW QUESTIONABLE impact=0.2",
+    "**SF Siran Neal** (S): NEW QUESTIONABLE",
+    "**TB Tez Johnson** (WR2): NEW QUESTIONABLE impact=0.2",
+    "**TB SirVocea Dennis** (LB): NEW QUESTIONABLE",
+    "**TEN Terrell Burgess** (S): NEW OUT",
+    "**TEN Fernando Carmona** (OG): NEW QUESTIONABLE",
+    "**TEN Dan Moore Jr.** (RT): NEW QUESTIONABLE impact=0.2",
+    "**ATL Kendal Daniels** (LB): CLEARED off sheet (was QUESTIONABLE)",
+    "**BAL Derrick Henry** (RB1): CLEARED off sheet (was QUESTIONABLE) was impact=0.5",
+    "**HOU Dalton Schultz** (TE1): CLEARED off sheet (was QUESTIONABLE) was impact=0.25",
+    "**HOU Sheldon Rankins** (IDL): CLEARED off sheet (was QUESTIONABLE) was impact=0.2",
+    "**HOU Woody Marks** (RB1): CLEARED off sheet (was QUESTIONABLE) was impact=0.2",
+    "**IND Bernhard Raimann** (LT): CLEARED off sheet (was QUESTIONABLE) was impact=0.6",
+    "**JAX Jakobi Meyers** (WR2): CLEARED off sheet (was QUESTIONABLE) was impact=0.25",
+    "**JAX Matt Dickerson** (EDGE1): CLEARED off sheet (was QUESTIONABLE)",
+    "**MIA Dante Trader Jr.** (S): CLEARED off sheet (was QUESTIONABLE) was impact=0.2",
+    "**MIN Myles Price** (WR2): CLEARED off sheet (was QUESTIONABLE)",
+    "**MIN Kyler Murray** (QB1): CLEARED off sheet (was QUESTIONABLE) was impact=0.3",
+    "**NO Martin Emerson Jr.** (CB1): CLEARED off sheet (was QUESTIONABLE) was impact=0.2",
+    "**NO Pete Werner** (LB): CLEARED off sheet (was QUESTIONABLE)",
+    "**NYG Abdul Carter** (LB): CLEARED off sheet (was QUESTIONABLE) was impact=0.25",
+    "**NYG Isaiah Likely** (TE1): CLEARED off sheet (was QUESTIONABLE) was impact=0.25",
+    "**NYG Dru Phillips** (CB1): CLEARED off sheet (was QUESTIONABLE) was impact=0.2",
+    "**NYG Arvell Reese** (LB): CLEARED off sheet (was QUESTIONABLE) was impact=0.25",
+    "**TB Jacob Parrish** (CB1): CLEARED off sheet (was QUESTIONABLE) was impact=0.2",
+    "**WSH Treylon Burks** (WR2): CLEARED off sheet (was QUESTIONABLE)"
+  ],
+  "report_cards": {
+    "LAC QB Justin Herbert QUESTIONABLE (concussion; DNP Wed/Thu, not seen Fri)": {
+      "player": "Justin Herbert",
+      "position": "QB1",
+      "injury": "concussion",
+      "game_status": "QUESTIONABLE (ESPN; club Friday status UNSPECIFIED at pull)",
+      "p_play": "below the Q prior given DNP x2 and protocol; not quantified beyond Q 0.35 weight",
+      "replacement": "DJ Uiagalelei (ESPN: first regular-season start if Herbert does not clear); qb-depth lists Trey Lance as QB2",
+      "replacement_quality": "no Madden/PFF starter-grade row; untested",
+      "desk_impact_auto": "0.26 (Madden-first vs listed backup)",
+      "full_valuation": "full drop-off at desk QB cap 1.5 (true drop likely larger than the cap); expected at Q weight ~0.53, range 0.4-0.8; Low-Moderate",
+      "manual": "1.5",
+      "opponent": "NE also on backup QB (Maye OUT, fractured fibula; auto 1.5)",
+      "effect": "LAC term -3.33 -> -3.76; B$ NE@LAC raw 4.38 -> 4.72 (official NE -4.5 unchanged) vs DK NE -2.5"
+    },
+    "SF QB Brock Purdy QUESTIONABLE (ankle; DNP Wed/Thu, not seen Fri)": {
+      "replacement": "Mac Jones",
+      "desk_impact_auto": "1.5 (Madden, at QB cap)",
+      "full_valuation": "agrees with auto at desk scale (cap 1.5; Q 0.35 -> 0.53 expected). No manual.",
+      "effect": "no change vs 27a (already Q)"
+    },
+    "ARI QB Carson Beck OUT (back)": {
+      "replacement": "Josh Johnson (ESPN; LaFleur Friday)",
+      "desk_impact_auto": "retagged DEPTH by stale qb-depth (Brissett)",
+      "full_valuation": "standing manual 0.45 kept (Beck->Johnson drop small-moderate)",
+      "manual": "0.45 (standing)",
+      "effect": "ARI term -3.18 -> -3.78 (Beck Q->OUT +0.29, Gaines OUT, Carter OUT); B$ WSH@ARI official 7 -> 8"
+    },
+    "NE QB Drake Maye OUT (fractured right fibula)": {
+      "replacement": "Tommy DeVito",
+      "desk_impact_auto": "1.5 (QB cap)",
+      "full_valuation": "agrees at desk scale; already OUT in 27a",
+      "effect": "none this run"
+    },
+    "HOU: Danielle Hunter OUT, Rutledge/B. Jordan/Boutte OUT": {
+      "desk_impact_auto": "Hunter 0.5 (All-Pro cap), others tier",
+      "full_valuation": "Hunter every-down EDGE1, cap 0.5 fair; OG Rutledge + Teller Q is a 2-OL watch, no cluster bump (only 1 OUT)",
+      "effect": "HOU term -2.41 -> -3.22"
+    },
+    "ATL: Branch, Dotson, Hellams, Bergeron, Bowman Jr. OUT": {
+      "full_valuation": "WR2 x2 + CB1 + S + OG; no single premium starter; no interaction bump (WR room not a protection unit)",
+      "effect": "ATL term -2.14 -> -2.95; B$ ATL@MIN official -10 -> -10.5"
+    },
+    "MIN: Darrisaw OUT (LT), Addison OUT, Rodgers OUT; Murray cleared (no Friday status, FP)": {
+      "full_valuation": "Darrisaw LT 0.25 tier; Murray manual 0.3 at Q dropped (cleared)",
+      "effect": "MIN term -1.98 -> -2.19"
+    },
+    "BAL: Madubuike OUT (manual 0.45 standing), Ioane OUT, Hawkins OUT; Henry no designation": {
+      "effect": "BAL term -4.83 -> -5.35"
+    },
+    "IND: Ward OUT (manual 0.5), Travis/Tillery/Mallory OUT; Raimann cleared": {
+      "effect": "IND term -2.91 -> -3.44; B$ NYG@IND official 8 -> 8.5 (NYG fav)"
+    },
+    "TEN: Burgess/Flott OUT, Carmona/Dan Moore Jr. Q (club)": {
+      "effect": "TEN term -2.92 -> -3.46"
+    }
+  },
+  "team_injury_terms_working_to_final": {
+    "NO": {
+      "working": -1.04,
+      "final": -1.08,
+      "delta": -0.04
+    },
+    "CIN": {
+      "working": -1.67,
+      "final": -1.76,
+      "delta": -0.09
+    },
+    "LV": {
+      "working": -0.86,
+      "final": -0.86,
+      "delta": 0.0
+    },
+    "CLE": {
+      "working": -1.44,
+      "final": -1.8,
+      "delta": -0.36
+    },
+    "NYG": {
+      "working": -2.5,
+      "final": -2.36,
+      "delta": 0.14
+    },
+    "IND": {
+      "working": -2.91,
+      "final": -3.44,
+      "delta": -0.53
+    },
+    "NYJ": {
+      "working": -1.99,
+      "final": -1.86,
+      "delta": 0.13
+    },
+    "MIA": {
+      "working": -3.35,
+      "final": -3.57,
+      "delta": -0.22
+    },
+    "ATL": {
+      "working": -2.14,
+      "final": -2.95,
+      "delta": -0.81
+    },
+    "MIN": {
+      "working": -1.98,
+      "final": -2.19,
+      "delta": -0.21
+    },
+    "BAL": {
+      "working": -4.83,
+      "final": -5.35,
+      "delta": -0.52
+    },
+    "HOU": {
+      "working": -2.41,
+      "final": -3.22,
+      "delta": -0.81
+    },
+    "TEN": {
+      "working": -2.92,
+      "final": -3.46,
+      "delta": -0.54
+    },
+    "JAX": {
+      "working": -1.88,
+      "final": -2.22,
+      "delta": -0.34
+    },
+    "WSH": {
+      "working": -2.96,
+      "final": -3,
+      "delta": -0.04
+    },
+    "ARI": {
+      "working": -3.18,
+      "final": -3.78,
+      "delta": -0.6
+    },
+    "SEA": {
+      "working": -2.65,
+      "final": -2.97,
+      "delta": -0.32
+    },
+    "SF": {
+      "working": -3.87,
+      "final": -4.12,
+      "delta": -0.25
+    },
+    "NE": {
+      "working": -4.11,
+      "final": -4.2,
+      "delta": -0.09
+    },
+    "LAC": {
+      "working": -3.33,
+      "final": -3.76,
+      "delta": -0.43
+    },
+    "CAR": {
+      "working": -3.01,
+      "final": -3.37,
+      "delta": -0.36
+    },
+    "TB": {
+      "working": -1.5,
+      "final": -1.59,
+      "delta": -0.09
+    }
+  },
+  "row_point_deltas_vs_27a": {
+    "NO": [
+      [
+        "Juwan Johnson",
+        "QUESTIONABLE",
+        "OUT",
+        0.13,
+        "TE1"
+      ],
+      [
+        "Pete Werner",
+        "QUESTIONABLE",
+        "-",
+        -0.09,
+        "LB"
+      ],
+      [
+        "Noah Fant",
+        "-",
+        "QUESTIONABLE",
+        0.07,
+        "TE1"
+      ],
+      [
+        "Martin Emerson Jr.",
+        "QUESTIONABLE",
+        "-",
+        -0.07,
+        "CB1"
+      ]
+    ],
+    "CIN": [
+      [
+        "Dalton Risner",
+        "QUESTIONABLE",
+        "OUT",
+        0.13,
+        "OG"
+      ],
+      [
+        "Andrei Iosivas",
+        "IR",
+        "QUESTIONABLE",
+        -0.13,
+        "WR2"
+      ],
+      [
+        "Tee Higgins",
+        "-",
+        "QUESTIONABLE",
+        0.09,
+        "WR2"
+      ]
+    ],
+    "LV": [],
+    "CLE": [
+      [
+        "Derek Barnett",
+        "-",
+        "OUT",
+        0.2,
+        "EDGE1"
+      ],
+      [
+        "Elgton Jenkins",
+        "-",
+        "QUESTIONABLE",
+        0.09,
+        "C"
+      ],
+      [
+        "Austin Barber",
+        "-",
+        "QUESTIONABLE",
+        0.07,
+        "RT"
+      ]
+    ],
+    "NYG": [
+      [
+        "Shelby Harris",
+        "-",
+        "OUT",
+        0.2,
+        "IDL"
+      ],
+      [
+        "Abdul Carter",
+        "QUESTIONABLE",
+        "-",
+        -0.09,
+        "LB"
+      ],
+      [
+        "Arvell Reese",
+        "QUESTIONABLE",
+        "-",
+        -0.09,
+        "LB"
+      ],
+      [
+        "Isaiah Likely",
+        "QUESTIONABLE",
+        "-",
+        -0.09,
+        "TE1"
+      ],
+      [
+        "Dru Phillips",
+        "QUESTIONABLE",
+        "-",
+        -0.07,
+        "CB1"
+      ]
+    ],
+    "IND": [
+      [
+        "Charvarius Ward",
+        "QUESTIONABLE",
+        "OUT",
+        0.33,
+        "CB1"
+      ],
+      [
+        "Bernhard Raimann",
+        "QUESTIONABLE",
+        "-",
+        -0.21,
+        "LT"
+      ],
+      [
+        "Jerry Tillery",
+        "QUESTIONABLE",
+        "OUT",
+        0.16,
+        "IDL"
+      ],
+      [
+        "Will Mallory",
+        "QUESTIONABLE",
+        "OUT",
+        0.16,
+        "TE1"
+      ],
+      [
+        "Jalen Travis",
+        "QUESTIONABLE",
+        "OUT",
+        0.16,
+        "RT"
+      ],
+      [
+        "Cam Taylor-Britt",
+        "IR",
+        "QUESTIONABLE",
+        -0.13,
+        "CB1"
+      ],
+      [
+        "Drew Ogletree",
+        "-",
+        "QUESTIONABLE",
+        0.07,
+        "TE1"
+      ]
+    ],
+    "NYJ": [
+      [
+        "Omar Cooper Jr.",
+        "QUESTIONABLE",
+        "OUT",
+        0.13,
+        "WR2"
+      ],
+      [
+        "T'Vondre Sweat",
+        "IR",
+        "QUESTIONABLE",
+        -0.13,
+        "IDL"
+      ],
+      [
+        "David Onyemata",
+        "IR",
+        "QUESTIONABLE",
+        -0.13,
+        "IDL"
+      ]
+    ],
+    "MIA": [
+      [
+        "Jared Wayne",
+        "QUESTIONABLE",
+        "OUT",
+        0.16,
+        "WR2"
+      ],
+      [
+        "Ronnie Harrison Jr.",
+        "IR",
+        "QUESTIONABLE",
+        -0.16,
+        "LB"
+      ],
+      [
+        "JuJu Brents",
+        "QUESTIONABLE",
+        "OUT",
+        0.13,
+        "CB1"
+      ],
+      [
+        "Bradley Pinion",
+        "QUESTIONABLE",
+        "OUT",
+        0.13,
+        "DEPTH"
+      ],
+      [
+        "Dante Trader Jr.",
+        "QUESTIONABLE",
+        "-",
+        -0.07,
+        "S"
+      ]
+    ],
+    "ATL": [
+      [
+        "DeMarcco Hellams",
+        "-",
+        "OUT",
+        0.25,
+        "S"
+      ],
+      [
+        "Matthew Bergeron",
+        "-",
+        "OUT",
+        0.2,
+        "OG"
+      ],
+      [
+        "Billy Bowman Jr.",
+        "QUESTIONABLE",
+        "OUT",
+        0.16,
+        "CB1"
+      ],
+      [
+        "Zachariah Branch",
+        "QUESTIONABLE",
+        "OUT",
+        0.16,
+        "WR2"
+      ],
+      [
+        "Jahan Dotson",
+        "QUESTIONABLE",
+        "OUT",
+        0.13,
+        "WR2"
+      ],
+      [
+        "Kendal Daniels",
+        "QUESTIONABLE",
+        "-",
+        -0.09,
+        "LB"
+      ]
+    ],
+    "MIN": [
+      [
+        "Christian Darrisaw",
+        "-",
+        "OUT",
+        0.25,
+        "RT"
+      ],
+      [
+        "Isaiah Rodgers",
+        "QUESTIONABLE",
+        "OUT",
+        0.16,
+        "CB1"
+      ],
+      [
+        "Kyler Murray",
+        "QUESTIONABLE",
+        "-",
+        -0.1,
+        "QB1"
+      ],
+      [
+        "Myles Price",
+        "QUESTIONABLE",
+        "-",
+        -0.09,
+        "WR2"
+      ]
+    ],
+    "BAL": [
+      [
+        "Nnamdi Madubuike",
+        "QUESTIONABLE",
+        "OUT",
+        0.29,
+        "IDL"
+      ],
+      [
+        "Olaivavega Ioane",
+        "-",
+        "OUT",
+        0.25,
+        "OG"
+      ],
+      [
+        "Derrick Henry",
+        "QUESTIONABLE",
+        "-",
+        -0.17,
+        "RB1"
+      ],
+      [
+        "Jaylinn Hawkins",
+        "QUESTIONABLE",
+        "OUT",
+        0.16,
+        "S"
+      ]
+    ],
+    "HOU": [
+      [
+        "Danielle Hunter",
+        "QUESTIONABLE",
+        "OUT",
+        0.33,
+        "EDGE1"
+      ],
+      [
+        "Keylan Rutledge",
+        "-",
+        "OUT",
+        0.25,
+        "OG"
+      ],
+      [
+        "Brevin Jordan",
+        "-",
+        "OUT",
+        0.25,
+        "TE1"
+      ],
+      [
+        "Kayshon Boutte",
+        "QUESTIONABLE",
+        "OUT",
+        0.13,
+        "WR2"
+      ],
+      [
+        "Jake Hummel",
+        "-",
+        "QUESTIONABLE",
+        0.09,
+        "LB"
+      ],
+      [
+        "Dalton Schultz",
+        "QUESTIONABLE",
+        "-",
+        -0.09,
+        "TE1"
+      ],
+      [
+        "Sheldon Rankins",
+        "QUESTIONABLE",
+        "-",
+        -0.07,
+        "IDL"
+      ],
+      [
+        "Woody Marks",
+        "QUESTIONABLE",
+        "-",
+        -0.07,
+        "RB1"
+      ]
+    ],
+    "TEN": [
+      [
+        "Terrell Burgess",
+        "-",
+        "OUT",
+        0.25,
+        "S"
+      ],
+      [
+        "Cor'Dale Flott",
+        "QUESTIONABLE",
+        "OUT",
+        0.13,
+        "CB1"
+      ],
+      [
+        "Fernando Carmona",
+        "-",
+        "QUESTIONABLE",
+        0.09,
+        "OG"
+      ],
+      [
+        "Dan Moore Jr.",
+        "-",
+        "QUESTIONABLE",
+        0.07,
+        "RT"
+      ]
+    ],
+    "JAX": [
+      [
+        "BJ Green II",
+        "-",
+        "OUT",
+        0.2,
+        "DEPTH"
+      ],
+      [
+        "Parker Washington",
+        "QUESTIONABLE",
+        "OUT",
+        0.16,
+        "WR2"
+      ],
+      [
+        "Bhayshul Tuten",
+        "QUESTIONABLE",
+        "OUT",
+        0.16,
+        "RB1"
+      ],
+      [
+        "Jakobi Meyers",
+        "QUESTIONABLE",
+        "-",
+        -0.09,
+        "WR2"
+      ],
+      [
+        "Matt Dickerson",
+        "QUESTIONABLE",
+        "-",
+        -0.09,
+        "EDGE1"
+      ]
+    ],
+    "WSH": [
+      [
+        "Amik Robertson",
+        "QUESTIONABLE",
+        "OUT",
+        0.13,
+        "CB1"
+      ],
+      [
+        "Treylon Burks",
+        "QUESTIONABLE",
+        "-",
+        -0.09,
+        "WR2"
+      ]
+    ],
+    "ARI": [
+      [
+        "Carson Beck",
+        "QUESTIONABLE",
+        "OUT",
+        0.29,
+        "DEPTH"
+      ],
+      [
+        "Jon Gaines II",
+        "QUESTIONABLE",
+        "OUT",
+        0.13,
+        "OG"
+      ],
+      [
+        "Karson Sharar",
+        "-",
+        "QUESTIONABLE",
+        0.09,
+        "LB"
+      ],
+      [
+        "Hunter Long",
+        "-",
+        "QUESTIONABLE",
+        0.09,
+        "TE1"
+      ]
+    ],
+    "SEA": [
+      [
+        "Patrick O'Connell",
+        "-",
+        "QUESTIONABLE",
+        0.09,
+        "LB"
+      ],
+      [
+        "DeMarcus Lawrence",
+        "-",
+        "QUESTIONABLE",
+        0.09,
+        "LB"
+      ],
+      [
+        "Uchenna Nwosu",
+        "-",
+        "QUESTIONABLE",
+        0.07,
+        "LB"
+      ],
+      [
+        "Jalen Milroe",
+        "-",
+        "QUESTIONABLE",
+        0.07,
+        "DEPTH"
+      ]
+    ],
+    "SF": [
+      [
+        "Carver Willis",
+        "-",
+        "QUESTIONABLE",
+        0.09,
+        "RT"
+      ],
+      [
+        "Siran Neal",
+        "-",
+        "QUESTIONABLE",
+        0.09,
+        "S"
+      ],
+      [
+        "Upton Stout",
+        "-",
+        "QUESTIONABLE",
+        0.07,
+        "CB1"
+      ]
+    ],
+    "NE": [
+      [
+        "Alijah Vera-Tucker",
+        "IR",
+        "QUESTIONABLE",
+        -0.16,
+        "OG"
+      ],
+      [
+        "Carlton Davis III",
+        "QUESTIONABLE",
+        "OUT",
+        0.16,
+        "CB1"
+      ],
+      [
+        "Reggie Gilliam",
+        "-",
+        "QUESTIONABLE",
+        0.09,
+        "DEPTH"
+      ]
+    ],
+    "LAC": [
+      [
+        "Justin Herbert",
+        "QUESTIONABLE",
+        "QUESTIONABLE",
+        0.43,
+        "QB1"
+      ]
+    ],
+    "CAR": [
+      [
+        "Jaelan Phillips",
+        "-",
+        "QUESTIONABLE",
+        0.09,
+        "LB"
+      ],
+      [
+        "Feleipe Franks",
+        "-",
+        "QUESTIONABLE",
+        0.09,
+        "TE1"
+      ],
+      [
+        "Jackson Kuwatch",
+        "-",
+        "QUESTIONABLE",
+        0.09,
+        "LB"
+      ],
+      [
+        "Patrick Jones II",
+        "-",
+        "QUESTIONABLE",
+        0.09,
+        "LB"
+      ]
+    ],
+    "TB": [
+      [
+        "SirVocea Dennis",
+        "-",
+        "QUESTIONABLE",
+        0.09,
+        "LB"
+      ],
+      [
+        "Jacob Parrish",
+        "QUESTIONABLE",
+        "-",
+        -0.07,
+        "CB1"
+      ],
+      [
+        "Tez Johnson",
+        "-",
+        "QUESTIONABLE",
+        0.07,
+        "WR2"
+      ]
+    ]
+  },
+  "b_lines_27a_to_27b": {
+    "NO@CIN": {
+      "raw_27a": -13.27,
+      "raw_27b": -13.22,
+      "official_27a": -13.5,
+      "official_27b": -13,
+      "shadow_27b": -9.97
+    },
+    "LV@CLE": {
+      "raw_27a": -5.37,
+      "raw_27b": -4.86,
+      "official_27a": -5.5,
+      "official_27b": -5,
+      "shadow_27b": -5.23
+    },
+    "NYG@IND": {
+      "raw_27a": 7.95,
+      "raw_27b": 8.62,
+      "official_27a": 8,
+      "official_27b": 8.5,
+      "shadow_27b": 4.61
+    },
+    "NYJ@MIA": {
+      "raw_27a": 6.62,
+      "raw_27b": 6.97,
+      "official_27a": 6.5,
+      "official_27b": 7,
+      "shadow_27b": 5.59
+    },
+    "ATL@MIN": {
+      "raw_27a": -9.78,
+      "raw_27b": -10.38,
+      "official_27a": -10,
+      "official_27b": -10.5,
+      "shadow_27b": -9.02
+    },
+    "BAL@HOU": {
+      "raw_27a": -13.2,
+      "raw_27b": -12.91,
+      "official_27a": -13,
+      "official_27b": -13,
+      "shadow_27b": -9.32
+    },
+    "TEN@JAX": {
+      "raw_27a": -24.1,
+      "raw_27b": -24.3,
+      "official_27a": -24,
+      "official_27b": -24.5,
+      "shadow_27b": -21.26
+    },
+    "WSH@ARI": {
+      "raw_27a": 7.2,
+      "raw_27b": 7.76,
+      "official_27a": 7,
+      "official_27b": 8,
+      "shadow_27b": 4.19
+    },
+    "SEA@SF": {
+      "raw_27a": -4.37,
+      "raw_27b": -4.44,
+      "official_27a": -4.5,
+      "official_27b": -4.5,
+      "shadow_27b": -3.18
+    },
+    "NE@LAC": {
+      "raw_27a": 4.38,
+      "raw_27b": 4.72,
+      "official_27a": 4.5,
+      "official_27b": 4.5,
+      "shadow_27b": 3.4
+    },
+    "CAR@TB": {
+      "raw_27a": -5.21,
+      "raw_27b": -5.48,
+      "official_27a": -5,
+      "official_27b": -5.5,
+      "shadow_27b": -4.37
+    }
+  },
+  "manual_overrides_applied": [
+    "LAC Justin Herbert 0.26 -> 1.5 at Q (W12 FINAL)",
+    "standing: ARI Beck 0.45, BAL Madubuike 0.45, IND Ward 0.5, NE A.J. Brown 0.55, HOU Teller 0.1, CAR Akayleb Evans 0.4, CLE Teven Jenkins 0.35",
+    "dropped: MIN Kyler Murray 0.3 (cleared; no Friday status)"
+  ],
+  "official_overrides_applied": [
+    "CIN Jalen Davis IR->DOUBTFUL (official Fri)",
+    "CIN Andrei Iosivas IR->QUESTIONABLE (official Fri)",
+    "IND Cam Taylor-Britt IR->QUESTIONABLE (official Fri)",
+    "NYG Shelby Harris QUESTIONABLE->OUT (official Fri)",
+    "NYG Abdul Carter QUESTIONABLE->cleared (official Fri)",
+    "NYG Dru Phillips QUESTIONABLE->cleared (official Fri)",
+    "NYG Arvell Reese QUESTIONABLE->cleared (official Fri)",
+    "MIA Bradley Pinion QUESTIONABLE->OUT (official Fri)",
+    "MIA Jared Wayne QUESTIONABLE->OUT (official Fri)",
+    "MIA Ronnie Harrison Jr. IR->QUESTIONABLE (official Fri)",
+    "MIA Austin Jackson QUESTIONABLE->cleared (official Fri)",
+    "MIA Rodney McGraw QUESTIONABLE->cleared (official Fri)",
+    "MIA Dante Trader Jr. QUESTIONABLE->cleared (official Fri)",
+    "MIA Jackson Woodard QUESTIONABLE->cleared (official Fri)",
+    "NYJ David Onyemata IR->QUESTIONABLE (official Fri)",
+    "NYJ T'Vondre Sweat IR->QUESTIONABLE (official Fri)",
+    "JAX BJ Green II NEW OUT (official Fri)",
+    "JAX Patrick Mekari IR->OUT (official Fri)",
+    "TEN Fernando Carmona NEW QUESTIONABLE (official Fri)",
+    "TEN Dan Moore Jr. NEW QUESTIONABLE (official Fri)",
+    "ARI Zachary Carter NEW OUT (official Fri)",
+    "NE Romeo Doubs IR->OUT (official Fri)",
+    "NE Alijah Vera-Tucker IR->QUESTIONABLE (official Fri)"
+  ],
+  "overrides_note": "FINAL rules: stub-hold narrowed to bare 'inactive'; Friday-dated ESPN O/D/Q rows followed as-is; club Friday Game Status applied where ESPN differed (None = no status on club report -> cleared). Doubtful = 1.0 out.",
+  "thursday_friday": "Wed GB@LAR LAR 26-13; Thanksgiving CHI 39 @ DET 35, PHI 39 @ DAL 38, KC 10 @ BUF 13; Black Friday DEN@PIT in progress at pull (PIT 24-5 halftime). Thursday-game locks not re-frozen.",
+  "locks": "data/postmortem/locks/2026-w12-sunday-freeze-summary.json"
+}
